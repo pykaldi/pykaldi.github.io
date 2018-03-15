@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.tfrnnlm &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.transform" href="kaldi.transform.html"/>
+        <link rel="prev" title="kaldi.sgmm2" href="kaldi.sgmm2.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.tfrnnlm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.tfrnnlm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.tfrnnlm">
+<span id="kaldi-tfrnnlm"></span><h1>kaldi.tfrnnlm<a class="headerlink" href="#module-kaldi.tfrnnlm" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tfrnnlm.KaldiTfRnnlmWrapper" title="kaldi.tfrnnlm.KaldiTfRnnlmWrapper"><code class="xref py py-obj docutils literal"><span class="pre">KaldiTfRnnlmWrapper</span></code></a></td>
+<td>TensorFlow RNNLM wrapper.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts" title="kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts"><code class="xref py py-obj docutils literal"><span class="pre">KaldiTfRnnlmWrapperOpts</span></code></a></td>
+<td>Options for TensorFlow RNNLM wrapper.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tfrnnlm.TfRnnlmDeterministicFst" title="kaldi.tfrnnlm.TfRnnlmDeterministicFst"><code class="xref py py-obj docutils literal"><span class="pre">TfRnnlmDeterministicFst</span></code></a></td>
+<td>Deterministic on demand Tensorflow RNNLM FST.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.tfrnnlm.KaldiTfRnnlmWrapper">
+<em class="property">class </em><code class="descclassname">kaldi.tfrnnlm.</code><code class="descname">KaldiTfRnnlmWrapper</code><a class="headerlink" href="#kaldi.tfrnnlm.KaldiTfRnnlmWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>TensorFlow RNNLM wrapper.</p>
+<p>This class wraps the TensorFlow based RNNLM, and provides a set of
+interfaces to be used by <a class="reference internal" href="#kaldi.tfrnnlm.TfRnnlmDeterministicFst" title="kaldi.tfrnnlm.TfRnnlmDeterministicFst"><code class="xref py py-class docutils literal"><span class="pre">TfRnnlmDeterministicFst</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts" title="kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts"><em>KaldiTfRnnlmWrapperOpts</em></a>) – Options for TensorFlow RNNLM wrapper.</li>
+<li><strong>rnn_wordlist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The word-list file. Every line should be in the
+format “[int-word-id] [word]”. The word &lt;oos&gt; must appear in this
+file.</li>
+<li><strong>word_symbol_table_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Standard word-list file in OpenFST
+style.</li>
+<li><strong>unk_prob_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Unknown probability file. It has the format
+“[word]  [prob or count]”. The probabilities are automatically
+normalized.</li>
+<li><strong>tf_model_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The location of the TensorFlow model.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts">
+<em class="property">class </em><code class="descclassname">kaldi.tfrnnlm.</code><code class="descname">KaldiTfRnnlmWrapperOpts</code><a class="headerlink" href="#kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for TensorFlow RNNLM wrapper.</p>
+<dl class="attribute">
+<dt id="kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts.num_threads">
+<code class="descname">num_threads</code><a class="headerlink" href="#kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts.num_threads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of threads.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts.unk_symbol">
+<code class="descname">unk_symbol</code><a class="headerlink" href="#kaldi.tfrnnlm.KaldiTfRnnlmWrapperOpts.unk_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symbol for unknown words.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tfrnnlm.TfRnnlmDeterministicFst">
+<em class="property">class </em><code class="descclassname">kaldi.tfrnnlm.</code><code class="descname">TfRnnlmDeterministicFst</code><a class="headerlink" href="#kaldi.tfrnnlm.TfRnnlmDeterministicFst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deterministic on demand Tensorflow RNNLM FST.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>max_ngram_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Maximum ngram order.</li>
+<li><strong>rnnlm</strong> (<a class="reference internal" href="#kaldi.tfrnnlm.KaldiTfRnnlmWrapper" title="kaldi.tfrnnlm.KaldiTfRnnlmWrapper"><em>KaldiTfRnnlmWrapper</em></a>) – TensorFlow RNNLM wrapper.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.tfrnnlm.TfRnnlmDeterministicFst.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tfrnnlm.TfRnnlmDeterministicFst.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the internal maps.</p>
+<p>This method is similar to the destructor but we retain the 0-th entries
+in each map which corresponds to the &lt;bos&gt; state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tfrnnlm.TfRnnlmDeterministicFst.final">
+<code class="descname">final</code><span class="sig-paren">(</span><em>state:int</em><span class="sig-paren">)</span> &#x2192; TropicalWeight<a class="headerlink" href="#kaldi.tfrnnlm.TfRnnlmDeterministicFst.final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final weight of the given state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tfrnnlm.TfRnnlmDeterministicFst.get_arc">
+<code class="descname">get_arc</code><span class="sig-paren">(</span><em>s:int</em>, <em>ilabel:int) -&gt; (success:bool</em>, <em>oarc:StdArc</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tfrnnlm.TfRnnlmDeterministicFst.get_arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an on demand arc and returns it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – State index.</li>
+<li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Arc label.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The created arc.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tfrnnlm.TfRnnlmDeterministicFst.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.tfrnnlm.TfRnnlmDeterministicFst.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the start state index.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.transform.html" class="btn btn-neutral float-right" title="kaldi.transform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.sgmm2.html" class="btn btn-neutral" title="kaldi.sgmm2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

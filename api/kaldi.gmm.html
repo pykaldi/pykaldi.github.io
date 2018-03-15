@@ -1,0 +1,2306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.gmm &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.hmm" href="kaldi.hmm.html"/>
+        <link rel="prev" title="kaldi.fstext" href="kaldi.fstext.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.gmm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.gmm.am">kaldi.gmm.am</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.gmm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.gmm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.gmm">
+<span id="kaldi-gmm"></span><h1>kaldi.gmm<a class="headerlink" href="#module-kaldi.gmm" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.augment_gmm_flags" title="kaldi.gmm.augment_gmm_flags"><code class="xref py py-obj docutils literal"><span class="pre">augment_gmm_flags</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.get_split_targets" title="kaldi.gmm.get_split_targets"><code class="xref py py-obj docutils literal"><span class="pre">get_split_targets</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.gmm_flags_to_string" title="kaldi.gmm.gmm_flags_to_string"><code class="xref py py-obj docutils literal"><span class="pre">gmm_flags_to_string</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.mle_full_gmm_update" title="kaldi.gmm.mle_full_gmm_update"><code class="xref py py-obj docutils literal"><span class="pre">mle_full_gmm_update</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.string_to_gmm_flags" title="kaldi.gmm.string_to_gmm_flags"><code class="xref py py-obj docutils literal"><span class="pre">string_to_gmm_flags</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.string_to_sgmm_update_flags" title="kaldi.gmm.string_to_sgmm_update_flags"><code class="xref py py-obj docutils literal"><span class="pre">string_to_sgmm_update_flags</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.string_to_sgmm_write_flags" title="kaldi.gmm.string_to_sgmm_write_flags"><code class="xref py py-obj docutils literal"><span class="pre">string_to_sgmm_write_flags</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.AccumDiagGmm" title="kaldi.gmm.AccumDiagGmm"><code class="xref py py-obj docutils literal"><span class="pre">AccumDiagGmm</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::AccumDiagGmm</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.AccumFullGmm" title="kaldi.gmm.AccumFullGmm"><code class="xref py py-obj docutils literal"><span class="pre">AccumFullGmm</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::AccumFullGmm</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.DiagGmm" title="kaldi.gmm.DiagGmm"><code class="xref py py-obj docutils literal"><span class="pre">DiagGmm</span></code></a></td>
+<td>Python wrapper for Kaldi::DiagGmm&lt;float&gt;.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.FullGmm" title="kaldi.gmm.FullGmm"><code class="xref py py-obj docutils literal"><span class="pre">FullGmm</span></code></a></td>
+<td>Python wrapper for Kaldi::FullGmm&lt;Float&gt;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.FullGmmNormal" title="kaldi.gmm.FullGmmNormal"><code class="xref py py-obj docutils literal"><span class="pre">FullGmmNormal</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FullGmmNormal</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.GmmUpdateFlags" title="kaldi.gmm.GmmUpdateFlags"><code class="xref py py-obj docutils literal"><span class="pre">GmmUpdateFlags</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.MapDiagGmmOptions" title="kaldi.gmm.MapDiagGmmOptions"><code class="xref py py-obj docutils literal"><span class="pre">MapDiagGmmOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MapDiagGmmOptions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.MleDiagGmmOptions" title="kaldi.gmm.MleDiagGmmOptions"><code class="xref py py-obj docutils literal"><span class="pre">MleDiagGmmOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MleDiagGmmOptions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.MleFullGmmOptions" title="kaldi.gmm.MleFullGmmOptions"><code class="xref py py-obj docutils literal"><span class="pre">MleFullGmmOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MleFullGmmOptions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.SgmmUpdateFlags" title="kaldi.gmm.SgmmUpdateFlags"><code class="xref py py-obj docutils literal"><span class="pre">SgmmUpdateFlags</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.SgmmWriteFlags" title="kaldi.gmm.SgmmWriteFlags"><code class="xref py py-obj docutils literal"><span class="pre">SgmmWriteFlags</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.gmm.AccumDiagGmm">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">AccumDiagGmm</code><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::AccumDiagGmm</p>
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.accumulate_for_component">
+<code class="descname">accumulate_for_component</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>comp_index:int</em>, <em>weight:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.accumulate_for_component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::AccumulateForComponent(::kaldi::VectorBase&lt;float&gt;, int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.accumulate_from_diag">
+<code class="descname">accumulate_from_diag</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>data:VectorBase</em>, <em>frame_posterior:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.accumulate_from_diag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::AccumDiagGmm::AccumulateFromDiag(::kaldi::DiagGmm, ::kaldi::VectorBase&lt;float&gt;, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.accumulate_from_diag_multi_threaded">
+<code class="descname">accumulate_from_diag_multi_threaded</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>data:MatrixBase</em>, <em>frame_weights:VectorBase</em>, <em>num_threads:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.accumulate_from_diag_multi_threaded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::AccumDiagGmm::AccumulateFromDiagMultiThreaded(::kaldi::DiagGmm, ::kaldi::MatrixBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt;, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.accumulate_from_posteriors">
+<code class="descname">accumulate_from_posteriors</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>gauss_posteriors:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.accumulate_from_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::AccumulateFromPosteriors(::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>scale:float</em>, <em>acc:AccumDiagGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::Add(double, ::kaldi::AccumDiagGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.add_stats_for_component">
+<code class="descname">add_stats_for_component</code><span class="sig-paren">(</span><em>comp_id:int</em>, <em>occ:float</em>, <em>x_stats:DoubleVectorBase</em>, <em>x2_stats:DoubleVectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.add_stats_for_component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::AddStatsForComponent(int, double, ::kaldi::VectorBase&lt;double&gt;, ::kaldi::VectorBase&lt;double&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.assert_equal">
+<code class="descname">assert_equal</code><span class="sig-paren">(</span><em>other:AccumDiagGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.assert_equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::AssertEqual(::kaldi::AccumDiagGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AccumDiagGmm::Dim()</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.AccumDiagGmm.flags_">
+<code class="descname">flags_</code><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.flags_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_56 AccumDiagGmm.Flags()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>flags:int</em><span class="sig-paren">)</span> &#x2192; AccumDiagGmm<a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::AccumDiagGmm&gt; ::kaldi::AccumDiagGmm::AccumDiagGmm(::kaldi::DiagGmm, unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.num_gauss">
+<code class="descname">num_gauss</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.num_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AccumDiagGmm::NumGauss()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>in_stream:istream</em>, <em>binary:bool</em>, <em>add:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.resize">
+<code class="descname">resize</code><span class="sig-paren">(</span><em>num_gauss:int</em>, <em>dim:int</em>, <em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::Resize(int, int, unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.resize_with_gmm">
+<code class="descname">resize_with_gmm</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.resize_with_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::Resize(::kaldi::DiagGmm, unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>f:float</em>, <em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::Scale(float, unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::SetZero(unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.smooth_stats">
+<code class="descname">smooth_stats</code><span class="sig-paren">(</span><em>tau:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.smooth_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::SmoothStats(float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.smooth_with_accum">
+<code class="descname">smooth_with_accum</code><span class="sig-paren">(</span><em>tau:float</em>, <em>src_acc:AccumDiagGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.smooth_with_accum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::SmoothWithAccum(float, ::kaldi::AccumDiagGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.smooth_with_model">
+<code class="descname">smooth_with_model</code><span class="sig-paren">(</span><em>tau:float</em>, <em>src_gmm:DiagGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.smooth_with_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::SmoothWithModel(float, ::kaldi::DiagGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.with_other">
+<code class="descname">with_other</code><span class="sig-paren">(</span><em>other:AccumDiagGmm</em><span class="sig-paren">)</span> &#x2192; AccumDiagGmm<a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.with_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::AccumDiagGmm&gt; ::kaldi::AccumDiagGmm::AccumDiagGmm(::kaldi::AccumDiagGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumDiagGmm.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>out_stream:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumDiagGmm.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumDiagGmm::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.AccumFullGmm">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">AccumFullGmm</code><a class="headerlink" href="#kaldi.gmm.AccumFullGmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::AccumFullGmm</p>
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.accumulate_for_component">
+<code class="descname">accumulate_for_component</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>comp_index:int</em>, <em>weight:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumFullGmm.accumulate_for_component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumFullGmm::AccumulateForComponent(::kaldi::VectorBase&lt;float&gt;, int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.accumulate_from_diag">
+<code class="descname">accumulate_from_diag</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>data:VectorBase</em>, <em>frame_posterior:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.AccumFullGmm.accumulate_from_diag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::AccumFullGmm::AccumulateFromDiag(::kaldi::DiagGmm, ::kaldi::VectorBase&lt;float&gt;, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.accumulate_from_full">
+<code class="descname">accumulate_from_full</code><span class="sig-paren">(</span><em>gmm:FullGmm</em>, <em>data:VectorBase</em>, <em>frame_posterior:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.AccumFullGmm.accumulate_from_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::AccumFullGmm::AccumulateFromFull(::kaldi::FullGmm, ::kaldi::VectorBase&lt;float&gt;, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.accumulate_from_posteriors">
+<code class="descname">accumulate_from_posteriors</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>gauss_posteriors:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumFullGmm.accumulate_from_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumFullGmm::AccumulateFromPosteriors(::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.covariance_accumulator">
+<code class="descname">covariance_accumulator</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;DoubleSpMatrix&gt;<a class="headerlink" href="#kaldi.gmm.AccumFullGmm.covariance_accumulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt; ::kaldi::AccumFullGmm::covariance_accumulator()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.AccumFullGmm.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AccumFullGmm::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.flags">
+<code class="descname">flags</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.AccumFullGmm.flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+unsigned short ::kaldi::AccumFullGmm::Flags()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.mean_accumulator">
+<code class="descname">mean_accumulator</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; DoubleMatrix<a class="headerlink" href="#kaldi.gmm.AccumFullGmm.mean_accumulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Matrix&lt;double&gt; ::kaldi::AccumFullGmm::mean_accumulator()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.new_with_full">
+<code class="descname">new_with_full</code><span class="sig-paren">(</span><em>gmm:FullGmm</em>, <em>flags:int</em><span class="sig-paren">)</span> &#x2192; AccumFullGmm<a class="headerlink" href="#kaldi.gmm.AccumFullGmm.new_with_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::AccumFullGmm&gt; ::kaldi::AccumFullGmm::AccumFullGmm(::kaldi::FullGmm, unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.new_with_other">
+<code class="descname">new_with_other</code><span class="sig-paren">(</span><em>gmm:AccumFullGmm</em><span class="sig-paren">)</span> &#x2192; AccumFullGmm<a class="headerlink" href="#kaldi.gmm.AccumFullGmm.new_with_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::AccumFullGmm&gt; ::kaldi::AccumFullGmm::AccumFullGmm(::kaldi::AccumFullGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.new_with_params">
+<code class="descname">new_with_params</code><span class="sig-paren">(</span><em>num_comp:int</em>, <em>dim:int</em>, <em>flags:int</em><span class="sig-paren">)</span> &#x2192; AccumFullGmm<a class="headerlink" href="#kaldi.gmm.AccumFullGmm.new_with_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::AccumFullGmm&gt; ::kaldi::AccumFullGmm::AccumFullGmm(int, int, unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.num_gauss">
+<code class="descname">num_gauss</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.AccumFullGmm.num_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AccumFullGmm::NumGauss()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.occupancy">
+<code class="descname">occupancy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; DoubleVector<a class="headerlink" href="#kaldi.gmm.AccumFullGmm.occupancy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Vector&lt;double&gt; ::kaldi::AccumFullGmm::occupancy()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>in_stream:istream</em>, <em>binary:bool</em>, <em>add:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumFullGmm.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumFullGmm::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.resize">
+<code class="descname">resize</code><span class="sig-paren">(</span><em>num_comp:int</em>, <em>dim:int</em>, <em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumFullGmm.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumFullGmm::Resize(int, int, unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.resize_var_accumulator">
+<code class="descname">resize_var_accumulator</code><span class="sig-paren">(</span><em>num_comp:int</em>, <em>dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumFullGmm.resize_var_accumulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumFullGmm::ResizeVarAccumulator(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.resize_with_full">
+<code class="descname">resize_with_full</code><span class="sig-paren">(</span><em>gmm:FullGmm</em>, <em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumFullGmm.resize_with_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumFullGmm::Resize(::kaldi::FullGmm, unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>f:float</em>, <em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumFullGmm.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumFullGmm::Scale(float, unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumFullGmm.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumFullGmm::SetZero(unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.AccumFullGmm.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>out_stream:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.AccumFullGmm.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumFullGmm::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.DiagGmm">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">DiagGmm</code><span class="sig-paren">(</span><em>nmix=0</em>, <em>dim=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#DiagGmm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.DiagGmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python wrapper for Kaldi::DiagGmm&lt;float&gt;.</p>
+<p>Provides a more pythonic access to C++ methods.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nmix</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of Gaussians to mix</li>
+<li><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Dimension of each component</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Creates a new DiagGmm with specified number of gaussian mixtures</dt>
+<dd>and dimensions.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nmix</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of gaussian to mix</li>
+<li><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – dimension</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.component_log_likelihood">
+<code class="descname">component_log_likelihood</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>comp_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.DiagGmm.component_log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the contribution log-likelihood of a data point from a single Gaussian component.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </li>
+<li><strong>- component id</strong> (<em>comp_id</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Log-likehood for a given component</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.component_posteriors">
+<code class="descname">component_posteriors</code><span class="sig-paren">(</span><em>data:VectorBase) -&gt; (log_like:float</em>, <em>posteriors:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.component_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the posterior probabilities of all Gaussian components given a data point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </li>
+<li><strong>posterior</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Log-likehood of the data given the GMM.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.compute_gconsts">
+<code class="descname">compute_gconsts</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.DiagGmm.compute_gconsts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the gconsts.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Number that are invalid e.g. because of zero weights or variances.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>src</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#DiagGmm.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.DiagGmm.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies data from src into this DiagGmm and returns this DiagGmm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>src</strong> (<a class="reference internal" href="#kaldi.gmm.FullGmm" title="kaldi.gmm.FullGmm"><em>FullGmm</em></a><em> or </em><a class="reference internal" href="#kaldi.gmm.DiagGmm" title="kaldi.gmm.DiagGmm"><em>DiagGmm</em></a>) – Source Gmm to copy</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">This DiagGmm after update.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.copy_from_diag">
+<code class="descname">copy_from_diag</code><span class="sig-paren">(</span><em>diaggmm:DiagGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.copy_from_diag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies from given <a class="reference internal" href="#kaldi.gmm.DiagGmm" title="kaldi.gmm.DiagGmm"><code class="xref py py-class docutils literal"><span class="pre">DiagGmm</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.copy_from_full">
+<code class="descname">copy_from_full</code><span class="sig-paren">(</span><em>fullgmm:FullGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.copy_from_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies from given <a class="reference internal" href="#kaldi.gmm.FullGmm" title="kaldi.gmm.FullGmm"><code class="xref py py-class docutils literal"><span class="pre">FullGmm</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.DiagGmm.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimensionality of the Gaussian mean vectors.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.from_clusterable">
+<code class="descname">from_clusterable</code><span class="sig-paren">(</span><em>gc:GaussClusterable</em>, <em>var_floor:float</em><span class="sig-paren">)</span> &#x2192; DiagGmm<a class="headerlink" href="#kaldi.gmm.DiagGmm.from_clusterable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::DiagGmm&gt; ::kaldi::DiagGmm::DiagGmm(::kaldi::GaussClusterable, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.from_nmix_dim">
+<code class="descname">from_nmix_dim</code><span class="sig-paren">(</span><em>nmix:int</em>, <em>dim:int</em><span class="sig-paren">)</span> &#x2192; DiagGmm<a class="headerlink" href="#kaldi.gmm.DiagGmm.from_nmix_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::DiagGmm&gt; ::kaldi::DiagGmm::DiagGmm(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em><span class="sig-paren">)</span> &#x2192; DiagGmm<a class="headerlink" href="#kaldi.gmm.DiagGmm.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::DiagGmm&gt; ::kaldi::DiagGmm::DiagGmm(::kaldi::DiagGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.gaussian_selection">
+<code class="descname">gaussian_selection</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>num_gselect:int) -&gt; (log_like:float</em>, <em>output:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.gaussian_selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get gaussian selection information for one frame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </li>
+<li><strong>num_gselect</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">log-likelihood for this frame.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.gaussian_selection_matrix">
+<code class="descname">gaussian_selection_matrix</code><span class="sig-paren">(</span><em>data:MatrixBase</em>, <em>num_gselect:int) -&gt; (log_like:float</em>, <em>output:list&lt;list&lt;int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.gaussian_selection_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::DiagGmm::GaussianSelection(::kaldi::MatrixBase&lt;float&gt;, int, ::std::vector&lt; ::std::vector&lt; ::int32&gt; &gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.gaussian_selection_preselect">
+<code class="descname">gaussian_selection_preselect</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>preselect:list&lt;int&gt;</em>, <em>num_gselect:int) -&gt; (log_like:float</em>, <em>output:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.gaussian_selection_preselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get gaussian selection information for one frame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </li>
+<li><strong>preselect</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – </li>
+<li><strong>num_gselect</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Log-like for this frame.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.DiagGmm.gconsts_">
+<code class="descname">gconsts_</code><a class="headerlink" href="#kaldi.gmm.DiagGmm.gconsts_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_59 DiagGmm.gconsts()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><em>output:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::Generate(::kaldi::VectorBase&lt;float&gt; <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.get_component_mean">
+<code class="descname">get_component_mean</code><span class="sig-paren">(</span><em>gauss:int</em>, <em>out:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.get_component_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::GetComponentMean(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.get_component_variance">
+<code class="descname">get_component_variance</code><span class="sig-paren">(</span><em>gauss:int</em>, <em>out:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.get_component_variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::GetComponentVariance(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.get_means">
+<code class="descname">get_means</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.gmm.DiagGmm.get_means" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::GetMeans(::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.get_vars">
+<code class="descname">get_vars</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.gmm.DiagGmm.get_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::GetVars(::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.interpolate">
+<code class="descname">interpolate</code><span class="sig-paren">(</span><em>rho:float</em>, <em>source:DiagGmm</em>, <em>flags:int=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.interpolate" title="Permalink to this definition">¶</a></dt>
+<dd><p>this &lt;- rho * source + (1 - rho) * this</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.interpolate_full">
+<code class="descname">interpolate_full</code><span class="sig-paren">(</span><em>rho:float</em>, <em>source:FullGmm</em>, <em>flags:int=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.interpolate_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>this &lt;- rho * source + (1 - rho) * this</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.DiagGmm.inv_vars_">
+<code class="descname">inv_vars_</code><a class="headerlink" href="#kaldi.gmm.DiagGmm.inv_vars_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_65 DiagGmm.inv_vars()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>data:VectorBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.DiagGmm.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log-likelihood of a data point given the GMM.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.log_likelihoods">
+<code class="descname">log_likelihoods</code><span class="sig-paren">(</span><em>data:VectorBase</em><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.gmm.DiagGmm.log_likelihoods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the per-component distribution to the log-likelihood</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.log_likelihoods_matrix">
+<code class="descname">log_likelihoods_matrix</code><span class="sig-paren">(</span><em>data:MatrixBase</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.gmm.DiagGmm.log_likelihoods_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::LogLikelihoods(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.log_likelihoods_preselect">
+<code class="descname">log_likelihoods_preselect</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>indices:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.gmm.DiagGmm.log_likelihoods_preselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Outputs the per-component log-likelihoods of a subset of mixture components.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </li>
+<li><strong>- list of indices</strong> (<em>indices</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.DiagGmm.means_invvars_">
+<code class="descname">means_invvars_</code><a class="headerlink" href="#kaldi.gmm.DiagGmm.means_invvars_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_63 DiagGmm.means_invvars()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.num_gauss">
+<code class="descname">num_gauss</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.DiagGmm.num_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of mixture components.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.perturb">
+<code class="descname">perturb</code><span class="sig-paren">(</span><em>perturb_factor:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.perturb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perturbs the component means with a random vector multiplied by the pertrub factor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.remove_component">
+<code class="descname">remove_component</code><span class="sig-paren">(</span><em>gauss:int</em>, <em>renorm_weights:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.remove_component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::RemoveComponent(int, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.remove_components">
+<code class="descname">remove_components</code><span class="sig-paren">(</span><em>gauss:list&lt;int&gt;</em>, <em>renorm_weights:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.remove_components" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::RemoveComponents(::std::vector&lt; ::int32&gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.resize">
+<code class="descname">resize</code><span class="sig-paren">(</span><em>nmix:int</em>, <em>dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes arrays to this dim. Does not init data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.set_component_inv_var">
+<code class="descname">set_component_inv_var</code><span class="sig-paren">(</span><em>gauss:int</em>, <em>in:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.set_component_inv_var" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::SetComponentInvVar(int, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.set_component_mean">
+<code class="descname">set_component_mean</code><span class="sig-paren">(</span><em>gauss:int</em>, <em>in:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.set_component_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::SetComponentMean(int, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.set_component_weight">
+<code class="descname">set_component_weight</code><span class="sig-paren">(</span><em>gauss:int</em>, <em>weight:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.set_component_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::SetComponentWeight(int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.set_inv_vars">
+<code class="descname">set_inv_vars</code><span class="sig-paren">(</span><em>v:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.set_inv_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::SetInvVars(::kaldi::MatrixBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.set_inv_vars_and_means">
+<code class="descname">set_inv_vars_and_means</code><span class="sig-paren">(</span><em>invvars:MatrixBase</em>, <em>means:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.set_inv_vars_and_means" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::SetInvVarsAndMeans(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::MatrixBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.set_means">
+<code class="descname">set_means</code><span class="sig-paren">(</span><em>m:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.set_means" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::SetMeans(::kaldi::MatrixBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.set_weights">
+<code class="descname">set_weights</code><span class="sig-paren">(</span><em>w:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.set_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::SetWeights(::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.valid_gconsts">
+<code class="descname">valid_gconsts</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.gmm.DiagGmm.valid_gconsts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::DiagGmm::valid_gconsts()</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.DiagGmm.weights_">
+<code class="descname">weights_</code><a class="headerlink" href="#kaldi.gmm.DiagGmm.weights_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_61 DiagGmm.weights()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.DiagGmm.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.DiagGmm.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DiagGmm::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.FullGmm">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">FullGmm</code><span class="sig-paren">(</span><em>nmix=0</em>, <em>dim=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python wrapper for Kaldi::FullGmm&lt;Float&gt;</p>
+<p>Provides a more pythonic access to the C++ methods.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nmix</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of gaussian to mix</li>
+<li><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – dimension of each gaussian</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">ValueError if nmix or dimension are not positive integers.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Creates a new FullGmm with specified number of gaussian mixtures and
+dimensions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nmix</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of gaussian to mix</li>
+<li><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – dimension</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.component_log_likelihood">
+<code class="descname">component_log_likelihood</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>comp_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.FullGmm.component_log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the contribution log-likelihood of a data point from a single Gaussian component.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </li>
+<li><strong>- component id</strong> (<em>comp_id</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Log-likehood for a given component</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.component_posteriors">
+<code class="descname">component_posteriors</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.component_posteriors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.component_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Computes the posterior probabilities of all Gaussian components given</dt>
+<dd>a data point.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>VectorBase</em>) – Data point with the same dimension as each
+component.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">2-element tuple containing<ul class="simple">
+<li><strong>loglike</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">float</span></code></a>): Log-likelihood</li>
+<li><strong>posteriors</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><code class="xref py py-class docutils literal"><span class="pre">Vector</span></code></a>): Vector with the
+posterior probabilities</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">ValueError if data is not consistent with this components dimension.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.compute_gconsts">
+<code class="descname">compute_gconsts</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.FullGmm.compute_gconsts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the gconsts.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Number that are invalid e.g. because of zero weights or variances.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>src</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies data from src into this FullGmm and returns this FullGmm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>src</strong> (<a class="reference internal" href="#kaldi.gmm.FullGmm" title="kaldi.gmm.FullGmm"><em>FullGmm</em></a><em> or </em><a class="reference internal" href="#kaldi.gmm.DiagGmm" title="kaldi.gmm.DiagGmm"><em>DiagGmm</em></a>) – Source Gmm to copy</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">This FullGmm after update.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.copy_from_full">
+<code class="descname">copy_from_full</code><span class="sig-paren">(</span><em>fullgmm:FullGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.copy_from_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies from given <a class="reference internal" href="#kaldi.gmm.FullGmm" title="kaldi.gmm.FullGmm"><code class="xref py py-class docutils literal"><span class="pre">FullGmm</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.covars">
+<code class="descname">covars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.covars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.covars" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Component Co-variances</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.FullGmm.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimensionality of the Gaussian mean vectors.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.from_nmix_dim">
+<code class="descname">from_nmix_dim</code><span class="sig-paren">(</span><em>nmix:int</em>, <em>dim:int</em><span class="sig-paren">)</span> &#x2192; FullGmm<a class="headerlink" href="#kaldi.gmm.FullGmm.from_nmix_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::FullGmm&gt; ::kaldi::FullGmm::FullGmm(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>gmm:FullGmm</em><span class="sig-paren">)</span> &#x2192; FullGmm<a class="headerlink" href="#kaldi.gmm.FullGmm.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::FullGmm&gt; ::kaldi::FullGmm::FullGmm(::kaldi::FullGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.gaussian_selection">
+<code class="descname">gaussian_selection</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>num_gselect:int) -&gt; (log_like:float</em>, <em>output:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.gaussian_selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get gaussian selection information for one frame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </li>
+<li><strong>num_gselect</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">log-likelihood for this frame.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.gaussian_selection_preselect">
+<code class="descname">gaussian_selection_preselect</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>preselect:list&lt;int&gt;</em>, <em>num_gselect:int) -&gt; (log_like:float</em>, <em>posteriors:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.gaussian_selection_preselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get gaussian selection information for one frame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </li>
+<li><strong>preselect</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – </li>
+<li><strong>num_gselect</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Log-like for this frame.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.FullGmm.gconsts_">
+<code class="descname">gconsts_</code><a class="headerlink" href="#kaldi.gmm.FullGmm.gconsts_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_44 FullGmm.gconsts()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.get_component_mean">
+<code class="descname">get_component_mean</code><span class="sig-paren">(</span><em>gauss:int</em>, <em>out:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.get_component_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for component mean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.get_covars">
+<code class="descname">get_covars</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;SpMatrix&gt;<a class="headerlink" href="#kaldi.gmm.FullGmm.get_covars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for covariances.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.get_covars_and_means">
+<code class="descname">get_covars_and_means</code><span class="sig-paren">(</span><em>) -&gt; (covars:list&lt;SpMatrix&gt;</em>, <em>means:Matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.get_covars_and_means" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for covariances and means.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.get_means">
+<code class="descname">get_means</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.gmm.FullGmm.get_means" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor for means.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.interpolate">
+<code class="descname">interpolate</code><span class="sig-paren">(</span><em>rho:float</em>, <em>source:FullGmm</em>, <em>flags:int=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.interpolate" title="Permalink to this definition">¶</a></dt>
+<dd><p>this &lt;- rho * source + (1 - rho) * this</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.FullGmm.inv_covars_">
+<code class="descname">inv_covars_</code><a class="headerlink" href="#kaldi.gmm.FullGmm.inv_covars_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_51 FullGmm.inv_covars()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>data:VectorBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.FullGmm.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log-likelihood of a data point given the GMM.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.log_likelihoods">
+<code class="descname">log_likelihoods</code><span class="sig-paren">(</span><em>data:VectorBase</em><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.gmm.FullGmm.log_likelihoods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output the per-component distribution to the log-likelihood</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.log_likelihoods_preselect">
+<code class="descname">log_likelihoods_preselect</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>indices:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.gmm.FullGmm.log_likelihoods_preselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Outputs the per-component log-likelihoods of a subset of mixture components.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – </li>
+<li><strong>- list of indices</strong> (<em>indices</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.means">
+<code class="descname">means</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.means"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.means" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A new <a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.SubMatrix" title="kaldi.matrix.SubMatrix"><code class="xref py py-class docutils literal"><span class="pre">SubMatrix</span></code></a> containing component means.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.FullGmm.means_invcovars_">
+<code class="descname">means_invcovars_</code><a class="headerlink" href="#kaldi.gmm.FullGmm.means_invcovars_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_48 FullGmm.means_invcovars()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.num_gauss">
+<code class="descname">num_gauss</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.FullGmm.num_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of mixture components.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.perturb">
+<code class="descname">perturb</code><span class="sig-paren">(</span><em>pertub_factor:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.perturb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perturbs the component means with a random vector multiplied by the pertrub factor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FullGmm::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.remove_component">
+<code class="descname">remove_component</code><span class="sig-paren">(</span><em>gauss:int</em>, <em>renorm_weights:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.remove_component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mutators for single component, supports float or double Removes single component from model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.remove_components">
+<code class="descname">remove_components</code><span class="sig-paren">(</span><em>gauss:list&lt;int&gt;</em>, <em>renorm_weights:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.remove_components" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes multiple components from model; “gauss” must not have dups.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.resize">
+<code class="descname">resize</code><span class="sig-paren">(</span><em>nmix:int</em>, <em>dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes arrays to this dim. Does not init data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.set_inv_covars_and_means">
+<code class="descname">set_inv_covars_and_means</code><span class="sig-paren">(</span><em>invcovars:list&lt;SpMatrix&gt;</em>, <em>means:Matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.set_inv_covars_and_means" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates both means and (inverse) covariances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>invcovars</strong> (list of <code class="xref py py-class docutils literal"><span class="pre">SpMatrix</span></code>) – List of inverse covariances</li>
+<li><strong>means</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.Matrix</span></code></a>) – matrix of means</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.set_inv_covars_and_means_inv_covars">
+<code class="descname">set_inv_covars_and_means_inv_covars</code><span class="sig-paren">(</span><em>invcovars:list&lt;SpMatrix&gt;</em>, <em>means_invcovars:Matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.set_inv_covars_and_means_inv_covars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this if setting both, in the class’s native format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>invcovars</strong> (list of <code class="xref py py-class docutils literal"><span class="pre">SpMatrix</span></code>) – List of inverse covariances</li>
+<li><strong>means_invcovars</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.Matrix</span></code></a>) – matrix of means and invcovars</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.set_means">
+<code class="descname">set_means</code><span class="sig-paren">(</span><em>means</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.set_means"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.set_means" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets gmm component means.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.set_weights">
+<code class="descname">set_weights</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.set_weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.set_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets gmm mixture weights.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.weights">
+<code class="descname">weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.weights" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A new <a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.SubVector" title="kaldi.matrix.SubVector"><code class="xref py py-class docutils literal"><span class="pre">SubVector</span></code></a> containing mixture weights.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.FullGmm.weights_">
+<code class="descname">weights_</code><a class="headerlink" href="#kaldi.gmm.FullGmm.weights_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_46 FullGmm.weights()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmm.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmm.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FullGmm::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.FullGmmNormal">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">FullGmmNormal</code><a class="headerlink" href="#kaldi.gmm.FullGmmNormal" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FullGmmNormal</p>
+<dl class="method">
+<dt id="kaldi.gmm.FullGmmNormal.copy_from_full">
+<code class="descname">copy_from_full</code><span class="sig-paren">(</span><em>fullgmm:FullGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmmNormal.copy_from_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FullGmmNormal::CopyFromFullGmm(::kaldi::FullGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmmNormal.copy_to_full">
+<code class="descname">copy_to_full</code><span class="sig-paren">(</span><em>fullgmm:FullGmm</em>, <em>flags:int=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmmNormal.copy_to_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FullGmmNormal::CopyToFullGmm(::kaldi::FullGmm <a href="#id7"><span class="problematic" id="id8">*</span></a>, unsigned short)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.FullGmmNormal.means_">
+<code class="descname">means_</code><a class="headerlink" href="#kaldi.gmm.FullGmmNormal.means_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Matrix&lt;double&gt; <a href="#id27"><span class="problematic" id="id28">FullGmmNormal.means_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmmNormal.new_with_other">
+<code class="descname">new_with_other</code><span class="sig-paren">(</span><em>gmm:FullGmm</em><span class="sig-paren">)</span> &#x2192; FullGmmNormal<a class="headerlink" href="#kaldi.gmm.FullGmmNormal.new_with_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::FullGmmNormal&gt; ::kaldi::FullGmmNormal::FullGmmNormal(::kaldi::FullGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmmNormal.rand">
+<code class="descname">rand</code><span class="sig-paren">(</span><em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmmNormal.rand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FullGmmNormal::Rand(::kaldi::MatrixBase&lt;float&gt; <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.FullGmmNormal.resize">
+<code class="descname">resize</code><span class="sig-paren">(</span><em>nMix:int</em>, <em>dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.FullGmmNormal.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FullGmmNormal::Resize(int, int)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.FullGmmNormal.vars_">
+<code class="descname">vars_</code><a class="headerlink" href="#kaldi.gmm.FullGmmNormal.vars_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt; <a href="#id29"><span class="problematic" id="id30">FullGmmNormal.vars_</span></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.FullGmmNormal.weights_">
+<code class="descname">weights_</code><a class="headerlink" href="#kaldi.gmm.FullGmmNormal.weights_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Vector&lt;double&gt; <a href="#id31"><span class="problematic" id="id32">FullGmmNormal.weights_</span></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.GmmUpdateFlags">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">GmmUpdateFlags</code><a class="headerlink" href="#kaldi.gmm.GmmUpdateFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.gmm.GmmUpdateFlags.ALL">
+<code class="descname">ALL</code><em class="property"> = 15</em><a class="headerlink" href="#kaldi.gmm.GmmUpdateFlags.ALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.GmmUpdateFlags.MEANS">
+<code class="descname">MEANS</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.gmm.GmmUpdateFlags.MEANS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.GmmUpdateFlags.TRANSITIONS">
+<code class="descname">TRANSITIONS</code><em class="property"> = 8</em><a class="headerlink" href="#kaldi.gmm.GmmUpdateFlags.TRANSITIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.GmmUpdateFlags.VARIANCES">
+<code class="descname">VARIANCES</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.gmm.GmmUpdateFlags.VARIANCES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.GmmUpdateFlags.WEIGHTS">
+<code class="descname">WEIGHTS</code><em class="property"> = 4</em><a class="headerlink" href="#kaldi.gmm.GmmUpdateFlags.WEIGHTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.MapDiagGmmOptions">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">MapDiagGmmOptions</code><a class="headerlink" href="#kaldi.gmm.MapDiagGmmOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MapDiagGmmOptions</p>
+<dl class="attribute">
+<dt id="kaldi.gmm.MapDiagGmmOptions.mean_tau">
+<code class="descname">mean_tau</code><a class="headerlink" href="#kaldi.gmm.MapDiagGmmOptions.mean_tau" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MapDiagGmmOptions.mean_tau</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.MapDiagGmmOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.MapDiagGmmOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MapDiagGmmOptions::Register(::kaldi::OptionsItf <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.MapDiagGmmOptions.variance_tau">
+<code class="descname">variance_tau</code><a class="headerlink" href="#kaldi.gmm.MapDiagGmmOptions.variance_tau" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MapDiagGmmOptions.variance_tau</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.MapDiagGmmOptions.weight_tau">
+<code class="descname">weight_tau</code><a class="headerlink" href="#kaldi.gmm.MapDiagGmmOptions.weight_tau" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MapDiagGmmOptions.weight_tau</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.MleDiagGmmOptions">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">MleDiagGmmOptions</code><a class="headerlink" href="#kaldi.gmm.MleDiagGmmOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MleDiagGmmOptions</p>
+<dl class="attribute">
+<dt id="kaldi.gmm.MleDiagGmmOptions.min_gaussian_occupancy">
+<code class="descname">min_gaussian_occupancy</code><a class="headerlink" href="#kaldi.gmm.MleDiagGmmOptions.min_gaussian_occupancy" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleDiagGmmOptions.min_gaussian_occupancy</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.MleDiagGmmOptions.min_gaussian_weight">
+<code class="descname">min_gaussian_weight</code><a class="headerlink" href="#kaldi.gmm.MleDiagGmmOptions.min_gaussian_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleDiagGmmOptions.min_gaussian_weight</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.MleDiagGmmOptions.min_variance">
+<code class="descname">min_variance</code><a class="headerlink" href="#kaldi.gmm.MleDiagGmmOptions.min_variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ double MleDiagGmmOptions.min_variance</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.MleDiagGmmOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.MleDiagGmmOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleDiagGmmOptions::Register(::kaldi::OptionsItf <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.MleDiagGmmOptions.remove_low_count_gaussians">
+<code class="descname">remove_low_count_gaussians</code><a class="headerlink" href="#kaldi.gmm.MleDiagGmmOptions.remove_low_count_gaussians" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MleDiagGmmOptions.remove_low_count_gaussians</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.MleDiagGmmOptions.variance_floor_vector">
+<code class="descname">variance_floor_vector</code><a class="headerlink" href="#kaldi.gmm.MleDiagGmmOptions.variance_floor_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Vector&lt;double&gt; MleDiagGmmOptions.variance_floor_vector</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.MleFullGmmOptions">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">MleFullGmmOptions</code><a class="headerlink" href="#kaldi.gmm.MleFullGmmOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MleFullGmmOptions</p>
+<dl class="attribute">
+<dt id="kaldi.gmm.MleFullGmmOptions.max_condition">
+<code class="descname">max_condition</code><a class="headerlink" href="#kaldi.gmm.MleFullGmmOptions.max_condition" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleFullGmmOptions.max_condition</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.MleFullGmmOptions.min_gaussian_occupancy">
+<code class="descname">min_gaussian_occupancy</code><a class="headerlink" href="#kaldi.gmm.MleFullGmmOptions.min_gaussian_occupancy" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleFullGmmOptions.min_gaussian_occupancy</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.MleFullGmmOptions.min_gaussian_weight">
+<code class="descname">min_gaussian_weight</code><a class="headerlink" href="#kaldi.gmm.MleFullGmmOptions.min_gaussian_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleFullGmmOptions.min_gaussian_weight</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.MleFullGmmOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.MleFullGmmOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleFullGmmOptions::Register(::kaldi::OptionsItf <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.MleFullGmmOptions.remove_low_count_gaussians">
+<code class="descname">remove_low_count_gaussians</code><a class="headerlink" href="#kaldi.gmm.MleFullGmmOptions.remove_low_count_gaussians" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MleFullGmmOptions.remove_low_count_gaussians</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.MleFullGmmOptions.variance_floor">
+<code class="descname">variance_floor</code><a class="headerlink" href="#kaldi.gmm.MleFullGmmOptions.variance_floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleFullGmmOptions.variance_floor</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.SgmmUpdateFlags">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">SgmmUpdateFlags</code><a class="headerlink" href="#kaldi.gmm.SgmmUpdateFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmUpdateFlags.ALL">
+<code class="descname">ALL</code><em class="property"> = 255</em><a class="headerlink" href="#kaldi.gmm.SgmmUpdateFlags.ALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmUpdateFlags.COVARIANCE_MATRIX">
+<code class="descname">COVARIANCE_MATRIX</code><em class="property"> = 8</em><a class="headerlink" href="#kaldi.gmm.SgmmUpdateFlags.COVARIANCE_MATRIX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmUpdateFlags.PHONE_PROJECTIONS">
+<code class="descname">PHONE_PROJECTIONS</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.gmm.SgmmUpdateFlags.PHONE_PROJECTIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmUpdateFlags.PHONE_VECTORS">
+<code class="descname">PHONE_VECTORS</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.gmm.SgmmUpdateFlags.PHONE_VECTORS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmUpdateFlags.PHONE_WEIGHT_PROJECTIONS">
+<code class="descname">PHONE_WEIGHT_PROJECTIONS</code><em class="property"> = 4</em><a class="headerlink" href="#kaldi.gmm.SgmmUpdateFlags.PHONE_WEIGHT_PROJECTIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmUpdateFlags.SPEAKER_PROJECTIONS">
+<code class="descname">SPEAKER_PROJECTIONS</code><em class="property"> = 32</em><a class="headerlink" href="#kaldi.gmm.SgmmUpdateFlags.SPEAKER_PROJECTIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmUpdateFlags.SPEAKER_WEIGHT_PROJECTIONS">
+<code class="descname">SPEAKER_WEIGHT_PROJECTIONS</code><em class="property"> = 128</em><a class="headerlink" href="#kaldi.gmm.SgmmUpdateFlags.SPEAKER_WEIGHT_PROJECTIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmUpdateFlags.SUBSTATE_WEIGHTS">
+<code class="descname">SUBSTATE_WEIGHTS</code><em class="property"> = 16</em><a class="headerlink" href="#kaldi.gmm.SgmmUpdateFlags.SUBSTATE_WEIGHTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmUpdateFlags.TRANSITIONS">
+<code class="descname">TRANSITIONS</code><em class="property"> = 64</em><a class="headerlink" href="#kaldi.gmm.SgmmUpdateFlags.TRANSITIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.SgmmWriteFlags">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">SgmmWriteFlags</code><a class="headerlink" href="#kaldi.gmm.SgmmWriteFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmWriteFlags.BACKGROUND_GMMS">
+<code class="descname">BACKGROUND_GMMS</code><em class="property"> = 8</em><a class="headerlink" href="#kaldi.gmm.SgmmWriteFlags.BACKGROUND_GMMS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmWriteFlags.GLOBAL_PARAMS">
+<code class="descname">GLOBAL_PARAMS</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.gmm.SgmmWriteFlags.GLOBAL_PARAMS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmWriteFlags.NORMALIZERS">
+<code class="descname">NORMALIZERS</code><em class="property"> = 4</em><a class="headerlink" href="#kaldi.gmm.SgmmWriteFlags.NORMALIZERS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmWriteFlags.STATE_PARAMS">
+<code class="descname">STATE_PARAMS</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.gmm.SgmmWriteFlags.STATE_PARAMS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.SgmmWriteFlags.WRITE_ALL">
+<code class="descname">WRITE_ALL</code><em class="property"> = 15</em><a class="headerlink" href="#kaldi.gmm.SgmmWriteFlags.WRITE_ALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.gmm.augment_gmm_flags">
+<code class="descclassname">kaldi.gmm.</code><code class="descname">augment_gmm_flags</code><span class="sig-paren">(</span><em>f:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.augment_gmm_flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+unsigned short ::kaldi::AugmentGmmFlags(unsigned short)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.gmm.get_split_targets">
+<code class="descclassname">kaldi.gmm.</code><code class="descname">get_split_targets</code><span class="sig-paren">(</span><em>state_occs:Vector</em>, <em>target_components:int</em>, <em>power:float</em>, <em>min_count:float</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.gmm.get_split_targets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::GetSplitTargets(::kaldi::Vector&lt;float&gt;, int, float, float, ::std::vector&lt; ::int32&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.gmm.gmm_flags_to_string">
+<code class="descclassname">kaldi.gmm.</code><code class="descname">gmm_flags_to_string</code><span class="sig-paren">(</span><em>gmm_flags:GmmUpdateFlags</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.gmm.gmm_flags_to_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::std::string ::kaldi::GmmFlagsToString(unsigned short)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.gmm.mle_full_gmm_update">
+<code class="descclassname">kaldi.gmm.</code><code class="descname">mle_full_gmm_update</code><span class="sig-paren">(</span><em>config:MleFullGmmOptions</em>, <em>fullgmm_acc:AccumFullGmm</em>, <em>flags:int</em>, <em>gmm:FullGmm) -&gt; (obj_change_out:float</em>, <em>count_out:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.mle_full_gmm_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleFullGmmUpdate(::kaldi::MleFullGmmOptions, ::kaldi::AccumFullGmm, unsigned short, ::kaldi::FullGmm <em>, float</em>, float*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.gmm.string_to_gmm_flags">
+<code class="descclassname">kaldi.gmm.</code><code class="descname">string_to_gmm_flags</code><span class="sig-paren">(</span><em>s:str</em><span class="sig-paren">)</span> &#x2192; GmmUpdateFlags<a class="headerlink" href="#kaldi.gmm.string_to_gmm_flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+unsigned short ::kaldi::StringToGmmFlags(::std::string)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.gmm.string_to_sgmm_update_flags">
+<code class="descclassname">kaldi.gmm.</code><code class="descname">string_to_sgmm_update_flags</code><span class="sig-paren">(</span><em>s:str</em><span class="sig-paren">)</span> &#x2192; SgmmUpdateFlags<a class="headerlink" href="#kaldi.gmm.string_to_sgmm_update_flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+unsigned short ::kaldi::StringToSgmmUpdateFlags(::std::string)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.gmm.string_to_sgmm_write_flags">
+<code class="descclassname">kaldi.gmm.</code><code class="descname">string_to_sgmm_write_flags</code><span class="sig-paren">(</span><em>s:str</em><span class="sig-paren">)</span> &#x2192; SgmmWriteFlags<a class="headerlink" href="#kaldi.gmm.string_to_sgmm_write_flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+unsigned short ::kaldi::StringToSgmmWriteFlags(::std::string)</p>
+</dd></dl>
+
+<div class="section" id="module-kaldi.gmm.am">
+<span id="kaldi-gmm-am"></span><h2>kaldi.gmm.am<a class="headerlink" href="#module-kaldi.gmm.am" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.am.cluster_gaussians_to_ubm" title="kaldi.gmm.am.cluster_gaussians_to_ubm"><code class="xref py py-obj docutils literal"><span class="pre">cluster_gaussians_to_ubm</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.am.map_am_diag_gmm_update" title="kaldi.gmm.am.map_am_diag_gmm_update"><code class="xref py py-obj docutils literal"><span class="pre">map_am_diag_gmm_update</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.am.mle_am_diag_gmm_update" title="kaldi.gmm.am.mle_am_diag_gmm_update"><code class="xref py py-obj docutils literal"><span class="pre">mle_am_diag_gmm_update</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.am.AccumAmDiagGmm" title="kaldi.gmm.am.AccumAmDiagGmm"><code class="xref py py-obj docutils literal"><span class="pre">AccumAmDiagGmm</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::AccumAmDiagGmm</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.am.AmDiagGmm" title="kaldi.gmm.am.AmDiagGmm"><code class="xref py py-obj docutils literal"><span class="pre">AmDiagGmm</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::AmDiagGmm</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.am.DecodableAmDiagGmm" title="kaldi.gmm.am.DecodableAmDiagGmm"><code class="xref py py-obj docutils literal"><span class="pre">DecodableAmDiagGmm</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::DecodableAmDiagGmm</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.am.DecodableAmDiagGmmScaled" title="kaldi.gmm.am.DecodableAmDiagGmmScaled"><code class="xref py py-obj docutils literal"><span class="pre">DecodableAmDiagGmmScaled</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::DecodableAmDiagGmmScaled</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.gmm.am.DecodableAmDiagGmmUnmapped" title="kaldi.gmm.am.DecodableAmDiagGmmUnmapped"><code class="xref py py-obj docutils literal"><span class="pre">DecodableAmDiagGmmUnmapped</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::DecodableAmDiagGmmUnmapped</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.gmm.am.UbmClusteringOptions" title="kaldi.gmm.am.UbmClusteringOptions"><code class="xref py py-obj docutils literal"><span class="pre">UbmClusteringOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::UbmClusteringOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.am.</code><code class="descname">AccumAmDiagGmm</code><a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::AccumAmDiagGmm</p>
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.accumulate_for_gaussian">
+<code class="descname">accumulate_for_gaussian</code><span class="sig-paren">(</span><em>model:AmDiagGmm</em>, <em>data:VectorBase</em>, <em>gmm_index:int</em>, <em>gauss_index:int</em>, <em>weight:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.accumulate_for_gaussian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumAmDiagGmm::AccumulateForGaussian(::kaldi::AmDiagGmm, ::kaldi::VectorBase&lt;float&gt;, int, int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.accumulate_for_gmm">
+<code class="descname">accumulate_for_gmm</code><span class="sig-paren">(</span><em>model:AmDiagGmm</em>, <em>data:VectorBase</em>, <em>gmm_index:int</em>, <em>weight:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.accumulate_for_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::AccumAmDiagGmm::AccumulateForGmm(::kaldi::AmDiagGmm, ::kaldi::VectorBase&lt;float&gt;, int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.accumulate_for_gmm_twofeats">
+<code class="descname">accumulate_for_gmm_twofeats</code><span class="sig-paren">(</span><em>model:AmDiagGmm</em>, <em>data1:VectorBase</em>, <em>data2:VectorBase</em>, <em>gmm_index:int</em>, <em>weight:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.accumulate_for_gmm_twofeats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::AccumAmDiagGmm::AccumulateForGmmTwofeats(::kaldi::AmDiagGmm, ::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt;, int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.accumulate_from_posteriors">
+<code class="descname">accumulate_from_posteriors</code><span class="sig-paren">(</span><em>model:AmDiagGmm</em>, <em>data:VectorBase</em>, <em>gmm_index:int</em>, <em>posteriors:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.accumulate_from_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumAmDiagGmm::AccumulateFromPosteriors(::kaldi::AmDiagGmm, ::kaldi::VectorBase&lt;float&gt;, int, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>scale:float</em>, <em>other:AccumAmDiagGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumAmDiagGmm::Add(float, ::kaldi::AccumAmDiagGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AccumAmDiagGmm::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.get_acc">
+<code class="descname">get_acc</code><span class="sig-paren">(</span><em>index:int</em><span class="sig-paren">)</span> &#x2192; AccumDiagGmm<a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.get_acc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::AccumDiagGmm * ::kaldi::AccumAmDiagGmm::GetAccPtr(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>model:AmDiagGmm</em>, <em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumAmDiagGmm::Init(::kaldi::AmDiagGmm, unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.init_with_dim">
+<code class="descname">init_with_dim</code><span class="sig-paren">(</span><em>model:AmDiagGmm</em>, <em>dim:int</em>, <em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.init_with_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumAmDiagGmm::Init(::kaldi::AmDiagGmm, int, unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.num_accs">
+<code class="descname">num_accs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.num_accs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AccumAmDiagGmm::NumAccs()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>add:bool=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumAmDiagGmm::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>scale:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumAmDiagGmm::Scale(float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumAmDiagGmm::SetZero(unsigned short)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.tot_count">
+<code class="descname">tot_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.tot_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::AccumAmDiagGmm::TotCount()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.tot_log_like">
+<code class="descname">tot_log_like</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.tot_log_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::AccumAmDiagGmm::TotLogLike()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.tot_stats_count">
+<code class="descname">tot_stats_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.tot_stats_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::AccumAmDiagGmm::TotStatsCount()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AccumAmDiagGmm.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>out_stream:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AccumAmDiagGmm.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumAmDiagGmm::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.am.AmDiagGmm">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.am.</code><code class="descname">AmDiagGmm</code><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::AmDiagGmm</p>
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.add_pdf">
+<code class="descname">add_pdf</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.add_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmDiagGmm::AddPdf(::kaldi::DiagGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.compute_gconsts">
+<code class="descname">compute_gconsts</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.compute_gconsts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmDiagGmm::ComputeGconsts()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.copy_from_am_diag">
+<code class="descname">copy_from_am_diag</code><span class="sig-paren">(</span><em>other:AmDiagGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.copy_from_am_diag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmDiagGmm::CopyFromAmDiagGmm(::kaldi::AmDiagGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmDiagGmm::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.get_gaussian_mean">
+<code class="descname">get_gaussian_mean</code><span class="sig-paren">(</span><em>pdf_index:int</em>, <em>gauss:int</em>, <em>out:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.get_gaussian_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmDiagGmm::GetGaussianMean(int, int, ::kaldi::VectorBase&lt;float&gt; <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.get_gaussian_variance">
+<code class="descname">get_gaussian_variance</code><span class="sig-paren">(</span><em>pdf_index:int</em>, <em>gauss:int</em>, <em>out:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.get_gaussian_variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmDiagGmm::GetGaussianVariance(int, int, ::kaldi::VectorBase&lt;float&gt; <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>proto:DiagGmm</em>, <em>num_pdfs:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmDiagGmm::Init(::kaldi::DiagGmm, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>pdf_index:int</em>, <em>data:VectorBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::AmDiagGmm::LogLikelihood(int, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.merge_by_count">
+<code class="descname">merge_by_count</code><span class="sig-paren">(</span><em>state_occs:Vector</em>, <em>target_components:int</em>, <em>power:float</em>, <em>min_count:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.merge_by_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmDiagGmm::MergeByCount(::kaldi::Vector&lt;float&gt;, int, float, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.num_gauss">
+<code class="descname">num_gauss</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.num_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmDiagGmm::NumGauss()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.num_gauss_in_pdf">
+<code class="descname">num_gauss_in_pdf</code><span class="sig-paren">(</span><em>pdf_index:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.num_gauss_in_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmDiagGmm::NumGaussInPdf(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.num_pdfs">
+<code class="descname">num_pdfs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.num_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmDiagGmm::NumPdfs()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmDiagGmm::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.set_gaussian_mean">
+<code class="descname">set_gaussian_mean</code><span class="sig-paren">(</span><em>pdf_index:int</em>, <em>gauss:int</em>, <em>in:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.set_gaussian_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmDiagGmm::SetGaussianMean(int, int, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.split_by_count">
+<code class="descname">split_by_count</code><span class="sig-paren">(</span><em>state_occs:Vector</em>, <em>target_components:int</em>, <em>perturb_factor:float</em>, <em>power:float</em>, <em>min_count:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.split_by_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmDiagGmm::SplitByCount(::kaldi::Vector&lt;float&gt;, int, float, float, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.split_pdf">
+<code class="descname">split_pdf</code><span class="sig-paren">(</span><em>idx:int</em>, <em>target_components:int</em>, <em>perturb_factor:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.split_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmDiagGmm::SplitPdf(int, int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.AmDiagGmm.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.AmDiagGmm.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmDiagGmm::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmm">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.am.</code><code class="descname">DecodableAmDiagGmm</code><a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::DecodableAmDiagGmm</p>
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmm.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmm.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if given frame is the last frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmm.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>index:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmm.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log-likehood of the given index for the given frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmm.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmm.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of frames ready for decoding.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmm.num_indices">
+<code class="descname">num_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmm.num_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of indices.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmm.trans_model">
+<code class="descname">trans_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; TransitionModel<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmm.trans_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the transition model.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmScaled">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.am.</code><code class="descname">DecodableAmDiagGmmScaled</code><a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmScaled" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::DecodableAmDiagGmmScaled</p>
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmScaled.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmScaled.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if given frame is the last frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmScaled.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>index:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmScaled.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log-likehood of the given index for the given frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmScaled.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmScaled.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of frames ready for decoding.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmScaled.num_indices">
+<code class="descname">num_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmScaled.num_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of indices.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmScaled.own_feats">
+<code class="descname">own_feats</code><span class="sig-paren">(</span><em>am:AmDiagGmm</em>, <em>tm:TransitionModel</em>, <em>scale:float</em>, <em>log_sum_exp_prune:float</em>, <em>feats:Matrix</em><span class="sig-paren">)</span> &#x2192; DecodableAmDiagGmmScaled<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmScaled.own_feats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::DecodableAmDiagGmmScaled&gt; ::kaldi::DecodableAmDiagGmmScaled::DecodableAmDiagGmmScaled(::kaldi::AmDiagGmm, ::kaldi::TransitionModel, float, float, ::kaldi::Matrix&lt;float&gt; <a href="#id21"><span class="problematic" id="id22">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmScaled.trans_model">
+<code class="descname">trans_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; TransitionModel<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmScaled.trans_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the transition model.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmUnmapped">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.am.</code><code class="descname">DecodableAmDiagGmmUnmapped</code><a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmUnmapped" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::DecodableAmDiagGmmUnmapped</p>
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmUnmapped.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmUnmapped.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if given frame is the last frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmUnmapped.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>index:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmUnmapped.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log-likehood of the given index for the given frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmUnmapped.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmUnmapped.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of frames ready for decoding.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.DecodableAmDiagGmmUnmapped.num_indices">
+<code class="descname">num_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.gmm.am.DecodableAmDiagGmmUnmapped.num_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of indices.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.gmm.am.UbmClusteringOptions">
+<em class="property">class </em><code class="descclassname">kaldi.gmm.am.</code><code class="descname">UbmClusteringOptions</code><a class="headerlink" href="#kaldi.gmm.am.UbmClusteringOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::UbmClusteringOptions</p>
+<dl class="method">
+<dt id="kaldi.gmm.am.UbmClusteringOptions.check">
+<code class="descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.UbmClusteringOptions.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::UbmClusteringOptions::Check()</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.am.UbmClusteringOptions.cluster_varfloor">
+<code class="descname">cluster_varfloor</code><a class="headerlink" href="#kaldi.gmm.am.UbmClusteringOptions.cluster_varfloor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat UbmClusteringOptions.cluster_varfloor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.am.UbmClusteringOptions.intermediate_num_gauss">
+<code class="descname">intermediate_num_gauss</code><a class="headerlink" href="#kaldi.gmm.am.UbmClusteringOptions.intermediate_num_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 UbmClusteringOptions.intermediate_num_gauss</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.am.UbmClusteringOptions.max_am_gauss">
+<code class="descname">max_am_gauss</code><a class="headerlink" href="#kaldi.gmm.am.UbmClusteringOptions.max_am_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 UbmClusteringOptions.max_am_gauss</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.am.UbmClusteringOptions.reduce_state_factor">
+<code class="descname">reduce_state_factor</code><a class="headerlink" href="#kaldi.gmm.am.UbmClusteringOptions.reduce_state_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat UbmClusteringOptions.reduce_state_factor</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.gmm.am.UbmClusteringOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.UbmClusteringOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::UbmClusteringOptions::Register(::kaldi::OptionsItf <a href="#id23"><span class="problematic" id="id24">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.gmm.am.UbmClusteringOptions.ubm_num_gauss">
+<code class="descname">ubm_num_gauss</code><a class="headerlink" href="#kaldi.gmm.am.UbmClusteringOptions.ubm_num_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 UbmClusteringOptions.ubm_num_gauss</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.gmm.am.cluster_gaussians_to_ubm">
+<code class="descclassname">kaldi.gmm.am.</code><code class="descname">cluster_gaussians_to_ubm</code><span class="sig-paren">(</span><em>am:AmDiagGmm</em>, <em>state_occs:Vector</em>, <em>opts:UbmClusteringOptions</em>, <em>ubm_out:DiagGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.cluster_gaussians_to_ubm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ClusterGaussiansToUbm(::kaldi::AmDiagGmm, ::kaldi::Vector&lt;float&gt;, ::kaldi::UbmClusteringOptions, ::kaldi::DiagGmm <a href="#id25"><span class="problematic" id="id26">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.gmm.am.map_am_diag_gmm_update">
+<code class="descclassname">kaldi.gmm.am.</code><code class="descname">map_am_diag_gmm_update</code><span class="sig-paren">(</span><em>config:MapDiagGmmOptions</em>, <em>diag_gmm_acc:AccumAmDiagGmm</em>, <em>flags:int</em>, <em>am_gmm:AmDiagGmm) -&gt; (obj_change_out:float</em>, <em>count_out:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.map_am_diag_gmm_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MapAmDiagGmmUpdate(::kaldi::MapDiagGmmOptions, ::kaldi::AccumAmDiagGmm, unsigned short, ::kaldi::AmDiagGmm <em>, float</em>, float*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.gmm.am.mle_am_diag_gmm_update">
+<code class="descclassname">kaldi.gmm.am.</code><code class="descname">mle_am_diag_gmm_update</code><span class="sig-paren">(</span><em>config:MleDiagGmmOptions</em>, <em>diag_gmm_acc:AccumAmDiagGmm</em>, <em>flags:int</em>, <em>am_gmm:AmDiagGmm) -&gt; (obj_change_out:float</em>, <em>count_out:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.gmm.am.mle_am_diag_gmm_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleAmDiagGmmUpdate(::kaldi::MleDiagGmmOptions, ::kaldi::AccumAmDiagGmm, unsigned short, ::kaldi::AmDiagGmm <em>, float</em>, float*)</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.hmm.html" class="btn btn-neutral float-right" title="kaldi.hmm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.fstext.html" class="btn btn-neutral" title="kaldi.fstext" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,1387 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.sgmm2 &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.tfrnnlm" href="kaldi.tfrnnlm.html"/>
+        <link rel="prev" title="kaldi.rnnlm" href="kaldi.rnnlm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.sgmm2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.sgmm2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.sgmm2">
+<span id="kaldi-sgmm2"></span><h1>kaldi.sgmm2<a class="headerlink" href="#module-kaldi.sgmm2" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.sgmm2.compute_feature_normalizing_transform" title="kaldi.sgmm2.compute_feature_normalizing_transform"><code class="xref py py-obj docutils literal"><span class="pre">compute_feature_normalizing_transform</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.sgmm2.AmSgmm2" title="kaldi.sgmm2.AmSgmm2"><code class="xref py py-obj docutils literal"><span class="pre">AmSgmm2</span></code></a></td>
+<td>Class for definition of subspace Gmm acoustic model</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.sgmm2.DecodableAmSgmm2" title="kaldi.sgmm2.DecodableAmSgmm2"><code class="xref py py-obj docutils literal"><span class="pre">DecodableAmSgmm2</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::DecodableAmSgmm2</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.sgmm2.DecodableAmSgmm2Scaled" title="kaldi.sgmm2.DecodableAmSgmm2Scaled"><code class="xref py py-obj docutils literal"><span class="pre">DecodableAmSgmm2Scaled</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::DecodableAmSgmm2Scaled</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.sgmm2.FmllrSgmm2Accs" title="kaldi.sgmm2.FmllrSgmm2Accs"><code class="xref py py-obj docutils literal"><span class="pre">FmllrSgmm2Accs</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FmllrSgmm2Accs</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.sgmm2.MleAmSgmm2Accs" title="kaldi.sgmm2.MleAmSgmm2Accs"><code class="xref py py-obj docutils literal"><span class="pre">MleAmSgmm2Accs</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MleAmSgmm2Accs</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.sgmm2.MleAmSgmm2Options" title="kaldi.sgmm2.MleAmSgmm2Options"><code class="xref py py-obj docutils literal"><span class="pre">MleAmSgmm2Options</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MleAmSgmm2Options</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.sgmm2.MleAmSgmm2Updater" title="kaldi.sgmm2.MleAmSgmm2Updater"><code class="xref py py-obj docutils literal"><span class="pre">MleAmSgmm2Updater</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MleAmSgmm2Updater</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.sgmm2.MleSgmm2SpeakerAccs" title="kaldi.sgmm2.MleSgmm2SpeakerAccs"><code class="xref py py-obj docutils literal"><span class="pre">MleSgmm2SpeakerAccs</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MleSgmm2SpeakerAccs</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.sgmm2.Sgmm2FmllrConfig" title="kaldi.sgmm2.Sgmm2FmllrConfig"><code class="xref py py-obj docutils literal"><span class="pre">Sgmm2FmllrConfig</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Sgmm2FmllrConfig</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.sgmm2.Sgmm2FmllrGlobalParams" title="kaldi.sgmm2.Sgmm2FmllrGlobalParams"><code class="xref py py-obj docutils literal"><span class="pre">Sgmm2FmllrGlobalParams</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Sgmm2FmllrGlobalParams</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.sgmm2.Sgmm2GauPostElement" title="kaldi.sgmm2.Sgmm2GauPostElement"><code class="xref py py-obj docutils literal"><span class="pre">Sgmm2GauPostElement</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Sgmm2GauPostElement</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.sgmm2.Sgmm2GselectConfig" title="kaldi.sgmm2.Sgmm2GselectConfig"><code class="xref py py-obj docutils literal"><span class="pre">Sgmm2GselectConfig</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Sgmm2GselectConfig</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.sgmm2.Sgmm2LikelihoodCache" title="kaldi.sgmm2.Sgmm2LikelihoodCache"><code class="xref py py-obj docutils literal"><span class="pre">Sgmm2LikelihoodCache</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Sgmm2LikelihoodCache</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.sgmm2.Sgmm2PerFrameDerivedVars" title="kaldi.sgmm2.Sgmm2PerFrameDerivedVars"><code class="xref py py-obj docutils literal"><span class="pre">Sgmm2PerFrameDerivedVars</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Sgmm2PerFrameDerivedVars</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.sgmm2.Sgmm2PerSpkDerivedVars" title="kaldi.sgmm2.Sgmm2PerSpkDerivedVars"><code class="xref py py-obj docutils literal"><span class="pre">Sgmm2PerSpkDerivedVars</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Sgmm2PerSpkDerivedVars</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.sgmm2.Sgmm2SplitSubstatesConfig" title="kaldi.sgmm2.Sgmm2SplitSubstatesConfig"><code class="xref py py-obj docutils literal"><span class="pre">Sgmm2SplitSubstatesConfig</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Sgmm2SplitSubstatesConfig</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.sgmm2.AmSgmm2">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">AmSgmm2</code><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for definition of subspace Gmm acoustic model</p>
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.check">
+<code class="descname">check</code><span class="sig-paren">(</span><em>show_properties:bool=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the various components for correct sizes. When the argument is set to true, dimensions of the various components is printed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.component_posteriors">
+<code class="descname">component_posteriors</code><span class="sig-paren">(</span><em>per_frame_vars:Sgmm2PerFrameDerivedVars</em>, <em>j2:int</em>, <em>spk_vars:Sgmm2PerSpkDerivedVars) -&gt; (loglike:float</em>, <em>post:Matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.component_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to <a class="reference internal" href="#kaldi.sgmm2.AmSgmm2.loglikelihood" title="kaldi.sgmm2.AmSgmm2.loglikelihood"><code class="xref py py-meth docutils literal"><span class="pre">loglikelihood()</span></code></a> but also computes the posterior probabilities for the pre-selected Gaussian components and all substates.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.compute_derived_vars">
+<code class="descname">compute_derived_vars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.compute_derived_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes (and initializes if neccesary) derived vars</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.compute_fmllr_pre_xform">
+<code class="descname">compute_fmllr_pre_xform</code><span class="sig-paren">(</span><em>pdf_occs:Vector) -&gt; (xform:Matrix</em>, <em>inv_xform:Matrix</em>, <em>diag_mean_scatter:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.compute_fmllr_pre_xform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the LDA-like pre-transform and its inverse as well as the eigenvalues of the scatter of the means used in FMLLR estimation</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.compute_h">
+<code class="descname">compute_h</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;SpMatrix&gt;<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.compute_h" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes <span class="math">\(M_i \Sigma_i^{-1} M_i^T\)</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.compute_h_double">
+<code class="descname">compute_h_double</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;DoubleSpMatrix&gt;<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.compute_h_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes <span class="math">\(M_i \Sigma_i^{-1} M_i^T\)</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.compute_normalizers">
+<code class="descname">compute_normalizers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.compute_normalizers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the data-independent terms in the log-likelihood computation for each Gaussian component and all substates</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.compute_per_spk_derived_vars">
+<code class="descname">compute_per_spk_derived_vars</code><span class="sig-paren">(</span><em>vars:Sgmm2PerSpkDerivedVars</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.compute_per_spk_derived_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the per-speaker derived vars; assumes vars-&gt;v_s is already set up.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.compute_weights">
+<code class="descname">compute_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.compute_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the weights <a href="#id29"><span class="problematic" id="id30">w_jmi_</span></a>, which is needed for loglikelihood evaluation</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.computer_per_frame_vars">
+<code class="descname">computer_per_frame_vars</code><span class="sig-paren">(</span><em>data:Vector</em>, <em>gselect:list&lt;int&gt;</em>, <em>spk_vars:Sgmm2PerSpkDerivedVars</em><span class="sig-paren">)</span> &#x2192; Sgmm2PerFrameDerivedVars<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.computer_per_frame_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::ComputePerFrameVars(::kaldi::Vector&lt;float&gt;, ::std::vector&lt; ::int32&gt;, ::kaldi::Sgmm2PerSpkDerivedVars, ::kaldi::Sgmm2PerFrameDerivedVars*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.copy_from_sgmm2">
+<code class="descname">copy_from_sgmm2</code><span class="sig-paren">(</span><em>other:AmSgmm2</em>, <em>copy_normalizers:bool</em>, <em>copy_weights:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.copy_from_sgmm2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies models</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.copy_globals_init_vecs">
+<code class="descname">copy_globals_init_vecs</code><span class="sig-paren">(</span><em>other:AmSgmm2</em>, <em>pdf2group:list&lt;int&gt;</em>, <em>self_weight:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.copy_globals_init_vecs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies the global parameters from the supplied model, but sets the state vectors to zero.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.feature_dim">
+<code class="descname">feature_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.feature_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmSgmm2::FeatureDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.get_djms">
+<code class="descname">get_djms</code><span class="sig-paren">(</span><em>j1:int</em>, <em>m:int</em>, <em>spk_vars:Sgmm2PerSpkDerivedVars</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.get_djms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::AmSgmm2::GetDjms(int, int, ::kaldi::Sgmm2PerSpkDerivedVars <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.get_inv_covars">
+<code class="descname">get_inv_covars</code><span class="sig-paren">(</span><em>gauss_index:int</em><span class="sig-paren">)</span> &#x2192; SpMatrix<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.get_inv_covars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::GetInvCovars(int, ::kaldi::SpMatrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.get_inv_covars_double">
+<code class="descname">get_inv_covars_double</code><span class="sig-paren">(</span><em>gauss_index:int</em><span class="sig-paren">)</span> &#x2192; DoubleSpMatrix<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.get_inv_covars_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::GetInvCovars(int, ::kaldi::SpMatrix&lt;double&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.get_ntrans_sigma_inv">
+<code class="descname">get_ntrans_sigma_inv</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;Matrix&gt;<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.get_ntrans_sigma_inv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::GetNtransSigmaInv(::std::vector&lt; ::kaldi::Matrix&lt;float&gt; &gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.get_ntrans_sigma_inv_double">
+<code class="descname">get_ntrans_sigma_inv_double</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;DoubleMatrix&gt;<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.get_ntrans_sigma_inv_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::GetNtransSigmaInv(::std::vector&lt; ::kaldi::Matrix&lt;double&gt; &gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.get_substate_mean">
+<code class="descname">get_substate_mean</code><span class="sig-paren">(</span><em>j1:int</em>, <em>m:int</em>, <em>i:int</em>, <em>mean_out:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.get_substate_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::GetSubstateMean(int, int, int, ::kaldi::VectorBase&lt;float&gt; <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.get_substate_mean_double">
+<code class="descname">get_substate_mean_double</code><span class="sig-paren">(</span><em>j1:int</em>, <em>m:int</em>, <em>i:int</em>, <em>mean_out:DoubleVectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.get_substate_mean_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::GetSubstateMean(int, int, int, ::kaldi::VectorBase&lt;double&gt; <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.get_substate_speaker_mean">
+<code class="descname">get_substate_speaker_mean</code><span class="sig-paren">(</span><em>j1:int</em>, <em>substate:int</em>, <em>gauss:int</em>, <em>spk:Sgmm2PerSpkDerivedVars</em>, <em>mean_out:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.get_substate_speaker_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::GetSubstateSpeakerMean(int, int, int, ::kaldi::Sgmm2PerSpkDerivedVars, ::kaldi::VectorBase&lt;float&gt; <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.get_substate_speaker_mean_double">
+<code class="descname">get_substate_speaker_mean_double</code><span class="sig-paren">(</span><em>j1:int</em>, <em>substate:int</em>, <em>gauss:int</em>, <em>spk:Sgmm2PerSpkDerivedVars</em>, <em>mean_out:DoubleVectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.get_substate_speaker_mean_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::GetSubstateSpeakerMean(int, int, int, ::kaldi::Sgmm2PerSpkDerivedVars, ::kaldi::VectorBase&lt;double&gt; <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.get_var_scaled_substate_speaker_mean">
+<code class="descname">get_var_scaled_substate_speaker_mean</code><span class="sig-paren">(</span><em>j1:int</em>, <em>substate:int</em>, <em>gauss:int</em>, <em>spk:Sgmm2PerSpkDerivedVars</em>, <em>mean_out:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.get_var_scaled_substate_speaker_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::GetVarScaledSubstateSpeakerMean(int, int, int, ::kaldi::Sgmm2PerSpkDerivedVars, ::kaldi::VectorBase&lt;float&gt; <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.get_var_scaled_substate_speaker_mean_double">
+<code class="descname">get_var_scaled_substate_speaker_mean_double</code><span class="sig-paren">(</span><em>j1:int</em>, <em>substate:int</em>, <em>gauss:int</em>, <em>spk:Sgmm2PerSpkDerivedVars</em>, <em>mean_out:DoubleVectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.get_var_scaled_substate_speaker_mean_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::GetVarScaledSubstateSpeakerMean(int, int, int, ::kaldi::Sgmm2PerSpkDerivedVars, ::kaldi::VectorBase&lt;double&gt; <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.has_speaker_dependent_weights">
+<code class="descname">has_speaker_dependent_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.has_speaker_dependent_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if doing SSGMM</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.has_speaker_space">
+<code class="descname">has_speaker_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.has_speaker_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::AmSgmm2::HasSpeakerSpace()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.increase_phone_space_dim">
+<code class="descname">increase_phone_space_dim</code><span class="sig-paren">(</span><em>target_dim:int</em>, <em>norm_xform:Matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.increase_phone_space_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Functions for increasing the phonetic and speaker space dimensions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.increase_spk_space_dim">
+<code class="descname">increase_spk_space_dim</code><span class="sig-paren">(</span><em>target_dim:int</em>, <em>norm_xform:Matrix</em>, <em>speaker_dependent_weights:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.increase_spk_space_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increase the subspace dimensions for speakers. speaker_dependent_weights only makes a difference if increasing the subspace dimension from zero</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.initialize_from_full_gmm">
+<code class="descname">initialize_from_full_gmm</code><span class="sig-paren">(</span><em>gmm:FullGmm</em>, <em>pdf2group:list&lt;int&gt;</em>, <em>phn_subspace_dim:int</em>, <em>spk_subspace_dim:int</em>, <em>speaker_dependent_weights:bool</em>, <em>self_weight:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.initialize_from_full_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the SGMM parameters from a full-covariance UBM. The state2group vector maps from a state to the corresponding cluster of states [i.e., j2 to j1]. For conventionally structured systems (no 2-level tree), this can just be [0 1 … n-1 ]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.loglikelihood">
+<code class="descname">loglikelihood</code><span class="sig-paren">(</span><em>per_frame_vars:Sgmm2PerFrameDerivedVars</em>, <em>j2:int</em>, <em>cache:Sgmm2LikelihoodCache</em>, <em>spk_vars:Sgmm2PerSpkDerivedVars</em>, <em>log_prune:float=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.loglikelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>This does a log-likelihood computation for a given state using the pre-selected Gaussian components (in per_frame_vars). If the log_prune parameter is non-zero, the LogSumExp stage is prunes, which is a significant speedup</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.num_gauss">
+<code class="descname">num_gauss</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.num_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmSgmm2::NumGauss()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.num_groups">
+<code class="descname">num_groups</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.num_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmSgmm2::NumGroups()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.num_pdfs">
+<code class="descname">num_pdfs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.num_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmSgmm2::NumPdfs()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.num_substates_for_group">
+<code class="descname">num_substates_for_group</code><span class="sig-paren">(</span><em>j1:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.num_substates_for_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmSgmm2::NumSubstatesForGroup(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.num_substates_for_pdf">
+<code class="descname">num_substates_for_pdf</code><span class="sig-paren">(</span><em>j2:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.num_substates_for_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmSgmm2::NumSubstatesForPdf(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.pdf2group">
+<code class="descname">pdf2group</code><span class="sig-paren">(</span><em>j2:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.pdf2group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmSgmm2::Pdf2Group(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.phone_space_dim">
+<code class="descname">phone_space_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.phone_space_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmSgmm2::PhoneSpaceDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.remove_speaker_space">
+<code class="descname">remove_speaker_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.remove_speaker_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::RemoveSpeakerSpace()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.spk_space_dim">
+<code class="descname">spk_space_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.spk_space_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AmSgmm2::SpkSpaceDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.split_substates">
+<code class="descname">split_substates</code><span class="sig-paren">(</span><em>state_occupancies:Vector</em>, <em>config:Sgmm2SplitSubstatesConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.split_substates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increases the total number of substates based on the state occupancies</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.AmSgmm2.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>write_params:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.AmSgmm2.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AmSgmm2::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, unsigned short)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">DecodableAmSgmm2</code><a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::DecodableAmSgmm2</p>
+<dl class="method">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::DecodableAmSgmm2::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>index:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log-likehood of the given index for the given frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2.loglikelihood">
+<code class="descname">loglikelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>tid:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2.loglikelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::DecodableAmSgmm2::LogLikelihood(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::DecodableAmSgmm2::NumFramesReady()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2.num_indices">
+<code class="descname">num_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2.num_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::DecodableAmSgmm2::NumIndices()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2Scaled">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">DecodableAmSgmm2Scaled</code><a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2Scaled" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::DecodableAmSgmm2Scaled</p>
+<dl class="method">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2Scaled.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2Scaled.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::DecodableAmSgmm2::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2Scaled.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>index:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2Scaled.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log-likehood of the given index for the given frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2Scaled.loglikelihood">
+<code class="descname">loglikelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>tid:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2Scaled.loglikelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::DecodableAmSgmm2Scaled::LogLikelihood(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2Scaled.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2Scaled.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::DecodableAmSgmm2::NumFramesReady()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.DecodableAmSgmm2Scaled.num_indices">
+<code class="descname">num_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.DecodableAmSgmm2Scaled.num_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::DecodableAmSgmm2::NumIndices()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.FmllrSgmm2Accs">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">FmllrSgmm2Accs</code><a class="headerlink" href="#kaldi.sgmm2.FmllrSgmm2Accs" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FmllrSgmm2Accs</p>
+<dl class="method">
+<dt id="kaldi.sgmm2.FmllrSgmm2Accs.accumulate">
+<code class="descname">accumulate</code><span class="sig-paren">(</span><em>sgmm:AmSgmm2</em>, <em>data:VectorBase</em>, <em>frame_vars:Sgmm2PerFrameDerivedVars</em>, <em>statE_index:int</em>, <em>weights:float</em>, <em>spk:Sgmm2PerSpkDerivedVars</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.sgmm2.FmllrSgmm2Accs.accumulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FmllrSgmm2Accs::Accumulate(::kaldi::AmSgmm2, ::kaldi::VectorBase&lt;float&gt;, ::kaldi::Sgmm2PerFrameDerivedVars, int, float, ::kaldi::Sgmm2PerSpkDerivedVars <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.FmllrSgmm2Accs.accumulate_for_fmll_subspace">
+<code class="descname">accumulate_for_fmll_subspace</code><span class="sig-paren">(</span><em>sgmm:AmSgmm2</em>, <em>fmllr_globals:Sgmm2FmllrGlobalParams</em>, <em>grad_scatter:DoubleSpMatrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.FmllrSgmm2Accs.accumulate_for_fmll_subspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrSgmm2Accs::AccumulateForFmllrSubspace(::kaldi::AmSgmm2, ::kaldi::Sgmm2FmllrGlobalParams, ::kaldi::SpMatrix&lt;double&gt; <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.FmllrSgmm2Accs.accumulate_from_posteriors">
+<code class="descname">accumulate_from_posteriors</code><span class="sig-paren">(</span><em>sgmm:AmSgmm2</em>, <em>spk:Sgmm2PerSpkDerivedVars</em>, <em>data:VectorBase</em>, <em>gauss_select:list&lt;int&gt;</em>, <em>posteriors:Matrix</em>, <em>state_index:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.FmllrSgmm2Accs.accumulate_from_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrSgmm2Accs::AccumulateFromPosteriors(::kaldi::AmSgmm2, ::kaldi::Sgmm2PerSpkDerivedVars, ::kaldi::VectorBase&lt;float&gt;, ::std::vector&lt; ::int32&gt;, ::kaldi::Matrix&lt;float&gt;, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.FmllrSgmm2Accs.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.FmllrSgmm2Accs.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::FmllrSgmm2Accs::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.FmllrSgmm2Accs.fmllr_obj_gradient">
+<code class="descname">fmllr_obj_gradient</code><span class="sig-paren">(</span><em>sgmm:AmSgmm2</em>, <em>xform:Matrix) -&gt; (gradient:float</em>, <em>grad_out:Matrix</em>, <em>G_out:Matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.FmllrSgmm2Accs.fmllr_obj_gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FmllrSgmm2Accs::FmllrObjGradient(::kaldi::AmSgmm2, ::kaldi::Matrix&lt;float&gt;, ::kaldi::Matrix&lt;float&gt;*, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.FmllrSgmm2Accs.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>dim:int</em>, <em>num_gaussians:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.FmllrSgmm2Accs.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrSgmm2Accs::Init(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.FmllrSgmm2Accs.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>in_stream:istream</em>, <em>binary:bool</em>, <em>add:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.FmllrSgmm2Accs.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrSgmm2Accs::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.FmllrSgmm2Accs.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.FmllrSgmm2Accs.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrSgmm2Accs::SetZero()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.FmllrSgmm2Accs.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>out_stream:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.FmllrSgmm2Accs.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrSgmm2Accs::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">MleAmSgmm2Accs</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MleAmSgmm2Accs</p>
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.accumulate">
+<code class="descname">accumulate</code><span class="sig-paren">(</span><em>model:AmSgmm2</em>, <em>frame_vars:Sgmm2PerFrameDerivedVars</em>, <em>pdf_index:int</em>, <em>weight:float</em>, <em>spk_vars:Sgmm2PerSpkDerivedVars</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.accumulate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Returns</dt>
+<dd>Likelihood</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.accumulate_from_posteriors">
+<code class="descname">accumulate_from_posteriors</code><span class="sig-paren">(</span><em>model:AmSgmm2</em>, <em>frame_vars:Sgmm2PerFrameDerivedVars</em>, <em>posteriors:Matrix</em>, <em>pdf_index:int</em>, <em>spk_vars:Sgmm2PerSpkDerivedVars</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.accumulate_from_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns count accumulated</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.check">
+<code class="descname">check</code><span class="sig-paren">(</span><em>model:AmSgmm2</em>, <em>show_properties:bool=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the various accumulators for correct sizes given a model. With wrong sizes, assertion failure occurs. When the show_properties argument is set to true, dimensions and presence/absence of the various accumulators is printed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.commit_stats_for_spk">
+<code class="descname">commit_stats_for_spk</code><span class="sig-paren">(</span><em>model:AmSgmm2</em>, <em>spk_vars:Sgmm2PerSpkDerivedVars</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.commit_stats_for_spk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleAmSgmm2Accs::CommitStatsForSpk(::kaldi::AmSgmm2, ::kaldi::Sgmm2PerSpkDerivedVars)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.feature_dim">
+<code class="descname">feature_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.feature_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::MleAmSgmm2Accs::FeatureDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.get_state_occupancies">
+<code class="descname">get_state_occupancies</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.get_state_occupancies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleAmSgmm2Accs::GetStateOccupancies(::kaldi::Vector&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.new_with_params">
+<code class="descname">new_with_params</code><span class="sig-paren">(</span><em>model:AmSgmm2</em>, <em>flags:int</em>, <em>have_spk_vecs:bool</em>, <em>rand_prune:float=default</em><span class="sig-paren">)</span> &#x2192; MleAmSgmm2Accs<a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.new_with_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::MleAmSgmm2Accs&gt; ::kaldi::MleAmSgmm2Accs::MleAmSgmm2Accs(::kaldi::AmSgmm2, unsigned short, bool, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.num_gauss">
+<code class="descname">num_gauss</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.num_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::MleAmSgmm2Accs::NumGauss()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.num_groups">
+<code class="descname">num_groups</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.num_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::MleAmSgmm2Accs::NumGroups()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.num_pdfs">
+<code class="descname">num_pdfs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.num_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::MleAmSgmm2Accs::NumPdfs()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.phone_space_dim">
+<code class="descname">phone_space_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.phone_space_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::MleAmSgmm2Accs::PhoneSpaceDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>in_stream:istream</em>, <em>binary:bool</em>, <em>add:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleAmSgmm2Accs::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.resize_accumulators">
+<code class="descname">resize_accumulators</code><span class="sig-paren">(</span><em>model:AmSgmm2</em>, <em>flags:int</em>, <em>have_spk_vecs:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.resize_accumulators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resizes the accumulators to the correct sizes given the model. The flags argument controls which accumulators to resize</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Accs.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>out_stream:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Accs.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleAmSgmm2Accs::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">MleAmSgmm2Options</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MleAmSgmm2Options</p>
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.cov_diag_ratio">
+<code class="descname">cov_diag_ratio</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.cov_diag_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleAmSgmm2Options.cov_diag_ratio</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.cov_floor">
+<code class="descname">cov_floor</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.cov_floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleAmSgmm2Options.cov_floor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.epsilon">
+<code class="descname">epsilon</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleAmSgmm2Options.epsilon</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.full_row_cov">
+<code class="descname">full_row_cov</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.full_row_cov" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MleAmSgmm2Options.full_row_cov</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.map_M_prior_iters">
+<code class="descname">map_M_prior_iters</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.map_M_prior_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ int MleAmSgmm2Options.map_M_prior_iters</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.max_cond">
+<code class="descname">max_cond</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.max_cond" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleAmSgmm2Options.max_cond</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.max_impr_u">
+<code class="descname">max_impr_u</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.max_impr_u" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleAmSgmm2Options.max_impr_u</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleAmSgmm2Options::Register(::kaldi::OptionsItf <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.renormalize_N">
+<code class="descname">renormalize_N</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.renormalize_N" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MleAmSgmm2Options.renormalize_N</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.renormalize_V">
+<code class="descname">renormalize_V</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.renormalize_V" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MleAmSgmm2Options.renormalize_V</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.tau_c">
+<code class="descname">tau_c</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.tau_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleAmSgmm2Options.tau_c</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.tau_map_M">
+<code class="descname">tau_map_M</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.tau_map_M" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleAmSgmm2Options.tau_map_M</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.MleAmSgmm2Options.weight_projections_iters">
+<code class="descname">weight_projections_iters</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Options.weight_projections_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ int MleAmSgmm2Options.weight_projections_iters</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.MleAmSgmm2Updater">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">MleAmSgmm2Updater</code><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Updater" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MleAmSgmm2Updater</p>
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Updater.reconfigure">
+<code class="descname">reconfigure</code><span class="sig-paren">(</span><em>options:MleAmSgmm2Options</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Updater.reconfigure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleAmSgmm2Updater::Reconfigure(::kaldi::MleAmSgmm2Options)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleAmSgmm2Updater.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>accs:MleAmSgmm2Accs</em>, <em>model:AmSgmm2</em>, <em>flags:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.MleAmSgmm2Updater.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleAmSgmm2Updater::Update(::kaldi::MleAmSgmm2Accs, ::kaldi::AmSgmm2 <a href="#id21"><span class="problematic" id="id22">*</span></a>, unsigned short)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.MleSgmm2SpeakerAccs">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">MleSgmm2SpeakerAccs</code><a class="headerlink" href="#kaldi.sgmm2.MleSgmm2SpeakerAccs" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MleSgmm2SpeakerAccs</p>
+<dl class="method">
+<dt id="kaldi.sgmm2.MleSgmm2SpeakerAccs.accumulate">
+<code class="descname">accumulate</code><span class="sig-paren">(</span><em>model:AmSgmm2</em>, <em>frame_vars:Sgmm2PerFrameDerivedVars</em>, <em>pdf_index:int</em>, <em>weight:float</em>, <em>spk_vars:Sgmm2PerSpkDerivedVars</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.sgmm2.MleSgmm2SpeakerAccs.accumulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accumulate statistics.  Returns per-frame log-likelihood.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleSgmm2SpeakerAccs.accumulate_from_posteriors">
+<code class="descname">accumulate_from_posteriors</code><span class="sig-paren">(</span><em>model:AmSgmm2</em>, <em>frame_vars:Sgmm2PerFrameDerivedVars</em>, <em>posteriors:Matrix</em>, <em>pdf_index:int</em>, <em>spk_vars:Sgmm2PerSpkDerivedVars</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.sgmm2.MleSgmm2SpeakerAccs.accumulate_from_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accumulate statistics, given posteriors.</p>
+<dl class="docutils">
+<dt>Returns</dt>
+<dd>Total count accumulated</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.MleSgmm2SpeakerAccs.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.MleSgmm2SpeakerAccs.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleSgmm2SpeakerAccs::Clear()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.Sgmm2FmllrConfig">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">Sgmm2FmllrConfig</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Sgmm2FmllrConfig</p>
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2FmllrConfig.bases_occ_scale">
+<code class="descname">bases_occ_scale</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrConfig.bases_occ_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat Sgmm2FmllrConfig.bases_occ_scale</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2FmllrConfig.fmllr_iters">
+<code class="descname">fmllr_iters</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrConfig.fmllr_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 Sgmm2FmllrConfig.fmllr_iters</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2FmllrConfig.fmllr_min_count">
+<code class="descname">fmllr_min_count</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrConfig.fmllr_min_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat Sgmm2FmllrConfig.fmllr_min_count</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2FmllrConfig.fmllr_min_count_basis">
+<code class="descname">fmllr_min_count_basis</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrConfig.fmllr_min_count_basis" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat Sgmm2FmllrConfig.fmllr_min_count_basis</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2FmllrConfig.fmllr_min_count_full">
+<code class="descname">fmllr_min_count_full</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrConfig.fmllr_min_count_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat Sgmm2FmllrConfig.fmllr_min_count_full</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2FmllrConfig.num_fmllr_bases">
+<code class="descname">num_fmllr_bases</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrConfig.num_fmllr_bases" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 Sgmm2FmllrConfig.num_fmllr_bases</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2FmllrConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Sgmm2FmllrConfig::Register(::kaldi::OptionsItf <a href="#id23"><span class="problematic" id="id24">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2FmllrConfig.step_iters">
+<code class="descname">step_iters</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrConfig.step_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 Sgmm2FmllrConfig.step_iters</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.Sgmm2FmllrGlobalParams">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">Sgmm2FmllrGlobalParams</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrGlobalParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Sgmm2FmllrGlobalParams</p>
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2FmllrGlobalParams.fmllr_bases_">
+<code class="descname">fmllr_bases_</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrGlobalParams.fmllr_bases_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::kaldi::Matrix&lt; ::kaldi::BaseFloat&gt; &gt; <a href="#id31"><span class="problematic" id="id32">Sgmm2FmllrGlobalParams.fmllr_bases_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2FmllrGlobalParams.has_basis">
+<code class="descname">has_basis</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrGlobalParams.has_basis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::Sgmm2FmllrGlobalParams::HasBasis()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2FmllrGlobalParams.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>sgmm:AmSgmm2</em>, <em>state_occs:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrGlobalParams.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Sgmm2FmllrGlobalParams::Init(::kaldi::AmSgmm2, ::kaldi::Vector&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2FmllrGlobalParams.inv_xform_">
+<code class="descname">inv_xform_</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrGlobalParams.inv_xform_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Matrix&lt; ::kaldi::BaseFloat&gt; <a href="#id33"><span class="problematic" id="id34">Sgmm2FmllrGlobalParams.inv_xform_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2FmllrGlobalParams.is_empty">
+<code class="descname">is_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrGlobalParams.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::Sgmm2FmllrGlobalParams::IsEmpty()</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2FmllrGlobalParams.mean_scatter_">
+<code class="descname">mean_scatter_</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrGlobalParams.mean_scatter_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Vector&lt; ::kaldi::BaseFloat&gt; <a href="#id35"><span class="problematic" id="id36">Sgmm2FmllrGlobalParams.mean_scatter_</span></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2FmllrGlobalParams.pre_xform_">
+<code class="descname">pre_xform_</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrGlobalParams.pre_xform_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Matrix&lt; ::kaldi::BaseFloat&gt; <a href="#id37"><span class="problematic" id="id38">Sgmm2FmllrGlobalParams.pre_xform_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2FmllrGlobalParams.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>in_stream:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrGlobalParams.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Sgmm2FmllrGlobalParams::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2FmllrGlobalParams.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>out_stream:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.Sgmm2FmllrGlobalParams.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Sgmm2FmllrGlobalParams::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.Sgmm2GauPostElement">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">Sgmm2GauPostElement</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2GauPostElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Sgmm2GauPostElement</p>
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2GauPostElement.gselect">
+<code class="descname">gselect</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2GauPostElement.gselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::int32&gt; Sgmm2GauPostElement.gselect</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2GauPostElement.posteriors">
+<code class="descname">posteriors</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2GauPostElement.posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::kaldi::Matrix&lt; ::kaldi::BaseFloat&gt; &gt; Sgmm2GauPostElement.posteriors</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2GauPostElement.tids">
+<code class="descname">tids</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2GauPostElement.tids" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::int32&gt; Sgmm2GauPostElement.tids</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.Sgmm2GselectConfig">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">Sgmm2GselectConfig</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2GselectConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Sgmm2GselectConfig</p>
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2GselectConfig.diag_gmm_nbest">
+<code class="descname">diag_gmm_nbest</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2GselectConfig.diag_gmm_nbest" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 Sgmm2GselectConfig.diag_gmm_nbest</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2GselectConfig.full_gmm_nbest">
+<code class="descname">full_gmm_nbest</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2GselectConfig.full_gmm_nbest" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 Sgmm2GselectConfig.full_gmm_nbest</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2GselectConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.Sgmm2GselectConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Sgmm2GselectConfig::Register(::kaldi::OptionsItf <a href="#id25"><span class="problematic" id="id26">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">Sgmm2LikelihoodCache</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Sgmm2LikelihoodCache</p>
+<dl class="class">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache.PdfCacheElement">
+<em class="property">class </em><code class="descname">PdfCacheElement</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache.PdfCacheElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Sgmm2LikelihoodCache::PdfCacheElement</p>
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache.PdfCacheElement.log_like">
+<code class="descname">log_like</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache.PdfCacheElement.log_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat Sgmm2LikelihoodCache::PdfCacheElement.log_like</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache.PdfCacheElement.t">
+<code class="descname">t</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache.PdfCacheElement.t" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 Sgmm2LikelihoodCache::PdfCacheElement.t</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache.SubstateCacheElement">
+<em class="property">class </em><code class="descname">SubstateCacheElement</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache.SubstateCacheElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Sgmm2LikelihoodCache::SubstateCacheElement</p>
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache.SubstateCacheElement.likes">
+<code class="descname">likes</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache.SubstateCacheElement.likes" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Vector&lt; ::kaldi::BaseFloat&gt; Sgmm2LikelihoodCache::SubstateCacheElement.likes</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache.SubstateCacheElement.remaining_log_like">
+<code class="descname">remaining_log_like</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache.SubstateCacheElement.remaining_log_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat Sgmm2LikelihoodCache::SubstateCacheElement.remaining_log_like</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache.SubstateCacheElement.t">
+<code class="descname">t</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache.SubstateCacheElement.t" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 Sgmm2LikelihoodCache::SubstateCacheElement.t</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache.next_frame">
+<code class="descname">next_frame</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache.next_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increments t</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache.pdf_cache">
+<code class="descname">pdf_cache</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache.pdf_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::kaldi::Sgmm2LikelihoodCache::PdfCacheElement&gt; Sgmm2LikelihoodCache.pdf_cache</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache.substate_cache">
+<code class="descname">substate_cache</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache.substate_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::kaldi::Sgmm2LikelihoodCache::SubstateCacheElement&gt; Sgmm2LikelihoodCache.substate_cache</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2LikelihoodCache.t">
+<code class="descname">t</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2LikelihoodCache.t" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 Sgmm2LikelihoodCache.t</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.Sgmm2PerFrameDerivedVars">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">Sgmm2PerFrameDerivedVars</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerFrameDerivedVars" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Sgmm2PerFrameDerivedVars</p>
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2PerFrameDerivedVars.gselect">
+<code class="descname">gselect</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerFrameDerivedVars.gselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::int32&gt; Sgmm2PerFrameDerivedVars.gselect</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2PerFrameDerivedVars.nti">
+<code class="descname">nti</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerFrameDerivedVars.nti" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Vector&lt; ::kaldi::BaseFloat&gt; Sgmm2PerFrameDerivedVars.nti</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2PerFrameDerivedVars.resize">
+<code class="descname">resize</code><span class="sig-paren">(</span><em>ngauss:int</em>, <em>feat_dim:int</em>, <em>phn_dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerFrameDerivedVars.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Sgmm2PerFrameDerivedVars::Resize(int, int, int)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2PerFrameDerivedVars.xt">
+<code class="descname">xt</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerFrameDerivedVars.xt" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Vector&lt; ::kaldi::BaseFloat&gt; Sgmm2PerFrameDerivedVars.xt</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2PerFrameDerivedVars.xti">
+<code class="descname">xti</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerFrameDerivedVars.xti" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Matrix&lt; ::kaldi::BaseFloat&gt; Sgmm2PerFrameDerivedVars.xti</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2PerFrameDerivedVars.zti">
+<code class="descname">zti</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerFrameDerivedVars.zti" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Matrix&lt; ::kaldi::BaseFloat&gt; Sgmm2PerFrameDerivedVars.zti</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.Sgmm2PerSpkDerivedVars">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">Sgmm2PerSpkDerivedVars</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerSpkDerivedVars" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Sgmm2PerSpkDerivedVars</p>
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2PerSpkDerivedVars.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerSpkDerivedVars.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Sgmm2PerSpkDerivedVars::Clear()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2PerSpkDerivedVars.empty">
+<code class="descname">empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerSpkDerivedVars.empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::Sgmm2PerSpkDerivedVars::Empty()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2PerSpkDerivedVars.get_speaker_vector">
+<code class="descname">get_speaker_vector</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerSpkDerivedVars.get_speaker_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Vector&lt;float&gt; ::kaldi::Sgmm2PerSpkDerivedVars::GetSpeakerVector()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2PerSpkDerivedVars.set_speaker_vector">
+<code class="descname">set_speaker_vector</code><span class="sig-paren">(</span><em>v_s_in:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.Sgmm2PerSpkDerivedVars.set_speaker_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Sgmm2PerSpkDerivedVars::SetSpeakerVector(::kaldi::Vector&lt;float&gt;)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.sgmm2.Sgmm2SplitSubstatesConfig">
+<em class="property">class </em><code class="descclassname">kaldi.sgmm2.</code><code class="descname">Sgmm2SplitSubstatesConfig</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2SplitSubstatesConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Sgmm2SplitSubstatesConfig</p>
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2SplitSubstatesConfig.max_cond">
+<code class="descname">max_cond</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2SplitSubstatesConfig.max_cond" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat Sgmm2SplitSubstatesConfig.max_cond</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2SplitSubstatesConfig.min_count">
+<code class="descname">min_count</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2SplitSubstatesConfig.min_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat Sgmm2SplitSubstatesConfig.min_count</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2SplitSubstatesConfig.perturb_factor">
+<code class="descname">perturb_factor</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2SplitSubstatesConfig.perturb_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat Sgmm2SplitSubstatesConfig.perturb_factor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2SplitSubstatesConfig.power">
+<code class="descname">power</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2SplitSubstatesConfig.power" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat Sgmm2SplitSubstatesConfig.power</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.sgmm2.Sgmm2SplitSubstatesConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.sgmm2.Sgmm2SplitSubstatesConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Sgmm2SplitSubstatesConfig::Register(::kaldi::OptionsItf <a href="#id27"><span class="problematic" id="id28">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.sgmm2.Sgmm2SplitSubstatesConfig.split_substates">
+<code class="descname">split_substates</code><a class="headerlink" href="#kaldi.sgmm2.Sgmm2SplitSubstatesConfig.split_substates" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 Sgmm2SplitSubstatesConfig.split_substates</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.sgmm2.compute_feature_normalizing_transform">
+<code class="descclassname">kaldi.sgmm2.</code><code class="descname">compute_feature_normalizing_transform</code><span class="sig-paren">(</span><em>gmm:FullGmm</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.sgmm2.compute_feature_normalizing_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ComputeFeatureNormalizingTransform(::kaldi::FullGmm, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.tfrnnlm.html" class="btn btn-neutral float-right" title="kaldi.tfrnnlm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.rnnlm.html" class="btn btn-neutral" title="kaldi.rnnlm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

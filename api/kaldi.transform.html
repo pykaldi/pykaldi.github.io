@@ -1,0 +1,2310 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.transform &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.tree" href="kaldi.tree.html"/>
+        <link rel="prev" title="kaldi.tfrnnlm" href="kaldi.tfrnnlm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.transform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.transform.cmvn">kaldi.transform.cmvn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.transform.fmpe">kaldi.transform.fmpe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.transform.lda">kaldi.transform.lda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.transform.lvtln">kaldi.transform.lvtln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.transform.mllr">kaldi.transform.mllr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.transform.mllt">kaldi.transform.mllt</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.transform</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.transform.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.transform">
+<span id="kaldi-transform"></span><h1>kaldi.transform<a class="headerlink" href="#module-kaldi.transform" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.apply_affine_transform" title="kaldi.transform.apply_affine_transform"><code class="xref py py-obj docutils literal"><span class="pre">apply_affine_transform</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.compose_transforms" title="kaldi.transform.compose_transforms"><code class="xref py py-obj docutils literal"><span class="pre">compose_transforms</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.AffineXformStats" title="kaldi.transform.AffineXformStats"><code class="xref py py-obj docutils literal"><span class="pre">AffineXformStats</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::AffineXformStats</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.CompressedAffineXformStats" title="kaldi.transform.CompressedAffineXformStats"><code class="xref py py-obj docutils literal"><span class="pre">CompressedAffineXformStats</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::CompressedAffineXformStats</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.RegressionTree" title="kaldi.transform.RegressionTree"><code class="xref py py-obj docutils literal"><span class="pre">RegressionTree</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::RegressionTree</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.transform.AffineXformStats">
+<em class="property">class </em><code class="descclassname">kaldi.transform.</code><code class="descname">AffineXformStats</code><a class="headerlink" href="#kaldi.transform.AffineXformStats" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::AffineXformStats</p>
+<dl class="attribute">
+<dt id="kaldi.transform.AffineXformStats.G_">
+<code class="descname">G_</code><a class="headerlink" href="#kaldi.transform.AffineXformStats.G_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt; <a href="#id61"><span class="problematic" id="id62">AffineXformStats.G_</span></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.AffineXformStats.K_">
+<code class="descname">K_</code><a class="headerlink" href="#kaldi.transform.AffineXformStats.K_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Matrix&lt;double&gt; <a href="#id63"><span class="problematic" id="id64">AffineXformStats.K_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.AffineXformStats.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>other:AffineXformStats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.AffineXformStats.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AffineXformStats::Add(::kaldi::AffineXformStats)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.AffineXformStats.beta_">
+<code class="descname">beta_</code><a class="headerlink" href="#kaldi.transform.AffineXformStats.beta_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ double <a href="#id65"><span class="problematic" id="id66">AffineXformStats.beta_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.AffineXformStats.copy_stats">
+<code class="descname">copy_stats</code><span class="sig-paren">(</span><em>other:AffineXformStats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.AffineXformStats.copy_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AffineXformStats::CopyStats(::kaldi::AffineXformStats)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.AffineXformStats.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.AffineXformStats.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AffineXformStats::Dim()</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.AffineXformStats.dim_">
+<code class="descname">dim_</code><a class="headerlink" href="#kaldi.transform.AffineXformStats.dim_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 <a href="#id67"><span class="problematic" id="id68">AffineXformStats.dim_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.AffineXformStats.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>dim:int</em>, <em>num_gs:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.AffineXformStats.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AffineXformStats::Init(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.AffineXformStats.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>other:AffineXformStats</em><span class="sig-paren">)</span> &#x2192; AffineXformStats<a class="headerlink" href="#kaldi.transform.AffineXformStats.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::AffineXformStats&gt; ::kaldi::AffineXformStats::AffineXformStats(::kaldi::AffineXformStats)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.AffineXformStats.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>add:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.AffineXformStats.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AffineXformStats::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.AffineXformStats.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.AffineXformStats.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AffineXformStats::SetZero()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.AffineXformStats.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.AffineXformStats.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AffineXformStats::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.CompressedAffineXformStats">
+<em class="property">class </em><code class="descclassname">kaldi.transform.</code><code class="descname">CompressedAffineXformStats</code><a class="headerlink" href="#kaldi.transform.CompressedAffineXformStats" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::CompressedAffineXformStats</p>
+<dl class="method">
+<dt id="kaldi.transform.CompressedAffineXformStats.copy_from_affine_xform_stats">
+<code class="descname">copy_from_affine_xform_stats</code><span class="sig-paren">(</span><em>input:AffineXformStats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.CompressedAffineXformStats.copy_from_affine_xform_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::CompressedAffineXformStats::CopyFromAffineXformStats(::kaldi::AffineXformStats)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.CompressedAffineXformStats.copy_to_affine_xform_stats">
+<code class="descname">copy_to_affine_xform_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; AffineXformStats<a class="headerlink" href="#kaldi.transform.CompressedAffineXformStats.copy_to_affine_xform_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::CompressedAffineXformStats::CopyToAffineXformStats(::kaldi::AffineXformStats*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.CompressedAffineXformStats.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>input:AffineXformStats</em><span class="sig-paren">)</span> &#x2192; CompressedAffineXformStats<a class="headerlink" href="#kaldi.transform.CompressedAffineXformStats.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::CompressedAffineXformStats&gt; ::kaldi::CompressedAffineXformStats::CompressedAffineXformStats(::kaldi::AffineXformStats)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.CompressedAffineXformStats.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.CompressedAffineXformStats.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::CompressedAffineXformStats::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.CompressedAffineXformStats.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.CompressedAffineXformStats.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::CompressedAffineXformStats::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.RegressionTree">
+<em class="property">class </em><code class="descclassname">kaldi.transform.</code><code class="descname">RegressionTree</code><a class="headerlink" href="#kaldi.transform.RegressionTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::RegressionTree</p>
+<dl class="method">
+<dt id="kaldi.transform.RegressionTree.build_tree">
+<code class="descname">build_tree</code><span class="sig-paren">(</span><em>state_occs:Vector</em>, <em>sil_indices:list&lt;int&gt;</em>, <em>am:AmDiagGmm</em>, <em>max_clusters:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.RegressionTree.build_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegressionTree::BuildTree(::kaldi::Vector&lt;float&gt;, ::std::vector&lt; ::int32&gt;, ::kaldi::AmDiagGmm, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.RegressionTree.gather_stats">
+<code class="descname">gather_stats</code><span class="sig-paren">(</span><em>stats_in:list&lt;AffineXformStats&gt;</em>, <em>min_count:float) -&gt; (success:bool</em>, <em>regclasses_out:list&lt;int&gt;</em>, <em>stats_out:list&lt;AffineXformStats&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.RegressionTree.gather_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::RegressionTree::GatherStats(::std::vector&lt; ::kaldi::AffineXformStats <em>&gt;, double, ::std::vector&lt; ::int32&gt;</em>, ::std::vector&lt; ::kaldi::AffineXformStats <em>&gt;</em>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.RegressionTree.gauss_to_base_class_id">
+<code class="descname">gauss_to_base_class_id</code><span class="sig-paren">(</span><em>pdf_id:int</em>, <em>gauss_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.RegressionTree.gauss_to_base_class_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::RegressionTree::Gauss2BaseclassId(unsigned long, unsigned long)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.RegressionTree.get_base_class">
+<code class="descname">get_base_class</code><span class="sig-paren">(</span><em>bclass:int</em><span class="sig-paren">)</span> &#x2192; list&lt;tuple&lt;int, int&gt;&gt;<a class="headerlink" href="#kaldi.transform.RegressionTree.get_base_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::std::vector&lt; ::std::pair&lt; ::int32, ::int32&gt; &gt; ::kaldi::RegressionTree::GetBaseclass(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.RegressionTree.num_base_classes">
+<code class="descname">num_base_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.RegressionTree.num_base_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::RegressionTree::NumBaseclasses()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.RegressionTree.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>am:AmDiagGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.RegressionTree.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegressionTree::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::AmDiagGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.RegressionTree.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.RegressionTree.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegressionTree::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.apply_affine_transform">
+<code class="descclassname">kaldi.transform.</code><code class="descname">apply_affine_transform</code><span class="sig-paren">(</span><em>xform:MatrixBase</em>, <em>vec:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.apply_affine_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ApplyAffineTransform(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt; <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.compose_transforms">
+<code class="descclassname">kaldi.transform.</code><code class="descname">compose_transforms</code><span class="sig-paren">(</span><em>a:Matrix</em>, <em>b:Matrix</em>, <em>b_is_affine:bool) -&gt; (success:bool</em>, <em>c:Matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.compose_transforms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::ComposeTransforms(::kaldi::Matrix&lt;float&gt;, ::kaldi::Matrix&lt;float&gt;, bool, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<div class="section" id="module-kaldi.transform.cmvn">
+<span id="kaldi-transform-cmvn"></span><h2>kaldi.transform.cmvn<a class="headerlink" href="#module-kaldi.transform.cmvn" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.cmvn.Cmvn" title="kaldi.transform.cmvn.Cmvn"><code class="xref py py-obj docutils literal"><span class="pre">Cmvn</span></code></a></td>
+<td>Cepstral mean variance normalization (CMVN).</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.transform.cmvn.Cmvn">
+<em class="property">class </em><code class="descclassname">kaldi.transform.cmvn.</code><code class="descname">Cmvn</code><span class="sig-paren">(</span><em>dim=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/transform/cmvn.html#Cmvn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.transform.cmvn.Cmvn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cepstral mean variance normalization (CMVN).</p>
+<p>This class is used for accumulating CMVN statistics and applying CMVN using
+accumulated statistics. Global CMVN can be computed and applied as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cmvn</span> <span class="o">=</span> <span class="n">Cmvn</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>  <span class="c1"># 40 dimensional features</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">feats</span> <span class="ow">in</span> <span class="n">SequentialMatrixReader</span><span class="p">(</span><span class="s2">&quot;ark:feats.ark&quot;</span><span class="p">):</span>
+    <span class="n">cmvn</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">feats</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">MatrixWriter</span><span class="p">(</span><span class="s2">&quot;ark:feats_norm.ark&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">feats</span> <span class="ow">in</span> <span class="n">SequentialMatrixReader</span><span class="p">(</span><span class="s2">&quot;ark:feats.ark&quot;</span><span class="p">):</span>
+        <span class="n">cmvn</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">norm_vars</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">writer</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">feats</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><strong>stats</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.DoubleMatrix" title="kaldi.matrix.DoubleMatrix"><em>DoubleMatrix</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – Accumulated mean/variance statistics
+matrix of size <code class="xref py py-obj docutils literal"><span class="pre">2</span> <span class="pre">x</span> <span class="pre">dim+1</span></code>. This matrix is initialized when a CMVN
+object is instantiated by specifying a feature dimension or when the
+<a class="reference internal" href="#kaldi.transform.cmvn.Cmvn.init" title="kaldi.transform.cmvn.Cmvn.init"><code class="xref py py-meth docutils literal"><span class="pre">init()</span></code></a> method is explicitly called. It is <code class="docutils literal"><span class="pre">None</span></code> otherwise.
+<code class="xref py py-obj docutils literal"><span class="pre">stats[0,:-1]</span></code> represents the sum of accumulated feature vectors.
+<code class="xref py py-obj docutils literal"><span class="pre">stats[1,:-1]</span></code> represents the sum of element-wise squares of
+accumulated feature vectors. <code class="xref py py-obj docutils literal"><span class="pre">stats[0,-1]</span></code> represents the total
+count of accumulated feature vectors. <code class="xref py py-obj docutils literal"><span class="pre">stats[1,-1]</span></code> is initialized
+to zero but otherwise is not used.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The feature dimension. If specified, <code class="xref py py-attr docutils literal"><span class="pre">stats</span></code> matrix
+is initialized with the given dimension.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.transform.cmvn.Cmvn.accumulate">
+<code class="descname">accumulate</code><span class="sig-paren">(</span><em>feats</em>, <em>weights=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/transform/cmvn.html#Cmvn.accumulate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.transform.cmvn.Cmvn.accumulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accumulates CMVN statistics.</p>
+<p>Computes the CMVN statistics for given features and adds them to the
+<code class="xref py py-attr docutils literal"><span class="pre">stats</span></code> matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>feats</strong> (<em>VectorBase</em><em> or </em><em>MatrixBase</em>) – The input features.</li>
+<li><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>VectorBase</em>) – The frame weights. If <code class="xref py py-obj docutils literal"><span class="pre">feats</span></code> is a
+single feature vector, then <code class="xref py py-obj docutils literal"><span class="pre">weights</span></code> should be a single number.
+If <code class="xref py py-obj docutils literal"><span class="pre">feats</span></code> is a feature matrix, then <code class="xref py py-obj docutils literal"><span class="pre">weights</span></code> should be a
+vector of size <code class="xref py py-obj docutils literal"><span class="pre">feats.num_rows</span></code>. If <code class="xref py py-obj docutils literal"><span class="pre">weights</span></code> is not specified
+or <code class="docutils literal"><span class="pre">None</span></code>, then no frame weighting is done.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.cmvn.Cmvn.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>feats</em>, <em>norm_vars=False</em>, <em>reverse=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/transform/cmvn.html#Cmvn.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.transform.cmvn.Cmvn.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies CMVN to the given feature matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>feats</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – The feature matrix to normalize.</li>
+<li><strong>norm_vars</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to apply variance normalization.</li>
+<li><strong>reverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to apply CMVN in a reverse sense, so as to
+transform zero-mean, unit-variance features into features with
+the desired mean and variance.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.cmvn.Cmvn.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>dim</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/transform/cmvn.html#Cmvn.init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.transform.cmvn.Cmvn.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the CMVN statistics matrix.</p>
+<p>This method is called during object initialization. It can also be
+called at a later time to initialize or reset the internal statistics
+matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – The feature dimension. If <code class="docutils literal"><span class="pre">None</span></code>, then
+<code class="xref py py-attr docutils literal"><span class="pre">stats</span></code> attribute is set to <code class="docutils literal"><span class="pre">None</span></code>. Otherwise, it is
+initialized as a <code class="xref py py-obj docutils literal"><span class="pre">2</span> <span class="pre">x</span> <span class="pre">dim+1</span></code> matrix of zeros.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.cmvn.Cmvn.read_stats">
+<code class="descname">read_stats</code><span class="sig-paren">(</span><em>rxfilename</em>, <em>binary=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/transform/cmvn.html#Cmvn.read_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.transform.cmvn.Cmvn.read_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads CMVN statistics from file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Extended filename for reading CMVN statistics.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to open the file in binary mode.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.cmvn.Cmvn.skip_dims">
+<code class="descname">skip_dims</code><span class="sig-paren">(</span><em>dims</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/transform/cmvn.html#Cmvn.skip_dims"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.transform.cmvn.Cmvn.skip_dims" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modifies the stats to skip normalization for given dimensions.</p>
+<p>This is a destructive operation. The statistics for given dimensions are
+replaced with fake values that effectively disable normalization in
+those dimensions. This method should only be called after statistics
+accumulation is finished since accumulation modifies the <code class="xref py py-attr docutils literal"><span class="pre">stats</span></code>
+matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dims</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – Dimensions for which to skip normalization.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.cmvn.Cmvn.write_stats">
+<code class="descname">write_stats</code><span class="sig-paren">(</span><em>wxfilename</em>, <em>binary=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/transform/cmvn.html#Cmvn.write_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.transform.cmvn.Cmvn.write_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes CMVN statistics to file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>wxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Extended filename for writing CMVN statistics.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to open the file in binary mode.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.transform.fmpe">
+<span id="kaldi-transform-fmpe"></span><h2>kaldi.transform.fmpe<a class="headerlink" href="#module-kaldi.transform.fmpe" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.fmpe.compute_am_gmm_feature_deriv" title="kaldi.transform.fmpe.compute_am_gmm_feature_deriv"><code class="xref py py-obj docutils literal"><span class="pre">compute_am_gmm_feature_deriv</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.fmpe.Fmpe" title="kaldi.transform.fmpe.Fmpe"><code class="xref py py-obj docutils literal"><span class="pre">Fmpe</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Fmpe</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.fmpe.FmpeOptions" title="kaldi.transform.fmpe.FmpeOptions"><code class="xref py py-obj docutils literal"><span class="pre">FmpeOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FmpeOptions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.fmpe.FmpeStats" title="kaldi.transform.fmpe.FmpeStats"><code class="xref py py-obj docutils literal"><span class="pre">FmpeStats</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FmpeStats</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.fmpe.FmpeUpdateOptions" title="kaldi.transform.fmpe.FmpeUpdateOptions"><code class="xref py py-obj docutils literal"><span class="pre">FmpeUpdateOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FmpeUpdateOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.transform.fmpe.Fmpe">
+<em class="property">class </em><code class="descclassname">kaldi.transform.fmpe.</code><code class="descname">Fmpe</code><a class="headerlink" href="#kaldi.transform.fmpe.Fmpe" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Fmpe</p>
+<dl class="method">
+<dt id="kaldi.transform.fmpe.Fmpe.acc_stats">
+<code class="descname">acc_stats</code><span class="sig-paren">(</span><em>feat_in:MatrixBase</em>, <em>gselect:list&lt;list&lt;int&gt;&gt;</em>, <em>direct_feat_deriv:MatrixBase</em>, <em>indirect_feat_deriv:MatrixBase</em>, <em>stats:FmpeStats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.fmpe.Fmpe.acc_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Fmpe::AccStats(::kaldi::MatrixBase&lt;float&gt;, ::std::vector&lt; ::std::vector&lt; ::int32&gt; &gt;, ::kaldi::MatrixBase&lt;float&gt;, ::kaldi::MatrixBase&lt;float&gt; <a href="#id3"><span class="problematic" id="id4">*</span></a>, ::kaldi::FmpeStats <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.Fmpe.compute_features">
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>feat_in:MatrixBase</em>, <em>gselect:list&lt;list&lt;int&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.transform.fmpe.Fmpe.compute_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Fmpe::ComputeFeatures(::kaldi::MatrixBase&lt;float&gt;, ::std::vector&lt; ::std::vector&lt; ::int32&gt; &gt;, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.Fmpe.feat_dim">
+<code class="descname">feat_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.fmpe.Fmpe.feat_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::Fmpe::FeatDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.Fmpe.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>config:FmpeOptions</em><span class="sig-paren">)</span> &#x2192; Fmpe<a class="headerlink" href="#kaldi.transform.fmpe.Fmpe.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::Fmpe&gt; ::kaldi::Fmpe::Fmpe(::kaldi::DiagGmm, ::kaldi::FmpeOptions)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.Fmpe.num_contexts">
+<code class="descname">num_contexts</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.fmpe.Fmpe.num_contexts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::Fmpe::NumContexts()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.Fmpe.num_gauss">
+<code class="descname">num_gauss</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.fmpe.Fmpe.num_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::Fmpe::NumGauss()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.Fmpe.projection_t_num_cols">
+<code class="descname">projection_t_num_cols</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.fmpe.Fmpe.projection_t_num_cols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::Fmpe::ProjectionTNumCols()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.Fmpe.projection_t_num_rows">
+<code class="descname">projection_t_num_rows</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.fmpe.Fmpe.projection_t_num_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::Fmpe::ProjectionTNumRows()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.Fmpe.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.fmpe.Fmpe.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Fmpe::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.Fmpe.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>config:FmpeUpdateOptions</em>, <em>stats:FmpeStats</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.fmpe.Fmpe.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Fmpe::Update(::kaldi::FmpeUpdateOptions, ::kaldi::FmpeStats)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.Fmpe.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.fmpe.Fmpe.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Fmpe::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.fmpe.FmpeOptions">
+<em class="property">class </em><code class="descclassname">kaldi.transform.fmpe.</code><code class="descname">FmpeOptions</code><a class="headerlink" href="#kaldi.transform.fmpe.FmpeOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FmpeOptions</p>
+<dl class="attribute">
+<dt id="kaldi.transform.fmpe.FmpeOptions.context_expansion">
+<code class="descname">context_expansion</code><a class="headerlink" href="#kaldi.transform.fmpe.FmpeOptions.context_expansion" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::string FmpeOptions.context_expansion</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.fmpe.FmpeOptions.post_scale">
+<code class="descname">post_scale</code><a class="headerlink" href="#kaldi.transform.fmpe.FmpeOptions.post_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FmpeOptions.post_scale</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.FmpeOptions.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.fmpe.FmpeOptions.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmpeOptions::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.FmpeOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.fmpe.FmpeOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmpeOptions::Register(::kaldi::OptionsItf <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.FmpeOptions.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.fmpe.FmpeOptions.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmpeOptions::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.fmpe.FmpeStats">
+<em class="property">class </em><code class="descclassname">kaldi.transform.fmpe.</code><code class="descname">FmpeStats</code><a class="headerlink" href="#kaldi.transform.fmpe.FmpeStats" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FmpeStats</p>
+<dl class="method">
+<dt id="kaldi.transform.fmpe.FmpeStats.accumulate_checks">
+<code class="descname">accumulate_checks</code><span class="sig-paren">(</span><em>feats:MatrixBase</em>, <em>direct_deriv:MatrixBase</em>, <em>indirect_deriv:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.fmpe.FmpeStats.accumulate_checks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmpeStats::AccumulateChecks(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::MatrixBase&lt;float&gt;, ::kaldi::MatrixBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.FmpeStats.deriv_minus">
+<code class="descname">deriv_minus</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; SubMatrix<a class="headerlink" href="#kaldi.transform.fmpe.FmpeStats.deriv_minus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::SubMatrix&lt;float&gt; ::kaldi::FmpeStats::DerivMinus()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.FmpeStats.deriv_plus">
+<code class="descname">deriv_plus</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; SubMatrix<a class="headerlink" href="#kaldi.transform.fmpe.FmpeStats.deriv_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::SubMatrix&lt;float&gt; ::kaldi::FmpeStats::DerivPlus()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.FmpeStats.do_checks">
+<code class="descname">do_checks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.fmpe.FmpeStats.do_checks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmpeStats::DoChecks()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.FmpeStats.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>add:bool=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.fmpe.FmpeStats.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmpeStats::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.FmpeStats.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.fmpe.FmpeStats.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmpeStats::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.fmpe.FmpeUpdateOptions">
+<em class="property">class </em><code class="descclassname">kaldi.transform.fmpe.</code><code class="descname">FmpeUpdateOptions</code><a class="headerlink" href="#kaldi.transform.fmpe.FmpeUpdateOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FmpeUpdateOptions</p>
+<dl class="attribute">
+<dt id="kaldi.transform.fmpe.FmpeUpdateOptions.l2_weight">
+<code class="descname">l2_weight</code><a class="headerlink" href="#kaldi.transform.fmpe.FmpeUpdateOptions.l2_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FmpeUpdateOptions.l2_weight</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.fmpe.FmpeUpdateOptions.learning_rate">
+<code class="descname">learning_rate</code><a class="headerlink" href="#kaldi.transform.fmpe.FmpeUpdateOptions.learning_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FmpeUpdateOptions.learning_rate</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.fmpe.FmpeUpdateOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.fmpe.FmpeUpdateOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmpeUpdateOptions::Register(::kaldi::OptionsItf <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.fmpe.compute_am_gmm_feature_deriv">
+<code class="descclassname">kaldi.transform.fmpe.</code><code class="descname">compute_am_gmm_feature_deriv</code><span class="sig-paren">(</span><em>am_gmm:AmDiagGmm</em>, <em>trans_model:TransitionModel</em>, <em>posterior:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em>, <em>features:MatrixBase</em>, <em>direct_deriv:Matrix</em>, <em>model_diff:AccumAmDiagGmm=default</em>, <em>indirect_deriv:Matrix=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.fmpe.compute_am_gmm_feature_deriv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ComputeAmGmmFeatureDeriv(::kaldi::AmDiagGmm, ::kaldi::TransitionModel, ::kaldi::Posterior, ::kaldi::MatrixBase&lt;float&gt;, ::kaldi::Matrix&lt;float&gt; <a href="#id11"><span class="problematic" id="id12">*</span></a>, ::kaldi::AccumAmDiagGmm <a href="#id13"><span class="problematic" id="id14">*</span></a>, ::kaldi::Matrix&lt;float&gt; <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.transform.lda">
+<span id="kaldi-transform-lda"></span><h2>kaldi.transform.lda<a class="headerlink" href="#module-kaldi.transform.lda" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.lda.LdaEstimate" title="kaldi.transform.lda.LdaEstimate"><code class="xref py py-obj docutils literal"><span class="pre">LdaEstimate</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::LdaEstimate</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.lda.LdaEstimateOptions" title="kaldi.transform.lda.LdaEstimateOptions"><code class="xref py py-obj docutils literal"><span class="pre">LdaEstimateOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::LdaEstimateOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.transform.lda.LdaEstimate">
+<em class="property">class </em><code class="descclassname">kaldi.transform.lda.</code><code class="descname">LdaEstimate</code><a class="headerlink" href="#kaldi.transform.lda.LdaEstimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::LdaEstimate</p>
+<dl class="method">
+<dt id="kaldi.transform.lda.LdaEstimate.accumulate">
+<code class="descname">accumulate</code><span class="sig-paren">(</span><em>data:VectorBase</em>, <em>class_id:int</em>, <em>weight:float=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lda.LdaEstimate.accumulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LdaEstimate::Accumulate(::kaldi::VectorBase&lt;float&gt;, int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lda.LdaEstimate.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.lda.LdaEstimate.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::LdaEstimate::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lda.LdaEstimate.estimate">
+<code class="descname">estimate</code><span class="sig-paren">(</span><em>opts:LdaEstimateOptions</em>, <em>M:Matrix</em>, <em>Mfull:Matrix=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lda.LdaEstimate.estimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LdaEstimate::Estimate(::kaldi::LdaEstimateOptions, ::kaldi::Matrix&lt;float&gt; <a href="#id17"><span class="problematic" id="id18">*</span></a>, ::kaldi::Matrix&lt;float&gt; <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lda.LdaEstimate.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>num_classes:int</em>, <em>dimension:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lda.LdaEstimate.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LdaEstimate::Init(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lda.LdaEstimate.num_classes">
+<code class="descname">num_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.lda.LdaEstimate.num_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::LdaEstimate::NumClasses()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lda.LdaEstimate.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>add:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lda.LdaEstimate.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LdaEstimate::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lda.LdaEstimate.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>f:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lda.LdaEstimate.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LdaEstimate::Scale(float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lda.LdaEstimate.tot_count">
+<code class="descname">tot_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.lda.LdaEstimate.tot_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::LdaEstimate::TotCount()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lda.LdaEstimate.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lda.LdaEstimate.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LdaEstimate::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lda.LdaEstimate.zero_accumulators">
+<code class="descname">zero_accumulators</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lda.LdaEstimate.zero_accumulators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LdaEstimate::ZeroAccumulators()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.lda.LdaEstimateOptions">
+<em class="property">class </em><code class="descclassname">kaldi.transform.lda.</code><code class="descname">LdaEstimateOptions</code><a class="headerlink" href="#kaldi.transform.lda.LdaEstimateOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::LdaEstimateOptions</p>
+<dl class="attribute">
+<dt id="kaldi.transform.lda.LdaEstimateOptions.allow_large_dim">
+<code class="descname">allow_large_dim</code><a class="headerlink" href="#kaldi.transform.lda.LdaEstimateOptions.allow_large_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool LdaEstimateOptions.allow_large_dim</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.lda.LdaEstimateOptions.dim">
+<code class="descname">dim</code><a class="headerlink" href="#kaldi.transform.lda.LdaEstimateOptions.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 LdaEstimateOptions.dim</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lda.LdaEstimateOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lda.LdaEstimateOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LdaEstimateOptions::Register(::kaldi::OptionsItf <a href="#id21"><span class="problematic" id="id22">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.lda.LdaEstimateOptions.remove_offset">
+<code class="descname">remove_offset</code><a class="headerlink" href="#kaldi.transform.lda.LdaEstimateOptions.remove_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool LdaEstimateOptions.remove_offset</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.lda.LdaEstimateOptions.within_class_factor">
+<code class="descname">within_class_factor</code><a class="headerlink" href="#kaldi.transform.lda.LdaEstimateOptions.within_class_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat LdaEstimateOptions.within_class_factor</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.transform.lvtln">
+<span id="kaldi-transform-lvtln"></span><h2>kaldi.transform.lvtln<a class="headerlink" href="#module-kaldi.transform.lvtln" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.lvtln.LinearVtln" title="kaldi.transform.lvtln.LinearVtln"><code class="xref py py-obj docutils literal"><span class="pre">LinearVtln</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::LinearVtln</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.transform.lvtln.LinearVtln">
+<em class="property">class </em><code class="descclassname">kaldi.transform.lvtln.</code><code class="descname">LinearVtln</code><a class="headerlink" href="#kaldi.transform.lvtln.LinearVtln" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::LinearVtln</p>
+<dl class="method">
+<dt id="kaldi.transform.lvtln.LinearVtln.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.lvtln.LinearVtln.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::LinearVtln::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lvtln.LinearVtln.get_transform">
+<code class="descname">get_transform</code><span class="sig-paren">(</span><em>i:int</em>, <em>transform:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lvtln.LinearVtln.get_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LinearVtln::GetTransform(int, ::kaldi::MatrixBase&lt;float&gt; <a href="#id23"><span class="problematic" id="id24">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lvtln.LinearVtln.get_warp">
+<code class="descname">get_warp</code><span class="sig-paren">(</span><em>i:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.lvtln.LinearVtln.get_warp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::LinearVtln::GetWarp(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lvtln.LinearVtln.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>dim:int</em>, <em>num_classes:int</em>, <em>default_class:int</em><span class="sig-paren">)</span> &#x2192; LinearVtln<a class="headerlink" href="#kaldi.transform.lvtln.LinearVtln.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::LinearVtln&gt; ::kaldi::LinearVtln::LinearVtln(int, int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lvtln.LinearVtln.num_classes">
+<code class="descname">num_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.lvtln.LinearVtln.num_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::LinearVtln::NumClasses()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lvtln.LinearVtln.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lvtln.LinearVtln.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LinearVtln::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lvtln.LinearVtln.set_transform">
+<code class="descname">set_transform</code><span class="sig-paren">(</span><em>i:int</em>, <em>transform:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lvtln.LinearVtln.set_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LinearVtln::SetTransform(int, ::kaldi::MatrixBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lvtln.LinearVtln.set_warp">
+<code class="descname">set_warp</code><span class="sig-paren">(</span><em>i:int</em>, <em>warp:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lvtln.LinearVtln.set_warp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LinearVtln::SetWarp(int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.lvtln.LinearVtln.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.lvtln.LinearVtln.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LinearVtln::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.transform.mllr">
+<span id="kaldi-transform-mllr"></span><h2>kaldi.transform.mllr<a class="headerlink" href="#module-kaldi.transform.mllr" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.apply_feature_transform_to_stats" title="kaldi.transform.mllr.apply_feature_transform_to_stats"><code class="xref py py-obj docutils literal"><span class="pre">apply_feature_transform_to_stats</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.apply_model_transform_to_stats" title="kaldi.transform.mllr.apply_model_transform_to_stats"><code class="xref py py-obj docutils literal"><span class="pre">apply_model_transform_to_stats</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.compute_fmllr_log_det" title="kaldi.transform.mllr.compute_fmllr_log_det"><code class="xref py py-obj docutils literal"><span class="pre">compute_fmllr_log_det</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm" title="kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm"><code class="xref py py-obj docutils literal"><span class="pre">compute_fmllr_matrix_diag_gmm</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_diagonal" title="kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_diagonal"><code class="xref py py-obj docutils literal"><span class="pre">compute_fmllr_matrix_diag_gmm_diagonal</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_full" title="kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_full"><code class="xref py py-obj docutils literal"><span class="pre">compute_fmllr_matrix_diag_gmm_full</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_offset" title="kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_offset"><code class="xref py py-obj docutils literal"><span class="pre">compute_fmllr_matrix_diag_gmm_offset</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.fmllr_aux_func_diag_gmm" title="kaldi.transform.mllr.fmllr_aux_func_diag_gmm"><code class="xref py py-obj docutils literal"><span class="pre">fmllr_aux_func_diag_gmm</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.fmllr_aux_func_diag_gmm_double" title="kaldi.transform.mllr.fmllr_aux_func_diag_gmm_double"><code class="xref py py-obj docutils literal"><span class="pre">fmllr_aux_func_diag_gmm_double</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.fmllr_auxf_gradient" title="kaldi.transform.mllr.fmllr_auxf_gradient"><code class="xref py py-obj docutils literal"><span class="pre">fmllr_auxf_gradient</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.init_fmllr" title="kaldi.transform.mllr.init_fmllr"><code class="xref py py-obj docutils literal"><span class="pre">init_fmllr</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.BasisFmllrAccus" title="kaldi.transform.mllr.BasisFmllrAccus"><code class="xref py py-obj docutils literal"><span class="pre">BasisFmllrAccus</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::BasisFmllrAccus</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.BasisFmllrEstimate" title="kaldi.transform.mllr.BasisFmllrEstimate"><code class="xref py py-obj docutils literal"><span class="pre">BasisFmllrEstimate</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::BasisFmllrEstimate</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.BasisFmllrOptions" title="kaldi.transform.mllr.BasisFmllrOptions"><code class="xref py py-obj docutils literal"><span class="pre">BasisFmllrOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::BasisFmllrOptions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr" title="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr"><code class="xref py py-obj docutils literal"><span class="pre">DecodableAmDiagGmmRegtreeFmllr</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::DecodableAmDiagGmmRegtreeFmllr</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr" title="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr"><code class="xref py py-obj docutils literal"><span class="pre">DecodableAmDiagGmmRegtreeMllr</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::DecodableAmDiagGmmRegtreeMllr</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.FmllrDiagGmmAccs" title="kaldi.transform.mllr.FmllrDiagGmmAccs"><code class="xref py py-obj docutils literal"><span class="pre">FmllrDiagGmmAccs</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FmllrDiagGmmAccs</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.FmllrOptions" title="kaldi.transform.mllr.FmllrOptions"><code class="xref py py-obj docutils literal"><span class="pre">FmllrOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FmllrOptions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.FmllrRawAccs" title="kaldi.transform.mllr.FmllrRawAccs"><code class="xref py py-obj docutils literal"><span class="pre">FmllrRawAccs</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FmllrRawAccs</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.FmllrRawOptions" title="kaldi.transform.mllr.FmllrRawOptions"><code class="xref py py-obj docutils literal"><span class="pre">FmllrRawOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FmllrRawOptions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm" title="kaldi.transform.mllr.RegtreeFmllrDiagGmm"><code class="xref py py-obj docutils literal"><span class="pre">RegtreeFmllrDiagGmm</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::RegtreeFmllrDiagGmm</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs" title="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs"><code class="xref py py-obj docutils literal"><span class="pre">RegtreeFmllrDiagGmmAccs</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::RegtreeFmllrDiagGmmAccs</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.RegtreeFmllrOptions" title="kaldi.transform.mllr.RegtreeFmllrOptions"><code class="xref py py-obj docutils literal"><span class="pre">RegtreeFmllrOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::RegtreeFmllrOptions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.RegtreeMllrDiagGmm" title="kaldi.transform.mllr.RegtreeMllrDiagGmm"><code class="xref py py-obj docutils literal"><span class="pre">RegtreeMllrDiagGmm</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::RegtreeMllrDiagGmm</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs" title="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs"><code class="xref py py-obj docutils literal"><span class="pre">RegtreeMllrDiagGmmAccs</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::RegtreeMllrDiagGmmAccs</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.RegtreeMllrOptions" title="kaldi.transform.mllr.RegtreeMllrOptions"><code class="xref py py-obj docutils literal"><span class="pre">RegtreeMllrOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::RegtreeMllrOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.transform.mllr.BasisFmllrAccus">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">BasisFmllrAccus</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::BasisFmllrAccus</p>
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrAccus.accu_gradient_scatter">
+<code class="descname">accu_gradient_scatter</code><span class="sig-paren">(</span><em>spk_stats:AffineXformStats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus.accu_gradient_scatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::BasisFmllrAccus::AccuGradientScatter(::kaldi::AffineXformStats)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.BasisFmllrAccus.beta_">
+<code class="descname">beta_</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus.beta_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ double <a href="#id69"><span class="problematic" id="id70">BasisFmllrAccus.beta_</span></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.BasisFmllrAccus.dim_">
+<code class="descname">dim_</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus.dim_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 <a href="#id71"><span class="problematic" id="id72">BasisFmllrAccus.dim_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrAccus.from_dim">
+<code class="descname">from_dim</code><span class="sig-paren">(</span><em>dim:int</em><span class="sig-paren">)</span> &#x2192; BasisFmllrAccus<a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus.from_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::BasisFmllrAccus&gt; ::kaldi::BasisFmllrAccus::BasisFmllrAccus(int)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.BasisFmllrAccus.grad_scatter_">
+<code class="descname">grad_scatter_</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus.grad_scatter_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::SpMatrix&lt; ::kaldi::BaseFloat&gt; <a href="#id73"><span class="problematic" id="id74">BasisFmllrAccus.grad_scatter_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrAccus.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>add:bool=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::BasisFmllrAccus::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrAccus.resize_accus">
+<code class="descname">resize_accus</code><span class="sig-paren">(</span><em>dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus.resize_accus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::BasisFmllrAccus::ResizeAccus(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrAccus.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::BasisFmllrAccus::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.BasisFmllrEstimate">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">BasisFmllrEstimate</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrEstimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::BasisFmllrEstimate</p>
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrEstimate.basis_size">
+<code class="descname">basis_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrEstimate.basis_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::BasisFmllrEstimate::BasisSize()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrEstimate.compute_am_diag_precond">
+<code class="descname">compute_am_diag_precond</code><span class="sig-paren">(</span><em>am_gmm:AmDiagGmm</em>, <em>pre_cond:DoubleSpMatrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrEstimate.compute_am_diag_precond" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::BasisFmllrEstimate::ComputeAmDiagPrecond(::kaldi::AmDiagGmm, ::kaldi::SpMatrix&lt;double&gt; <a href="#id25"><span class="problematic" id="id26">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrEstimate.compute_transform">
+<code class="descname">compute_transform</code><span class="sig-paren">(</span><em>spk_stats:AffineXformStats</em>, <em>out_xform:Matrix</em>, <em>coefficients:Vector</em>, <em>options:BasisFmllrOptions</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrEstimate.compute_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::BasisFmllrEstimate::ComputeTransform(::kaldi::AffineXformStats, ::kaldi::Matrix&lt;float&gt; <a href="#id27"><span class="problematic" id="id28">*</span></a>, ::kaldi::Vector&lt;float&gt; <a href="#id29"><span class="problematic" id="id30">*</span></a>, ::kaldi::BasisFmllrOptions)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrEstimate.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrEstimate.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::BasisFmllrEstimate::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrEstimate.estimate_fmllr_basis">
+<code class="descname">estimate_fmllr_basis</code><span class="sig-paren">(</span><em>am_gmm:AmDiagGmm</em>, <em>basis_accus:BasisFmllrAccus</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrEstimate.estimate_fmllr_basis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::BasisFmllrEstimate::EstimateFmllrBasis(::kaldi::AmDiagGmm, ::kaldi::BasisFmllrAccus)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrEstimate.from_dim">
+<code class="descname">from_dim</code><span class="sig-paren">(</span><em>dim:int</em><span class="sig-paren">)</span> &#x2192; BasisFmllrEstimate<a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrEstimate.from_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::BasisFmllrEstimate&gt; ::kaldi::BasisFmllrEstimate::BasisFmllrEstimate(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrEstimate.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrEstimate.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::BasisFmllrEstimate::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrEstimate.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrEstimate.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::BasisFmllrEstimate::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.BasisFmllrOptions">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">BasisFmllrOptions</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::BasisFmllrOptions</p>
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.BasisFmllrOptions.min_count">
+<code class="descname">min_count</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrOptions.min_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat BasisFmllrOptions.min_count</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.BasisFmllrOptions.num_iters">
+<code class="descname">num_iters</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrOptions.num_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 BasisFmllrOptions.num_iters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.BasisFmllrOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::BasisFmllrOptions::Register(::kaldi::OptionsItf <a href="#id31"><span class="problematic" id="id32">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.BasisFmllrOptions.size_scale">
+<code class="descname">size_scale</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrOptions.size_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat BasisFmllrOptions.size_scale</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.BasisFmllrOptions.step_size_iters">
+<code class="descname">step_size_iters</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrOptions.step_size_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 BasisFmllrOptions.step_size_iters</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">DecodableAmDiagGmmRegtreeFmllr</code><a class="headerlink" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::DecodableAmDiagGmmRegtreeFmllr</p>
+<dl class="method">
+<dt id="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if given frame is the last frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>index:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log-likehood of the given index for the given frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of frames ready for decoding.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr.num_indices">
+<code class="descname">num_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr.num_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of indices.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">DecodableAmDiagGmmRegtreeMllr</code><a class="headerlink" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::DecodableAmDiagGmmRegtreeMllr</p>
+<dl class="method">
+<dt id="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if given frame is the last frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>index:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log-likehood of the given index for the given frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of frames ready for decoding.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr.num_indices">
+<code class="descname">num_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr.num_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of indices.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr.trans_model">
+<code class="descname">trans_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; TransitionModel<a class="headerlink" href="#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr.trans_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the transition model.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">FmllrDiagGmmAccs</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FmllrDiagGmmAccs</p>
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.G_">
+<code class="descname">G_</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.G_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt; <a href="#id75"><span class="problematic" id="id76">AffineXformStats.G_</span></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.K_">
+<code class="descname">K_</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.K_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Matrix&lt;double&gt; <a href="#id77"><span class="problematic" id="id78">AffineXformStats.K_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.accumulate_for_gmm">
+<code class="descname">accumulate_for_gmm</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>data:VectorBase</em>, <em>weight:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.accumulate_for_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FmllrDiagGmmAccs::AccumulateForGmm(::kaldi::DiagGmm, ::kaldi::VectorBase&lt;float&gt;, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.accumulate_for_gmm_preselect">
+<code class="descname">accumulate_for_gmm_preselect</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>gselect:list&lt;int&gt;</em>, <em>data:VectorBase</em>, <em>weight:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.accumulate_for_gmm_preselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FmllrDiagGmmAccs::AccumulateForGmmPreselect(::kaldi::DiagGmm, ::std::vector&lt; ::int32&gt;, ::kaldi::VectorBase&lt;float&gt;, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.accumulate_from_posteriors">
+<code class="descname">accumulate_from_posteriors</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>data:VectorBase</em>, <em>posteriors:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.accumulate_from_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrDiagGmmAccs::AccumulateFromPosteriors(::kaldi::DiagGmm, ::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.accumulate_from_posteriors_preselect">
+<code class="descname">accumulate_from_posteriors_preselect</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>gselect:list&lt;int&gt;</em>, <em>data:VectorBase</em>, <em>posteriors:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.accumulate_from_posteriors_preselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrDiagGmmAccs::AccumulateFromPosteriorsPreselect(::kaldi::DiagGmm, ::std::vector&lt; ::int32&gt;, ::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>other:AffineXformStats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AffineXformStats::Add(::kaldi::AffineXformStats)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.beta_">
+<code class="descname">beta_</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.beta_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ double <a href="#id79"><span class="problematic" id="id80">AffineXformStats.beta_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.copy_stats">
+<code class="descname">copy_stats</code><span class="sig-paren">(</span><em>other:AffineXformStats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.copy_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AffineXformStats::CopyStats(::kaldi::AffineXformStats)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::AffineXformStats::Dim()</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.dim_">
+<code class="descname">dim_</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.dim_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 <a href="#id81"><span class="problematic" id="id82">AffineXformStats.dim_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.from_dim">
+<code class="descname">from_dim</code><span class="sig-paren">(</span><em>dim:int</em>, <em>opts:FmllrOptions=default</em><span class="sig-paren">)</span> &#x2192; FmllrDiagGmmAccs<a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.from_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::FmllrDiagGmmAccs&gt; ::kaldi::FmllrDiagGmmAccs::FmllrDiagGmmAccs(int, ::kaldi::FmllrOptions)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.from_gmm">
+<code class="descname">from_gmm</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>fgmm_accs:AccumFullGmm</em><span class="sig-paren">)</span> &#x2192; FmllrDiagGmmAccs<a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.from_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::FmllrDiagGmmAccs&gt; ::kaldi::FmllrDiagGmmAccs::FmllrDiagGmmAccs(::kaldi::DiagGmm, ::kaldi::AccumFullGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:FmllrDiagGmmAccs</em><span class="sig-paren">)</span> &#x2192; FmllrDiagGmmAccs<a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::FmllrDiagGmmAccs&gt; ::kaldi::FmllrDiagGmmAccs::FmllrDiagGmmAccs(::kaldi::FmllrDiagGmmAccs)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrDiagGmmAccs::Init(unsigned long)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>other:AffineXformStats</em><span class="sig-paren">)</span> &#x2192; AffineXformStats<a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::AffineXformStats&gt; ::kaldi::AffineXformStats::AffineXformStats(::kaldi::AffineXformStats)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>add:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AffineXformStats::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AffineXformStats::SetZero()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>opts:FmllrOptions</em>, <em>fmllr_mat:MatrixBase) -&gt; (objf_impr:float</em>, <em>count:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrDiagGmmAccs::Update(::kaldi::FmllrOptions, ::kaldi::MatrixBase&lt;float&gt; <em>, float</em>, float*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AffineXformStats::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.FmllrOptions">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">FmllrOptions</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FmllrOptions</p>
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.FmllrOptions.min_count">
+<code class="descname">min_count</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrOptions.min_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FmllrOptions.min_count</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.FmllrOptions.num_iters">
+<code class="descname">num_iters</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrOptions.num_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 FmllrOptions.num_iters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrOptions::Register(::kaldi::OptionsItf <a href="#id33"><span class="problematic" id="id34">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.FmllrOptions.update_type">
+<code class="descname">update_type</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrOptions.update_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::string FmllrOptions.update_type</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.FmllrRawAccs">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">FmllrRawAccs</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrRawAccs" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FmllrRawAccs</p>
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrRawAccs.accumulate_for_gmm">
+<code class="descname">accumulate_for_gmm</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>data:VectorBase</em>, <em>weight:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.FmllrRawAccs.accumulate_for_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FmllrRawAccs::AccumulateForGmm(::kaldi::DiagGmm, ::kaldi::VectorBase&lt;float&gt;, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrRawAccs.accumulate_from_posteriors">
+<code class="descname">accumulate_from_posteriors</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>data:VectorBase</em>, <em>posteriors:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrRawAccs.accumulate_from_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrRawAccs::AccumulateFromPosteriors(::kaldi::DiagGmm, ::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrRawAccs.full_dim">
+<code class="descname">full_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.FmllrRawAccs.full_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::FmllrRawAccs::FullDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrRawAccs.model_dim">
+<code class="descname">model_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.FmllrRawAccs.model_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::FmllrRawAccs::ModelDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrRawAccs.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>raw_dim:int</em>, <em>model_dim:int</em>, <em>full_transform:Matrix</em><span class="sig-paren">)</span> &#x2192; FmllrRawAccs<a class="headerlink" href="#kaldi.transform.mllr.FmllrRawAccs.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::FmllrRawAccs&gt; ::kaldi::FmllrRawAccs::FmllrRawAccs(int, int, ::kaldi::Matrix&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrRawAccs.raw_dim">
+<code class="descname">raw_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.FmllrRawAccs.raw_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::FmllrRawAccs::RawDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrRawAccs.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrRawAccs.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrRawAccs::SetZero()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrRawAccs.splice_width">
+<code class="descname">splice_width</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.FmllrRawAccs.splice_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::FmllrRawAccs::SpliceWidth()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrRawAccs.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>opts:FmllrRawOptions</em>, <em>raw_fmllr_mat:MatrixBase) -&gt; (objf_impr:float</em>, <em>count:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrRawAccs.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrRawAccs::Update(::kaldi::FmllrRawOptions, ::kaldi::MatrixBase&lt;float&gt; <em>, float</em>, float*)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.FmllrRawOptions">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">FmllrRawOptions</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrRawOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FmllrRawOptions</p>
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.FmllrRawOptions.min_count">
+<code class="descname">min_count</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrRawOptions.min_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FmllrRawOptions.min_count</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.FmllrRawOptions.num_iters">
+<code class="descname">num_iters</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrRawOptions.num_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 FmllrRawOptions.num_iters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrRawOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.FmllrRawOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrRawOptions::Register(::kaldi::OptionsItf <a href="#id35"><span class="problematic" id="id36">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">RegtreeFmllrDiagGmm</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::RegtreeFmllrDiagGmm</p>
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.base_to_reg_class">
+<code class="descname">base_to_reg_class</code><span class="sig-paren">(</span><em>bclass:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.base_to_reg_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::RegtreeFmllrDiagGmm::Base2RegClass(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.compute_log_dets">
+<code class="descname">compute_log_dets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.compute_log_dets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmm::ComputeLogDets()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::RegtreeFmllrDiagGmm::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.get_log_dets">
+<code class="descname">get_log_dets</code><span class="sig-paren">(</span><em>out:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.get_log_dets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmm::GetLogDets(::kaldi::VectorBase&lt;float&gt; <a href="#id37"><span class="problematic" id="id38">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.get_xform_matrix">
+<code class="descname">get_xform_matrix</code><span class="sig-paren">(</span><em>xform_index:int</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.get_xform_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmm::GetXformMatrix(int, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>num_xforms:int</em>, <em>dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmm::Init(unsigned long, unsigned long)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>other:RegtreeFmllrDiagGmm</em><span class="sig-paren">)</span> &#x2192; RegtreeFmllrDiagGmm<a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::RegtreeFmllrDiagGmm&gt; ::kaldi::RegtreeFmllrDiagGmm::RegtreeFmllrDiagGmm(::kaldi::RegtreeFmllrDiagGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.num_base_classes">
+<code class="descname">num_base_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.num_base_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::RegtreeFmllrDiagGmm::NumBaseClasses()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.num_reg_classes">
+<code class="descname">num_reg_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.num_reg_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::RegtreeFmllrDiagGmm::NumRegClasses()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmm::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.set_bclass2xforms">
+<code class="descname">set_bclass2xforms</code><span class="sig-paren">(</span><em>in:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.set_bclass2xforms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmm::set_bclass2xforms(::std::vector&lt; ::int32&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.set_parameters">
+<code class="descname">set_parameters</code><span class="sig-paren">(</span><em>mat:MatrixBase</em>, <em>regclass:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.set_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmm::SetParameters(::kaldi::MatrixBase&lt;float&gt;, unsigned long)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.set_unit">
+<code class="descname">set_unit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.set_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmm::SetUnit()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.transform_feature">
+<code class="descname">transform_feature</code><span class="sig-paren">(</span><em>in:VectorBase</em><span class="sig-paren">)</span> &#x2192; list&lt;Vector&gt;<a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.transform_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmm::TransformFeature(::kaldi::VectorBase&lt;float&gt;, ::std::vector&lt; ::kaldi::Vector&lt; ::kaldi::BaseFloat&gt; &gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmm.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmm.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmm::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">RegtreeFmllrDiagGmmAccs</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::RegtreeFmllrDiagGmmAccs</p>
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.accumulate_for_gaussian">
+<code class="descname">accumulate_for_gaussian</code><span class="sig-paren">(</span><em>regtree:RegressionTree</em>, <em>am:AmDiagGmm</em>, <em>data:VectorBase</em>, <em>pdf_index:int</em>, <em>gauss_index:int</em>, <em>weight:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.accumulate_for_gaussian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmmAccs::AccumulateForGaussian(::kaldi::RegressionTree, ::kaldi::AmDiagGmm, ::kaldi::VectorBase&lt;float&gt;, unsigned long, unsigned long, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.accumulate_for_gmm">
+<code class="descname">accumulate_for_gmm</code><span class="sig-paren">(</span><em>regtree:RegressionTree</em>, <em>am:AmDiagGmm</em>, <em>data:VectorBase</em>, <em>pdf_index:int</em>, <em>weight:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.accumulate_for_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::RegtreeFmllrDiagGmmAccs::AccumulateForGmm(::kaldi::RegressionTree, ::kaldi::AmDiagGmm, ::kaldi::VectorBase&lt;float&gt;, unsigned long, float)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.baseclass_stats">
+<code class="descname">baseclass_stats</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.baseclass_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_57 RegtreeFmllrDiagGmmAccs.baseclass_stats()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::RegtreeFmllrDiagGmmAccs::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>num_bclass:int</em>, <em>dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmmAccs::Init(unsigned long, unsigned long)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.num_base_classes">
+<code class="descname">num_base_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.num_base_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::RegtreeFmllrDiagGmmAccs::NumBaseClasses()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>add:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmmAccs::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmmAccs::SetZero()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>regtree:RegressionTree</em>, <em>opts:RegtreeFmllrOptions</em>, <em>out_mllr:RegtreeFmllrDiagGmm) -&gt; (auxf_impr:float</em>, <em>t:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmmAccs::Update(::kaldi::RegressionTree, ::kaldi::RegtreeFmllrOptions, ::kaldi::RegtreeFmllrDiagGmm <em>, float</em>, float*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrDiagGmmAccs.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrDiagGmmAccs::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.RegtreeFmllrOptions">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">RegtreeFmllrOptions</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::RegtreeFmllrOptions</p>
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.RegtreeFmllrOptions.min_count">
+<code class="descname">min_count</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrOptions.min_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat RegtreeFmllrOptions.min_count</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.RegtreeFmllrOptions.num_iters">
+<code class="descname">num_iters</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrOptions.num_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 RegtreeFmllrOptions.num_iters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeFmllrOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeFmllrOptions::Register(::kaldi::OptionsItf <a href="#id39"><span class="problematic" id="id40">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.RegtreeFmllrOptions.update_type">
+<code class="descname">update_type</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrOptions.update_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::string RegtreeFmllrOptions.update_type</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.RegtreeFmllrOptions.use_regtree">
+<code class="descname">use_regtree</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeFmllrOptions.use_regtree" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool RegtreeFmllrOptions.use_regtree</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmm">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">RegtreeMllrDiagGmm</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::RegtreeMllrDiagGmm</p>
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmm.get_transformed_means">
+<code class="descname">get_transformed_means</code><span class="sig-paren">(</span><em>regtree:RegressionTree</em>, <em>am:AmDiagGmm</em>, <em>pdf_index:int</em>, <em>out:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmm.get_transformed_means" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmm::GetTransformedMeans(::kaldi::RegressionTree, ::kaldi::AmDiagGmm, int, ::kaldi::MatrixBase&lt;float&gt; <a href="#id41"><span class="problematic" id="id42">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmm.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>num_xforms:int</em>, <em>dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmm.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmm::Init(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmm.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmm.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmm::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmm.set_bclass2xforms">
+<code class="descname">set_bclass2xforms</code><span class="sig-paren">(</span><em>in:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmm.set_bclass2xforms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmm::set_bclass2xforms(::std::vector&lt; ::int32&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmm.set_parameters">
+<code class="descname">set_parameters</code><span class="sig-paren">(</span><em>mat:MatrixBase</em>, <em>regclass:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmm.set_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmm::SetParameters(::kaldi::MatrixBase&lt;float&gt;, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmm.set_unit">
+<code class="descname">set_unit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmm.set_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmm::SetUnit()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmm.transform_model">
+<code class="descname">transform_model</code><span class="sig-paren">(</span><em>regtree:RegressionTree</em>, <em>am:AmDiagGmm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmm.transform_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmm::TransformModel(::kaldi::RegressionTree, ::kaldi::AmDiagGmm <a href="#id43"><span class="problematic" id="id44">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmm.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmm.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmm::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmm.xform_matrices">
+<code class="descname">xform_matrices</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmm.xform_matrices" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_22 RegtreeMllrDiagGmm.xform_matrices()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">RegtreeMllrDiagGmmAccs</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::RegtreeMllrDiagGmmAccs</p>
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.accumulate_for_gaussian">
+<code class="descname">accumulate_for_gaussian</code><span class="sig-paren">(</span><em>regtree:RegressionTree</em>, <em>am:AmDiagGmm</em>, <em>data:VectorBase</em>, <em>pdf_index:int</em>, <em>gauss_index:int</em>, <em>weight:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.accumulate_for_gaussian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmmAccs::AccumulateForGaussian(::kaldi::RegressionTree, ::kaldi::AmDiagGmm, ::kaldi::VectorBase&lt;float&gt;, int, int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.accumulate_for_gmm">
+<code class="descname">accumulate_for_gmm</code><span class="sig-paren">(</span><em>regtree:RegressionTree</em>, <em>am:AmDiagGmm</em>, <em>data:VectorBase</em>, <em>pdf_index:int</em>, <em>weight:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.accumulate_for_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::RegtreeMllrDiagGmmAccs::AccumulateForGmm(::kaldi::RegressionTree, ::kaldi::AmDiagGmm, ::kaldi::VectorBase&lt;float&gt;, int, float)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.baseclass_stats">
+<code class="descname">baseclass_stats</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.baseclass_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ clif_type_53 RegtreeMllrDiagGmmAccs.baseclass_stats()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::RegtreeMllrDiagGmmAccs::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>num_bclass:int</em>, <em>dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmmAccs::Init(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.num_base_classes">
+<code class="descname">num_base_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.num_base_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::RegtreeMllrDiagGmmAccs::NumBaseClasses()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>add:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmmAccs::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmmAccs::SetZero()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>regtree:RegressionTree</em>, <em>opts:RegtreeMllrOptions</em>, <em>out_mllr:RegtreeMllrDiagGmm) -&gt; (auxf_impr:float</em>, <em>t:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmmAccs::Update(::kaldi::RegressionTree, ::kaldi::RegtreeMllrOptions, ::kaldi::RegtreeMllrDiagGmm <em>, float</em>, float*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrDiagGmmAccs.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrDiagGmmAccs::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.transform.mllr.RegtreeMllrOptions">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllr.</code><code class="descname">RegtreeMllrOptions</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::RegtreeMllrOptions</p>
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.RegtreeMllrOptions.min_count">
+<code class="descname">min_count</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrOptions.min_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat RegtreeMllrOptions.min_count</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.RegtreeMllrOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RegtreeMllrOptions::Register(::kaldi::OptionsItf <a href="#id45"><span class="problematic" id="id46">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllr.RegtreeMllrOptions.use_regtree">
+<code class="descname">use_regtree</code><a class="headerlink" href="#kaldi.transform.mllr.RegtreeMllrOptions.use_regtree" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool RegtreeMllrOptions.use_regtree</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.mllr.apply_feature_transform_to_stats">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">apply_feature_transform_to_stats</code><span class="sig-paren">(</span><em>xform:MatrixBase</em>, <em>stats:AffineXformStats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.apply_feature_transform_to_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ApplyFeatureTransformToStats(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::AffineXformStats <a href="#id47"><span class="problematic" id="id48">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.mllr.apply_model_transform_to_stats">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">apply_model_transform_to_stats</code><span class="sig-paren">(</span><em>xform:MatrixBase</em>, <em>stats:AffineXformStats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.apply_model_transform_to_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ApplyModelTransformToStats(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::AffineXformStats <a href="#id49"><span class="problematic" id="id50">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.mllr.compute_fmllr_log_det">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">compute_fmllr_log_det</code><span class="sig-paren">(</span><em>fmllr_mat:Matrix</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.compute_fmllr_log_det" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ComputeFmllrLogDet(::kaldi::Matrix&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">compute_fmllr_matrix_diag_gmm</code><span class="sig-paren">(</span><em>in_xform:MatrixBase</em>, <em>stats:AffineXformStats</em>, <em>fmllr_type:str</em>, <em>num_iters:int</em>, <em>out_xform:MatrixBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ComputeFmllrMatrixDiagGmm(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::AffineXformStats, ::std::string, int, ::kaldi::MatrixBase&lt;float&gt; <a href="#id51"><span class="problematic" id="id52">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_diagonal">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">compute_fmllr_matrix_diag_gmm_diagonal</code><span class="sig-paren">(</span><em>in_xform:MatrixBase</em>, <em>stats:AffineXformStats</em>, <em>out_xform:MatrixBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_diagonal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ComputeFmllrMatrixDiagGmmDiagonal(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::AffineXformStats, ::kaldi::MatrixBase&lt;float&gt; <a href="#id53"><span class="problematic" id="id54">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_full">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">compute_fmllr_matrix_diag_gmm_full</code><span class="sig-paren">(</span><em>in_xform:MatrixBase</em>, <em>stats:AffineXformStats</em>, <em>num_iters:int</em>, <em>out_xform:MatrixBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ComputeFmllrMatrixDiagGmmFull(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::AffineXformStats, int, ::kaldi::MatrixBase&lt;float&gt; <a href="#id55"><span class="problematic" id="id56">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_offset">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">compute_fmllr_matrix_diag_gmm_offset</code><span class="sig-paren">(</span><em>in_xform:MatrixBase</em>, <em>stats:AffineXformStats</em>, <em>out_xform:MatrixBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.compute_fmllr_matrix_diag_gmm_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ComputeFmllrMatrixDiagGmmOffset(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::AffineXformStats, ::kaldi::MatrixBase&lt;float&gt; <a href="#id57"><span class="problematic" id="id58">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.mllr.fmllr_aux_func_diag_gmm">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">fmllr_aux_func_diag_gmm</code><span class="sig-paren">(</span><em>xform:MatrixBase</em>, <em>stats:AffineXformStats</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.fmllr_aux_func_diag_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FmllrAuxFuncDiagGmm(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::AffineXformStats)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.mllr.fmllr_aux_func_diag_gmm_double">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">fmllr_aux_func_diag_gmm_double</code><span class="sig-paren">(</span><em>xform:DoubleMatrixBase</em>, <em>stats:AffineXformStats</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.fmllr_aux_func_diag_gmm_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::FmllrAuxFuncDiagGmm(::kaldi::MatrixBase&lt;double&gt;, ::kaldi::AffineXformStats)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.mllr.fmllr_auxf_gradient">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">fmllr_auxf_gradient</code><span class="sig-paren">(</span><em>xform:MatrixBase</em>, <em>stats:AffineXformStats</em>, <em>grad_out:MatrixBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllr.fmllr_auxf_gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FmllrAuxfGradient(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::AffineXformStats, ::kaldi::MatrixBase&lt;float&gt; <a href="#id59"><span class="problematic" id="id60">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.transform.mllr.init_fmllr">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">init_fmllr</code><span class="sig-paren">(</span><em>dim:int</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.transform.mllr.init_fmllr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::InitFmllr(int, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.transform.mllt">
+<span id="kaldi-transform-mllt"></span><h2>kaldi.transform.mllt<a class="headerlink" href="#module-kaldi.transform.mllt" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllt.MlltAccs" title="kaldi.transform.mllt.MlltAccs"><code class="xref py py-obj docutils literal"><span class="pre">MlltAccs</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MlltAccs</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.transform.mllt.MlltAccs">
+<em class="property">class </em><code class="descclassname">kaldi.transform.mllt.</code><code class="descname">MlltAccs</code><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MlltAccs</p>
+<dl class="attribute">
+<dt id="kaldi.transform.mllt.MlltAccs.G_">
+<code class="descname">G_</code><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.G_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt; <a href="#id83"><span class="problematic" id="id84">MlltAccs.G_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllt.MlltAccs.accumulate_from_gmm">
+<code class="descname">accumulate_from_gmm</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>data:VectorBase</em>, <em>weight:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.accumulate_from_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::MlltAccs::AccumulateFromGmm(::kaldi::DiagGmm, ::kaldi::VectorBase&lt;float&gt;, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllt.MlltAccs.accumulate_from_gmm_preselect">
+<code class="descname">accumulate_from_gmm_preselect</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>gselect:list&lt;int&gt;</em>, <em>data:VectorBase</em>, <em>weight:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.accumulate_from_gmm_preselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::MlltAccs::AccumulateFromGmmPreselect(::kaldi::DiagGmm, ::std::vector&lt; ::int32&gt;, ::kaldi::VectorBase&lt;float&gt;, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllt.MlltAccs.accumulate_from_posteriors">
+<code class="descname">accumulate_from_posteriors</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>data:VectorBase</em>, <em>posteriors:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.accumulate_from_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MlltAccs::AccumulateFromPosteriors(::kaldi::DiagGmm, ::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllt.MlltAccs.beta_">
+<code class="descname">beta_</code><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.beta_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ double <a href="#id85"><span class="problematic" id="id86">MlltAccs.beta_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllt.MlltAccs.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::MlltAccs::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllt.MlltAccs.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>dim:int</em>, <em>rand_prune:float=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MlltAccs::Init(int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllt.MlltAccs.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>dim:int</em>, <em>rand_prune:float=default</em><span class="sig-paren">)</span> &#x2192; MlltAccs<a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::MlltAccs&gt; ::kaldi::MlltAccs::MlltAccs(int, float)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.transform.mllt.MlltAccs.rand_prune_">
+<code class="descname">rand_prune_</code><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.rand_prune_" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat <a href="#id87"><span class="problematic" id="id88">MlltAccs.rand_prune_</span></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllt.MlltAccs.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>add:bool=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MlltAccs::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllt.MlltAccs.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>M:MatrixBase) -&gt; (objf_impr_out:float</em>, <em>count_out:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MlltAccs::Update(::kaldi::MatrixBase&lt;float&gt; <em>, float</em>, float*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllt.MlltAccs.update_static">
+<code class="descname">update_static</code><span class="sig-paren">(</span><em>beta:float</em>, <em>G:list&lt;DoubleSpMatrix&gt;</em>, <em>M:MatrixBase) -&gt; (objf_impr_out:float</em>, <em>count_out:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.update_static" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MlltAccs::Update(double, ::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt;, ::kaldi::MatrixBase&lt;float&gt; <em>, float</em>, float*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllt.MlltAccs.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MlltAccs::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.tree.html" class="btn btn-neutral float-right" title="kaldi.tree" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.tfrnnlm.html" class="btn btn-neutral" title="kaldi.tfrnnlm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

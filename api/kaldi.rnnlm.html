@@ -1,0 +1,2542 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.rnnlm &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.sgmm2" href="kaldi.sgmm2.html"/>
+        <link rel="prev" title="kaldi.online2" href="kaldi.online2.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.rnnlm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.rnnlm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.rnnlm">
+<span id="kaldi-rnnlm"></span><h1>kaldi.rnnlm<a class="headerlink" href="#module-kaldi.rnnlm" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.check_distribution" title="kaldi.rnnlm.check_distribution"><code class="xref py py-obj docutils literal"><span class="pre">check_distribution</span></code></a></td>
+<td>Validates a distribution.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.get_rnnlm_computation_request" title="kaldi.rnnlm.get_rnnlm_computation_request"><code class="xref py py-obj docutils literal"><span class="pre">get_rnnlm_computation_request</span></code></a></td>
+<td>Creates a computation request for the given RNNLM example.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.get_rnnlm_example_derived" title="kaldi.rnnlm.get_rnnlm_example_derived"><code class="xref py py-obj docutils literal"><span class="pre">get_rnnlm_example_derived</span></code></a></td>
+<td>Constructs a derived RNNLM example.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.merge_distributions" title="kaldi.rnnlm.merge_distributions"><code class="xref py py-obj docutils literal"><span class="pre">merge_distributions</span></code></a></td>
+<td>Merges two distributions.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.process_rnnlm_output" title="kaldi.rnnlm.process_rnnlm_output"><code class="xref py py-obj docutils literal"><span class="pre">process_rnnlm_output</span></code></a></td>
+<td>Processes the output of RNNLM computation.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.read_sparse_word_features" title="kaldi.rnnlm.read_sparse_word_features"><code class="xref py py-obj docutils literal"><span class="pre">read_sparse_word_features</span></code></a></td>
+<td>Reads sparse word features from input stream.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.renumber_rnnlm_example" title="kaldi.rnnlm.renumber_rnnlm_example"><code class="xref py py-obj docutils literal"><span class="pre">renumber_rnnlm_example</span></code></a></td>
+<td>Renumbers word-ids in a minibatch.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.sample_without_replacement" title="kaldi.rnnlm.sample_without_replacement"><code class="xref py py-obj docutils literal"><span class="pre">sample_without_replacement</span></code></a></td>
+<td>Samples without replacement from a distribution.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.total_of_distribution" title="kaldi.rnnlm.total_of_distribution"><code class="xref py py-obj docutils literal"><span class="pre">total_of_distribution</span></code></a></td>
+<td>Returns the sum of the elements of a distribution.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.KaldiRnnlmDeterministicFst" title="kaldi.rnnlm.KaldiRnnlmDeterministicFst"><code class="xref py py-obj docutils literal"><span class="pre">KaldiRnnlmDeterministicFst</span></code></a></td>
+<td>Deterministic on demand RNNLM FST.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmComputeState" title="kaldi.rnnlm.RnnlmComputeState"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmComputeState</span></code></a></td>
+<td>RNNLM computation state.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmComputeStateComputationOptions" title="kaldi.rnnlm.RnnlmComputeStateComputationOptions"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmComputeStateComputationOptions</span></code></a></td>
+<td>Options for RNNLM compute state.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmComputeStateInfo" title="kaldi.rnnlm.RnnlmComputeStateInfo"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmComputeStateInfo</span></code></a></td>
+<td>State information for RNNLM computation.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmCoreComputer" title="kaldi.rnnlm.RnnlmCoreComputer"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmCoreComputer</span></code></a></td>
+<td>Core RNNLM computer.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmCoreTrainer" title="kaldi.rnnlm.RnnlmCoreTrainer"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmCoreTrainer</span></code></a></td>
+<td>Core RNNLM trainer.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmCoreTrainerOptions" title="kaldi.rnnlm.RnnlmCoreTrainerOptions"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmCoreTrainerOptions</span></code></a></td>
+<td>Options for core RNNLM training.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmEgsConfig" title="kaldi.rnnlm.RnnlmEgsConfig"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmEgsConfig</span></code></a></td>
+<td>RNNLM example configuration.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmEmbeddingTrainer" title="kaldi.rnnlm.RnnlmEmbeddingTrainer"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmEmbeddingTrainer</span></code></a></td>
+<td>RNNLM embedding trainer.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions" title="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmEmbeddingTrainerOptions</span></code></a></td>
+<td>Options for RNNLM embedding training.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmExample</span></code></a></td>
+<td>A single minibatch for training an RNNLM.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmExampleCreator" title="kaldi.rnnlm.RnnlmExampleCreator"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmExampleCreator</span></code></a></td>
+<td>RNNLM example creator.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmExampleDerived" title="kaldi.rnnlm.RnnlmExampleDerived"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmExampleDerived</span></code></a></td>
+<td>Various quantities/expressions derived from an RNNLM example.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmExampleSampler" title="kaldi.rnnlm.RnnlmExampleSampler"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmExampleSampler</span></code></a></td>
+<td>RNNLM example sampler.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmObjectiveOptions" title="kaldi.rnnlm.RnnlmObjectiveOptions"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmObjectiveOptions</span></code></a></td>
+<td>Options for RNNLM objective function.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.RnnlmTrainer" title="kaldi.rnnlm.RnnlmTrainer"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmTrainer</span></code></a></td>
+<td>RNNLM trainer.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.Sampler" title="kaldi.rnnlm.Sampler"><code class="xref py py-obj docutils literal"><span class="pre">Sampler</span></code></a></td>
+<td>Word sampler.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.SamplingLm" title="kaldi.rnnlm.SamplingLm"><code class="xref py py-obj docutils literal"><span class="pre">SamplingLm</span></code></a></td>
+<td>Sampling LM.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.rnnlm.SamplingLmEstimator" title="kaldi.rnnlm.SamplingLmEstimator"><code class="xref py py-obj docutils literal"><span class="pre">SamplingLmEstimator</span></code></a></td>
+<td>Sampling LM estimator.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.rnnlm.SamplingLmEstimatorOptions" title="kaldi.rnnlm.SamplingLmEstimatorOptions"><code class="xref py py-obj docutils literal"><span class="pre">SamplingLmEstimatorOptions</span></code></a></td>
+<td>Options for sampling LM estimator.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.rnnlm.KaldiRnnlmDeterministicFst">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">KaldiRnnlmDeterministicFst</code><a class="headerlink" href="#kaldi.rnnlm.KaldiRnnlmDeterministicFst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deterministic on demand RNNLM FST.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>max_ngram_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Maximum ngram order.</li>
+<li><strong>info</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmComputeStateInfo" title="kaldi.rnnlm.RnnlmComputeStateInfo"><em>RnnlmComputeStateInfo</em></a>) – State information for RNNLM computation.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.rnnlm.KaldiRnnlmDeterministicFst.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.KaldiRnnlmDeterministicFst.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the internal maps.</p>
+<p>This method is similar to the destructor but we retain the 0-th entries
+in each map which corresponds to the &lt;bos&gt; state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.KaldiRnnlmDeterministicFst.final">
+<code class="descname">final</code><span class="sig-paren">(</span><em>state:int</em><span class="sig-paren">)</span> &#x2192; TropicalWeight<a class="headerlink" href="#kaldi.rnnlm.KaldiRnnlmDeterministicFst.final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final weight of the given state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.KaldiRnnlmDeterministicFst.get_arc">
+<code class="descname">get_arc</code><span class="sig-paren">(</span><em>s:int</em>, <em>ilabel:int) -&gt; (success:bool</em>, <em>oarc:StdArc</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.KaldiRnnlmDeterministicFst.get_arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an on demand arc and returns it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – State index.</li>
+<li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Arc label.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The created arc.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.KaldiRnnlmDeterministicFst.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.rnnlm.KaldiRnnlmDeterministicFst.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the start state index.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmComputeState">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmComputeState</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeState" title="Permalink to this definition">¶</a></dt>
+<dd><p>RNNLM computation state.</p>
+<p>This class handles the neural net computation; it’s mostly accessed
+via other wrapper classes.</p>
+<p>At every time step this class takes a new word, advances the nnet
+computation by one step, and works out the log-prob of words to be used
+in lattice rescoring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>info</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmComputeStateInfo" title="kaldi.rnnlm.RnnlmComputeStateInfo"><em>RnnlmComputeStateInfo</em></a>) – State information for RNNLM computation.</li>
+<li><strong>bos_index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Index of the begin-of-sentence symbol.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmComputeState.add_word">
+<code class="descname">add_word</code><span class="sig-paren">(</span><em>word_index:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeState.add_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the state of the RNNLM by appending a word.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmComputeState.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:RnnlmComputeState</em><span class="sig-paren">)</span> &#x2192; RnnlmComputeState<a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeState.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new instance from another.
+:param other: The other RNNLM computation state.
+:type other: RnnlmComputeState</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmComputeState.get_log_prob_of_words">
+<code class="descname">get_log_prob_of_words</code><span class="sig-paren">(</span><em>output:CuMatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeState.get_log_prob_of_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes log probs of all words.</p>
+<p>This function computes log probs of all words and outputs them as a
+matrix.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">output[0,0] corresponds to &lt;eps&gt; symbol and it should NEVER be
+used in any computation by the caller. To avoid causing unexpected
+issues, it is set to a very small number.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmComputeState.get_successor_state">
+<code class="descname">get_successor_state</code><span class="sig-paren">(</span><em>next_word:int</em><span class="sig-paren">)</span> &#x2192; RnnlmComputeState<a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeState.get_successor_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates another state by processing the next-word.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>next_word</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The next word to process.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmComputeState.log_prob_of_word">
+<code class="descname">log_prob_of_word</code><span class="sig-paren">(</span><em>word_index:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeState.log_prob_of_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the log-prob for the provided word.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The log-prob that the model predicts for the provided word-index,
+given the current history.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmComputeStateComputationOptions">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmComputeStateComputationOptions</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeStateComputationOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for RNNLM compute state.</p>
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmComputeStateComputationOptions.bos_index">
+<code class="descname">bos_index</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeStateComputationOptions.bos_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Index in wordlist representing the begin-of-sentence symbol.</p>
+<p>We need this when we initialize the RnnlmComputeState and pass the BOS
+history.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmComputeStateComputationOptions.brk_index">
+<code class="descname">brk_index</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeStateComputationOptions.brk_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Index in wordlist representing the break symbol.</p>
+<p>This is not needed for computation; included only for ease of scripting.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmComputeStateComputationOptions.compute_config">
+<code class="descname">compute_config</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeStateComputationOptions.compute_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nnet compute options.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmComputeStateComputationOptions.debug_computation">
+<code class="descname">debug_computation</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeStateComputationOptions.debug_computation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to turn on debug for the actual computation (very verbose!).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmComputeStateComputationOptions.eos_index">
+<code class="descname">eos_index</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeStateComputationOptions.eos_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Index in wordlist representing the end-of-sentence symbol.</p>
+<p>We need this to compute the final cost of a state.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmComputeStateComputationOptions.normalize_probs">
+<code class="descname">normalize_probs</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeStateComputationOptions.normalize_probs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to normalize word probabilities exactly.</p>
+<p>If False, the sum-to-one normalization is approximate.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmComputeStateComputationOptions.optimize_config">
+<code class="descname">optimize_config</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeStateComputationOptions.optimize_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nnet optimization options.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmComputeStateComputationOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeStateComputationOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmComputeStateInfo">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmComputeStateInfo</code><span class="sig-paren">(</span><em>opts</em>, <em>rnnlm</em>, <em>word_embedding_mat</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/rnnlm.html#RnnlmComputeStateInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeStateInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>State information for RNNLM computation.</p>
+<p>This class keeps references to the word-embedding, nnet3 part of RNNLM
+and the RnnlmComputeStateComputationOptions. It handles the computation
+of the nnet3 object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmComputeStateComputationOptions" title="kaldi.rnnlm.RnnlmComputeStateComputationOptions"><em>RnnlmComputeStateComputationOptions</em></a>) – Options for RNNLM compute
+state.</li>
+<li><strong>rnnlm</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.Nnet" title="kaldi.nnet3.Nnet"><em>Nnet</em></a>) – The nnet part of the RNNLM.</li>
+<li><strong>word_embedding_mat</strong> (<a class="reference internal" href="kaldi.cudamatrix.html#kaldi.cudamatrix.CuMatrix" title="kaldi.cudamatrix.CuMatrix"><em>CuMatrix</em></a>) – The word embedding matrix.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmComputeStateInfo.computation">
+<code class="descname">computation</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmComputeStateInfo.computation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The compiled, ‘looped’ nnet computation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmCoreComputer">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmCoreComputer</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreComputer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Core RNNLM computer.</p>
+<p>This class has a similar interface to <a class="reference internal" href="#kaldi.rnnlm.RnnlmCoreTrainer" title="kaldi.rnnlm.RnnlmCoreTrainer"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmCoreTrainer</span></code></a>, but it doesn’t
+actually train the RNNLM; it’s for computing likelihoods and (optionally)
+derivatives w.r.t. the embedding, in situations where you are not
+training the core part of the RNNLM. It reads egs– it’s not for
+rescoring lattices and similar purposes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nnet</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.Nnet" title="kaldi.nnet3.Nnet"><em>Nnet</em></a>) – The neural network that is to be used to evaluate
+likelihoods (and possibly derivatives).</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmCoreComputer.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>minibatch:RnnlmExample</em>, <em>derived:RnnlmExampleDerived</em>, <em>word_embedding:CuMatrixBase</em>, <em>word_embedding_deriv:CuMatrixBase=default) -&gt; (objf:float</em>, <em>weight:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreComputer.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the objective on one minibatch.</p>
+<p>If <code class="xref py py-obj docutils literal"><span class="pre">word_embedding_deriv</span></code> is provided, it also computes derivatives
+w.r.t. the embedding.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>minibatch</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><em>RnnlmExample</em></a>) – The RNNLM minibatch to evaluate, containing
+a number of parallel word sequences.  It will not necessarily
+contain words with the ‘original’ numbering, it will in most
+circumstances contain just the ones we used; see
+<a class="reference internal" href="#kaldi.rnnlm.renumber_rnnlm_example" title="kaldi.rnnlm.renumber_rnnlm_example"><code class="xref py py-meth docutils literal"><span class="pre">renumber_rnnlm_example()</span></code></a>.</li>
+<li><strong>derived</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExampleDerived" title="kaldi.rnnlm.RnnlmExampleDerived"><em>RnnlmExampleDerived</em></a>) – Derived quantities of the minibatch,
+pre-computed by calling <a class="reference internal" href="#kaldi.rnnlm.get_rnnlm_example_derived" title="kaldi.rnnlm.get_rnnlm_example_derived"><code class="xref py py-meth docutils literal"><span class="pre">get_rnnlm_example_derived()</span></code></a> with
+suitable arguments.</li>
+<li><strong>word_embedding</strong> (<em>CuMatrixBase</em>) – The matrix giving the embedding of
+words, of dimension <code class="xref py py-obj docutils literal"><span class="pre">minibatch.vocab_size</span></code> by the embedding
+dimension. The numbering of the words does not have to be the
+‘real’ numbering of words, it can consist of words renumbered by
+<a class="reference internal" href="#kaldi.rnnlm.renumber_rnnlm_example" title="kaldi.rnnlm.renumber_rnnlm_example"><code class="xref py py-meth docutils literal"><span class="pre">renumber_rnnlm_example()</span></code></a>; it just has to be consistent with
+the word-ids present in ‘minibatch’.</li>
+<li><strong>word_embedding_deriv</strong> (<em>CuMatrixBase</em>) – If not None, the derivative of
+the objective function w.r.t. the word embedding will be <em>added</em> to
+this location; it must have the same dimension as ‘word_embedding’.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>objf</strong> – The total objective function for this minibatch; divide
+this by <code class="xref py py-obj docutils literal"><span class="pre">weight</span></code> to normalize it (i.e. get the average log-prob per
+word).</li>
+<li><strong>weight</strong> – The total weight of the words in the minibatch. This
+is just the sum of <code class="xref py py-obj docutils literal"><span class="pre">minibatch.output_weights</span></code>.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainer">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmCoreTrainer</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Core RNNLM trainer.</p>
+<p>This class does the core part of the training of the RNNLM; the
+word embeddings are supplied to this class for each minibatch and
+while this class can compute objective function derivatives w.r.t.
+these embeddings, it is not responsible for updating them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>config</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmCoreTrainerOptions" title="kaldi.rnnlm.RnnlmCoreTrainerOptions"><em>RnnlmCoreTrainerOptions</em></a>) – Options for core RNNLM training.</li>
+<li><strong>objective_config</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmObjectiveOptions" title="kaldi.rnnlm.RnnlmObjectiveOptions"><em>RnnlmObjectiveOptions</em></a>) – Options for RNNLM objective.</li>
+<li><strong>nnet</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.Nnet" title="kaldi.nnet3.Nnet"><em>Nnet</em></a>) – The neural network that is to be trained. It will be
+modified each time you call <a class="reference internal" href="#kaldi.rnnlm.RnnlmCoreTrainer.train" title="kaldi.rnnlm.RnnlmCoreTrainer.train"><code class="xref py py-meth docutils literal"><span class="pre">train()</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainer.print_max_change_stats">
+<code class="descname">print_max_change_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainer.print_max_change_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints out the max-change stats (if nonzero).</p>
+<p>This is the percentage of time that per-component max-change and global
+max-change were enforced.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainer.train">
+<code class="descname">train</code><span class="sig-paren">(</span><em>minibatch:RnnlmExample</em>, <em>derived:RnnlmExampleDerived</em>, <em>word_embedding:CuMatrixBase</em>, <em>word_embedding_deriv:CuMatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainer.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do training for one minibatch.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>minibatch</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><em>RnnlmExample</em></a>) – The RNNLM minibatch to train on, containing
+a number of parallel word sequences.  It will not necessarily
+contain words with the ‘original’ numbering, it will in most
+circumstances contain just the ones we used; see
+<a class="reference internal" href="#kaldi.rnnlm.renumber_rnnlm_example" title="kaldi.rnnlm.renumber_rnnlm_example"><code class="xref py py-meth docutils literal"><span class="pre">renumber_rnnlm_example()</span></code></a>.</li>
+<li><strong>derived</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExampleDerived" title="kaldi.rnnlm.RnnlmExampleDerived"><em>RnnlmExampleDerived</em></a>) – Derived quantities of the minibatch,
+pre-computed by calling <a class="reference internal" href="#kaldi.rnnlm.get_rnnlm_example_derived" title="kaldi.rnnlm.get_rnnlm_example_derived"><code class="xref py py-meth docutils literal"><span class="pre">get_rnnlm_example_derived()</span></code></a> with
+suitable arguments.</li>
+<li><strong>word_embedding</strong> (<em>CuMatrixBase</em>) – The matrix giving the embedding of
+words, of dimension <code class="xref py py-obj docutils literal"><span class="pre">minibatch.vocab_size</span></code> by the embedding
+dimension. The numbering of the words does not have to be the
+‘real’ numbering of words, it can consist of words renumbered by
+<a class="reference internal" href="#kaldi.rnnlm.renumber_rnnlm_example" title="kaldi.rnnlm.renumber_rnnlm_example"><code class="xref py py-meth docutils literal"><span class="pre">renumber_rnnlm_example()</span></code></a>; it just has to be consistent with
+the word-ids present in ‘minibatch’.</li>
+<li><strong>word_embedding_deriv</strong> (<em>CuMatrixBase</em>) – If not None, the derivative of
+the objective function w.r.t. the word embedding will be <em>added</em> to
+this location; it must have the same dimension as ‘word_embedding’.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainer.train_backstitch">
+<code class="descname">train_backstitch</code><span class="sig-paren">(</span><em>is_backstitch_step1:bool</em>, <em>minibatch:RnnlmExample</em>, <em>derived:RnnlmExampleDerived</em>, <em>word_embedding:CuMatrixBase</em>, <em>word_embedding_deriv:CuMatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainer.train_backstitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do backstitch training for one minibatch.</p>
+<p>Depending on whether is_backstitch_step1 is true, It could be either
+the first (backward) step, or the second (forward) step of backstitch.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>is_backstitch_step1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true update stats otherwise not.</li>
+<li><strong>minibatch</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><em>RnnlmExample</em></a>) – The RNNLM minibatch to train on, containing
+a number of parallel word sequences.  It will not necessarily
+contain words with the ‘original’ numbering, it will in most
+circumstances contain just the ones we used; see
+<a class="reference internal" href="#kaldi.rnnlm.renumber_rnnlm_example" title="kaldi.rnnlm.renumber_rnnlm_example"><code class="xref py py-meth docutils literal"><span class="pre">renumber_rnnlm_example()</span></code></a>.</li>
+<li><strong>derived</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExampleDerived" title="kaldi.rnnlm.RnnlmExampleDerived"><em>RnnlmExampleDerived</em></a>) – Derived quantities of the minibatch,
+pre-computed by calling <a class="reference internal" href="#kaldi.rnnlm.get_rnnlm_example_derived" title="kaldi.rnnlm.get_rnnlm_example_derived"><code class="xref py py-meth docutils literal"><span class="pre">get_rnnlm_example_derived()</span></code></a> with
+suitable arguments.</li>
+<li><strong>word_embedding</strong> (<em>CuMatrixBase</em>) – The matrix giving the embedding of
+words, of dimension <code class="xref py py-obj docutils literal"><span class="pre">minibatch.vocab_size</span></code> by the embedding
+dimension. The numbering of the words does not have to be the
+‘real’ numbering of words, it can consist of words renumbered by
+<a class="reference internal" href="#kaldi.rnnlm.renumber_rnnlm_example" title="kaldi.rnnlm.renumber_rnnlm_example"><code class="xref py py-meth docutils literal"><span class="pre">renumber_rnnlm_example()</span></code></a>; it just has to be consistent with
+the word-ids present in ‘minibatch’.</li>
+<li><strong>word_embedding_deriv</strong> (<em>CuMatrixBase</em>) – If not None, the derivative of
+the objective function w.r.t. the word embedding will be <em>added</em> to
+this location; it must have the same dimension as ‘word_embedding’.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainerOptions">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmCoreTrainerOptions</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainerOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for core RNNLM training.</p>
+<p>These are related to the core RNNLM training, i.e. training the actual
+neural net for the RNNLM (when the word embeddings are given).</p>
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainerOptions.backstitch_training_interval">
+<code class="descname">backstitch_training_interval</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainerOptions.backstitch_training_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backstitch training interval (n).</p>
+<p>Do backstitch training with the specified interval of minibatches.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainerOptions.backstitch_training_scale">
+<code class="descname">backstitch_training_scale</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainerOptions.backstitch_training_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backstitch training factor (alpha).</p>
+<p>If 0 then in the normal training mode.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainerOptions.l2_regularize_factor">
+<code class="descname">l2_regularize_factor</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainerOptions.l2_regularize_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factor that affects the strength of l2 regularization.</p>
+<p>This affects the strength of l2 regularization on model parameters. It
+will be multiplied by the component-level l2-regularize values and can
+be used to correct for effects related to parallelization by model
+averaging.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainerOptions.max_param_change">
+<code class="descname">max_param_change</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainerOptions.max_param_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum change in model parameters allowed per minibatch.</p>
+<p>This is measured in Euclidean norm. Change will be clipped to this value.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainerOptions.momentum">
+<code class="descname">momentum</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainerOptions.momentum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Momentum constant (help stabilize training updates), e.g. 0.9.</p>
+<p>We automatically multiply the learning rate by (1-momentum) so that the
+‘effective’ learning rate is the same as  before (because momentum would
+normally increase the effective learning rate by 1/(1-momentum)).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainerOptions.print_interval">
+<code class="descname">print_interval</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainerOptions.print_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>The log printing interval (in terms of #minibatches).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmCoreTrainerOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmCoreTrainerOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmEgsConfig</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>RNNLM example configuration.</p>
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.bos_symbol">
+<code class="descname">bos_symbol</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.bos_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beginning of sentence symbol.</p>
+<p>It must be set.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.brk_symbol">
+<code class="descname">brk_symbol</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.brk_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Break symbol.</p>
+<p>It must be set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.check">
+<code class="descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the options.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If validation fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.chunk_buffer_size">
+<code class="descname">chunk_buffer_size</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.chunk_buffer_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of chunks that are buffered while processing the input.</p>
+<p>Larger means more complete randomization but also more I/O before we
+produce any output, and more memory used.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.chunk_length">
+<code class="descname">chunk_length</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.chunk_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>The length of each sequence in a minibatch.</p>
+<p>The length of each sequence in a minibatch, including any terminating
+&lt;/s&gt; symbols, which are included explicitly in the sequences. When &lt;/s&gt;
+appears in the middle of sequences because we splice shorter word
+sequences together, we will replace it with &lt;s&gt; on the input side of the
+network. Sentences, or pieces of sentences, that were shorter than
+<a class="reference internal" href="#kaldi.rnnlm.RnnlmEgsConfig.chunk_length" title="kaldi.rnnlm.RnnlmEgsConfig.chunk_length"><code class="xref py py-obj docutils literal"><span class="pre">chunk_length</span></code></a>, will be padded as needed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.eos_symbol">
+<code class="descname">eos_symbol</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.eos_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>End of sentence symbol.</p>
+<p>It must be set.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.min_split_context">
+<code class="descname">min_split_context</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.min_split_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Min left-context supplied for each training sentence piece.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.num_chunks_per_minibatch">
+<code class="descname">num_chunks_per_minibatch</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.num_chunks_per_minibatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of parallel word sequences/chunks per minibatch.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.num_samples">
+<code class="descname">num_samples</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.num_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of words we choose each time we do the sampling.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.sample_group_size">
+<code class="descname">sample_group_size</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.sample_group_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The sampling group size.</p>
+<p>This is the number of consecutive time-steps which form a single unit for
+sampling purposes.  This number will always divide <a class="reference internal" href="#kaldi.rnnlm.RnnlmEgsConfig.chunk_length" title="kaldi.rnnlm.RnnlmEgsConfig.chunk_length"><code class="xref py py-obj docutils literal"><span class="pre">chunk_length</span></code></a>.
+Example: if <code class="xref py py-obj docutils literal"><span class="pre">sample_group_size==2</span></code>, we’ll sample one set of words for
+<code class="xref py py-obj docutils literal"><span class="pre">t={0,1}</span></code>, another for <code class="xref py py-obj docutils literal"><span class="pre">t={2,3}</span></code>, and so on. We support merging
+time-steps in this way (but not splitting them smaller), due to
+considerations of computing time if you assume we also have a network
+that learns word representation from their character-level features.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.special_symbol_prob">
+<code class="descname">special_symbol_prob</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.special_symbol_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sampling probability for words that aren’t supposed to be predicted.</p>
+<p>Sampling probability at the output for words that aren’t supposed to be
+predicted (&lt;s&gt;, &lt;brk&gt;)– this ensures that the model makes their output
+probs small, which avoids hassle when computing the normalizer in test
+time (if we didn’t sample them with some probability to ensure their
+probs are small, we’d have to exclude them from the denominator sum.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.uniform_prob_mass">
+<code class="descname">uniform_prob_mass</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.uniform_prob_mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>The probability mass to uniformly distribute over all words.</p>
+<p>This value should be &lt; 1.0; it is the proportion of the unigram
+distribution used for sampling assigned to uniformly predicting all
+words. This may avoid certain pathologies during training, and ensure
+that all words’ probs are bounded away from zero, which might be
+necessary for the theory of importance sampling.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEgsConfig.vocab_size">
+<code class="descname">vocab_size</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEgsConfig.vocab_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The vocabulary size.</p>
+<p>More specifically, the largest integer word-id plus one.  Must be
+provided, as it gets included in each minibatch (mostly for checking
+purposes).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainer">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmEmbeddingTrainer</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>RNNLM embedding trainer.</p>
+<p>This class is responsible for training the word embedding matrix or
+feature embedding matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>config</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions" title="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions"><em>RnnlmEmbeddingTrainerOptions</em></a>) – Options for RNNLM embedding
+training.</li>
+<li><strong>embedding_mat</strong> (<a class="reference internal" href="kaldi.cudamatrix.html#kaldi.cudamatrix.CuMatrix" title="kaldi.cudamatrix.CuMatrix"><em>CuMatrix</em></a>) – The embedding matrix to be trained,
+of dimension (num-words or num-features) by embedding-dim (depending
+whether we are using a feature representation of words, or not).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainer.train">
+<code class="descname">train</code><span class="sig-paren">(</span><em>embedding_deriv:CuMatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainer.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do training for one minibatch.</p>
+<p>This version is used either when there is no subsampling, or when there
+is subsampling but we are using a feature representation so the
+subsampling is handled outside of this code.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>embedding_deriv</strong> (<em>CuMatrixBase</em>) – The derivative of the objective
+function w.r.t. the word (or feature) embedding matrix.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainer.train_backstitch">
+<code class="descname">train_backstitch</code><span class="sig-paren">(</span><em>is_backstitch_step1:bool</em>, <em>embedding_deriv:CuMatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainer.train_backstitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do backstitch training for one minibatch.</p>
+<p>This version is used either when there is no subsampling, or when there
+is subsampling but we are using a feature representation so the
+subsampling is handled outside of this code.</p>
+<p>Depending on whether is_backstitch_step1 is true, It could be either
+the first (backward) step, or the second (forward) step of backstitch.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>is_backstitch_step1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true update stats otherwise not.</li>
+<li><strong>embedding_deriv</strong> (<em>CuMatrixBase</em>) – The derivative of the objective
+function w.r.t. the word (or feature) embedding matrix.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainer.train_backstitch_with_subsampling">
+<code class="descname">train_backstitch_with_subsampling</code><span class="sig-paren">(</span><em>is_backstitch_step1:bool</em>, <em>active_words:CuArray</em>, <em>word_embedding_deriv:CuMatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainer.train_backstitch_with_subsampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do backstitch training for one minibatch.</p>
+<p>This version is for when there is subsampling, and the user is
+providing the derivative w.r.t. just the word-indexes that were used in
+this minibatch. <code class="xref py py-obj docutils literal"><span class="pre">active_words</span></code> is a sorted, unique list of the
+word-indexes that were used in this minibatch, and
+<code class="xref py py-obj docutils literal"><span class="pre">word_embedding_deriv</span></code> is the derivative w.r.t. the embedding of that
+list of words.</p>
+<p>Depending on whether is_backstitch_step1 is true, It could be either
+the first (backward) step, or the second (forward) step of backstitch.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>is_backstitch_step1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true update stats otherwise not.</li>
+<li><strong>active_words</strong> (<a class="reference internal" href="kaldi.cudamatrix.html#kaldi.cudamatrix.CuArray" title="kaldi.cudamatrix.CuArray"><em>CuArray</em></a>) – A sorted, unique list of the word indexes
+used, with dimension equal to <code class="xref py py-obj docutils literal"><span class="pre">word_embedding_deriv.num_rows</span></code>.</li>
+<li><strong>word_embedding_deriv</strong> (<em>CuMatrixBase</em>) – The derivative of the objective
+function w.r.t. the word embedding matrix.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainer.train_with_subsampling">
+<code class="descname">train_with_subsampling</code><span class="sig-paren">(</span><em>active_words:CuArray</em>, <em>word_embedding_deriv:CuMatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainer.train_with_subsampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do training for one minibatch.</p>
+<p>This version is for when there is subsampling, and the user is
+providing the derivative w.r.t. just the word-indexes that were used in
+this minibatch. <code class="xref py py-obj docutils literal"><span class="pre">active_words</span></code> is a sorted, unique list of the
+word-indexes that were used in this minibatch, and
+<code class="xref py py-obj docutils literal"><span class="pre">word_embedding_deriv</span></code> is the derivative w.r.t. the embedding of that
+list of words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>active_words</strong> (<a class="reference internal" href="kaldi.cudamatrix.html#kaldi.cudamatrix.CuArray" title="kaldi.cudamatrix.CuArray"><em>CuArray</em></a>) – A sorted, unique list of the word indexes
+used, with dimension equal to <code class="xref py py-obj docutils literal"><span class="pre">word_embedding_deriv.num_rows</span></code>.</li>
+<li><strong>word_embedding_deriv</strong> (<em>CuMatrixBase</em>) – The derivative of the objective
+function w.r.t. the word embedding matrix.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmEmbeddingTrainerOptions</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for RNNLM embedding training.</p>
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.backstitch_training_interval">
+<code class="descname">backstitch_training_interval</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.backstitch_training_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backstitch training interval (n).</p>
+<p>Do backstitch training with the specified interval of minibatches.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.backstitch_training_scale">
+<code class="descname">backstitch_training_scale</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.backstitch_training_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backstitch training factor (alpha).</p>
+<p>If 0 then in the normal training mode.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.check">
+<code class="descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates RNNLM embedding training options.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.l2_regularize">
+<code class="descname">l2_regularize</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.l2_regularize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factor that affects the strength of l2 regularization.</p>
+<p>This affects the strength of l2 regularization on embedding parameters.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.learning_rate">
+<code class="descname">learning_rate</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.learning_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>The learning rate used in training the word-embedding matrix.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.max_param_change">
+<code class="descname">max_param_change</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.max_param_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum change in embedding parameters allowed per minibatch.</p>
+<p>This is measured in Euclidean norm. The embedding matrix has dimensions
+num-features by embedding-dim or num-words by embedding-dim if we’re not
+using a feature-based representation.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.momentum">
+<code class="descname">momentum</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.momentum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Momentum constant for training of embeddings (e.g. 0.5 or 0.9).</p>
+<p>We automatically multiply the learning rate by (1-momentum) so that the
+‘effective’ learning rate is the same as  before (because momentum would
+normally increase the effective learning rate by 1/(1-momentum)).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.natural_gradient_alpha">
+<code class="descname">natural_gradient_alpha</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.natural_gradient_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smoothing constant alpha to use for natural gradient.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.natural_gradient_num_minibatches_history">
+<code class="descname">natural_gradient_num_minibatches_history</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.natural_gradient_num_minibatches_history" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines how quickly the Fisher estimate for the natural gradient
+is updated, when training the word embedding.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.natural_gradient_rank">
+<code class="descname">natural_gradient_rank</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.natural_gradient_rank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rank of the Fisher matrix in natural gradient.</p>
+<p>This is applied to learning the embedding matrix (this is in the
+embedding space, so the rank should probably be less than the embedding
+dimension.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.natural_gradient_update_period">
+<code class="descname">natural_gradient_update_period</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.natural_gradient_update_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines how often the Fisher matrix is updated for natural gradient
+as applied to the embedding matrix.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.print_interval">
+<code class="descname">print_interval</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.print_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>The log printing interval (in terms of #minibatches).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.use_natural_gradient">
+<code class="descname">use_natural_gradient</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.use_natural_gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to use natural gradient to update the embedding matrix.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmExample">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmExample</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample" title="Permalink to this definition">¶</a></dt>
+<dd><p>A single minibatch for training an RNNLM.</p>
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExample.chunk_length">
+<code class="descname">chunk_length</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.chunk_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>The length of each sequence in a minibatch.</p>
+<p>The length of each sequence in a minibatch, including any terminating
+&lt;/s&gt; symbols, which are included explicitly in the sequences. When &lt;/s&gt;
+appears in the middle of sequences because we splice shorter word
+sequences together, we will replace it with &lt;s&gt; on the input side of the
+network. Sentences, or pieces of sentences, that were shorter than
+<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample.chunk_length" title="kaldi.rnnlm.RnnlmExample.chunk_length"><code class="xref py py-obj docutils literal"><span class="pre">chunk_length</span></code></a>, will be padded as needed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExample.input_words">
+<code class="descname">input_words</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.input_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>The input word labels.</p>
+<p>Contains the input word symbols 0 &lt;= i &lt; vocab_size for each position in
+each chunk; dimension == chunk_length * num_chunks, where 0 &lt;= t &lt;
+chunk_length has larger stride than 0 &lt;= n &lt; num_chunks.  In the common
+case these will be the same as the previous output symbol.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExample.num_chunks">
+<code class="descname">num_chunks</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.num_chunks" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of parallel word sequences/chunks.</p>
+<p>Some of the word sequences may actually be made up of smaller
+subsequences appended together.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExample.num_samples">
+<code class="descname">num_samples</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.num_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of samples.</p>
+<p>This is the number of words that we sample at the output of the nnet for
+each of the <code class="xref py py-obj docutils literal"><span class="pre">num_sample_groups</span></code> groups. If we didn’t do sampling because
+the user didn’t provide the ARPA language model, this will be zero (in
+this case we’ll do the summation over all words in the vocab).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExample.output_weights">
+<code class="descname">output_weights</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.output_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>The output weights.</p>
+<p>Weights for each of the <a class="reference internal" href="#kaldi.rnnlm.RnnlmExample.output_words" title="kaldi.rnnlm.RnnlmExample.output_words"><code class="xref py py-obj docutils literal"><span class="pre">output_words</span></code></a>, indexed the same way as
+<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample.output_words" title="kaldi.rnnlm.RnnlmExample.output_words"><code class="xref py py-obj docutils literal"><span class="pre">output_words</span></code></a>. These reflect any data-weighting we had in the original
+data, plus some zeros that relate to padding sequences of uneven length.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExample.output_words">
+<code class="descname">output_words</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.output_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>The output word labels.</p>
+<p>The output (predicted) word symbols for each position in each chunk;
+indexed in the same way as ‘input_words’.  What this contains is
+different from ‘input_words’ in the sampling case (i.e. if
+!sampled_words.empty()).  In this case, instead of the word-index it
+contains the relative index 0 &lt;= i &lt; num_samples within the block of
+sampled words.  In the not-sampled case it contains actual word indexes
+0 &lt;= i &lt; vocab_size.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmExample.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the RNNLM example from input stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>is</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.istream" title="kaldi.base.io.istream"><em>istream</em></a>) – The input C++ stream.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether the stream is binary.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExample.sample_group_size">
+<code class="descname">sample_group_size</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.sample_group_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The sampling group size.</p>
+<p>This is the number of consecutive time-steps which form a single unit for
+sampling purposes.  This number will always divide <a class="reference internal" href="#kaldi.rnnlm.RnnlmExample.chunk_length" title="kaldi.rnnlm.RnnlmExample.chunk_length"><code class="xref py py-obj docutils literal"><span class="pre">chunk_length</span></code></a>.
+Example: if <code class="xref py py-obj docutils literal"><span class="pre">sample_group_size==2</span></code>, we’ll sample one set of words for
+<code class="xref py py-obj docutils literal"><span class="pre">t={0,1}</span></code>, another for <code class="xref py py-obj docutils literal"><span class="pre">t={2,3}</span></code>, and so on. The sampling is for the
+denominator of the objective function.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExample.sample_inv_probs">
+<code class="descname">sample_inv_probs</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.sample_inv_probs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The inverses probabilities.</p>
+<p>This vector has the same dimension as ‘sampled_words’, and contains the
+inverses of the probabilities probability 0 &lt; p &lt;= 1 with which that word
+was included in the sampled set of words.  These inverse probabilities
+appear in the objective function computation (it’s related to importance
+sampling).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExample.sampled_words">
+<code class="descname">sampled_words</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.sampled_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>The sampled word labels.</p>
+<p>This list contains the word-indexes that we sampled for each position in
+the chunk and for each group of chunks.  (It will be empty if the user
+didn’t provide the ARPA language model).  Its dimension is
+num_sample_groups * num_samples, where num_sample_groups == (chunk_length
+/ sample_group_size). The sample-group index has the largest stride (you
+can think of the sample group index as the number i = t /
+sample_group_size, in integer division, where 0 &lt;= t &lt; chunk_length is
+the position in the chunk).  The sampled words within each block of size
+<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample.num_samples" title="kaldi.rnnlm.RnnlmExample.num_samples"><code class="xref py py-obj docutils literal"><span class="pre">num_samples</span></code></a> are sorted and unique.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmExample.swap">
+<code class="descname">swap</code><span class="sig-paren">(</span><em>other:RnnlmExample</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.swap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Swaps contents with another RNNLM example.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><em>RnnlmExample</em></a>) – The other RNNLM example.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExample.vocab_size">
+<code class="descname">vocab_size</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.vocab_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The vocabulary size.</p>
+<p>The vocabulary size (defined as largest integer word-id plus one) for
+which this example was obtained; mostly used in bounds checking.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmExample.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmExample.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the RNNLM example to output stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>os</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.ostream" title="kaldi.base.io.ostream"><em>ostream</em></a>) – The output C++ stream.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether the stream is binary.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmExampleCreator">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmExampleCreator</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleCreator" title="Permalink to this definition">¶</a></dt>
+<dd><p>RNNLM example creator.</p>
+<p>This class takes care of all of the logic of creating minibatches for
+RNNLM training, including the sampling aspect.</p>
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmExampleCreator.accept_sequence">
+<code class="descname">accept_sequence</code><span class="sig-paren">(</span><em>weight:float</em>, <em>words:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleCreator.accept_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accepts a single sequence.</p>
+<p>The user calls this to provide a single sequence (a sentence; or
+multiple sentences that are part of a continuous stream or dialogue,
+separated by &lt;/s&gt;), to this class.  This class will write out
+minibatches when it’s ready.
+This will normally be the result of reading a line of text with the
+format:</p>
+<blockquote>
+<div>&lt;weight&gt; &lt;word1&gt; &lt;word2&gt; ….</div></blockquote>
+<dl class="docutils">
+<dt>e.g.:</dt>
+<dd>1.0  Hello there</dd>
+</dl>
+<p>although the “hello there” would have been converted to integers
+by the time it was read in, via sym2int.pl, so it would look like:</p>
+<blockquote>
+<div>1.0  7620  12309</div></blockquote>
+<dl class="docutils">
+<dt>We also allow:</dt>
+<dd>1.0  Hello there &lt;/s&gt; Hi &lt;/s&gt; My name is Bob</dd>
+</dl>
+<p>if you want to train the model to predict sentences given
+the history of the conversation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmExampleCreator.flush">
+<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleCreator.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flushes out any pending minibatches.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmExampleCreator.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>is:istream</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleCreator.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the lines from input stream.</p>
+<dl class="docutils">
+<dt>Lines will be of the format:</dt>
+<dd>&lt;weight&gt; &lt;possibly-empty-sequence-of-integers&gt;</dd>
+<dt>e.g.:</dt>
+<dd>1.0  2560 8991</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmExampleCreator.without_sampling">
+<code class="descname">without_sampling</code><span class="sig-paren">(</span><em>config:RnnlmEgsConfig</em>, <em>writer:RnnlmExampleWriter</em><span class="sig-paren">)</span> &#x2192; RnnlmExampleCreator<a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleCreator.without_sampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates a new RNNLM example creator.</p>
+<p>This constructor is for when you are not using importance sampling,
+so no samples will be stored in the minibatch and the training code
+will presumably evaluate all the words each time.  This is intended
+to be used for testing purposes.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmExampleDerived">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmExampleDerived</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleDerived" title="Permalink to this definition">¶</a></dt>
+<dd><p>Various quantities/expressions derived from an RNNLM example.</p>
+<p>This class contains various quantities/expressions that are derived from
+the quantities found in <a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmExample</span></code></a>, and which are needed when
+training on that example, particularly by the function
+<a class="reference internal" href="#kaldi.rnnlm.process_rnnlm_output" title="kaldi.rnnlm.process_rnnlm_output"><code class="xref py py-meth docutils literal"><span class="pre">process_rnnlm_output()</span></code></a>.</p>
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExampleDerived.cu_input_words">
+<code class="descname">cu_input_words</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleDerived.cu_input_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA copy of minibatch.input_words.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExampleDerived.cu_output_words">
+<code class="descname">cu_output_words</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleDerived.cu_output_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA copy of minibatch.output_words.</p>
+<p>It’s only used in the sampling case.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmExampleDerived.cu_sampled_words">
+<code class="descname">cu_sampled_words</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleDerived.cu_sampled_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA copy of minibatch.sampled_words.</p>
+<p>It’s only used in the sampling case (in the no-sampling case,
+minibatch.sampled_words would be empty anyway).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmExampleDerived.swap">
+<code class="descname">swap</code><span class="sig-paren">(</span><em>other:RnnlmExampleDerived</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleDerived.swap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Swaps contents with another derived RNNLM example.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExampleDerived" title="kaldi.rnnlm.RnnlmExampleDerived"><em>RnnlmExampleDerived</em></a>) – The other derived RNNLM example.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmExampleSampler">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmExampleSampler</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleSampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>RNNLM example sampler.</p>
+<p>This class encapsulates the logic for sampling words for a minibatch.
+The words at the output of the RNNLM are sampled and we train with an
+importance-sampling algorithm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>config</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmEgsConfig" title="kaldi.rnnlm.RnnlmEgsConfig"><em>RnnlmEgsConfig</em></a>) – The RNNLM example configuration.</li>
+<li><strong>arpa_sampling</strong> (<a class="reference internal" href="#kaldi.rnnlm.SamplingLm" title="kaldi.rnnlm.SamplingLm"><em>SamplingLm</em></a>) – The sampling LM.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmExampleSampler.sample_for_minibatch">
+<code class="descname">sample_for_minibatch</code><span class="sig-paren">(</span><em>minibatch:RnnlmExample</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleSampler.sample_for_minibatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does the sampling for a minibatch.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>minibatch</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><em>RnnlmExample</em></a>) – The minibatch. It is expected to already
+have all fields populated except for <code class="xref py py-obj docutils literal"><span class="pre">sampled_words</span></code> and
+<code class="xref py py-obj docutils literal"><span class="pre">sample_probs</span></code>. This method does the sampling and sets those
+fields.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmExampleSampler.vocab_size">
+<code class="descname">vocab_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.rnnlm.RnnlmExampleSampler.vocab_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets vocabulary size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The vocabulary size, i.e. the highest-numbered word plus one.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmObjectiveOptions">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmObjectiveOptions</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmObjectiveOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for RNNLM objective function.</p>
+<p>Configuration class relating to the objective function used for RNNLM
+training, more specifically for use by the function
+<a class="reference internal" href="#kaldi.rnnlm.process_rnnlm_output" title="kaldi.rnnlm.process_rnnlm_output"><code class="xref py py-meth docutils literal"><span class="pre">process_rnnlm_output()</span></code></a>.</p>
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmObjectiveOptions.den_term_limit">
+<code class="descname">den_term_limit</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmObjectiveOptions.den_term_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modification to the with-sampling objective.</p>
+<p>This prevents instability early in training, but in the end makes no
+difference. We scale down the denominator part of the objective when
+the average denominator part of the objective, for this minibatch, is
+more negative than this value.  Set this to 0.0 to use unmodified
+objective function</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.RnnlmObjectiveOptions.max_logprob_elements">
+<code class="descname">max_logprob_elements</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmObjectiveOptions.max_logprob_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum number of elements in the logprob matrix.</p>
+<p>Maximum number of elements when we allocate a matrix of size
+[minibatch-size, num-words] for computing logprobs of words. If the
+size is exceeded, we will break the matrix along the minibatch axis
+and compute them separately.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmObjectiveOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmObjectiveOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.RnnlmTrainer">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">RnnlmTrainer</code><a class="headerlink" href="#kaldi.rnnlm.RnnlmTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>RNNLM trainer.</p>
+<p>The class RnnlmTrainer is for training an RNNLM (one individual training
+job, not the top-level logic about learning rate schedules, parameter
+averaging, and the like).</p>
+<p>Args:
+train_embedding (bool) Whether to train the embedding matrix.
+core_config (RnnlmCoreTrainerOptions): Options for training the core</p>
+<blockquote>
+<div>RNNLM.</div></blockquote>
+<dl class="docutils">
+<dt>embedding_config (RnnlmEmbeddingTrainerOptions): Options for training the</dt>
+<dd>embedding matrix (only relevant if train_embedding is True).</dd>
+<dt>objective_config (RnnlmObjectiveOptions): Options relating to the</dt>
+<dd>objective function used for training.</dd>
+<dt>word_feature_mat (CuSparseMatrix): Either None, or a sparse word-feature</dt>
+<dd>matrix of dimension vocab-size by feature-dim, where vocab-size is the
+highest-numbered word plus one.</dd>
+<dt>embedding_mat (CuMatrix): The embedding matrix; this is trained if</dt>
+<dd><code class="xref py py-obj docutils literal"><span class="pre">train_embedding</span></code> is True. If <code class="xref py py-obj docutils literal"><span class="pre">word_feature_mat</span></code> is None, this is the
+word-embedding matrix of dimension vocab-size by embedding-dim;
+otherwise it is the feature-embedding matrix of dimension feature-dim
+by by embedding-dim, and we have to multiply it by <code class="xref py py-obj docutils literal"><span class="pre">word_feature_mat</span></code>
+to get the word embedding matrix.</dd>
+</dl>
+<p>rnnlm (Nnet): The RNNLM to be trained.</p>
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmTrainer.num_minibatches_processed">
+<code class="descname">num_minibatches_processed</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.rnnlm.RnnlmTrainer.num_minibatches_processed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of minibatches processed so far.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.RnnlmTrainer.train">
+<code class="descname">train</code><span class="sig-paren">(</span><em>minibatch:RnnlmExample</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.RnnlmTrainer.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train on one example.</p>
+<p>The example is acquired destructively, via swapping contents.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function doesn’t actually train on this example; what it does is
+to train on the previous example, and provide this example to the
+background thread that computes the derived parameters of the example.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.Sampler">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">Sampler</code><a class="headerlink" href="#kaldi.rnnlm.Sampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Word sampler.</p>
+<p>This class allows us to sample a set of words from a distribution over
+words, where the distribution (which ultimately comes from an ARPA-style
+language model) is given as a combination of a unigram distribution with
+a sparse component represented as a list of (word-index, probability)
+pairs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>unigram_probs</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em>) – The unigram probabilities for each word.
+Each elemenet should be &gt;= 0, and they should sum to a value close to
+1.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.rnnlm.Sampler.sample_words">
+<code class="descname">sample_words</code><span class="sig-paren">(</span><em>num_words_to_sample:int</em>, <em>unigram_weight:float</em>, <em>higher_order_probs:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;tuple&lt;int, float&gt;&gt;<a class="headerlink" href="#kaldi.rnnlm.Sampler.sample_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Samples words from the supplied distribution, appropriately scaled.</p>
+<dl class="docutils">
+<dt>Let the unnormalized distribution be as follows:</dt>
+<dd>p(i)  = unigram_weight * u(i) + h(i)</dd>
+</dl>
+<p>where u(i) is the ‘unigram_probs’ list this class was constructed
+with, and h(i) is the probability that word i is given (if any) in
+the sparse vector that ‘higher_order_probs’ represents.
+Notice that we are adding to the unigram distribution, we are not
+backing off to it.  Doing it this way makes a lot of things simpler.</p>
+<dl class="docutils">
+<dt>We define the first-order inclusion probabilities:</dt>
+<dd>q(i) = min(alpha p(i), 1.0)</dd>
+</dl>
+<p>where alpha is chosen so that the sum of q(i) equals
+‘num_words_to_sample’. Then we generate a sample whose first-order
+inclusion probabilities are q(i).  We do all this without explicitly
+iterating over the unigram distribution, so this is fairly fast.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>num_words_to_sample</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of words that we are
+directed sample; must be &gt; 0 and less than the number of nonzero
+elements of the ‘unigram_probs’ that this class was constructed
+with.</li>
+<li><strong>unigram_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Must be &gt; 0.0. Search above for p(i) to
+see what effect it has.</li>
+<li><strong>higher_order_probs</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – A list of pairs (i, p)
+where 0 &lt;= i &lt; unigram_probs.size() (referring to the unigram_probs
+list used in the constructor), and p &gt; 0.0.  This list must be
+sorted and unique w.r.t. i.  Note: the probabilities here will be
+added to the unigram probabilities of the words concerned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The sampled list of words, represented as pairs (i, p), where 0 &lt;= i &lt;
+unigram_probs.size() is the word index and 0 &lt; p &lt;= 1 is the
+probabilitity with which that word was included in the set. The list
+will not be sorted, but it will be unique on the int.  Its size will
+equal num_words_to_sample.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.Sampler.sample_words_with_requirements">
+<code class="descname">sample_words_with_requirements</code><span class="sig-paren">(</span><em>num_words_to_sample:int</em>, <em>unigram_weight:float</em>, <em>higher_order_probs:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em>, <em>words_we_must_sample:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;tuple&lt;int, float&gt;&gt;<a class="headerlink" href="#kaldi.rnnlm.Sampler.sample_words_with_requirements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample words by specifiying a list of words that must be sampled.</p>
+<p>This is an alternative version of <a class="reference internal" href="#kaldi.rnnlm.Sampler.sample_words" title="kaldi.rnnlm.Sampler.sample_words"><code class="xref py py-meth docutils literal"><span class="pre">sample_words()</span></code></a> which allows you
+to specify a list of words that must be sampled (i.e. after scaling,
+they must have probability 1.0.).  It does this by adding them to the
+distribution with sufficiently large probability and then calling
+<a class="reference internal" href="#kaldi.rnnlm.Sampler.sample_words" title="kaldi.rnnlm.Sampler.sample_words"><code class="xref py py-meth docutils literal"><span class="pre">sample_words()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>num_words_to_sample</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of words that we are
+directed sample; must be &gt; 0 and less than the number of nonzero
+elements of the ‘unigram_probs’ that this class was constructed
+with.</li>
+<li><strong>unigram_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Must be &gt; 0.0. Search above for p(i) to
+see what effect it has.</li>
+<li><strong>higher_order_probs</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – A list of pairs (i, p)
+where 0 &lt;= i &lt; unigram_probs.size() (referring to the unigram_probs
+list used in the constructor), and p &gt; 0.0.  This list must be
+sorted and unique w.r.t. i.  Note: the probabilities here will be
+added to the unigram probabilities of the words concerned.</li>
+<li><strong>words_we_must_sample</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – A list of words that must be
+sampled. It must be sorted and unique, and all elements <code class="xref py py-obj docutils literal"><span class="pre">i</span></code> must
+satisfy <code class="xref py py-obj docutils literal"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">len(unigram_probs)</span></code>, where <code class="xref py py-obj docutils literal"><span class="pre">unigram_probs</span></code> is the
+list supplied to the constructor.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The sampled list of words, represented as pairs (i, p), where 0 &lt;= i &lt;
+unigram_probs.size() is the word index and 0 &lt; p &lt;= 1 is the
+probabilitity with which that word was included in the set. The list
+will not be sorted, but it will be unique on the int.  Its size will
+equal num_words_to_sample.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#kaldi.rnnlm.Sampler.sample_words" title="kaldi.rnnlm.Sampler.sample_words"><code class="xref py py-meth docutils literal"><span class="pre">sample_words()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.SamplingLm">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">SamplingLm</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sampling LM.</p>
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.from_estimator">
+<code class="descname">from_estimator</code><span class="sig-paren">(</span><em>estimator:SamplingLmEstimator</em><span class="sig-paren">)</span> &#x2192; SamplingLm<a class="headerlink" href="#kaldi.rnnlm.SamplingLm.from_estimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new sampling LM with the given estimator.</p>
+<p>This constructor reads the object directly from a <a class="reference internal" href="#kaldi.rnnlm.SamplingLmEstimator" title="kaldi.rnnlm.SamplingLmEstimator"><code class="xref py py-obj docutils literal"><span class="pre">SamplingLmEstimator</span></code></a>
+instance, which is much faster than dealing with the ARPA format.  It
+also allows us to avoid having to add a bunch of unnecessary n-grams to
+satisfy the requirements of the ARPA file format. It assumes that you
+have already called <code class="xref py py-meth docutils literal"><span class="pre">estimator.estimate()</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>estimator</strong> (<a class="reference internal" href="#kaldi.rnnlm.SamplingLmEstimator" title="kaldi.rnnlm.SamplingLmEstimator"><em>SamplingLmEstimator</em></a>) – The sampling LM estimator.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.from_options">
+<code class="descname">from_options</code><span class="sig-paren">(</span><em>options:ArpaParseOptions</em>, <em>symbols:SymbolTable</em><span class="sig-paren">)</span> &#x2192; SamplingLm<a class="headerlink" href="#kaldi.rnnlm.SamplingLm.from_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new sampling LM with the given options.</p>
+<p>ARPA LM is read from the file specified in the options. Only text mode
+is supported.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>options</strong> (<a class="reference internal" href="kaldi.lm.html#kaldi.lm.ArpaParseOptions" title="kaldi.lm.ArpaParseOptions"><em>ArpaParseOptions</em></a>) – The options for parsing ARPA LM files.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.get_distribution">
+<code class="descname">get_distribution</code><span class="sig-paren">(</span><em>histories:list&lt;tuple&lt;list&lt;int&gt;</em>, <em>float&gt;&gt;) -&gt; (unigram_prob:float</em>, <em>non_unigram_probs:dict&lt;int</em>, <em>float&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLm.get_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets word probabilities given a list of histories.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>histories</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – A list of histories with
+associated weights.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A scalar <code class="xref py py-obj docutils literal"><span class="pre">unigram_prob</span></code> which is computed by summing all history
+weights after scaling them with the corresponding backoff weights and
+a dictionary mapping words to their corresponding probabilities given
+the list of histories.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The sum of the returned <code class="xref py py-obj docutils literal"><span class="pre">unigram_prob</span></code> plus the second elements of
+the output <code class="xref py py-obj docutils literal"><span class="pre">non_unigram_probs</span></code> will not necessarily be equal to 1.0,
+but it will be equal to the total of the weights of histories in
+<code class="xref py py-obj docutils literal"><span class="pre">histories</span></code>.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#kaldi.rnnlm.SamplingLm.get_distribution_pairs" title="kaldi.rnnlm.SamplingLm.get_distribution_pairs"><code class="xref py py-meth docutils literal"><span class="pre">get_distribution_pairs()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.get_distribution_pairs">
+<code class="descname">get_distribution_pairs</code><span class="sig-paren">(</span><em>histories:list&lt;tuple&lt;list&lt;int&gt;</em>, <em>float&gt;&gt;) -&gt; (unigram_prob:float</em>, <em>non_unigram_probs:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLm.get_distribution_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets word probabilities given a list of histories.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>histories</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – A list of histories with
+associated weights.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A scalar <code class="xref py py-obj docutils literal"><span class="pre">unigram_prob</span></code> which is computed by summing all history
+weights after scaling them with the corresponding backoff weights and
+a list of pairs (word-id, weight), that’s sorted and unique on
+word-id, mapping words to their corresponding probabilities given the
+list of histories.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The sum of the returned <code class="xref py py-obj docutils literal"><span class="pre">unigram_prob</span></code> plus the second elements of
+the output <code class="xref py py-obj docutils literal"><span class="pre">non_unigram_probs</span></code> will not necessarily be equal to 1.0,
+but it will be equal to the total of the weights of histories in
+<code class="xref py py-obj docutils literal"><span class="pre">histories</span></code>.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#kaldi.rnnlm.SamplingLm.get_distribution" title="kaldi.rnnlm.SamplingLm.get_distribution"><code class="xref py py-meth docutils literal"><span class="pre">get_distribution()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.get_unigram_distribution">
+<code class="descname">get_unigram_distribution</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;float&gt;<a class="headerlink" href="#kaldi.rnnlm.SamplingLm.get_unigram_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets unigram probabilities.</p>
+<p>This method outputs the unigram distribution of all words represented
+by integers from 0 to maximum symbol id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of floats representing the unigram distribution of all words.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There can be gaps of integers for words in the ARPA LM, we set the
+probabilities of words that are not in the ARPA LM to be 0.0, e.g.,
+symbol id 0 which represents epsilon has probability 0.0</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.options">
+<code class="descname">options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ArpaParseOptions<a class="headerlink" href="#kaldi.rnnlm.SamplingLm.options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets ARPA parser options.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The ARPA parser options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.order">
+<code class="descname">order</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.rnnlm.SamplingLm.order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets n-gram order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The n-gram order, e.g. 1 for a unigram LM, 2 for a bigram.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLm.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the sampling LM from input stream.</p>
+<p>This method does not read the ARPA format, it reads the special-purpose
+format written by <a class="reference internal" href="#kaldi.rnnlm.SamplingLm.write" title="kaldi.rnnlm.SamplingLm.write"><code class="xref py py-meth docutils literal"><span class="pre">write()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>is</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.istream" title="kaldi.base.io.istream"><em>istream</em></a>) – The input C++ stream.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether the stream is binary.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#kaldi.rnnlm.SamplingLm.read_arpa" title="kaldi.rnnlm.SamplingLm.read_arpa"><code class="xref py py-meth docutils literal"><span class="pre">read_arpa()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.read_arpa">
+<code class="descname">read_arpa</code><span class="sig-paren">(</span><em>is:istream</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLm.read_arpa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the sampling LM from a file in ARPA format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.istream" title="kaldi.base.io.istream"><em>istream</em></a>) – The input C++ stream.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.swap">
+<code class="descname">swap</code><span class="sig-paren">(</span><em>other:SamplingLm</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLm.swap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Swaps contents with another sampling LM.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<a class="reference internal" href="#kaldi.rnnlm.SamplingLm" title="kaldi.rnnlm.SamplingLm"><em>SamplingLm</em></a>) – The other sampling LM.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.vocab_size">
+<code class="descname">vocab_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.rnnlm.SamplingLm.vocab_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets vocabulary size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The vocabulary size, i.e. the highest-numbered word plus one.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLm.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLm.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the sampling LM to output stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>os</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.ostream" title="kaldi.base.io.ostream"><em>ostream</em></a>) – The output C++ stream.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether the stream is binary.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.SamplingLmEstimator">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">SamplingLmEstimator</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sampling LM estimator.</p>
+<p>This class is responsible for creating a backoff n-gram language model of
+a type that’s suitable for use in the importance sampling algorithm we
+use for RNNLM training.  It’s the type of language model that could in
+principle be written in ARPA format, but it’s created in a special way.
+There are a few characteristics of the importance sampling algorithm that
+make it desirable to write a special purpose language model instead of
+using a generic language model toolkit. These are:</p>
+<ul class="simple">
+<li>When we sample, we sample from a distribution that is the average of a
+fairly large number of history states N (e.g., N=128), that can be
+treated as independently chosen for practical purposes (except that
+sometimes they’ll all be the BOS history, which is a special case).</li>
+<li>The convergence of the sampling-based method won’t be sensitive to
+small differences in the probabilities of the distribution we sample
+on.</li>
+<li>It’s important not to have too many words that are specifically
+predicted from a typical history-state, or it makes the sampling
+process slow.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#kaldi.rnnlm.SamplingLmEstimatorOptions" title="kaldi.rnnlm.SamplingLmEstimatorOptions"><em>SamplingLmEstimatorOptions</em></a>) – Options for sampling LM estimator.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLmEstimator.estimate">
+<code class="descname">estimate</code><span class="sig-paren">(</span><em>will_write_arpa:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimator.estimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates the language model (including the discounting).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>will_write_arpa</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to retain certain n-grams (required
+in the ARPA file format) that would otherwise have been pruned.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLmEstimator.print_as_arpa">
+<code class="descname">print_as_arpa</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>symbols:SymbolTable</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimator.print_as_arpa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints the LM in ARPA format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>os</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.ostream" title="kaldi.base.io.ostream"><em>ostream</em></a>) – The output stream to write the model to.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table to map integers to words.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLmEstimator.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>is:istream</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimator.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the lines read from the input stream.</p>
+<dl class="docutils">
+<dt>Lines will be of the format:</dt>
+<dd>&lt;weight&gt; &lt;possibly-empty-sequence-of-integers&gt;</dd>
+<dt>e.g.:</dt>
+<dd>1.0  2560 8991</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.istream" title="kaldi.base.io.istream"><em>istream</em></a>) – The input stream.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLmEstimator.process_line">
+<code class="descname">process_line</code><span class="sig-paren">(</span><em>corpus_weight:float</em>, <em>sentence:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimator.process_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes one line of the input, adding it to the stored stats.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>corpus_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Weight attached to the corpus from which this
+data came. (Note: you shouldn’t repeat sentences when providing
+them to this class, although this is allowed during the actual
+RNNLM training; instead, you should make sure that the multiplicity
+that you use in the RNNLM for this corpus is reflected in
+‘corpus_weight’.)</li>
+<li><strong>sentence</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – The sentence we are processing. It is not
+expected to contain the BOS symbol, and should not be terminated by
+the EOS symbol, although the EOS symbol is allowed internally
+(where it can be used to separate a sequence of sentences from a
+dialogue or other sequence of text, if you want to do this).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions">
+<em class="property">class </em><code class="descclassname">kaldi.rnnlm.</code><code class="descname">SamplingLmEstimatorOptions</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for sampling LM estimator.</p>
+<dl class="attribute">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.backoff_factor">
+<code class="descname">backoff_factor</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.backoff_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The backoff factor.</p>
+<p>Factor by which p(w|h) for higher-than-bigram history state h (with the
+backoff term excluded) has to be greater than p(w|backoff-state) for us
+to include it in the model (in addition to the <a class="reference internal" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.unigram_factor" title="kaldi.rnnlm.SamplingLmEstimatorOptions.unigram_factor"><code class="xref py py-obj docutils literal"><span class="pre">unigram_factor</span></code></a>
+constraint). Must be &gt;0.0 and &lt; unigram-factor.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.bos_factor">
+<code class="descname">bos_factor</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.bos_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The beginning of sentence factor.</p>
+<p>Factor by which p(w|h) for h == the BOS history state (with the backoff
+term excluded) has to be higher than p(w|unigram-state) for us to
+include it in the model. Must be &gt;0.0 and &lt;= unigram-factor.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.bos_symbol">
+<code class="descname">bos_symbol</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.bos_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integer id for the BOS word (&lt;s&gt;).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.brk_symbol">
+<code class="descname">brk_symbol</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.brk_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integer id for the Break word (&lt;brk&gt;).</p>
+<p>Not needed but included for ease of scripting.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.check">
+<code class="descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the options.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If validation fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.discounting_constant">
+<code class="descname">discounting_constant</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.discounting_constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constant for absolute discounting.</p>
+<p>It should be in the range 0.8 to 1.0. Smaller values give a larger
+language model.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.eos_symbol">
+<code class="descname">eos_symbol</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.eos_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integer id for the EOS word (&lt;/s&gt;).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.ngram_order">
+<code class="descname">ngram_order</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.ngram_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Order for the n-gram model (must be &gt;= 1), e.g. 3 means trigram</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.unigram_factor">
+<code class="descname">unigram_factor</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.unigram_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The unigram factor.</p>
+<p>Factor by which p(w|h) for non-unigram history state h (with the backoff
+term excluded) has to be greater than p(w|unigram-state) for us to
+include it in the model. Must be &gt;0.0, will normally be &gt;1.0.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.unigram_power">
+<code class="descname">unigram_power</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.unigram_power" title="Permalink to this definition">¶</a></dt>
+<dd><p>The unigram power scalar.</p>
+<p>This is an important configuration value. After all other stages of
+estimating the model, the unigram probabilities are taken to this power,
+e.g. 0.75, and then rescaled to sum to 1.0. There are both theoretical
+and practical reasons why we want to apply this power just to the unigram
+portion.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.rnnlm.SamplingLmEstimatorOptions.vocab_size">
+<code class="descname">vocab_size</code><a class="headerlink" href="#kaldi.rnnlm.SamplingLmEstimatorOptions.vocab_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The vocabulary size.</p>
+<p>If set, must be set to the highest-numbered vocabulary word plus one;
+otherwise this is worked out from the symbol table.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.rnnlm.check_distribution">
+<code class="descclassname">kaldi.rnnlm.</code><code class="descname">check_distribution</code><span class="sig-paren">(</span><em>d:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.check_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates a distribution.</p>
+<p>Checks if a distribution is sorted and unique on its first values, and
+if all of its second values are &gt; 0.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – The input distribution.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If validation fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.rnnlm.get_rnnlm_computation_request">
+<code class="descclassname">kaldi.rnnlm.</code><code class="descname">get_rnnlm_computation_request</code><span class="sig-paren">(</span><em>minibatch:RnnlmExample</em>, <em>need_model_derivative:bool</em>, <em>need_input_derivative:bool</em>, <em>store_component_stats:bool</em><span class="sig-paren">)</span> &#x2192; ComputationRequest<a class="headerlink" href="#kaldi.rnnlm.get_rnnlm_computation_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a computation request for the given RNNLM example.</p>
+<p>This function takes an RnnlmExample (which should already have been
+frame-selected, if desired, and merged into a minibatch) and produces a
+ComputationRequest. It assumes you don’t want the derivatives w.r.t. the
+inputs; if you do, you can create/modify the ComputationRequest manually.
+Assumes that if <code class="xref py py-obj docutils literal"><span class="pre">need_model_derivative</span></code> is true, you will be supplying
+derivatives w.r.t. all outputs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.rnnlm.get_rnnlm_example_derived">
+<code class="descclassname">kaldi.rnnlm.</code><code class="descname">get_rnnlm_example_derived</code><span class="sig-paren">(</span><em>minibatch:RnnlmExample</em>, <em>need_embedding_deriv:bool</em><span class="sig-paren">)</span> &#x2192; RnnlmExampleDerived<a class="headerlink" href="#kaldi.rnnlm.get_rnnlm_example_derived" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a derived RNNLM example.</p>
+<p>Sets up the structure containing derived parameters used in training
+and objective function computation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>minibatch</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><em>RnnlmExample</em></a>) – The input minibatch for which we are
+computing the derived parameters.</li>
+<li><strong>need_embedding_deriv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – True if we are going to be computing
+derivatives w.r.t. the word embedding (e.g., needed in a typical
+training configuration); if this is True, it will compute
+<code class="xref py py-obj docutils literal"><span class="pre">input_words_tranpose</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A derived RNNLM example structure for the input minibatch.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.rnnlm.merge_distributions">
+<code class="descclassname">kaldi.rnnlm.</code><code class="descname">merge_distributions</code><span class="sig-paren">(</span><em>d1:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em>, <em>d2:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;tuple&lt;int, float&gt;&gt;<a class="headerlink" href="#kaldi.rnnlm.merge_distributions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges two distributions.</p>
+<p>Sums the probabilities of any elements that occur in both input
+distributions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>d1</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – The first input distribution.</li>
+<li><strong>d2</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – The second input distribution.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The output distribution.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.rnnlm.process_rnnlm_output">
+<code class="descclassname">kaldi.rnnlm.</code><code class="descname">process_rnnlm_output</code><span class="sig-paren">(</span><em>objective_opts:RnnlmObjectiveOptions</em>, <em>minibatch:RnnlmExample</em>, <em>derived:RnnlmExampleDerived</em>, <em>word_embedding:CuMatrixBase</em>, <em>nnet_output:CuMatrixBase</em>, <em>word_embedding_deriv:CuMatrixBase</em>, <em>nnet_output_deriv:CuMatrixBase) -&gt; (weight:float</em>, <em>objf_num:float</em>, <em>objf_den:float</em>, <em>objf_den_exact:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.rnnlm.process_rnnlm_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the output of RNNLM computation.</p>
+<p>This function processes the output of the RNNLM computation for a single
+minibatch; it outputs the objective-function contributions from the
+numerator and denominator terms, and [if requested] the derivatives
+of the objective function w.r.t. the data inputs.</p>
+<p>In the explanation below, the index <code class="xref py py-obj docutils literal"><span class="pre">i</span></code> encompasses both the time <code class="xref py py-obj docutils literal"><span class="pre">t</span></code>
+and the member <code class="xref py py-obj docutils literal"><span class="pre">n</span></code> within the minibatch.
+The objective function referred to here is of the form</p>
+<blockquote>
+<div><code class="xref py py-obj docutils literal"><span class="pre">objf</span> <span class="pre">=</span> <span class="pre">sum_i</span> <span class="pre">weight(i)</span> <span class="pre">*</span> <span class="pre">(</span> <span class="pre">num_term(i)</span> <span class="pre">+</span> <span class="pre">den_term(i)</span> <span class="pre">)</span></code></div></blockquote>
+<p>where num_term(i) is the log-prob of the ‘correct’ word, which equals
+the dot product of the neural-network output with the word embedding,
+which we can write as follows</p>
+<blockquote>
+<div><code class="xref py py-obj docutils literal"><span class="pre">num_term(i)</span> <span class="pre">=</span> <span class="pre">l(i,</span> <span class="pre">minibatch.output_words(i))</span></code></div></blockquote>
+<p>where <code class="xref py py-obj docutils literal"><span class="pre">l(i,</span> <span class="pre">w)</span></code> is the unnormalized log-prob of word <code class="xref py py-obj docutils literal"><span class="pre">w</span></code> for position
+<code class="xref py py-obj docutils literal"><span class="pre">i</span></code>, specifically</p>
+<blockquote>
+<div><code class="xref py py-obj docutils literal"><span class="pre">l(i,</span> <span class="pre">w)</span> <span class="pre">=</span> <span class="pre">vec_vec(nnet_output.Row(i),</span> <span class="pre">word_embedding.Row(w))</span></code>.</div></blockquote>
+<p>Without importance sampling (if <code class="xref py py-obj docutils literal"><span class="pre">len(minibatch.sampled_words)</span> <span class="pre">==</span> <span class="pre">0</span></code>),
+we get</p>
+<blockquote>
+<div><code class="xref py py-obj docutils literal"><span class="pre">den_term(i)</span> <span class="pre">=</span> <span class="pre">1.0</span> <span class="pre">-</span> <span class="pre">(sum_w</span> <span class="pre">q(i,w))</span></code></div></blockquote>
+<p>This is a lower bound on the ‘natural’ normalizer term which is of the
+form <code class="xref py py-obj docutils literal"><span class="pre">-log(sum_w</span> <span class="pre">p(i,w))</span></code>, and its linearity in the p’s allows
+importance sampling). Here,</p>
+<blockquote>
+<div><p><code class="xref py py-obj docutils literal"><span class="pre">p(i,</span> <span class="pre">w)</span> <span class="pre">=</span> <span class="pre">exp(l(i,</span> <span class="pre">w))</span></code></p>
+<p><code class="xref py py-obj docutils literal"><span class="pre">q(i,</span> <span class="pre">w)</span> <span class="pre">=</span> <span class="pre">exp(l(i,</span> <span class="pre">w))</span> <span class="pre">if</span> <span class="pre">l(i,</span> <span class="pre">w</span> <span class="pre">&lt;</span> <span class="pre">0)</span> <span class="pre">else</span>&#160; <span class="pre">1</span> <span class="pre">+</span> <span class="pre">l(i,</span> <span class="pre">w)</span></code></p>
+</div></blockquote>
+<p>[the reason we use <code class="xref py py-obj docutils literal"><span class="pre">q(i,</span> <span class="pre">w)</span></code> instead of <code class="xref py py-obj docutils literal"><span class="pre">p(i,</span> <span class="pre">w)</span></code> is that it gives a
+closer bound to the natural normalizer term and helps avoid
+instability in early phases of training.]</p>
+<p>With importance sampling (if minibatch.sampled_words.size() &gt; 0),
+<code class="xref py py-obj docutils literal"><span class="pre">den_term</span></code> equals</p>
+<blockquote>
+<div><code class="xref py py-obj docutils literal"><span class="pre">den_term(i)</span> <span class="pre">=</span>&#160; <span class="pre">1.0</span> <span class="pre">-</span> <span class="pre">(sum_w</span> <span class="pre">q(w,i)</span> <span class="pre">*</span> <span class="pre">sample_inv_prob(w,i))</span></code></div></blockquote>
+<p>where <code class="xref py py-obj docutils literal"><span class="pre">sample_inv_prob(w,</span> <span class="pre">i)</span></code> is zero if word w was not sampled
+for this <code class="xref py py-obj docutils literal"><span class="pre">t</span></code>, and 1.0 / (the probability with which it was sampled)
+if it was sampled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>objective_opts</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmObjectiveOptions" title="kaldi.rnnlm.RnnlmObjectiveOptions"><em>RnnlmObjectiveOptions</em></a>) – Options for RNNLM objective.</li>
+<li><strong>minibatch</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><em>RnnlmExample</em></a>) – The minibatch for which we are processing
+the output.</li>
+<li><strong>derived</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExampleDerived" title="kaldi.rnnlm.RnnlmExampleDerived"><em>RnnlmExampleDerived</em></a>) – This struct contains certain quantities
+which are precomputed from <code class="xref py py-obj docutils literal"><span class="pre">minibatch</span></code>. It’s to be generated by
+calling <a class="reference internal" href="#kaldi.rnnlm.get_rnnlm_example_derived" title="kaldi.rnnlm.get_rnnlm_example_derived"><code class="xref py py-meth docutils literal"><span class="pre">get_rnnlm_example_derived()</span></code></a> prior to calling this
+function.</li>
+<li><strong>word_embedding</strong> (<em>CuMatrixBase</em>) – The word-embedding, dimension is
+num-words by embedding-dimension. This does not have to be ‘real’
+word-indexes, it can be fake word-indexes renumbered to include only
+the required words if sampling is done; c.f.
+<a class="reference internal" href="#kaldi.rnnlm.renumber_rnnlm_example" title="kaldi.rnnlm.renumber_rnnlm_example"><code class="xref py py-meth docutils literal"><span class="pre">renumber_rnnlm_example()</span></code></a>.</li>
+<li><strong>nnet_output</strong> (<em>CuMatrixBase</em>) – The neural net output. Num-rows is
+<code class="xref py py-obj docutils literal"><span class="pre">minibatch.chunk_length</span> <span class="pre">*</span> <span class="pre">minibatch.num_chunks</span></code>, where the stride for
+the time <code class="xref py py-obj docutils literal"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">t</span> <span class="pre">&lt;</span> <span class="pre">chunk_length</span></code> is larger, so there are a block of
+rows for <code class="xref py py-obj docutils literal"><span class="pre">t=0</span></code>, a block for <code class="xref py py-obj docutils literal"><span class="pre">t=1</span></code>, and so on.  Num-columns is
+embedding-dimension.</li>
+<li><strong>word_embedding_deriv</strong> (<em>CuMatrixBase</em>) – If not None, the derivative of the
+objective function w.r.t. <code class="xref py py-obj docutils literal"><span class="pre">word_embedding</span></code> is <em>added</em> to this
+location.</li>
+<li><strong>nnet_output_deriv</strong> (<em>CuMatrixBase</em>) – If not None, the derivative of the
+objective function w.r.t. <code class="xref py py-obj docutils literal"><span class="pre">nnet_output</span></code> is <em>added</em> to this location.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>weight</strong> – The total weight over this minibatch. It is equal to
+<code class="xref py py-obj docutils literal"><span class="pre">minibatch.output_weights.sum()</span></code>.</li>
+<li><strong>objf_num</strong> – The total numerator part of the objective function,
+i.e. the sum over <code class="xref py py-obj docutils literal"><span class="pre">i</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">weight(i)</span> <span class="pre">*</span> <span class="pre">num_term(i)</span></code>.</li>
+<li><strong>objf_den</strong> – The total denominator part of the objective function,
+i.e. the sum over <code class="xref py py-obj docutils literal"><span class="pre">i</span></code> of <code class="xref py py-obj docutils literal"><span class="pre">weight(i)</span> <span class="pre">*</span> <span class="pre">den_term(i)</span></code>. You add this to
+<code class="xref py py-obj docutils literal"><span class="pre">objf_num</span></code> to get the total objective function.</li>
+<li><strong>objf_den_exact</strong> – If we’re not doing sampling (i.e. if
+<code class="xref py py-obj docutils literal"><span class="pre">len(minibatch.sampled_words)</span> <span class="pre">==</span> <span class="pre">0</span></code>), the ‘exact’ denominator part of
+the objective function, i.e. the weighted sum of <code class="xref py py-obj docutils literal"><span class="pre">exact_den_term(i)</span> <span class="pre">=</span>
+<span class="pre">-log(sum_w</span> <span class="pre">p(i,w))</span></code>. If we are sampling, then there is no exact
+denominator part, and this will be set to zero. This is provided for
+diagnostic purposes. Derivatives will be computed w.r.t. the
+objective consisting of <code class="xref py py-obj docutils literal"><span class="pre">objf_num</span> <span class="pre">+</span> <span class="pre">objf_den</span></code>, i.e. ignoring the
+‘exact’ one.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.rnnlm.read_sparse_word_features">
+<code class="descclassname">kaldi.rnnlm.</code><code class="descname">read_sparse_word_features</code><span class="sig-paren">(</span><em>is:istream</em>, <em>feature_dim:int</em><span class="sig-paren">)</span> &#x2192; SparseMatrix<a class="headerlink" href="#kaldi.rnnlm.read_sparse_word_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads sparse word features from input stream.</p>
+<blockquote>
+<div><p>Reads a text file (e.g. exp/rnnlm/word_feats.txt) which maps words to
+sparse combinations of features.  The text file contains lines of the
+format:</p>
+<blockquote>
+<div>&lt;word-index&gt; &lt;feat1-index&gt; &lt;feat1-value&gt; &lt;feat2-index&gt; &lt;feat2-value&gt;…</div></blockquote>
+<dl class="docutils">
+<dt>with the feature-indexes in sorted order, for example:</dt>
+<dd>2056  11 3.0 25 1.0 1069 1.0</dd>
+</dl>
+<p>The word-indexes are expected to be in order 0, 1, 2, …; so they don’t
+really add any information; they are included for human readability.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">is (istream): The stream we are reading.
+feature_dim (int): The feature dimension, i.e. the highest-numbered</p>
+<blockquote class="last">
+<div>possible feature plus one. We don’t attempt to work this out from the
+input, in case for some reason this vocabulary does not use the
+highest-numbered feature.</div></blockquote>
+</dd>
+</dl>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>A sparse matrix of dimension num-words by feature-dim, containing the</dt>
+<dd>word feature information in the file we read.</dd>
+<dt>Raises:</dt>
+<dd>RuntimeError: If the input is not as expected.</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.rnnlm.renumber_rnnlm_example">
+<code class="descclassname">kaldi.rnnlm.</code><code class="descname">renumber_rnnlm_example</code><span class="sig-paren">(</span><em>minibatch:RnnlmExample</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.rnnlm.renumber_rnnlm_example" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renumbers word-ids in a minibatch.</p>
+<p>This function renumbers the word-ids referred to in a minibatch, creating
+a numbering that covers exactly the words referred to in this minibatch.
+It is only to be called when sampling is used, i.e. when
+<code class="xref py py-obj docutils literal"><span class="pre">minibatch.samples</span></code> is not empty.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>minibatch</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><em>RnnlmExample</em></a>) – The minibatch to be modified. At entry the
+words-indexes in fields <code class="xref py py-obj docutils literal"><span class="pre">input_words</span></code>, and <code class="xref py py-obj docutils literal"><span class="pre">sampled_words</span></code> will be in
+their canonical numbering. At exit the numbers present in those
+arrays will be indexes into the <code class="xref py py-obj docutils literal"><span class="pre">active_words</span></code> vector that this
+function outputs. For instance, suppose <code class="xref py py-obj docutils literal"><span class="pre">minibatch.input_words[9]</span> <span class="pre">==</span>
+<span class="pre">1034</span></code> at entry; at exit we might have <code class="xref py py-obj docutils literal"><span class="pre">minibatch.input_words[9]</span> <span class="pre">==</span>
+<span class="pre">94</span></code>, with <code class="xref py py-obj docutils literal"><span class="pre">active_words[94]</span> <span class="pre">==</span> <span class="pre">1034</span></code>. This function requires that
+<code class="xref py py-obj docutils literal"><span class="pre">minibatch.sampled_words</span></code> is nonempty. If <code class="xref py py-obj docutils literal"><span class="pre">minibatch.sampled_words</span></code>
+is empty, it means that sampling has not been done, so the negative
+part of the objf will use all the words. In this case the minibatch
+implicitly uses all words, so there is no use in renumbering. At
+exit, <code class="xref py py-obj docutils literal"><span class="pre">minibatch.vocab_size</span></code> will have been set to the same value as
+<code class="xref py py-obj docutils literal"><span class="pre">len(active_words)</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The list of active words, i.e. the words that were present in the
+fields <code class="xref py py-obj docutils literal"><span class="pre">input_words</span></code>, and <code class="xref py py-obj docutils literal"><span class="pre">sampled_words</span></code> in <code class="xref py py-obj docutils literal"><span class="pre">minibatch</span></code> on entry. At
+exit, this list will be sorted and unique.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is not necessary for this function to renumber <code class="xref py py-obj docutils literal"><span class="pre">output_words</span></code>
+because in the sampling case they are indexes into blocks of
+<code class="xref py py-obj docutils literal"><span class="pre">sampled_words</span></code> (see documentation for <a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmExample</span></code></a>).</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.rnnlm.sample_without_replacement">
+<code class="descclassname">kaldi.rnnlm.</code><code class="descname">sample_without_replacement</code><span class="sig-paren">(</span><em>probs:list&lt;float&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.rnnlm.sample_without_replacement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Samples without replacement from a distribution.</p>
+<p>Samples without replacement from a distribution, with provided 1st order
+inclusion probabilities. For example, if <code class="xref py py-obj docutils literal"><span class="pre">probs[i]</span> <span class="pre">==</span> <span class="pre">1.0</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">i</span></code> will
+definitely be included in the output list, and if <code class="xref py py-obj docutils literal"><span class="pre">probs[i]</span> <span class="pre">==</span> <span class="pre">0.0</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">i</span></code>
+will definitely not be included.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>probs</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em>) – The input list of inclusion probabilities, with
+0.0 &lt;= probs[i] &lt;= 1.0, and the sum of <code class="xref py py-obj docutils literal"><span class="pre">probs</span></code> should be close to an
+integer.  (specifically: within 1.0e-03 of a whole number; this
+should be easy to ensure in double precision). Let ‘k’ be this sum,
+rounded to the nearest integer.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The output list is an unsorted list of ‘k’ distinct samples with
+first order inclusion probabilities given by <code class="xref py py-obj docutils literal"><span class="pre">probs</span></code>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.rnnlm.total_of_distribution">
+<code class="descclassname">kaldi.rnnlm.</code><code class="descname">total_of_distribution</code><span class="sig-paren">(</span><em>d:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.rnnlm.total_of_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sum of the elements of a distribution.
+:param d: The input distribution.
+:type d: List[Tuple[int,float]]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The sum of elements of a distribution.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.sgmm2.html" class="btn btn-neutral float-right" title="kaldi.sgmm2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.online2.html" class="btn btn-neutral" title="kaldi.online2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

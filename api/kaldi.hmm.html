@@ -1,0 +1,995 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.hmm &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.itf" href="kaldi.itf.html"/>
+        <link rel="prev" title="kaldi.gmm" href="kaldi.gmm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.hmm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.hmm.posterior">kaldi.hmm.posterior</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.hmm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.hmm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.hmm">
+<span id="kaldi-hmm"></span><h1>kaldi.hmm<a class="headerlink" href="#module-kaldi.hmm" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.accumulate_tree_stats" title="kaldi.hmm.accumulate_tree_stats"><code class="xref py py-obj docutils literal"><span class="pre">accumulate_tree_stats</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.get_pdfs_for_phones" title="kaldi.hmm.get_pdfs_for_phones"><code class="xref py py-obj docutils literal"><span class="pre">get_pdfs_for_phones</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.get_phones_for_pdfs" title="kaldi.hmm.get_phones_for_pdfs"><code class="xref py py-obj docutils literal"><span class="pre">get_phones_for_pdfs</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.read_phone_map" title="kaldi.hmm.read_phone_map"><code class="xref py py-obj docutils literal"><span class="pre">read_phone_map</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.AccumulateTreeStatsInfo" title="kaldi.hmm.AccumulateTreeStatsInfo"><code class="xref py py-obj docutils literal"><span class="pre">AccumulateTreeStatsInfo</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::AccumulateTreeStatsInfo</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.AccumulateTreeStatsOptions" title="kaldi.hmm.AccumulateTreeStatsOptions"><code class="xref py py-obj docutils literal"><span class="pre">AccumulateTreeStatsOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::AccumulateTreeStatsOptions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.HmmTopology" title="kaldi.hmm.HmmTopology"><code class="xref py py-obj docutils literal"><span class="pre">HmmTopology</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::HmmTopology</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.MapTransitionUpdateConfig" title="kaldi.hmm.MapTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MapTransitionUpdateConfig</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MapTransitionUpdateConfig</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.MleTransitionUpdateConfig" title="kaldi.hmm.MleTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MleTransitionUpdateConfig</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MleTransitionUpdateConfig</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><code class="xref py py-obj docutils literal"><span class="pre">TransitionModel</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::TransitionModel</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.hmm.AccumulateTreeStatsInfo">
+<em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">AccumulateTreeStatsInfo</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::AccumulateTreeStatsInfo</p>
+<dl class="attribute">
+<dt id="kaldi.hmm.AccumulateTreeStatsInfo.central_position">
+<code class="descname">central_position</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsInfo.central_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 AccumulateTreeStatsInfo.central_position</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.AccumulateTreeStatsInfo.ci_phones">
+<code class="descname">ci_phones</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsInfo.ci_phones" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::int32&gt; AccumulateTreeStatsInfo.ci_phones</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.AccumulateTreeStatsInfo.context_width">
+<code class="descname">context_width</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsInfo.context_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 AccumulateTreeStatsInfo.context_width</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.AccumulateTreeStatsInfo.phone_map">
+<code class="descname">phone_map</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsInfo.phone_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::int32&gt; AccumulateTreeStatsInfo.phone_map</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.AccumulateTreeStatsInfo.var_floor">
+<code class="descname">var_floor</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsInfo.var_floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat AccumulateTreeStatsInfo.var_floor</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.hmm.AccumulateTreeStatsOptions">
+<em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">AccumulateTreeStatsOptions</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::AccumulateTreeStatsOptions</p>
+<dl class="attribute">
+<dt id="kaldi.hmm.AccumulateTreeStatsOptions.central_position">
+<code class="descname">central_position</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsOptions.central_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ int AccumulateTreeStatsOptions.central_position</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.AccumulateTreeStatsOptions.ci_phones_str">
+<code class="descname">ci_phones_str</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsOptions.ci_phones_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::string AccumulateTreeStatsOptions.ci_phones_str</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.AccumulateTreeStatsOptions.collapse_pdf_classes">
+<code class="descname">collapse_pdf_classes</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsOptions.collapse_pdf_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool AccumulateTreeStatsOptions.collapse_pdf_classes</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.AccumulateTreeStatsOptions.context_width">
+<code class="descname">context_width</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsOptions.context_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ int AccumulateTreeStatsOptions.context_width</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.AccumulateTreeStatsOptions.phone_map_rxfilename">
+<code class="descname">phone_map_rxfilename</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsOptions.phone_map_rxfilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::string AccumulateTreeStatsOptions.phone_map_rxfilename</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.AccumulateTreeStatsOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumulateTreeStatsOptions::Register(::kaldi::OptionsItf <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.AccumulateTreeStatsOptions.var_floor">
+<code class="descname">var_floor</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsOptions.var_floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat AccumulateTreeStatsOptions.var_floor</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.hmm.HmmTopology">
+<em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">HmmTopology</code><a class="headerlink" href="#kaldi.hmm.HmmTopology" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::HmmTopology</p>
+<dl class="class">
+<dt id="kaldi.hmm.HmmTopology.HmmState">
+<em class="property">class </em><code class="descname">HmmState</code><a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::HmmTopology::HmmState</p>
+<dl class="attribute">
+<dt id="kaldi.hmm.HmmTopology.HmmState.forward_pdf_class">
+<code class="descname">forward_pdf_class</code><a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.forward_pdf_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 HmmTopology::HmmState.forward_pdf_class</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.HmmTopology.HmmState.self_loop_pdf_class">
+<code class="descname">self_loop_pdf_class</code><a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.self_loop_pdf_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 HmmTopology::HmmState.self_loop_pdf_class</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.HmmTopology.HmmState.transitions">
+<code class="descname">transitions</code><a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::std::pair&lt; ::int32, ::kaldi::BaseFloat&gt; &gt; HmmTopology::HmmState.transitions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.HmmState.with_forward_and_self_pdf">
+<code class="descname">with_forward_and_self_pdf</code><span class="sig-paren">(</span><em>forward_pdf_class:int</em>, <em>self_loop_pdf_class:int</em><span class="sig-paren">)</span> &#x2192; HmmState<a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.with_forward_and_self_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::HmmTopology::HmmState&gt; ::kaldi::HmmTopology::HmmState::HmmState(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.HmmState.with_pdf">
+<code class="descname">with_pdf</code><span class="sig-paren">(</span><em>pdf_class:int</em><span class="sig-paren">)</span> &#x2192; HmmState<a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.with_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::HmmTopology::HmmState&gt; ::kaldi::HmmTopology::HmmState::HmmState(int)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.check">
+<code class="descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.HmmTopology.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::HmmTopology::Check()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.get_phone_to_num_pdf_classes">
+<code class="descname">get_phone_to_num_pdf_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.hmm.HmmTopology.get_phone_to_num_pdf_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::HmmTopology::GetPhoneToNumPdfClasses(::std::vector&lt; ::int32&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.get_phones">
+<code class="descname">get_phones</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.hmm.HmmTopology.get_phones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::std::vector&lt; ::int32&gt; ::kaldi::HmmTopology::GetPhones()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.is_hmm">
+<code class="descname">is_hmm</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.hmm.HmmTopology.is_hmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::HmmTopology::IsHmm()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.min_length">
+<code class="descname">min_length</code><span class="sig-paren">(</span><em>phone:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.HmmTopology.min_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::HmmTopology::MinLength(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.num_pdf_classes">
+<code class="descname">num_pdf_classes</code><span class="sig-paren">(</span><em>phone:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.HmmTopology.num_pdf_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::HmmTopology::NumPdfClasses(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.HmmTopology.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::HmmTopology::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.topology_for_phone">
+<code class="descname">topology_for_phone</code><span class="sig-paren">(</span><em>phone:int</em><span class="sig-paren">)</span> &#x2192; list&lt;HmmState&gt;<a class="headerlink" href="#kaldi.hmm.HmmTopology.topology_for_phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::HmmTopology::TopologyEntry ::kaldi::HmmTopology::TopologyForPhone(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.HmmTopology.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::HmmTopology::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.hmm.MapTransitionUpdateConfig">
+<em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">MapTransitionUpdateConfig</code><a class="headerlink" href="#kaldi.hmm.MapTransitionUpdateConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MapTransitionUpdateConfig</p>
+<dl class="method">
+<dt id="kaldi.hmm.MapTransitionUpdateConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.MapTransitionUpdateConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MapTransitionUpdateConfig::Register(::kaldi::OptionsItf <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.MapTransitionUpdateConfig.share_for_pdfs">
+<code class="descname">share_for_pdfs</code><a class="headerlink" href="#kaldi.hmm.MapTransitionUpdateConfig.share_for_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MapTransitionUpdateConfig.share_for_pdfs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.MapTransitionUpdateConfig.tau">
+<code class="descname">tau</code><a class="headerlink" href="#kaldi.hmm.MapTransitionUpdateConfig.tau" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MapTransitionUpdateConfig.tau</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.hmm.MleTransitionUpdateConfig">
+<em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">MleTransitionUpdateConfig</code><a class="headerlink" href="#kaldi.hmm.MleTransitionUpdateConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MleTransitionUpdateConfig</p>
+<dl class="attribute">
+<dt id="kaldi.hmm.MleTransitionUpdateConfig.floor">
+<code class="descname">floor</code><a class="headerlink" href="#kaldi.hmm.MleTransitionUpdateConfig.floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleTransitionUpdateConfig.floor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.MleTransitionUpdateConfig.mincount">
+<code class="descname">mincount</code><a class="headerlink" href="#kaldi.hmm.MleTransitionUpdateConfig.mincount" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MleTransitionUpdateConfig.mincount</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.MleTransitionUpdateConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.MleTransitionUpdateConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MleTransitionUpdateConfig::Register(::kaldi::OptionsItf <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.MleTransitionUpdateConfig.share_for_pdfs">
+<code class="descname">share_for_pdfs</code><a class="headerlink" href="#kaldi.hmm.MleTransitionUpdateConfig.share_for_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MleTransitionUpdateConfig.share_for_pdfs</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.hmm.TransitionModel">
+<em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">TransitionModel</code><a class="headerlink" href="#kaldi.hmm.TransitionModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::TransitionModel</p>
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.accumulate">
+<code class="descname">accumulate</code><span class="sig-paren">(</span><em>prob:float</em>, <em>trans_id:int</em>, <em>stats:DoubleVector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.accumulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TransitionModel::Accumulate(float, int, ::kaldi::Vector&lt;double&gt; <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.compatible">
+<code class="descname">compatible</code><span class="sig-paren">(</span><em>other:TransitionModel</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.hmm.TransitionModel.compatible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::TransitionModel::Compatible(::kaldi::TransitionModel)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.from_topo">
+<code class="descname">from_topo</code><span class="sig-paren">(</span><em>ctx_dep:ContextDependencyInterface</em>, <em>hmm_topo:HmmTopology</em><span class="sig-paren">)</span> &#x2192; TransitionModel<a class="headerlink" href="#kaldi.hmm.TransitionModel.from_topo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::TransitionModel&gt; ::kaldi::TransitionModel::TransitionModel(::kaldi::ContextDependencyInterface, ::kaldi::HmmTopology)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.get_non_self_loop_log_prob">
+<code class="descname">get_non_self_loop_log_prob</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_non_self_loop_log_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::TransitionModel::GetNonSelfLoopLogProb(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.get_phones">
+<code class="descname">get_phones</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_phones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::std::vector&lt; ::int32&gt; ::kaldi::TransitionModel::GetPhones()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.get_topo">
+<code class="descname">get_topo</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; HmmTopology<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_topo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::HmmTopology ::kaldi::TransitionModel::GetTopo()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.get_transition_log_prob">
+<code class="descname">get_transition_log_prob</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_transition_log_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::TransitionModel::GetTransitionLogProb(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.get_transition_log_prob_ignoring_self_loops">
+<code class="descname">get_transition_log_prob_ignoring_self_loops</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_transition_log_prob_ignoring_self_loops" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::TransitionModel::GetTransitionLogProbIgnoringSelfLoops(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.get_transition_prob">
+<code class="descname">get_transition_prob</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_transition_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::TransitionModel::GetTransitionProb(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.init_stats">
+<code class="descname">init_stats</code><span class="sig-paren">(</span><em>stats:DoubleVector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.init_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TransitionModel::InitStats(::kaldi::Vector&lt;double&gt; <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.is_final">
+<code class="descname">is_final</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.hmm.TransitionModel.is_final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::TransitionModel::IsFinal(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.is_self_loop">
+<code class="descname">is_self_loop</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.hmm.TransitionModel.is_self_loop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::TransitionModel::IsSelfLoop(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.map_update">
+<code class="descname">map_update</code><span class="sig-paren">(</span><em>stats:DoubleVector</em>, <em>cfg:MapTransitionUpdateConfig) -&gt; (objf_impr_out:float</em>, <em>count_out:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.map_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TransitionModel::MapUpdate(::kaldi::Vector&lt;double&gt;, ::kaldi::MapTransitionUpdateConfig, float*, float*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.mle_update">
+<code class="descname">mle_update</code><span class="sig-paren">(</span><em>stats:DoubleVector</em>, <em>cfg:MleTransitionUpdateConfig) -&gt; (objf_impr_out:float</em>, <em>count_out:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.mle_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TransitionModel::MleUpdate(::kaldi::Vector&lt;double&gt;, ::kaldi::MleTransitionUpdateConfig, float*, float*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.num_pdfs">
+<code class="descname">num_pdfs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.num_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::NumPdfs()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.num_phones">
+<code class="descname">num_phones</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.num_phones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::NumPhones()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.num_transition_ids">
+<code class="descname">num_transition_ids</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.num_transition_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::NumTransitionIds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.num_transition_indices">
+<code class="descname">num_transition_indices</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.num_transition_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::NumTransitionIndices(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.num_transition_states">
+<code class="descname">num_transition_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.num_transition_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::NumTransitionStates()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.pair_to_transition_id">
+<code class="descname">pair_to_transition_id</code><span class="sig-paren">(</span><em>trans_state:int</em>, <em>trans_index:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.pair_to_transition_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::PairToTransitionId(int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.print_model">
+<code class="descname">print_model</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>phone_names:list&lt;str&gt;</em>, <em>occs:DoubleVector=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.print_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TransitionModel::Print(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, ::std::vector&lt; ::std::string&gt;, ::kaldi::Vector&lt;double&gt; <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TransitionModel::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.self_loop_of">
+<code class="descname">self_loop_of</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.self_loop_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::SelfLoopOf(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_id_to_hmm_state">
+<code class="descname">transition_id_to_hmm_state</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_hmm_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionIdToHmmState(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_id_to_pdf">
+<code class="descname">transition_id_to_pdf</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionIdToPdf(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_id_to_pdf_class">
+<code class="descname">transition_id_to_pdf_class</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_pdf_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionIdToPdfClass(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_id_to_phone">
+<code class="descname">transition_id_to_phone</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionIdToPhone(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_id_to_transition_index">
+<code class="descname">transition_id_to_transition_index</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_transition_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionIdToTransitionIndex(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_id_to_transition_state">
+<code class="descname">transition_id_to_transition_state</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_transition_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionIdToTransitionState(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_state_to_forward_pdf">
+<code class="descname">transition_state_to_forward_pdf</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_forward_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionStateToForwardPdf(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_state_to_forward_pdf_class">
+<code class="descname">transition_state_to_forward_pdf_class</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_forward_pdf_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionStateToForwardPdfClass(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_state_to_hmm_state">
+<code class="descname">transition_state_to_hmm_state</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_hmm_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionStateToHmmState(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_state_to_phone">
+<code class="descname">transition_state_to_phone</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionStateToPhone(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf">
+<code class="descname">transition_state_to_self_loop_pdf</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionStateToSelfLoopPdf(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf_class">
+<code class="descname">transition_state_to_self_loop_pdf_class</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TransitionStateToSelfLoopPdfClass(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.tuple_to_transition_state">
+<code class="descname">tuple_to_transition_state</code><span class="sig-paren">(</span><em>phone:int</em>, <em>hmm_state:int</em>, <em>pdf:int</em>, <em>self_loop_pdf:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.tuple_to_transition_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::TransitionModel::TupleToTransitionState(int, int, int, int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.TransitionModel.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TransitionModel::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.accumulate_tree_stats">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">accumulate_tree_stats</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>info:AccumulateTreeStatsInfo</em>, <em>alignment:list&lt;int&gt;</em>, <em>features:Matrix</em><span class="sig-paren">)</span> &#x2192; dict&lt;list&lt;tuple&lt;int, int&gt;&gt;, GaussClusterable&gt;<a class="headerlink" href="#kaldi.hmm.accumulate_tree_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AccumulateTreeStats(::kaldi::TransitionModel, ::kaldi::AccumulateTreeStatsInfo, ::std::vector&lt; ::int32&gt;, ::kaldi::Matrix&lt;float&gt;, ::std::map&lt; ::kaldi::EventType, ::kaldi::GaussClusterable <em>&gt;</em>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.get_pdfs_for_phones">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">get_pdfs_for_phones</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>phones:list&lt;int&gt;) -&gt; (ret:bool</em>, <em>pdfs:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.get_pdfs_for_phones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::GetPdfsForPhones(::kaldi::TransitionModel, ::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::int32&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.get_phones_for_pdfs">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">get_phones_for_pdfs</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>pdfs:list&lt;int&gt;) -&gt; (ret:bool</em>, <em>phones:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.get_phones_for_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::GetPhonesForPdfs(::kaldi::TransitionModel, ::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::int32&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.read_phone_map">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">read_phone_map</code><span class="sig-paren">(</span><em>phone_map_rxfilename:str</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.hmm.read_phone_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ReadPhoneMap(::std::string, ::std::vector&lt; ::int32&gt;*)</p>
+</dd></dl>
+
+<div class="section" id="module-kaldi.hmm.posterior">
+<span id="kaldi-hmm-posterior"></span><h2>kaldi.hmm.posterior<a class="headerlink" href="#module-kaldi.hmm.posterior" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.alignment_to_posterior" title="kaldi.hmm.posterior.alignment_to_posterior"><code class="xref py py-obj docutils literal"><span class="pre">alignment_to_posterior</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.posterior.convert_posterior_to_pdfs" title="kaldi.hmm.posterior.convert_posterior_to_pdfs"><code class="xref py py-obj docutils literal"><span class="pre">convert_posterior_to_pdfs</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.convert_posterior_to_phones" title="kaldi.hmm.posterior.convert_posterior_to_phones"><code class="xref py py-obj docutils literal"><span class="pre">convert_posterior_to_phones</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.posterior.merge_posteriors" title="kaldi.hmm.posterior.merge_posteriors"><code class="xref py py-obj docutils literal"><span class="pre">merge_posteriors</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.posterior_entries_are_disjoint" title="kaldi.hmm.posterior.posterior_entries_are_disjoint"><code class="xref py py-obj docutils literal"><span class="pre">posterior_entries_are_disjoint</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.posterior.posterior_to_matrix" title="kaldi.hmm.posterior.posterior_to_matrix"><code class="xref py py-obj docutils literal"><span class="pre">posterior_to_matrix</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.posterior_to_pdf_matrix" title="kaldi.hmm.posterior.posterior_to_pdf_matrix"><code class="xref py py-obj docutils literal"><span class="pre">posterior_to_pdf_matrix</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.posterior.read_posterior" title="kaldi.hmm.posterior.read_posterior"><code class="xref py py-obj docutils literal"><span class="pre">read_posterior</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.total_posterior" title="kaldi.hmm.posterior.total_posterior"><code class="xref py py-obj docutils literal"><span class="pre">total_posterior</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.posterior.vector_to_posterior_entry" title="kaldi.hmm.posterior.vector_to_posterior_entry"><code class="xref py py-obj docutils literal"><span class="pre">vector_to_posterior_entry</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.write_posterior" title="kaldi.hmm.posterior.write_posterior"><code class="xref py py-obj docutils literal"><span class="pre">write_posterior</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="kaldi.hmm.posterior.alignment_to_posterior">
+<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">alignment_to_posterior</code><span class="sig-paren">(</span><em>ali:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, float&gt;&gt;&gt;<a class="headerlink" href="#kaldi.hmm.posterior.alignment_to_posterior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AlignmentToPosterior(::std::vector&lt; ::int32&gt;, ::kaldi::Posterior*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.posterior.convert_posterior_to_pdfs">
+<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">convert_posterior_to_pdfs</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em>, <em>post_in:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, float&gt;&gt;&gt;<a class="headerlink" href="#kaldi.hmm.posterior.convert_posterior_to_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ConvertPosteriorToPdfs(::kaldi::TransitionModel, ::kaldi::Posterior, ::kaldi::Posterior*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.posterior.convert_posterior_to_phones">
+<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">convert_posterior_to_phones</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em>, <em>post_in:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, float&gt;&gt;&gt;<a class="headerlink" href="#kaldi.hmm.posterior.convert_posterior_to_phones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ConvertPosteriorToPhones(::kaldi::TransitionModel, ::kaldi::Posterior, ::kaldi::Posterior*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.posterior.merge_posteriors">
+<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">merge_posteriors</code><span class="sig-paren">(</span><em>post1:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em>, <em>post2:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em>, <em>merge:bool</em>, <em>drop_frames:bool) -&gt; (num_frames:int</em>, <em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.posterior.merge_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::MergePosteriors(::kaldi::Posterior, ::kaldi::Posterior, bool, bool, ::kaldi::Posterior*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.posterior.posterior_entries_are_disjoint">
+<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">posterior_entries_are_disjoint</code><span class="sig-paren">(</span><em>post_elem1:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em>, <em>post_elem2:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.hmm.posterior.posterior_entries_are_disjoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::PosteriorEntriesAreDisjoint(::std::vector&lt; ::std::pair&lt; ::int32, ::kaldi::BaseFloat&gt; &gt;, ::std::vector&lt; ::std::pair&lt; ::int32, ::kaldi::BaseFloat&gt; &gt;)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.posterior.posterior_to_matrix">
+<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">posterior_to_matrix</code><span class="sig-paren">(</span><em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em>, <em>post_dim:int</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.hmm.posterior.posterior_to_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PosteriorToMatrix(::kaldi::Posterior, int, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.posterior.posterior_to_pdf_matrix">
+<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">posterior_to_pdf_matrix</code><span class="sig-paren">(</span><em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em>, <em>model:TransitionModel</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.hmm.posterior.posterior_to_pdf_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PosteriorToPdfMatrix(::kaldi::Posterior, ::kaldi::TransitionModel, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.posterior.read_posterior">
+<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">read_posterior</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, float&gt;&gt;&gt;<a class="headerlink" href="#kaldi.hmm.posterior.read_posterior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ReadPosterior(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::Posterior*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.posterior.total_posterior">
+<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">total_posterior</code><span class="sig-paren">(</span><em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.posterior.total_posterior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::TotalPosterior(::kaldi::Posterior)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.posterior.vector_to_posterior_entry">
+<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">vector_to_posterior_entry</code><span class="sig-paren">(</span><em>log_likes:VectorBase</em>, <em>num_gselect:int</em>, <em>min_post:float) -&gt; (log_like:float</em>, <em>post_entry:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.posterior.vector_to_posterior_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::VectorToPosteriorEntry(::kaldi::VectorBase&lt;float&gt;, int, float, ::std::vector&lt; ::std::pair&lt; ::int32, ::kaldi::BaseFloat&gt; &gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.posterior.write_posterior">
+<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">write_posterior</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.posterior.write_posterior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::WritePosterior(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::Posterior)</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.itf.html" class="btn btn-neutral float-right" title="kaldi.itf" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.gmm.html" class="btn btn-neutral" title="kaldi.gmm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

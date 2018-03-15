@@ -1,0 +1,668 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.lm &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.matrix" href="kaldi.matrix.html"/>
+        <link rel="prev" title="kaldi.lat" href="kaldi.lat.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.lm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.lm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.lm">
+<span id="kaldi-lm"></span><h1>kaldi.lm<a class="headerlink" href="#module-kaldi.lm" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lm.build_const_arpa_lm" title="kaldi.lm.build_const_arpa_lm"><code class="xref py py-obj docutils literal"><span class="pre">build_const_arpa_lm</span></code></a></td>
+<td>Builds a constant ARPA language model from an ARPA language model.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lm.ArpaLmCompiler" title="kaldi.lm.ArpaLmCompiler"><code class="xref py py-obj docutils literal"><span class="pre">ArpaLmCompiler</span></code></a></td>
+<td>ARPA LM compiler.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lm.ArpaParseOptions" title="kaldi.lm.ArpaParseOptions"><code class="xref py py-obj docutils literal"><span class="pre">ArpaParseOptions</span></code></a></td>
+<td>Options for parsing ARPA files.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lm.ConstArpaLm" title="kaldi.lm.ConstArpaLm"><code class="xref py py-obj docutils literal"><span class="pre">ConstArpaLm</span></code></a></td>
+<td>Constant ARPA language model.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lm.ConstArpaLmDeterministicFst" title="kaldi.lm.ConstArpaLmDeterministicFst"><code class="xref py py-obj docutils literal"><span class="pre">ConstArpaLmDeterministicFst</span></code></a></td>
+<td>Deterministic on demand constant ARPA language model.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lm.KaldiRnnlmWrapper" title="kaldi.lm.KaldiRnnlmWrapper"><code class="xref py py-obj docutils literal"><span class="pre">KaldiRnnlmWrapper</span></code></a></td>
+<td>Mikolov RNNLM wrapper.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lm.KaldiRnnlmWrapperOpts" title="kaldi.lm.KaldiRnnlmWrapperOpts"><code class="xref py py-obj docutils literal"><span class="pre">KaldiRnnlmWrapperOpts</span></code></a></td>
+<td>Options for wrapping a Mikolov RNNLM.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lm.RnnlmDeterministicFst" title="kaldi.lm.RnnlmDeterministicFst"><code class="xref py py-obj docutils literal"><span class="pre">RnnlmDeterministicFst</span></code></a></td>
+<td>Deterministic on-demand Mikolov RNNLM FST.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.lm.ArpaLmCompiler">
+<em class="property">class </em><code class="descclassname">kaldi.lm.</code><code class="descname">ArpaLmCompiler</code><a class="headerlink" href="#kaldi.lm.ArpaLmCompiler" title="Permalink to this definition">¶</a></dt>
+<dd><p>ARPA LM compiler.</p>
+<p>Constructs the ARPA LM compiler with the given options and the optional
+symbol table. If symbol table is provided, then the ARPA file that will
+be read should contain text n-grams, and the words are mapped to labels
+using the table. bos_symbol and eos_symbol in the options structure must
+be valid labels in the table, and so must be unk_symbol if provided. The
+table is not owned by the compiler, but may be augmented, if oov_handling
+is set to <code class="xref py py-obj docutils literal"><span class="pre">ArpaFileParser.OovHandling.ADD_TO_SYMBOLS</span></code>. If symbol table is
+<code class="docutils literal"><span class="pre">None</span></code>, the ARPA file that will be read should contain integer label
+n-grams, and oov_handling has no effect. bos_symbol and eos_symbol must
+be valid labels still.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>options</strong> (<a class="reference internal" href="#kaldi.lm.ArpaParseOptions" title="kaldi.lm.ArpaParseOptions"><em>ArpaParseOptions</em></a>) – The options for parsing ARPA files.</li>
+<li><strong>sub_eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The disambigation symbol to substitute with epsilon.
+If set to 0, bos_symbol and eos_symbol are treated as real symbols.
+Otherwise they are treated as epsilons.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.lm.ArpaLmCompiler.fst">
+<code class="descname">fst</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; StdVectorFst<a class="headerlink" href="#kaldi.lm.ArpaLmCompiler.fst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a copy of the FST compiled from the ARPA LM file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ArpaLmCompiler.mutable_fst">
+<code class="descname">mutable_fst</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; StdVectorFst<a class="headerlink" href="#kaldi.lm.ArpaLmCompiler.mutable_fst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the internal FST compiled from the ARPA LM file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ArpaLmCompiler.options">
+<code class="descname">options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ArpaParseOptions<a class="headerlink" href="#kaldi.lm.ArpaLmCompiler.options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets ARPA parser options.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The ARPA parser options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ArpaLmCompiler.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lm.ArpaLmCompiler.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads ARPA LM file from input stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.istream" title="kaldi.base.io.istream"><em>istream</em></a>) – The input C++ stream.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lm.ArpaParseOptions">
+<em class="property">class </em><code class="descclassname">kaldi.lm.</code><code class="descname">ArpaParseOptions</code><a class="headerlink" href="#kaldi.lm.ArpaParseOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for parsing ARPA files.</p>
+<dl class="attribute">
+<dt id="kaldi.lm.ArpaParseOptions.OovHandling">
+<code class="descname">OovHandling</code><a class="headerlink" href="#kaldi.lm.ArpaParseOptions.OovHandling" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#kaldi.lm.ArpaParseOptions.OovHandling" title="kaldi.lm.ArpaParseOptions.OovHandling"><code class="xref py py-class docutils literal"><span class="pre">ArpaParseOptions.OovHandling</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lm.ArpaParseOptions.bos_symbol">
+<code class="descname">bos_symbol</code><a class="headerlink" href="#kaldi.lm.ArpaParseOptions.bos_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symbol for &lt;s&gt;, Required non-epsilon.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lm.ArpaParseOptions.eos_symbol">
+<code class="descname">eos_symbol</code><a class="headerlink" href="#kaldi.lm.ArpaParseOptions.eos_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symbol for &lt;/s&gt;, Required non-epsilon.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lm.ArpaParseOptions.max_warnings">
+<code class="descname">max_warnings</code><a class="headerlink" href="#kaldi.lm.ArpaParseOptions.max_warnings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum warnings to report, &lt;0 unlimited.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lm.ArpaParseOptions.oov_handling">
+<code class="descname">oov_handling</code><a class="headerlink" href="#kaldi.lm.ArpaParseOptions.oov_handling" title="Permalink to this definition">¶</a></dt>
+<dd><p>How to handle OOV words in the file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ArpaParseOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lm.ArpaParseOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lm.ArpaParseOptions.unk_symbol">
+<code class="descname">unk_symbol</code><a class="headerlink" href="#kaldi.lm.ArpaParseOptions.unk_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symbol for &lt;unk&gt;, Required for <code class="xref py py-obj docutils literal"><span class="pre">OovHandling.REPLACE_WITH_UNK</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lm.ConstArpaLm">
+<em class="property">class </em><code class="descclassname">kaldi.lm.</code><code class="descname">ConstArpaLm</code><a class="headerlink" href="#kaldi.lm.ConstArpaLm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constant ARPA language model.</p>
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLm.get_bos_symbol">
+<code class="descname">get_bos_symbol</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.lm.ConstArpaLm.get_bos_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the label for &lt;s&gt; symbol.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLm.get_eos_symbol">
+<code class="descname">get_eos_symbol</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.lm.ConstArpaLm.get_eos_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the label for &lt;/s&gt; symbol.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLm.get_ngram_log_prob">
+<code class="descname">get_ngram_log_prob</code><span class="sig-paren">(</span><em>word:int</em>, <em>hist:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.lm.ConstArpaLm.get_ngram_log_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the n-gram log probability for the word given the history.</p>
+<p>It first maps possible out-of-vocabulary words to &lt;unk&gt;, if &lt;unk&gt; is
+defined, and then computes the n-gram log probability.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLm.get_ngram_order">
+<code class="descname">get_ngram_order</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.lm.ConstArpaLm.get_ngram_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the n-gram order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLm.get_unk_symbol">
+<code class="descname">get_unk_symbol</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.lm.ConstArpaLm.get_unk_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the label for &lt;unk&gt; symbol.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLm.history_state_exists">
+<code class="descname">history_state_exists</code><span class="sig-paren">(</span><em>hist:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.lm.ConstArpaLm.history_state_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if history states exists in the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if history word sequence &lt;hist&gt; has a successor in the model,
+which means &lt;hist&gt; will be a state in the FST format language model.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLm.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lm.ConstArpaLm.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the model from an input stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLm.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lm.ConstArpaLm.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the model to an output stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLm.write_arpa">
+<code class="descname">write_arpa</code><span class="sig-paren">(</span><em>os:ostream</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lm.ConstArpaLm.write_arpa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the model to an output stream as an ARPA file.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lm.ConstArpaLmDeterministicFst">
+<em class="property">class </em><code class="descclassname">kaldi.lm.</code><code class="descname">ConstArpaLmDeterministicFst</code><a class="headerlink" href="#kaldi.lm.ConstArpaLmDeterministicFst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deterministic on demand constant ARPA language model.</p>
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLmDeterministicFst.final">
+<code class="descname">final</code><span class="sig-paren">(</span><em>state:int</em><span class="sig-paren">)</span> &#x2192; TropicalWeight<a class="headerlink" href="#kaldi.lm.ConstArpaLmDeterministicFst.final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final weight of the given state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLmDeterministicFst.get_arc">
+<code class="descname">get_arc</code><span class="sig-paren">(</span><em>s:int</em>, <em>ilabel:int) -&gt; (success:bool</em>, <em>oarc:StdArc</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lm.ConstArpaLmDeterministicFst.get_arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an on demand arc and returns it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – State index.</li>
+<li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Arc label.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The created arc.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.ConstArpaLmDeterministicFst.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.lm.ConstArpaLmDeterministicFst.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the start state index.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lm.KaldiRnnlmWrapper">
+<em class="property">class </em><code class="descclassname">kaldi.lm.</code><code class="descname">KaldiRnnlmWrapper</code><a class="headerlink" href="#kaldi.lm.KaldiRnnlmWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mikolov RNNLM wrapper.</p>
+<dl class="method">
+<dt id="kaldi.lm.KaldiRnnlmWrapper.get_eos">
+<code class="descname">get_eos</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.lm.KaldiRnnlmWrapper.get_eos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the label for EOS symbol.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.KaldiRnnlmWrapper.get_hidden_layer_size">
+<code class="descname">get_hidden_layer_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.lm.KaldiRnnlmWrapper.get_hidden_layer_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of hidden layer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.KaldiRnnlmWrapper.get_log_prob">
+<code class="descname">get_log_prob</code><span class="sig-paren">(</span><em>word:int</em>, <em>wseq:list&lt;int&gt;</em>, <em>context_in:list&lt;float&gt;) -&gt; (logprob:float</em>, <em>context_out:list&lt;float&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lm.KaldiRnnlmWrapper.get_log_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the log probability of the word given the history.</p>
+<p>Computes the log probability of the word given the history and the
+initial context vector. Returns the log probability and the final
+context vector.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lm.KaldiRnnlmWrapperOpts">
+<em class="property">class </em><code class="descclassname">kaldi.lm.</code><code class="descname">KaldiRnnlmWrapperOpts</code><a class="headerlink" href="#kaldi.lm.KaldiRnnlmWrapperOpts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for wrapping a Mikolov RNNLM.</p>
+<dl class="attribute">
+<dt id="kaldi.lm.KaldiRnnlmWrapperOpts.eos_symbol">
+<code class="descname">eos_symbol</code><a class="headerlink" href="#kaldi.lm.KaldiRnnlmWrapperOpts.eos_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>EOS symbol, e.g. &lt;/s&gt;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.KaldiRnnlmWrapperOpts.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lm.KaldiRnnlmWrapperOpts.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lm.KaldiRnnlmWrapperOpts.unk_symbol">
+<code class="descname">unk_symbol</code><a class="headerlink" href="#kaldi.lm.KaldiRnnlmWrapperOpts.unk_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unknown symbol, e.g. &lt;unk&gt;.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lm.RnnlmDeterministicFst">
+<em class="property">class </em><code class="descclassname">kaldi.lm.</code><code class="descname">RnnlmDeterministicFst</code><a class="headerlink" href="#kaldi.lm.RnnlmDeterministicFst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deterministic on-demand Mikolov RNNLM FST.</p>
+<dl class="method">
+<dt id="kaldi.lm.RnnlmDeterministicFst.final">
+<code class="descname">final</code><span class="sig-paren">(</span><em>state:int</em><span class="sig-paren">)</span> &#x2192; TropicalWeight<a class="headerlink" href="#kaldi.lm.RnnlmDeterministicFst.final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final weight of the given state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.RnnlmDeterministicFst.get_arc">
+<code class="descname">get_arc</code><span class="sig-paren">(</span><em>s:int</em>, <em>ilabel:int) -&gt; (success:bool</em>, <em>oarc:StdArc</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lm.RnnlmDeterministicFst.get_arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an on demand arc and returns it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – State index.</li>
+<li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Arc label.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The created arc.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lm.RnnlmDeterministicFst.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.lm.RnnlmDeterministicFst.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the start state index.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lm.build_const_arpa_lm">
+<code class="descclassname">kaldi.lm.</code><code class="descname">build_const_arpa_lm</code><span class="sig-paren">(</span><em>options:ArpaParseOptions</em>, <em>arpa_rxfilename:str</em>, <em>const_arpa_wxfilename:str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.lm.build_const_arpa_lm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a constant ARPA language model from an ARPA language model.</p>
+<p>Reads in an ARPA format language model, converts it into a constant ARPA
+language model and writes it out in binary format.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.matrix.html" class="btn btn-neutral float-right" title="kaldi.matrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.lat.html" class="btn btn-neutral" title="kaldi.lat" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

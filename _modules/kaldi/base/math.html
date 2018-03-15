@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.base.math &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../../../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>kaldi.base.math</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kaldi.base.math</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">._kaldi_math</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._kaldi_math_ext</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="c1"># Must be imported explicitly</span>
+<span class="kn">from</span> <span class="nn">._kaldi_math</span> <span class="k">import</span> <span class="n">_lcm</span><span class="p">,</span> <span class="n">_factorize</span><span class="p">,</span>\
+                         <span class="n">_with_prob</span><span class="p">,</span> <span class="n">_round_up_to_nearest_power_of_two</span><span class="p">,</span>\
+                         <span class="n">_rand_int</span>
+
+<span class="n">DBL_EPSILON</span> <span class="o">=</span> <span class="mf">2.2204460492503131e-16</span>
+
+<span class="n">FLT_EPSILON</span> <span class="o">=</span> <span class="mf">1.19209290e-7</span>
+
+<span class="n">M_PI</span> <span class="o">=</span> <span class="mf">3.1415926535897932384626433832795</span>
+
+<span class="n">M_SQRT2</span> <span class="o">=</span> <span class="mf">1.4142135623730950488016887</span>
+
+<span class="n">M_2PI</span> <span class="o">=</span> <span class="mf">6.283185307179586476925286766559005</span>
+
+<span class="n">M_SQRT1_2</span> <span class="o">=</span> <span class="mf">0.7071067811865475244008443621048490</span>
+
+<span class="n">M_LOG_2PI</span> <span class="o">=</span> <span class="mf">1.8378770664093454835606594728112</span>
+
+<span class="n">M_LN2</span> <span class="o">=</span> <span class="mf">0.693147180559945309417232121458</span>
+
+<span class="n">M_LN10</span> <span class="o">=</span> <span class="mf">2.302585092994045684017991454684</span>
+
+<span class="c1"># These constant let us call function without parenteses</span>
+<span class="n">K_LOG_ZERO_FLOAT</span> <span class="o">=</span> <span class="n">log_zero_float</span><span class="p">()</span>
+<span class="n">K_LOG_ZERO_DOUBLE</span> <span class="o">=</span> <span class="n">log_zero_double</span><span class="p">()</span>
+<span class="n">K_MIN_LOG_DIFF_DOUBLE</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">DBL_EPSILON</span><span class="p">)</span>
+<span class="n">K_MIN_LOG_DIFF_FLOAT</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">FLT_EPSILON</span><span class="p">)</span>
+
+<div class="viewcode-block" id="lcm"><a class="viewcode-back" href="../../../api/kaldi.base.html#kaldi.base.math.lcm">[docs]</a><span class="k">def</span> <span class="nf">lcm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the least common multiple for x and y.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (int), y (int): positive integers</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError if x &lt;= 0 or y &lt;= 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Lcm parameters must be positive integers.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_lcm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="factorize"><a class="viewcode-back" href="../../../api/kaldi.base.html#kaldi.base.math.factorize">[docs]</a><span class="k">def</span> <span class="nf">factorize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Splits a number into its prime factors, in sorted order from</span>
+<span class="sd">    least to greates, with duplication.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (int): positive integer</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError if x &lt;= 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Parameter x must be a positive integer.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_factorize</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="with_prob"><a class="viewcode-back" href="../../../api/kaldi.base.html#kaldi.base.math.with_prob">[docs]</a><span class="k">def</span> <span class="nf">with_prob</span><span class="p">(</span><span class="n">prob</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns a true with probability &#39;prob&#39;.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">            prob (int): probability of True, 0 &lt;= prob &lt;= 1</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        If prob is negative or greater than 1.0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">prob</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_with_prob</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Probability prob should be positive and less than 1.0&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="round_up_to_nearest_power_of_two"><a class="viewcode-back" href="../../../api/kaldi.base.html#kaldi.base.math.round_up_to_nearest_power_of_two">[docs]</a><span class="k">def</span> <span class="nf">round_up_to_nearest_power_of_two</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Does the obvious thing.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        n (int): Positive integer</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError if n &lt;= 0.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;n should be a positive integer&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_round_up_to_nearest_power_of_two</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="rand_int"><a class="viewcode-back" href="../../../api/kaldi.base.html#kaldi.base.math.rand_int">[docs]</a><span class="k">def</span> <span class="nf">rand_int</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a random integer between first and last inclusive.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        first (int): Lower bound </span>
+<span class="sd">        last (int): Upper bound (inclusive)</span>
+<span class="sd">        state (RandomState or None): randomizer seed class</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError if first &gt;= last </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">first</span> <span class="o">&gt;=</span> <span class="n">last</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;last must be &gt;= than first.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_rand_int</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span></div>
+
+<span class="c1">################################################################################</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span>
+           <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span>
+           <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;Base&#39;</span><span class="p">)]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.kws &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>kaldi.kws</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kaldi.kws</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">._kws_functions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">fstext</span> <span class="k">as</span> <span class="n">_fst</span>
+
+
+<div class="viewcode-block" id="lattice_to_kws_index"><a class="viewcode-back" href="../../api/kaldi.kws.html#kaldi.kws.lattice_to_kws_index">[docs]</a><span class="k">def</span> <span class="nf">lattice_to_kws_index</span><span class="p">(</span><span class="n">clat</span><span class="p">,</span> <span class="n">utterance_id</span><span class="p">,</span> <span class="n">max_silence_frames</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                         <span class="n">max_states</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">destructive</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates an inverted KWS index of the given lattice.</span>
+
+<span class="sd">    The output KWS index is over the `KwsIndexWeight` semiring (a triplet of</span>
+<span class="sd">    tropical weights with lexicographic ordering). Input lattice should be</span>
+<span class="sd">    topologically sorted. For details of the algorithm, see: Dogan Can and Murat</span>
+<span class="sd">    Saraclar, 2011, &quot;Lattice Indexing for Spoken Term Detection&quot;.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        clat (CompactLatticeVectorFst): The input lattice.</span>
+<span class="sd">        utterance_id (int): The integer id to use for the input lattice.</span>
+<span class="sd">        max_silence_frames (int): The duration of the longest silence (epsilon)</span>
+<span class="sd">            arcs allowed in the output. Longer silence arcs will be removed.</span>
+<span class="sd">            If &lt; 0, all silence arcs are kept.</span>
+<span class="sd">        max_states (int): The maximum number of states allowed in the output.</span>
+<span class="sd">            If &lt;= 0, any number of states in the output is OK.</span>
+<span class="sd">        allow_partial (bool):  Whether to allow partial output or skip</span>
+<span class="sd">            determinization if determinization fails.</span>
+<span class="sd">        destructive (bool): Whether to use the destructive implementation which</span>
+<span class="sd">            avoids a copy by modifying the input lattice.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        KwsIndexVectorFst: The output KWS index FST.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">destructive</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">_kws_functions</span><span class="o">.</span><span class="n">_lattice_to_kws_index_destructive</span><span class="p">(</span>
+            <span class="n">clat</span><span class="p">,</span> <span class="n">utterance_id</span><span class="p">,</span> <span class="n">max_silence_frames</span><span class="p">,</span> <span class="n">max_states</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">_kws_functions</span><span class="o">.</span><span class="n">_lattice_to_kws_index</span><span class="p">(</span>
+            <span class="n">clat</span><span class="p">,</span> <span class="n">utterance_id</span><span class="p">,</span> <span class="n">max_silence_frames</span><span class="p">,</span> <span class="n">max_states</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_fst</span><span class="o">.</span><span class="n">KwsIndexVectorFst</span><span class="p">(</span><span class="n">index</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="search_kws_index"><a class="viewcode-back" href="../../api/kaldi.kws.html#kaldi.kws.search_kws_index">[docs]</a><span class="k">def</span> <span class="nf">search_kws_index</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">keyword</span><span class="p">,</span> <span class="n">encode_table</span><span class="p">,</span> <span class="n">n_best</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">detailed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Searches given keyword (FST) inside the KWS index (FST).</span>
+
+<span class="sd">    Returns the `n_best` results found. Each result is a tuple of `(utt_id,</span>
+<span class="sd">    time_beg, time_end, score)`.</span>
+
+<span class="sd">    Since keyword can be an FST, there can be multiple matching paths in the</span>
+<span class="sd">    keyword and the index in a given time period. If `detailed == True`, stats</span>
+<span class="sd">    output provides the results for all matching paths together with appropriate</span>
+<span class="sd">    scores while ilabels output provides the input labels on those paths.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        index (KwsIndexVectorFst): The index FST.</span>
+<span class="sd">        keyword (StdVectorFst): The keyword FST.</span>
+<span class="sd">        encode_table (KwsIndexEncodeTable): The table to use for decoding</span>
+<span class="sd">            output labels into utterance ids. This table is produced by</span>
+<span class="sd">            :meth:`encode_kws_disambiguation_symbols`.</span>
+<span class="sd">        n_best (int): The number of best results to return. If &lt;= 0, all results</span>
+<span class="sd">            found in the index are returned.</span>
+<span class="sd">        detailed (bool): Whether to return detailed results representing</span>
+<span class="sd">            individual index matches and the input label sequences for those</span>
+<span class="sd">            matches. If True, output is a tuple of (results, stats, ilabels).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+        <span class="n">results</span><span class="p">,</span> <span class="n">matched_seq</span> <span class="o">=</span> <span class="n">_kws_functions</span><span class="o">.</span><span class="n">_search_kws_index_detailed</span><span class="p">(</span>
+            <span class="n">index</span><span class="p">,</span> <span class="n">keyword</span><span class="p">,</span> <span class="n">encode_table</span><span class="p">,</span> <span class="n">n_best</span><span class="p">)</span>
+        <span class="n">stats</span><span class="p">,</span> <span class="n">ilabels</span> <span class="o">=</span> <span class="n">_kws_functions</span><span class="o">.</span><span class="n">_compute_detailed_statistics</span><span class="p">(</span>
+            <span class="n">matched_seq</span><span class="p">,</span> <span class="n">encode_table</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">ilabels</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_kws_functions</span><span class="o">.</span><span class="n">_search_kws_index</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">keyword</span><span class="p">,</span>
+                                                <span class="n">encode_table</span><span class="p">,</span> <span class="n">n_best</span><span class="p">)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span>
+           <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span>
+           <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;Base&#39;</span><span class="p">)]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

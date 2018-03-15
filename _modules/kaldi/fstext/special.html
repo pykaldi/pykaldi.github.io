@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.fstext.special &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../../index.html"/>
+        <link rel="up" title="kaldi.fstext" href="../fstext.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../../../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../fstext.html">kaldi.fstext</a> &raquo;</li>
+        
+      <li>kaldi.fstext.special</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kaldi.fstext.special</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">._context_fst</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._context_fst_inl</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._deterministic_fst</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_determinize_lattice</span>
+<span class="kn">from</span> <span class="nn">._push_special</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_special_ops</span>
+<span class="kn">from</span> <span class="nn">._special_ops</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._table_matcher</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">fstext</span> <span class="k">as</span> <span class="n">_fst</span>
+<span class="kn">import</span> <span class="nn">_getters</span>
+<span class="kn">import</span> <span class="nn">_weight</span>
+
+
+<div class="viewcode-block" id="compose_context_fst"><a class="viewcode-back" href="../../../api/kaldi.fstext.html#kaldi.fstext.special.compose_context_fst">[docs]</a><span class="k">def</span> <span class="nf">compose_context_fst</span><span class="p">(</span><span class="n">ifst1</span><span class="p">,</span> <span class="n">ifst2</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">compose_filter</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Composes context FST with an FST over the tropical semiring.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ifst1 (StdContextFst): The input context FST over the tropical semiring.</span>
+<span class="sd">        ifst2 (StdFst): The input FST over the tropical semiring.</span>
+<span class="sd">        connect (bool): Should output be trimmed?</span>
+<span class="sd">        compose_filter: A string matching a known composition filter; one of:</span>
+<span class="sd">            &quot;alt_sequence&quot;, &quot;auto&quot;, &quot;match&quot;, &quot;null&quot;, &quot;sequence&quot;, &quot;trivial&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A composed FST.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">compose_filter</span> <span class="o">=</span> <span class="n">_getters</span><span class="o">.</span><span class="n">GetComposeFilter</span><span class="p">(</span><span class="n">compose_filter</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown compose filter: </span><span class="si">{!r}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">compose_filter</span><span class="p">))</span>
+    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdFst</span><span class="p">()</span>
+    <span class="n">_special_ops</span><span class="o">.</span><span class="n">_compose_context_fst</span><span class="p">(</span><span class="n">ifst1</span><span class="p">,</span> <span class="n">ifst2</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">connect</span><span class="p">,</span>
+                                      <span class="n">compose_filter</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ofst</span></div>
+
+
+<div class="viewcode-block" id="compose_context"><a class="viewcode-back" href="../../../api/kaldi.fstext.html#kaldi.fstext.special.compose_context">[docs]</a><span class="k">def</span> <span class="nf">compose_context</span><span class="p">(</span><span class="n">disambig_syms</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">ifst</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates a context FST and composes it on the left with input fst.</span>
+
+<span class="sd">    Outputs the label information along with the composed FST. Input FST should</span>
+<span class="sd">    be mutable since the algorithm adds the subsequential loop to it.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        disambig_syms (List[int]): Disambiguation symbols.</span>
+<span class="sd">        N (int): Size of context window.</span>
+<span class="sd">        P (int): Position of central phone in context window, from 0..N-1.</span>
+<span class="sd">        ifst (StdFst): Input FST.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[StdFst, List[List[int]]]: Output fst, label information tuple.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdFst</span><span class="p">()</span>
+    <span class="n">ilabels_out</span> <span class="o">=</span> <span class="n">_special_ops</span><span class="o">.</span><span class="n">_compose_context</span><span class="p">(</span><span class="n">disambig_syms</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">ifst</span><span class="p">,</span> <span class="n">ofst</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">ilabels_out</span></div>
+
+
+<div class="viewcode-block" id="compose_deterministic_on_demand_fst"><a class="viewcode-back" href="../../../api/kaldi.fstext.html#kaldi.fstext.special.compose_deterministic_on_demand_fst">[docs]</a><span class="k">def</span> <span class="nf">compose_deterministic_on_demand_fst</span><span class="p">(</span><span class="n">fst1</span><span class="p">,</span> <span class="n">fst2</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Composes an FST with a deterministic on demand FST.</span>
+
+<span class="sd">    If inverse is True, computes `ofst = Compose(Inverse(fst2), fst1)`. Note</span>
+<span class="sd">    that the arguments are reversed in this case.</span>
+
+<span class="sd">    This function does not trim its output.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fst1 (StdFst): The input FST.</span>
+<span class="sd">        fst2 (StdDeterministicOnDemandFst):</span>
+<span class="sd">            The input deterministic on demand FST.</span>
+<span class="sd">        inverse (bool): Deterministic FST on the left?</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A composed FST.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdFst</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">inverse</span><span class="p">:</span>
+        <span class="n">_special_ops</span><span class="o">.</span><span class="n">_compose_deterministic_on_demand_inverse</span><span class="p">(</span><span class="n">fst1</span><span class="p">,</span> <span class="n">fst2</span><span class="p">,</span> <span class="n">ofst</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_special_ops</span><span class="o">.</span><span class="n">_compose_deterministic_on_demand</span><span class="p">(</span><span class="n">fst1</span><span class="p">,</span> <span class="n">fst2</span><span class="p">,</span> <span class="n">ofst</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ofst</span></div>
+
+
+<div class="viewcode-block" id="determinize_lattice"><a class="viewcode-back" href="../../../api/kaldi.fstext.html#kaldi.fstext.special.determinize_lattice">[docs]</a><span class="k">def</span> <span class="nf">determinize_lattice</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">compact_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">delta</span><span class="o">=</span><span class="n">_weight</span><span class="o">.</span><span class="n">DELTA</span><span class="p">,</span> <span class="n">max_mem</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_loop</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Determinizes lattice.</span>
+
+<span class="sd">    Implements a special form of determinization with epsilon removal, optimized</span>
+<span class="sd">    for a phase of lattice generation.</span>
+
+<span class="sd">    See `kaldi/src/fstext/determinize-lattice.h`_ for details.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ifst (LatticeFst): Input lattice.</span>
+<span class="sd">        compact_output (bool): Whether the output is a compact lattice.</span>
+<span class="sd">        delta (float): Comparison/quantization delta.</span>
+<span class="sd">        max_mem (int): If positive, determinization will fail when the</span>
+<span class="sd">            algorithm&#39;s (approximate) memory consumption crosses this threshold.</span>
+<span class="sd">        max_loop (int): If positive, can be used to detect non-determinizable</span>
+<span class="sd">            input (a case that wouldn&#39;t be caught by max_mem).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A determized lattice.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        RuntimeError: If determization fails.</span>
+
+<span class="sd">    .. _kaldi/src/fstext/determinize-lattice.h:</span>
+<span class="sd">       http://kaldi-asr.org/doc/determinize-lattice_8h_source.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">opts</span> <span class="o">=</span> <span class="n">_determinize_lattice</span><span class="o">.</span><span class="n">DeterminizeLatticeOptions</span><span class="p">()</span>
+    <span class="n">opts</span><span class="o">.</span><span class="n">delta</span><span class="p">,</span> <span class="n">opst</span><span class="o">.</span><span class="n">max_mem</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">max_loop</span> <span class="o">=</span> <span class="n">delta</span><span class="p">,</span> <span class="n">max_mem</span><span class="p">,</span> <span class="n">max_loop</span>
+    <span class="k">if</span> <span class="n">compact_output</span><span class="p">:</span>
+        <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeFst</span><span class="p">()</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="n">_special_ops</span><span class="o">.</span><span class="n">_determinize_lattice_to_compact</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeFst</span><span class="p">()</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="n">_special_ops</span><span class="o">.</span><span class="n">_determinize_lattice</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ofst</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Lattice determinization failed.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="determinize_star"><a class="viewcode-back" href="../../../api/kaldi.fstext.html#kaldi.fstext.special.determinize_star">[docs]</a><span class="k">def</span> <span class="nf">determinize_star</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">_weight</span><span class="o">.</span><span class="n">DELTA</span><span class="p">,</span>
+                     <span class="n">max_states</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">allow_partial</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Implements a special determinization with epsilon removal.</span>
+
+<span class="sd">    See `kaldi/src/fstext/determinize-star.h`_ for details.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ifst (StdFst): Input fst over the tropical semiring.</span>
+<span class="sd">        delta (float): Comparison/quantization delta.</span>
+<span class="sd">        max_states (int): If positive, determinization will fail when max states</span>
+<span class="sd">            is reached.</span>
+<span class="sd">        allow_partial (bool): If True, the algorithm will output partial results</span>
+<span class="sd">            when the specified max states is reached (when larger than zero),</span>
+<span class="sd">            instead of raising an exception.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A determized lattice.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        RuntimeError: If determization fails.</span>
+
+<span class="sd">    .. _kaldi/src/fstext/determinize-star.h:</span>
+<span class="sd">       http://kaldi-asr.org/doc/determinize-star_8h_source.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdFst</span><span class="p">()</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="n">_special_ops</span><span class="o">.</span><span class="n">_determinize_star</span><span class="p">(</span><span class="n">fst1</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">max_states</span><span class="p">,</span>
+                                             <span class="n">allow_partial</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ofst</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Determinization failed.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="push_in_log"><a class="viewcode-back" href="../../../api/kaldi.fstext.html#kaldi.fstext.special.push_in_log">[docs]</a><span class="k">def</span> <span class="nf">push_in_log</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">push_weights</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">push_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">remove_common_affix</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">remove_total_weight</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">to_final</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">_weight</span><span class="o">.</span><span class="n">DELTA</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Push weights/labels in log semiring.</span>
+
+<span class="sd">    Destructively pushes weights/labels towards initial or final states.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fst (StdFst): Input fst over the tropical semiring.</span>
+<span class="sd">        push_weights: Should weights be pushed?</span>
+<span class="sd">        push_labels: Should labels be pushed?</span>
+<span class="sd">        remove_common_affix: If pushing labels, should common prefix/suffix be</span>
+<span class="sd">            removed?</span>
+<span class="sd">        remove_total_weight: If pushing weights, should total weight be removed?</span>
+<span class="sd">        to_final: Push towards final states?</span>
+<span class="sd">        delta: Comparison/quantization delta (default: 0.0009765625).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">flags</span> <span class="o">=</span> <span class="n">_getters</span><span class="o">.</span><span class="n">GetPushFlags</span><span class="p">(</span><span class="n">push_weights</span><span class="p">,</span> <span class="n">push_labels</span><span class="p">,</span>
+                                  <span class="n">remove_common_affix</span><span class="p">,</span> <span class="n">remove_total_weight</span><span class="p">)</span>
+    <span class="n">_special_ops</span><span class="o">.</span><span class="n">_push_in_log</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">to_final</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="remove_eps_local"><a class="viewcode-back" href="../../../api/kaldi.fstext.html#kaldi.fstext.special.remove_eps_local">[docs]</a><span class="k">def</span> <span class="nf">remove_eps_local</span><span class="p">(</span><span class="n">fst</span><span class="p">,</span> <span class="n">special</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Removes epsilon arcs locally.</span>
+
+<span class="sd">    Removes some (but not necessarily all) epsilons in an FST, using an</span>
+<span class="sd">    algorithm that is guaranteed to never increase the number of arcs in the</span>
+<span class="sd">    FST (and will also never increase the number of states).</span>
+
+<span class="sd">    See `kaldi/src/fstext/remove-eps-local.h`_ for details.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fst (StdFst): Input fst over the tropical semiring.</span>
+<span class="sd">        special (bool): Preserve stochasticity when casting to log semiring.</span>
+
+<span class="sd">    .. _kaldi/src/fstext/remove-eps-local.h:</span>
+<span class="sd">     http://kaldi-asr.org/doc/remove-eps-local_8h_source.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">special</span><span class="p">:</span>
+        <span class="n">_special_ops</span><span class="o">.</span><span class="n">_remove_eps_local_special</span><span class="p">(</span><span class="n">fst</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_special_ops</span><span class="o">.</span><span class="n">_remove_eps_local</span><span class="p">(</span><span class="n">fst</span><span class="p">)</span></div>
+
+
+<span class="c1">################################################################################</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span><span class="p">]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

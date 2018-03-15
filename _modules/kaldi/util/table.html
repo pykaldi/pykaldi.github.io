@@ -1,0 +1,1093 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.util.table &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../../../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>kaldi.util.table</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kaldi.util.table</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">For detailed documentation of Kaldi tables, table readers/writers, table</span>
+<span class="sd">read/write specifiers, see `Kaldi I/O mechanisms`_ and</span>
+<span class="sd">`Kaldi I/O from a command-line perspective`_.</span>
+
+<span class="sd">.. _Kaldi I/O mechanisms:</span>
+<span class="sd">   http://kaldi-asr.org/doc/io.html</span>
+<span class="sd">.. _Kaldi I/O from a command-line perspective:</span>
+<span class="sd">   http://kaldi-asr.org/doc/io_tut.html</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_kaldi_table</span>
+<span class="kn">from</span> <span class="nn">._kaldi_table</span> <span class="k">import</span> <span class="p">(</span><span class="n">read_script_file</span><span class="p">,</span> <span class="n">write_script_file</span><span class="p">,</span>
+                           <span class="n">classify_wspecifier</span><span class="p">,</span> <span class="n">classify_rspecifier</span><span class="p">,</span>
+                           <span class="n">WspecifierType</span><span class="p">,</span> <span class="n">RspecifierType</span><span class="p">,</span>
+                           <span class="n">WspecifierOptions</span><span class="p">,</span> <span class="n">RspecifierOptions</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_kaldi_table_ext</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># Sequential Readers</span>
+<span class="c1">################################################################################</span>
+
+<span class="k">class</span> <span class="nc">_SequentialReaderBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class defining the Python API for sequential table readers.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rspecifier</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This class is used for reading objects sequentially from an archive or</span>
+<span class="sd">        script file. It implements the iterator protocol similar to how Python</span>
+<span class="sd">        implements iteration over dictionaries. Each iteration returns a `(key,</span>
+<span class="sd">        value)` pair from the table in sequential order.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            rspecifier(str): Kaldi rspecifier for reading the table.</span>
+<span class="sd">                If provided, the table is opened for reading.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IOError: If opening the table for reading fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">rspecifier</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">rspecifier</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Error opening sequential table reader with &quot;</span>
+                              <span class="s2">&quot;rspecifier: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rspecifier</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="p">():</span>
+            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rspecifier</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Opens the table for reading.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            rspecifier(str): Kaldi rspecifier for reading the table.</span>
+<span class="sd">                If provided, the table is opened for reading.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True if table is opened successfully, False otherwise.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IOError: If opening the table for reading fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">rspecifier</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">done</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Indicates whether the table reader is exhausted or not.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          True if the table reader is exhausted, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">key</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the current key.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The current key.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">key</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">free_current</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Deallocates the current value.</span>
+
+<span class="sd">        This method is provided as an optimization to save memory, for large</span>
+<span class="sd">        objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">free_current</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the current value.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The current value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Advances the table reader.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">is_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Indicates whether the table reader is open or not.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          True if the table reader is open, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">is_open</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Closes the table.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True if table is closed successfully, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="SequentialVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialVectorReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialVectorReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                             <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for single precision vectors.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialDoubleVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialDoubleVectorReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialDoubleVectorReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                                   <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialDoubleVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for double precision vectors.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialMatrixReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialMatrixReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialMatrixReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                             <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialMatrixReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for single precision matrices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialDoubleMatrixReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialDoubleMatrixReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialDoubleMatrixReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                                   <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialDoubleMatrixReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for double precision matrices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialWaveReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialWaveReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialWaveReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                          <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialWaveReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for wave files.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialFstReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialFstReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialFstReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                          <span class="n">_kaldi_table_ext</span><span class="o">.</span><span class="n">SequentialFstReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for FSTs over the tropical semiring.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialLogFstReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialLogFstReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialLogFstReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                             <span class="n">_kaldi_table_ext</span><span class="o">.</span><span class="n">SequentialLogFstReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for FSTs over the log semiring.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialKwsIndexFstReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialKwsIndexFstReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialKwsIndexFstReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                             <span class="n">_kaldi_table_ext</span><span class="o">.</span><span class="n">SequentialKwsIndexFstReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for FSTs over the KWS index semiring.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialLatticeReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialLatticeReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialLatticeReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                              <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialLatticeReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for lattices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialCompactLatticeReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialCompactLatticeReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialCompactLatticeReader</span><span class="p">(</span>
+        <span class="n">_SequentialReaderBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialCompactLatticeReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for compact lattices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialNnetExampleReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialNnetExampleReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialNnetExampleReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                                  <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialNnetExampleReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for nnet examples.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialRnnlmExampleReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialRnnlmExampleReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialRnnlmExampleReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                                  <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialRnnlmExampleReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for RNNLM examples.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialIntReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialIntReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialIntReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                          <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialIntReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for integers.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialFloatReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialFloatReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialFloatReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                            <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialFloatReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for single precision floats.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialDoubleReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialDoubleReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialDoubleReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                             <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialDoubleReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for double precision floats.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialBoolReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialBoolReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialBoolReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                          <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialBoolReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for Booleans.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialIntVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialIntVectorReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialIntVectorReader</span><span class="p">(</span><span class="n">_SequentialReaderBase</span><span class="p">,</span>
+                                <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialIntVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for integer sequences.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialIntVectorVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialIntVectorVectorReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialIntVectorVectorReader</span><span class="p">(</span>
+        <span class="n">_SequentialReaderBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialIntVectorVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for sequences of integer sequences.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialIntPairVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialIntPairVectorReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialIntPairVectorReader</span><span class="p">(</span>
+        <span class="n">_SequentialReaderBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialIntPairVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for sequences of integer pairs.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SequentialFloatPairVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.SequentialFloatPairVectorReader">[docs]</a><span class="k">class</span> <span class="nc">SequentialFloatPairVectorReader</span><span class="p">(</span>
+        <span class="n">_SequentialReaderBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">SequentialFloatPairVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sequential table reader for sequences of single precision float pairs.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># Random Access Readers</span>
+<span class="c1">################################################################################</span>
+
+<span class="k">class</span> <span class="nc">_RandomAccessReaderBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class defining the Python API for random access table readers.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rspecifier</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This class is used for randomly accessing objects in an archive or</span>
+<span class="sd">        script file. It implements `__contains__` and `__getitem__` methods to</span>
+<span class="sd">        provide a dictionary-like interface for accessing table entries. e.g.</span>
+<span class="sd">        `reader[key]` returns the `value` associated with the `key`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            rspecifier(str): Kaldi rspecifier for reading the table.</span>
+<span class="sd">                If provided, the table is opened for reading.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IOError: If opening the table for reading fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">rspecifier</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">rspecifier</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Error opening random access table reader with &quot;</span>
+                              <span class="s2">&quot;rspecifier: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rspecifier</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rspecifier</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Opens the table for reading.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            rspecifier(str): Kaldi rspecifier for reading the table.</span>
+<span class="sd">                If provided, the table is opened for reading.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True if table is opened successfully, False otherwise.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IOError: If opening the table for reading fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">rspecifier</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">has_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Checks whether the table has the key.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key (str): The key.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          True if the table has the key, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the value associated with the key.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key (str): The key.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The value associated with the key.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">is_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Indicates whether the table reader is open or not.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          True if the table reader is open, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">is_open</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Closes the table.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True if table is closed successfully, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="RandomAccessVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessVectorReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessVectorReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                               <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for single precision vectors.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessDoubleVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessDoubleVectorReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessDoubleVectorReader</span><span class="p">(</span>
+        <span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessDoubleVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for double precision vectors.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessMatrixReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessMatrixReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessMatrixReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                               <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessMatrixReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for single precision matrices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessDoubleMatrixReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessDoubleMatrixReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessDoubleMatrixReader</span><span class="p">(</span>
+        <span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessDoubleMatrixReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for double precision matrices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessWaveReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessWaveReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessWaveReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                             <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessWaveReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for wave files.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessFstReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessFstReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessFstReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                            <span class="n">_kaldi_table_ext</span><span class="o">.</span><span class="n">RandomAccessFstReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for FSTs over the tropical semiring.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessLogFstReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessLogFstReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessLogFstReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                               <span class="n">_kaldi_table_ext</span><span class="o">.</span><span class="n">RandomAccessLogFstReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for FSTs over the log semiring.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessKwsIndexFstReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessKwsIndexFstReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessKwsIndexFstReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                               <span class="n">_kaldi_table_ext</span><span class="o">.</span><span class="n">RandomAccessKwsIndexFstReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for FSTs over the KWS index semiring.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessLatticeReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessLatticeReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessLatticeReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                                <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessLatticeReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for lattices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessCompactLatticeReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessCompactLatticeReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessCompactLatticeReader</span><span class="p">(</span>
+        <span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessCompactLatticeReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for compact lattices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessNnetExampleReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessNnetExampleReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessNnetExampleReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                                    <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessNnetExampleReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for nnet examples.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessIntReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessIntReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessIntReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                            <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessIntReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for integers.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessFloatReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessFloatReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessFloatReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                              <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessFloatReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for single precision floats.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessDoubleReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessDoubleReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessDoubleReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                               <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessDoubleReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for double precision floats.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessBoolReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessBoolReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessBoolReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                             <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessBoolReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for Booleans.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessIntVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessIntVectorReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessIntVectorReader</span><span class="p">(</span><span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+                                  <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessIntVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for integer sequences.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessIntVectorVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessIntVectorVectorReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessIntVectorVectorReader</span><span class="p">(</span>
+        <span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessIntVectorVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for sequences of integer sequences.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessIntPairVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessIntPairVectorReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessIntPairVectorReader</span><span class="p">(</span>
+        <span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessIntPairVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Random access table reader for sequences of integer pairs.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessFloatPairVectorReader"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessFloatPairVectorReader">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessFloatPairVectorReader</span><span class="p">(</span>
+        <span class="n">_RandomAccessReaderBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessFloatPairVectorReader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Random access table reader for sequences of single precision float pairs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># Mapped Random Access Readers</span>
+<span class="c1">################################################################################</span>
+
+<span class="k">class</span> <span class="nc">_RandomAccessReaderMappedBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class defining the Python API for mapped random access table readers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table_rspecifier</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">map_rspecifier</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This class is used for randomly accessing objects in an archive or</span>
+<span class="sd">        script file. It implements `__contains__` and `__getitem__` methods to</span>
+<span class="sd">        provide a dictionary-like interface for accessing table entries. If a</span>
+<span class="sd">        **map_rspecifier** is provided, the map is used for converting the keys</span>
+<span class="sd">        to the actual keys used to query the table, e.g. `reader[key]` returns</span>
+<span class="sd">        the `value` associated with the key `map[key]`. Otherwise, it works like</span>
+<span class="sd">        a random access table reader.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            table_rspecifier(str): Kaldi rspecifier for reading the table.</span>
+<span class="sd">                If provided, the table is opened for reading.</span>
+<span class="sd">            map_rspecifier (str): Kaldi rspecifier for reading the map.</span>
+<span class="sd">                If provided, the map is opened for reading.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IOError: If opening the table or map for reading fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderMappedBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">table_rspecifier</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="n">map_rspecifier</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">table_rspecifier</span><span class="p">,</span> <span class="n">map_rspecifier</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Error opening mapped random access table reader &quot;</span>
+                              <span class="s2">&quot;with table_rspecifier: </span><span class="si">{}</span><span class="s2">, map_rspecifier: </span><span class="si">{}</span><span class="s2">&quot;</span>
+                              <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">table_rspecifier</span><span class="p">,</span> <span class="n">map_rspecifier</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table_rspecifier</span><span class="p">,</span> <span class="n">map_rspecifier</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Opens the table for reading.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            table_rspecifier(str): Kaldi rspecifier for reading the table.</span>
+<span class="sd">                If provided, the table is opened for reading.</span>
+<span class="sd">            map_rspecifier (str): Kaldi rspecifier for reading the map.</span>
+<span class="sd">                If provided, the map is opened for reading.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True if table is opened successfully, False otherwise.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IOError: If opening the table or map for reading fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderMappedBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">table_rspecifier</span><span class="p">,</span>
+                                                               <span class="n">map_rspecifier</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">has_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Checks whether the table has the key.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key (str): The key.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          True if the table has the key, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderMappedBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the value associated with the key.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key (str): The key.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The value associated with the key.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderMappedBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">is_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Indicates whether the table reader is open or not.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          True if the table reader is open, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderMappedBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">is_open</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Closes the table.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True if table is closed successfully, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_RandomAccessReaderMappedBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="RandomAccessVectorReaderMapped"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessVectorReaderMapped">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessVectorReaderMapped</span><span class="p">(</span>
+        <span class="n">_RandomAccessReaderMappedBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessVectorReaderMapped</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mapped random access table reader for single precision vectors.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessDoubleVectorReaderMapped"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessDoubleVectorReaderMapped">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessDoubleVectorReaderMapped</span><span class="p">(</span>
+        <span class="n">_RandomAccessReaderMappedBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessDoubleVectorReaderMapped</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mapped random access table reader for double precision vectors.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessMatrixReaderMapped"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessMatrixReaderMapped">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessMatrixReaderMapped</span><span class="p">(</span>
+        <span class="n">_RandomAccessReaderMappedBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessMatrixReaderMapped</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mapped random access table reader for single precision matrices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessDoubleMatrixReaderMapped"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessDoubleMatrixReaderMapped">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessDoubleMatrixReaderMapped</span><span class="p">(</span>
+        <span class="n">_RandomAccessReaderMappedBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessDoubleMatrixReaderMapped</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mapped random access table reader for double precision matrices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RandomAccessFloatReaderMapped"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RandomAccessFloatReaderMapped">[docs]</a><span class="k">class</span> <span class="nc">RandomAccessFloatReaderMapped</span><span class="p">(</span>
+        <span class="n">_RandomAccessReaderMappedBase</span><span class="p">,</span>
+        <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RandomAccessFloatReaderMapped</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mapped random access table reader for single precision floats.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># Writers</span>
+<span class="c1">################################################################################</span>
+
+<span class="k">class</span> <span class="nc">_WriterBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class defining the additional Python API for table writers.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wspecifier</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        This class is used for writing objects to an archive or script file. It</span>
+<span class="sd">        implements the `__setitem__` method to provide a dictionary-like</span>
+<span class="sd">        interface for writing table entries, e.g. `writer[key] = value` writes</span>
+<span class="sd">        the pair `(key, value)` to the table.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            wspecifier (str): Kaldi wspecifier for writing the table.</span>
+<span class="sd">                If provided, the table is opened for writing.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IOError: If opening the table for writing fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">wspecifier</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">wspecifier</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Error opening table writer with wspecifier: </span><span class="si">{}</span><span class="s2">&quot;</span>
+                              <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wspecifier</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wspecifier</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Opens the table for writing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            wspecifier(str): Kaldi wspecifier for writing the table.</span>
+<span class="sd">                If provided, the table is opened for writing.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True if table is opened successfully, False otherwise.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IOError: If opening the table for writing fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">wspecifier</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Flushes the table contents to disk/pipe.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes the `(key, value)` pair to the table.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key (str): The key.</span>
+<span class="sd">            value: The value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">is_open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Indicates whether the table writer is open or not.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          True if the table writer is open, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">is_open</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Closes the table.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True if table is closed successfully, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<div class="viewcode-block" id="VectorWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.VectorWriter">[docs]</a><span class="k">class</span> <span class="nc">VectorWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">VectorWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for single precision vectors.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="DoubleVectorWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.DoubleVectorWriter">[docs]</a><span class="k">class</span> <span class="nc">DoubleVectorWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">DoubleVectorWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for double precision vectors.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="MatrixWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.MatrixWriter">[docs]</a><span class="k">class</span> <span class="nc">MatrixWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">MatrixWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for single precision matrices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="DoubleMatrixWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.DoubleMatrixWriter">[docs]</a><span class="k">class</span> <span class="nc">DoubleMatrixWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">DoubleMatrixWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for double precision matrices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="WaveWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.WaveWriter">[docs]</a><span class="k">class</span> <span class="nc">WaveWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">WaveWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for wave files.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="FstWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.FstWriter">[docs]</a><span class="k">class</span> <span class="nc">FstWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table_ext</span><span class="o">.</span><span class="n">FstWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for FSTs over the tropical semiring.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="LogFstWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.LogFstWriter">[docs]</a><span class="k">class</span> <span class="nc">LogFstWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table_ext</span><span class="o">.</span><span class="n">LogFstWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for FSTs over the log semiring.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="KwsIndexFstWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.KwsIndexFstWriter">[docs]</a><span class="k">class</span> <span class="nc">KwsIndexFstWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table_ext</span><span class="o">.</span><span class="n">KwsIndexFstWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for FSTs over the KWS index semiring.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="LatticeWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.LatticeWriter">[docs]</a><span class="k">class</span> <span class="nc">LatticeWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">LatticeWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for lattices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="CompactLatticeWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.CompactLatticeWriter">[docs]</a><span class="k">class</span> <span class="nc">CompactLatticeWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">CompactLatticeWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for compact lattices.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="NnetExampleWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.NnetExampleWriter">[docs]</a><span class="k">class</span> <span class="nc">NnetExampleWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">NnetExampleWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for nnet examples.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="RnnlmExampleWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.RnnlmExampleWriter">[docs]</a><span class="k">class</span> <span class="nc">RnnlmExampleWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">RnnlmExampleWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for RNNLM examples.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="IntWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.IntWriter">[docs]</a><span class="k">class</span> <span class="nc">IntWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">IntWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for integers.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="FloatWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.FloatWriter">[docs]</a><span class="k">class</span> <span class="nc">FloatWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">FloatWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for single precision floats.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="DoubleWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.DoubleWriter">[docs]</a><span class="k">class</span> <span class="nc">DoubleWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">DoubleWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for double precision floats.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="BoolWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.BoolWriter">[docs]</a><span class="k">class</span> <span class="nc">BoolWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">BoolWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for Booleans.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="IntVectorWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.IntVectorWriter">[docs]</a><span class="k">class</span> <span class="nc">IntVectorWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">IntVectorWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for integer sequences.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="IntVectorVectorWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.IntVectorVectorWriter">[docs]</a><span class="k">class</span> <span class="nc">IntVectorVectorWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">IntVectorVectorWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for sequences of integer sequences.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="IntPairVectorWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.IntPairVectorWriter">[docs]</a><span class="k">class</span> <span class="nc">IntPairVectorWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">IntPairVectorWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for sequences of integer pairs.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="FloatPairVectorWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.FloatPairVectorWriter">[docs]</a><span class="k">class</span> <span class="nc">FloatPairVectorWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">FloatPairVectorWriter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Table writer for sequences of single precision float pairs.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+<span class="c1">################################################################################</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span>
+           <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span>
+           <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;Base&#39;</span><span class="p">)]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

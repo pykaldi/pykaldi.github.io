@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.util.io &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../../../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>kaldi.util.io</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kaldi.util.io</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">For detailed documentation of Kaldi input/output streams and extended filenames,</span>
+<span class="sd">see `Kaldi I/O mechanisms`_ and `Kaldi I/O from a command-line perspective`_.</span>
+
+<span class="sd">.. _Kaldi I/O mechanisms:</span>
+<span class="sd">   http://kaldi-asr.org/doc/io.html</span>
+<span class="sd">.. _Kaldi I/O from a command-line perspective:</span>
+<span class="sd">   http://kaldi-asr.org/doc/io_tut.html</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">from</span> <span class="nn">..base</span> <span class="k">import</span> <span class="n">io</span> <span class="k">as</span> <span class="n">_base_io</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_kaldi_io</span>
+<span class="kn">from</span> <span class="nn">._kaldi_io</span> <span class="k">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="Input"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.io.Input">[docs]</a><span class="k">class</span> <span class="nc">Input</span><span class="p">(</span><span class="n">_kaldi_io</span><span class="o">.</span><span class="n">Input</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Input stream for reading from extended filenames.</span>
+
+<span class="sd">    If **rxfilename** is provided, it is opened for reading.</span>
+
+<span class="sd">    If **binary** is ``True``, the input stream is opened in binary mode.</span>
+<span class="sd">    Otherwise, it is opened in text mode. If the stream is opened in binary mode</span>
+<span class="sd">    and it has Kaldi binary mode header, `self.binary` attribute is set to</span>
+<span class="sd">    ``True``. Similar to how files are handled in Python, PyKaldi distinguishes</span>
+<span class="sd">    between input streams opened in binary and text modes, even when the</span>
+<span class="sd">    underlying operating system doesn&#39;t. If the input stream is opened in binary</span>
+<span class="sd">    mode, `read` and `readline` methods return contents as `bytes` objects</span>
+<span class="sd">    without any decoding. In text mode, these methods return contents of the</span>
+<span class="sd">    input stream as `unicode` strings, the bytes having been first decoded using</span>
+<span class="sd">    the platform-dependent default encoding.</span>
+
+<span class="sd">    This class implements the iterator and context manager protocols.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        rxfilename (str): Extended filename to open for reading.</span>
+<span class="sd">        binary (bool): Whether to open the stream in binary mode.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        binary (bool): Whether the contents of the input stream are binary.</span>
+<span class="sd">            This attribute is set to ``True`` if the stream is opened in binary</span>
+<span class="sd">            mode and it has Kaldi binary mode header. Its value is valid only</span>
+<span class="sd">            if the stream is still open.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rxfilename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Input</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">binary</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">rxfilename</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">rxfilename</span><span class="p">,</span> <span class="n">binary</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_open</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_open</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">yield</span> <span class="n">line</span>
+
+<div class="viewcode-block" id="Input.open"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.io.Input.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rxfilename</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Opens the stream for reading.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            rxfilename (str): Extended filename to open for reading.</span>
+<span class="sd">            binary (bool): Whether to open the stream in binary mode.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">binary</span><span class="p">:</span>
+            <span class="n">success</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">binary</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Input</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">rxfilename</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_text_mode</span><span class="p">(</span><span class="n">rxfilename</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Could not open stream for reading.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read</span> <span class="o">=</span> <span class="n">_base_io</span><span class="o">.</span><span class="n">read</span> <span class="k">if</span> <span class="n">binary</span> <span class="k">else</span> <span class="n">_base_io</span><span class="o">.</span><span class="n">read_text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_readline</span> <span class="o">=</span> <span class="n">_base_io</span><span class="o">.</span><span class="n">readline</span> <span class="k">if</span> <span class="n">binary</span> <span class="k">else</span> <span class="n">_base_io</span><span class="o">.</span><span class="n">readline_text</span></div>
+
+<div class="viewcode-block" id="Input.read"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.io.Input.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads and returns the contents of the stream.</span>
+
+<span class="sd">        If stream was opened in binary mode, returns a `bytes` object.</span>
+<span class="sd">        Otherwise, returns a `unicode` string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_open</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;I/O operation on closed stream.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Input.readline"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.io.Input.readline">[docs]</a>    <span class="k">def</span> <span class="nf">readline</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads and returns a line from the stream.</span>
+
+<span class="sd">        If stream was opened in binary mode, returns a `bytes` object.</span>
+<span class="sd">        Otherwise, returns a `unicode` string. If the stream is at EOF,</span>
+<span class="sd">        an empty object is returned.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_open</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;I/O operation on closed stream.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Input.readlines"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.io.Input.readlines">[docs]</a>    <span class="k">def</span> <span class="nf">readlines</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads and returns the contents of the stream as a list of lines.</span>
+
+<span class="sd">        If stream was opened in binary mode, returns a list of `bytes` objects.</span>
+<span class="sd">        Otherwise, returns a list of `unicode` strings.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Output"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.io.Output">[docs]</a><span class="k">class</span> <span class="nc">Output</span><span class="p">(</span><span class="n">_kaldi_io</span><span class="o">.</span><span class="n">Output</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Output stream for writing to extended filenames.</span>
+
+<span class="sd">    If **wxfilename** is provided, it is opened for writing.</span>
+
+<span class="sd">    If **binary** is ``True``, the output stream is opened in binary mode.</span>
+<span class="sd">    Otherwise it is opened in text mode. Similar to how files are handled in</span>
+<span class="sd">    Python, PyKaldi distinguishes between output streams opened in binary and</span>
+<span class="sd">    text modes, even when the underlying operating system doesn&#39;t. If the output</span>
+<span class="sd">    stream is opened in binary mode, `write` and `writelines` methods accept</span>
+<span class="sd">    `bytes` objects. Otherwise, they accept `unicode` strings.</span>
+
+<span class="sd">    If **write_header** is ``True`` and the stream was opened in binary mode,</span>
+<span class="sd">    then Kaldi binary mode header (`\\\\0` then `B`) is written to the beginning</span>
+<span class="sd">    of the stream. This header is checked by PyKaldi input streams opened in</span>
+<span class="sd">    binary mode to set the `~Input.binary` attribute.</span>
+
+<span class="sd">    This class implements the context manager protocol.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        wxfilename (str): Extended filename to open for writing.</span>
+<span class="sd">        binary (bool): Whether to open the stream in binary mode.</span>
+<span class="sd">        write_header (bool): Whether to write Kaldi binary mode header in</span>
+<span class="sd">            binary mode.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wxfilename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_header</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Output</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">wxfilename</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">wxfilename</span><span class="p">,</span> <span class="n">binary</span><span class="p">,</span> <span class="n">write_header</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_open</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_open</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Output.flush"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.io.Output.flush">[docs]</a>    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Flushes the stream.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_open</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;I/O operation on closed stream.&quot;</span><span class="p">)</span>
+        <span class="n">_base_io</span><span class="o">.</span><span class="n">flush</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Output.open"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.io.Output.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wxfilename</span><span class="p">,</span> <span class="n">binary</span><span class="p">,</span> <span class="n">write_header</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Opens the stream for writing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            wxfilename (str): Extended filename to open for writing.</span>
+<span class="sd">            binary (bool): Whether to open the stream in binary mode.</span>
+<span class="sd">            write_header (bool): Whether to write Kaldi binary mode header in</span>
+<span class="sd">                binary mode.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">super</span><span class="p">(</span><span class="n">Output</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">wxfilename</span><span class="p">,</span> <span class="n">binary</span><span class="p">,</span> <span class="n">write_header</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Could not open stream for writing.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span> <span class="o">=</span> <span class="n">_base_io</span><span class="o">.</span><span class="n">write</span> <span class="k">if</span> <span class="n">binary</span> <span class="k">else</span> <span class="n">_base_io</span><span class="o">.</span><span class="n">write_text</span></div>
+
+<div class="viewcode-block" id="Output.write"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.io.Output.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes s to the stream.</span>
+
+<span class="sd">        Returns the number of bytes/characters written.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_open</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;I/O operation on closed stream.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">()</span><span class="o">.</span><span class="n">good</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;I/O error.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Output.writelines"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.io.Output.writelines">[docs]</a>    <span class="k">def</span> <span class="nf">writelines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes a list of lines to the stream.</span>
+
+<span class="sd">        Line separators are not added, so it is usual for each of the lines</span>
+<span class="sd">        provided to have a line separator at the end.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="xopen"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.io.xopen">[docs]</a><span class="k">def</span> <span class="nf">xopen</span><span class="p">(</span><span class="n">xfilename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">write_header</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Opens an extended filename and returns the stream.</span>
+
+<span class="sd">    The **mode** defaults to &quot;r&quot; which means open for reading in binary mode.</span>
+<span class="sd">    The available modes are:</span>
+
+<span class="sd">    ========= ===============================================================</span>
+<span class="sd">    Character Meaning</span>
+<span class="sd">    --------- ---------------------------------------------------------------</span>
+<span class="sd">    &#39;r&#39;       open for reading (default)</span>
+<span class="sd">    &#39;w&#39;       open for writing</span>
+<span class="sd">    &#39;b&#39;       binary mode (default)</span>
+<span class="sd">    &#39;t&#39;       text mode</span>
+<span class="sd">    ========= ===============================================================</span>
+
+<span class="sd">    xopen() returns a stream object whose type depends on the mode, and</span>
+<span class="sd">    through which the standard I/O operations such as reading and writing</span>
+<span class="sd">    are performed. When xopen() is used to open a stream for reading (&#39;r&#39;, &#39;rb&#39;,</span>
+<span class="sd">    &#39;rt&#39;), it returns an `Input`. When used to open a stream for writing (&#39;w&#39;,</span>
+<span class="sd">    &#39;wb&#39;, &#39;wt&#39;), it return an `Output`.</span>
+
+<span class="sd">    Similar to how files are handled in Python, PyKaldi distinguishes between</span>
+<span class="sd">    streams opened in binary and text modes, even when the underlying operating</span>
+<span class="sd">    system doesn&#39;t. If the stream is opened in binary mode, its I/O methods</span>
+<span class="sd">    accept and return `bytes` objects. Otherwise, they accept and return</span>
+<span class="sd">    `unicode` strings.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        xfilename (str): Extended filename to open.</span>
+<span class="sd">        mode (str): Optional string specifying the mode stream is opened.</span>
+<span class="sd">        write_header (str): Whether streams opened for writing in binary mode</span>
+<span class="sd">            write Kaldi binary mode header (`\\\\0` then `B`) to the beginning</span>
+<span class="sd">            of the stream. This header is checked by streams opened for reading</span>
+<span class="sd">            in binary mode to set `~Input.binary` attribute.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">xfilename</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;invalid xfilename: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">xfilename</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;invalid mode: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mode</span><span class="p">)</span>
+    <span class="n">modes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">modes</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="s2">&quot;rwbt&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">modes</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;invalid mode: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mode</span><span class="p">)</span>
+    <span class="n">reading</span> <span class="o">=</span> <span class="s2">&quot;r&quot;</span> <span class="ow">in</span> <span class="n">modes</span>
+    <span class="n">writing</span> <span class="o">=</span> <span class="s2">&quot;w&quot;</span> <span class="ow">in</span> <span class="n">modes</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;t&quot;</span> <span class="ow">in</span> <span class="n">modes</span>
+    <span class="n">binary</span> <span class="o">=</span> <span class="s2">&quot;b&quot;</span> <span class="ow">in</span> <span class="n">modes</span>
+    <span class="k">if</span> <span class="n">text</span> <span class="ow">and</span> <span class="n">binary</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;can&#39;t have text and binary mode at once&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">reading</span> <span class="o">+</span> <span class="n">writing</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;must have exactly one of read/write mode&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span><span class="p">:</span>
+        <span class="n">binary</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">reading</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Input</span><span class="p">(</span><span class="n">xfilename</span><span class="p">,</span> <span class="n">binary</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Output</span><span class="p">(</span><span class="n">xfilename</span><span class="p">,</span> <span class="n">binary</span><span class="p">,</span> <span class="n">write_header</span><span class="p">)</span></div>
+
+
+<span class="c1">################################################################################</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span>
+           <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span>
+           <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;Base&#39;</span><span class="p">)]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

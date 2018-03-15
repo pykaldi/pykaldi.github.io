@@ -1,0 +1,663 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.matrix.functions &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../../index.html"/>
+        <link rel="up" title="kaldi.matrix" href="../matrix.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../../../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../matrix.html">kaldi.matrix</a> &raquo;</li>
+        
+      <li>kaldi.matrix.functions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kaldi.matrix.functions</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_compressed_matrix</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_kaldi_matrix</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_kaldi_matrix_ext</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_kaldi_vector</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_kaldi_vector_ext</span>
+<span class="kn">import</span> <span class="nn">_matrix_common</span> <span class="c1"># FIXME: Relative/absolute import is buggy in Python 3.</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_sparse_matrix</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_sp_matrix</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_tp_matrix</span>
+
+<span class="kn">from</span> <span class="nn">._matrix_functions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._sp_matrix</span> <span class="k">import</span> <span class="n">SolverOptions</span>
+<span class="kn">from</span> <span class="nn">._sp_matrix</span> <span class="k">import</span> <span class="n">solve_quadratic_problem</span>
+<span class="kn">from</span> <span class="nn">._sp_matrix</span> <span class="k">import</span> <span class="n">solve_quadratic_matrix_problem</span>
+<span class="kn">from</span> <span class="nn">._sp_matrix</span> <span class="k">import</span> <span class="n">solve_double_quadratic_matrix_problem</span>
+
+
+<div class="viewcode-block" id="approx_equal"><a class="viewcode-back" href="../../../api/kaldi.matrix.html#kaldi.matrix.functions.approx_equal">[docs]</a><span class="k">def</span> <span class="nf">approx_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks if given vectors (or matrices) are approximately equal.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        a (Vector or Matrix or SpMatrix or DoubleVector or DoubleMatrix or DoubleSpMatrix):</span>
+<span class="sd">            The first object.</span>
+<span class="sd">        b (Vector or Matrix or SpMatrix or DoubleVector or DoubleMatrix or DoubleSpMatrix):</span>
+<span class="sd">            The second object.</span>
+<span class="sd">        tol (float): The tolerance for the equality check. Defaults to ``0.01``.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        True if input objects have the same type and size, and</span>
+<span class="sd">        :math:`\\Vert a-b \\Vert \\leq \\mathrm{tol} \\times \\Vert a \\Vert`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        TypeError: If the first object is not a vector or matrix instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">VectorBase</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">DoubleVectorBase</span><span class="p">,</span>
+                      <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">,</span>
+                      <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">SpMatrix</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">DoubleSpMatrix</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="n">approx_equal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;a is not a vector or matrix instance&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="assert_equal"><a class="viewcode-back" href="../../../api/kaldi.matrix.html#kaldi.matrix.functions.assert_equal">[docs]</a><span class="k">def</span> <span class="nf">assert_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Asserts given vectors (or matrices) are approximately equal.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        a (Vector or Matrix or SpMatrix or DoubleVector or DoubleMatrix or DoubleSpMatrix):</span>
+<span class="sd">            The first object.</span>
+<span class="sd">        b (Vector or Matrix or SpMatrix or DoubleVector or DoubleMatrix or DoubleSpMatrix):</span>
+<span class="sd">            The second object.</span>
+<span class="sd">        tol (float): The tolerance for the equality check. Defaults to ``0.01``.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        TypeError: If the first object is not a vector or matrix instance.</span>
+<span class="sd">        AssertionError: If input objects do not have the same type or size, or</span>
+<span class="sd">        :math:`\\Vert a-b \\Vert &gt; \\mathrm{tol} \\times \\Vert a \\Vert`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span><span class="p">(</span><span class="n">approx_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="create_eigenvalue_matrix"><a class="viewcode-back" href="../../../api/kaldi.matrix.html#kaldi.matrix.functions.create_eigenvalue_matrix">[docs]</a><span class="k">def</span> <span class="nf">create_eigenvalue_matrix</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates the eigenvalue matrix.</span>
+
+<span class="sd">    Eigenvalue matrix :math:`D` is part of the decomposition used in eig.</span>
+<span class="sd">    :math:`D` will be block-diagonal with blocks of size 1 (for real</span>
+<span class="sd">    eigenvalues) or 2x2 for complex pairs. If a complex pair is :math:`\\lambda</span>
+<span class="sd">    +- i\\mu`, :math:`D` will have a corresponding 2x2 block :math:`[\\lambda,</span>
+<span class="sd">    \\mu; -\\mu, \\lambda]`. This function will throw if any complex eigenvalues</span>
+<span class="sd">    are not in complex conjugate pairs (or the members of such pairs are not</span>
+<span class="sd">    consecutively numbered). The D you supply must has correct dimensions.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        real (Vector or DoubleVector): The real part of the eigenvalues.</span>
+<span class="sd">        imag (Vector or DoubleVector): The imaginary part of the eigenvalues.</span>
+<span class="sd">        D (Matrix or DoubleMatrix or None): The output matrix.</span>
+<span class="sd">            If provided, the eigenvalue matrix is written into this matrix.</span>
+<span class="sd">            If ``None``, the eigenvalue matrix is returned.</span>
+<span class="sd">            Defaults to ``None``.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Matrix or DoubleMatrix: The eigenvalue matrix if **D** is ``None``.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        RuntimeError: If `real.dim != imag.dim`</span>
+<span class="sd">        TypeError: If input types are not supported.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">VectorBase</span><span class="p">)</span> <span class="ow">and</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">imag</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">VectorBase</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">D</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">D</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">real</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">real</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+            <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_create_eigenvalue_matrix</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">D</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_create_eigenvalue_matrix</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">DoubleVectorBase</span><span class="p">)</span> <span class="ow">and</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">imag</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">DoubleVectorBase</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">D</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">D</span> <span class="o">=</span> <span class="n">DoubleMatrix</span><span class="p">(</span><span class="n">real</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">real</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+            <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_create_eigenvalue_double_matrix</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">D</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_create_eigenvalue_double_matrix</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;real and imag should be vectors with the same data type.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="sort_svd"><a class="viewcode-back" href="../../../api/kaldi.matrix.html#kaldi.matrix.functions.sort_svd">[docs]</a><span class="k">def</span> <span class="nf">sort_svd</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Vt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sort_on_absolute_value</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sorts singular-value decomposition in-place.</span>
+
+<span class="sd">    SVD is :math:`U\\ diag(s)\\ V^T`.</span>
+
+<span class="sd">    This function is as generic as possible, to be applicable to other</span>
+<span class="sd">    types of problems. Requires `s.dim == U.num_cols`, and sorts from</span>
+<span class="sd">    greatest to least absolute value, moving the columns of **U**,</span>
+<span class="sd">    and the rows of **Vt**, if provided, around in the same way.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        The ``absolute value&#39;&#39; part won&#39;t matter if this is an actual SVD,</span>
+<span class="sd">        since singular values are non-negative.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        s (Vector): The singular values.</span>
+<span class="sd">        U (Matrix): The :math:`U` part of SVD.</span>
+<span class="sd">        Vt (Matrix): The :math:`V^T` part of SVD. Defaults to ``None``.</span>
+<span class="sd">        sort_on_absolute_value (bool): How to sort **s**.</span>
+<span class="sd">            If True, sort from greatest to least absolute value. Otherwise,</span>
+<span class="sd">            sort from greatest to least value. Defaults to ``True``.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        RuntimeError: If `s.dim != U.num_cols`.</span>
+<span class="sd">        TypeError: If input types are not supported.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">VectorBase</span><span class="p">)</span> <span class="ow">and</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">)):</span>
+        <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_sort_svd</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Vt</span><span class="p">,</span> <span class="n">sort_on_absolute_value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">DoubleVectorBase</span><span class="p">)</span> <span class="ow">and</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">)):</span>
+        <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_sort_double_svd</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">Vt</span><span class="p">,</span> <span class="n">sort_on_absolute_value</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;s and U should respectively be a vector and matrix with &quot;</span>
+                    <span class="s2">&quot;matching data types.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="filter_matrix_rows"><a class="viewcode-back" href="../../../api/kaldi.matrix.html#kaldi.matrix.functions.filter_matrix_rows">[docs]</a><span class="k">def</span> <span class="nf">filter_matrix_rows</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">keep_rows</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filters matrix rows.</span>
+
+<span class="sd">    The output is a matrix containing only the rows `r` of **in** such that</span>
+<span class="sd">    `keep_rows[r] == True`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        matrix (Matrix or SparseMatrix or CompressedMatrix or GeneralMatrix or DoubleMatrix or DoubleSparseMatrix):</span>
+<span class="sd">            The input matrix.</span>
+<span class="sd">        keep_rows (List[bool]): The list that determines which rows to keep.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A new matrix constructed with the rows to keep.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        RuntimeError: If `matrix.num_rows != keep_rows.length`.</span>
+<span class="sd">        TypeError: If input matrix type is not supported.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">Matrix</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">_filter_matrix_rows</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">keep_rows</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">SparseMatrix</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">_filter_sparse_matrix_rows</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">keep_rows</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">_compressed_matrix</span><span class="o">.</span><span class="n">CompressedMatrix</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">_filter_compressed_matrix_rows</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">keep_rows</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">GeneralMatrix</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">_filter_general_matrix_rows</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">keep_rows</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrix</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">_filter_matrix_rows_double</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">keep_rows</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">DoubleSparseMatrix</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">_filter_sparse_matrix_rows_double</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">keep_rows</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;input matrix type is not supported.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="vec_vec"><a class="viewcode-back" href="../../../api/kaldi.matrix.html#kaldi.matrix.functions.vec_vec">[docs]</a><span class="k">def</span> <span class="nf">vec_vec</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the dot product of vectors.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        v1 (Vector or DoubleVector): The first vector.</span>
+<span class="sd">        v2 (Vector or DoubleVector or SparseVector or DoubleSparseVector):</span>
+<span class="sd">            The second vector.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The dot product of v1 and v2.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        RuntimeError: In case of size mismatch.</span>
+<span class="sd">        TypeError: If input types are not supported.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">VectorBase</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">VectorBase</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">_vec_vec</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">SparseVector</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">_vec_svec</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">DoubleVectorBase</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">DoubleVectorBase</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">_vec_vec_double</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">DoubleSparseVector</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">_vec_svec_double</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;v1 and v2 should be vectors with the same data type.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="vec_mat_vec"><a class="viewcode-back" href="../../../api/kaldi.matrix.html#kaldi.matrix.functions.vec_mat_vec">[docs]</a><span class="k">def</span> <span class="nf">vec_mat_vec</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Computes a vector-matrix-vector product.</span>
+
+<span class="sd">    Performs the operation :math:`v_1\\ M\\ v_2`.</span>
+
+<span class="sd">    Precision of input matrices should match.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        v1 (Vector or DoubleVector): The first input vector.</span>
+<span class="sd">        M (Matrix or DoubleMatrix or SpMatrix): The input matrix.</span>
+<span class="sd">        v2 (Vector or DoubleVector): The second input vector.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">       The vector-matrix-vector product.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">       RuntimeError: In case of size mismatch.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">VectorBase</span><span class="p">)</span> <span class="ow">and</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">VectorBase</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_kaldi_vector_ext</span><span class="o">.</span><span class="n">_vec_mat_vec</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">SpMatrix</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">_vec_sp_vec</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">DoubleVectorBase</span><span class="p">)</span> <span class="ow">and</span>
+          <span class="nb">isinstance</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">DoubleVectorBase</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_kaldi_vector_ext</span><span class="o">.</span><span class="n">_vec_mat_vec_double</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">DoubleSpMatrix</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">_vec_sp_vec_double</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;given combination of input types is not supported&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="trace_mat"><a class="viewcode-back" href="../../../api/kaldi.matrix.html#kaldi.matrix.functions.trace_mat">[docs]</a><span class="k">def</span> <span class="nf">trace_mat</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the trace of :math:`A`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        A (Matrix or DoubleMatrix): The input matrix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_trace_mat</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_trace_double_mat</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;input matrix type is not supported&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="trace_mat_mat"><a class="viewcode-back" href="../../../api/kaldi.matrix.html#kaldi.matrix.functions.trace_mat_mat">[docs]</a><span class="k">def</span> <span class="nf">trace_mat_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">transA</span><span class="o">=</span><span class="n">_matrix_common</span><span class="o">.</span><span class="n">MatrixTransposeType</span><span class="o">.</span><span class="n">NO_TRANS</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the trace of :math:`A\\ B`.</span>
+
+<span class="sd">    Precision of input matrices should match.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        A (Matrix or DoubleMatrix or SpMatrix or DoubleSpMatrix or SparseMatrix or DoubleSparseMatrix):</span>
+<span class="sd">            The first input matrix.</span>
+<span class="sd">        B (Matrix or DoubleMatrix or SpMatrix or DoubleSpMatrix or SparseMatrix or DoubleSparseMatrix):</span>
+<span class="sd">            The second input matrix.</span>
+<span class="sd">        transA (_matrix_common.MatrixTransposeType):</span>
+<span class="sd">            Whether to use **A** or its transpose.</span>
+<span class="sd">            Defaults to ``MatrixTransposeType.NO_TRANS``.</span>
+<span class="sd">        lower (bool): Whether to count lower-triangular elements only once.</span>
+<span class="sd">            Active only if both inputs are symmetric matrices.</span>
+<span class="sd">            Defaults to ``False``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_trace_mat_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">transA</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">SparseMatrix</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">_trace_mat_smat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">transA</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">SpMatrix</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">_trace_sp_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">SpMatrix</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">_trace_sp_sp_lower</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">_trace_sp_sp</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_trace_double_mat_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">transA</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">DoubleSparseMatrix</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_sparse_matrix</span><span class="o">.</span><span class="n">_trace_double_mat_smat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">transA</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">DoubleSpMatrix</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">DoubleSpMatrix</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">_trace_double_sp_sp_lower</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">_trace_double_sp_sp</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;given combination of matrix types is not supported&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="trace_mat_mat_mat"><a class="viewcode-back" href="../../../api/kaldi.matrix.html#kaldi.matrix.functions.trace_mat_mat_mat">[docs]</a><span class="k">def</span> <span class="nf">trace_mat_mat_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span>
+                      <span class="n">transA</span><span class="o">=</span><span class="n">_matrix_common</span><span class="o">.</span><span class="n">MatrixTransposeType</span><span class="o">.</span><span class="n">NO_TRANS</span><span class="p">,</span>
+                      <span class="n">transB</span><span class="o">=</span><span class="n">_matrix_common</span><span class="o">.</span><span class="n">MatrixTransposeType</span><span class="o">.</span><span class="n">NO_TRANS</span><span class="p">,</span>
+                      <span class="n">transC</span><span class="o">=</span><span class="n">_matrix_common</span><span class="o">.</span><span class="n">MatrixTransposeType</span><span class="o">.</span><span class="n">NO_TRANS</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the trace of :math:`A\\ B\\ C`.</span>
+
+<span class="sd">    Precision of input matrices should match.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        A (Matrix or DoubleMatrix): The first input matrix.</span>
+<span class="sd">        B (Matrix or DoubleMatrix or SpMatrix or DoubleSpMatrix):</span>
+<span class="sd">            The second input matrix.</span>
+<span class="sd">        C (Matrix or DoubleMatrix): The third input matrix.</span>
+<span class="sd">        transA (_matrix_common.MatrixTransposeType):</span>
+<span class="sd">            Whether to use **A** or its transpose.</span>
+<span class="sd">            Defaults to ``MatrixTransposeType.NO_TRANS``.</span>
+<span class="sd">        transB (_matrix_common.MatrixTransposeType):</span>
+<span class="sd">            Whether to use **B** or its transpose.</span>
+<span class="sd">            Defaults to ``MatrixTransposeType.NO_TRANS``.</span>
+<span class="sd">        transC (_matrix_common.MatrixTransposeType):</span>
+<span class="sd">            Whether to use **C** or its transpose.</span>
+<span class="sd">            Defaults to ``MatrixTransposeType.NO_TRANS``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_trace_mat_mat_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">transA</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">transB</span><span class="p">,</span>
+                                                    <span class="n">C</span><span class="p">,</span> <span class="n">transC</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">SpMatrix</span><span class="p">)</span> <span class="ow">and</span>
+              <span class="nb">isinstance</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">_trace_mat_sp_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">transA</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">transC</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_trace_double_mat_mat_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">transA</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">transB</span><span class="p">,</span>
+                                                           <span class="n">C</span><span class="p">,</span> <span class="n">transC</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">DoubleSpMatrix</span><span class="p">)</span> <span class="ow">and</span>
+              <span class="nb">isinstance</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">_trace_double_mat_sp_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">transA</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">transC</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;given combination of matrix types is not supported&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="trace_mat_mat_mat_mat"><a class="viewcode-back" href="../../../api/kaldi.matrix.html#kaldi.matrix.functions.trace_mat_mat_mat_mat">[docs]</a><span class="k">def</span> <span class="nf">trace_mat_mat_mat_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span>
+                          <span class="n">transA</span><span class="o">=</span><span class="n">_matrix_common</span><span class="o">.</span><span class="n">MatrixTransposeType</span><span class="o">.</span><span class="n">NO_TRANS</span><span class="p">,</span>
+                          <span class="n">transB</span><span class="o">=</span><span class="n">_matrix_common</span><span class="o">.</span><span class="n">MatrixTransposeType</span><span class="o">.</span><span class="n">NO_TRANS</span><span class="p">,</span>
+                          <span class="n">transC</span><span class="o">=</span><span class="n">_matrix_common</span><span class="o">.</span><span class="n">MatrixTransposeType</span><span class="o">.</span><span class="n">NO_TRANS</span><span class="p">,</span>
+                          <span class="n">transD</span><span class="o">=</span><span class="n">_matrix_common</span><span class="o">.</span><span class="n">MatrixTransposeType</span><span class="o">.</span><span class="n">NO_TRANS</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the trace of :math:`A\\ B\\ C\\ D`.</span>
+
+<span class="sd">    Precision of input matrices should match.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        A (Matrix or DoubleMatrix): The first input matrix.</span>
+<span class="sd">        B (Matrix or DoubleMatrix or SpMatrix or DoubleSpMatrix):</span>
+<span class="sd">            The second input matrix.</span>
+<span class="sd">        C (Matrix or DoubleMatrix): The third input matrix.</span>
+<span class="sd">        D (Matrix or DoubleMatrix or SpMatrix or DoubleSpMatrix):</span>
+<span class="sd">            The fourth input matrix.</span>
+<span class="sd">        transA (_matrix_common.MatrixTransposeType):</span>
+<span class="sd">            Whether to use **A** or its transpose.</span>
+<span class="sd">            Defaults to ``MatrixTransposeType.NO_TRANS``.</span>
+<span class="sd">        transB (_matrix_common.MatrixTransposeType):</span>
+<span class="sd">            Whether to use **B** or its transpose.</span>
+<span class="sd">            Defaults to ``MatrixTransposeType.NO_TRANS``.</span>
+<span class="sd">        transC (_matrix_common.MatrixTransposeType):</span>
+<span class="sd">            Whether to use **C** or its transpose.</span>
+<span class="sd">            Defaults to ``MatrixTransposeType.NO_TRANS``.</span>
+<span class="sd">        transD (_matrix_common.MatrixTransposeType):</span>
+<span class="sd">            Whether to use **D** or its transpose.</span>
+<span class="sd">            Defaults to ``MatrixTransposeType.NO_TRANS``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_trace_mat_mat_mat_mat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">transA</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">transB</span><span class="p">,</span>
+                                                        <span class="n">C</span><span class="p">,</span> <span class="n">transC</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">transD</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">SpMatrix</span><span class="p">)</span> <span class="ow">and</span>
+              <span class="nb">isinstance</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">)</span> <span class="ow">and</span>
+              <span class="nb">isinstance</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">SpMatrix</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">_trace_mat_sp_mat_sp</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">transA</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">transC</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">_trace_double_mat_mat_mat_mat</span><span class="p">(</span>
+                <span class="n">A</span><span class="p">,</span> <span class="n">transA</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">transB</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">transC</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">transD</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">DoubleSpMatrix</span><span class="p">)</span> <span class="ow">and</span>
+              <span class="nb">isinstance</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrixBase</span><span class="p">)</span> <span class="ow">and</span>
+              <span class="nb">isinstance</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">DoubleSpMatrix</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">_trace_double_mat_sp_mat_sp</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">transA</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span>
+                                                          <span class="n">C</span><span class="p">,</span> <span class="n">transC</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;given combination of matrix types is not supported&quot;</span><span class="p">)</span></div>
+
+<span class="c1">################################################################################</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span><span class="p">]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

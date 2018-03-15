@@ -1,0 +1,1914 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.tree &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.util" href="kaldi.util.html"/>
+        <link rel="prev" title="kaldi.transform" href="kaldi.transform.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.tree</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.tree.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.tree">
+<span id="kaldi-tree"></span><h1>kaldi.tree<a class="headerlink" href="#module-kaldi.tree" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.add_to_clusters" title="kaldi.tree.add_to_clusters"><code class="xref py py-obj docutils literal"><span class="pre">add_to_clusters</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.add_to_clusters_optimized" title="kaldi.tree.add_to_clusters_optimized"><code class="xref py py-obj docutils literal"><span class="pre">add_to_clusters_optimized</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.build_tree" title="kaldi.tree.build_tree"><code class="xref py py-obj docutils literal"><span class="pre">build_tree</span></code></a></td>
+<td>Builds a set of decision trees.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.build_tree_two_level" title="kaldi.tree.build_tree_two_level"><code class="xref py py-obj docutils literal"><span class="pre">build_tree_two_level</span></code></a></td>
+<td>Builds a two-level decision tree.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.cluster_bottom_up" title="kaldi.tree.cluster_bottom_up"><code class="xref py py-obj docutils literal"><span class="pre">cluster_bottom_up</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.cluster_bottom_up_compartmentalized" title="kaldi.tree.cluster_bottom_up_compartmentalized"><code class="xref py py-obj docutils literal"><span class="pre">cluster_bottom_up_compartmentalized</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.cluster_event_map_get_mapping" title="kaldi.tree.cluster_event_map_get_mapping"><code class="xref py py-obj docutils literal"><span class="pre">cluster_event_map_get_mapping</span></code></a></td>
+<td>Clusters the leaves of the EventMap, with ‘thresh’ a delta-likelihood threshold to control how many leaves we combine.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.convert_stats" title="kaldi.tree.convert_stats"><code class="xref py py-obj docutils literal"><span class="pre">convert_stats</span></code></a></td>
+<td>Converts stats from a given context-window (N) and central position (P) to a different N and P</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.find_all_keys" title="kaldi.tree.find_all_keys"><code class="xref py py-obj docutils literal"><span class="pre">find_all_keys</span></code></a></td>
+<td>Returns the sorted and unique list of all key identities in the stats.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.gen_rand_stats" title="kaldi.tree.gen_rand_stats"><code class="xref py py-obj docutils literal"><span class="pre">gen_rand_stats</span></code></a></td>
+<td>Generates random statistics of the form used by build_tree.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.get_tree_structure" title="kaldi.tree.get_tree_structure"><code class="xref py py-obj docutils literal"><span class="pre">get_tree_structure</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.make_event_pair" title="kaldi.tree.make_event_pair"><code class="xref py py-obj docutils literal"><span class="pre">make_event_pair</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.map_event_map_leaves" title="kaldi.tree.map_event_map_leaves"><code class="xref py py-obj docutils literal"><span class="pre">map_event_map_leaves</span></code></a></td>
+<td>Remaps the event-map leaves using this mapping indexed by number of leaf</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.monophone_context_dependency" title="kaldi.tree.monophone_context_dependency"><code class="xref py py-obj docutils literal"><span class="pre">monophone_context_dependency</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.monophone_context_dependency_shared" title="kaldi.tree.monophone_context_dependency_shared"><code class="xref py py-obj docutils literal"><span class="pre">monophone_context_dependency_shared</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.objf_given_map" title="kaldi.tree.objf_given_map"><code class="xref py py-obj docutils literal"><span class="pre">objf_given_map</span></code></a></td>
+<td>Cluster the stats given the event map return the total objf given those clusters</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.possible_values" title="kaldi.tree.possible_values"><code class="xref py py-obj docutils literal"><span class="pre">possible_values</span></code></a></td>
+<td>Convenienve function to work out possible values of the phones from just the stats.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.read_build_tree_stats" title="kaldi.tree.read_build_tree_stats"><code class="xref py py-obj docutils literal"><span class="pre">read_build_tree_stats</span></code></a></td>
+<td>Reads BuildTreeStatsType object.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.read_event_type" title="kaldi.tree.read_event_type"><code class="xref py py-obj docutils literal"><span class="pre">read_event_type</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.read_roots_file" title="kaldi.tree.read_roots_file"><code class="xref py py-obj docutils literal"><span class="pre">read_roots_file</span></code></a></td>
+<td>Reads roots from file.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.read_symbol_table_as_integers" title="kaldi.tree.read_symbol_table_as_integers"><code class="xref py py-obj docutils literal"><span class="pre">read_symbol_table_as_integers</span></code></a></td>
+<td>Reads a symbol table, discards the symbols and returns the indexes.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.split_decision_tree" title="kaldi.tree.split_decision_tree"><code class="xref py py-obj docutils literal"><span class="pre">split_decision_tree</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.split_stats_by_key" title="kaldi.tree.split_stats_by_key"><code class="xref py py-obj docutils literal"><span class="pre">split_stats_by_key</span></code></a></td>
+<td>Splits stats up according to the value of a particular key, which must be always defined and nonnegative.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.split_stats_by_map" title="kaldi.tree.split_stats_by_map"><code class="xref py py-obj docutils literal"><span class="pre">split_stats_by_map</span></code></a></td>
+<td>Splits stats according to the EventMap, indexing them at output by the leaf type.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.sum_clusterable" title="kaldi.tree.sum_clusterable"><code class="xref py py-obj docutils literal"><span class="pre">sum_clusterable</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.sum_clusterable_normalizer" title="kaldi.tree.sum_clusterable_normalizer"><code class="xref py py-obj docutils literal"><span class="pre">sum_clusterable_normalizer</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.sum_clusterable_objf" title="kaldi.tree.sum_clusterable_objf"><code class="xref py py-obj docutils literal"><span class="pre">sum_clusterable_objf</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.sum_normalizer" title="kaldi.tree.sum_normalizer"><code class="xref py py-obj docutils literal"><span class="pre">sum_normalizer</span></code></a></td>
+<td>Sums the normalizer over the stats</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.sum_objf" title="kaldi.tree.sum_objf"><code class="xref py py-obj docutils literal"><span class="pre">sum_objf</span></code></a></td>
+<td>Sums the objective function over the stats</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.sum_stats" title="kaldi.tree.sum_stats"><code class="xref py py-obj docutils literal"><span class="pre">sum_stats</span></code></a></td>
+<td>Sums stats</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.sum_stats_vec" title="kaldi.tree.sum_stats_vec"><code class="xref py py-obj docutils literal"><span class="pre">sum_stats_vec</span></code></a></td>
+<td>Sum a vector of stats</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.write_build_tree_stats" title="kaldi.tree.write_build_tree_stats"><code class="xref py py-obj docutils literal"><span class="pre">write_build_tree_stats</span></code></a></td>
+<td>Writes BuildTreeStatsType.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.write_event_type" title="kaldi.tree.write_event_type"><code class="xref py py-obj docutils literal"><span class="pre">write_event_type</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.AllKeysType" title="kaldi.tree.AllKeysType"><code class="xref py py-obj docutils literal"><span class="pre">AllKeysType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.ClusterKMeansOptions" title="kaldi.tree.ClusterKMeansOptions"><code class="xref py py-obj docutils literal"><span class="pre">ClusterKMeansOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::ClusterKMeansOptions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.ConstantEventMap" title="kaldi.tree.ConstantEventMap"><code class="xref py py-obj docutils literal"><span class="pre">ConstantEventMap</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::ConstantEventMap</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><code class="xref py py-obj docutils literal"><span class="pre">ContextDependency</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::ContextDependency</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.EventMap" title="kaldi.tree.EventMap"><code class="xref py py-obj docutils literal"><span class="pre">EventMap</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::EventMap</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.GaussClusterable" title="kaldi.tree.GaussClusterable"><code class="xref py py-obj docutils literal"><span class="pre">GaussClusterable</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::GaussClusterable</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.Questions" title="kaldi.tree.Questions"><code class="xref py py-obj docutils literal"><span class="pre">Questions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Questions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.QuestionsForKey" title="kaldi.tree.QuestionsForKey"><code class="xref py py-obj docutils literal"><span class="pre">QuestionsForKey</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::QuestionsForKey</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.RefineClustersOptions" title="kaldi.tree.RefineClustersOptions"><code class="xref py py-obj docutils literal"><span class="pre">RefineClustersOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::RefineClustersOptions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.ScalarClusterable" title="kaldi.tree.ScalarClusterable"><code class="xref py py-obj docutils literal"><span class="pre">ScalarClusterable</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::ScalarClusterable</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.SplitEventMap" title="kaldi.tree.SplitEventMap"><code class="xref py py-obj docutils literal"><span class="pre">SplitEventMap</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::SplitEventMap</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.TableEventMap" title="kaldi.tree.TableEventMap"><code class="xref py py-obj docutils literal"><span class="pre">TableEventMap</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::TableEventMap</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.TreeClusterOptions" title="kaldi.tree.TreeClusterOptions"><code class="xref py py-obj docutils literal"><span class="pre">TreeClusterOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::TreeClusterOptions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.TreeRenderer" title="kaldi.tree.TreeRenderer"><code class="xref py py-obj docutils literal"><span class="pre">TreeRenderer</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::TreeRenderer</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.VectorClusterable" title="kaldi.tree.VectorClusterable"><code class="xref py py-obj docutils literal"><span class="pre">VectorClusterable</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::VectorClusterable</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.tree.AllKeysType">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">AllKeysType</code><a class="headerlink" href="#kaldi.tree.AllKeysType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.tree.AllKeysType.ALL_KEYS_INSIST_IDENTICAL">
+<code class="descname">ALL_KEYS_INSIST_IDENTICAL</code><em class="property"> = 0</em><a class="headerlink" href="#kaldi.tree.AllKeysType.ALL_KEYS_INSIST_IDENTICAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.tree.AllKeysType.ALL_KEYS_INTERSECTION">
+<code class="descname">ALL_KEYS_INTERSECTION</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.tree.AllKeysType.ALL_KEYS_INTERSECTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.tree.AllKeysType.ALL_KEYS_UNION">
+<code class="descname">ALL_KEYS_UNION</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.tree.AllKeysType.ALL_KEYS_UNION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.ClusterKMeansOptions">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">ClusterKMeansOptions</code><a class="headerlink" href="#kaldi.tree.ClusterKMeansOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::ClusterKMeansOptions</p>
+<dl class="attribute">
+<dt id="kaldi.tree.ClusterKMeansOptions.num_iters">
+<code class="descname">num_iters</code><a class="headerlink" href="#kaldi.tree.ClusterKMeansOptions.num_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 ClusterKMeansOptions.num_iters</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.tree.ClusterKMeansOptions.num_tries">
+<code class="descname">num_tries</code><a class="headerlink" href="#kaldi.tree.ClusterKMeansOptions.num_tries" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 ClusterKMeansOptions.num_tries</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.tree.ClusterKMeansOptions.refine_cfg">
+<code class="descname">refine_cfg</code><a class="headerlink" href="#kaldi.tree.ClusterKMeansOptions.refine_cfg" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::RefineClustersOptions ClusterKMeansOptions.refine_cfg</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.tree.ClusterKMeansOptions.verbose">
+<code class="descname">verbose</code><a class="headerlink" href="#kaldi.tree.ClusterKMeansOptions.verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool ClusterKMeansOptions.verbose</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.ConstantEventMap">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">ConstantEventMap</code><a class="headerlink" href="#kaldi.tree.ConstantEventMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::ConstantEventMap</p>
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.check">
+<code class="descname">check</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ConstantEventMap.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Check(::kaldi::EventType)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.ConstantEventMap.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::EventMap::Copy()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.copy_with_new_leaves">
+<code class="descname">copy_with_new_leaves</code><span class="sig-paren">(</span><em>new_leaves:list&lt;EventMap&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.ConstantEventMap.copy_with_new_leaves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::ConstantEventMap::Copy(::std::vector&lt; ::kaldi::EventMap <a href="#id1"><span class="problematic" id="id2">*</span></a>&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.get_children">
+<code class="descname">get_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;EventMap&gt;<a class="headerlink" href="#kaldi.tree.ConstantEventMap.get_children" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ConstantEventMap::GetChildren(::std::vector&lt; ::kaldi::EventMap <em>&gt;</em>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.lookup">
+<code class="descname">lookup</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>key:int) -&gt; (success:bool</em>, <em>ans:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ConstantEventMap.lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::EventMap::Lookup(::kaldi::EventType, int, int*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.map">
+<code class="descname">map</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;) -&gt; (success:bool</em>, <em>ans:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ConstantEventMap.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::ConstantEventMap::Map(::kaldi::EventType, int*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.map_values">
+<code class="descname">map_values</code><span class="sig-paren">(</span><em>keys_to_map:set&lt;int&gt;</em>, <em>value_map:dict&lt;int</em>, <em>int&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.ConstantEventMap.map_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::ConstantEventMap::MapValues(::std::unordered_set&lt; ::kaldi::EventKeyType&gt;, ::std::unordered_map&lt; ::kaldi::EventValueType, ::kaldi::EventValueType&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.max_result">
+<code class="descname">max_result</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.tree.ConstantEventMap.max_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::EventMap::MaxResult()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.multi_map">
+<code class="descname">multi_map</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.tree.ConstantEventMap.multi_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ConstantEventMap::MultiMap(::kaldi::EventType, ::std::vector&lt; ::kaldi::EventAnswerType&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.prune">
+<code class="descname">prune</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.ConstantEventMap.prune" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::ConstantEventMap::Prune()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; ConstantEventMap<a class="headerlink" href="#kaldi.tree.ConstantEventMap.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::ConstantEventMap * ::kaldi::ConstantEventMap::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.read_event_map">
+<code class="descname">read_event_map</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.ConstantEventMap.read_event_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::EventMap::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ConstantEventMap.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ConstantEventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.write_event_map">
+<code class="descname">write_event_map</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>emap:EventMap</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ConstantEventMap.write_event_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventMap <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ConstantEventMap.write_to_stream">
+<code class="descname">write_to_stream</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ConstantEventMap.write_to_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.ContextDependency">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">ContextDependency</code><a class="headerlink" href="#kaldi.tree.ContextDependency" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::ContextDependency</p>
+<dl class="method">
+<dt id="kaldi.tree.ContextDependency.central_position">
+<code class="descname">central_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.tree.ContextDependency.central_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::ContextDependency::CentralPosition()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ContextDependency.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>phoneseq:list&lt;int&gt;</em>, <em>pdf_class:int) -&gt; (success:bool</em>, <em>pdf_id:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ContextDependency.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::ContextDependency::Compute(::std::vector&lt; ::int32&gt;, int, int*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ContextDependency.context_width">
+<code class="descname">context_width</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.tree.ContextDependency.context_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::ContextDependency::ContextWidth()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ContextDependency.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ContextDependencyInterface<a class="headerlink" href="#kaldi.tree.ContextDependency.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::ContextDependencyInterface * ::kaldi::ContextDependency::Copy()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ContextDependency.from_event_map">
+<code class="descname">from_event_map</code><span class="sig-paren">(</span><em>N:int</em>, <em>P:int</em>, <em>to_pdf:EventMap</em><span class="sig-paren">)</span> &#x2192; ContextDependency<a class="headerlink" href="#kaldi.tree.ContextDependency.from_event_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::ContextDependency&gt; ::kaldi::ContextDependency::ContextDependency(int, int, ::kaldi::EventMap <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ContextDependency.get_pdf_info">
+<code class="descname">get_pdf_info</code><span class="sig-paren">(</span><em>phones:list&lt;int&gt;</em>, <em>num_pdf_classes:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, int&gt;&gt;&gt;<a class="headerlink" href="#kaldi.tree.ContextDependency.get_pdf_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ContextDependency::GetPdfInfo(::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::std::vector&lt; ::std::pair&lt; ::int32, ::int32&gt; &gt; &gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ContextDependency.get_pdf_pair_info">
+<code class="descname">get_pdf_pair_info</code><span class="sig-paren">(</span><em>phones:list&lt;int&gt;</em>, <em>pdf_class_pairs:list&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;list&lt;tuple&lt;int, int&gt;&gt;&gt;&gt;<a class="headerlink" href="#kaldi.tree.ContextDependency.get_pdf_pair_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ContextDependency::GetPdfInfo(::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::std::vector&lt; ::std::pair&lt; ::int32, ::int32&gt; &gt; &gt;, ::std::vector&lt; ::std::vector&lt; ::std::vector&lt; ::std::pair&lt; ::int32, ::int32&gt; &gt; &gt; &gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ContextDependency.num_pdfs">
+<code class="descname">num_pdfs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.tree.ContextDependency.num_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::ContextDependency::NumPdfs()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ContextDependency.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ContextDependency.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ContextDependency::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ContextDependency.to_pdf_map">
+<code class="descname">to_pdf_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.ContextDependency.to_pdf_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::ContextDependency::ToPdfMapPtr()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ContextDependency.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ContextDependency.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ContextDependency::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.EventMap">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">EventMap</code><a class="headerlink" href="#kaldi.tree.EventMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::EventMap</p>
+<dl class="method">
+<dt id="kaldi.tree.EventMap.check">
+<code class="descname">check</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.EventMap.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Check(::kaldi::EventType)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.EventMap.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::EventMap::Copy()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.copy_with_new_leaves">
+<code class="descname">copy_with_new_leaves</code><span class="sig-paren">(</span><em>new_leaves:list&lt;EventMap&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.EventMap.copy_with_new_leaves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::EventMap::Copy(::std::vector&lt; ::kaldi::EventMap <a href="#id7"><span class="problematic" id="id8">*</span></a>&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.get_children">
+<code class="descname">get_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;EventMap&gt;<a class="headerlink" href="#kaldi.tree.EventMap.get_children" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::GetChildren(::std::vector&lt; ::kaldi::EventMap <em>&gt;</em>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.lookup">
+<code class="descname">lookup</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>key:int) -&gt; (success:bool</em>, <em>ans:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.EventMap.lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::EventMap::Lookup(::kaldi::EventType, int, int*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.map">
+<code class="descname">map</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;) -&gt; (success:bool</em>, <em>ans:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.EventMap.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::EventMap::Map(::kaldi::EventType, int*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.map_values">
+<code class="descname">map_values</code><span class="sig-paren">(</span><em>keys_to_map:set&lt;int&gt;</em>, <em>value_map:dict&lt;int</em>, <em>int&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.EventMap.map_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::EventMap::MapValues(::std::unordered_set&lt; ::kaldi::EventKeyType&gt;, ::std::unordered_map&lt; ::kaldi::EventValueType, ::kaldi::EventValueType&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.max_result">
+<code class="descname">max_result</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.tree.EventMap.max_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::EventMap::MaxResult()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.multi_map">
+<code class="descname">multi_map</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.tree.EventMap.multi_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::MultiMap(::kaldi::EventType, ::std::vector&lt; ::kaldi::EventAnswerType&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.prune">
+<code class="descname">prune</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.EventMap.prune" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::EventMap::Prune()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.read_event_map">
+<code class="descname">read_event_map</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.EventMap.read_event_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::EventMap::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.write_event_map">
+<code class="descname">write_event_map</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>emap:EventMap</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.EventMap.write_event_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventMap <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.EventMap.write_to_stream">
+<code class="descname">write_to_stream</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.EventMap.write_to_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.GaussClusterable">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">GaussClusterable</code><a class="headerlink" href="#kaldi.tree.GaussClusterable" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::GaussClusterable</p>
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.GaussClusterable.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::GaussClusterable::Add(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.add_stats">
+<code class="descname">add_stats</code><span class="sig-paren">(</span><em>vec:VectorBase</em>, <em>weight:float=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.GaussClusterable.add_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::GaussClusterable::AddStats(::kaldi::VectorBase&lt;float&gt;, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Clusterable<a class="headerlink" href="#kaldi.tree.GaussClusterable.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Clusterable * ::kaldi::GaussClusterable::Copy()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.count">
+<code class="descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.GaussClusterable.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::GaussClusterable::count()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.GaussClusterable.distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::Distance(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.new_with_dim">
+<code class="descname">new_with_dim</code><span class="sig-paren">(</span><em>dim:int</em>, <em>var_floor:float</em><span class="sig-paren">)</span> &#x2192; GaussClusterable<a class="headerlink" href="#kaldi.tree.GaussClusterable.new_with_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::GaussClusterable&gt; ::kaldi::GaussClusterable::GaussClusterable(int, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.new_with_stats">
+<code class="descname">new_with_stats</code><span class="sig-paren">(</span><em>x_stats:Vector</em>, <em>x2_stats:Vector</em>, <em>var_floor:float</em>, <em>count:float</em><span class="sig-paren">)</span> &#x2192; GaussClusterable<a class="headerlink" href="#kaldi.tree.GaussClusterable.new_with_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::GaussClusterable&gt; ::kaldi::GaussClusterable::GaussClusterable(::kaldi::Vector&lt;float&gt;, ::kaldi::Vector&lt;float&gt;, float, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.normalizer">
+<code class="descname">normalizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.GaussClusterable.normalizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::GaussClusterable::Normalizer()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.objf">
+<code class="descname">objf</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.GaussClusterable.objf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::GaussClusterable::Objf()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.objf_minus">
+<code class="descname">objf_minus</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.GaussClusterable.objf_minus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::ObjfMinus(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.objf_plus">
+<code class="descname">objf_plus</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.GaussClusterable.objf_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::ObjfPlus(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.read_new">
+<code class="descname">read_new</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; Clusterable<a class="headerlink" href="#kaldi.tree.GaussClusterable.read_new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Clusterable * ::kaldi::GaussClusterable::ReadNew(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>f:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.GaussClusterable.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::GaussClusterable::Scale(float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.GaussClusterable.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::GaussClusterable::SetZero()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.sub">
+<code class="descname">sub</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.GaussClusterable.sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::GaussClusterable::Sub(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.type">
+<code class="descname">type</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.tree.GaussClusterable.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::std::string ::kaldi::GaussClusterable::Type()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.GaussClusterable.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::GaussClusterable::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.x2_stats">
+<code class="descname">x2_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; DoubleSubVector<a class="headerlink" href="#kaldi.tree.GaussClusterable.x2_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::SubVector&lt;double&gt; ::kaldi::GaussClusterable::x2_stats()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.GaussClusterable.x_stats">
+<code class="descname">x_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; DoubleSubVector<a class="headerlink" href="#kaldi.tree.GaussClusterable.x_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::SubVector&lt;double&gt; ::kaldi::GaussClusterable::x_stats()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.Questions">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">Questions</code><a class="headerlink" href="#kaldi.tree.Questions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Questions</p>
+<dl class="method">
+<dt id="kaldi.tree.Questions.get_keys_with_questions">
+<code class="descname">get_keys_with_questions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.tree.Questions.get_keys_with_questions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Questions::GetKeysWithQuestions(::std::vector&lt; ::kaldi::EventKeyType&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.Questions.get_questions_of">
+<code class="descname">get_questions_of</code><span class="sig-paren">(</span><em>key:int</em><span class="sig-paren">)</span> &#x2192; QuestionsForKey<a class="headerlink" href="#kaldi.tree.Questions.get_questions_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::QuestionsForKey ::kaldi::Questions::GetQuestionsOf(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.Questions.has_questions_for_key">
+<code class="descname">has_questions_for_key</code><span class="sig-paren">(</span><em>key:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.tree.Questions.has_questions_for_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::Questions::HasQuestionsForKey(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.Questions.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.Questions.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Questions::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.Questions.set_questions_of">
+<code class="descname">set_questions_of</code><span class="sig-paren">(</span><em>key:int</em>, <em>options_of_key:QuestionsForKey</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.Questions.set_questions_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Questions::SetQuestionsOf(int, ::kaldi::QuestionsForKey)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.Questions.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.Questions.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Questions::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.QuestionsForKey">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">QuestionsForKey</code><a class="headerlink" href="#kaldi.tree.QuestionsForKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::QuestionsForKey</p>
+<dl class="attribute">
+<dt id="kaldi.tree.QuestionsForKey.initial_questions">
+<code class="descname">initial_questions</code><a class="headerlink" href="#kaldi.tree.QuestionsForKey.initial_questions" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::std::vector&lt; ::kaldi::EventValueType&gt; &gt; QuestionsForKey.initial_questions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.QuestionsForKey.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.QuestionsForKey.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::QuestionsForKey::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.tree.QuestionsForKey.refine_opts">
+<code class="descname">refine_opts</code><a class="headerlink" href="#kaldi.tree.QuestionsForKey.refine_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::RefineClustersOptions QuestionsForKey.refine_opts</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.QuestionsForKey.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.QuestionsForKey.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::QuestionsForKey::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.RefineClustersOptions">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">RefineClustersOptions</code><a class="headerlink" href="#kaldi.tree.RefineClustersOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::RefineClustersOptions</p>
+<dl class="method">
+<dt id="kaldi.tree.RefineClustersOptions.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>num_iters_in:int</em>, <em>top_n_in:int</em><span class="sig-paren">)</span> &#x2192; RefineClustersOptions<a class="headerlink" href="#kaldi.tree.RefineClustersOptions.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::RefineClustersOptions&gt; ::kaldi::RefineClustersOptions::RefineClustersOptions(int, int)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.tree.RefineClustersOptions.num_iters">
+<code class="descname">num_iters</code><a class="headerlink" href="#kaldi.tree.RefineClustersOptions.num_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 RefineClustersOptions.num_iters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.RefineClustersOptions.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.RefineClustersOptions.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RefineClustersOptions::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.tree.RefineClustersOptions.top_n">
+<code class="descname">top_n</code><a class="headerlink" href="#kaldi.tree.RefineClustersOptions.top_n" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 RefineClustersOptions.top_n</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.RefineClustersOptions.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.RefineClustersOptions.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::RefineClustersOptions::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.ScalarClusterable">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">ScalarClusterable</code><a class="headerlink" href="#kaldi.tree.ScalarClusterable" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::ScalarClusterable</p>
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ScalarClusterable.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ScalarClusterable::Add(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Clusterable<a class="headerlink" href="#kaldi.tree.ScalarClusterable.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Clusterable * ::kaldi::ScalarClusterable::Copy()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.ScalarClusterable.distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::Distance(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.info">
+<code class="descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.tree.ScalarClusterable.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::std::string ::kaldi::ScalarClusterable::Info()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.mean">
+<code class="descname">mean</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.ScalarClusterable.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ScalarClusterable::Mean()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.new_with_scalar">
+<code class="descname">new_with_scalar</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; ScalarClusterable<a class="headerlink" href="#kaldi.tree.ScalarClusterable.new_with_scalar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::ScalarClusterable&gt; ::kaldi::ScalarClusterable::ScalarClusterable(float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.normalizer">
+<code class="descname">normalizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.ScalarClusterable.normalizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ScalarClusterable::Normalizer()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.objf">
+<code class="descname">objf</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.ScalarClusterable.objf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ScalarClusterable::Objf()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.objf_minus">
+<code class="descname">objf_minus</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.ScalarClusterable.objf_minus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::ObjfMinus(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.objf_plus">
+<code class="descname">objf_plus</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.ScalarClusterable.objf_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::ObjfPlus(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.read_new">
+<code class="descname">read_new</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; Clusterable<a class="headerlink" href="#kaldi.tree.ScalarClusterable.read_new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Clusterable * ::kaldi::ScalarClusterable::ReadNew(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>f:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ScalarClusterable.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Clusterable::Scale(float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ScalarClusterable.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ScalarClusterable::SetZero()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.sub">
+<code class="descname">sub</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ScalarClusterable.sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ScalarClusterable::Sub(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.type">
+<code class="descname">type</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.tree.ScalarClusterable.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::std::string ::kaldi::ScalarClusterable::Type()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.ScalarClusterable.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ScalarClusterable.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ScalarClusterable::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.SplitEventMap">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">SplitEventMap</code><a class="headerlink" href="#kaldi.tree.SplitEventMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::SplitEventMap</p>
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.check">
+<code class="descname">check</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.SplitEventMap.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Check(::kaldi::EventType)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.SplitEventMap.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::EventMap::Copy()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.copy_with_new_leaves">
+<code class="descname">copy_with_new_leaves</code><span class="sig-paren">(</span><em>new_leaves:list&lt;EventMap&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.SplitEventMap.copy_with_new_leaves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::SplitEventMap::Copy(::std::vector&lt; ::kaldi::EventMap <a href="#id11"><span class="problematic" id="id12">*</span></a>&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.get_children">
+<code class="descname">get_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;EventMap&gt;<a class="headerlink" href="#kaldi.tree.SplitEventMap.get_children" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::SplitEventMap::GetChildren(::std::vector&lt; ::kaldi::EventMap <em>&gt;</em>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.lookup">
+<code class="descname">lookup</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>key:int) -&gt; (success:bool</em>, <em>ans:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.SplitEventMap.lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::EventMap::Lookup(::kaldi::EventType, int, int*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.map">
+<code class="descname">map</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;) -&gt; (success:bool</em>, <em>ans:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.SplitEventMap.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::SplitEventMap::Map(::kaldi::EventType, int*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.map_values">
+<code class="descname">map_values</code><span class="sig-paren">(</span><em>keys_to_map:set&lt;int&gt;</em>, <em>value_map:dict&lt;int</em>, <em>int&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.SplitEventMap.map_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::SplitEventMap::MapValues(::std::unordered_set&lt; ::kaldi::EventKeyType&gt;, ::std::unordered_map&lt; ::kaldi::EventValueType, ::kaldi::EventValueType&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.max_result">
+<code class="descname">max_result</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.tree.SplitEventMap.max_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::EventMap::MaxResult()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.multi_map">
+<code class="descname">multi_map</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.tree.SplitEventMap.multi_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::SplitEventMap::MultiMap(::kaldi::EventType, ::std::vector&lt; ::kaldi::EventAnswerType&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.prune">
+<code class="descname">prune</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.SplitEventMap.prune" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::SplitEventMap::Prune()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; SplitEventMap<a class="headerlink" href="#kaldi.tree.SplitEventMap.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::SplitEventMap * ::kaldi::SplitEventMap::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.read_event_map">
+<code class="descname">read_event_map</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.SplitEventMap.read_event_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::EventMap::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.SplitEventMap.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::SplitEventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.write_event_map">
+<code class="descname">write_event_map</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>emap:EventMap</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.SplitEventMap.write_event_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventMap <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.SplitEventMap.write_to_stream">
+<code class="descname">write_to_stream</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.SplitEventMap.write_to_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.TableEventMap">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">TableEventMap</code><a class="headerlink" href="#kaldi.tree.TableEventMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::TableEventMap</p>
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.check">
+<code class="descname">check</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.TableEventMap.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Check(::kaldi::EventType)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.TableEventMap.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::EventMap::Copy()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.copy_with_new_leaves">
+<code class="descname">copy_with_new_leaves</code><span class="sig-paren">(</span><em>new_leaves:list&lt;EventMap&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.TableEventMap.copy_with_new_leaves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::TableEventMap::Copy(::std::vector&lt; ::kaldi::EventMap <a href="#id15"><span class="problematic" id="id16">*</span></a>&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.from_val_answer_table">
+<code class="descname">from_val_answer_table</code><span class="sig-paren">(</span><em>key:int</em>, <em>map_in:dict&lt;int</em>, <em>int&gt;</em><span class="sig-paren">)</span> &#x2192; TableEventMap<a class="headerlink" href="#kaldi.tree.TableEventMap.from_val_answer_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::TableEventMap&gt; ::kaldi::TableEventMap::TableEventMap(int, ::std::map&lt; ::kaldi::EventValueType, ::kaldi::EventAnswerType&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.from_val_map_table">
+<code class="descname">from_val_map_table</code><span class="sig-paren">(</span><em>key:int</em>, <em>map_in:dict&lt;int</em>, <em>EventMap&gt;</em><span class="sig-paren">)</span> &#x2192; TableEventMap<a class="headerlink" href="#kaldi.tree.TableEventMap.from_val_map_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::TableEventMap&gt; ::kaldi::TableEventMap::TableEventMap(int, ::std::map&lt; ::kaldi::EventValueType, ::kaldi::EventMap <a href="#id17"><span class="problematic" id="id18">*</span></a>&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.get_children">
+<code class="descname">get_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;EventMap&gt;<a class="headerlink" href="#kaldi.tree.TableEventMap.get_children" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TableEventMap::GetChildren(::std::vector&lt; ::kaldi::EventMap <em>&gt;</em>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.lookup">
+<code class="descname">lookup</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>key:int) -&gt; (success:bool</em>, <em>ans:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.TableEventMap.lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::EventMap::Lookup(::kaldi::EventType, int, int*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.map">
+<code class="descname">map</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;) -&gt; (success:bool</em>, <em>ans:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.TableEventMap.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::TableEventMap::Map(::kaldi::EventType, int*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.map_values">
+<code class="descname">map_values</code><span class="sig-paren">(</span><em>keys_to_map:set&lt;int&gt;</em>, <em>value_map:dict&lt;int</em>, <em>int&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.TableEventMap.map_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::TableEventMap::MapValues(::std::unordered_set&lt; ::kaldi::EventKeyType&gt;, ::std::unordered_map&lt; ::kaldi::EventValueType, ::kaldi::EventValueType&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.max_result">
+<code class="descname">max_result</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.tree.TableEventMap.max_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::EventMap::MaxResult()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.multi_map">
+<code class="descname">multi_map</code><span class="sig-paren">(</span><em>event:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.tree.TableEventMap.multi_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TableEventMap::MultiMap(::kaldi::EventType, ::std::vector&lt; ::kaldi::EventAnswerType&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.prune">
+<code class="descname">prune</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.TableEventMap.prune" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::TableEventMap::Prune()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; TableEventMap<a class="headerlink" href="#kaldi.tree.TableEventMap.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::TableEventMap * ::kaldi::TableEventMap::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.read_event_map">
+<code class="descname">read_event_map</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.TableEventMap.read_event_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::EventMap::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.TableEventMap.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TableEventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.write_event_map">
+<code class="descname">write_event_map</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>emap:EventMap</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.TableEventMap.write_event_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventMap <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TableEventMap.write_to_stream">
+<code class="descname">write_to_stream</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.TableEventMap.write_to_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.TreeClusterOptions">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">TreeClusterOptions</code><a class="headerlink" href="#kaldi.tree.TreeClusterOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::TreeClusterOptions</p>
+<dl class="attribute">
+<dt id="kaldi.tree.TreeClusterOptions.branch_factor">
+<code class="descname">branch_factor</code><a class="headerlink" href="#kaldi.tree.TreeClusterOptions.branch_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 TreeClusterOptions.branch_factor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.tree.TreeClusterOptions.kmeans_cfg">
+<code class="descname">kmeans_cfg</code><a class="headerlink" href="#kaldi.tree.TreeClusterOptions.kmeans_cfg" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::ClusterKMeansOptions TreeClusterOptions.kmeans_cfg</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.tree.TreeClusterOptions.thresh">
+<code class="descname">thresh</code><a class="headerlink" href="#kaldi.tree.TreeClusterOptions.thresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat TreeClusterOptions.thresh</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.TreeRenderer">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">TreeRenderer</code><a class="headerlink" href="#kaldi.tree.TreeRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::TreeRenderer</p>
+<dl class="method">
+<dt id="kaldi.tree.TreeRenderer.render">
+<code class="descname">render</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.TreeRenderer.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TreeRenderer::Render()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.TreeRenderer.render_query">
+<code class="descname">render_query</code><span class="sig-paren">(</span><em>query:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.TreeRenderer.render_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::TreeRenderer::RenderQuery(::kaldi::EventType)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.tree.VectorClusterable">
+<em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">VectorClusterable</code><a class="headerlink" href="#kaldi.tree.VectorClusterable" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::VectorClusterable</p>
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.VectorClusterable.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::VectorClusterable::Add(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Clusterable<a class="headerlink" href="#kaldi.tree.VectorClusterable.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Clusterable * ::kaldi::VectorClusterable::Copy()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.VectorClusterable.distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::Distance(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.new_with_vector">
+<code class="descname">new_with_vector</code><span class="sig-paren">(</span><em>vector:Vector</em>, <em>weight:float</em><span class="sig-paren">)</span> &#x2192; VectorClusterable<a class="headerlink" href="#kaldi.tree.VectorClusterable.new_with_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::VectorClusterable&gt; ::kaldi::VectorClusterable::VectorClusterable(::kaldi::Vector&lt;float&gt;, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.normalizer">
+<code class="descname">normalizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.VectorClusterable.normalizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::VectorClusterable::Normalizer()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.objf">
+<code class="descname">objf</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.VectorClusterable.objf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::VectorClusterable::Objf()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.objf_minus">
+<code class="descname">objf_minus</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.VectorClusterable.objf_minus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::ObjfMinus(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.objf_plus">
+<code class="descname">objf_plus</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.VectorClusterable.objf_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::ObjfPlus(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.read_new">
+<code class="descname">read_new</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; Clusterable<a class="headerlink" href="#kaldi.tree.VectorClusterable.read_new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Clusterable * ::kaldi::VectorClusterable::ReadNew(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>f:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.VectorClusterable.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::VectorClusterable::Scale(float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.VectorClusterable.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::VectorClusterable::SetZero()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.sub">
+<code class="descname">sub</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.VectorClusterable.sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::VectorClusterable::Sub(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.type">
+<code class="descname">type</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.tree.VectorClusterable.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::std::string ::kaldi::VectorClusterable::Type()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.tree.VectorClusterable.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.VectorClusterable.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::VectorClusterable::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.add_to_clusters">
+<code class="descclassname">kaldi.tree.</code><code class="descname">add_to_clusters</code><span class="sig-paren">(</span><em>stats:list&lt;Clusterable&gt;</em>, <em>assignments:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;Clusterable&gt;<a class="headerlink" href="#kaldi.tree.add_to_clusters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AddToClusters(::std::vector&lt; ::kaldi::Clusterable <em>&gt;, ::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::kaldi::Clusterable *&gt;</em>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.add_to_clusters_optimized">
+<code class="descclassname">kaldi.tree.</code><code class="descname">add_to_clusters_optimized</code><span class="sig-paren">(</span><em>stats:list&lt;Clusterable&gt;</em>, <em>assignments:list&lt;int&gt;</em>, <em>total:Clusterable</em><span class="sig-paren">)</span> &#x2192; list&lt;Clusterable&gt;<a class="headerlink" href="#kaldi.tree.add_to_clusters_optimized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AddToClustersOptimized(::std::vector&lt; ::kaldi::Clusterable <em>&gt;, ::std::vector&lt; ::int32&gt;, ::kaldi::Clusterable, ::std::vector&lt; ::kaldi::Clusterable *&gt;</em>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.build_tree">
+<code class="descclassname">kaldi.tree.</code><code class="descname">build_tree</code><span class="sig-paren">(</span><em>qopts:Questions</em>, <em>phone_sets:list&lt;list&lt;int&gt;&gt;</em>, <em>phone2num_pdf_classes:list&lt;int&gt;</em>, <em>share_roots:list&lt;bool&gt;</em>, <em>do_split:list&lt;bool&gt;</em>, <em>stats:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em>, <em>thresh:float</em>, <em>max_leaves:int</em>, <em>cluster_thresh:float</em>, <em>P:int</em>, <em>round_num_leaves:bool=default</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.build_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a set of decision trees.</p>
+<p>This is the normal way to build a set of decision trees. The sets
+‘phone_sets’ dictacte how we set up the roots of the decision trees.
+Each set of phones phone_sets[i] has shared decision-tree roots, and if
+the corresponding variable share_roots[i] is true, the root will be
+shared for the different HMM-positions in the phone.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>qopts</strong> (<a class="reference internal" href="#kaldi.tree.Questions" title="kaldi.tree.Questions"><code class="xref py py-class docutils literal"><span class="pre">Questions</span></code></a>) – Questions options class, contains
+questions for each key</li>
+<li><strong>phone_sets</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Each element of phone_sets is a set of phones
+whose roots are shared together</li>
+<li><strong>phone2num_pdf_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A map from phones to the number of
+pdf_classes in the phone</li>
+<li><strong>share_roots</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A vector the same size as phone_sets; says for
+each phone set whether the root should be shared among all the
+pdf-classes or not</li>
+<li><strong>do_split</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A vector the same size as phone_sets; says for
+each phone set whether decision-tree splitting should be done</li>
+<li><strong>stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – The statistics used in tree-building</li>
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Threshold used in decision-tree splitting or you
+may use 0 in which case max_leaves becomes the constraint</li>
+<li><strong>max_leaves</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Maximum number of leaves it will create; set
+this to a large number if you want to specify just thresh</li>
+<li><strong>cluster_thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Threshold for clustering leaves after
+decision-tree splitting; leaves will be combined if
+log-likelihood change is less than this.</li>
+<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The central position of the phone context window</li>
+<li><strong>round_num_leaves</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true, then the number of leaves in the
+final tree is made a multiple of 8. This is done by further
+clustering the leaves after they are first clustered based on
+log-likelihood change. (See cluster_thresh above) (default: True).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">EventMap object that is the tree.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.build_tree_two_level">
+<code class="descclassname">kaldi.tree.</code><code class="descname">build_tree_two_level</code><span class="sig-paren">(</span><em>qopts:Questions</em>, <em>phone_sets:list&lt;list&lt;int&gt;&gt;</em>, <em>phone2num_pdf_classes:list&lt;int&gt;</em>, <em>share_roots:list&lt;bool&gt;</em>, <em>do_split:list&lt;bool&gt;</em>, <em>stats:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em>, <em>max_leaves_first:int</em>, <em>max_leaves_second:int</em>, <em>cluster_leaves:bool</em>, <em>P:int) -&gt; (tree:EventMap</em>, <em>leaf_map:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.build_tree_two_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds a two-level decision tree.</p>
+<p>This is useful for example in building tied mixture systems with
+multiple codebooks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>qopts</strong> (<a class="reference internal" href="#kaldi.tree.Questions" title="kaldi.tree.Questions"><code class="xref py py-class docutils literal"><span class="pre">Questions</span></code></a>) – Questions options class, contains
+questions for each key</li>
+<li><strong>phone_sets</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Each element of phone_sets is a set of phones
+whose roots are shared together</li>
+<li><strong>phone2num_pdf_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A map from phones to the number of
+pdf_classes in the phone</li>
+<li><strong>share_roots</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A vector the same size as phone_sets; says for
+each phone set whether the root should be shared among all the
+pdf-classes or not</li>
+<li><strong>do_split</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A vector the same size as phone_sets; says for
+each phone set whether decision-tree splitting should be done</li>
+<li><strong>stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – The statistics used in tree-building</li>
+<li><strong>max_leaves_first</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Maximum number of leaves it will create
+in first level</li>
+<li><strong>max_leaves_second</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Maximum number of leaves it will create
+in second level</li>
+<li><strong>cluster_leaves</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true, post-cluster the leaves produced
+in the second level.</li>
+<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The central position of the phone context window</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">EventMap object that is the tree
+leaf_map: Mapping from the leaves of the big tree to the leaves
+of the little tree</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#module-kaldi.tree" title="kaldi.tree">tree</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.cluster_bottom_up">
+<code class="descclassname">kaldi.tree.</code><code class="descname">cluster_bottom_up</code><span class="sig-paren">(</span><em>points:list&lt;Clusterable&gt;</em>, <em>thresh:float</em>, <em>min_clust:int) -&gt; (objf_change:float</em>, <em>clusters_out:list&lt;Clusterable&gt;</em>, <em>assignments_out:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.cluster_bottom_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ClusterBottomUp(::std::vector&lt; ::kaldi::Clusterable <em>&gt;, float, int, ::std::vector&lt; ::kaldi::Clusterable *&gt;</em>, ::std::vector&lt; ::int32&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.cluster_bottom_up_compartmentalized">
+<code class="descclassname">kaldi.tree.</code><code class="descname">cluster_bottom_up_compartmentalized</code><span class="sig-paren">(</span><em>points:list&lt;list&lt;Clusterable&gt;&gt;</em>, <em>thresh:float</em>, <em>min_clust:int) -&gt; (objf_change:float</em>, <em>clusters_out:list&lt;list&lt;Clusterable&gt;&gt;</em>, <em>assignments_out:list&lt;list&lt;int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.cluster_bottom_up_compartmentalized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ClusterBottomUpCompartmentalized(::std::vector&lt; ::std::vector&lt; ::kaldi::Clusterable <em>&gt; &gt;, float, int, ::std::vector&lt; ::std::vector&lt; ::kaldi::Clusterable *&gt; &gt;</em>, ::std::vector&lt; ::std::vector&lt; ::int32&gt; &gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.cluster_event_map_get_mapping">
+<code class="descclassname">kaldi.tree.</code><code class="descname">cluster_event_map_get_mapping</code><span class="sig-paren">(</span><em>e_in:EventMap</em>, <em>stats:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em>, <em>thresh:float) -&gt; (num_leaves:int</em>, <em>mapping:list&lt;EventMap&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.cluster_event_map_get_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clusters the leaves of the EventMap, with ‘thresh’ a delta-likelihood threshold to control how many leaves we combine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">number of leaves combined
+mapping: Mapping for leaves</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">num_leaves (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a>)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.convert_stats">
+<code class="descclassname">kaldi.tree.</code><code class="descname">convert_stats</code><span class="sig-paren">(</span><em>oldN:int</em>, <em>oldP:int</em>, <em>newN:int</em>, <em>newP:int) -&gt; (success:bool</em>, <em>stats:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.convert_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts stats from a given context-window (N) and central position (P) to a different N and P</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.find_all_keys">
+<code class="descclassname">kaldi.tree.</code><code class="descname">find_all_keys</code><span class="sig-paren">(</span><em>stats:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em>, <em>keys_type:AllKeysType</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.tree.find_all_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sorted and unique list of all key identities in the stats.
+If type == ALL_KEYS_INSIST_IDENTICAL, it will insis that this set of keys is the same for all the stats.
+If type == ALL_KEYS_INTERSECTION, it will return the smallest common set of keys present in the set of stats
+if type == ALL_KEYS_UNION, it will return the union of all the keys (or undefined if a key is not present)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.gen_rand_stats">
+<code class="descclassname">kaldi.tree.</code><code class="descname">gen_rand_stats</code><span class="sig-paren">(</span><em>dim:int</em>, <em>num_stats:int</em>, <em>N:int</em>, <em>P:int</em>, <em>phone_ids:list&lt;int&gt;</em>, <em>hmm_lengths:list&lt;int&gt;</em>, <em>is_ctx_dep:list&lt;bool&gt;</em>, <em>ensure_all_phones_covered:bool</em><span class="sig-paren">)</span> &#x2192; list&lt;tuple&lt;list&lt;tuple&lt;int, int&gt;&gt;, Clusterable&gt;&gt;<a class="headerlink" href="#kaldi.tree.gen_rand_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates random statistics of the form used by build_tree.</p>
+<p>It tries to do so in such a way that they mimic “real” stats.
+The event keys and their corresponding values are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>-1 == PDF_CLASS</td>
+<td>pdf-class</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>phone-id of left-most context phone</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>phone-id of one-from-left-most context phone</td>
+</tr>
+<tr class="row-odd"><td>P - 1</td>
+<td>phone-id of central phone</td>
+</tr>
+<tr class="row-even"><td>N - 1</td>
+<td>phone-id of right-most context phone.</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – dimension of features</li>
+<li><strong>num_stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – approximate number of separate phones-in-context
+wanted</li>
+<li><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – context-size</li>
+<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – central-phone position</li>
+<li><strong>phone_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – ids of phones</li>
+<li><strong>hmm_lengths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – lenghts of hmm for phone</li>
+<li><strong>is_ctx_dep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – boolean array whether each phone is
+context-dependant</li>
+<li><strong>ensure_all_phones_covered</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true, ensures that every
+phone is seen at least once in the central position</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Statistics of the form used by BuildTree</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.get_tree_structure">
+<code class="descclassname">kaldi.tree.</code><code class="descname">get_tree_structure</code><span class="sig-paren">(</span><em>map:EventMap) -&gt; (has_tree_structure:bool</em>, <em>num_leaves:int</em>, <em>parents:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.get_tree_structure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::GetTreeStructure(::kaldi::EventMap, int*, ::std::vector&lt; ::int32&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.make_event_pair">
+<code class="descclassname">kaldi.tree.</code><code class="descname">make_event_pair</code><span class="sig-paren">(</span><em>k:int</em>, <em>v:int</em><span class="sig-paren">)</span> &#x2192; tuple&lt;int, int&gt;<a class="headerlink" href="#kaldi.tree.make_event_pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::std::pair&lt; ::kaldi::EventKeyType, ::kaldi::EventValueType&gt; ::kaldi::MakeEventPair(int, int)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.map_event_map_leaves">
+<code class="descclassname">kaldi.tree.</code><code class="descname">map_event_map_leaves</code><span class="sig-paren">(</span><em>e_in:EventMap</em>, <em>mapping:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.map_event_map_leaves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remaps the event-map leaves using this mapping indexed by number of leaf</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.monophone_context_dependency">
+<code class="descclassname">kaldi.tree.</code><code class="descname">monophone_context_dependency</code><span class="sig-paren">(</span><em>phones:list&lt;int&gt;</em>, <em>phone2num_pdf_classes:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; ContextDependency<a class="headerlink" href="#kaldi.tree.monophone_context_dependency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::ContextDependency * ::kaldi::MonophoneContextDependency(::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::int32&gt;)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.monophone_context_dependency_shared">
+<code class="descclassname">kaldi.tree.</code><code class="descname">monophone_context_dependency_shared</code><span class="sig-paren">(</span><em>phone_classes:list&lt;list&lt;int&gt;&gt;</em>, <em>phone2num_pdf_classes:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; ContextDependency<a class="headerlink" href="#kaldi.tree.monophone_context_dependency_shared" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::ContextDependency * ::kaldi::MonophoneContextDependencyShared(::std::vector&lt; ::std::vector&lt; ::int32&gt; &gt;, ::std::vector&lt; ::int32&gt;)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.objf_given_map">
+<code class="descclassname">kaldi.tree.</code><code class="descname">objf_given_map</code><span class="sig-paren">(</span><em>stats_in:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em>, <em>e:EventMap</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.objf_given_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster the stats given the event map return the total objf given those clusters</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.possible_values">
+<code class="descclassname">kaldi.tree.</code><code class="descname">possible_values</code><span class="sig-paren">(</span><em>key:int</em>, <em>stats:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;) -&gt; (key_found:bool</em>, <em>ans:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.possible_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenienve function to work out possible values of the phones from just the stats.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if key was always defined inside the stats.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.read_build_tree_stats">
+<code class="descclassname">kaldi.tree.</code><code class="descname">read_build_tree_stats</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>example:Clusterable</em><span class="sig-paren">)</span> &#x2192; list&lt;tuple&lt;list&lt;tuple&lt;int, int&gt;&gt;, Clusterable&gt;&gt;<a class="headerlink" href="#kaldi.tree.read_build_tree_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads BuildTreeStatsType object. The ‘example’ argument must be of the same type as the stats on disk, and is needed to access to the correct <code class="xref py py-obj docutils literal"><span class="pre">read</span></code> function</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.read_event_type">
+<code class="descclassname">kaldi.tree.</code><code class="descname">read_event_type</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; list&lt;tuple&lt;int, int&gt;&gt;<a class="headerlink" href="#kaldi.tree.read_event_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ReadEventType(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventType*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.read_roots_file">
+<code class="descclassname">kaldi.tree.</code><code class="descname">read_roots_file</code><span class="sig-paren">(</span><em>is:istream) -&gt; (phone_sets:list&lt;list&lt;int&gt;&gt;</em>, <em>is_shared_root:list&lt;bool&gt;</em>, <em>is_split_root:list&lt;bool&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.read_roots_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads roots from file.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.read_symbol_table_as_integers">
+<code class="descclassname">kaldi.tree.</code><code class="descname">read_symbol_table_as_integers</code><span class="sig-paren">(</span><em>filename:str</em>, <em>include_eps:bool</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.tree.read_symbol_table_as_integers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a symbol table, discards the symbols and returns the indexes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.split_decision_tree">
+<code class="descclassname">kaldi.tree.</code><code class="descname">split_decision_tree</code><span class="sig-paren">(</span><em>orig:EventMap</em>, <em>stats:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em>, <em>qcfg:Questions</em>, <em>thresh:float</em>, <em>max_leaves:int) -&gt; (out_tree:EventMap</em>, <em>num_leaves:int</em>, <em>objf_impr_out:float</em>, <em>smallest_split_change_out:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.split_decision_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::EventMap * ::kaldi::SplitDecisionTree(::kaldi::EventMap, ::kaldi::BuildTreeStatsType, ::kaldi::Questions, float, int, int*, float*, float*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.split_stats_by_key">
+<code class="descclassname">kaldi.tree.</code><code class="descname">split_stats_by_key</code><span class="sig-paren">(</span><em>stats_in:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em>, <em>key:int</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;list&lt;tuple&lt;int, int&gt;&gt;, Clusterable&gt;&gt;&gt;<a class="headerlink" href="#kaldi.tree.split_stats_by_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits stats up according to the value of a particular key, which must be always defined and nonnegative.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.split_stats_by_map">
+<code class="descclassname">kaldi.tree.</code><code class="descname">split_stats_by_map</code><span class="sig-paren">(</span><em>stats_in:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em>, <em>e:EventMap</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;list&lt;tuple&lt;int, int&gt;&gt;, Clusterable&gt;&gt;&gt;<a class="headerlink" href="#kaldi.tree.split_stats_by_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits stats according to the EventMap, indexing them at output by the leaf type.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.sum_clusterable">
+<code class="descclassname">kaldi.tree.</code><code class="descname">sum_clusterable</code><span class="sig-paren">(</span><em>vec:list&lt;Clusterable&gt;</em><span class="sig-paren">)</span> &#x2192; Clusterable<a class="headerlink" href="#kaldi.tree.sum_clusterable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Clusterable * ::kaldi::SumClusterable(::std::vector&lt; ::kaldi::Clusterable <a href="#id21"><span class="problematic" id="id22">*</span></a>&gt;)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.sum_clusterable_normalizer">
+<code class="descclassname">kaldi.tree.</code><code class="descname">sum_clusterable_normalizer</code><span class="sig-paren">(</span><em>vec:list&lt;Clusterable&gt;</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.sum_clusterable_normalizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::SumClusterableNormalizer(::std::vector&lt; ::kaldi::Clusterable <a href="#id23"><span class="problematic" id="id24">*</span></a>&gt;)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.sum_clusterable_objf">
+<code class="descclassname">kaldi.tree.</code><code class="descname">sum_clusterable_objf</code><span class="sig-paren">(</span><em>vec:list&lt;Clusterable&gt;</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.sum_clusterable_objf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::SumClusterableObjf(::std::vector&lt; ::kaldi::Clusterable <a href="#id25"><span class="problematic" id="id26">*</span></a>&gt;)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.sum_normalizer">
+<code class="descclassname">kaldi.tree.</code><code class="descname">sum_normalizer</code><span class="sig-paren">(</span><em>stats_in:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.sum_normalizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sums the normalizer over the stats</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.sum_objf">
+<code class="descclassname">kaldi.tree.</code><code class="descname">sum_objf</code><span class="sig-paren">(</span><em>stats_in:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.sum_objf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sums the objective function over the stats</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.sum_stats">
+<code class="descclassname">kaldi.tree.</code><code class="descname">sum_stats</code><span class="sig-paren">(</span><em>stats_in:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; Clusterable<a class="headerlink" href="#kaldi.tree.sum_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sums stats</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.sum_stats_vec">
+<code class="descclassname">kaldi.tree.</code><code class="descname">sum_stats_vec</code><span class="sig-paren">(</span><em>stats_in:list&lt;list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;Clusterable&gt;<a class="headerlink" href="#kaldi.tree.sum_stats_vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sum a vector of stats</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.write_build_tree_stats">
+<code class="descclassname">kaldi.tree.</code><code class="descname">write_build_tree_stats</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>stats:list&lt;tuple&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em>, <em>Clusterable&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.write_build_tree_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes BuildTreeStatsType. Works even if the pointers are NULL</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.tree.write_event_type">
+<code class="descclassname">kaldi.tree.</code><code class="descname">write_event_type</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>vec:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.write_event_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::WriteEventType(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventType)</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.util.html" class="btn btn-neutral float-right" title="kaldi.util" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.transform.html" class="btn btn-neutral" title="kaldi.transform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

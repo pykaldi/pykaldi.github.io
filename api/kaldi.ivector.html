@@ -1,0 +1,1211 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.ivector &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.kws" href="kaldi.kws.html"/>
+        <link rel="prev" title="kaldi.itf" href="kaldi.itf.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.ivector</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.ivector.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.ivector">
+<span id="kaldi-ivector"></span><h1>kaldi.ivector<a class="headerlink" href="#module-kaldi.ivector" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.agglomerative_cluster" title="kaldi.ivector.agglomerative_cluster"><code class="xref py py-obj docutils literal"><span class="pre">agglomerative_cluster</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.ivector.compute_vad_energy" title="kaldi.ivector.compute_vad_energy"><code class="xref py py-obj docutils literal"><span class="pre">compute_vad_energy</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.estimate_ivectors_online" title="kaldi.ivector.estimate_ivectors_online"><code class="xref py py-obj docutils literal"><span class="pre">estimate_ivectors_online</span></code></a></td>
+<td>Obtains periodically an estimate of the iVector including all frames up to that point.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.AgglomerativeClusterer" title="kaldi.ivector.AgglomerativeClusterer"><code class="xref py py-obj docutils literal"><span class="pre">AgglomerativeClusterer</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::AgglomerativeClusterer</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.ivector.AhcCluster" title="kaldi.ivector.AhcCluster"><code class="xref py py-obj docutils literal"><span class="pre">AhcCluster</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::AhcCluster</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.IvectorEstimationOptions" title="kaldi.ivector.IvectorEstimationOptions"><code class="xref py py-obj docutils literal"><span class="pre">IvectorEstimationOptions</span></code></a></td>
+<td>Options for estimating iVectors, during both trainning and test.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.ivector.IvectorExtractor" title="kaldi.ivector.IvectorExtractor"><code class="xref py py-obj docutils literal"><span class="pre">IvectorExtractor</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::IvectorExtractor</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.IvectorExtractorEstimationOptions" title="kaldi.ivector.IvectorExtractorEstimationOptions"><code class="xref py py-obj docutils literal"><span class="pre">IvectorExtractorEstimationOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::IvectorExtractorEstimationOptions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.ivector.IvectorExtractorOptions" title="kaldi.ivector.IvectorExtractorOptions"><code class="xref py py-obj docutils literal"><span class="pre">IvectorExtractorOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::IvectorExtractorOptions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.IvectorExtractorStats" title="kaldi.ivector.IvectorExtractorStats"><code class="xref py py-obj docutils literal"><span class="pre">IvectorExtractorStats</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::IvectorExtractorStats</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.ivector.IvectorExtractorStatsOptions" title="kaldi.ivector.IvectorExtractorStatsOptions"><code class="xref py py-obj docutils literal"><span class="pre">IvectorExtractorStatsOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::IvectorExtractorStatsOptions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.IvectorExtractorUtteranceStats" title="kaldi.ivector.IvectorExtractorUtteranceStats"><code class="xref py py-obj docutils literal"><span class="pre">IvectorExtractorUtteranceStats</span></code></a></td>
+<td>Stats for a particular utterance, i.e., the sufficient stats for estimating an iVector</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.ivector.LogisticRegression" title="kaldi.ivector.LogisticRegression"><code class="xref py py-obj docutils literal"><span class="pre">LogisticRegression</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::LogisticRegression</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.LogisticRegressionConfig" title="kaldi.ivector.LogisticRegressionConfig"><code class="xref py py-obj docutils literal"><span class="pre">LogisticRegressionConfig</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::LogisticRegressionConfig</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.ivector.OnlineIvectorEstimationStats" title="kaldi.ivector.OnlineIvectorEstimationStats"><code class="xref py py-obj docutils literal"><span class="pre">OnlineIvectorEstimationStats</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineIvectorEstimationStats</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.Plda" title="kaldi.ivector.Plda"><code class="xref py py-obj docutils literal"><span class="pre">Plda</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Plda</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.ivector.PldaConfig" title="kaldi.ivector.PldaConfig"><code class="xref py py-obj docutils literal"><span class="pre">PldaConfig</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::PldaConfig</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.PldaEstimationConfig" title="kaldi.ivector.PldaEstimationConfig"><code class="xref py py-obj docutils literal"><span class="pre">PldaEstimationConfig</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::PldaEstimationConfig</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.ivector.PldaStats" title="kaldi.ivector.PldaStats"><code class="xref py py-obj docutils literal"><span class="pre">PldaStats</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::PldaStats</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.PldaUnsupervisedAdaptor" title="kaldi.ivector.PldaUnsupervisedAdaptor"><code class="xref py py-obj docutils literal"><span class="pre">PldaUnsupervisedAdaptor</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::PldaUnsupervisedAdaptor</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.ivector.PldaUnsupervisedAdaptorConfig" title="kaldi.ivector.PldaUnsupervisedAdaptorConfig"><code class="xref py py-obj docutils literal"><span class="pre">PldaUnsupervisedAdaptorConfig</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::PldaUnsupervisedAdaptorConfig</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.ivector.VadEnergyOptions" title="kaldi.ivector.VadEnergyOptions"><code class="xref py py-obj docutils literal"><span class="pre">VadEnergyOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::VadEnergyOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.ivector.AgglomerativeClusterer">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">AgglomerativeClusterer</code><a class="headerlink" href="#kaldi.ivector.AgglomerativeClusterer" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::AgglomerativeClusterer</p>
+<dl class="method">
+<dt id="kaldi.ivector.AgglomerativeClusterer.cluster">
+<code class="descname">cluster</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.ivector.AgglomerativeClusterer.cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AgglomerativeClusterer::Cluster(::std::vector&lt; ::int32&gt;*)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.AhcCluster">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">AhcCluster</code><a class="headerlink" href="#kaldi.ivector.AhcCluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::AhcCluster</p>
+<dl class="attribute">
+<dt id="kaldi.ivector.AhcCluster.id">
+<code class="descname">id</code><a class="headerlink" href="#kaldi.ivector.AhcCluster.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 AhcCluster.id</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.AhcCluster.parent1">
+<code class="descname">parent1</code><a class="headerlink" href="#kaldi.ivector.AhcCluster.parent1" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 AhcCluster.parent1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.AhcCluster.parent2">
+<code class="descname">parent2</code><a class="headerlink" href="#kaldi.ivector.AhcCluster.parent2" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 AhcCluster.parent2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.AhcCluster.size">
+<code class="descname">size</code><a class="headerlink" href="#kaldi.ivector.AhcCluster.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 AhcCluster.size</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.AhcCluster.utt_ids">
+<code class="descname">utt_ids</code><a class="headerlink" href="#kaldi.ivector.AhcCluster.utt_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::vector&lt; ::int32&gt; AhcCluster.utt_ids</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.IvectorEstimationOptions">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">IvectorEstimationOptions</code><a class="headerlink" href="#kaldi.ivector.IvectorEstimationOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for estimating iVectors, during both trainning and test.</p>
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorEstimationOptions.acoustic_weight">
+<code class="descname">acoustic_weight</code><a class="headerlink" href="#kaldi.ivector.IvectorEstimationOptions.acoustic_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ double IvectorEstimationOptions.acoustic_weight</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorEstimationOptions.max_count">
+<code class="descname">max_count</code><a class="headerlink" href="#kaldi.ivector.IvectorEstimationOptions.max_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ double IvectorEstimationOptions.max_count</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorEstimationOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorEstimationOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorEstimationOptions::Register(::kaldi::OptionsItf <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.IvectorExtractor">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">IvectorExtractor</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::IvectorExtractor</p>
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.feat_dim">
+<code class="descname">feat_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.feat_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::IvectorExtractor::FeatDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.get_acoustic_auxf_gconst">
+<code class="descname">get_acoustic_auxf_gconst</code><span class="sig-paren">(</span><em>utt_stats:IvectorExtractorUtteranceStats</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.get_acoustic_auxf_gconst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the part of the acoustic auxf that relates to the gconsts of the Gaussian.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.get_acoustic_auxf_mean">
+<code class="descname">get_acoustic_auxf_mean</code><span class="sig-paren">(</span><em>utt_stats:IvectorExtractorUtteranceStats</em>, <em>mean:DoubleVectorBase</em>, <em>var:DoubleSpMatrix=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.get_acoustic_auxf_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns just the part of the acoustic auxf that relates to the speaker-dependent means</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.get_acoustic_auxf_variance">
+<code class="descname">get_acoustic_auxf_variance</code><span class="sig-paren">(</span><em>utt_stats:IvectorExtractorUtteranceStats</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.get_acoustic_auxf_variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns just the part of the acoustic auxf that relates to the variance of the utt_stats.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.get_acoustic_auxf_weight">
+<code class="descname">get_acoustic_auxf_weight</code><span class="sig-paren">(</span><em>utt_stats:IvectorExtractorUtteranceStats</em>, <em>mean:DoubleVectorBase</em>, <em>var:DoubleSpMatrix=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.get_acoustic_auxf_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the part of the acoustic auxf that relates to the Gaussian-specific weights.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.get_auxf">
+<code class="descname">get_auxf</code><span class="sig-paren">(</span><em>utt_stats:IvectorExtractorUtteranceStats</em>, <em>mean:DoubleVectorBase</em>, <em>var:DoubleSpMatrix=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.get_auxf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the data-dependent part of the log-likelihood objective function, summed over frames.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.get_ivector_dist_mean">
+<code class="descname">get_ivector_dist_mean</code><span class="sig-paren">(</span><em>utt_stats:IvectorExtractorUtteranceStats</em>, <em>linear:DoubleVectorBase</em>, <em>quadratic:DoubleSpMatrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractor.get_ivector_dist_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the linear and quadratic terms in the distribution over iVectors</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.get_ivector_dist_prior">
+<code class="descname">get_ivector_dist_prior</code><span class="sig-paren">(</span><em>utt_stats:IvectorExtractorUtteranceStats</em>, <em>linear:DoubleVectorBase</em>, <em>quadratic:DoubleSpMatrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractor.get_ivector_dist_prior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the linear and quadratic terms in the distribution over iVectors that arise from the prior.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.get_ivector_dist_weight">
+<code class="descname">get_ivector_dist_weight</code><span class="sig-paren">(</span><em>utt_stats:IvectorExtractorUtteranceStats</em>, <em>mean:DoubleVectorBase</em>, <em>linear:DoubleVectorBase</em>, <em>quadratic:DoubleSpMatrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractor.get_ivector_dist_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the linear and quadratic terms in the distribution over iVectors that arise from the weights</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.get_ivector_distribution">
+<code class="descname">get_ivector_distribution</code><span class="sig-paren">(</span><em>utt_stats:IvectorExtractorUtteranceStats</em>, <em>mean:DoubleVectorBase</em>, <em>var:DoubleSpMatrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractor.get_ivector_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the distribution over ivectors (or the Gaussian approximation).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>utt_stats</strong> (<a class="reference internal" href="#kaldi.ivector.IvectorExtractorUtteranceStats" title="kaldi.ivector.IvectorExtractorUtteranceStats"><code class="xref py py-class docutils literal"><span class="pre">IvectorExtractorUtteranceStats</span></code></a>) – stats for a particular utterance</li>
+<li><strong>mean</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – output means</li>
+<li><strong>(</strong> (<em>var</em>) – class::<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.packed.SpMatrix" title="kaldi.matrix.packed.SpMatrix"><code class="xref py py-obj docutils literal"><span class="pre">kaldi.matrix.packed.SpMatrix</span></code></a>): None if not needed, else must be the correct dimension (<a class="reference internal" href="#kaldi.ivector.IvectorExtractor.ivector_dim" title="kaldi.ivector.IvectorExtractor.ivector_dim"><code class="xref py py-meth docutils literal"><span class="pre">ivector_dim()</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.get_prior_auxf">
+<code class="descname">get_prior_auxf</code><span class="sig-paren">(</span><em>mean:DoubleVectorBase</em>, <em>var:DoubleSpMatrix=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.get_prior_auxf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the prior-related part of the log-likelihood objective function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.ivector_dependent_weights">
+<code class="descname">ivector_dependent_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.ivector_dependent_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::IvectorExtractor::IvectorDependentWeights()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.ivector_dim">
+<code class="descname">ivector_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.ivector_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::IvectorExtractor::IvectorDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.new_with_params">
+<code class="descname">new_with_params</code><span class="sig-paren">(</span><em>opts:IvectorExtractorOptions</em>, <em>fgmm:FullGmm</em><span class="sig-paren">)</span> &#x2192; IvectorExtractor<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.new_with_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::IvectorExtractor&gt; ::kaldi::IvectorExtractor::IvectorExtractor(::kaldi::IvectorExtractorOptions, ::kaldi::FullGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.num_gauss">
+<code class="descname">num_gauss</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.num_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::IvectorExtractor::NumGauss()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.prior_offset">
+<code class="descname">prior_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.IvectorExtractor.prior_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Offset of first dimension.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>os:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractor.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorExtractor::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractor.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractor.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorExtractor::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.IvectorExtractorEstimationOptions">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">IvectorExtractorEstimationOptions</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorEstimationOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::IvectorExtractorEstimationOptions</p>
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorExtractorEstimationOptions.diagonalize">
+<code class="descname">diagonalize</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorEstimationOptions.diagonalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool IvectorExtractorEstimationOptions.diagonalize</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorExtractorEstimationOptions.gaussian_min_count">
+<code class="descname">gaussian_min_count</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorEstimationOptions.gaussian_min_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ double IvectorExtractorEstimationOptions.gaussian_min_count</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorExtractorEstimationOptions.num_threads">
+<code class="descname">num_threads</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorEstimationOptions.num_threads" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 IvectorExtractorEstimationOptions.num_threads</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorEstimationOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractorEstimationOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorExtractorEstimationOptions::Register(::kaldi::OptionsItf <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorExtractorEstimationOptions.variance_floor_factor">
+<code class="descname">variance_floor_factor</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorEstimationOptions.variance_floor_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ double IvectorExtractorEstimationOptions.variance_floor_factor</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.IvectorExtractorOptions">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">IvectorExtractorOptions</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::IvectorExtractorOptions</p>
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorExtractorOptions.ivector_dim">
+<code class="descname">ivector_dim</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorOptions.ivector_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ int IvectorExtractorOptions.ivector_dim</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorExtractorOptions.num_iters">
+<code class="descname">num_iters</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorOptions.num_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ int IvectorExtractorOptions.num_iters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractorOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorExtractorOptions::Register(::kaldi::OptionsItf <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorExtractorOptions.use_weights">
+<code class="descname">use_weights</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorOptions.use_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool IvectorExtractorOptions.use_weights</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.IvectorExtractorStats">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">IvectorExtractorStats</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStats" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::IvectorExtractorStats</p>
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorStats.acc_stats_for_utterance">
+<code class="descname">acc_stats_for_utterance</code><span class="sig-paren">(</span><em>extractor:IvectorExtractor</em>, <em>feats:MatrixBase</em>, <em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStats.acc_stats_for_utterance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorExtractorStats::AccStatsForUtterance(::kaldi::IvectorExtractor, ::kaldi::MatrixBase&lt;float&gt;, ::kaldi::Posterior)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorStats.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>other:IvectorExtractorStats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStats.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorExtractorStats::Add(::kaldi::IvectorExtractorStats)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorStats.auxf_per_frame">
+<code class="descname">auxf_per_frame</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.IvectorExtractorStats.auxf_per_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::IvectorExtractorStats::AuxfPerFrame()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorStats.ivector_variance_diagnostic">
+<code class="descname">ivector_variance_diagnostic</code><span class="sig-paren">(</span><em>extractor:IvectorExtractor</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStats.ivector_variance_diagnostic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints the proportion of the variance explained by the Ivector model versus the Gaussians.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorStats.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>extractor:IvectorExtractor</em>, <em>stats_opts:IvectorExtractorStatsOptions</em><span class="sig-paren">)</span> &#x2192; IvectorExtractorStats<a class="headerlink" href="#kaldi.ivector.IvectorExtractorStats.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::IvectorExtractorStats&gt; ::kaldi::IvectorExtractorStats::IvectorExtractorStats(::kaldi::IvectorExtractor, ::kaldi::IvectorExtractorStatsOptions)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorStats.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>os:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStats.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorExtractorStats::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorStats.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>opts:IvectorExtractorEstimationOptions</em>, <em>extractor:IvectorExtractor</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.IvectorExtractorStats.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the objf improvement per frame</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorStats.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStats.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorExtractorStats::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.IvectorExtractorStatsOptions">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">IvectorExtractorStatsOptions</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStatsOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::IvectorExtractorStatsOptions</p>
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorExtractorStatsOptions.cache_size">
+<code class="descname">cache_size</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStatsOptions.cache_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ int IvectorExtractorStatsOptions.cache_size</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorExtractorStatsOptions.compute_auxf">
+<code class="descname">compute_auxf</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStatsOptions.compute_auxf" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool IvectorExtractorStatsOptions.compute_auxf</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorExtractorStatsOptions.num_samples_for_weights">
+<code class="descname">num_samples_for_weights</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStatsOptions.num_samples_for_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 IvectorExtractorStatsOptions.num_samples_for_weights</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorStatsOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStatsOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorExtractorStatsOptions::Register(::kaldi::OptionsItf <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.IvectorExtractorStatsOptions.update_variances">
+<code class="descname">update_variances</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorStatsOptions.update_variances" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool IvectorExtractorStatsOptions.update_variances</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.IvectorExtractorUtteranceStats">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">IvectorExtractorUtteranceStats</code><a class="headerlink" href="#kaldi.ivector.IvectorExtractorUtteranceStats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stats for a particular utterance, i.e., the sufficient stats for estimating an iVector</p>
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorUtteranceStats.acc_stats">
+<code class="descname">acc_stats</code><span class="sig-paren">(</span><em>feats:MatrixBase</em>, <em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractorUtteranceStats.acc_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorExtractorUtteranceStats::AccStats(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::Posterior)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorUtteranceStats.new_with_params">
+<code class="descname">new_with_params</code><span class="sig-paren">(</span><em>num_gauss:int</em>, <em>feat_dim:int</em>, <em>need_2nd_order_stats:bool</em><span class="sig-paren">)</span> &#x2192; IvectorExtractorUtteranceStats<a class="headerlink" href="#kaldi.ivector.IvectorExtractorUtteranceStats.new_with_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::IvectorExtractorUtteranceStats&gt; ::kaldi::IvectorExtractorUtteranceStats::IvectorExtractorUtteranceStats(int, int, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorUtteranceStats.num_frames">
+<code class="descname">num_frames</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.IvectorExtractorUtteranceStats.num_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::IvectorExtractorUtteranceStats::NumFrames()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.IvectorExtractorUtteranceStats.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>scale:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.IvectorExtractorUtteranceStats.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::IvectorExtractorUtteranceStats::Scale(double)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.LogisticRegression">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">LogisticRegression</code><a class="headerlink" href="#kaldi.ivector.LogisticRegression" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::LogisticRegression</p>
+<dl class="method">
+<dt id="kaldi.ivector.LogisticRegression.get_log_posteriors_matrix">
+<code class="descname">get_log_posteriors_matrix</code><span class="sig-paren">(</span><em>xs:Matrix</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.ivector.LogisticRegression.get_log_posteriors_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the log posterior of the class label given the input xs</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.LogisticRegression.get_log_posteriors_vector">
+<code class="descname">get_log_posteriors_vector</code><span class="sig-paren">(</span><em>x:Vector</em><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.ivector.LogisticRegression.get_log_posteriors_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the log posterior of the class label given the input x.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.LogisticRegression.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>os:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.LogisticRegression.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LogisticRegression::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.LogisticRegression.scale_priors">
+<code class="descname">scale_priors</code><span class="sig-paren">(</span><em>prior_scales:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.LogisticRegression.scale_priors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LogisticRegression::ScalePriors(::kaldi::Vector&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.LogisticRegression.train">
+<code class="descname">train</code><span class="sig-paren">(</span><em>xs:Matrix</em>, <em>ys:list&lt;int&gt;</em>, <em>conf:LogisticRegressionConfig</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.LogisticRegression.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>xs and ys are the trainning data. Each row of xs is a vector corresponding to the class label in the same row of ys.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.LogisticRegression.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.LogisticRegression.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LogisticRegression::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.LogisticRegressionConfig">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">LogisticRegressionConfig</code><a class="headerlink" href="#kaldi.ivector.LogisticRegressionConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::LogisticRegressionConfig</p>
+<dl class="attribute">
+<dt id="kaldi.ivector.LogisticRegressionConfig.max_steps">
+<code class="descname">max_steps</code><a class="headerlink" href="#kaldi.ivector.LogisticRegressionConfig.max_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 LogisticRegressionConfig.max_steps</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.LogisticRegressionConfig.mix_up">
+<code class="descname">mix_up</code><a class="headerlink" href="#kaldi.ivector.LogisticRegressionConfig.mix_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 LogisticRegressionConfig.mix_up</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.LogisticRegressionConfig.normalizer">
+<code class="descname">normalizer</code><a class="headerlink" href="#kaldi.ivector.LogisticRegressionConfig.normalizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ double LogisticRegressionConfig.normalizer</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.LogisticRegressionConfig.power">
+<code class="descname">power</code><a class="headerlink" href="#kaldi.ivector.LogisticRegressionConfig.power" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ double LogisticRegressionConfig.power</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.LogisticRegressionConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.LogisticRegressionConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LogisticRegressionConfig::Register(::kaldi::OptionsItf <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">OnlineIvectorEstimationStats</code><a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineIvectorEstimationStats</p>
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.acc_stats">
+<code class="descname">acc_stats</code><span class="sig-paren">(</span><em>extractor:IvectorExtractor</em>, <em>feature:VectorBase</em>, <em>gauss_post:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.acc_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineIvectorEstimationStats::AccStats(::kaldi::IvectorExtractor, ::kaldi::VectorBase&lt;float&gt;, ::std::vector&lt; ::std::pair&lt; ::int32, ::kaldi::BaseFloat&gt; &gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.count">
+<code class="descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::OnlineIvectorEstimationStats::Count()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.get_ivector">
+<code class="descname">get_ivector</code><span class="sig-paren">(</span><em>num_cg_iters:int</em>, <em>ivector:DoubleVectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.get_ivector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the current estimate of the iVector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.ivector_dim">
+<code class="descname">ivector_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.ivector_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineIvectorEstimationStats::IvectorDim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.new_with_other">
+<code class="descname">new_with_other</code><span class="sig-paren">(</span><em>other:OnlineIvectorEstimationStats</em><span class="sig-paren">)</span> &#x2192; OnlineIvectorEstimationStats<a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.new_with_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OnlineIvectorEstimationStats&gt; ::kaldi::OnlineIvectorEstimationStats::OnlineIvectorEstimationStats(::kaldi::OnlineIvectorEstimationStats)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.new_with_params">
+<code class="descname">new_with_params</code><span class="sig-paren">(</span><em>ivector_dim:int</em>, <em>prior_offset:float</em>, <em>max_count:float</em><span class="sig-paren">)</span> &#x2192; OnlineIvectorEstimationStats<a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.new_with_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OnlineIvectorEstimationStats&gt; ::kaldi::OnlineIvectorEstimationStats::OnlineIvectorEstimationStats(int, float, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.num_frames">
+<code class="descname">num_frames</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.num_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::OnlineIvectorEstimationStats::NumFrames()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.objf_change">
+<code class="descname">objf_change</code><span class="sig-paren">(</span><em>ivector:DoubleVectorBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.objf_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the change in objective function per frame from using the default value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.prior_offset">
+<code class="descname">prior_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.prior_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::OnlineIvectorEstimationStats::PriorOffset()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>os:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineIvectorEstimationStats::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>scale:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineIvectorEstimationStats::Scale(double)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineIvectorEstimationStats::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.Plda">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">Plda</code><a class="headerlink" href="#kaldi.ivector.Plda" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Plda</p>
+<dl class="method">
+<dt id="kaldi.ivector.Plda.apply_transform">
+<code class="descname">apply_transform</code><span class="sig-paren">(</span><em>in_transform:DoubleMatrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.Plda.apply_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Plda::ApplyTransform(::kaldi::Matrix&lt;double&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.Plda.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.ivector.Plda.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::Plda::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.Plda.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:Plda</em><span class="sig-paren">)</span> &#x2192; Plda<a class="headerlink" href="#kaldi.ivector.Plda.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::Plda&gt; ::kaldi::Plda::Plda(::kaldi::Plda)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.Plda.log_likelihood_ratio">
+<code class="descname">log_likelihood_ratio</code><span class="sig-paren">(</span><em>transformed_train_ivector:DoubleVectorBase</em>, <em>num_train_utts:int</em>, <em>transformed_test_ivector:DoubleVectorBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.Plda.log_likelihood_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::Plda::LogLikelihoodRatio(::kaldi::VectorBase&lt;double&gt;, int, ::kaldi::VectorBase&lt;double&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.Plda.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>os:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.Plda.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Plda::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.Plda.smooth_within_class_covariance">
+<code class="descname">smooth_within_class_covariance</code><span class="sig-paren">(</span><em>smoothing_factor:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.Plda.smooth_within_class_covariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Plda::SmoothWithinClassCovariance(double)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.Plda.transform_ivector">
+<code class="descname">transform_ivector</code><span class="sig-paren">(</span><em>config:PldaConfig</em>, <em>ivector:DoubleVectorBase</em>, <em>num_examples:int</em>, <em>transformed_ivector:DoubleVectorBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.Plda.transform_ivector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::Plda::TransformIvector(::kaldi::PldaConfig, ::kaldi::VectorBase&lt;double&gt;, int, ::kaldi::VectorBase&lt;double&gt; <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.Plda.transform_ivector_single">
+<code class="descname">transform_ivector_single</code><span class="sig-paren">(</span><em>config:PldaConfig</em>, <em>ivector:VectorBase</em>, <em>num_examples:int</em>, <em>transformed_ivector:VectorBase</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.Plda.transform_ivector_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Plda::TransformIvector(::kaldi::PldaConfig, ::kaldi::VectorBase&lt;float&gt;, int, ::kaldi::VectorBase&lt;float&gt; <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.Plda.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.Plda.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Plda::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.PldaConfig">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">PldaConfig</code><a class="headerlink" href="#kaldi.ivector.PldaConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::PldaConfig</p>
+<dl class="attribute">
+<dt id="kaldi.ivector.PldaConfig.normalize_length">
+<code class="descname">normalize_length</code><a class="headerlink" href="#kaldi.ivector.PldaConfig.normalize_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool PldaConfig.normalize_length</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.PldaConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.PldaConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PldaConfig::Register(::kaldi::OptionsItf <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.PldaConfig.simple_length_norm">
+<code class="descname">simple_length_norm</code><a class="headerlink" href="#kaldi.ivector.PldaConfig.simple_length_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool PldaConfig.simple_length_norm</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.PldaEstimationConfig">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">PldaEstimationConfig</code><a class="headerlink" href="#kaldi.ivector.PldaEstimationConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::PldaEstimationConfig</p>
+<dl class="attribute">
+<dt id="kaldi.ivector.PldaEstimationConfig.num_em_iters">
+<code class="descname">num_em_iters</code><a class="headerlink" href="#kaldi.ivector.PldaEstimationConfig.num_em_iters" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 PldaEstimationConfig.num_em_iters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.PldaEstimationConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.PldaEstimationConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PldaEstimationConfig::Register(::kaldi::OptionsItf <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.PldaStats">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">PldaStats</code><a class="headerlink" href="#kaldi.ivector.PldaStats" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::PldaStats</p>
+<dl class="method">
+<dt id="kaldi.ivector.PldaStats.add_samples">
+<code class="descname">add_samples</code><span class="sig-paren">(</span><em>weight:float</em>, <em>group:DoubleMatrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.PldaStats.add_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PldaStats::AddSamples(double, ::kaldi::Matrix&lt;double&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.PldaStats.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.ivector.PldaStats.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::PldaStats::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.PldaStats.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>dim:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.PldaStats.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PldaStats::Init(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.PldaStats.is_sorted">
+<code class="descname">is_sorted</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.ivector.PldaStats.is_sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::PldaStats::IsSorted()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.PldaStats.sort">
+<code class="descname">sort</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.PldaStats.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PldaStats::Sort()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.PldaUnsupervisedAdaptor">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">PldaUnsupervisedAdaptor</code><a class="headerlink" href="#kaldi.ivector.PldaUnsupervisedAdaptor" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::PldaUnsupervisedAdaptor</p>
+<dl class="method">
+<dt id="kaldi.ivector.PldaUnsupervisedAdaptor.add_double_stats">
+<code class="descname">add_double_stats</code><span class="sig-paren">(</span><em>weight:float</em>, <em>ivector:DoubleVector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.PldaUnsupervisedAdaptor.add_double_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PldaUnsupervisedAdaptor::AddStats(double, ::kaldi::Vector&lt;double&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.PldaUnsupervisedAdaptor.add_stats">
+<code class="descname">add_stats</code><span class="sig-paren">(</span><em>weight:float</em>, <em>ivector:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.PldaUnsupervisedAdaptor.add_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PldaUnsupervisedAdaptor::AddStats(double, ::kaldi::Vector&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.PldaUnsupervisedAdaptor.update_plda">
+<code class="descname">update_plda</code><span class="sig-paren">(</span><em>config:PldaUnsupervisedAdaptorConfig</em>, <em>plda:Plda</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.PldaUnsupervisedAdaptor.update_plda" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PldaUnsupervisedAdaptor::UpdatePlda(::kaldi::PldaUnsupervisedAdaptorConfig, ::kaldi::Plda <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.PldaUnsupervisedAdaptorConfig">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">PldaUnsupervisedAdaptorConfig</code><a class="headerlink" href="#kaldi.ivector.PldaUnsupervisedAdaptorConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::PldaUnsupervisedAdaptorConfig</p>
+<dl class="attribute">
+<dt id="kaldi.ivector.PldaUnsupervisedAdaptorConfig.between_covar_scale">
+<code class="descname">between_covar_scale</code><a class="headerlink" href="#kaldi.ivector.PldaUnsupervisedAdaptorConfig.between_covar_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PldaUnsupervisedAdaptorConfig.between_covar_scale</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.PldaUnsupervisedAdaptorConfig.mean_diff_scale">
+<code class="descname">mean_diff_scale</code><a class="headerlink" href="#kaldi.ivector.PldaUnsupervisedAdaptorConfig.mean_diff_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PldaUnsupervisedAdaptorConfig.mean_diff_scale</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.ivector.PldaUnsupervisedAdaptorConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.PldaUnsupervisedAdaptorConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PldaUnsupervisedAdaptorConfig::Register(::kaldi::OptionsItf <a href="#id21"><span class="problematic" id="id22">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.PldaUnsupervisedAdaptorConfig.within_covar_scale">
+<code class="descname">within_covar_scale</code><a class="headerlink" href="#kaldi.ivector.PldaUnsupervisedAdaptorConfig.within_covar_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PldaUnsupervisedAdaptorConfig.within_covar_scale</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.ivector.VadEnergyOptions">
+<em class="property">class </em><code class="descclassname">kaldi.ivector.</code><code class="descname">VadEnergyOptions</code><a class="headerlink" href="#kaldi.ivector.VadEnergyOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::VadEnergyOptions</p>
+<dl class="method">
+<dt id="kaldi.ivector.VadEnergyOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.VadEnergyOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::VadEnergyOptions::Register(::kaldi::OptionsItf <a href="#id23"><span class="problematic" id="id24">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.VadEnergyOptions.vad_energy_mean_scale">
+<code class="descname">vad_energy_mean_scale</code><a class="headerlink" href="#kaldi.ivector.VadEnergyOptions.vad_energy_mean_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat VadEnergyOptions.vad_energy_mean_scale</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.VadEnergyOptions.vad_energy_threshold">
+<code class="descname">vad_energy_threshold</code><a class="headerlink" href="#kaldi.ivector.VadEnergyOptions.vad_energy_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat VadEnergyOptions.vad_energy_threshold</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.VadEnergyOptions.vad_frames_context">
+<code class="descname">vad_frames_context</code><a class="headerlink" href="#kaldi.ivector.VadEnergyOptions.vad_frames_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 VadEnergyOptions.vad_frames_context</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.ivector.VadEnergyOptions.vad_proportion_threshold">
+<code class="descname">vad_proportion_threshold</code><a class="headerlink" href="#kaldi.ivector.VadEnergyOptions.vad_proportion_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat VadEnergyOptions.vad_proportion_threshold</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.ivector.agglomerative_cluster">
+<code class="descclassname">kaldi.ivector.</code><code class="descname">agglomerative_cluster</code><span class="sig-paren">(</span><em>costs:Matrix</em>, <em>thresh:float</em>, <em>min_clust:int</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.ivector.agglomerative_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::AgglomerativeCluster(::kaldi::Matrix&lt;float&gt;, float, int, ::std::vector&lt; ::int32&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.ivector.compute_vad_energy">
+<code class="descclassname">kaldi.ivector.</code><code class="descname">compute_vad_energy</code><span class="sig-paren">(</span><em>opts:VadEnergyOptions</em>, <em>input_features:MatrixBase</em><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.ivector.compute_vad_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ComputeVadEnergy(::kaldi::VadEnergyOptions, ::kaldi::MatrixBase&lt;float&gt;, ::kaldi::Vector&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.ivector.estimate_ivectors_online">
+<code class="descclassname">kaldi.ivector.</code><code class="descname">estimate_ivectors_online</code><span class="sig-paren">(</span><em>feats:Matrix</em>, <em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em>, <em>extractor:IvectorExtractor</em>, <em>ivector_period:int</em>, <em>num_cg_iters:int</em>, <em>max_count:float) -&gt; (objf_improvement:float</em>, <em>ivectors:Matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.estimate_ivectors_online" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtains periodically an estimate of the iVector including all frames up to that point.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.kws.html" class="btn btn-neutral float-right" title="kaldi.kws" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.itf.html" class="btn btn-neutral" title="kaldi.itf" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

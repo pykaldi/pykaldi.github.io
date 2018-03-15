@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.transform.cmvn &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../../../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>kaldi.transform.cmvn</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kaldi.transform.cmvn</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_cmvn</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">matrix</span>
+<span class="kn">from</span> <span class="nn">..matrix</span> <span class="k">import</span> <span class="n">_kaldi_matrix</span>
+<span class="kn">from</span> <span class="nn">..matrix</span> <span class="k">import</span> <span class="n">_kaldi_vector</span>
+<span class="kn">from</span> <span class="nn">..util</span> <span class="k">import</span> <span class="n">io</span>
+
+<div class="viewcode-block" id="Cmvn"><a class="viewcode-back" href="../../../api/kaldi.transform.html#kaldi.transform.cmvn.Cmvn">[docs]</a><span class="k">class</span> <span class="nc">Cmvn</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Cepstral mean variance normalization (CMVN).</span>
+
+<span class="sd">    This class is used for accumulating CMVN statistics and applying CMVN using</span>
+<span class="sd">    accumulated statistics. Global CMVN can be computed and applied as follows::</span>
+
+<span class="sd">        cmvn = Cmvn(40)  # 40 dimensional features</span>
+
+<span class="sd">        for key, feats in SequentialMatrixReader(&quot;ark:feats.ark&quot;):</span>
+<span class="sd">            cmvn.accumulate(feats)</span>
+
+<span class="sd">        with MatrixWriter(&quot;ark:feats_norm.ark&quot;) as writer:</span>
+<span class="sd">            for key, feats in SequentialMatrixReader(&quot;ark:feats.ark&quot;):</span>
+<span class="sd">                cmvn.apply(feats, norm_vars=True)</span>
+<span class="sd">                writer[key] = feats</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        stats (DoubleMatrix or None): Accumulated mean/variance statistics</span>
+<span class="sd">            matrix of size `2 x dim+1`. This matrix is initialized when a CMVN</span>
+<span class="sd">            object is instantiated by specifying a feature dimension or when the</span>
+<span class="sd">            :meth:`init` method is explicitly called. It is ``None`` otherwise.</span>
+<span class="sd">            `stats[0,:-1]` represents the sum of accumulated feature vectors.</span>
+<span class="sd">            `stats[1,:-1]` represents the sum of element-wise squares of</span>
+<span class="sd">            accumulated feature vectors. `stats[0,-1]` represents the total</span>
+<span class="sd">            count of accumulated feature vectors. `stats[1,-1]` is initialized</span>
+<span class="sd">            to zero but otherwise is not used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            dim (int): The feature dimension. If specified, :attr:`stats` matrix</span>
+<span class="sd">                is initialized with the given dimension.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Cmvn.accumulate"><a class="viewcode-back" href="../../../api/kaldi.transform.html#kaldi.transform.cmvn.Cmvn.accumulate">[docs]</a>    <span class="k">def</span> <span class="nf">accumulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feats</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Accumulates CMVN statistics.</span>
+
+<span class="sd">        Computes the CMVN statistics for given features and adds them to the</span>
+<span class="sd">        :attr:`stats` matrix.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            feats (VectorBase or MatrixBase): The input features.</span>
+<span class="sd">            weights (float or VectorBase): The frame weights. If `feats` is a</span>
+<span class="sd">                single feature vector, then `weights` should be a single number.</span>
+<span class="sd">                If `feats` is a feature matrix, then `weights` should be a</span>
+<span class="sd">                vector of size `feats.num_rows`. If `weights` is not specified</span>
+<span class="sd">                or ``None``, then no frame weighting is done.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;CMVN stats matrix is not initialized. Initialize &quot;</span>
+                             <span class="s2">&quot;it either by reading it from file or by calling &quot;</span>
+                             <span class="s2">&quot;the init method to accumulate new statistics or &quot;</span>
+                             <span class="s2">&quot;by directly setting the stats attribute.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">):</span>
+            <span class="n">_cmvn</span><span class="o">.</span><span class="n">acc_cmvn_stats</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">_kaldi_vector</span><span class="o">.</span><span class="n">VectorBase</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">weights</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="n">_cmvn</span><span class="o">.</span><span class="n">acc_cmvn_stats_single_frame</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input feature should be a matrix or vector.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Cmvn.apply"><a class="viewcode-back" href="../../../api/kaldi.transform.html#kaldi.transform.cmvn.Cmvn.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feats</span><span class="p">,</span> <span class="n">norm_vars</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Applies CMVN to the given feature matrix.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            feats (Matrix): The feature matrix to normalize.</span>
+<span class="sd">            norm_vars (bool): Whether to apply variance normalization.</span>
+<span class="sd">            reverse (bool): Whether to apply CMVN in a reverse sense, so as to</span>
+<span class="sd">                transform zero-mean, unit-variance features into features with</span>
+<span class="sd">                the desired mean and variance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;CMVN stats matrix is not initialized. Initialize &quot;</span>
+                             <span class="s2">&quot;it either by reading it from file or by calling &quot;</span>
+                             <span class="s2">&quot;the init method and accumulating new statistics &quot;</span>
+                             <span class="s2">&quot;or by directly setting the stats attribute.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">reverse</span><span class="p">:</span>
+            <span class="n">_cmvn</span><span class="o">.</span><span class="n">apply_cmvn_reverse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">,</span> <span class="n">norm_vars</span><span class="p">,</span> <span class="n">feats</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_cmvn</span><span class="o">.</span><span class="n">apply_cmvn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">,</span> <span class="n">norm_vars</span><span class="p">,</span> <span class="n">feats</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Cmvn.init"><a class="viewcode-back" href="../../../api/kaldi.transform.html#kaldi.transform.cmvn.Cmvn.init">[docs]</a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initializes the CMVN statistics matrix.</span>
+
+<span class="sd">        This method is called during object initialization. It can also be</span>
+<span class="sd">        called at a later time to initialize or reset the internal statistics</span>
+<span class="sd">        matrix.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dim (int or None): The feature dimension. If ``None``, then</span>
+<span class="sd">                :attr:`stats` attribute is set to ``None``. Otherwise, it is</span>
+<span class="sd">                initialized as a `2 x dim+1` matrix of zeros.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span><span class="p">(</span><span class="n">dim</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">DoubleMatrix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Cmvn.read_stats"><a class="viewcode-back" href="../../../api/kaldi.transform.html#kaldi.transform.cmvn.Cmvn.read_stats">[docs]</a>    <span class="k">def</span> <span class="nf">read_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rxfilename</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads CMVN statistics from file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            rxfilename (str): Extended filename for reading CMVN statistics.</span>
+<span class="sd">            binary (bool): Whether to open the file in binary mode.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">rxfilename</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="n">binary</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">DoubleMatrix</span><span class="p">()</span><span class="o">.</span><span class="n">read_</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Cmvn.skip_dims"><a class="viewcode-back" href="../../../api/kaldi.transform.html#kaldi.transform.cmvn.Cmvn.skip_dims">[docs]</a>    <span class="k">def</span> <span class="nf">skip_dims</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Modifies the stats to skip normalization for given dimensions.</span>
+
+<span class="sd">        This is a destructive operation. The statistics for given dimensions are</span>
+<span class="sd">        replaced with fake values that effectively disable normalization in</span>
+<span class="sd">        those dimensions. This method should only be called after statistics</span>
+<span class="sd">        accumulation is finished since accumulation modifies the :attr:`stats`</span>
+<span class="sd">        matrix.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dims(List[int]): Dimensions for which to skip normalization.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_cmvn</span><span class="o">.</span><span class="n">fake_stats_for_some_dims</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Cmvn.write_stats"><a class="viewcode-back" href="../../../api/kaldi.transform.html#kaldi.transform.cmvn.Cmvn.write_stats">[docs]</a>    <span class="k">def</span> <span class="nf">write_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wxfilename</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes CMVN statistics to file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            wxfilename (str): Extended filename for writing CMVN statistics.</span>
+<span class="sd">            binary (bool): Whether to open the file in binary mode.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">Output</span><span class="p">(</span><span class="n">wxfilename</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="n">binary</span><span class="p">)</span> <span class="k">as</span> <span class="n">ko</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ko</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">binary</span><span class="p">)</span></div></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Cmvn&#39;</span><span class="p">]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

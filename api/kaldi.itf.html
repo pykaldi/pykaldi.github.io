@@ -1,0 +1,634 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.itf &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.ivector" href="kaldi.ivector.html"/>
+        <link rel="prev" title="kaldi.hmm" href="kaldi.hmm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.itf</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.itf.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.itf">
+<span id="kaldi-itf"></span><h1>kaldi.itf<a class="headerlink" href="#module-kaldi.itf" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.itf.Clusterable" title="kaldi.itf.Clusterable"><code class="xref py py-obj docutils literal"><span class="pre">Clusterable</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::Clusterable</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.itf.ContextDependencyInterface" title="kaldi.itf.ContextDependencyInterface"><code class="xref py py-obj docutils literal"><span class="pre">ContextDependencyInterface</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::ContextDependencyInterface</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><code class="xref py py-obj docutils literal"><span class="pre">DecodableInterface</span></code></a></td>
+<td>Decodable interface definition.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.itf.OnlineBaseFeature" title="kaldi.itf.OnlineBaseFeature"><code class="xref py py-obj docutils literal"><span class="pre">OnlineBaseFeature</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineBaseFeature</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.itf.OnlineFeatureInterface" title="kaldi.itf.OnlineFeatureInterface"><code class="xref py py-obj docutils literal"><span class="pre">OnlineFeatureInterface</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineFeatureInterface</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><code class="xref py py-obj docutils literal"><span class="pre">OptionsItf</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OptionsItf</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.itf.Clusterable">
+<em class="property">class </em><code class="descclassname">kaldi.itf.</code><code class="descname">Clusterable</code><a class="headerlink" href="#kaldi.itf.Clusterable" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::Clusterable</p>
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.Clusterable.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Clusterable::Add(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Clusterable<a class="headerlink" href="#kaldi.itf.Clusterable.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Clusterable * ::kaldi::Clusterable::Copy()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.itf.Clusterable.distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::Distance(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.normalizer">
+<code class="descname">normalizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.itf.Clusterable.normalizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::Normalizer()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.objf">
+<code class="descname">objf</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.itf.Clusterable.objf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::Objf()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.objf_minus">
+<code class="descname">objf_minus</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.itf.Clusterable.objf_minus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::ObjfMinus(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.objf_plus">
+<code class="descname">objf_plus</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.itf.Clusterable.objf_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::Clusterable::ObjfPlus(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.read_new">
+<code class="descname">read_new</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; Clusterable<a class="headerlink" href="#kaldi.itf.Clusterable.read_new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Clusterable * ::kaldi::Clusterable::ReadNew(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>f:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.Clusterable.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Clusterable::Scale(float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.set_zero">
+<code class="descname">set_zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.Clusterable.set_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Clusterable::SetZero()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.sub">
+<code class="descname">sub</code><span class="sig-paren">(</span><em>other:Clusterable</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.Clusterable.sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Clusterable::Sub(::kaldi::Clusterable)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.type">
+<code class="descname">type</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.itf.Clusterable.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::std::string ::kaldi::Clusterable::Type()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.Clusterable.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.Clusterable.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Clusterable::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.itf.ContextDependencyInterface">
+<em class="property">class </em><code class="descclassname">kaldi.itf.</code><code class="descname">ContextDependencyInterface</code><a class="headerlink" href="#kaldi.itf.ContextDependencyInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::ContextDependencyInterface</p>
+<dl class="method">
+<dt id="kaldi.itf.ContextDependencyInterface.central_position">
+<code class="descname">central_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.ContextDependencyInterface.central_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::ContextDependencyInterface::CentralPosition()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.ContextDependencyInterface.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>phoneseq:list&lt;int&gt;</em>, <em>pdf_class:int) -&gt; (success:bool</em>, <em>pdf_id:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.ContextDependencyInterface.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::ContextDependencyInterface::Compute(::std::vector&lt; ::int32&gt;, int, int*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.ContextDependencyInterface.context_width">
+<code class="descname">context_width</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.ContextDependencyInterface.context_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::ContextDependencyInterface::ContextWidth()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.ContextDependencyInterface.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ContextDependencyInterface<a class="headerlink" href="#kaldi.itf.ContextDependencyInterface.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::ContextDependencyInterface * ::kaldi::ContextDependencyInterface::Copy()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.ContextDependencyInterface.get_pdf_info">
+<code class="descname">get_pdf_info</code><span class="sig-paren">(</span><em>phones:list&lt;int&gt;</em>, <em>num_pdf_classes:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, int&gt;&gt;&gt;<a class="headerlink" href="#kaldi.itf.ContextDependencyInterface.get_pdf_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ContextDependencyInterface::GetPdfInfo(::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::std::vector&lt; ::std::pair&lt; ::int32, ::int32&gt; &gt; &gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.ContextDependencyInterface.get_pdf_pair_info">
+<code class="descname">get_pdf_pair_info</code><span class="sig-paren">(</span><em>phones:list&lt;int&gt;</em>, <em>pdf_class_pairs:list&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;list&lt;tuple&lt;int, int&gt;&gt;&gt;&gt;<a class="headerlink" href="#kaldi.itf.ContextDependencyInterface.get_pdf_pair_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ContextDependencyInterface::GetPdfInfo(::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::std::vector&lt; ::std::pair&lt; ::int32, ::int32&gt; &gt; &gt;, ::std::vector&lt; ::std::vector&lt; ::std::vector&lt; ::std::pair&lt; ::int32, ::int32&gt; &gt; &gt; &gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.ContextDependencyInterface.num_pdfs">
+<code class="descname">num_pdfs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.ContextDependencyInterface.num_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::ContextDependencyInterface::NumPdfs()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.itf.DecodableInterface">
+<em class="property">class </em><code class="descclassname">kaldi.itf.</code><code class="descname">DecodableInterface</code><a class="headerlink" href="#kaldi.itf.DecodableInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodable interface definition.</p>
+<dl class="method">
+<dt id="kaldi.itf.DecodableInterface.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.itf.DecodableInterface.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if given frame is the last frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.DecodableInterface.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>index:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.itf.DecodableInterface.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log-likehood of the given index for the given frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.DecodableInterface.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.DecodableInterface.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of frames ready for decoding.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.DecodableInterface.num_indices">
+<code class="descname">num_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.DecodableInterface.num_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of indices.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.itf.OnlineBaseFeature">
+<em class="property">class </em><code class="descclassname">kaldi.itf.</code><code class="descname">OnlineBaseFeature</code><a class="headerlink" href="#kaldi.itf.OnlineBaseFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineBaseFeature</p>
+<dl class="method">
+<dt id="kaldi.itf.OnlineBaseFeature.accept_waveform">
+<code class="descname">accept_waveform</code><span class="sig-paren">(</span><em>sampling_rate:float</em>, <em>waveform:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.accept_waveform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineBaseFeature::AcceptWaveform(float, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OnlineBaseFeature.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineFeatureInterface::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OnlineBaseFeature.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineFeatureInterface::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OnlineBaseFeature.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineFeatureInterface::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OnlineBaseFeature.input_finished">
+<code class="descname">input_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.input_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineBaseFeature::InputFinished()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OnlineBaseFeature.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineFeatureInterface::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OnlineBaseFeature.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineFeatureInterface::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.itf.OnlineFeatureInterface">
+<em class="property">class </em><code class="descclassname">kaldi.itf.</code><code class="descname">OnlineFeatureInterface</code><a class="headerlink" href="#kaldi.itf.OnlineFeatureInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineFeatureInterface</p>
+<dl class="method">
+<dt id="kaldi.itf.OnlineFeatureInterface.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.OnlineFeatureInterface.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineFeatureInterface::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OnlineFeatureInterface.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.itf.OnlineFeatureInterface.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineFeatureInterface::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OnlineFeatureInterface.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OnlineFeatureInterface.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineFeatureInterface::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OnlineFeatureInterface.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.itf.OnlineFeatureInterface.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineFeatureInterface::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OnlineFeatureInterface.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.OnlineFeatureInterface.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineFeatureInterface::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.itf.OptionsItf">
+<em class="property">class </em><code class="descclassname">kaldi.itf.</code><code class="descname">OptionsItf</code><a class="headerlink" href="#kaldi.itf.OptionsItf" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OptionsItf</p>
+<dl class="method">
+<dt id="kaldi.itf.OptionsItf.register_bool">
+<code class="descname">register_bool</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:bool</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OptionsItf::Register(::std::string, bool <a href="#id5"><span class="problematic" id="id6">*</span></a>, ::std::string)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OptionsItf.register_double">
+<code class="descname">register_double</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:float</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OptionsItf::Register(::std::string, double <a href="#id7"><span class="problematic" id="id8">*</span></a>, ::std::string)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OptionsItf.register_float">
+<code class="descname">register_float</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:float</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OptionsItf::Register(::std::string, float <a href="#id9"><span class="problematic" id="id10">*</span></a>, ::std::string)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OptionsItf.register_int">
+<code class="descname">register_int</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:int</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OptionsItf::Register(::std::string, int <a href="#id11"><span class="problematic" id="id12">*</span></a>, ::std::string)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OptionsItf.register_str">
+<code class="descname">register_str</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:str</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OptionsItf::Register(::std::string, ::std::basic_string&lt;char, ::std::char_traits&lt;char&gt;, ::std::allocator&lt;char&gt; &gt; <a href="#id13"><span class="problematic" id="id14">*</span></a>, ::std::string)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.itf.OptionsItf.register_uint">
+<code class="descname">register_uint</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:int</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_uint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OptionsItf::Register(::std::string, unsigned int <a href="#id15"><span class="problematic" id="id16">*</span></a>, ::std::string)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.ivector.html" class="btn btn-neutral float-right" title="kaldi.ivector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.hmm.html" class="btn btn-neutral" title="kaldi.hmm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

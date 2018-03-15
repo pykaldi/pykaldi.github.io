@@ -1,0 +1,1267 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.base &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.chain" href="kaldi.chain.html"/>
+        <link rel="prev" title="kaldi.asr" href="kaldi.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.base</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.base.io">kaldi.base.io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.base.math">kaldi.base.math</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.base</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.base.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.base">
+<span id="kaldi-base"></span><h1>kaldi.base<a class="headerlink" href="#module-kaldi.base" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.get_verbose_level" title="kaldi.base.get_verbose_level"><code class="xref py py-obj docutils literal"><span class="pre">get_verbose_level</span></code></a></td>
+<td>Returns the verbose level.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.set_abort_on_assert_failure" title="kaldi.base.set_abort_on_assert_failure"><code class="xref py py-obj docutils literal"><span class="pre">set_abort_on_assert_failure</span></code></a></td>
+<td>Enables/disables the call to abort in case of assertion failure.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.set_print_stack_trace_on_error" title="kaldi.base.set_print_stack_trace_on_error"><code class="xref py py-obj docutils literal"><span class="pre">set_print_stack_trace_on_error</span></code></a></td>
+<td>Enables/disables the printing of stack trace in case of an error.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.set_verbose_level" title="kaldi.base.set_verbose_level"><code class="xref py py-obj docutils literal"><span class="pre">set_verbose_level</span></code></a></td>
+<td>Sets the verbose level.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.Timer" title="kaldi.base.Timer"><code class="xref py py-obj docutils literal"><span class="pre">Timer</span></code></a></td>
+<td>Kaldi timer.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.base.Timer">
+<em class="property">class </em><code class="descclassname">kaldi.base.</code><code class="descname">Timer</code><a class="headerlink" href="#kaldi.base.Timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kaldi timer.</p>
+<dl class="method">
+<dt id="kaldi.base.Timer.elapsed">
+<code class="descname">elapsed</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.Timer.elapsed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns elapsed time since timer was reset.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.Timer.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>set_timer:bool</em><span class="sig-paren">)</span> &#x2192; Timer<a class="headerlink" href="#kaldi.base.Timer.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and optionally resets the timer to current time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.Timer.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.Timer.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the timer to current time.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.get_verbose_level">
+<code class="descclassname">kaldi.base.</code><code class="descname">get_verbose_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.base.get_verbose_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the verbose level.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.set_abort_on_assert_failure">
+<code class="descclassname">kaldi.base.</code><code class="descname">set_abort_on_assert_failure</code><span class="sig-paren">(</span><em>a:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.set_abort_on_assert_failure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables/disables the call to abort in case of assertion failure.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.set_print_stack_trace_on_error">
+<code class="descclassname">kaldi.base.</code><code class="descname">set_print_stack_trace_on_error</code><span class="sig-paren">(</span><em>p:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.set_print_stack_trace_on_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables/disables the printing of stack trace in case of an error.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.set_verbose_level">
+<code class="descclassname">kaldi.base.</code><code class="descname">set_verbose_level</code><span class="sig-paren">(</span><em>i:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.set_verbose_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the verbose level.</p>
+</dd></dl>
+
+<div class="section" id="module-kaldi.base.io">
+<span id="kaldi-base-io"></span><h2>kaldi.base.io<a class="headerlink" href="#module-kaldi.base.io" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.expect_token" title="kaldi.base.io.expect_token"><code class="xref py py-obj docutils literal"><span class="pre">expect_token</span></code></a></td>
+<td>Tries to read the given token and throws exception on failure.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.flush" title="kaldi.base.io.flush"><code class="xref py py-obj docutils literal"><span class="pre">flush</span></code></a></td>
+<td>Flushes output stream.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.get_stderr" title="kaldi.base.io.get_stderr"><code class="xref py py-obj docutils literal"><span class="pre">get_stderr</span></code></a></td>
+<td>Returns standard error stream.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.get_stdin" title="kaldi.base.io.get_stdin"><code class="xref py py-obj docutils literal"><span class="pre">get_stdin</span></code></a></td>
+<td>Returns standard input stream.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.get_stdout" title="kaldi.base.io.get_stdout"><code class="xref py py-obj docutils literal"><span class="pre">get_stdout</span></code></a></td>
+<td>Returns standard output stream.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.init_kaldi_input_stream" title="kaldi.base.io.init_kaldi_input_stream"><code class="xref py py-obj docutils literal"><span class="pre">init_kaldi_input_stream</span></code></a></td>
+<td>Initializes an input stream by detecting the binary header.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.init_kaldi_output_stream" title="kaldi.base.io.init_kaldi_output_stream"><code class="xref py py-obj docutils literal"><span class="pre">init_kaldi_output_stream</span></code></a></td>
+<td>Initializes an output stream by writing an optional binary header.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.peek" title="kaldi.base.io.peek"><code class="xref py py-obj docutils literal"><span class="pre">peek</span></code></a></td>
+<td>Consumes whitespace (if binary == True) and returns the peek value.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.peek_token" title="kaldi.base.io.peek_token"><code class="xref py py-obj docutils literal"><span class="pre">peek_token</span></code></a></td>
+<td>Returns the first character of the next token or -1 if EOF.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.read" title="kaldi.base.io.read"><code class="xref py py-obj docutils literal"><span class="pre">read</span></code></a></td>
+<td>Reads and returns the contents of the stream as a bytes object.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.read_bool" title="kaldi.base.io.read_bool"><code class="xref py py-obj docutils literal"><span class="pre">read_bool</span></code></a></td>
+<td>Reads a Boolean.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.read_double" title="kaldi.base.io.read_double"><code class="xref py py-obj docutils literal"><span class="pre">read_double</span></code></a></td>
+<td>Reads a double precision float.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.read_float" title="kaldi.base.io.read_float"><code class="xref py py-obj docutils literal"><span class="pre">read_float</span></code></a></td>
+<td>Reads a single precision float.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.read_int" title="kaldi.base.io.read_int"><code class="xref py py-obj docutils literal"><span class="pre">read_int</span></code></a></td>
+<td>Reads an integer.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.read_int_pair_vector" title="kaldi.base.io.read_int_pair_vector"><code class="xref py py-obj docutils literal"><span class="pre">read_int_pair_vector</span></code></a></td>
+<td>Reads a sequence of integer pairs.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.read_int_vector" title="kaldi.base.io.read_int_vector"><code class="xref py py-obj docutils literal"><span class="pre">read_int_vector</span></code></a></td>
+<td>Reads a sequence of integers.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.read_text" title="kaldi.base.io.read_text"><code class="xref py py-obj docutils literal"><span class="pre">read_text</span></code></a></td>
+<td>Reads and returns the contents of the stream as a unicode string.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.read_token" title="kaldi.base.io.read_token"><code class="xref py py-obj docutils literal"><span class="pre">read_token</span></code></a></td>
+<td>Reads and returns the next token (throws exception on failure)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.readline" title="kaldi.base.io.readline"><code class="xref py py-obj docutils literal"><span class="pre">readline</span></code></a></td>
+<td>Reads and returns a line from the input stream.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.readline_text" title="kaldi.base.io.readline_text"><code class="xref py py-obj docutils literal"><span class="pre">readline_text</span></code></a></td>
+<td>Reads and returns a line from the input stream.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.write" title="kaldi.base.io.write"><code class="xref py py-obj docutils literal"><span class="pre">write</span></code></a></td>
+<td>Writes bytes object to output stream.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.write_bool" title="kaldi.base.io.write_bool"><code class="xref py py-obj docutils literal"><span class="pre">write_bool</span></code></a></td>
+<td>Writes a Boolean.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.write_double" title="kaldi.base.io.write_double"><code class="xref py py-obj docutils literal"><span class="pre">write_double</span></code></a></td>
+<td>Writes a double precision float.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.write_float" title="kaldi.base.io.write_float"><code class="xref py py-obj docutils literal"><span class="pre">write_float</span></code></a></td>
+<td>Writes a single precision float.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.write_int" title="kaldi.base.io.write_int"><code class="xref py py-obj docutils literal"><span class="pre">write_int</span></code></a></td>
+<td>Writes an integer.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.write_int_pair_vector" title="kaldi.base.io.write_int_pair_vector"><code class="xref py py-obj docutils literal"><span class="pre">write_int_pair_vector</span></code></a></td>
+<td>Writes a sequence of integer pairs.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.write_int_vector" title="kaldi.base.io.write_int_vector"><code class="xref py py-obj docutils literal"><span class="pre">write_int_vector</span></code></a></td>
+<td>Writes a sequence of integers.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.write_text" title="kaldi.base.io.write_text"><code class="xref py py-obj docutils literal"><span class="pre">write_text</span></code></a></td>
+<td>Writes unicode string to output stream.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.write_token" title="kaldi.base.io.write_token"><code class="xref py py-obj docutils literal"><span class="pre">write_token</span></code></a></td>
+<td>Writes non-empty string of non-space characters.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.ifstream" title="kaldi.base.io.ifstream"><code class="xref py py-obj docutils literal"><span class="pre">ifstream</span></code></a></td>
+<td>Input file stream.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.iostream" title="kaldi.base.io.iostream"><code class="xref py py-obj docutils literal"><span class="pre">iostream</span></code></a></td>
+<td>Input/output stream.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.istream" title="kaldi.base.io.istream"><code class="xref py py-obj docutils literal"><span class="pre">istream</span></code></a></td>
+<td>Input stream.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.istringstream" title="kaldi.base.io.istringstream"><code class="xref py py-obj docutils literal"><span class="pre">istringstream</span></code></a></td>
+<td>Input string stream.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.ofstream" title="kaldi.base.io.ofstream"><code class="xref py py-obj docutils literal"><span class="pre">ofstream</span></code></a></td>
+<td>Output file stream.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.ostream" title="kaldi.base.io.ostream"><code class="xref py py-obj docutils literal"><span class="pre">ostream</span></code></a></td>
+<td>Output stream.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.io.ostringstream" title="kaldi.base.io.ostringstream"><code class="xref py py-obj docutils literal"><span class="pre">ostringstream</span></code></a></td>
+<td>Output string stream.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.io.stringstream" title="kaldi.base.io.stringstream"><code class="xref py py-obj docutils literal"><span class="pre">stringstream</span></code></a></td>
+<td>Input/output string stream.</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="kaldi.base.io.expect_token">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">expect_token</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em>, <em>token:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.expect_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tries to read the given token and throws exception on failure.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.flush">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">flush</code><span class="sig-paren">(</span><em>os:ostream</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flushes output stream.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.get_stderr">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">get_stderr</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ostream<a class="headerlink" href="#kaldi.base.io.get_stderr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns standard error stream.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.get_stdin">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">get_stdin</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; istream<a class="headerlink" href="#kaldi.base.io.get_stdin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns standard input stream.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.get_stdout">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">get_stdout</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ostream<a class="headerlink" href="#kaldi.base.io.get_stdout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns standard output stream.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.base.io.ifstream">
+<em class="property">class </em><code class="descclassname">kaldi.base.io.</code><code class="descname">ifstream</code><a class="headerlink" href="#kaldi.base.io.ifstream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input file stream.</p>
+<dl class="method">
+<dt id="kaldi.base.io.ifstream.from_file">
+<code class="descname">from_file</code><span class="sig-paren">(</span><em>filename:str</em><span class="sig-paren">)</span> &#x2192; ifstream<a class="headerlink" href="#kaldi.base.io.ifstream.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new input file stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.io.ifstream.good">
+<code class="descname">good</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.io.ifstream.good" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the state of the stream is good.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.init_kaldi_input_stream">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">init_kaldi_input_stream</code><span class="sig-paren">(</span><em>is:istream) -&gt; (success:bool</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.init_kaldi_input_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes an input stream by detecting the binary header.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.init_kaldi_output_stream">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">init_kaldi_output_stream</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.init_kaldi_output_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes an output stream by writing an optional binary header.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.base.io.iostream">
+<em class="property">class </em><code class="descclassname">kaldi.base.io.</code><code class="descname">iostream</code><a class="headerlink" href="#kaldi.base.io.iostream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input/output stream.</p>
+<dl class="method">
+<dt id="kaldi.base.io.iostream.good">
+<code class="descname">good</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.io.iostream.good" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the state of the stream is good.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.base.io.istream">
+<em class="property">class </em><code class="descclassname">kaldi.base.io.</code><code class="descname">istream</code><a class="headerlink" href="#kaldi.base.io.istream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input stream.</p>
+<dl class="method">
+<dt id="kaldi.base.io.istream.good">
+<code class="descname">good</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.io.istream.good" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the state of the stream is good.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.base.io.istringstream">
+<em class="property">class </em><code class="descclassname">kaldi.base.io.</code><code class="descname">istringstream</code><a class="headerlink" href="#kaldi.base.io.istringstream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input string stream.</p>
+<dl class="method">
+<dt id="kaldi.base.io.istringstream.from_str">
+<code class="descname">from_str</code><span class="sig-paren">(</span><em>str:str</em><span class="sig-paren">)</span> &#x2192; istringstream<a class="headerlink" href="#kaldi.base.io.istringstream.from_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new input string stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.io.istringstream.good">
+<code class="descname">good</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.io.istringstream.good" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the state of the stream is good.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.io.istringstream.to_bytes">
+<code class="descname">to_bytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#kaldi.base.io.istringstream.to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns stream contents as a bytes object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.io.istringstream.to_str">
+<code class="descname">to_str</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.base.io.istringstream.to_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns stream contents as a unicode string.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.base.io.ofstream">
+<em class="property">class </em><code class="descclassname">kaldi.base.io.</code><code class="descname">ofstream</code><a class="headerlink" href="#kaldi.base.io.ofstream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file stream.</p>
+<dl class="method">
+<dt id="kaldi.base.io.ofstream.from_file">
+<code class="descname">from_file</code><span class="sig-paren">(</span><em>filename:str</em><span class="sig-paren">)</span> &#x2192; ofstream<a class="headerlink" href="#kaldi.base.io.ofstream.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new output file stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.io.ofstream.good">
+<code class="descname">good</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.io.ofstream.good" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the state of the stream is good.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.base.io.ostream">
+<em class="property">class </em><code class="descclassname">kaldi.base.io.</code><code class="descname">ostream</code><a class="headerlink" href="#kaldi.base.io.ostream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output stream.</p>
+<dl class="method">
+<dt id="kaldi.base.io.ostream.good">
+<code class="descname">good</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.io.ostream.good" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the state of the stream is good.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.base.io.ostringstream">
+<em class="property">class </em><code class="descclassname">kaldi.base.io.</code><code class="descname">ostringstream</code><a class="headerlink" href="#kaldi.base.io.ostringstream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output string stream.</p>
+<dl class="method">
+<dt id="kaldi.base.io.ostringstream.from_str">
+<code class="descname">from_str</code><span class="sig-paren">(</span><em>str:str</em><span class="sig-paren">)</span> &#x2192; ostringstream<a class="headerlink" href="#kaldi.base.io.ostringstream.from_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new output string stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.io.ostringstream.good">
+<code class="descname">good</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.io.ostringstream.good" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the state of the stream is good.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.io.ostringstream.to_bytes">
+<code class="descname">to_bytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#kaldi.base.io.ostringstream.to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns stream contents as a bytes object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.io.ostringstream.to_str">
+<code class="descname">to_str</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.base.io.ostringstream.to_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns stream contents as a unicode string.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.peek">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">peek</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.base.io.peek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Consumes whitespace (if binary == True) and returns the peek value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.peek_token">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">peek_token</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.base.io.peek_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the first character of the next token or -1 if EOF.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.read">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#kaldi.base.io.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads and returns the contents of the stream as a bytes object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.read_bool">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">read_bool</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.io.read_bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a Boolean.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.read_double">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">read_double</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.io.read_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a double precision float.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.read_float">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">read_float</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.io.read_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a single precision float.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.read_int">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">read_int</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.base.io.read_int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads an integer.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.read_int_pair_vector">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">read_int_pair_vector</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; list&lt;tuple&lt;int, int&gt;&gt;<a class="headerlink" href="#kaldi.base.io.read_int_pair_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a sequence of integer pairs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.read_int_vector">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">read_int_vector</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.base.io.read_int_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a sequence of integers.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.read_text">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">read_text</code><span class="sig-paren">(</span><em>is:istream</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.base.io.read_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads and returns the contents of the stream as a unicode string.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.read_token">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">read_token</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.base.io.read_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads and returns the next token (throws exception on failure)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.readline">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">readline</code><span class="sig-paren">(</span><em>is:istream</em><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#kaldi.base.io.readline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads and returns a line from the input stream.</p>
+<p>If the stream is already at EOF, an empty bytes object is returned.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.readline_text">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">readline_text</code><span class="sig-paren">(</span><em>is:istream</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.base.io.readline_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads and returns a line from the input stream.</p>
+<p>If the stream is already at EOF, an empty unicode string is returned.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.base.io.stringstream">
+<em class="property">class </em><code class="descclassname">kaldi.base.io.</code><code class="descname">stringstream</code><a class="headerlink" href="#kaldi.base.io.stringstream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input/output string stream.</p>
+<dl class="method">
+<dt id="kaldi.base.io.stringstream.from_str">
+<code class="descname">from_str</code><span class="sig-paren">(</span><em>str:str</em><span class="sig-paren">)</span> &#x2192; stringstream<a class="headerlink" href="#kaldi.base.io.stringstream.from_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new input/output string stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.io.stringstream.good">
+<code class="descname">good</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.io.stringstream.good" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the state of the stream is good.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.io.stringstream.to_bytes">
+<code class="descname">to_bytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bytes<a class="headerlink" href="#kaldi.base.io.stringstream.to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns stream contents as a bytes object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.base.io.stringstream.to_str">
+<code class="descname">to_str</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.base.io.stringstream.to_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns stream contents as a unicode string.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.write">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>b:bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes bytes object to output stream.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.write_bool">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">write_bool</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>t:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.write_bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a Boolean.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.write_double">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">write_double</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>t:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.write_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a double precision float.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.write_float">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">write_float</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>t:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.write_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a single precision float.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.write_int">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">write_int</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>t:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.write_int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes an integer.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.write_int_pair_vector">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">write_int_pair_vector</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>v:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.write_int_pair_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a sequence of integer pairs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.write_int_vector">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">write_int_vector</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>v:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.write_int_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a sequence of integers.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.write_text">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">write_text</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>s:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.write_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes unicode string to output stream.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.io.write_token">
+<code class="descclassname">kaldi.base.io.</code><code class="descname">write_token</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>token:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.io.write_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes non-empty string of non-space characters.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.base.math">
+<span id="kaldi-base-math"></span><h2>kaldi.base.math<a class="headerlink" href="#module-kaldi.base.math" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.approx_equal" title="kaldi.base.math.approx_equal"><code class="xref py py-obj docutils literal"><span class="pre">approx_equal</span></code></a></td>
+<td>Return abs(a - b) &lt;= relative_tolerance * (abs(a) + abs(b))</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.divide_rounding_down" title="kaldi.base.math.divide_rounding_down"><code class="xref py py-obj docutils literal"><span class="pre">divide_rounding_down</span></code></a></td>
+<td>Returns the division</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_exp" title="kaldi.base.math.double_exp"><code class="xref py py-obj docutils literal"><span class="pre">double_exp</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.double_hypot" title="kaldi.base.math.double_hypot"><code class="xref py py-obj docutils literal"><span class="pre">double_hypot</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_isfinite" title="kaldi.base.math.double_isfinite"><code class="xref py py-obj docutils literal"><span class="pre">double_isfinite</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.double_isinf" title="kaldi.base.math.double_isinf"><code class="xref py py-obj docutils literal"><span class="pre">double_isinf</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_isnan" title="kaldi.base.math.double_isnan"><code class="xref py py-obj docutils literal"><span class="pre">double_isnan</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.double_log" title="kaldi.base.math.double_log"><code class="xref py py-obj docutils literal"><span class="pre">double_log</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_log1p" title="kaldi.base.math.double_log1p"><code class="xref py py-obj docutils literal"><span class="pre">double_log1p</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.double_log_add" title="kaldi.base.math.double_log_add"><code class="xref py py-obj docutils literal"><span class="pre">double_log_add</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_log_sub" title="kaldi.base.math.double_log_sub"><code class="xref py py-obj docutils literal"><span class="pre">double_log_sub</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.double_sqr" title="kaldi.base.math.double_sqr"><code class="xref py py-obj docutils literal"><span class="pre">double_sqr</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.exp" title="kaldi.base.math.exp"><code class="xref py py-obj docutils literal"><span class="pre">exp</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.factorize" title="kaldi.base.math.factorize"><code class="xref py py-obj docutils literal"><span class="pre">factorize</span></code></a></td>
+<td>Splits a number into its prime factors, in sorted order from least to greates, with duplication.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.float_rand_prune" title="kaldi.base.math.float_rand_prune"><code class="xref py py-obj docutils literal"><span class="pre">float_rand_prune</span></code></a></td>
+<td>Randomized pruning mechanism that preserves expectations, typically used to prune posteriors.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.gcd" title="kaldi.base.math.gcd"><code class="xref py py-obj docutils literal"><span class="pre">gcd</span></code></a></td>
+<td>Returns the greatest common divisor of two integers.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.hypot" title="kaldi.base.math.hypot"><code class="xref py py-obj docutils literal"><span class="pre">hypot</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.isfinite" title="kaldi.base.math.isfinite"><code class="xref py py-obj docutils literal"><span class="pre">isfinite</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.isinf" title="kaldi.base.math.isinf"><code class="xref py py-obj docutils literal"><span class="pre">isinf</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.isnan" title="kaldi.base.math.isnan"><code class="xref py py-obj docutils literal"><span class="pre">isnan</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.lcm" title="kaldi.base.math.lcm"><code class="xref py py-obj docutils literal"><span class="pre">lcm</span></code></a></td>
+<td>Returns the least common multiple for x and y.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log" title="kaldi.base.math.log"><code class="xref py py-obj docutils literal"><span class="pre">log</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log1p" title="kaldi.base.math.log1p"><code class="xref py py-obj docutils literal"><span class="pre">log1p</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log_add" title="kaldi.base.math.log_add"><code class="xref py py-obj docutils literal"><span class="pre">log_add</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log_sub" title="kaldi.base.math.log_sub"><code class="xref py py-obj docutils literal"><span class="pre">log_sub</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log_zero_double" title="kaldi.base.math.log_zero_double"><code class="xref py py-obj docutils literal"><span class="pre">log_zero_double</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log_zero_float" title="kaldi.base.math.log_zero_float"><code class="xref py py-obj docutils literal"><span class="pre">log_zero_float</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.rand" title="kaldi.base.math.rand"><code class="xref py py-obj docutils literal"><span class="pre">rand</span></code></a></td>
+<td>Returns a random integer between 0 and RAND_MAX, inclusive.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.rand_gauss" title="kaldi.base.math.rand_gauss"><code class="xref py py-obj docutils literal"><span class="pre">rand_gauss</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.rand_int" title="kaldi.base.math.rand_int"><code class="xref py py-obj docutils literal"><span class="pre">rand_int</span></code></a></td>
+<td>Returns a random integer between first and last inclusive.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.rand_poisson" title="kaldi.base.math.rand_poisson"><code class="xref py py-obj docutils literal"><span class="pre">rand_poisson</span></code></a></td>
+<td>Returns poisson-distributed random number.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.rand_uniform" title="kaldi.base.math.rand_uniform"><code class="xref py py-obj docutils literal"><span class="pre">rand_uniform</span></code></a></td>
+<td>Returns a random number strictly between 0 and 1.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.round_up_to_nearest_power_of_two" title="kaldi.base.math.round_up_to_nearest_power_of_two"><code class="xref py py-obj docutils literal"><span class="pre">round_up_to_nearest_power_of_two</span></code></a></td>
+<td>Does the obvious thing.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.sqr" title="kaldi.base.math.sqr"><code class="xref py py-obj docutils literal"><span class="pre">sqr</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.with_prob" title="kaldi.base.math.with_prob"><code class="xref py py-obj docutils literal"><span class="pre">with_prob</span></code></a></td>
+<td>Returns a true with probability ‘prob’.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.RandomState" title="kaldi.base.math.RandomState"><code class="xref py py-obj docutils literal"><span class="pre">RandomState</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::RandomState</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.base.math.RandomState">
+<em class="property">class </em><code class="descclassname">kaldi.base.math.</code><code class="descname">RandomState</code><a class="headerlink" href="#kaldi.base.math.RandomState" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::RandomState</p>
+<dl class="attribute">
+<dt id="kaldi.base.math.RandomState.seed">
+<code class="descname">seed</code><a class="headerlink" href="#kaldi.base.math.RandomState.seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ unsigned int RandomState.seed</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.approx_equal">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">approx_equal</code><span class="sig-paren">(</span><em>a:float</em>, <em>b:float</em>, <em>relative_tolerance:float=default</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.approx_equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return abs(a - b) &lt;= relative_tolerance * (abs(a) + abs(b))</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.divide_rounding_down">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">divide_rounding_down</code><span class="sig-paren">(</span><em>a:int</em>, <em>b:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.base.math.divide_rounding_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the division</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.double_exp">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">double_exp</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::DoubleExp(double)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.double_hypot">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">double_hypot</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_hypot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::DoubleHypot(double, double)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.double_isfinite">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">double_isfinite</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.double_isfinite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::DOUBLE_KALDI_ISFINITE(double)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.double_isinf">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">double_isinf</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.double_isinf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::DOUBLE_KALDI_ISINF(double)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.double_isnan">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">double_isnan</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.double_isnan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::DOUBLE_KALDI_ISNAN(double)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.double_log">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">double_log</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::DoubleLog(double)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.double_log1p">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">double_log1p</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_log1p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::DoubleLog1p(double)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.double_log_add">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">double_log_add</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_log_add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::DoubleLogAdd(double, double)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.double_log_sub">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">double_log_sub</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_log_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::DoubleLogSub(double, double)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.double_sqr">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">double_sqr</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_sqr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::DOUBLE_KALDI_SQR(double)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.exp">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">exp</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FloatExp(float)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.factorize">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">factorize</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/base/math.html#factorize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.base.math.factorize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits a number into its prime factors, in sorted order from
+least to greates, with duplication.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – positive integer</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError if x &lt;= 0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.float_rand_prune">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">float_rand_prune</code><span class="sig-paren">(</span><em>post:float</em>, <em>prune_tresh:float</em>, <em>state:RandomState=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.float_rand_prune" title="Permalink to this definition">¶</a></dt>
+<dd><p>Randomized pruning mechanism that preserves expectations, typically used to prune posteriors.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.gcd">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">gcd</code><span class="sig-paren">(</span><em>m:int</em>, <em>n:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.base.math.gcd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the greatest common divisor of two integers.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.hypot">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">hypot</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.hypot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FloatHypot(float, float)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.isfinite">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">isfinite</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.isfinite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::FLOAT_KALDI_ISFINITE(float)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.isinf">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">isinf</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.isinf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::FLOAT_KALDI_ISINF(float)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.isnan">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">isnan</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.isnan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::FLOAT_KALDI_ISNAN(float)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.lcm">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">lcm</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/base/math.html#lcm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.base.math.lcm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the least common multiple for x and y.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>)</em><em>, </em><em>y</em><em> (</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – positive integers</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError if x &lt;= 0 or y &lt;= 0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.log">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">log</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FloatLog(float)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.log1p">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">log1p</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log1p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FloatLog1p(float)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.log_add">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">log_add</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log_add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FloatLogAdd(float, float)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.log_sub">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">log_sub</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::FloatLogSub(float, float)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.log_zero_double">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">log_zero_double</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log_zero_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+double ::kaldi::GetkLogZeroDouble()</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.log_zero_float">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">log_zero_float</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log_zero_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::GetkLogZeroFloat()</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.rand">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">rand</code><span class="sig-paren">(</span><em>state:RandomState=default</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.base.math.rand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a random integer between 0 and RAND_MAX, inclusive.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.rand_gauss">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">rand_gauss</code><span class="sig-paren">(</span><em>state:RandomState=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.rand_gauss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::RandGauss(::kaldi::RandomState <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.rand_int">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">rand_int</code><span class="sig-paren">(</span><em>first</em>, <em>last</em>, <em>state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/base/math.html#rand_int"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.base.math.rand_int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a random integer between first and last inclusive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>first</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Lower bound</li>
+<li><strong>last</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Upper bound (inclusive)</li>
+<li><strong>state</strong> (<a class="reference internal" href="#kaldi.base.math.RandomState" title="kaldi.base.math.RandomState"><em>RandomState</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – randomizer seed class</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">ValueError if first &gt;= last</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.rand_poisson">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">rand_poisson</code><span class="sig-paren">(</span><em>lambda:float</em>, <em>state:RandomState=default</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.base.math.rand_poisson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns poisson-distributed random number.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.rand_uniform">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">rand_uniform</code><span class="sig-paren">(</span><em>state:RandomState=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.rand_uniform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a random number strictly between 0 and 1.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.round_up_to_nearest_power_of_two">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">round_up_to_nearest_power_of_two</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/base/math.html#round_up_to_nearest_power_of_two"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.base.math.round_up_to_nearest_power_of_two" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does the obvious thing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Positive integer</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError if n &lt;= 0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.sqr">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">sqr</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.sqr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::FLOAT_KALDI_SQR(float)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.with_prob">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">with_prob</code><span class="sig-paren">(</span><em>prob</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/base/math.html#with_prob"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.base.math.with_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a true with probability ‘prob’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>prob</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – probability of True, 0 &lt;= prob &lt;= 1</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">If prob is negative or greater than 1.0.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.chain.html" class="btn btn-neutral float-right" title="kaldi.chain" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.html" class="btn btn-neutral" title="kaldi.asr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

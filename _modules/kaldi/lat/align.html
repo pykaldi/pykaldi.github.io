@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.lat.align &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../../../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>kaldi.lat.align</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kaldi.lat.align</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_phone_align_lattice</span> <span class="k">as</span> <span class="n">_pal</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_word_align_lattice</span> <span class="k">as</span> <span class="n">_wal</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_word_align_lattice_lexicon</span> <span class="k">as</span> <span class="n">_wall</span>
+
+<span class="kn">from</span> <span class="nn">._phone_align_lattice</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._word_align_lattice</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._word_align_lattice_lexicon</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">fstext</span> <span class="k">as</span> <span class="n">_fst</span>
+<span class="kn">from</span> <span class="nn">..util</span> <span class="k">import</span> <span class="n">io</span> <span class="k">as</span> <span class="n">_io</span>
+
+
+<div class="viewcode-block" id="phone_align_lattice"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.align.phone_align_lattice">[docs]</a><span class="k">def</span> <span class="nf">phone_align_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">tmodel</span><span class="p">,</span> <span class="n">opts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Aligns the phone labels and transition-ids.</span>
+
+<span class="sd">    Outputs a lattice in which the arcs correspond exactly to sequences of</span>
+<span class="sd">    phones, so the boundaries between the arcs correspond to the boundaries</span>
+<span class="sd">    between phones.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        lat (CompactLatticeVectorFst): The input lattice.</span>
+<span class="sd">        tmodel (TransitionModel): The transition model.</span>
+<span class="sd">        opts (PhoneAlignLatticeOptions): The phone alignment options.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A tuple representing the return value and the output lattice. The return</span>
+<span class="sd">        value is set to True if the operation was successful, False if some kind</span>
+<span class="sd">        of problem was detected, e.g. transition-id sequences in the lattice</span>
+<span class="sd">        were incompatible with the model.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        If this function returns False, it doesn&#39;t mean the output lattice is</span>
+<span class="sd">        necessarily bad. It might just be that the input lattice was &quot;forced</span>
+<span class="sd">        out&quot; with partial words due to no final state being reached during</span>
+<span class="sd">        decoding, and in this case the output might still be usable.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        If `opts.remove_epsilon == True` and `opts.replace_output_symbols ==</span>
+<span class="sd">        False`, an arc may have &gt;1 phone on it, but the boundaries will still</span>
+<span class="sd">        correspond with the boundaries between phones.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        If `opts.replace_output_symbols == False`, it is possible to have arcs</span>
+<span class="sd">        with words on them but no transition-ids at all.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :meth:`kaldi.lat.functions.convert_lattice_to_phones`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">success</span><span class="p">,</span> <span class="n">lat_out</span> <span class="o">=</span> <span class="n">_pal</span><span class="o">.</span><span class="n">_phone_align_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">tmodel</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">success</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeVectorFst</span><span class="p">(</span><span class="n">lat_out</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="word_align_lattice"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.align.word_align_lattice">[docs]</a><span class="k">def</span> <span class="nf">word_align_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">tmodel</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">max_states</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Aligns the word labels and transition-ids.</span>
+
+<span class="sd">    Aligns compact lattice so that each arc has the transition-ids on it that</span>
+<span class="sd">    correspond to the word that is on that arc. It is OK for the lattice to</span>
+<span class="sd">    have epsilon arcs for optional silences.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        lat (CompactLatticeVectorFst): The input lattice.</span>
+<span class="sd">        tmodel (TransitionModel): The transition model.</span>
+<span class="sd">        info (WordBoundaryInfo): The word boundary information.</span>
+<span class="sd">        max_states (int): Maximum #states allowed in the output lattice. If</span>
+<span class="sd">            `max_states &gt; 0` and the #states of the output will be greater than</span>
+<span class="sd">            `max_states`, this function will abort the computation, return False</span>
+<span class="sd">            and output an empty lattice.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A tuple representing the return value and the output lattice. The</span>
+<span class="sd">        return value is set to True if the operation was successful, False if</span>
+<span class="sd">        some kind of problem was detected, e.g. transition-id sequences in the</span>
+<span class="sd">        lattice were incompatible with the word boundary information.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        We don&#39;t expect silence inside words, or empty words (words with no</span>
+<span class="sd">        phones), and we expect the word to start with a wbegin_phone, to end</span>
+<span class="sd">        with a wend_phone, and to possibly have winternal_phones inside (or to</span>
+<span class="sd">        consist of just one wbegin_and_end_phone).</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        If this function returns False, it doesn&#39;t mean the output lattice is</span>
+<span class="sd">        necessarily bad. It might just be that the input lattice was &quot;forced</span>
+<span class="sd">        out&quot; with partial words due to no final state being reached during</span>
+<span class="sd">        decoding, and in this case the output might still be usable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">success</span><span class="p">,</span> <span class="n">lat_out</span> <span class="o">=</span> <span class="n">_wal</span><span class="o">.</span><span class="n">_word_align_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">tmodel</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">max_states</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">success</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeVectorFst</span><span class="p">(</span><span class="n">lat_out</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="word_align_lattice_lexicon"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.align.word_align_lattice_lexicon">[docs]</a><span class="k">def</span> <span class="nf">word_align_lattice_lexicon</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">tmodel</span><span class="p">,</span> <span class="n">lexicon_info</span><span class="p">,</span> <span class="n">opts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Aligns the word labels and transition-ids using a lexicon.</span>
+
+<span class="sd">    Aligns compact lattice so that each arc has the transition-ids on it that</span>
+<span class="sd">    correspond to the word that is on that arc. It is OK for the lattice to</span>
+<span class="sd">    have epsilon arcs for optional silences.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        lat (CompactLatticeVectorFst): The input lattice.</span>
+<span class="sd">        tmodel (TransitionModel): The transition model.</span>
+<span class="sd">        lexicon_info (WordAlignLatticeLexiconInfo): The lexicon information.</span>
+<span class="sd">        opts (WordAlignLatticeLexiconOpts): The word alignment options.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A tuple representing the return value and the output lattice. The</span>
+<span class="sd">        return value is set to True if the operation was successful, False if</span>
+<span class="sd">        some kind of problem was detected, e.g. transition-id sequences in the</span>
+<span class="sd">        lattice were incompatible with the lexicon information.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        If this function returns False, it doesn&#39;t mean the output lattice is</span>
+<span class="sd">        necessarily bad. It might just be that the input lattice was &quot;forced</span>
+<span class="sd">        out&quot; with partial words due to no final state being reached during</span>
+<span class="sd">        decoding, and in this case the output might still be usable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">success</span><span class="p">,</span> <span class="n">lat_out</span> <span class="o">=</span> <span class="n">_wall</span><span class="o">.</span><span class="n">_word_align_lattice_lexicon</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">tmodel</span><span class="p">,</span>
+                                                         <span class="n">lexicon_info</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">success</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeVectorFst</span><span class="p">(</span><span class="n">lat_out</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="read_lexicon_for_word_align"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.align.read_lexicon_for_word_align">[docs]</a><span class="k">def</span> <span class="nf">read_lexicon_for_word_align</span><span class="p">(</span><span class="n">rxfilename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reads the lexicon in the special format required for word alignment.</span>
+
+<span class="sd">    Each line has a series of integers on it (at least two on each line),</span>
+<span class="sd">    representing:</span>
+
+<span class="sd">    &lt;old-word-id&gt; &lt;new-word-id&gt; [&lt;phone-id-1&gt; [&lt;phone-id-2&gt; ... ] ]</span>
+
+<span class="sd">    Here, &lt;old-word-id&gt; is the word-id that appears in the lattice before</span>
+<span class="sd">    alignment, and &lt;new-word-id&gt; is the word-is that should appear in the</span>
+<span class="sd">    lattice after alignment. This is mainly useful when the lattice may have</span>
+<span class="sd">    no symbol for the optional-silence arcs (so &lt;old-word-id&gt; would equal</span>
+<span class="sd">    zero), but we want it to be output with a symbol on those arcs (so</span>
+<span class="sd">    &lt;new-word-id&gt; would be nonzero). If the silence should not be added to</span>
+<span class="sd">    the lattice, both &lt;old-word-id&gt; and &lt;new-word-id&gt; may be zero.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        rxfilename (str): Extended filename for reading the lexicon.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">        List[List[int]]: The lexicon in the format required for word alignment.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If reading the lexicon fails.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Not expecting binary file for lexicon.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_wall</span><span class="o">.</span><span class="n">_read_lexicon_for_word_align</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">())</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span>
+           <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span>
+           <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;Base&#39;</span><span class="p">)]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

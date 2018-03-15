@@ -1,0 +1,1808 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.lat &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.lm" href="kaldi.lm.html"/>
+        <link rel="prev" title="kaldi.kws" href="kaldi.kws.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.lat</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.lat.align">kaldi.lat.align</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.lat.functions">kaldi.lat.functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.lat.sausages">kaldi.lat.sausages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.lat</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.lat.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.lat">
+<span id="kaldi-lat"></span><h1>kaldi.lat<a class="headerlink" href="#module-kaldi.lat" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-kaldi.lat.align">
+<span id="kaldi-lat-align"></span><h2>kaldi.lat.align<a class="headerlink" href="#module-kaldi.lat.align" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.align.phone_align_lattice" title="kaldi.lat.align.phone_align_lattice"><code class="xref py py-obj docutils literal"><span class="pre">phone_align_lattice</span></code></a></td>
+<td>Aligns the phone labels and transition-ids.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.align.read_lexicon_for_word_align" title="kaldi.lat.align.read_lexicon_for_word_align"><code class="xref py py-obj docutils literal"><span class="pre">read_lexicon_for_word_align</span></code></a></td>
+<td>Reads the lexicon in the special format required for word alignment.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.align.test_word_aligned_lattice" title="kaldi.lat.align.test_word_aligned_lattice"><code class="xref py py-obj docutils literal"><span class="pre">test_word_aligned_lattice</span></code></a></td>
+<td>Verifies the output of <a class="reference internal" href="#kaldi.lat.align.word_align_lattice" title="kaldi.lat.align.word_align_lattice"><code class="xref py py-obj docutils literal"><span class="pre">word_align_lattice</span></code></a>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.align.word_align_lattice" title="kaldi.lat.align.word_align_lattice"><code class="xref py py-obj docutils literal"><span class="pre">word_align_lattice</span></code></a></td>
+<td>Aligns the word labels and transition-ids.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.align.word_align_lattice_lexicon" title="kaldi.lat.align.word_align_lattice_lexicon"><code class="xref py py-obj docutils literal"><span class="pre">word_align_lattice_lexicon</span></code></a></td>
+<td>Aligns the word labels and transition-ids using a lexicon.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.align.PhoneAlignLatticeOptions" title="kaldi.lat.align.PhoneAlignLatticeOptions"><code class="xref py py-obj docutils literal"><span class="pre">PhoneAlignLatticeOptions</span></code></a></td>
+<td>Options for phone alignment.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.align.WordAlignLatticeLexiconInfo" title="kaldi.lat.align.WordAlignLatticeLexiconInfo"><code class="xref py py-obj docutils literal"><span class="pre">WordAlignLatticeLexiconInfo</span></code></a></td>
+<td>This class extracts some information from the lexicon and stores it in a suitable form for the word-alignment code to use.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.align.WordAlignLatticeLexiconOpts" title="kaldi.lat.align.WordAlignLatticeLexiconOpts"><code class="xref py py-obj docutils literal"><span class="pre">WordAlignLatticeLexiconOpts</span></code></a></td>
+<td>Options for word alignment using a lexicon.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.align.WordBoundaryInfo" title="kaldi.lat.align.WordBoundaryInfo"><code class="xref py py-obj docutils literal"><span class="pre">WordBoundaryInfo</span></code></a></td>
+<td>Word boundary information.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.align.WordBoundaryInfoNewOpts" title="kaldi.lat.align.WordBoundaryInfoNewOpts"><code class="xref py py-obj docutils literal"><span class="pre">WordBoundaryInfoNewOpts</span></code></a></td>
+<td>Options for word alignment using word boundary phones.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.lat.align.PhoneAlignLatticeOptions">
+<em class="property">class </em><code class="descclassname">kaldi.lat.align.</code><code class="descname">PhoneAlignLatticeOptions</code><a class="headerlink" href="#kaldi.lat.align.PhoneAlignLatticeOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for phone alignment.</p>
+<dl class="method">
+<dt id="kaldi.lat.align.PhoneAlignLatticeOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.align.PhoneAlignLatticeOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.PhoneAlignLatticeOptions.remove_epsilon">
+<code class="descname">remove_epsilon</code><a class="headerlink" href="#kaldi.lat.align.PhoneAlignLatticeOptions.remove_epsilon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to remove epsilon arcs from the phone lattice.</p>
+<p>If <a class="reference internal" href="#kaldi.lat.align.PhoneAlignLatticeOptions.replace_output_symbols" title="kaldi.lat.align.PhoneAlignLatticeOptions.replace_output_symbols"><code class="xref py py-attr docutils literal"><span class="pre">replace_output_symbols</span></code></a> is <code class="docutils literal"><span class="pre">False</span></code>, this will mean that an
+arc can have multiple phones on it.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.PhoneAlignLatticeOptions.reorder">
+<code class="descname">reorder</code><a class="headerlink" href="#kaldi.lat.align.PhoneAlignLatticeOptions.reorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether lattice was created from a graph with reorder option set.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.PhoneAlignLatticeOptions.replace_output_symbols">
+<code class="descname">replace_output_symbols</code><a class="headerlink" href="#kaldi.lat.align.PhoneAlignLatticeOptions.replace_output_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to replace output symbols (typically words) with phones.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lat.align.WordAlignLatticeLexiconInfo">
+<em class="property">class </em><code class="descclassname">kaldi.lat.align.</code><code class="descname">WordAlignLatticeLexiconInfo</code><span class="sig-paren">(</span><em>lexicon</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.align.WordAlignLatticeLexiconInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class extracts some information from the lexicon and stores it in a
+suitable form for the word-alignment code to use.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lexicon</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em><em>]</em>) – The lexicon.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.lat.align.WordAlignLatticeLexiconInfo.equivalence_class_of">
+<code class="descname">equivalence_class_of</code><span class="sig-paren">(</span><em>word:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.lat.align.WordAlignLatticeLexiconInfo.equivalence_class_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the equivalence class for the word.</p>
+<p>This function is used in testing code.</p>
+<p>Words are mapped into equivalence classes derived from the mappings in
+the first two fields of each line in the lexicon. This function maps
+from each word-id to the lowest member of its equivalence class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.align.WordAlignLatticeLexiconInfo.is_valid_entry">
+<code class="descname">is_valid_entry</code><span class="sig-paren">(</span><em>entry:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.lat.align.WordAlignLatticeLexiconInfo.is_valid_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if entry is valid.</p>
+<p>This function is used in testing code.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the entry intepreted as (output-word phone1 phone2 …)
+can appear in the lexicon.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lat.align.WordAlignLatticeLexiconOpts">
+<em class="property">class </em><code class="descclassname">kaldi.lat.align.</code><code class="descname">WordAlignLatticeLexiconOpts</code><a class="headerlink" href="#kaldi.lat.align.WordAlignLatticeLexiconOpts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for word alignment using a lexicon.</p>
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordAlignLatticeLexiconOpts.allow_duplicate_paths">
+<code class="descname">allow_duplicate_paths</code><a class="headerlink" href="#kaldi.lat.align.WordAlignLatticeLexiconOpts.allow_duplicate_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to allow duplicate paths in testing code.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordAlignLatticeLexiconOpts.max_expand">
+<code class="descname">max_expand</code><a class="headerlink" href="#kaldi.lat.align.WordAlignLatticeLexiconOpts.max_expand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum allowed ratio of #states in aligned lattice vs input lattice.</p>
+<p>If &gt;0.0, the maximum ratio by which we allow the lattice-alignment code
+to increase the #states in a lattice (vs. the phone-aligned lattice)
+before we fail and  refuse to align the lattice. This is helpful in order
+to prevent ‘pathological’ lattices from causing the program to exhaust
+memory. Actual max-states is 1000 + max-expand * orig-num-states.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordAlignLatticeLexiconOpts.partial_word_label">
+<code class="descname">partial_word_label</code><a class="headerlink" href="#kaldi.lat.align.WordAlignLatticeLexiconOpts.partial_word_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Label for partial word arcs at the end of “forced-out” utterances.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.align.WordAlignLatticeLexiconOpts.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.align.WordAlignLatticeLexiconOpts.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordAlignLatticeLexiconOpts.reorder">
+<code class="descname">reorder</code><a class="headerlink" href="#kaldi.lat.align.WordAlignLatticeLexiconOpts.reorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether lattice was created from a graph with reorder option set.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordAlignLatticeLexiconOpts.test">
+<code class="descname">test</code><a class="headerlink" href="#kaldi.lat.align.WordAlignLatticeLexiconOpts.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to activate the testing code to validate the algorithm.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lat.align.WordBoundaryInfo">
+<em class="property">class </em><code class="descclassname">kaldi.lat.align.</code><code class="descname">WordBoundaryInfo</code><span class="sig-paren">(</span><em>opts</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Word boundary information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.lat.align.WordBoundaryInfoNewOpts" title="kaldi.lat.align.WordBoundaryInfoNewOpts"><em>WordBoundaryInfoNewOpts</em></a>) – Decoder options.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordBoundaryInfo.PhoneType">
+<code class="descname">PhoneType</code><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfo.PhoneType" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#kaldi.lat.align.WordBoundaryInfo.PhoneType" title="kaldi.lat.align.WordBoundaryInfo.PhoneType"><code class="xref py py-class docutils literal"><span class="pre">WordBoundaryInfo.PhoneType</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.align.WordBoundaryInfo.from_file">
+<code class="descname">from_file</code><span class="sig-paren">(</span><em>opts:WordBoundaryInfoNewOpts</em>, <em>word_boundary_file:str</em><span class="sig-paren">)</span> &#x2192; WordBoundaryInfo<a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfo.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new <a class="reference internal" href="#kaldi.lat.align.WordBoundaryInfo" title="kaldi.lat.align.WordBoundaryInfo"><code class="xref py py-obj docutils literal"><span class="pre">WordBoundaryInfo</span></code></a> object from file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.align.WordBoundaryInfo.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>is:istream</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfo.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes with information read from an input stream.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordBoundaryInfo.partial_word_label">
+<code class="descname">partial_word_label</code><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfo.partial_word_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Label for partial word arcs at the end of “forced-out” utterances.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordBoundaryInfo.phone_to_type">
+<code class="descname">phone_to_type</code><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfo.phone_to_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mapping from phone ids to phone types.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordBoundaryInfo.reorder">
+<code class="descname">reorder</code><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfo.reorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether lattice was created from a graph with reorder option set.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordBoundaryInfo.silence_label">
+<code class="descname">silence_label</code><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfo.silence_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Label for silence arcs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.align.WordBoundaryInfo.type_of_phone">
+<code class="descname">type_of_phone</code><span class="sig-paren">(</span><em>p:int</em><span class="sig-paren">)</span> &#x2192; PhoneType<a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfo.type_of_phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Looks up the type of the given phone id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The input phone id.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The type of input phone id.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#kaldi.lat.align.WordBoundaryInfo.PhoneType" title="kaldi.lat.align.WordBoundaryInfo.PhoneType">PhoneType</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lat.align.WordBoundaryInfoNewOpts">
+<em class="property">class </em><code class="descclassname">kaldi.lat.align.</code><code class="descname">WordBoundaryInfoNewOpts</code><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfoNewOpts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for word alignment using word boundary phones.</p>
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordBoundaryInfoNewOpts.partial_word_label">
+<code class="descname">partial_word_label</code><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfoNewOpts.partial_word_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Label for partial word arcs at the end of “forced-out” utterances.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.align.WordBoundaryInfoNewOpts.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfoNewOpts.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordBoundaryInfoNewOpts.reorder">
+<code class="descname">reorder</code><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfoNewOpts.reorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether lattice was created from a graph with reorder option set.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.align.WordBoundaryInfoNewOpts.silence_label">
+<code class="descname">silence_label</code><a class="headerlink" href="#kaldi.lat.align.WordBoundaryInfoNewOpts.silence_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Label for silence arcs.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.align.phone_align_lattice">
+<code class="descclassname">kaldi.lat.align.</code><code class="descname">phone_align_lattice</code><span class="sig-paren">(</span><em>lat</em>, <em>tmodel</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/align.html#phone_align_lattice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.align.phone_align_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns the phone labels and transition-ids.</p>
+<p>Outputs a lattice in which the arcs correspond exactly to sequences of
+phones, so the boundaries between the arcs correspond to the boundaries
+between phones.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</li>
+<li><strong>tmodel</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.lat.align.PhoneAlignLatticeOptions" title="kaldi.lat.align.PhoneAlignLatticeOptions"><em>PhoneAlignLatticeOptions</em></a>) – The phone alignment options.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A tuple representing the return value and the output lattice. The return
+value is set to True if the operation was successful, False if some kind
+of problem was detected, e.g. transition-id sequences in the lattice
+were incompatible with the model.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If this function returns False, it doesn’t mean the output lattice is
+necessarily bad. It might just be that the input lattice was “forced
+out” with partial words due to no final state being reached during
+decoding, and in this case the output might still be usable.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If <code class="xref py py-obj docutils literal"><span class="pre">opts.remove_epsilon</span> <span class="pre">==</span> <span class="pre">True</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">opts.replace_output_symbols</span> <span class="pre">==</span>
+<span class="pre">False</span></code>, an arc may have &gt;1 phone on it, but the boundaries will still
+correspond with the boundaries between phones.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If <code class="xref py py-obj docutils literal"><span class="pre">opts.replace_output_symbols</span> <span class="pre">==</span> <span class="pre">False</span></code>, it is possible to have arcs
+with words on them but no transition-ids at all.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#kaldi.lat.functions.convert_lattice_to_phones" title="kaldi.lat.functions.convert_lattice_to_phones"><code class="xref py py-meth docutils literal"><span class="pre">kaldi.lat.functions.convert_lattice_to_phones()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.align.read_lexicon_for_word_align">
+<code class="descclassname">kaldi.lat.align.</code><code class="descname">read_lexicon_for_word_align</code><span class="sig-paren">(</span><em>rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/align.html#read_lexicon_for_word_align"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.align.read_lexicon_for_word_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the lexicon in the special format required for word alignment.</p>
+<p>Each line has a series of integers on it (at least two on each line),
+representing:</p>
+<p>&lt;old-word-id&gt; &lt;new-word-id&gt; [&lt;phone-id-1&gt; [&lt;phone-id-2&gt; … ] ]</p>
+<p>Here, &lt;old-word-id&gt; is the word-id that appears in the lattice before
+alignment, and &lt;new-word-id&gt; is the word-is that should appear in the
+lattice after alignment. This is mainly useful when the lattice may have
+no symbol for the optional-silence arcs (so &lt;old-word-id&gt; would equal
+zero), but we want it to be output with a symbol on those arcs (so
+&lt;new-word-id&gt; would be nonzero). If the silence should not be added to
+the lattice, both &lt;old-word-id&gt; and &lt;new-word-id&gt; may be zero.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Extended filename for reading the lexicon.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Returns</dt>
+<dd>List[List[int]]: The lexicon in the format required for word alignment.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></a> – If reading the lexicon fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.align.test_word_aligned_lattice">
+<code class="descclassname">kaldi.lat.align.</code><code class="descname">test_word_aligned_lattice</code><span class="sig-paren">(</span><em>lat:CompactLatticeVectorFst</em>, <em>tmodel:TransitionModel</em>, <em>info:WordBoundaryInfo</em>, <em>aligned_lat:CompactLatticeVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.align.test_word_aligned_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifies the output of <a class="reference internal" href="#kaldi.lat.align.word_align_lattice" title="kaldi.lat.align.word_align_lattice"><code class="xref py py-obj docutils literal"><span class="pre">word_align_lattice</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</li>
+<li><strong>tmodel</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>info</strong> (<a class="reference internal" href="#kaldi.lat.align.WordBoundaryInfo" title="kaldi.lat.align.WordBoundaryInfo"><em>WordBoundaryInfo</em></a>) – The word boundary information.</li>
+<li><strong>aligned_lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The word-aligned lattice.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If verification fails.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.align.word_align_lattice">
+<code class="descclassname">kaldi.lat.align.</code><code class="descname">word_align_lattice</code><span class="sig-paren">(</span><em>lat</em>, <em>tmodel</em>, <em>info</em>, <em>max_states</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/align.html#word_align_lattice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.align.word_align_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns the word labels and transition-ids.</p>
+<p>Aligns compact lattice so that each arc has the transition-ids on it that
+correspond to the word that is on that arc. It is OK for the lattice to
+have epsilon arcs for optional silences.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</li>
+<li><strong>tmodel</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>info</strong> (<a class="reference internal" href="#kaldi.lat.align.WordBoundaryInfo" title="kaldi.lat.align.WordBoundaryInfo"><em>WordBoundaryInfo</em></a>) – The word boundary information.</li>
+<li><strong>max_states</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Maximum #states allowed in the output lattice. If
+<code class="xref py py-obj docutils literal"><span class="pre">max_states</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and the #states of the output will be greater than
+<code class="xref py py-obj docutils literal"><span class="pre">max_states</span></code>, this function will abort the computation, return False
+and output an empty lattice.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A tuple representing the return value and the output lattice. The
+return value is set to True if the operation was successful, False if
+some kind of problem was detected, e.g. transition-id sequences in the
+lattice were incompatible with the word boundary information.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We don’t expect silence inside words, or empty words (words with no
+phones), and we expect the word to start with a wbegin_phone, to end
+with a wend_phone, and to possibly have winternal_phones inside (or to
+consist of just one wbegin_and_end_phone).</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If this function returns False, it doesn’t mean the output lattice is
+necessarily bad. It might just be that the input lattice was “forced
+out” with partial words due to no final state being reached during
+decoding, and in this case the output might still be usable.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.align.word_align_lattice_lexicon">
+<code class="descclassname">kaldi.lat.align.</code><code class="descname">word_align_lattice_lexicon</code><span class="sig-paren">(</span><em>lat</em>, <em>tmodel</em>, <em>lexicon_info</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/align.html#word_align_lattice_lexicon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.align.word_align_lattice_lexicon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns the word labels and transition-ids using a lexicon.</p>
+<p>Aligns compact lattice so that each arc has the transition-ids on it that
+correspond to the word that is on that arc. It is OK for the lattice to
+have epsilon arcs for optional silences.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</li>
+<li><strong>tmodel</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>lexicon_info</strong> (<a class="reference internal" href="#kaldi.lat.align.WordAlignLatticeLexiconInfo" title="kaldi.lat.align.WordAlignLatticeLexiconInfo"><em>WordAlignLatticeLexiconInfo</em></a>) – The lexicon information.</li>
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.lat.align.WordAlignLatticeLexiconOpts" title="kaldi.lat.align.WordAlignLatticeLexiconOpts"><em>WordAlignLatticeLexiconOpts</em></a>) – The word alignment options.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A tuple representing the return value and the output lattice. The
+return value is set to True if the operation was successful, False if
+some kind of problem was detected, e.g. transition-id sequences in the
+lattice were incompatible with the lexicon information.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If this function returns False, it doesn’t mean the output lattice is
+necessarily bad. It might just be that the input lattice was “forced
+out” with partial words due to no final state being reached during
+decoding, and in this case the output might still be usable.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.lat.functions">
+<span id="kaldi-lat-functions"></span><h2>kaldi.lat.functions<a class="headerlink" href="#module-kaldi.lat.functions" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.add_word_ins_pen_to_compact_lattice" title="kaldi.lat.functions.add_word_ins_pen_to_compact_lattice"><code class="xref py py-obj docutils literal"><span class="pre">add_word_ins_pen_to_compact_lattice</span></code></a></td>
+<td>Adds the penalty term to the graph scores of arcs in the lattice.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.compact_lattice_depth" title="kaldi.lat.functions.compact_lattice_depth"><code class="xref py py-obj docutils literal"><span class="pre">compact_lattice_depth</span></code></a></td>
+<td>Computes the depth of the compact lattice.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.compact_lattice_depth_per_frame" title="kaldi.lat.functions.compact_lattice_depth_per_frame"><code class="xref py py-obj docutils literal"><span class="pre">compact_lattice_depth_per_frame</span></code></a></td>
+<td>Computes the per-frame depth of the compact lattice.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.compact_lattice_limit_depth" title="kaldi.lat.functions.compact_lattice_limit_depth"><code class="xref py py-obj docutils literal"><span class="pre">compact_lattice_limit_depth</span></code></a></td>
+<td>Limits the depth of the compact lattice.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.compact_lattice_shortest_path" title="kaldi.lat.functions.compact_lattice_shortest_path"><code class="xref py py-obj docutils literal"><span class="pre">compact_lattice_shortest_path</span></code></a></td>
+<td>Computes the shortest path in an acyclic compact lattice.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.compact_lattice_to_word_alignment" title="kaldi.lat.functions.compact_lattice_to_word_alignment"><code class="xref py py-obj docutils literal"><span class="pre">compact_lattice_to_word_alignment</span></code></a></td>
+<td>Extracts word alignment from a linear compact lattice.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.compact_lattice_to_word_prons" title="kaldi.lat.functions.compact_lattice_to_word_prons"><code class="xref py py-obj docutils literal"><span class="pre">compact_lattice_to_word_prons</span></code></a></td>
+<td>Extracts word pronunciations from a linear compact lattice.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.compose_compact_lattice_deterministic" title="kaldi.lat.functions.compose_compact_lattice_deterministic"><code class="xref py py-obj docutils literal"><span class="pre">compose_compact_lattice_deterministic</span></code></a></td>
+<td>Composes a compact lattice with a deterministic on-demand FST.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.compute_compact_lattice_alphas" title="kaldi.lat.functions.compute_compact_lattice_alphas"><code class="xref py py-obj docutils literal"><span class="pre">compute_compact_lattice_alphas</span></code></a></td>
+<td>Computes the forward scores (alpha) for compact lattice states.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.compute_compact_lattice_betas" title="kaldi.lat.functions.compute_compact_lattice_betas"><code class="xref py py-obj docutils literal"><span class="pre">compute_compact_lattice_betas</span></code></a></td>
+<td>Computes the backward scores (beta) for compact lattice states.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.compute_lattice_alphas_and_betas" title="kaldi.lat.functions.compute_lattice_alphas_and_betas"><code class="xref py py-obj docutils literal"><span class="pre">compute_lattice_alphas_and_betas</span></code></a></td>
+<td>Computes forward and backward scores for lattice states.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.convert_compact_lattice_to_phones" title="kaldi.lat.functions.convert_compact_lattice_to_phones"><code class="xref py py-obj docutils literal"><span class="pre">convert_compact_lattice_to_phones</span></code></a></td>
+<td>Replaces transition-ids in compact lattice with phones.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.convert_lattice_to_phones" title="kaldi.lat.functions.convert_lattice_to_phones"><code class="xref py py-obj docutils literal"><span class="pre">convert_lattice_to_phones</span></code></a></td>
+<td>Replaces output symbols in lattice with phones.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.determinize_lattice_phone_pruned" title="kaldi.lat.functions.determinize_lattice_phone_pruned"><code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice_phone_pruned</span></code></a></td>
+<td>Applies a specialized determinization operation to a lattice.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.determinize_lattice_pruned" title="kaldi.lat.functions.determinize_lattice_pruned"><code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice_pruned</span></code></a></td>
+<td>Applies a specialized determinization operation to a lattice.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.get_per_frame_acoustic_costs" title="kaldi.lat.functions.get_per_frame_acoustic_costs"><code class="xref py py-obj docutils literal"><span class="pre">get_per_frame_acoustic_costs</span></code></a></td>
+<td>Extracts per-frame log likelihoods from a linear lattice.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_active_phones" title="kaldi.lat.functions.lattice_active_phones"><code class="xref py py-obj docutils literal"><span class="pre">lattice_active_phones</span></code></a></td>
+<td>Computes the set of phones active on each frame.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_boost" title="kaldi.lat.functions.lattice_boost"><code class="xref py py-obj docutils literal"><span class="pre">lattice_boost</span></code></a></td>
+<td>Boosts graph scores in the lattice.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_forward_backward" title="kaldi.lat.functions.lattice_forward_backward"><code class="xref py py-obj docutils literal"><span class="pre">lattice_forward_backward</span></code></a></td>
+<td>Computes lattice arc posteriors using forward-backward algorithm.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_forward_backward_mmi" title="kaldi.lat.functions.lattice_forward_backward_mmi"><code class="xref py py-obj docutils literal"><span class="pre">lattice_forward_backward_mmi</span></code></a></td>
+<td>Computes lattice posteriors for MMI.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_forward_backward_mpe_variants" title="kaldi.lat.functions.lattice_forward_backward_mpe_variants"><code class="xref py py-obj docutils literal"><span class="pre">lattice_forward_backward_mpe_variants</span></code></a></td>
+<td>Computes lattice posteriors for MPFE (or SMBR).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_state_times" title="kaldi.lat.functions.lattice_state_times"><code class="xref py py-obj docutils literal"><span class="pre">lattice_state_times</span></code></a></td>
+<td>Extracts lattice state times (in terms of frames).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.longest_sentence_length_in_lattice" title="kaldi.lat.functions.longest_sentence_length_in_lattice"><code class="xref py py-obj docutils literal"><span class="pre">longest_sentence_length_in_lattice</span></code></a></td>
+<td>Returns the number of words in the longest sentence in a lattice.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.minimize_compact_lattice" title="kaldi.lat.functions.minimize_compact_lattice"><code class="xref py py-obj docutils literal"><span class="pre">minimize_compact_lattice</span></code></a></td>
+<td>Applies a specialized minimization operation to compact lattices.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.prune_lattice" title="kaldi.lat.functions.prune_lattice"><code class="xref py py-obj docutils literal"><span class="pre">prune_lattice</span></code></a></td>
+<td>Prunes a lattice.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.push_compact_lattice_strings" title="kaldi.lat.functions.push_compact_lattice_strings"><code class="xref py py-obj docutils literal"><span class="pre">push_compact_lattice_strings</span></code></a></td>
+<td>Pushes the transition-ids as far towards the start as they will go.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.push_compact_lattice_weights" title="kaldi.lat.functions.push_compact_lattice_weights"><code class="xref py py-obj docutils literal"><span class="pre">push_compact_lattice_weights</span></code></a></td>
+<td>Pushes the weights in compact lattice toward the start state.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.rescore_compact_lattice_speedup" title="kaldi.lat.functions.rescore_compact_lattice_speedup"><code class="xref py py-obj docutils literal"><span class="pre">rescore_compact_lattice_speedup</span></code></a></td>
+<td>Adjusts acoustic scores in the compact lattice.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.rescore_lattice" title="kaldi.lat.functions.rescore_lattice"><code class="xref py py-obj docutils literal"><span class="pre">rescore_lattice</span></code></a></td>
+<td>Adjusts acoustic scores in the lattice.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.sentence_level_confidence" title="kaldi.lat.functions.sentence_level_confidence"><code class="xref py py-obj docutils literal"><span class="pre">sentence_level_confidence</span></code></a></td>
+<td>Computes sentence level confidence scores.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.top_sort_lattice_if_needed" title="kaldi.lat.functions.top_sort_lattice_if_needed"><code class="xref py py-obj docutils literal"><span class="pre">top_sort_lattice_if_needed</span></code></a></td>
+<td>Topologically sorts the lattice if it is not already sorted.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions" title="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions"><code class="xref py py-obj docutils literal"><span class="pre">DeterminizeLatticePhonePrunedOptions</span></code></a></td>
+<td>Options for pruning and phone+word determinizing a lattice.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions" title="kaldi.lat.functions.DeterminizeLatticePrunedOptions"><code class="xref py py-obj docutils literal"><span class="pre">DeterminizeLatticePrunedOptions</span></code></a></td>
+<td>Options for pruning and word determinizing a lattice.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions">
+<em class="property">class </em><code class="descclassname">kaldi.lat.functions.</code><code class="descname">DeterminizeLatticePhonePrunedOptions</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for pruning and phone+word determinizing a lattice.</p>
+<dl class="attribute">
+<dt id="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.delta">
+<code class="descname">delta</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.delta" title="Permalink to this definition">¶</a></dt>
+<dd><p>A small offset used to measure equality of weights.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.max_mem">
+<code class="descname">max_mem</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.max_mem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum memory threshold for the determinization operation.</p>
+<p>If &gt; 0, determinization will fail and return false when the algorithm’s
+(approximate) memory consumption crosses this threshold.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.minimize">
+<code class="descname">minimize</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.minimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to push and minimize the output after determinization.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.phone_determinize">
+<code class="descname">phone_determinize</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.phone_determinize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to do a first pass determinization on both phones and words.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.word_determinize">
+<code class="descname">word_determinize</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions.word_determinize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to do a second pass determinization on words only.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lat.functions.DeterminizeLatticePrunedOptions">
+<em class="property">class </em><code class="descclassname">kaldi.lat.functions.</code><code class="descname">DeterminizeLatticePrunedOptions</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for pruning and word determinizing a lattice.</p>
+<dl class="attribute">
+<dt id="kaldi.lat.functions.DeterminizeLatticePrunedOptions.delta">
+<code class="descname">delta</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions.delta" title="Permalink to this definition">¶</a></dt>
+<dd><p>A small offset used to measure equality of weights.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.DeterminizeLatticePrunedOptions.max_arcs">
+<code class="descname">max_arcs</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions.max_arcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum number of arcs allowed in output FST.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.DeterminizeLatticePrunedOptions.max_loop">
+<code class="descname">max_loop</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions.max_loop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum loop threshold for the determinization operation.</p>
+<p>If &gt;0, can be used to detect non-determinizable input (a case that
+wouldn’t be caught by max_mem).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.DeterminizeLatticePrunedOptions.max_mem">
+<code class="descname">max_mem</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions.max_mem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum memory threshold for the determinization operation.</p>
+<p>If &gt; 0, determinization will fail and return false when the algorithm’s
+(approximate) memory consumption crosses this threshold.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.DeterminizeLatticePrunedOptions.max_states">
+<code class="descname">max_states</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions.max_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum number of states allowed in output FST.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.functions.DeterminizeLatticePrunedOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.DeterminizeLatticePrunedOptions.retry_cutoff">
+<code class="descname">retry_cutoff</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions.retry_cutoff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cutoff value used when retrying a failed determinization operation.</p>
+<p>Controls pruning un-determinized lattice and retrying determinization:
+if effective-beam &lt;  retry-cutoff * beam, we prune the raw lattice and
+retry. Avoids ever getting empty output for long segments.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.add_word_ins_pen_to_compact_lattice">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">add_word_ins_pen_to_compact_lattice</code><span class="sig-paren">(</span><em>word_ins_penalty:float</em>, <em>clat:CompactLatticeVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.add_word_ins_pen_to_compact_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the penalty term to the graph scores of arcs in the lattice.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.compact_lattice_depth">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">compact_lattice_depth</code><span class="sig-paren">(</span><em>clat:CompactLatticeVectorFst) -&gt; (depth:float</em>, <em>num_frames:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.compact_lattice_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the depth of the compact lattice.</p>
+<p>Returns the depth of the lattice, defined as the average number of arcs
+(or final-prob strings) crossing any given frame, and the number of
+frames. Lattice depth is <code class="docutils literal"><span class="pre">1</span></code> for empty lattices. Requires that the
+lattice is topologically sorted!</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.compact_lattice_depth_per_frame">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">compact_lattice_depth_per_frame</code><span class="sig-paren">(</span><em>clat:CompactLatticeVectorFst</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.lat.functions.compact_lattice_depth_per_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the per-frame depth of the compact lattice.</p>
+<p>Returns the per-frame depth of the lattice, defined as the number of arcs
+(or final-prob strings) crossing any given frame. Requires that the
+lattice is topologically sorted!</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.compact_lattice_limit_depth">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">compact_lattice_limit_depth</code><span class="sig-paren">(</span><em>max_arcs_per_frame:int</em>, <em>clat:CompactLatticeVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.compact_lattice_limit_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Limits the depth of the compact lattice.</p>
+<p>Does not allow more than a specified number of arcs active on any given
+frame. This can be used to reduce the size of the “very deep” portions of
+the lattice.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.compact_lattice_shortest_path">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">compact_lattice_shortest_path</code><span class="sig-paren">(</span><em>clat:CompactLatticeVectorFst</em><span class="sig-paren">)</span> &#x2192; CompactLatticeVectorFst<a class="headerlink" href="#kaldi.lat.functions.compact_lattice_shortest_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the shortest path in an acyclic compact lattice.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.compact_lattice_to_word_alignment">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">compact_lattice_to_word_alignment</code><span class="sig-paren">(</span><em>clat:CompactLatticeVectorFst) -&gt; (success:bool</em>, <em>words:list&lt;int&gt;</em>, <em>begin_times:list&lt;int&gt;</em>, <em>lengths:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.compact_lattice_to_word_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts word alignment from a linear compact lattice.</p>
+<p>This function takes a compact lattice that should only contain a single
+linear sequence (e.g. output of <a class="reference internal" href="#kaldi.lat.functions.compact_lattice_shortest_path" title="kaldi.lat.functions.compact_lattice_shortest_path"><code class="xref py py-meth docutils literal"><span class="pre">compact_lattice_shortest_path()</span></code></a>),
+and that should have been processed so that the arcs align correctly with
+the word boundaries (e.g. by <code class="xref py py-meth docutils literal"><span class="pre">word_align_lattice()</span></code>). It outputs 3
+lists of the same size, which represent, for each word in the lattice (in
+sequence), the word label and the begin time and length in frames. This
+is done even for zero (epsilon) words, generally corresponding to
+optional silence – if you don’t want them, just ignore them in the
+output.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></a> – If the lattice does not have the correct format (e.g. if</li>
+<li>it is empty or if it is not linear).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.compact_lattice_to_word_prons">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">compact_lattice_to_word_prons</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em>, <em>clat:CompactLatticeVectorFst) -&gt; (success:bool</em>, <em>words:list&lt;int&gt;</em>, <em>begin_times:list&lt;int&gt;</em>, <em>lengths:list&lt;int&gt;</em>, <em>prons:list&lt;list&lt;int&gt;&gt;</em>, <em>phone_lengths:list&lt;list&lt;int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.compact_lattice_to_word_prons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts word pronunciations from a linear compact lattice.</p>
+<p>This function takes a compact lattice that should only contain a single
+linear sequence (e.g. output of <a class="reference internal" href="#kaldi.lat.functions.compact_lattice_shortest_path" title="kaldi.lat.functions.compact_lattice_shortest_path"><code class="xref py py-meth docutils literal"><span class="pre">compact_lattice_shortest_path()</span></code></a>),
+and that should have been processed so that the arcs align correctly with
+the word boundaries (e.g. by <code class="xref py py-meth docutils literal"><span class="pre">word_align_lattice()</span></code>).  It outputs 4
+vectors of the same size, which represent, for each word in the lattice
+(in sequence), the word label, the begin time, length in frames, and the
+pronunciation (sequence of phones). This is done even for zero (epsilon)
+words, corresponding to optional silences – if you don’t want them, just
+ignore them in the output.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></a> – If the lattice does not have the correct format (e.g. if</li>
+<li>it is empty or if it is not linear).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.compose_compact_lattice_deterministic">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">compose_compact_lattice_deterministic</code><span class="sig-paren">(</span><em>clat:CompactLatticeVectorFst</em>, <em>det_fst:StdDeterministicOnDemandFst</em><span class="sig-paren">)</span> &#x2192; CompactLatticeVectorFst<a class="headerlink" href="#kaldi.lat.functions.compose_compact_lattice_deterministic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Composes a compact lattice with a deterministic on-demand FST.</p>
+<p>This function is used in language model rescoring. Composition affects
+only graph costs. The output is another compact lattice.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.compute_compact_lattice_alphas">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">compute_compact_lattice_alphas</code><span class="sig-paren">(</span><em>clat:CompactLatticeVectorFst) -&gt; (success:bool</em>, <em>alpha:list&lt;float&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.compute_compact_lattice_alphas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the forward scores (alpha) for compact lattice states.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.compute_compact_lattice_betas">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">compute_compact_lattice_betas</code><span class="sig-paren">(</span><em>clat:CompactLatticeVectorFst) -&gt; (success:bool</em>, <em>beta:list&lt;float&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.compute_compact_lattice_betas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the backward scores (beta) for compact lattice states.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.compute_lattice_alphas_and_betas">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">compute_lattice_alphas_and_betas</code><span class="sig-paren">(</span><em>lat</em>, <em>viterbi</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/functions.html#compute_lattice_alphas_and_betas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.functions.compute_lattice_alphas_and_betas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes forward and backward scores for lattice states.</p>
+<p>If <code class="xref py py-obj docutils literal"><span class="pre">viterbi</span> <span class="pre">==</span> <span class="pre">True</span></code>, computes the Viterbi scores, i.e. forward (alpha) and
+backward (beta) scores are the scores of best paths reaching and leaving
+each state. Otherwise, computes regular forward and backward scores. Note
+that alphas and betas are negated costs. Requires the input lattice to be
+topologically sorted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst"><em>LatticeVectorFst</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</li>
+<li><strong>viterbi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to compute Viterbi scores.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The total-prob (or best-path
+prob), the forward (alpha) scores and the backward (beta) scores.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a>, List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a>], List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a>]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.convert_compact_lattice_to_phones">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">convert_compact_lattice_to_phones</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>lat:CompactLatticeVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.convert_compact_lattice_to_phones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replaces transition-ids in compact lattice with phones.</p>
+<p>Given a lattice, and a transition model to map pdf-ids to phones,
+replaces the sequences of transition-ids with sequences of phones. Note
+that this is different from <a class="reference internal" href="#kaldi.lat.functions.convert_lattice_to_phones" title="kaldi.lat.functions.convert_lattice_to_phones"><code class="xref py py-meth docutils literal"><span class="pre">convert_lattice_to_phones()</span></code></a>, in that it
+replaces the transition-ids not the words.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.convert_lattice_to_phones">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">convert_lattice_to_phones</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>lat:LatticeVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.convert_lattice_to_phones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replaces output symbols in lattice with phones.</p>
+<p>Given a lattice, and a transition model to map pdf-ids to phones,
+replaces the output symbols (presumably words), with phones. Uses the
+<code class="xref py py-obj docutils literal"><span class="pre">trans_model</span></code> to work out the phone sequence.  Note that the phone labels
+are not exactly aligned with the phone boundaries. Inserted phone labels
+coincide with any transition to the final, nonemitting state of a phone
+(this state always exists). This would be the last transition-id in the
+phone if reordering is not done (but this is typically not the case).</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#kaldi.lat.align.phone_align_lattice" title="kaldi.lat.align.phone_align_lattice"><code class="xref py py-meth docutils literal"><span class="pre">phone_align_lattice()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.determinize_lattice_phone_pruned">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">determinize_lattice_phone_pruned</code><span class="sig-paren">(</span><em>ifst</em>, <em>trans_model</em>, <em>prune</em>, <em>opts=None</em>, <em>destructive=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/functions.html#determinize_lattice_phone_pruned"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.functions.determinize_lattice_phone_pruned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a specialized determinization operation to a lattice.</p>
+<p>Determinizes a raw state-level lattice, keeping only the best output-symbol
+sequence (typically transition ids) for each input-symbol sequence. This
+version does phone insertion when doing a first pass determinization (if
+<code class="xref py py-obj docutils literal"><span class="pre">opts.phone_determinize</span> <span class="pre">==</span> <span class="pre">True</span></code>), it then removes the inserted phones and
+does a second pass determinization on the word lattice (if
+<code class="xref py py-obj docutils literal"><span class="pre">opts.word_determinize</span> <span class="pre">==</span> <span class="pre">True</span></code>). It also does pruning as part of the
+determinization algorithm, which is more efficient and prevents blowup.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ifst</strong> (<em>LatticeFst</em>) – The input lattice.</li>
+<li><strong>trans_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>prune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The pruning beam.</li>
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions" title="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions"><em>DeterminizeLatticePhonePrunedOptions</em></a>) – The options for lattice
+determinization.</li>
+<li><strong>destructive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to use the destructive version of the
+algorithm which mutates input lattice.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The output lattice.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst">CompactLatticeVectorFst</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#kaldi.lat.functions.determinize_lattice_pruned" title="kaldi.lat.functions.determinize_lattice_pruned"><code class="xref py py-meth docutils literal"><span class="pre">determinize_lattice_pruned()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The point of doing first a phone-level determinization pass and then a
+word-level determinization pass is that it allows us to determinize
+deeper lattices without “failing early” and returning a too-small
+lattice due to the max-mem constraint. The result should be the same
+as word-level determinization in general, but for deeper lattices it is
+a bit faster, despite the fact that we now have two passes of
+determinization by default.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.determinize_lattice_pruned">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">determinize_lattice_pruned</code><span class="sig-paren">(</span><em>ifst</em>, <em>prune</em>, <em>opts=None</em>, <em>compact_out=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/functions.html#determinize_lattice_pruned"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.functions.determinize_lattice_pruned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a specialized determinization operation to a lattice.</p>
+<p>Determinizes a raw state-level lattice, keeping only the best output-symbol
+sequence (typically transition ids) for each input-symbol sequence. This
+version does determinization only on the word lattice. The output is
+represented using either sequences of arcs (if <code class="xref py py-obj docutils literal"><span class="pre">compact_out</span> <span class="pre">==</span> <span class="pre">False</span></code>),
+where all but the first one has an epsilon on the input side, or directly as
+strings using compact lattice weight type (if <code class="xref py py-obj docutils literal"><span class="pre">compact_out</span> <span class="pre">==</span> <span class="pre">True</span></code>). It
+also does pruning as part of the determinization algorithm, which is more
+efficient and prevents blowup.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ifst</strong> (<em>LatticeFst</em>) – The input lattice.</li>
+<li><strong>prune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The pruning beam.</li>
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions" title="kaldi.lat.functions.DeterminizeLatticePrunedOptions"><em>DeterminizeLatticePrunedOptions</em></a>) – The options for lattice
+determinization.</li>
+<li><strong>compact_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to output a compact lattice.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The output lattice.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst">LatticeVectorFst</a> or <a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst">CompactLatticeVectorFst</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#kaldi.lat.functions.determinize_lattice_phone_pruned" title="kaldi.lat.functions.determinize_lattice_phone_pruned"><code class="xref py py-meth docutils literal"><span class="pre">determinize_lattice_phone_pruned()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.get_per_frame_acoustic_costs">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">get_per_frame_acoustic_costs</code><span class="sig-paren">(</span><em>linear_lattice:LatticeVectorFst</em><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.lat.functions.get_per_frame_acoustic_costs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts per-frame log likelihoods from a linear lattice.</p>
+<p>The size of output vector will be set to the number of non-epsilon
+input symbols in <code class="xref py py-obj docutils literal"><span class="pre">linear_lattice</span></code>. The elements of output vector will be
+set to the second elements of the lattice weights, which represent the
+acoustic costs; you may want to scale this vector afterward by
+-1/acoustic_scale to get the original loglikes. If there are acoustic
+costs on input-epsilon arcs or the final-probs (and this should
+not normally be the case in situations where it makes sense to call this
+function), they will be included to the cost of the preceding input
+symbol, or the following input symbol for input-epsilons encountered
+prior to any input symbol.  If <code class="xref py py-obj docutils literal"><span class="pre">linear_lattice</span></code> has no input symbols,
+output vector will be set to the empty vector.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.lattice_active_phones">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">lattice_active_phones</code><span class="sig-paren">(</span><em>lat:LatticeVectorFst</em>, <em>trans:TransitionModel</em>, <em>sil_phones:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;set&lt;int&gt;&gt;<a class="headerlink" href="#kaldi.lat.functions.lattice_active_phones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the set of phones active on each frame.</p>
+<p>Given a lattice, and a transition model to map pdf-ids to phones, outputs
+for each frame the set of phones active on that frame.  If <code class="xref py py-obj docutils literal"><span class="pre">sil_phones</span></code>
+(which must be sorted and uniq) is non-empty, it excludes phones in this
+list.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.lattice_boost">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">lattice_boost</code><span class="sig-paren">(</span><em>trans:TransitionModel</em>, <em>alignment:list&lt;int&gt;</em>, <em>silence_phones:list&lt;int&gt;</em>, <em>b:float</em>, <em>max_silence_error:float</em>, <em>lat:LatticeVectorFst</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.lat.functions.lattice_boost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boosts graph scores in the lattice.</p>
+<p>Boosts LM probabilities by b * [number of frame errors]; equivalently,
+adds -b*[number of frame errors] to the graph-component of the cost of
+each arc/path. There is a frame error if a particular transition-id on a
+particular frame corresponds to a phone not matching transcription’s
+alignment for that frame. This is used in “margin-inspired”
+discriminative training, esp. Boosted MMI. The transition model is used to
+map transition-ids in the lattice input-side to phones; the phones
+appearing in <code class="xref py py-obj docutils literal"><span class="pre">silence_phones</span></code> are treated specially in that we replace
+the frame error f (either zero or 1) for a frame, with the minimum of f
+or <code class="xref py py-obj docutils literal"><span class="pre">max_silence_error</span></code>. In the normal case, <code class="xref py py-obj docutils literal"><span class="pre">max_silence_error</span></code> would be
+zero. Note that <code class="xref py py-obj docutils literal"><span class="pre">silence_phones</span></code> must be sorted and unique.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></a> – In case of failure.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.lattice_forward_backward">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">lattice_forward_backward</code><span class="sig-paren">(</span><em>lat:LatticeVectorFst) -&gt; (total_prob:float</em>, <em>arc_post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em>, <em>acoustic_like_sum:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.lattice_forward_backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes lattice arc posteriors using forward-backward algorithm.</p>
+<p>Returns the total log-probability of the lattice, arc posteriors and the
+sum over the arcs, of the posterior of the arc times the acoustic
+likelihood [i.e. negated acoustic score] on that arc. The arc posteriors
+contain pairs of <code class="xref py py-obj docutils literal"><span class="pre">(transition-id,</span> <span class="pre">weight)</span></code> for each frame.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.lattice_forward_backward_mmi">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">lattice_forward_backward_mmi</code><span class="sig-paren">(</span><em>trans:TransitionModel</em>, <em>lat:LatticeVectorFst</em>, <em>num_ali:list&lt;int&gt;</em>, <em>drop_frames:bool</em>, <em>convert_to_pdf_ids:bool</em>, <em>cancel:bool) -&gt; (objf_val:float</em>, <em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.lattice_forward_backward_mmi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes lattice posteriors for MMI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>trans</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model. Used to map the
+transition-ids to phones or pdfs.</li>
+<li><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst"><em>LatticeVectorFst</em></a>) – The denominator lattice</li>
+<li><strong>num_ali</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – The numerator alignment</li>
+<li><strong>drop_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a>, it will not compute any posteriors on
+frames where the num and den have disjoint pdf-ids.</li>
+<li><strong>convert_to_pdf_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a>, it will convert the output to be
+at the level of pdf-ids, not transition-ids.</li>
+<li><strong>cancel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If <code class="xref py py-obj docutils literal"><span class="pre">true</span></code>, it will cancel out any positive and negative
+parts from the same transition-id (or pdf-id, if <code class="xref py py-obj docutils literal"><span class="pre">convert_to_pdf_ids</span>
+<span class="pre">==</span> <span class="pre">True</span></code>).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The forward-backward likelihood of the lattice and the MMI posteriors
+for transition-ids (or pdf-ids if <code class="xref py py-obj docutils literal"><span class="pre">convert_to_pdf_ids</span> <span class="pre">==</span> <span class="pre">True</span></code>) at each
+frame i.e. the difference between the numerator and denominator
+posteriors.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.lattice_forward_backward_mpe_variants">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">lattice_forward_backward_mpe_variants</code><span class="sig-paren">(</span><em>trans:TransitionModel</em>, <em>silence_phones:list&lt;int&gt;</em>, <em>lat:LatticeVectorFst</em>, <em>num_ali:list&lt;int&gt;</em>, <em>criterion:str</em>, <em>one_silence_class:bool) -&gt; (objf_val:float</em>, <em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.lattice_forward_backward_mpe_variants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes lattice posteriors for MPFE (or SMBR).</p>
+<p>This function computes either the MPFE (minimum phone frame error) or
+sMBR (state-level minimum bayes risk) forward-backward, depending on
+whether <code class="xref py py-obj docutils literal"><span class="pre">criterion</span></code> is <code class="xref py py-obj docutils literal"><span class="pre">&quot;mpfe&quot;</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">&quot;smbr&quot;</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>trans</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model. Used to map the
+transition-ids to phones or pdfs.</li>
+<li><strong>silence_phones</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – A list of integer ids of silence phones.
+The silence frames i.e. the frames where num_ali corresponds to a
+silence phones are treated specially. The behavior is determined by
+‘one_silence_class’ being false (traditional behavior) or true.
+Usually in our setup, several phones including the silence, vocalized
+noise, non-spoken noise and unk are treated as “silence phones”.</li>
+<li><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst"><em>LatticeVectorFst</em></a>) – The denominator lattice.</li>
+<li><strong>num_ali</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – The numerator alignment.</li>
+<li><strong>criterion</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The objective function. Must be “mpfe” or “smbr” for
+MPFE (minimum phone frame error) or sMBR (state-level minimum bayes
+risk) training.</li>
+<li><strong>one_silence_class</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Determines how the silence frames are
+treated. Setting this to false gives the old traditional behavior,
+where the silence frames (according to num_ali) are treated as
+incorrect. However, this means that the insertions are not penalized
+by the objective. Setting this to true gives the new behaviour, where
+we treat silence as any other phone, except that all pdfs of silence
+phones are collapsed into a single class for the frame-error
+computation. This can possible reduce the insertions in the trained
+model. This is closer to the WER metric that we actually care about,
+since WER is generally computed after filtering out noises, but does
+penalize insertions.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The objective function value (MPFE or sMBR criterion) and the
+posteriors (which may be positive or negative).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.lattice_state_times">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">lattice_state_times</code><span class="sig-paren">(</span><em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/functions.html#lattice_state_times"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.functions.lattice_state_times" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts lattice state times (in terms of frames).</p>
+<p>Iterates over the states of a topologically sorted lattice and computes
+the corresponding time instances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst"><em>LatticeVectorFst</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The number of frames and the state times.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a>, List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a>]]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If input is a regular lattice, the number of frames is equal to the
+maximum state time in the lattice. If input is a compact lattice,  the
+number of frames might not be equal to the maximum state time in the
+lattice due to frames in final states.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.longest_sentence_length_in_lattice">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">longest_sentence_length_in_lattice</code><span class="sig-paren">(</span><em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/functions.html#longest_sentence_length_in_lattice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.functions.longest_sentence_length_in_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of words in the longest sentence in a lattice.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst"><em>LatticeVectorFst</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The length of the longest sentence in the lattice.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.minimize_compact_lattice">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">minimize_compact_lattice</code><span class="sig-paren">(</span><em>clat:CompactLatticeMutableFst</em>, <em>delta:float=default</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.lat.functions.minimize_compact_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a specialized minimization operation to compact lattices.</p>
+<p>It is to be called after determinization and pushing. If the lattice is
+not determinized and pushed this function will not combine as many states
+as it could, but it won’t throw an exception. The output will be
+topologically sorted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True on success, False if topological sorting fails.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#kaldi.lat.functions.determinize_lattice_pruned" title="kaldi.lat.functions.determinize_lattice_pruned"><code class="xref py py-meth docutils literal"><span class="pre">determinize_lattice_pruned()</span></code></a>
+<a class="reference internal" href="#kaldi.lat.functions.push_compact_lattice_strings" title="kaldi.lat.functions.push_compact_lattice_strings"><code class="xref py py-meth docutils literal"><span class="pre">push_compact_lattice_strings()</span></code></a>
+<a class="reference internal" href="#kaldi.lat.functions.push_compact_lattice_weights" title="kaldi.lat.functions.push_compact_lattice_weights"><code class="xref py py-meth docutils literal"><span class="pre">push_compact_lattice_weights()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.prune_lattice">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">prune_lattice</code><span class="sig-paren">(</span><em>beam</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/functions.html#prune_lattice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.functions.prune_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prunes a lattice.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The pruning beam.</li>
+<li><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst"><em>LatticeVectorFst</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></a> – If pruning fails.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.push_compact_lattice_strings">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">push_compact_lattice_strings</code><span class="sig-paren">(</span><em>clat:CompactLatticeMutableFst</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.lat.functions.push_compact_lattice_strings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pushes the transition-ids as far towards the start as they will go.</p>
+<p>It can be useful prior to <code class="xref py py-meth docutils literal"><span class="pre">word_align_lattice()</span></code> (for non-linear
+lattices).  We can’t use the generic OpenFst “push” function because
+it uses the sum as the divisor, which is not appropriate in this case
+(a+b generally won’t divide a or b in this semiring).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True on success, False if topological sorting fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.push_compact_lattice_weights">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">push_compact_lattice_weights</code><span class="sig-paren">(</span><em>clat:CompactLatticeMutableFst</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.lat.functions.push_compact_lattice_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pushes the weights in compact lattice toward the start state.</p>
+<p>This function pushes the weights in the compact lattice so that all
+states except possibly the start state, have weight components (of type
+LatticeWeight) that “sum to one” in the lattice semiring (i.e.
+interpreting the weights as negated log-probs).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True on success, False if topological sorting fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.rescore_compact_lattice_speedup">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">rescore_compact_lattice_speedup</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em>, <em>speedup_factor:float</em>, <em>decodable:DecodableInterface</em>, <em>clat:CompactLatticeVectorFst</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.lat.functions.rescore_compact_lattice_speedup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjusts acoustic scores in the compact lattice.</p>
+<p>This function is like <a class="reference internal" href="#kaldi.lat.functions.rescore_lattice" title="kaldi.lat.functions.rescore_lattice"><code class="xref py py-meth docutils literal"><span class="pre">rescore_lattice()</span></code></a>, but it avoids computing
+probabilities on most frames where all the pdf-ids are the same. It needs
+the transition-model to work out whether two transition-ids map to the
+same pdf-id, and it assumes that the lattice has transition-ids on it.
+The naive thing would be to just set all probabilities to zero on frames
+where all the pdf-ids are the same (because this value won’t affect the
+lattice posterior). But this would become confusing when we compute
+corpus-level diagnostics such as the MMI objective function. Instead, for
+<code class="xref py py-obj docutils literal"><span class="pre">speedup_factor</span> <span class="pre">=</span> <span class="pre">100</span></code> (must be &gt;= 1.0), with probability <code class="xref py py-obj docutils literal"><span class="pre">1.0</span> <span class="pre">/</span>
+<span class="pre">speedup_factor</span></code> we compute those likelihoods and multiply them by
+<code class="xref py py-obj docutils literal"><span class="pre">speedup_factor</span></code>; otherwise we set them to zero. This gives the right
+expected probability so our corpus-level diagnostics will be about right.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#kaldi.lat.functions.rescore_lattice" title="kaldi.lat.functions.rescore_lattice"><code class="xref py py-meth docutils literal"><span class="pre">rescore_lattice()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.rescore_lattice">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">rescore_lattice</code><span class="sig-paren">(</span><em>decodable</em>, <em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/functions.html#rescore_lattice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.functions.rescore_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjusts acoustic scores in the lattice.</p>
+<p>This function <em>adds</em> the negated scores obtained from the decodable object,
+to the acoustic scores on the arcs. If you want to replace them, you should
+use <code class="xref py py-meth docutils literal"><span class="pre">scale_compact_lattice()</span></code> to first set the acoustic scores to zero.
+The input labels (or the string component of arc weights if the input is a
+compact lattice), are interpreted as transition-ids or whatever other index
+the decodable object expects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>decodable</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The decodable object.</li>
+<li><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst"><em>LatticeVectorFst</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></a> – If the inputs are not compatible.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#kaldi.lat.functions.rescore_compact_lattice_speedup" title="kaldi.lat.functions.rescore_compact_lattice_speedup"><code class="xref py py-meth docutils literal"><span class="pre">rescore_compact_lattice_speedup()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.sentence_level_confidence">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">sentence_level_confidence</code><span class="sig-paren">(</span><em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/functions.html#sentence_level_confidence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.functions.sentence_level_confidence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes sentence level confidence scores.</p>
+<p>If input is a compact lattice, this function requires that distinct paths in
+<code class="xref py py-obj docutils literal"><span class="pre">lat</span></code> have distinct word sequences; this will automatically be the case if
+<code class="xref py py-obj docutils literal"><span class="pre">lat</span></code> was generated by a decoder, since a deterministic FST has this
+property. If input is a state-level lattice, it is first determinized, but
+this is done in a “smart” way so that only paths needed for this operation
+are generated.</p>
+<p>This function assumes that any acoustic scaling you want to apply,
+has already been applied.</p>
+<p>The output consists of the following. <code class="xref py py-obj docutils literal"><span class="pre">confidence</span></code> is the score difference
+between the best path and the second-best path in the lattice (a positive
+number), or zero if lattice was equivalent to the empty FST (no successful
+paths), or infinity if there was only one path in the lattice. <code class="xref py py-obj docutils literal"><span class="pre">num_paths</span></code>
+is a number in <code class="xref py py-obj docutils literal"><span class="pre">{0,</span> <span class="pre">1,</span> <span class="pre">2}</span></code> saying how many n-best paths (up to two) were
+found. If <code class="xref py py-obj docutils literal"><span class="pre">num_paths</span> <span class="pre">&gt;=</span> <span class="pre">1</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">best_sentence</span></code> is the best word-sequence; if
+<code class="xref py py-obj docutils literal"><span class="pre">num_paths</span> <span class="pre">-=</span> <span class="pre">2</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">second_best_sentence</span></code> is the second best word-sequence
+(this may be useful for testing whether the two best word sequences are
+somehow equivalent for the task at hand).</p>
+<dl class="docutils">
+<dt>Args</dt>
+<dd>lat (LatticeVectorFst or CompactLatticeVectorFst): The input lattice.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The tuple
+<code class="xref py py-obj docutils literal"><span class="pre">(confidence,</span> <span class="pre">num_paths,</span> <span class="pre">best_sentence,</span> <span class="pre">second_best_sentence)</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a>, List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a>], List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a>]]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function is not the only way to get confidences in Kaldi. This only
+gives you sentence-level (utterance-level) confidence. You can get
+word-by-word confidence within a sentence, along with Minimum Bayes Risk
+decoding. Also confidences estimated using this function are not very
+accurate.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.top_sort_lattice_if_needed">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">top_sort_lattice_if_needed</code><span class="sig-paren">(</span><em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/lat/functions.html#top_sort_lattice_if_needed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.lat.functions.top_sort_lattice_if_needed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Topologically sorts the lattice if it is not already sorted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst"><em>LatticeVectorFst</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If lattice cannot be topologically sorted.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.lat.sausages">
+<span id="kaldi-lat-sausages"></span><h2>kaldi.lat.sausages<a class="headerlink" href="#module-kaldi.lat.sausages" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.sausages.MinimumBayesRisk" title="kaldi.lat.sausages.MinimumBayesRisk"><code class="xref py py-obj docutils literal"><span class="pre">MinimumBayesRisk</span></code></a></td>
+<td>Minimum Bayes Risk decoding.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.sausages.MinimumBayesRiskOptions" title="kaldi.lat.sausages.MinimumBayesRiskOptions"><code class="xref py py-obj docutils literal"><span class="pre">MinimumBayesRiskOptions</span></code></a></td>
+<td>Options for Minimum Bayes Risk decoding.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.lat.sausages.MinimumBayesRisk">
+<em class="property">class </em><code class="descclassname">kaldi.lat.sausages.</code><code class="descname">MinimumBayesRisk</code><span class="sig-paren">(</span><em>clat</em>, <em>opts=MinimumBayesRiskOptions()</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRisk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimum Bayes Risk decoding.</p>
+<p>This class does the word-level Minimum Bayes Risk computation, and gives
+you either the 1-best MBR output together with the expected Bayes Risk,
+or a sausage-like structure. Initial 1-best is set to lattice 1-best.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>clat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</li>
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.lat.sausages.MinimumBayesRiskOptions" title="kaldi.lat.sausages.MinimumBayesRiskOptions"><em>MinimumBayesRiskOptions</em></a>) – The MBR options.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.lat.sausages.MinimumBayesRisk.get_bayes_risk">
+<code class="descname">get_bayes_risk</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRisk.get_bayes_risk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the expected WER over this sentence.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.sausages.MinimumBayesRisk.get_one_best">
+<code class="descname">get_one_best</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRisk.get_one_best" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns one-best output (with no epsilons).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.sausages.MinimumBayesRisk.get_one_best_confidences">
+<code class="descname">get_one_best_confidences</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;float&gt;<a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRisk.get_one_best_confidences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the confidences for the one-best output.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.sausages.MinimumBayesRisk.get_one_best_times">
+<code class="descname">get_one_best_times</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;tuple&lt;float, float&gt;&gt;<a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRisk.get_one_best_times" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns average (start, end) times for bins of the one-best output.</p>
+<p>This is just the appopriate subsequence of times output by
+<a class="reference internal" href="#kaldi.lat.sausages.MinimumBayesRisk.get_sausage_times" title="kaldi.lat.sausages.MinimumBayesRisk.get_sausage_times"><code class="xref py py-meth docutils literal"><span class="pre">get_sausage_times()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.sausages.MinimumBayesRisk.get_sausage_stats">
+<code class="descname">get_sausage_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, float&gt;&gt;&gt;<a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRisk.get_sausage_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sausage statistics.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.sausages.MinimumBayesRisk.get_sausage_times">
+<code class="descname">get_sausage_times</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;tuple&lt;float, float&gt;&gt;<a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRisk.get_sausage_times" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns average (start, end) times for each bin.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.sausages.MinimumBayesRisk.new_with_words">
+<code class="descname">new_with_words</code><span class="sig-paren">(</span><em>clat:CompactLatticeVectorFst</em>, <em>words:list&lt;int&gt;</em>, <em>opts:MinimumBayesRiskOptions=default</em><span class="sig-paren">)</span> &#x2192; MinimumBayesRisk<a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRisk.new_with_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance using <code class="xref py py-obj docutils literal"><span class="pre">words</span></code> as the initial 1-best.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>clat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</li>
+<li><strong>words</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – Initial best word sequence.</li>
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.lat.sausages.MinimumBayesRiskOptions" title="kaldi.lat.sausages.MinimumBayesRiskOptions"><em>MinimumBayesRiskOptions</em></a>) – The MBR options.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.sausages.MinimumBayesRisk.new_with_words_times">
+<code class="descname">new_with_words_times</code><span class="sig-paren">(</span><em>clat:CompactLatticeVectorFst</em>, <em>words:list&lt;int&gt;</em>, <em>times:list&lt;tuple&lt;float</em>, <em>float&gt;&gt;</em>, <em>opts:MinimumBayesRiskOptions=default</em><span class="sig-paren">)</span> &#x2192; MinimumBayesRisk<a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRisk.new_with_words_times" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance using <code class="xref py py-obj docutils literal"><span class="pre">words</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">times</span></code> as the initial 1-best.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>clat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</li>
+<li><strong>words</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – Initial best word sequence.</li>
+<li><strong>times</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – Initial times for the bins.</li>
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.lat.sausages.MinimumBayesRiskOptions" title="kaldi.lat.sausages.MinimumBayesRiskOptions"><em>MinimumBayesRiskOptions</em></a>) – The MBR options.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.lat.sausages.MinimumBayesRiskOptions">
+<em class="property">class </em><code class="descclassname">kaldi.lat.sausages.</code><code class="descname">MinimumBayesRiskOptions</code><a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRiskOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for Minimum Bayes Risk decoding.</p>
+<dl class="attribute">
+<dt id="kaldi.lat.sausages.MinimumBayesRiskOptions.decode_mbr">
+<code class="descname">decode_mbr</code><a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRiskOptions.decode_mbr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to output MBR hypothesis.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.sausages.MinimumBayesRiskOptions.print_silence">
+<code class="descname">print_silence</code><a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRiskOptions.print_silence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the 1-best path will “keep” &lt;eps&gt; bins.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.sausages.MinimumBayesRiskOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.sausages.MinimumBayesRiskOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.lm.html" class="btn btn-neutral float-right" title="kaldi.lm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.kws.html" class="btn btn-neutral" title="kaldi.kws" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

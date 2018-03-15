@@ -1,0 +1,2837 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.feat &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.fstext" href="kaldi.fstext.html"/>
+        <link rel="prev" title="kaldi.decoder" href="kaldi.decoder.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.feat</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.feat.fbank">kaldi.feat.fbank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.feat.functions">kaldi.feat.functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.feat.mel">kaldi.feat.mel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.feat.mfcc">kaldi.feat.mfcc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.feat.online">kaldi.feat.online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.feat.pitch">kaldi.feat.pitch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.feat.plp">kaldi.feat.plp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.feat.signal">kaldi.feat.signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.feat.spectrogram">kaldi.feat.spectrogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.feat.wave">kaldi.feat.wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.feat.window">kaldi.feat.window</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.feat</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.feat.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.feat">
+<span id="kaldi-feat"></span><h1>kaldi.feat<a class="headerlink" href="#module-kaldi.feat" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-kaldi.feat.fbank">
+<span id="kaldi-feat-fbank"></span><h2>kaldi.feat.fbank<a class="headerlink" href="#module-kaldi.feat.fbank" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.fbank.Fbank" title="kaldi.feat.fbank.Fbank"><code class="xref py py-obj docutils literal"><span class="pre">Fbank</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::FbankComputer&gt;</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.fbank.FbankComputer" title="kaldi.feat.fbank.FbankComputer"><code class="xref py py-obj docutils literal"><span class="pre">FbankComputer</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FbankComputer</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.fbank.FbankOptions" title="kaldi.feat.fbank.FbankOptions"><code class="xref py py-obj docutils literal"><span class="pre">FbankOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FbankOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.feat.fbank.Fbank">
+<em class="property">class </em><code class="descclassname">kaldi.feat.fbank.</code><code class="descname">Fbank</code><a class="headerlink" href="#kaldi.feat.fbank.Fbank" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::FbankComputer&gt;</p>
+<dl class="method">
+<dt id="kaldi.feat.fbank.Fbank.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.fbank.Fbank.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OfflineFeatureTpl&lt;kaldi::FbankComputer&gt;::Compute(::kaldi::VectorBase&lt;float&gt;, float, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.fbank.Fbank.compute_features">
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.fbank.Fbank.compute_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the features for one file (one sequence of features).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wave</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – The input waveform</li>
+<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The sampling frequency with which wave is
+sampled. If sample_freq is higher than the frequency specified in
+the config, Kaldi will downsample the waveform</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.fbank.Fbank.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.fbank.Fbank.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OfflineFeatureTpl&lt;kaldi::FbankComputer&gt;::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.fbank.Fbank.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:Fbank</em><span class="sig-paren">)</span> &#x2192; Fbank<a class="headerlink" href="#kaldi.feat.fbank.Fbank.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::FbankComputer&gt;&gt; ::kaldi::OfflineFeatureTpl&lt;kaldi::FbankComputer&gt;::OfflineFeatureTpl(::kaldi::OfflineFeatureTpl&lt; ::kaldi::FbankComputer&gt;)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.fbank.FbankComputer">
+<em class="property">class </em><code class="descclassname">kaldi.feat.fbank.</code><code class="descname">FbankComputer</code><a class="headerlink" href="#kaldi.feat.fbank.FbankComputer" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FbankComputer</p>
+<dl class="method">
+<dt id="kaldi.feat.fbank.FbankComputer.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>signal_log_energy:float</em>, <em>vtln_warp:float</em>, <em>signal_frame:VectorBase</em>, <em>feature:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.fbank.FbankComputer.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FbankComputer::Compute(float, float, ::kaldi::VectorBase&lt;float&gt; <a href="#id1"><span class="problematic" id="id2">*</span></a>, ::kaldi::VectorBase&lt;float&gt; <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.fbank.FbankComputer.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.fbank.FbankComputer.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::FbankComputer::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.fbank.FbankComputer.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:FbankComputer</em><span class="sig-paren">)</span> &#x2192; FbankComputer<a class="headerlink" href="#kaldi.feat.fbank.FbankComputer.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::FbankComputer&gt; ::kaldi::FbankComputer::FbankComputer(::kaldi::FbankComputer)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.fbank.FbankComputer.get_frame_options">
+<code class="descname">get_frame_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; FrameExtractionOptions<a class="headerlink" href="#kaldi.feat.fbank.FbankComputer.get_frame_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::FrameExtractionOptions ::kaldi::FbankComputer::GetFrameOptions()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.fbank.FbankComputer.need_raw_log_energy">
+<code class="descname">need_raw_log_energy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.fbank.FbankComputer.need_raw_log_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::FbankComputer::NeedRawLogEnergy()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.fbank.FbankOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.fbank.</code><code class="descname">FbankOptions</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FbankOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.fbank.FbankOptions.energy_floor">
+<code class="descname">energy_floor</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.energy_floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FbankOptions.energy_floor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.fbank.FbankOptions.frame_opts">
+<code class="descname">frame_opts</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.frame_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::FrameExtractionOptions FbankOptions.frame_opts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.fbank.FbankOptions.htk_compat">
+<code class="descname">htk_compat</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.htk_compat" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool FbankOptions.htk_compat</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.fbank.FbankOptions.mel_opts">
+<code class="descname">mel_opts</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.mel_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::MelBanksOptions FbankOptions.mel_opts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.fbank.FbankOptions.raw_energy">
+<code class="descname">raw_energy</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.raw_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool FbankOptions.raw_energy</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.fbank.FbankOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FbankOptions::Register(::kaldi::OptionsItf <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.fbank.FbankOptions.use_energy">
+<code class="descname">use_energy</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.use_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool FbankOptions.use_energy</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.fbank.FbankOptions.use_log_fbank">
+<code class="descname">use_log_fbank</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.use_log_fbank" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool FbankOptions.use_log_fbank</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.fbank.FbankOptions.use_power">
+<code class="descname">use_power</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.use_power" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool FbankOptions.use_power</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.feat.functions">
+<span id="kaldi-feat-functions"></span><h2>kaldi.feat.functions<a class="headerlink" href="#module-kaldi.feat.functions" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.functions.compute_deltas" title="kaldi.feat.functions.compute_deltas"><code class="xref py py-obj docutils literal"><span class="pre">compute_deltas</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.functions.compute_power_spectrum" title="kaldi.feat.functions.compute_power_spectrum"><code class="xref py py-obj docutils literal"><span class="pre">compute_power_spectrum</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.functions.compute_shift_deltas" title="kaldi.feat.functions.compute_shift_deltas"><code class="xref py py-obj docutils literal"><span class="pre">compute_shift_deltas</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.functions.init_idft_bases" title="kaldi.feat.functions.init_idft_bases"><code class="xref py py-obj docutils literal"><span class="pre">init_idft_bases</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.functions.reverse_frames" title="kaldi.feat.functions.reverse_frames"><code class="xref py py-obj docutils literal"><span class="pre">reverse_frames</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.functions.sliding_window_cmn" title="kaldi.feat.functions.sliding_window_cmn"><code class="xref py py-obj docutils literal"><span class="pre">sliding_window_cmn</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.functions.splice_frames" title="kaldi.feat.functions.splice_frames"><code class="xref py py-obj docutils literal"><span class="pre">splice_frames</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.functions.DeltaFeatures" title="kaldi.feat.functions.DeltaFeatures"><code class="xref py py-obj docutils literal"><span class="pre">DeltaFeatures</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::DeltaFeatures</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.functions.DeltaFeaturesOptions" title="kaldi.feat.functions.DeltaFeaturesOptions"><code class="xref py py-obj docutils literal"><span class="pre">DeltaFeaturesOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::DeltaFeaturesOptions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.functions.ShiftedDeltaFeatures" title="kaldi.feat.functions.ShiftedDeltaFeatures"><code class="xref py py-obj docutils literal"><span class="pre">ShiftedDeltaFeatures</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::ShiftedDeltaFeatures</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.functions.ShiftedDeltaFeaturesOptions" title="kaldi.feat.functions.ShiftedDeltaFeaturesOptions"><code class="xref py py-obj docutils literal"><span class="pre">ShiftedDeltaFeaturesOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::ShiftedDeltaFeaturesOptions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.functions.SlidingWindowCmnOptions" title="kaldi.feat.functions.SlidingWindowCmnOptions"><code class="xref py py-obj docutils literal"><span class="pre">SlidingWindowCmnOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::SlidingWindowCmnOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.feat.functions.DeltaFeatures">
+<em class="property">class </em><code class="descclassname">kaldi.feat.functions.</code><code class="descname">DeltaFeatures</code><a class="headerlink" href="#kaldi.feat.functions.DeltaFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::DeltaFeatures</p>
+<dl class="method">
+<dt id="kaldi.feat.functions.DeltaFeatures.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>input_feats:MatrixBase</em>, <em>frame:int</em>, <em>output_frame:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.functions.DeltaFeatures.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DeltaFeatures::Process(::kaldi::MatrixBase&lt;float&gt;, int, ::kaldi::VectorBase&lt;float&gt; <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.functions.DeltaFeaturesOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.functions.</code><code class="descname">DeltaFeaturesOptions</code><a class="headerlink" href="#kaldi.feat.functions.DeltaFeaturesOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::DeltaFeaturesOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.functions.DeltaFeaturesOptions.order">
+<code class="descname">order</code><a class="headerlink" href="#kaldi.feat.functions.DeltaFeaturesOptions.order" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 DeltaFeaturesOptions.order</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.functions.DeltaFeaturesOptions.window">
+<code class="descname">window</code><a class="headerlink" href="#kaldi.feat.functions.DeltaFeaturesOptions.window" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 DeltaFeaturesOptions.window</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.functions.ShiftedDeltaFeatures">
+<em class="property">class </em><code class="descclassname">kaldi.feat.functions.</code><code class="descname">ShiftedDeltaFeatures</code><a class="headerlink" href="#kaldi.feat.functions.ShiftedDeltaFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::ShiftedDeltaFeatures</p>
+<dl class="method">
+<dt id="kaldi.feat.functions.ShiftedDeltaFeatures.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>input_feats:MatrixBase</em>, <em>frame:int</em>, <em>output_frame:SubVector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.functions.ShiftedDeltaFeatures.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ShiftedDeltaFeatures::Process(::kaldi::MatrixBase&lt;float&gt;, int, ::kaldi::SubVector&lt;float&gt; <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.functions.ShiftedDeltaFeaturesOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.functions.</code><code class="descname">ShiftedDeltaFeaturesOptions</code><a class="headerlink" href="#kaldi.feat.functions.ShiftedDeltaFeaturesOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::ShiftedDeltaFeaturesOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.functions.ShiftedDeltaFeaturesOptions.block_shift">
+<code class="descname">block_shift</code><a class="headerlink" href="#kaldi.feat.functions.ShiftedDeltaFeaturesOptions.block_shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 ShiftedDeltaFeaturesOptions.block_shift</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.functions.ShiftedDeltaFeaturesOptions.num_blocks">
+<code class="descname">num_blocks</code><a class="headerlink" href="#kaldi.feat.functions.ShiftedDeltaFeaturesOptions.num_blocks" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 ShiftedDeltaFeaturesOptions.num_blocks</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.functions.ShiftedDeltaFeaturesOptions.window">
+<code class="descname">window</code><a class="headerlink" href="#kaldi.feat.functions.ShiftedDeltaFeaturesOptions.window" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 ShiftedDeltaFeaturesOptions.window</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.functions.SlidingWindowCmnOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.functions.</code><code class="descname">SlidingWindowCmnOptions</code><a class="headerlink" href="#kaldi.feat.functions.SlidingWindowCmnOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::SlidingWindowCmnOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.functions.SlidingWindowCmnOptions.center">
+<code class="descname">center</code><a class="headerlink" href="#kaldi.feat.functions.SlidingWindowCmnOptions.center" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool SlidingWindowCmnOptions.center</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.functions.SlidingWindowCmnOptions.check">
+<code class="descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.functions.SlidingWindowCmnOptions.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::SlidingWindowCmnOptions::Check()</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.functions.SlidingWindowCmnOptions.cmn_window">
+<code class="descname">cmn_window</code><a class="headerlink" href="#kaldi.feat.functions.SlidingWindowCmnOptions.cmn_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 SlidingWindowCmnOptions.cmn_window</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.functions.SlidingWindowCmnOptions.min_window">
+<code class="descname">min_window</code><a class="headerlink" href="#kaldi.feat.functions.SlidingWindowCmnOptions.min_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 SlidingWindowCmnOptions.min_window</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.functions.SlidingWindowCmnOptions.normalize_variance">
+<code class="descname">normalize_variance</code><a class="headerlink" href="#kaldi.feat.functions.SlidingWindowCmnOptions.normalize_variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool SlidingWindowCmnOptions.normalize_variance</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.functions.compute_deltas">
+<code class="descclassname">kaldi.feat.functions.</code><code class="descname">compute_deltas</code><span class="sig-paren">(</span><em>delta_opts:DeltaFeaturesOptions</em>, <em>input_features:MatrixBase</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.functions.compute_deltas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ComputeDeltas(::kaldi::DeltaFeaturesOptions, ::kaldi::MatrixBase&lt;float&gt;, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.functions.compute_power_spectrum">
+<code class="descclassname">kaldi.feat.functions.</code><code class="descname">compute_power_spectrum</code><span class="sig-paren">(</span><em>complex_fft:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.functions.compute_power_spectrum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ComputePowerSpectrum(::kaldi::VectorBase&lt;float&gt; <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.functions.compute_shift_deltas">
+<code class="descclassname">kaldi.feat.functions.</code><code class="descname">compute_shift_deltas</code><span class="sig-paren">(</span><em>delta_opts:ShiftedDeltaFeaturesOptions</em>, <em>input_features:MatrixBase</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.functions.compute_shift_deltas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ComputeShiftedDeltas(::kaldi::ShiftedDeltaFeaturesOptions, ::kaldi::MatrixBase&lt;float&gt;, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.functions.init_idft_bases">
+<code class="descclassname">kaldi.feat.functions.</code><code class="descname">init_idft_bases</code><span class="sig-paren">(</span><em>n_bases:int</em>, <em>dimension:int</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.functions.init_idft_bases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::InitIdftBases(int, int, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.functions.reverse_frames">
+<code class="descclassname">kaldi.feat.functions.</code><code class="descname">reverse_frames</code><span class="sig-paren">(</span><em>input_features:MatrixBase</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.functions.reverse_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ReverseFrames(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.functions.sliding_window_cmn">
+<code class="descclassname">kaldi.feat.functions.</code><code class="descname">sliding_window_cmn</code><span class="sig-paren">(</span><em>opts:SlidingWindowCmnOptions</em>, <em>input:MatrixBase</em>, <em>output:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.functions.sliding_window_cmn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::SlidingWindowCmn(::kaldi::SlidingWindowCmnOptions, ::kaldi::MatrixBase&lt;float&gt;, ::kaldi::MatrixBase&lt;float&gt; <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.functions.splice_frames">
+<code class="descclassname">kaldi.feat.functions.</code><code class="descname">splice_frames</code><span class="sig-paren">(</span><em>input_features:MatrixBase</em>, <em>left_context:int</em>, <em>right_context:int</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.functions.splice_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::SpliceFrames(::kaldi::MatrixBase&lt;float&gt;, int, int, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.feat.mel">
+<span id="kaldi-feat-mel"></span><h2>kaldi.feat.mel<a class="headerlink" href="#module-kaldi.feat.mel" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.mel.compute_lifter_coeffs" title="kaldi.feat.mel.compute_lifter_coeffs"><code class="xref py py-obj docutils literal"><span class="pre">compute_lifter_coeffs</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.mel.compute_lpc" title="kaldi.feat.mel.compute_lpc"><code class="xref py py-obj docutils literal"><span class="pre">compute_lpc</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.mel.get_equal_loudness_vector" title="kaldi.feat.mel.get_equal_loudness_vector"><code class="xref py py-obj docutils literal"><span class="pre">get_equal_loudness_vector</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.mel.MelBanks" title="kaldi.feat.mel.MelBanks"><code class="xref py py-obj docutils literal"><span class="pre">MelBanks</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MelBanks</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.mel.MelBanksOptions" title="kaldi.feat.mel.MelBanksOptions"><code class="xref py py-obj docutils literal"><span class="pre">MelBanksOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MelBanksOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.feat.mel.MelBanks">
+<em class="property">class </em><code class="descclassname">kaldi.feat.mel.</code><code class="descname">MelBanks</code><a class="headerlink" href="#kaldi.feat.mel.MelBanks" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MelBanks</p>
+<dl class="method">
+<dt id="kaldi.feat.mel.MelBanks.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>fft_energies:VectorBase</em>, <em>mel_energies_out:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.mel.MelBanks.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MelBanks::Compute(::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt; <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mel.MelBanks.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:MelBanks</em><span class="sig-paren">)</span> &#x2192; MelBanks<a class="headerlink" href="#kaldi.feat.mel.MelBanks.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::MelBanks&gt; ::kaldi::MelBanks::MelBanks(::kaldi::MelBanks)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mel.MelBanks.get_center_freqs">
+<code class="descname">get_center_freqs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.feat.mel.MelBanks.get_center_freqs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::Vector&lt;float&gt; ::kaldi::MelBanks::GetCenterFreqs()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mel.MelBanks.inverse_mel_scale">
+<code class="descname">inverse_mel_scale</code><span class="sig-paren">(</span><em>mel_freq:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.mel.MelBanks.inverse_mel_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::MelBanks::InverseMelScale(float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mel.MelBanks.mel_scale">
+<code class="descname">mel_scale</code><span class="sig-paren">(</span><em>freq:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.mel.MelBanks.mel_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::MelBanks::MelScale(float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mel.MelBanks.num_bins">
+<code class="descname">num_bins</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.mel.MelBanks.num_bins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::MelBanks::NumBins()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mel.MelBanks.vtln_warp_freq">
+<code class="descname">vtln_warp_freq</code><span class="sig-paren">(</span><em>vtln_low_cutoff:float</em>, <em>vtln_high_cutoff:float</em>, <em>low_freq:float</em>, <em>high_freq:float</em>, <em>vtln_warp_factor:float</em>, <em>freq:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.mel.MelBanks.vtln_warp_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::MelBanks::VtlnWarpFreq(float, float, float, float, float, float)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mel.MelBanks.vtln_warp_mel_freq">
+<code class="descname">vtln_warp_mel_freq</code><span class="sig-paren">(</span><em>vtln_low_cutoff:float</em>, <em>vtln_high_cutoff:float</em>, <em>low_freq:float</em>, <em>high_freq:float</em>, <em>vtln_warp_factor:float</em>, <em>mel_freq:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.mel.MelBanks.vtln_warp_mel_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::MelBanks::VtlnWarpMelFreq(float, float, float, float, float, float)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.mel.MelBanksOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.mel.</code><code class="descname">MelBanksOptions</code><a class="headerlink" href="#kaldi.feat.mel.MelBanksOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MelBanksOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.mel.MelBanksOptions.debug_mel">
+<code class="descname">debug_mel</code><a class="headerlink" href="#kaldi.feat.mel.MelBanksOptions.debug_mel" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MelBanksOptions.debug_mel</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mel.MelBanksOptions.high_freq">
+<code class="descname">high_freq</code><a class="headerlink" href="#kaldi.feat.mel.MelBanksOptions.high_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MelBanksOptions.high_freq</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mel.MelBanksOptions.htk_mode">
+<code class="descname">htk_mode</code><a class="headerlink" href="#kaldi.feat.mel.MelBanksOptions.htk_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MelBanksOptions.htk_mode</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mel.MelBanksOptions.low_freq">
+<code class="descname">low_freq</code><a class="headerlink" href="#kaldi.feat.mel.MelBanksOptions.low_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MelBanksOptions.low_freq</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mel.MelBanksOptions.num_bins">
+<code class="descname">num_bins</code><a class="headerlink" href="#kaldi.feat.mel.MelBanksOptions.num_bins" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 MelBanksOptions.num_bins</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mel.MelBanksOptions.vtln_high">
+<code class="descname">vtln_high</code><a class="headerlink" href="#kaldi.feat.mel.MelBanksOptions.vtln_high" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MelBanksOptions.vtln_high</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mel.MelBanksOptions.vtln_low">
+<code class="descname">vtln_low</code><a class="headerlink" href="#kaldi.feat.mel.MelBanksOptions.vtln_low" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MelBanksOptions.vtln_low</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.mel.compute_lifter_coeffs">
+<code class="descclassname">kaldi.feat.mel.</code><code class="descname">compute_lifter_coeffs</code><span class="sig-paren">(</span><em>Q:float</em>, <em>coeffs:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.mel.compute_lifter_coeffs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ComputeLifterCoeffs(float, ::kaldi::VectorBase&lt;float&gt; <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.mel.compute_lpc">
+<code class="descclassname">kaldi.feat.mel.</code><code class="descname">compute_lpc</code><span class="sig-paren">(</span><em>autocorr_in:VectorBase</em>, <em>lpc_out:Vector</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.mel.compute_lpc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::ComputeLpc(::kaldi::VectorBase&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.mel.get_equal_loudness_vector">
+<code class="descclassname">kaldi.feat.mel.</code><code class="descname">get_equal_loudness_vector</code><span class="sig-paren">(</span><em>mel_banks:MelBanks</em>, <em>ans:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.mel.get_equal_loudness_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::GetEqualLoudnessVector(::kaldi::MelBanks, ::kaldi::Vector&lt;float&gt; <a href="#id21"><span class="problematic" id="id22">*</span></a>)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.feat.mfcc">
+<span id="kaldi-feat-mfcc"></span><h2>kaldi.feat.mfcc<a class="headerlink" href="#module-kaldi.feat.mfcc" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.mfcc.Mfcc" title="kaldi.feat.mfcc.Mfcc"><code class="xref py py-obj docutils literal"><span class="pre">Mfcc</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::MfccComputer&gt;</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.mfcc.MfccComputer" title="kaldi.feat.mfcc.MfccComputer"><code class="xref py py-obj docutils literal"><span class="pre">MfccComputer</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MfccComputer</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.mfcc.MfccOptions" title="kaldi.feat.mfcc.MfccOptions"><code class="xref py py-obj docutils literal"><span class="pre">MfccOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::MfccOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.feat.mfcc.Mfcc">
+<em class="property">class </em><code class="descclassname">kaldi.feat.mfcc.</code><code class="descname">Mfcc</code><a class="headerlink" href="#kaldi.feat.mfcc.Mfcc" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::MfccComputer&gt;</p>
+<dl class="method">
+<dt id="kaldi.feat.mfcc.Mfcc.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OfflineFeatureTpl&lt;kaldi::MfccComputer&gt;::Compute(::kaldi::VectorBase&lt;float&gt;, float, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mfcc.Mfcc.compute_features">
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.compute_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the features for one file (one sequence of features).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wave</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – The input waveform</li>
+<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The sampling frequency with which wave is
+sampled. If sample_freq is higher than the frequency specified in
+the config, Kaldi will downsample the waveform</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mfcc.Mfcc.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OfflineFeatureTpl&lt;kaldi::MfccComputer&gt;::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mfcc.Mfcc.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:Mfcc</em><span class="sig-paren">)</span> &#x2192; Mfcc<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::MfccComputer&gt;&gt; ::kaldi::OfflineFeatureTpl&lt;kaldi::MfccComputer&gt;::OfflineFeatureTpl(::kaldi::OfflineFeatureTpl&lt; ::kaldi::MfccComputer&gt;)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.mfcc.MfccComputer">
+<em class="property">class </em><code class="descclassname">kaldi.feat.mfcc.</code><code class="descname">MfccComputer</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MfccComputer</p>
+<dl class="method">
+<dt id="kaldi.feat.mfcc.MfccComputer.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>signal_log_energy:float</em>, <em>vtln_warp:float</em>, <em>signal_frame:VectorBase</em>, <em>feature:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MfccComputer::Compute(float, float, ::kaldi::VectorBase&lt;float&gt; <a href="#id23"><span class="problematic" id="id24">*</span></a>, ::kaldi::VectorBase&lt;float&gt; <a href="#id25"><span class="problematic" id="id26">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mfcc.MfccComputer.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::MfccComputer::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mfcc.MfccComputer.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:MfccComputer</em><span class="sig-paren">)</span> &#x2192; MfccComputer<a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::MfccComputer&gt; ::kaldi::MfccComputer::MfccComputer(::kaldi::MfccComputer)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mfcc.MfccComputer.get_frame_options">
+<code class="descname">get_frame_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; FrameExtractionOptions<a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer.get_frame_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::FrameExtractionOptions ::kaldi::MfccComputer::GetFrameOptions()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mfcc.MfccComputer.need_raw_log_energy">
+<code class="descname">need_raw_log_energy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer.need_raw_log_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::MfccComputer::NeedRawLogEnergy()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.mfcc.MfccOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.mfcc.</code><code class="descname">MfccOptions</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::MfccOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.mfcc.MfccOptions.cepstral_lifter">
+<code class="descname">cepstral_lifter</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.cepstral_lifter" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MfccOptions.cepstral_lifter</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mfcc.MfccOptions.energy_floor">
+<code class="descname">energy_floor</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.energy_floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat MfccOptions.energy_floor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mfcc.MfccOptions.frame_opts">
+<code class="descname">frame_opts</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.frame_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::FrameExtractionOptions MfccOptions.frame_opts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mfcc.MfccOptions.htk_compat">
+<code class="descname">htk_compat</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.htk_compat" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MfccOptions.htk_compat</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mfcc.MfccOptions.mel_opts">
+<code class="descname">mel_opts</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.mel_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::MelBanksOptions MfccOptions.mel_opts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mfcc.MfccOptions.num_ceps">
+<code class="descname">num_ceps</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.num_ceps" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 MfccOptions.num_ceps</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mfcc.MfccOptions.raw_energy">
+<code class="descname">raw_energy</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.raw_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MfccOptions.raw_energy</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mfcc.MfccOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::MfccOptions::Register(::kaldi::OptionsItf <a href="#id27"><span class="problematic" id="id28">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.mfcc.MfccOptions.use_energy">
+<code class="descname">use_energy</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.use_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool MfccOptions.use_energy</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.feat.online">
+<span id="kaldi-feat-online"></span><h2>kaldi.feat.online<a class="headerlink" href="#module-kaldi.feat.online" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.online.OnlineAppendFeature" title="kaldi.feat.online.OnlineAppendFeature"><code class="xref py py-obj docutils literal"><span class="pre">OnlineAppendFeature</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineAppendFeature</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.online.OnlineCacheFeature" title="kaldi.feat.online.OnlineCacheFeature"><code class="xref py py-obj docutils literal"><span class="pre">OnlineCacheFeature</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineCacheFeature</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.online.OnlineCmvn" title="kaldi.feat.online.OnlineCmvn"><code class="xref py py-obj docutils literal"><span class="pre">OnlineCmvn</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineCmvn</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.online.OnlineCmvnOptions" title="kaldi.feat.online.OnlineCmvnOptions"><code class="xref py py-obj docutils literal"><span class="pre">OnlineCmvnOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineCmvnOptions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.online.OnlineCmvnState" title="kaldi.feat.online.OnlineCmvnState"><code class="xref py py-obj docutils literal"><span class="pre">OnlineCmvnState</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineCmvnState</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.online.OnlineDeltaFeature" title="kaldi.feat.online.OnlineDeltaFeature"><code class="xref py py-obj docutils literal"><span class="pre">OnlineDeltaFeature</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineDeltaFeature</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.online.OnlineFbank" title="kaldi.feat.online.OnlineFbank"><code class="xref py py-obj docutils literal"><span class="pre">OnlineFbank</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineGenericBaseFeature&lt; ::kaldi::FbankComputer&gt;</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.online.OnlineMatrixFeature" title="kaldi.feat.online.OnlineMatrixFeature"><code class="xref py py-obj docutils literal"><span class="pre">OnlineMatrixFeature</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineMatrixFeature</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.online.OnlineMfcc" title="kaldi.feat.online.OnlineMfcc"><code class="xref py py-obj docutils literal"><span class="pre">OnlineMfcc</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineGenericBaseFeature&lt; ::kaldi::MfccComputer&gt;</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.online.OnlinePlp" title="kaldi.feat.online.OnlinePlp"><code class="xref py py-obj docutils literal"><span class="pre">OnlinePlp</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineGenericBaseFeature&lt; ::kaldi::PlpComputer&gt;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.online.OnlineSpliceFrames" title="kaldi.feat.online.OnlineSpliceFrames"><code class="xref py py-obj docutils literal"><span class="pre">OnlineSpliceFrames</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineSpliceFrames</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.online.OnlineSpliceOptions" title="kaldi.feat.online.OnlineSpliceOptions"><code class="xref py py-obj docutils literal"><span class="pre">OnlineSpliceOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineSpliceOptions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.online.OnlineTransform" title="kaldi.feat.online.OnlineTransform"><code class="xref py py-obj docutils literal"><span class="pre">OnlineTransform</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineTransform</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineAppendFeature">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineAppendFeature</code><a class="headerlink" href="#kaldi.feat.online.OnlineAppendFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineAppendFeature</p>
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineAppendFeature.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineAppendFeature.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineAppendFeature::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineAppendFeature.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.online.OnlineAppendFeature.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineAppendFeature::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineAppendFeature.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineAppendFeature.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineAppendFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id29"><span class="problematic" id="id30">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineAppendFeature.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineAppendFeature.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineAppendFeature::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineAppendFeature.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineAppendFeature.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineAppendFeature::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineCacheFeature">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineCacheFeature</code><a class="headerlink" href="#kaldi.feat.online.OnlineCacheFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineCacheFeature</p>
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCacheFeature.clear_cache">
+<code class="descname">clear_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCacheFeature.clear_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineCacheFeature::ClearCache()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCacheFeature.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineCacheFeature.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineCacheFeature::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCacheFeature.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.online.OnlineCacheFeature.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineCacheFeature::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCacheFeature.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCacheFeature.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineCacheFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id31"><span class="problematic" id="id32">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCacheFeature.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineCacheFeature.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineCacheFeature::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCacheFeature.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineCacheFeature.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineCacheFeature::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineCmvn">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineCmvn</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvn" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineCmvn</p>
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvn.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineCmvn::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvn.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineCmvn::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvn.freeze">
+<code class="descname">freeze</code><span class="sig-paren">(</span><em>cur_frame:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.freeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineCmvn::Freeze(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvn.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineCmvn::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id33"><span class="problematic" id="id34">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvn.get_state">
+<code class="descname">get_state</code><span class="sig-paren">(</span><em>cur_frame:int</em><span class="sig-paren">)</span> &#x2192; OnlineCmvnState<a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.get_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineCmvn::GetState(int, ::kaldi::OnlineCmvnState*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvn.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineCmvn::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvn.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineCmvn::NumFramesReady()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvn.set_state">
+<code class="descname">set_state</code><span class="sig-paren">(</span><em>cmvn_state:OnlineCmvnState</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.set_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineCmvn::SetState(::kaldi::OnlineCmvnState)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvn.without_state">
+<code class="descname">without_state</code><span class="sig-paren">(</span><em>opts:OnlineCmvnOptions</em>, <em>src:OnlineFeatureInterface</em><span class="sig-paren">)</span> &#x2192; OnlineCmvn<a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.without_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OnlineCmvn&gt; ::kaldi::OnlineCmvn::OnlineCmvn(::kaldi::OnlineCmvnOptions, ::kaldi::OnlineFeatureInterface <a href="#id35"><span class="problematic" id="id36">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineCmvnOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineCmvnOptions</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineCmvnOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineCmvnOptions.cmn_window">
+<code class="descname">cmn_window</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnOptions.cmn_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 OnlineCmvnOptions.cmn_window</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineCmvnOptions.global_frames">
+<code class="descname">global_frames</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnOptions.global_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 OnlineCmvnOptions.global_frames</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineCmvnOptions.modulus">
+<code class="descname">modulus</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnOptions.modulus" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 OnlineCmvnOptions.modulus</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineCmvnOptions.normalize_mean">
+<code class="descname">normalize_mean</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnOptions.normalize_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool OnlineCmvnOptions.normalize_mean</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineCmvnOptions.normalize_variance">
+<code class="descname">normalize_variance</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnOptions.normalize_variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool OnlineCmvnOptions.normalize_variance</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvnOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:ParseOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineCmvnOptions::Register(::kaldi::ParseOptionsExt <a href="#id37"><span class="problematic" id="id38">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineCmvnOptions.ring_buffer_size">
+<code class="descname">ring_buffer_size</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnOptions.ring_buffer_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 OnlineCmvnOptions.ring_buffer_size</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineCmvnOptions.skip_dims">
+<code class="descname">skip_dims</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnOptions.skip_dims" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::string OnlineCmvnOptions.skip_dims</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineCmvnOptions.speaker_frames">
+<code class="descname">speaker_frames</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnOptions.speaker_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 OnlineCmvnOptions.speaker_frames</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineCmvnState">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineCmvnState</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnState" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineCmvnState</p>
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvnState.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:OnlineCmvnState</em><span class="sig-paren">)</span> &#x2192; OnlineCmvnState<a class="headerlink" href="#kaldi.feat.online.OnlineCmvnState.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OnlineCmvnState&gt; ::kaldi::OnlineCmvnState::OnlineCmvnState(::kaldi::OnlineCmvnState)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvnState.from_stats">
+<code class="descname">from_stats</code><span class="sig-paren">(</span><em>global_stats:DoubleMatrix</em><span class="sig-paren">)</span> &#x2192; OnlineCmvnState<a class="headerlink" href="#kaldi.feat.online.OnlineCmvnState.from_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OnlineCmvnState&gt; ::kaldi::OnlineCmvnState::OnlineCmvnState(::kaldi::Matrix&lt;double&gt;)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineCmvnState.frozen_state">
+<code class="descname">frozen_state</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnState.frozen_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Matrix&lt;double&gt; OnlineCmvnState.frozen_state</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineCmvnState.global_cmvn_stats">
+<code class="descname">global_cmvn_stats</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnState.global_cmvn_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Matrix&lt;double&gt; OnlineCmvnState.global_cmvn_stats</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvnState.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnState.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineCmvnState::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineCmvnState.speaker_cmvn_stats">
+<code class="descname">speaker_cmvn_stats</code><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnState.speaker_cmvn_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Matrix&lt;double&gt; OnlineCmvnState.speaker_cmvn_stats</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvnState.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnState.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineCmvnState::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineDeltaFeature">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineDeltaFeature</code><a class="headerlink" href="#kaldi.feat.online.OnlineDeltaFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineDeltaFeature</p>
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineDeltaFeature.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineDeltaFeature.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineDeltaFeature::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineDeltaFeature.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.online.OnlineDeltaFeature.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineDeltaFeature::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineDeltaFeature.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineDeltaFeature.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineDeltaFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id39"><span class="problematic" id="id40">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineDeltaFeature.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineDeltaFeature.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineDeltaFeature::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineDeltaFeature.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineDeltaFeature.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineDeltaFeature::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineFbank">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineFbank</code><a class="headerlink" href="#kaldi.feat.online.OnlineFbank" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineGenericBaseFeature&lt; ::kaldi::FbankComputer&gt;</p>
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineFbank.accept_waveform">
+<code class="descname">accept_waveform</code><span class="sig-paren">(</span><em>sampling_rate:float</em>, <em>waveform:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineFbank.accept_waveform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::FbankComputer&gt;::AcceptWaveform(float, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineFbank.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineFbank.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineGenericBaseFeature&lt;kaldi::FbankComputer&gt;::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineFbank.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.online.OnlineFbank.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineGenericBaseFeature&lt;kaldi::FbankComputer&gt;::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineFbank.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineFbank.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::FbankComputer&gt;::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id41"><span class="problematic" id="id42">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineFbank.input_finished">
+<code class="descname">input_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineFbank.input_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::FbankComputer&gt;::InputFinished()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineFbank.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineFbank.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineGenericBaseFeature&lt;kaldi::FbankComputer&gt;::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineFbank.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineFbank.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineGenericBaseFeature&lt;kaldi::FbankComputer&gt;::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineMatrixFeature">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineMatrixFeature</code><a class="headerlink" href="#kaldi.feat.online.OnlineMatrixFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineMatrixFeature</p>
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMatrixFeature.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineMatrixFeature.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineMatrixFeature::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMatrixFeature.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.online.OnlineMatrixFeature.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineMatrixFeature::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMatrixFeature.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineMatrixFeature.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineMatrixFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id43"><span class="problematic" id="id44">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMatrixFeature.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineMatrixFeature.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineMatrixFeature::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMatrixFeature.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineMatrixFeature.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineMatrixFeature::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineMfcc">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineMfcc</code><a class="headerlink" href="#kaldi.feat.online.OnlineMfcc" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineGenericBaseFeature&lt; ::kaldi::MfccComputer&gt;</p>
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMfcc.accept_waveform">
+<code class="descname">accept_waveform</code><span class="sig-paren">(</span><em>sampling_rate:float</em>, <em>waveform:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineMfcc.accept_waveform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::MfccComputer&gt;::AcceptWaveform(float, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMfcc.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineMfcc.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineGenericBaseFeature&lt;kaldi::MfccComputer&gt;::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMfcc.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.online.OnlineMfcc.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineGenericBaseFeature&lt;kaldi::MfccComputer&gt;::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMfcc.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineMfcc.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::MfccComputer&gt;::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id45"><span class="problematic" id="id46">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMfcc.input_finished">
+<code class="descname">input_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineMfcc.input_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::MfccComputer&gt;::InputFinished()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMfcc.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineMfcc.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineGenericBaseFeature&lt;kaldi::MfccComputer&gt;::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMfcc.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineMfcc.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineGenericBaseFeature&lt;kaldi::MfccComputer&gt;::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlinePlp">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlinePlp</code><a class="headerlink" href="#kaldi.feat.online.OnlinePlp" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineGenericBaseFeature&lt; ::kaldi::PlpComputer&gt;</p>
+<dl class="method">
+<dt id="kaldi.feat.online.OnlinePlp.accept_waveform">
+<code class="descname">accept_waveform</code><span class="sig-paren">(</span><em>sampling_rate:float</em>, <em>waveform:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlinePlp.accept_waveform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::PlpComputer&gt;::AcceptWaveform(float, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlinePlp.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlinePlp.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineGenericBaseFeature&lt;kaldi::PlpComputer&gt;::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlinePlp.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.online.OnlinePlp.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineGenericBaseFeature&lt;kaldi::PlpComputer&gt;::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlinePlp.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlinePlp.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::PlpComputer&gt;::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id47"><span class="problematic" id="id48">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlinePlp.input_finished">
+<code class="descname">input_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlinePlp.input_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::PlpComputer&gt;::InputFinished()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlinePlp.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlinePlp.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineGenericBaseFeature&lt;kaldi::PlpComputer&gt;::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlinePlp.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlinePlp.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineGenericBaseFeature&lt;kaldi::PlpComputer&gt;::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineSpliceFrames">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineSpliceFrames</code><a class="headerlink" href="#kaldi.feat.online.OnlineSpliceFrames" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineSpliceFrames</p>
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineSpliceFrames.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineSpliceFrames.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineSpliceFrames::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineSpliceFrames.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.online.OnlineSpliceFrames.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineSpliceFrames::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineSpliceFrames.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineSpliceFrames.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineSpliceFrames::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id49"><span class="problematic" id="id50">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineSpliceFrames.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineSpliceFrames.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineSpliceFrames::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineSpliceFrames.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineSpliceFrames.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineSpliceFrames::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineSpliceOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineSpliceOptions</code><a class="headerlink" href="#kaldi.feat.online.OnlineSpliceOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineSpliceOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineSpliceOptions.left_context">
+<code class="descname">left_context</code><a class="headerlink" href="#kaldi.feat.online.OnlineSpliceOptions.left_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 OnlineSpliceOptions.left_context</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineSpliceOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>po:ParseOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineSpliceOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineSpliceOptions::Register(::kaldi::ParseOptionsExt <a href="#id51"><span class="problematic" id="id52">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.online.OnlineSpliceOptions.right_context">
+<code class="descname">right_context</code><a class="headerlink" href="#kaldi.feat.online.OnlineSpliceOptions.right_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 OnlineSpliceOptions.right_context</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.online.OnlineTransform">
+<em class="property">class </em><code class="descclassname">kaldi.feat.online.</code><code class="descname">OnlineTransform</code><a class="headerlink" href="#kaldi.feat.online.OnlineTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineTransform</p>
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineTransform.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineTransform.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineTransform::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineTransform.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.online.OnlineTransform.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineTransform::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineTransform.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineTransform.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineTransform::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id53"><span class="problematic" id="id54">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineTransform.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineTransform.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineTransform::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineTransform.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.online.OnlineTransform.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineTransform::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.feat.pitch">
+<span id="kaldi-feat-pitch"></span><h2>kaldi.feat.pitch<a class="headerlink" href="#module-kaldi.feat.pitch" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.pitch.compute_and_process_kaldi_pitch" title="kaldi.feat.pitch.compute_and_process_kaldi_pitch"><code class="xref py py-obj docutils literal"><span class="pre">compute_and_process_kaldi_pitch</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.pitch.compute_kaldi_pitch" title="kaldi.feat.pitch.compute_kaldi_pitch"><code class="xref py py-obj docutils literal"><span class="pre">compute_kaldi_pitch</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.pitch.process_pitch" title="kaldi.feat.pitch.process_pitch"><code class="xref py py-obj docutils literal"><span class="pre">process_pitch</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.pitch.OnlinePitchFeature" title="kaldi.feat.pitch.OnlinePitchFeature"><code class="xref py py-obj docutils literal"><span class="pre">OnlinePitchFeature</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlinePitchFeature</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.pitch.OnlineProcessPitch" title="kaldi.feat.pitch.OnlineProcessPitch"><code class="xref py py-obj docutils literal"><span class="pre">OnlineProcessPitch</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OnlineProcessPitch</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.pitch.PitchExtractionOptions" title="kaldi.feat.pitch.PitchExtractionOptions"><code class="xref py py-obj docutils literal"><span class="pre">PitchExtractionOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::PitchExtractionOptions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.pitch.ProcessPitchOptions" title="kaldi.feat.pitch.ProcessPitchOptions"><code class="xref py py-obj docutils literal"><span class="pre">ProcessPitchOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::ProcessPitchOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.feat.pitch.OnlinePitchFeature">
+<em class="property">class </em><code class="descclassname">kaldi.feat.pitch.</code><code class="descname">OnlinePitchFeature</code><a class="headerlink" href="#kaldi.feat.pitch.OnlinePitchFeature" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlinePitchFeature</p>
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlinePitchFeature.accept_waveform">
+<code class="descname">accept_waveform</code><span class="sig-paren">(</span><em>sampling_rate:float</em>, <em>waveform:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.OnlinePitchFeature.accept_waveform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineBaseFeature::AcceptWaveform(float, ::kaldi::VectorBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlinePitchFeature.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.pitch.OnlinePitchFeature.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineFeatureInterface::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlinePitchFeature.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.pitch.OnlinePitchFeature.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineFeatureInterface::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlinePitchFeature.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.OnlinePitchFeature.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineFeatureInterface::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id55"><span class="problematic" id="id56">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlinePitchFeature.input_finished">
+<code class="descname">input_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.OnlinePitchFeature.input_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineBaseFeature::InputFinished()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlinePitchFeature.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.pitch.OnlinePitchFeature.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineFeatureInterface::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlinePitchFeature.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.pitch.OnlinePitchFeature.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineFeatureInterface::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.pitch.OnlineProcessPitch">
+<em class="property">class </em><code class="descclassname">kaldi.feat.pitch.</code><code class="descname">OnlineProcessPitch</code><a class="headerlink" href="#kaldi.feat.pitch.OnlineProcessPitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineProcessPitch</p>
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlineProcessPitch.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.pitch.OnlineProcessPitch.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineFeatureInterface::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlineProcessPitch.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.pitch.OnlineProcessPitch.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+float ::kaldi::OnlineFeatureInterface::FrameShiftInSeconds()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlineProcessPitch.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.OnlineProcessPitch.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineFeatureInterface::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id57"><span class="problematic" id="id58">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlineProcessPitch.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.pitch.OnlineProcessPitch.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::OnlineFeatureInterface::IsLastFrame(int)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlineProcessPitch.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.pitch.OnlineProcessPitch.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OnlineFeatureInterface::NumFramesReady()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.pitch.</code><code class="descname">PitchExtractionOptions</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::PitchExtractionOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.delta_pitch">
+<code class="descname">delta_pitch</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.delta_pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.delta_pitch</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.frame_length_ms">
+<code class="descname">frame_length_ms</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.frame_length_ms" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.frame_length_ms</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.frame_shift_ms">
+<code class="descname">frame_shift_ms</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.frame_shift_ms" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.frame_shift_ms</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.frames_per_chunk">
+<code class="descname">frames_per_chunk</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.frames_per_chunk" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 PitchExtractionOptions.frames_per_chunk</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.lowpass_cutoff">
+<code class="descname">lowpass_cutoff</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.lowpass_cutoff" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.lowpass_cutoff</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.lowpass_filter_width">
+<code class="descname">lowpass_filter_width</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.lowpass_filter_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 PitchExtractionOptions.lowpass_filter_width</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.max_f0">
+<code class="descname">max_f0</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.max_f0" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.max_f0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.max_frames_latency">
+<code class="descname">max_frames_latency</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.max_frames_latency" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 PitchExtractionOptions.max_frames_latency</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.min_f0">
+<code class="descname">min_f0</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.min_f0" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.min_f0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.nccf_ballast">
+<code class="descname">nccf_ballast</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.nccf_ballast" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.nccf_ballast</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.nccf_ballast_online">
+<code class="descname">nccf_ballast_online</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.nccf_ballast_online" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool PitchExtractionOptions.nccf_ballast_online</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.nccf_window_shift">
+<code class="descname">nccf_window_shift</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.nccf_window_shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::PitchExtractionOptions::NccfWindowShift()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.nccf_window_size">
+<code class="descname">nccf_window_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.nccf_window_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::PitchExtractionOptions::NccfWindowSize()</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.penalty_factor">
+<code class="descname">penalty_factor</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.penalty_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.penalty_factor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.preemph_coeff">
+<code class="descname">preemph_coeff</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.preemph_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.preemph_coeff</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.recompute_frame">
+<code class="descname">recompute_frame</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.recompute_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 PitchExtractionOptions.recompute_frame</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PitchExtractionOptions::Register(::kaldi::OptionsItf <a href="#id59"><span class="problematic" id="id60">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.resample_freq">
+<code class="descname">resample_freq</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.resample_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.resample_freq</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.samp_freq">
+<code class="descname">samp_freq</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.samp_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.samp_freq</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.simulate_first_pass_online">
+<code class="descname">simulate_first_pass_online</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.simulate_first_pass_online" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool PitchExtractionOptions.simulate_first_pass_online</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.snip_edges">
+<code class="descname">snip_edges</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.snip_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool PitchExtractionOptions.snip_edges</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.soft_min_f0">
+<code class="descname">soft_min_f0</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.soft_min_f0" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PitchExtractionOptions.soft_min_f0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.PitchExtractionOptions.upsample_filter_width">
+<code class="descname">upsample_filter_width</code><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.upsample_filter_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 PitchExtractionOptions.upsample_filter_width</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.pitch.</code><code class="descname">ProcessPitchOptions</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::ProcessPitchOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.add_delta_pitch">
+<code class="descname">add_delta_pitch</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.add_delta_pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool ProcessPitchOptions.add_delta_pitch</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.add_normalized_log_pitch">
+<code class="descname">add_normalized_log_pitch</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.add_normalized_log_pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool ProcessPitchOptions.add_normalized_log_pitch</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.add_pov_feature">
+<code class="descname">add_pov_feature</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.add_pov_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool ProcessPitchOptions.add_pov_feature</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.add_raw_log_pitch">
+<code class="descname">add_raw_log_pitch</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.add_raw_log_pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool ProcessPitchOptions.add_raw_log_pitch</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.delay">
+<code class="descname">delay</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.delay" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 ProcessPitchOptions.delay</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.delta_pitch_noise_stddev">
+<code class="descname">delta_pitch_noise_stddev</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.delta_pitch_noise_stddev" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat ProcessPitchOptions.delta_pitch_noise_stddev</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.delta_pitch_scale">
+<code class="descname">delta_pitch_scale</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.delta_pitch_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat ProcessPitchOptions.delta_pitch_scale</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.delta_window">
+<code class="descname">delta_window</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.delta_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 ProcessPitchOptions.delta_window</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.normalization_left_context">
+<code class="descname">normalization_left_context</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.normalization_left_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 ProcessPitchOptions.normalization_left_context</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.normalization_right_context">
+<code class="descname">normalization_right_context</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.normalization_right_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 ProcessPitchOptions.normalization_right_context</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.pitch_scale">
+<code class="descname">pitch_scale</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.pitch_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat ProcessPitchOptions.pitch_scale</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.pov_offset">
+<code class="descname">pov_offset</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.pov_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat ProcessPitchOptions.pov_offset</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.pov_scale">
+<code class="descname">pov_scale</code><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.pov_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat ProcessPitchOptions.pov_scale</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.ProcessPitchOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:ParseOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ProcessPitchOptions::Register(::kaldi::ParseOptionsExt <a href="#id61"><span class="problematic" id="id62">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.pitch.compute_and_process_kaldi_pitch">
+<code class="descclassname">kaldi.feat.pitch.</code><code class="descname">compute_and_process_kaldi_pitch</code><span class="sig-paren">(</span><em>pitch_opts:PitchExtractionOptions</em>, <em>process_opts:ProcessPitchOptions</em>, <em>wave:VectorBase</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.pitch.compute_and_process_kaldi_pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ComputeAndProcessKaldiPitch(::kaldi::PitchExtractionOptions, ::kaldi::ProcessPitchOptions, ::kaldi::VectorBase&lt;float&gt;, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.pitch.compute_kaldi_pitch">
+<code class="descclassname">kaldi.feat.pitch.</code><code class="descname">compute_kaldi_pitch</code><span class="sig-paren">(</span><em>opts:PitchExtractionOptions</em>, <em>wave:VectorBase</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.pitch.compute_kaldi_pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ComputeKaldiPitch(::kaldi::PitchExtractionOptions, ::kaldi::VectorBase&lt;float&gt;, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.pitch.process_pitch">
+<code class="descclassname">kaldi.feat.pitch.</code><code class="descname">process_pitch</code><span class="sig-paren">(</span><em>opts:ProcessPitchOptions</em>, <em>input:MatrixBase</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.pitch.process_pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ProcessPitch(::kaldi::ProcessPitchOptions, ::kaldi::MatrixBase&lt;float&gt;, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.feat.plp">
+<span id="kaldi-feat-plp"></span><h2>kaldi.feat.plp<a class="headerlink" href="#module-kaldi.feat.plp" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.plp.Plp" title="kaldi.feat.plp.Plp"><code class="xref py py-obj docutils literal"><span class="pre">Plp</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::PlpComputer&gt;</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.plp.PlpComputer" title="kaldi.feat.plp.PlpComputer"><code class="xref py py-obj docutils literal"><span class="pre">PlpComputer</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::PlpComputer</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.plp.PlpOptions" title="kaldi.feat.plp.PlpOptions"><code class="xref py py-obj docutils literal"><span class="pre">PlpOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::PlpOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.feat.plp.Plp">
+<em class="property">class </em><code class="descclassname">kaldi.feat.plp.</code><code class="descname">Plp</code><a class="headerlink" href="#kaldi.feat.plp.Plp" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::PlpComputer&gt;</p>
+<dl class="method">
+<dt id="kaldi.feat.plp.Plp.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.plp.Plp.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OfflineFeatureTpl&lt;kaldi::PlpComputer&gt;::Compute(::kaldi::VectorBase&lt;float&gt;, float, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.plp.Plp.compute_features">
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.plp.Plp.compute_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the features for one file (one sequence of features).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wave</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – The input waveform</li>
+<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The sampling frequency with which wave is
+sampled. If sample_freq is higher than the frequency specified in
+the config, Kaldi will downsample the waveform</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.plp.Plp.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.plp.Plp.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OfflineFeatureTpl&lt;kaldi::PlpComputer&gt;::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.plp.Plp.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:Plp</em><span class="sig-paren">)</span> &#x2192; Plp<a class="headerlink" href="#kaldi.feat.plp.Plp.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::PlpComputer&gt;&gt; ::kaldi::OfflineFeatureTpl&lt;kaldi::PlpComputer&gt;::OfflineFeatureTpl(::kaldi::OfflineFeatureTpl&lt; ::kaldi::PlpComputer&gt;)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.plp.PlpComputer">
+<em class="property">class </em><code class="descclassname">kaldi.feat.plp.</code><code class="descname">PlpComputer</code><a class="headerlink" href="#kaldi.feat.plp.PlpComputer" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::PlpComputer</p>
+<dl class="method">
+<dt id="kaldi.feat.plp.PlpComputer.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>signal_log_energy:float</em>, <em>vtln_warp:float</em>, <em>signal_frame:VectorBase</em>, <em>feature:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.plp.PlpComputer.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PlpComputer::Compute(float, float, ::kaldi::VectorBase&lt;float&gt; <a href="#id63"><span class="problematic" id="id64">*</span></a>, ::kaldi::VectorBase&lt;float&gt; <a href="#id65"><span class="problematic" id="id66">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.plp.PlpComputer.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.plp.PlpComputer.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::PlpComputer::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.plp.PlpComputer.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:PlpComputer</em><span class="sig-paren">)</span> &#x2192; PlpComputer<a class="headerlink" href="#kaldi.feat.plp.PlpComputer.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::PlpComputer&gt; ::kaldi::PlpComputer::PlpComputer(::kaldi::PlpComputer)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.plp.PlpComputer.get_frame_options">
+<code class="descname">get_frame_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; FrameExtractionOptions<a class="headerlink" href="#kaldi.feat.plp.PlpComputer.get_frame_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::FrameExtractionOptions ::kaldi::PlpComputer::GetFrameOptions()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.plp.PlpComputer.need_raw_log_energy">
+<code class="descname">need_raw_log_energy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.plp.PlpComputer.need_raw_log_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::PlpComputer::NeedRawLogEnergy()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.plp.PlpOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.plp.</code><code class="descname">PlpOptions</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::PlpOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.plp.PlpOptions.cepstral_lifter">
+<code class="descname">cepstral_lifter</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.cepstral_lifter" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 PlpOptions.cepstral_lifter</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.plp.PlpOptions.cepstral_scale">
+<code class="descname">cepstral_scale</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.cepstral_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PlpOptions.cepstral_scale</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.plp.PlpOptions.compress_factor">
+<code class="descname">compress_factor</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.compress_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PlpOptions.compress_factor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.plp.PlpOptions.energy_floor">
+<code class="descname">energy_floor</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.energy_floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat PlpOptions.energy_floor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.plp.PlpOptions.frame_opts">
+<code class="descname">frame_opts</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.frame_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::FrameExtractionOptions PlpOptions.frame_opts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.plp.PlpOptions.htk_compat">
+<code class="descname">htk_compat</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.htk_compat" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool PlpOptions.htk_compat</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.plp.PlpOptions.lpc_order">
+<code class="descname">lpc_order</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.lpc_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 PlpOptions.lpc_order</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.plp.PlpOptions.mel_opts">
+<code class="descname">mel_opts</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.mel_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::MelBanksOptions PlpOptions.mel_opts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.plp.PlpOptions.num_ceps">
+<code class="descname">num_ceps</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.num_ceps" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::int32 PlpOptions.num_ceps</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.plp.PlpOptions.raw_energy">
+<code class="descname">raw_energy</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.raw_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool PlpOptions.raw_energy</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.plp.PlpOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::PlpOptions::Register(::kaldi::OptionsItf <a href="#id67"><span class="problematic" id="id68">*</span></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.plp.PlpOptions.use_energy">
+<code class="descname">use_energy</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.use_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool PlpOptions.use_energy</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.feat.signal">
+<span id="kaldi-feat-signal"></span><h2>kaldi.feat.signal<a class="headerlink" href="#module-kaldi.feat.signal" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.signal.convolve_signals" title="kaldi.feat.signal.convolve_signals"><code class="xref py py-obj docutils literal"><span class="pre">convolve_signals</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.signal.downsample_wave_form" title="kaldi.feat.signal.downsample_wave_form"><code class="xref py py-obj docutils literal"><span class="pre">downsample_wave_form</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.signal.fft_based_block_convolve_signals" title="kaldi.feat.signal.fft_based_block_convolve_signals"><code class="xref py py-obj docutils literal"><span class="pre">fft_based_block_convolve_signals</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.signal.fft_based_convolve_signals" title="kaldi.feat.signal.fft_based_convolve_signals"><code class="xref py py-obj docutils literal"><span class="pre">fft_based_convolve_signals</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.signal.ArbitraryResample" title="kaldi.feat.signal.ArbitraryResample"><code class="xref py py-obj docutils literal"><span class="pre">ArbitraryResample</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::ArbitraryResample</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.signal.LinearResample" title="kaldi.feat.signal.LinearResample"><code class="xref py py-obj docutils literal"><span class="pre">LinearResample</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::LinearResample</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.feat.signal.ArbitraryResample">
+<em class="property">class </em><code class="descclassname">kaldi.feat.signal.</code><code class="descname">ArbitraryResample</code><a class="headerlink" href="#kaldi.feat.signal.ArbitraryResample" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::ArbitraryResample</p>
+<dl class="method">
+<dt id="kaldi.feat.signal.ArbitraryResample.num_samples_in">
+<code class="descname">num_samples_in</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.signal.ArbitraryResample.num_samples_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::ArbitraryResample::NumSamplesIn()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.signal.ArbitraryResample.num_samples_out">
+<code class="descname">num_samples_out</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.signal.ArbitraryResample.num_samples_out" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::ArbitraryResample::NumSamplesOut()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.signal.ArbitraryResample.resample">
+<code class="descname">resample</code><span class="sig-paren">(</span><em>input:MatrixBase</em>, <em>output:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.signal.ArbitraryResample.resample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ArbitraryResample::Resample(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::MatrixBase&lt;float&gt; <a href="#id69"><span class="problematic" id="id70">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.signal.ArbitraryResample.resample_vector">
+<code class="descname">resample_vector</code><span class="sig-paren">(</span><em>input:VectorBase</em>, <em>output:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.signal.ArbitraryResample.resample_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ArbitraryResample::Resample(::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt; <a href="#id71"><span class="problematic" id="id72">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.signal.LinearResample">
+<em class="property">class </em><code class="descclassname">kaldi.feat.signal.</code><code class="descname">LinearResample</code><a class="headerlink" href="#kaldi.feat.signal.LinearResample" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::LinearResample</p>
+<dl class="method">
+<dt id="kaldi.feat.signal.LinearResample.resample">
+<code class="descname">resample</code><span class="sig-paren">(</span><em>input:VectorBase</em>, <em>flush:bool</em><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.feat.signal.LinearResample.resample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LinearResample::Resample(::kaldi::VectorBase&lt;float&gt;, bool, ::kaldi::Vector&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.signal.LinearResample.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.signal.LinearResample.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::LinearResample::Reset()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.signal.convolve_signals">
+<code class="descclassname">kaldi.feat.signal.</code><code class="descname">convolve_signals</code><span class="sig-paren">(</span><em>filter:Vector</em>, <em>signal:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.signal.convolve_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ConvolveSignals(::kaldi::Vector&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id73"><span class="problematic" id="id74">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.signal.downsample_wave_form">
+<code class="descclassname">kaldi.feat.signal.</code><code class="descname">downsample_wave_form</code><span class="sig-paren">(</span><em>orig_freq:float</em>, <em>wave:VectorBase</em>, <em>new_freq:float</em><span class="sig-paren">)</span> &#x2192; Vector<a class="headerlink" href="#kaldi.feat.signal.downsample_wave_form" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::DownsampleWaveForm(float, ::kaldi::VectorBase&lt;float&gt;, float, ::kaldi::Vector&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.signal.fft_based_block_convolve_signals">
+<code class="descclassname">kaldi.feat.signal.</code><code class="descname">fft_based_block_convolve_signals</code><span class="sig-paren">(</span><em>filter:Vector</em>, <em>signal:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.signal.fft_based_block_convolve_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FFTbasedBlockConvolveSignals(::kaldi::Vector&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id75"><span class="problematic" id="id76">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.signal.fft_based_convolve_signals">
+<code class="descclassname">kaldi.feat.signal.</code><code class="descname">fft_based_convolve_signals</code><span class="sig-paren">(</span><em>filter:Vector</em>, <em>signal:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.signal.fft_based_convolve_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FFTbasedConvolveSignals(::kaldi::Vector&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id77"><span class="problematic" id="id78">*</span></a>)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.feat.spectrogram">
+<span id="kaldi-feat-spectrogram"></span><h2>kaldi.feat.spectrogram<a class="headerlink" href="#module-kaldi.feat.spectrogram" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.spectrogram.Spectrogram" title="kaldi.feat.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::SpectrogramComputer&gt;</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.spectrogram.SpectrogramComputer" title="kaldi.feat.spectrogram.SpectrogramComputer"><code class="xref py py-obj docutils literal"><span class="pre">SpectrogramComputer</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::SpectrogramComputer</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.spectrogram.SpectrogramOptions" title="kaldi.feat.spectrogram.SpectrogramOptions"><code class="xref py py-obj docutils literal"><span class="pre">SpectrogramOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::SpectrogramOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.feat.spectrogram.Spectrogram">
+<em class="property">class </em><code class="descclassname">kaldi.feat.spectrogram.</code><code class="descname">Spectrogram</code><a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::SpectrogramComputer&gt;</p>
+<dl class="method">
+<dt id="kaldi.feat.spectrogram.Spectrogram.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OfflineFeatureTpl&lt;kaldi::SpectrogramComputer&gt;::Compute(::kaldi::VectorBase&lt;float&gt;, float, ::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.spectrogram.Spectrogram.compute_features">
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.compute_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the features for one file (one sequence of features).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wave</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – The input waveform</li>
+<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The sampling frequency with which wave is
+sampled. If sample_freq is higher than the frequency specified in
+the config, Kaldi will downsample the waveform</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.spectrogram.Spectrogram.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::OfflineFeatureTpl&lt;kaldi::SpectrogramComputer&gt;::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.spectrogram.Spectrogram.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:Spectrogram</em><span class="sig-paren">)</span> &#x2192; Spectrogram<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::SpectrogramComputer&gt;&gt; ::kaldi::OfflineFeatureTpl&lt;kaldi::SpectrogramComputer&gt;::OfflineFeatureTpl(::kaldi::OfflineFeatureTpl&lt; ::kaldi::SpectrogramComputer&gt;)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.spectrogram.SpectrogramComputer">
+<em class="property">class </em><code class="descclassname">kaldi.feat.spectrogram.</code><code class="descname">SpectrogramComputer</code><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::SpectrogramComputer</p>
+<dl class="method">
+<dt id="kaldi.feat.spectrogram.SpectrogramComputer.compute">
+<code class="descname">compute</code><span class="sig-paren">(</span><em>signal_log_energy:float</em>, <em>vtln_warp:float</em>, <em>signal_frame:VectorBase</em>, <em>feature:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::SpectrogramComputer::Compute(float, float, ::kaldi::VectorBase&lt;float&gt; <a href="#id79"><span class="problematic" id="id80">*</span></a>, ::kaldi::VectorBase&lt;float&gt; <a href="#id81"><span class="problematic" id="id82">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.spectrogram.SpectrogramComputer.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::SpectrogramComputer::Dim()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.spectrogram.SpectrogramComputer.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:SpectrogramComputer</em><span class="sig-paren">)</span> &#x2192; SpectrogramComputer<a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::SpectrogramComputer&gt; ::kaldi::SpectrogramComputer::SpectrogramComputer(::kaldi::SpectrogramComputer)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.spectrogram.SpectrogramComputer.get_frame_options">
+<code class="descname">get_frame_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; FrameExtractionOptions<a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer.get_frame_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::FrameExtractionOptions ::kaldi::SpectrogramComputer::GetFrameOptions()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.spectrogram.SpectrogramComputer.need_raw_log_energy">
+<code class="descname">need_raw_log_energy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer.need_raw_log_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::kaldi::SpectrogramComputer::NeedRawLogEnergy()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.spectrogram.SpectrogramOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.spectrogram.</code><code class="descname">SpectrogramOptions</code><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::SpectrogramOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.spectrogram.SpectrogramOptions.energy_floor">
+<code class="descname">energy_floor</code><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramOptions.energy_floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat SpectrogramOptions.energy_floor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.spectrogram.SpectrogramOptions.frame_opts">
+<code class="descname">frame_opts</code><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramOptions.frame_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::FrameExtractionOptions SpectrogramOptions.frame_opts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.spectrogram.SpectrogramOptions.raw_energy">
+<code class="descname">raw_energy</code><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramOptions.raw_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool SpectrogramOptions.raw_energy</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.spectrogram.SpectrogramOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::SpectrogramOptions::Register(::kaldi::OptionsItf <a href="#id83"><span class="problematic" id="id84">*</span></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.feat.wave">
+<span id="kaldi-feat-wave"></span><h2>kaldi.feat.wave<a class="headerlink" href="#module-kaldi.feat.wave" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.wave.WaveData" title="kaldi.feat.wave.WaveData"><code class="xref py py-obj docutils literal"><span class="pre">WaveData</span></code></a></td>
+<td>This class represents a Wave file.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.feat.wave.WaveData">
+<em class="property">class </em><code class="descclassname">kaldi.feat.wave.</code><code class="descname">WaveData</code><a class="headerlink" href="#kaldi.feat.wave.WaveData" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class represents a Wave file.</p>
+<dl class="method">
+<dt id="kaldi.feat.wave.WaveData.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.wave.WaveData.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::WaveData::Clear()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.wave.WaveData.copy_from">
+<code class="descname">copy_from</code><span class="sig-paren">(</span><em>other:WaveData</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.wave.WaveData.copy_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::WaveData::CopyFrom(::kaldi::WaveData)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.wave.WaveData.data">
+<code class="descname">data</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.wave.WaveData.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the wave data.</p>
+<p>Data is a matrix because there may be multiple channels.
+If the wave data is mono, the returned matrix will have just one row.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.Matrix</span></code></a> with the wave data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.wave.WaveData.duration">
+<code class="descname">duration</code><a class="headerlink" href="#kaldi.feat.wave.WaveData.duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duration in seconds.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.wave.WaveData.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>samp_freq:float</em>, <em>data:MatrixBase</em><span class="sig-paren">)</span> &#x2192; WaveData<a class="headerlink" href="#kaldi.feat.wave.WaveData.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::WaveData&gt; ::kaldi::WaveData::WaveData(float, ::kaldi::MatrixBase&lt;float&gt;)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.wave.WaveData.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.wave.WaveData.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::WaveData::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.wave.WaveData.samp_freq">
+<code class="descname">samp_freq</code><a class="headerlink" href="#kaldi.feat.wave.WaveData.samp_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sampling frequency</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.wave.WaveData.swap">
+<code class="descname">swap</code><span class="sig-paren">(</span><em>other:WaveData</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.wave.WaveData.swap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::WaveData::Swap(::kaldi::WaveData <a href="#id85"><span class="problematic" id="id86">*</span></a>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.wave.WaveData.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.wave.WaveData.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::WaveData::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.feat.window">
+<span id="kaldi-feat-window"></span><h2>kaldi.feat.window<a class="headerlink" href="#module-kaldi.feat.window" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.window.dither" title="kaldi.feat.window.dither"><code class="xref py py-obj docutils literal"><span class="pre">dither</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.window.extract_waveform_remainder" title="kaldi.feat.window.extract_waveform_remainder"><code class="xref py py-obj docutils literal"><span class="pre">extract_waveform_remainder</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.window.first_sample_of_frame" title="kaldi.feat.window.first_sample_of_frame"><code class="xref py py-obj docutils literal"><span class="pre">first_sample_of_frame</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.window.num_frames" title="kaldi.feat.window.num_frames"><code class="xref py py-obj docutils literal"><span class="pre">num_frames</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.window.preemphasize" title="kaldi.feat.window.preemphasize"><code class="xref py py-obj docutils literal"><span class="pre">preemphasize</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.window.FeatureWindowFunction" title="kaldi.feat.window.FeatureWindowFunction"><code class="xref py py-obj docutils literal"><span class="pre">FeatureWindowFunction</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FeatureWindowFunction</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.window.FrameExtractionOptions" title="kaldi.feat.window.FrameExtractionOptions"><code class="xref py py-obj docutils literal"><span class="pre">FrameExtractionOptions</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::FrameExtractionOptions</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.feat.window.FeatureWindowFunction">
+<em class="property">class </em><code class="descclassname">kaldi.feat.window.</code><code class="descname">FeatureWindowFunction</code><a class="headerlink" href="#kaldi.feat.window.FeatureWindowFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FeatureWindowFunction</p>
+<dl class="method">
+<dt id="kaldi.feat.window.FeatureWindowFunction.from_options">
+<code class="descname">from_options</code><span class="sig-paren">(</span><em>opts:FrameExtractionOptions</em><span class="sig-paren">)</span> &#x2192; FeatureWindowFunction<a class="headerlink" href="#kaldi.feat.window.FeatureWindowFunction.from_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::FeatureWindowFunction&gt; ::kaldi::FeatureWindowFunction::FeatureWindowFunction(::kaldi::FrameExtractionOptions)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.window.FeatureWindowFunction.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:FeatureWindowFunction</em><span class="sig-paren">)</span> &#x2192; FeatureWindowFunction<a class="headerlink" href="#kaldi.feat.window.FeatureWindowFunction.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::FeatureWindowFunction&gt; ::kaldi::FeatureWindowFunction::FeatureWindowFunction(::kaldi::FeatureWindowFunction)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.window.FeatureWindowFunction.window">
+<code class="descname">window</code><a class="headerlink" href="#kaldi.feat.window.FeatureWindowFunction.window" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::Vector&lt; ::kaldi::BaseFloat&gt; FeatureWindowFunction.window</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.feat.window.FrameExtractionOptions">
+<em class="property">class </em><code class="descclassname">kaldi.feat.window.</code><code class="descname">FrameExtractionOptions</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::FrameExtractionOptions</p>
+<dl class="attribute">
+<dt id="kaldi.feat.window.FrameExtractionOptions.allow_downsample">
+<code class="descname">allow_downsample</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.allow_downsample" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool FrameExtractionOptions.allow_downsample</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.window.FrameExtractionOptions.blackman_coeff">
+<code class="descname">blackman_coeff</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.blackman_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FrameExtractionOptions.blackman_coeff</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.window.FrameExtractionOptions.dither">
+<code class="descname">dither</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.dither" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FrameExtractionOptions.dither</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.window.FrameExtractionOptions.frame_length_ms">
+<code class="descname">frame_length_ms</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.frame_length_ms" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FrameExtractionOptions.frame_length_ms</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.window.FrameExtractionOptions.frame_shift_ms">
+<code class="descname">frame_shift_ms</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.frame_shift_ms" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FrameExtractionOptions.frame_shift_ms</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.window.FrameExtractionOptions.padded_window_size">
+<code class="descname">padded_window_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.padded_window_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::FrameExtractionOptions::PaddedWindowSize()</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.window.FrameExtractionOptions.preemph_coeff">
+<code class="descname">preemph_coeff</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.preemph_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FrameExtractionOptions.preemph_coeff</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.window.FrameExtractionOptions.remove_dc_offset">
+<code class="descname">remove_dc_offset</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.remove_dc_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool FrameExtractionOptions.remove_dc_offset</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.window.FrameExtractionOptions.round_to_power_of_two">
+<code class="descname">round_to_power_of_two</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.round_to_power_of_two" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool FrameExtractionOptions.round_to_power_of_two</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.window.FrameExtractionOptions.samp_freq">
+<code class="descname">samp_freq</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.samp_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::BaseFloat FrameExtractionOptions.samp_freq</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.window.FrameExtractionOptions.snip_edges">
+<code class="descname">snip_edges</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.snip_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ bool FrameExtractionOptions.snip_edges</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.window.FrameExtractionOptions.window_shift">
+<code class="descname">window_shift</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.window_shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::FrameExtractionOptions::WindowShift()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.window.FrameExtractionOptions.window_size">
+<code class="descname">window_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.window_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::FrameExtractionOptions::WindowSize()</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.feat.window.FrameExtractionOptions.window_type">
+<code class="descname">window_type</code><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.window_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::std::string FrameExtractionOptions.window_type</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.window.dither">
+<code class="descclassname">kaldi.feat.window.</code><code class="descname">dither</code><span class="sig-paren">(</span><em>waveform:VectorBase</em>, <em>dither_value:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.window.dither" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Dither(::kaldi::VectorBase&lt;float&gt; <a href="#id87"><span class="problematic" id="id88">*</span></a>, float)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.window.extract_waveform_remainder">
+<code class="descclassname">kaldi.feat.window.</code><code class="descname">extract_waveform_remainder</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>opts:FrameExtractionOptions</em>, <em>wave_remainder:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.window.extract_waveform_remainder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::ExtractWaveformRemainder(::kaldi::VectorBase&lt;float&gt;, ::kaldi::FrameExtractionOptions, ::kaldi::Vector&lt;float&gt; <a href="#id89"><span class="problematic" id="id90">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.window.first_sample_of_frame">
+<code class="descclassname">kaldi.feat.window.</code><code class="descname">first_sample_of_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>opts:FrameExtractionOptions</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.window.first_sample_of_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+long ::kaldi::FirstSampleOfFrame(int, ::kaldi::FrameExtractionOptions)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.window.num_frames">
+<code class="descclassname">kaldi.feat.window.</code><code class="descname">num_frames</code><span class="sig-paren">(</span><em>num_samples:int</em>, <em>opts:FrameExtractionOptions</em>, <em>flush:bool=default</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.window.num_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+int ::kaldi::NumFrames(long, ::kaldi::FrameExtractionOptions, bool)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.feat.window.preemphasize">
+<code class="descclassname">kaldi.feat.window.</code><code class="descname">preemphasize</code><span class="sig-paren">(</span><em>waveform:VectorBase</em>, <em>preemph_coeff:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.window.preemphasize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::Preemphasize(::kaldi::VectorBase&lt;float&gt; <a href="#id91"><span class="problematic" id="id92">*</span></a>, float)</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.fstext.html" class="btn btn-neutral float-right" title="kaldi.fstext" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.decoder.html" class="btn btn-neutral" title="kaldi.decoder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.lat.functions &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../../../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>kaldi.lat.functions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kaldi.lat.functions</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_confidence</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_determinize_lattice_pruned</span> <span class="k">as</span> <span class="n">_dlp</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_lattice_functions</span> <span class="k">as</span> <span class="n">_lat_fun</span>
+
+<span class="kn">from</span> <span class="nn">._confidence</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._determinize_lattice_pruned</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._lattice_functions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._minimize_lattice</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._push_lattice</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">fstext</span> <span class="k">as</span> <span class="n">_fst</span>
+<span class="kn">from</span> <span class="nn">..fstext</span> <span class="k">import</span> <span class="n">_api</span>
+
+
+<div class="viewcode-block" id="sentence_level_confidence"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.functions.sentence_level_confidence">[docs]</a><span class="k">def</span> <span class="nf">sentence_level_confidence</span><span class="p">(</span><span class="n">lat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Computes sentence level confidence scores.</span>
+
+<span class="sd">    If input is a compact lattice, this function requires that distinct paths in</span>
+<span class="sd">    `lat` have distinct word sequences; this will automatically be the case if</span>
+<span class="sd">    `lat` was generated by a decoder, since a deterministic FST has this</span>
+<span class="sd">    property. If input is a state-level lattice, it is first determinized, but</span>
+<span class="sd">    this is done in a &quot;smart&quot; way so that only paths needed for this operation</span>
+<span class="sd">    are generated.</span>
+
+<span class="sd">    This function assumes that any acoustic scaling you want to apply,</span>
+<span class="sd">    has already been applied.</span>
+
+<span class="sd">    The output consists of the following. `confidence` is the score difference</span>
+<span class="sd">    between the best path and the second-best path in the lattice (a positive</span>
+<span class="sd">    number), or zero if lattice was equivalent to the empty FST (no successful</span>
+<span class="sd">    paths), or infinity if there was only one path in the lattice. `num_paths`</span>
+<span class="sd">    is a number in `{0, 1, 2}` saying how many n-best paths (up to two) were</span>
+<span class="sd">    found. If `num_paths &gt;= 1`, `best_sentence` is the best word-sequence; if</span>
+<span class="sd">    `num_paths -= 2`, `second_best_sentence` is the second best word-sequence</span>
+<span class="sd">    (this may be useful for testing whether the two best word sequences are</span>
+<span class="sd">    somehow equivalent for the task at hand).</span>
+
+<span class="sd">    Args</span>
+<span class="sd">        lat (LatticeVectorFst or CompactLatticeVectorFst): The input lattice.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[float, int, List[int], List[int]]: The tuple</span>
+<span class="sd">        `(confidence, num_paths, best_sentence, second_best_sentence)`.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        This function is not the only way to get confidences in Kaldi. This only</span>
+<span class="sd">        gives you sentence-level (utterance-level) confidence. You can get</span>
+<span class="sd">        word-by-word confidence within a sentence, along with Minimum Bayes Risk</span>
+<span class="sd">        decoding. Also confidences estimated using this function are not very</span>
+<span class="sd">        accurate.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeVectorFst</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_confidence</span><span class="o">.</span><span class="n">_sentence_level_confidence_from_compact_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_confidence</span><span class="o">.</span><span class="n">_sentence_level_confidence_from_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="determinize_lattice_phone_pruned"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.functions.determinize_lattice_phone_pruned">[docs]</a><span class="k">def</span> <span class="nf">determinize_lattice_phone_pruned</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">trans_model</span><span class="p">,</span> <span class="n">prune</span><span class="p">,</span>
+                                     <span class="n">opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">destructive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Applies a specialized determinization operation to a lattice.</span>
+
+<span class="sd">    Determinizes a raw state-level lattice, keeping only the best output-symbol</span>
+<span class="sd">    sequence (typically transition ids) for each input-symbol sequence. This</span>
+<span class="sd">    version does phone insertion when doing a first pass determinization (if</span>
+<span class="sd">    `opts.phone_determinize == True`), it then removes the inserted phones and</span>
+<span class="sd">    does a second pass determinization on the word lattice (if</span>
+<span class="sd">    `opts.word_determinize == True`). It also does pruning as part of the</span>
+<span class="sd">    determinization algorithm, which is more efficient and prevents blowup.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ifst (LatticeFst): The input lattice.</span>
+<span class="sd">        trans_model (TransitionModel): The transition model.</span>
+<span class="sd">        prune (float): The pruning beam.</span>
+<span class="sd">        opts (DeterminizeLatticePhonePrunedOptions): The options for lattice</span>
+<span class="sd">            determinization.</span>
+<span class="sd">        destructive (bool): Whether to use the destructive version of the</span>
+<span class="sd">            algorithm which mutates input lattice.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        CompactLatticeVectorFst: The output lattice.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :meth:`determinize_lattice_pruned`</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        The point of doing first a phone-level determinization pass and then a</span>
+<span class="sd">        word-level determinization pass is that it allows us to determinize</span>
+<span class="sd">        deeper lattices without &quot;failing early&quot; and returning a too-small</span>
+<span class="sd">        lattice due to the max-mem constraint. The result should be the same</span>
+<span class="sd">        as word-level determinization in general, but for deeper lattices it is</span>
+<span class="sd">        a bit faster, despite the fact that we now have two passes of</span>
+<span class="sd">        determinization by default.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">opts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">opts</span> <span class="o">=</span> <span class="n">DeterminizeLatticePhonePrunedOptions</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">destructive</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">_api</span><span class="o">.</span><span class="n">MutableFstBase</span><span class="p">):</span>
+        <span class="n">ifst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">(</span><span class="n">ifst</span><span class="p">)</span>
+    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeVectorFst</span><span class="p">()</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="n">_dlp</span><span class="o">.</span><span class="n">_determinize_lattice_phone_pruned_wrapper</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">trans_model</span><span class="p">,</span>
+                                                             <span class="n">prune</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="s2">&quot;Lattice determinization is terminated early because at least one &quot;</span>
+            <span class="s2">&quot;of max_mem, max_loop or max_arcs thresholds was reached. If you &quot;</span>
+            <span class="s2">&quot;want a more detailed log message, rerun this function after &quot;</span>
+            <span class="s2">&quot;setting verbose level &gt; 0 using kaldi.base.set_verbose_level.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ofst</span></div>
+
+
+<div class="viewcode-block" id="determinize_lattice_pruned"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.functions.determinize_lattice_pruned">[docs]</a><span class="k">def</span> <span class="nf">determinize_lattice_pruned</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">prune</span><span class="p">,</span> <span class="n">opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compact_out</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Applies a specialized determinization operation to a lattice.</span>
+
+<span class="sd">    Determinizes a raw state-level lattice, keeping only the best output-symbol</span>
+<span class="sd">    sequence (typically transition ids) for each input-symbol sequence. This</span>
+<span class="sd">    version does determinization only on the word lattice. The output is</span>
+<span class="sd">    represented using either sequences of arcs (if `compact_out == False`),</span>
+<span class="sd">    where all but the first one has an epsilon on the input side, or directly as</span>
+<span class="sd">    strings using compact lattice weight type (if `compact_out == True`). It</span>
+<span class="sd">    also does pruning as part of the determinization algorithm, which is more</span>
+<span class="sd">    efficient and prevents blowup.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ifst (LatticeFst): The input lattice.</span>
+<span class="sd">        prune (float): The pruning beam.</span>
+<span class="sd">        opts (DeterminizeLatticePrunedOptions): The options for lattice</span>
+<span class="sd">            determinization.</span>
+<span class="sd">        compact_out (bool): Whether to output a compact lattice.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        LatticeVectorFst or CompactLatticeVectorFst: The output lattice.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :meth:`determinize_lattice_phone_pruned`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">opts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">opts</span> <span class="o">=</span> <span class="n">DeterminizeLatticePrunedOptions</span><span class="p">()</span>
+    <span class="n">ifst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">(</span><span class="n">ifst</span><span class="p">)</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span><span class="o">.</span><span class="n">topsort</span><span class="p">()</span><span class="o">.</span><span class="n">arcsort</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">compact_out</span><span class="p">:</span>
+        <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeVectorFst</span><span class="p">()</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="n">_dlp</span><span class="o">.</span><span class="n">_determinize_lattice_pruned_to_compact</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">prune</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span>
+                                                              <span class="n">opts</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">()</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="n">_dlp</span><span class="o">.</span><span class="n">_determinize_lattice_pruned</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">prune</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="s2">&quot;Lattice determinization is terminated early because at least one &quot;</span>
+            <span class="s2">&quot;of max_mem, max_loop or max_arcs thresholds was reached. If you &quot;</span>
+            <span class="s2">&quot;want a more detailed log message, rerun this function after &quot;</span>
+            <span class="s2">&quot;setting verbose level &gt; 0 using kaldi.base.set_verbose_level.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ofst</span></div>
+
+
+<div class="viewcode-block" id="lattice_state_times"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.functions.lattice_state_times">[docs]</a><span class="k">def</span> <span class="nf">lattice_state_times</span><span class="p">(</span><span class="n">lat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extracts lattice state times (in terms of frames).</span>
+
+<span class="sd">    Iterates over the states of a topologically sorted lattice and computes</span>
+<span class="sd">    the corresponding time instances.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        lat (LatticeVectorFst or CompactLatticeVectorFst): The input lattice.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[int, List[int]]: The number of frames and the state times.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        If input is a regular lattice, the number of frames is equal to the</span>
+<span class="sd">        maximum state time in the lattice. If input is a compact lattice,  the</span>
+<span class="sd">        number of frames might not be equal to the maximum state time in the</span>
+<span class="sd">        lattice due to frames in final states.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_lattice_state_times</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_compact_lattice_state_times</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="compute_lattice_alphas_and_betas"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.functions.compute_lattice_alphas_and_betas">[docs]</a><span class="k">def</span> <span class="nf">compute_lattice_alphas_and_betas</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">viterbi</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Computes forward and backward scores for lattice states.</span>
+
+<span class="sd">    If `viterbi == True`, computes the Viterbi scores, i.e. forward (alpha) and</span>
+<span class="sd">    backward (beta) scores are the scores of best paths reaching and leaving</span>
+<span class="sd">    each state. Otherwise, computes regular forward and backward scores. Note</span>
+<span class="sd">    that alphas and betas are negated costs. Requires the input lattice to be</span>
+<span class="sd">    topologically sorted.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        lat (LatticeVectorFst or CompactLatticeVectorFst): The input lattice.</span>
+<span class="sd">        viterbi (bool): Whether to compute Viterbi scores.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[float, List[float], List[float]]: The total-prob (or best-path</span>
+<span class="sd">        prob), the forward (alpha) scores and the backward (beta) scores.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_compute_lattice_alphas_and_betas</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">viterbi</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_compute_compact_lattice_alphas_and_betas</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">viterbi</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="top_sort_lattice_if_needed"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.functions.top_sort_lattice_if_needed">[docs]</a><span class="k">def</span> <span class="nf">top_sort_lattice_if_needed</span><span class="p">(</span><span class="n">lat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Topologically sorts the lattice if it is not already sorted.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        lat (LatticeVectorFst or CompactLatticeVectorFst): The input lattice.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        RuntimeError: If lattice cannot be topologically sorted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">):</span>
+        <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_top_sort_lattice_if_needed</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_top_sort_compact_lattice_if_needed</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="prune_lattice"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.functions.prune_lattice">[docs]</a><span class="k">def</span> <span class="nf">prune_lattice</span><span class="p">(</span><span class="n">beam</span><span class="p">,</span> <span class="n">lat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Prunes a lattice.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        beam (float): The pruning beam.</span>
+<span class="sd">        lat (LatticeVectorFst or CompactLatticeVectorFst): The input lattice.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If pruning fails.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">):</span>
+        <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_prune_lattice</span><span class="p">(</span><span class="n">beam</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_prune_compact_lattice</span><span class="p">(</span><span class="n">beam</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="rescore_lattice"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.functions.rescore_lattice">[docs]</a><span class="k">def</span> <span class="nf">rescore_lattice</span><span class="p">(</span><span class="n">decodable</span><span class="p">,</span> <span class="n">lat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Adjusts acoustic scores in the lattice.</span>
+
+<span class="sd">    This function *adds* the negated scores obtained from the decodable object,</span>
+<span class="sd">    to the acoustic scores on the arcs. If you want to replace them, you should</span>
+<span class="sd">    use :meth:`scale_compact_lattice` to first set the acoustic scores to zero.</span>
+<span class="sd">    The input labels (or the string component of arc weights if the input is a</span>
+<span class="sd">    compact lattice), are interpreted as transition-ids or whatever other index</span>
+<span class="sd">    the decodable object expects.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        decodable (DecodableInterface): The decodable object.</span>
+<span class="sd">        lat (LatticeVectorFst or CompactLatticeVectorFst): The input lattice.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the inputs are not compatible.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        :meth:`rescore_compact_lattice_speedup`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">):</span>
+        <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_rescore_lattice</span><span class="p">(</span><span class="n">decodable</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_rescore_compact_lattice</span><span class="p">(</span><span class="n">decodable</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="longest_sentence_length_in_lattice"><a class="viewcode-back" href="../../../api/kaldi.lat.html#kaldi.lat.functions.longest_sentence_length_in_lattice">[docs]</a><span class="k">def</span> <span class="nf">longest_sentence_length_in_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the number of words in the longest sentence in a lattice.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        lat (LatticeVectorFst or CompactLatticeVectorFst): The input lattice.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        int: The length of the longest sentence in the lattice.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_longest_sentence_length_in_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_lat_fun</span><span class="o">.</span><span class="n">_longest_sentence_length_in_compact_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span>
+           <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span>
+           <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;Base&#39;</span><span class="p">)]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
