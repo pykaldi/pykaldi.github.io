@@ -237,7 +237,7 @@
 <td>CLIF wrapper for ::kaldi::OnlineEndpointRule</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineFeaturePipeline" title="kaldi.online2.OnlineFeaturePipeline"><code class="xref py py-obj docutils literal"><span class="pre">OnlineFeaturePipeline</span></code></a></td>
-<td></td>
+<td>CLIF wrapper for ::kaldi::OnlineFeaturePipeline</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig" title="kaldi.online2.OnlineFeaturePipelineCommandLineConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineFeaturePipelineCommandLineConfig</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::OnlineFeaturePipelineCommandLineConfig</td>
@@ -291,7 +291,7 @@
 <td>CLIF wrapper for ::kaldi::OnlineTimingStats</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.SingleUtteranceGmmDecoder" title="kaldi.online2.SingleUtteranceGmmDecoder"><code class="xref py py-obj docutils literal"><span class="pre">SingleUtteranceGmmDecoder</span></code></a></td>
-<td></td>
+<td>CLIF wrapper for ::kaldi::SingleUtteranceGmmDecoder</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.SingleUtteranceNnet3Decoder" title="kaldi.online2.SingleUtteranceNnet3Decoder"><code class="xref py py-obj docutils literal"><span class="pre">SingleUtteranceNnet3Decoder</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::SingleUtteranceNnet3Decoder</td>
@@ -426,8 +426,9 @@ void ::kaldi::OnlineEndpointRule::Register(::kaldi::OptionsItf <a href="#id3"><s
 
 <dl class="class">
 <dt id="kaldi.online2.OnlineFeaturePipeline">
-<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineFeaturePipeline</code><a class="reference internal" href="../_modules/kaldi/online2.html#OnlineFeaturePipeline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineFeaturePipeline</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::OnlineFeaturePipeline</p>
+<dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.accept_waveform">
 <code class="descname">accept_waveform</code><span class="sig-paren">(</span><em>sampling_rate:float</em>, <em>waveform:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.accept_waveform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
@@ -457,8 +458,10 @@ void ::kaldi::OnlineFeaturePipeline::FreezeCmvn()</p>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.get_as_matrix">
-<code class="descname">get_as_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/online2.html#OnlineFeaturePipeline.get_as_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.get_as_matrix" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">get_as_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.get_as_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineFeaturePipeline::GetAsMatrix(::kaldi::Matrix&lt;float&gt;*)</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.get_cmvn_state">
@@ -495,8 +498,9 @@ bool ::kaldi::OnlineFeaturePipeline::IsLastFrame(int)</p>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.new">
-<code class="descname">new</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/online2.html#OnlineFeaturePipeline.new"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.new" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">new</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; OnlineFeaturePipeline<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a newly initialized copy</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.num_frames_ready">
@@ -1523,7 +1527,7 @@ void ::kaldi::OnlineSilenceWeighting::ComputeCurrentTraceback(::kaldi::LatticeFa
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>num_frames_ready_in</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of frames available at the input of the online iVector extractor class</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>num_frames_ready_in</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of frames available at the input of the online iVector extractor class</td>
 </tr>
 </tbody>
 </table>
@@ -1627,8 +1631,9 @@ void ::kaldi::OnlineTimingStats::Print(bool)</p>
 
 <dl class="class">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder">
-<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">SingleUtteranceGmmDecoder</code><a class="reference internal" href="../_modules/kaldi/online2.html#SingleUtteranceGmmDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">SingleUtteranceGmmDecoder</code><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::SingleUtteranceGmmDecoder</p>
+<dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.advance_decoding">
 <code class="descname">advance_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.advance_decoding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Advance the decoding as far as we can.</p>
@@ -1649,8 +1654,10 @@ bool ::kaldi::SingleUtteranceGmmDecoder::EndpointDetected(::kaldi::OnlineEndpoin
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.feature_pipeline">
-<code class="descname">feature_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/online2.html#SingleUtteranceGmmDecoder.feature_pipeline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.feature_pipeline" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">feature_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; OnlineFeaturePipeline<a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.feature_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::OnlineFeaturePipeline ::kaldi::SingleUtteranceGmmDecoder::FeaturePipeline()</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.final_relative_cost">
@@ -1752,7 +1759,7 @@ int ::kaldi::SingleUtteranceNnet3Decoder::NumFramesDecoded()</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>silence_phones</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – colon-separated list of integer ids of phones to be considered silence</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>silence_phones</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – colon-separated list of integer ids of phones to be considered silence</td>
 </tr>
 </tbody>
 </table>

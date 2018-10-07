@@ -260,15 +260,15 @@ Saraclar, 2011, “Lattice Indexing for Spoken Term Detection”.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>clat</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst"><em>CompactLatticeVectorFst</em></a>) – The input lattice.</li>
-<li><strong>utterance_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The integer id to use for the input lattice.</li>
-<li><strong>max_silence_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The duration of the longest silence (epsilon)
+<li><strong>utterance_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The integer id to use for the input lattice.</li>
+<li><strong>max_silence_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The duration of the longest silence (epsilon)
 arcs allowed in the output. Longer silence arcs will be removed.
 If &lt; 0, all silence arcs are kept.</li>
-<li><strong>max_states</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The maximum number of states allowed in the output.
+<li><strong>max_states</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The maximum number of states allowed in the output.
 If &lt;= 0, any number of states in the output is OK.</li>
-<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to allow partial output or skip
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to allow partial output or skip
 determinization if determinization fails.</li>
-<li><strong>destructive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to use the destructive implementation which
+<li><strong>destructive</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to use the destructive implementation which
 avoids a copy by modifying the input lattice.</li>
 </ul>
 </td>
@@ -295,7 +295,7 @@ minimization.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>index</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.KwsIndexVectorFst" title="kaldi.fstext.KwsIndexVectorFst"><em>KwsIndexVectorFst</em></a>) – The index FST.</li>
-<li><strong>max_states</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The maximum number of states allowed in the output.
+<li><strong>max_states</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The maximum number of states allowed in the output.
 If &lt;= 0, any number of states in the output is OK. Default: -1.</li>
 </ul>
 </td>
@@ -324,9 +324,9 @@ scores while ilabels output provides the input labels on those paths.</p>
 <li><strong>encode_table</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.KwsIndexEncodeTable" title="kaldi.fstext.KwsIndexEncodeTable"><em>KwsIndexEncodeTable</em></a>) – The table to use for decoding
 output labels into utterance ids. This table is produced by
 <a class="reference internal" href="#kaldi.kws.encode_kws_disambiguation_symbols" title="kaldi.kws.encode_kws_disambiguation_symbols"><code class="xref py py-meth docutils literal"><span class="pre">encode_kws_disambiguation_symbols()</span></code></a>.</li>
-<li><strong>n_best</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of best results to return. If &lt;= 0, all results
+<li><strong>n_best</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of best results to return. If &lt;= 0, all results
 found in the index are returned.</li>
-<li><strong>detailed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to return detailed results representing
+<li><strong>detailed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to return detailed results representing
 individual index matches and the input label sequences for those
 matches. If True, output is a tuple of (results, stats, ilabels).</li>
 </ul>

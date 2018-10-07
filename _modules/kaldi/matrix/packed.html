@@ -234,13 +234,16 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: If **other** is not a square matrix.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="c1"># Using the native code instead of size()</span>
+        <span class="c1"># prevents an exception for the case when </span>
+        <span class="c1"># other is not a python object</span>
+        <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">num_rows</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">num_cols</span> 
         <span class="k">if</span> <span class="n">m</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;other is not a square matrix.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">Matrix</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">swap_with_matrix_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_with_matrix_</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">_packed_matrix</span><span class="o">.</span><span class="n">PackedMatrix</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">swap_with_packed_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_with_packed_</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;other must be a Matrix or SpMatrix or TpMatrix.&quot;</span><span class="p">)</span>
 
@@ -341,13 +344,13 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: If **other** is not a square matrix.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">num_rows</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">num_cols</span>
         <span class="k">if</span> <span class="n">m</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;other is not a square matrix.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">DoubleMatrix</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">swap_with_matrix_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_with_matrix_</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">_packed_matrix</span><span class="o">.</span><span class="n">DoublePackedMatrix</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">swap_with_packed_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">swap_with_packed_</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;other must be a DoubleMatrix or DoubleSpMatrix &quot;</span>
                              <span class="s2">&quot;or DoubleTpMatrix.&quot;</span><span class="p">)</span>
@@ -419,6 +422,27 @@
 <span class="sd">            DoubleTpMatrix: A copy of the triangular matrix.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">DoubleTpMatrix</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span><span class="o">.</span><span class="n">copy_from_tp_</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+
+<span class="c1">################################################################################</span>
+
+<span class="k">def</span> <span class="nf">_sp_matrix_wrapper</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Constructs a new matrix instance by swapping contents.</span>
+<span class="sd">    This function is used for converting `kaldi.matrix._sp_matrix.SpMatrix`</span>
+<span class="sd">    instances into `SpMatrix` instances without copying the contents.</span>
+<span class="sd">    This is a destructive operation. Contents of the input matrix are moved to</span>
+<span class="sd">    the newly contstructed matrix by swapping data pointers.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        matrix (`Matrix`): The input matrix.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        SpMatrix: The new matrix instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">SpMatrix</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">SpMatrix</span><span class="p">()</span><span class="o">.</span><span class="n">swap_</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">_sp_matrix</span><span class="o">.</span><span class="n">DoubleSpMatrix</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">DoubleSpMatrix</span><span class="p">()</span><span class="o">.</span><span class="n">swap_</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;unrecognized input type&quot;</span><span class="p">)</span>
+
 
 <span class="c1">################################################################################</span>
 

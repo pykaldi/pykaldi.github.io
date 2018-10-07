@@ -215,6 +215,7 @@
                            <span class="n">WspecifierType</span><span class="p">,</span> <span class="n">RspecifierType</span><span class="p">,</span>
                            <span class="n">WspecifierOptions</span><span class="p">,</span> <span class="n">RspecifierOptions</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_kaldi_table_ext</span>
+<span class="kn">import</span> <span class="nn">kaldi.matrix</span> <span class="k">as</span> <span class="nn">_matrix</span>
 
 <span class="c1">################################################################################</span>
 <span class="c1"># Sequential Readers</span>
@@ -922,22 +923,69 @@
 
 <div class="viewcode-block" id="VectorWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.VectorWriter">[docs]</a><span class="k">class</span> <span class="nc">VectorWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">VectorWriter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Table writer for single precision vectors.&quot;&quot;&quot;</span>
-    <span class="k">pass</span></div>
+<div class="viewcode-block" id="VectorWriter.write"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.VectorWriter.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes the `(key, value)` pair to the table.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Overrides write to accept both Vector and SubVector.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key (str): The key.</span>
+<span class="sd">            value: The value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VectorWriter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div></div>
 
 
 <div class="viewcode-block" id="DoubleVectorWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.DoubleVectorWriter">[docs]</a><span class="k">class</span> <span class="nc">DoubleVectorWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">DoubleVectorWriter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Table writer for double precision vectors.&quot;&quot;&quot;</span>
-    <span class="k">pass</span></div>
+<div class="viewcode-block" id="DoubleVectorWriter.write"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.DoubleVectorWriter.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes the `(key, value)` pair to the table.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Overrides write to accept both DoubleVector and DoubleSubVector.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key (str): The key.</span>
+<span class="sd">            value: The value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DoubleVectorWriter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">DoubleVector</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div></div>
 
 
 <div class="viewcode-block" id="MatrixWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.MatrixWriter">[docs]</a><span class="k">class</span> <span class="nc">MatrixWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">MatrixWriter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Table writer for single precision matrices.&quot;&quot;&quot;</span>
-    <span class="k">pass</span></div>
+<div class="viewcode-block" id="MatrixWriter.write"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.MatrixWriter.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes the `(key, value)` pair to the table.</span>
 
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Overrides write to accept both Matrix and SubMatrix.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key (str): The key.</span>
+<span class="sd">            value: The value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MatrixWriter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div></div>
 
 <div class="viewcode-block" id="DoubleMatrixWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.DoubleMatrixWriter">[docs]</a><span class="k">class</span> <span class="nc">DoubleMatrixWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">DoubleMatrixWriter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Table writer for double precision matrices.&quot;&quot;&quot;</span>
-    <span class="k">pass</span></div>
+<div class="viewcode-block" id="DoubleMatrixWriter.write"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.DoubleMatrixWriter.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes the `(key, value)` pair to the table.</span>
+
+<span class="sd">        This method is provided for compatibility with the C++ API only;</span>
+<span class="sd">        most users should use the Pythonic API.</span>
+
+<span class="sd">        Overrides write to accept both DoubleMatrix and DoubleSubMatrix.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key (str): The key.</span>
+<span class="sd">            value: The value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DoubleMatrixWriter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">DoubleMatrix</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div></div>
 
 
 <div class="viewcode-block" id="WaveWriter"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.table.WaveWriter">[docs]</a><span class="k">class</span> <span class="nc">WaveWriter</span><span class="p">(</span><span class="n">_WriterBase</span><span class="p">,</span> <span class="n">_kaldi_table</span><span class="o">.</span><span class="n">WaveWriter</span><span class="p">):</span>

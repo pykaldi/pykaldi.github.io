@@ -474,7 +474,7 @@ accumulated statistics. Global CMVN can be computed and applied as follows:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><strong>stats</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.DoubleMatrix" title="kaldi.matrix.DoubleMatrix"><em>DoubleMatrix</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – Accumulated mean/variance statistics
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><strong>stats</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.DoubleMatrix" title="kaldi.matrix.DoubleMatrix"><em>DoubleMatrix</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – Accumulated mean/variance statistics
 matrix of size <code class="xref py py-obj docutils literal"><span class="pre">2</span> <span class="pre">x</span> <span class="pre">dim+1</span></code>. This matrix is initialized when a CMVN
 object is instantiated by specifying a feature dimension or when the
 <a class="reference internal" href="#kaldi.transform.cmvn.Cmvn.init" title="kaldi.transform.cmvn.Cmvn.init"><code class="xref py py-meth docutils literal"><span class="pre">init()</span></code></a> method is explicitly called. It is <code class="docutils literal"><span class="pre">None</span></code> otherwise.
@@ -484,7 +484,7 @@ accumulated feature vectors. <code class="xref py py-obj docutils literal"><span
 count of accumulated feature vectors. <code class="xref py py-obj docutils literal"><span class="pre">stats[1,-1]</span></code> is initialized
 to zero but otherwise is not used.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The feature dimension. If specified, <code class="xref py py-attr docutils literal"><span class="pre">stats</span></code> matrix
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The feature dimension. If specified, <code class="xref py py-attr docutils literal"><span class="pre">stats</span></code> matrix
 is initialized with the given dimension.</td>
 </tr>
 </tbody>
@@ -501,7 +501,7 @@ is initialized with the given dimension.</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>feats</strong> (<em>VectorBase</em><em> or </em><em>MatrixBase</em>) – The input features.</li>
-<li><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>VectorBase</em>) – The frame weights. If <code class="xref py py-obj docutils literal"><span class="pre">feats</span></code> is a
+<li><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>VectorBase</em>) – The frame weights. If <code class="xref py py-obj docutils literal"><span class="pre">feats</span></code> is a
 single feature vector, then <code class="xref py py-obj docutils literal"><span class="pre">weights</span></code> should be a single number.
 If <code class="xref py py-obj docutils literal"><span class="pre">feats</span></code> is a feature matrix, then <code class="xref py py-obj docutils literal"><span class="pre">weights</span></code> should be a
 vector of size <code class="xref py py-obj docutils literal"><span class="pre">feats.num_rows</span></code>. If <code class="xref py py-obj docutils literal"><span class="pre">weights</span></code> is not specified
@@ -523,8 +523,8 @@ or <code class="docutils literal"><span class="pre">None</span></code>, then no 
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>feats</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – The feature matrix to normalize.</li>
-<li><strong>norm_vars</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to apply variance normalization.</li>
-<li><strong>reverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to apply CMVN in a reverse sense, so as to
+<li><strong>norm_vars</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to apply variance normalization.</li>
+<li><strong>reverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to apply CMVN in a reverse sense, so as to
 transform zero-mean, unit-variance features into features with
 the desired mean and variance.</li>
 </ul>
@@ -545,7 +545,7 @@ matrix.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – The feature dimension. If <code class="docutils literal"><span class="pre">None</span></code>, then
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – The feature dimension. If <code class="docutils literal"><span class="pre">None</span></code>, then
 <code class="xref py py-attr docutils literal"><span class="pre">stats</span></code> attribute is set to <code class="docutils literal"><span class="pre">None</span></code>. Otherwise, it is
 initialized as a <code class="xref py py-obj docutils literal"><span class="pre">2</span> <span class="pre">x</span> <span class="pre">dim+1</span></code> matrix of zeros.</td>
 </tr>
@@ -562,8 +562,8 @@ initialized as a <code class="xref py py-obj docutils literal"><span class="pre"
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Extended filename for reading CMVN statistics.</li>
-<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to open the file in binary mode.</li>
+<li><strong>rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading CMVN statistics.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to open the file in binary mode.</li>
 </ul>
 </td>
 </tr>
@@ -584,7 +584,7 @@ matrix.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dims</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – Dimensions for which to skip normalization.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dims</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Dimensions for which to skip normalization.</td>
 </tr>
 </tbody>
 </table>
@@ -599,8 +599,8 @@ matrix.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>wxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Extended filename for writing CMVN statistics.</li>
-<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to open the file in binary mode.</li>
+<li><strong>wxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for writing CMVN statistics.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to open the file in binary mode.</li>
 </ul>
 </td>
 </tr>

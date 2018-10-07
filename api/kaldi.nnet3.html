@@ -5413,9 +5413,9 @@ void ::kaldi::nnet3::ExampleMergingConfig::ComputeDerived()</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>size_of_eg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The size of the eg, as obtained by <code class="xref py py-meth docutils literal"><span class="pre">GetNnetExampleSize()</span></code></li>
-<li><strong>num_available_egs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of egs of this size that are currently available</li>
-<li><strong>input_ended</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – True if the input has ended. False otherwise</li>
+<li><strong>size_of_eg</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The size of the eg, as obtained by <code class="xref py py-meth docutils literal"><span class="pre">GetNnetExampleSize()</span></code></li>
+<li><strong>num_available_egs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of egs of this size that are currently available</li>
+<li><strong>input_ended</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – True if the input has ended. False otherwise</li>
 </ul>
 </td>
 </tr>
@@ -8903,6 +8903,12 @@ void ::kaldi::nnet3::NnetExample::Write(::std::basic_ostream&lt;char, ::std::cha
 <dt id="kaldi.nnet3.NnetIo">
 <em class="property">class </em><code class="descclassname">kaldi.nnet3.</code><code class="descname">NnetIo</code><a class="headerlink" href="#kaldi.nnet3.NnetIo" title="Permalink to this definition">¶</a></dt>
 <dd><p>CLIF wrapper for ::kaldi::nnet3::NnetIo</p>
+<dl class="attribute">
+<dt id="kaldi.nnet3.NnetIo.features">
+<code class="descname">features</code><a class="headerlink" href="#kaldi.nnet3.NnetIo.features" title="Permalink to this definition">¶</a></dt>
+<dd><p>C++ ::kaldi::GeneralMatrix NnetIo.features</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="kaldi.nnet3.NnetIo.from_general_matrix">
 <code class="descname">from_general_matrix</code><span class="sig-paren">(</span><em>name:str</em>, <em>t_begin:int</em>, <em>feats:GeneralMatrix</em>, <em>t_stride:int=default</em><span class="sig-paren">)</span> &#x2192; NnetIo<a class="headerlink" href="#kaldi.nnet3.NnetIo.from_general_matrix" title="Permalink to this definition">¶</a></dt>

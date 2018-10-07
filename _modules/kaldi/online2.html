@@ -201,10 +201,8 @@
 <span></span><span class="kn">from</span> <span class="nn">._online_timing</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._online_endpoint</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._online_feature_pipeline</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">._online_feature_pipeline</span> <span class="k">import</span> <span class="n">_OnlineFeaturePipeline</span>
 <span class="kn">from</span> <span class="nn">._online_gmm_decodable</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._online_gmm_decoding</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">._online_gmm_decoding</span> <span class="k">import</span> <span class="n">_SingleUtteranceGmmDecoder</span>
 <span class="kn">from</span> <span class="nn">._online_ivector_feature</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._online_ivector_feature</span> <span class="k">import</span> <span class="n">_OnlineIvectorExtractionInfo</span>
 <span class="kn">from</span> <span class="nn">._online_nnet2_feature_pipeline</span> <span class="k">import</span> <span class="o">*</span>
@@ -228,17 +226,6 @@
     <span class="nd">@global_cmvn_stats</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">global_cmvn_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_global_cmvn_stats</span> <span class="o">=</span> <span class="n">value</span></div>
-
-<div class="viewcode-block" id="OnlineFeaturePipeline"><a class="viewcode-back" href="../../api/kaldi.online2.html#kaldi.online2.OnlineFeaturePipeline">[docs]</a><span class="k">class</span> <span class="nc">OnlineFeaturePipeline</span><span class="p">(</span><span class="n">_OnlineFeaturePipeline</span><span class="p">):</span>
-<div class="viewcode-block" id="OnlineFeaturePipeline.get_as_matrix"><a class="viewcode-back" href="../../api/kaldi.online2.html#kaldi.online2.OnlineFeaturePipeline.get_as_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">get_as_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">SubMatrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_as_matrix</span><span class="p">())</span></div>
-
-<div class="viewcode-block" id="OnlineFeaturePipeline.new"><a class="viewcode-back" href="../../api/kaldi.online2.html#kaldi.online2.OnlineFeaturePipeline.new">[docs]</a>    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">OnlineFeaturePipeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_new</span><span class="p">())</span></div></div>
-
-<div class="viewcode-block" id="SingleUtteranceGmmDecoder"><a class="viewcode-back" href="../../api/kaldi.online2.html#kaldi.online2.SingleUtteranceGmmDecoder">[docs]</a><span class="k">class</span> <span class="nc">SingleUtteranceGmmDecoder</span><span class="p">(</span><span class="n">_SingleUtteranceGmmDecoder</span><span class="p">):</span>
-<div class="viewcode-block" id="SingleUtteranceGmmDecoder.feature_pipeline"><a class="viewcode-back" href="../../api/kaldi.online2.html#kaldi.online2.SingleUtteranceGmmDecoder.feature_pipeline">[docs]</a>    <span class="k">def</span> <span class="nf">feature_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">OnlineFeaturePipeline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_feature_pipeline</span><span class="p">())</span></div></div>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span>
            <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span>

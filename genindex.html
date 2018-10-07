@@ -3206,8 +3206,6 @@
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.SgmmUpdateFlags.COVARIANCE_MATRIX">COVARIANCE_MATRIX (kaldi.gmm.SgmmUpdateFlags attribute)</a>
 </li>
-      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.covars">covars() (kaldi.gmm.FullGmm method)</a>
-</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFst.create_arc">create_arc() (kaldi.fstext.special.StdContextFst method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.Compiler.create_computation">create_computation() (kaldi.nnet3.Compiler method)</a>
@@ -4358,6 +4356,8 @@
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineNnet2FeaturePipelineInfo.feature_type">feature_type (kaldi.online2.OnlineNnet2FeaturePipelineInfo attribute)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetIo.features">features (kaldi.nnet3.NnetIo attribute)</a>
+</li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.window.FeatureWindowFunction">FeatureWindowFunction (class in kaldi.feat.window)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.signal.fft_based_block_convolve_signals">fft_based_block_convolve_signals() (in module kaldi.feat.signal)</a>
@@ -5322,9 +5322,9 @@
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.math.gcd">gcd() (in module kaldi.base.math)</a>
 </li>
-      <li><a href="api/kaldi.gmm.html#kaldi.gmm.DiagGmm.gconsts_">gconsts_ (kaldi.gmm.DiagGmm attribute)</a>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.DiagGmm.gconsts">gconsts() (kaldi.gmm.DiagGmm method)</a>
 </li>
-      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.gconsts_">gconsts_ (kaldi.gmm.FullGmm attribute)</a>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.gconsts">gconsts() (kaldi.gmm.FullGmm method)</a>
 </li>
       <li><a href="api/kaldi.tree.html#kaldi.tree.gen_rand_stats">gen_rand_stats() (in module kaldi.tree)</a>
 </li>
@@ -6746,9 +6746,9 @@
 </li>
       <li><a href="api/kaldi.util.html#kaldi.util.table.IntWriter">IntWriter (class in kaldi.util.table)</a>
 </li>
-      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.inv_covars_">inv_covars_ (kaldi.gmm.FullGmm attribute)</a>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.inv_covars">inv_covars() (kaldi.gmm.FullGmm method)</a>
 </li>
-      <li><a href="api/kaldi.gmm.html#kaldi.gmm.DiagGmm.inv_vars_">inv_vars_ (kaldi.gmm.DiagGmm attribute)</a>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.DiagGmm.inv_vars">inv_vars() (kaldi.gmm.DiagGmm method)</a>
 </li>
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.Sgmm2FmllrGlobalParams.inv_xform_">inv_xform_ (kaldi.sgmm2.Sgmm2FmllrGlobalParams attribute)</a>
 </li>
@@ -8186,13 +8186,11 @@
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.GmmUpdateFlags.MEANS">MEANS (kaldi.gmm.GmmUpdateFlags attribute)</a>
 </li>
-      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.means">means() (kaldi.gmm.FullGmm method)</a>
-</li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmmNormal.means_">means_ (kaldi.gmm.FullGmmNormal attribute)</a>
 </li>
-      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.means_invcovars_">means_invcovars_ (kaldi.gmm.FullGmm attribute)</a>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.means_invcovars">means_invcovars() (kaldi.gmm.FullGmm method)</a>
 </li>
-      <li><a href="api/kaldi.gmm.html#kaldi.gmm.DiagGmm.means_invvars_">means_invvars_ (kaldi.gmm.DiagGmm attribute)</a>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.DiagGmm.means_invvars">means_invvars() (kaldi.gmm.DiagGmm method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ExampleMergingConfig.measure_output_frames">measure_output_frames (kaldi.nnet3.ExampleMergingConfig attribute)</a>
 </li>
@@ -8238,6 +8236,10 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetOptimizeOptions.memory_compression_level">memory_compression_level (kaldi.nnet3.NnetOptimizeOptions attribute)</a>
 </li>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.DiagGmm.merge">merge() (kaldi.gmm.DiagGmm method)</a>
+</li>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.merge">merge() (kaldi.gmm.FullGmm method)</a>
+</li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm.merge_by_count">merge_by_count() (kaldi.gmm.am.AmDiagGmm method)</a>
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.merge_distributions">merge_distributions() (in module kaldi.rnnlm)</a>
@@ -8245,6 +8247,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.merge_examples">merge_examples() (in module kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.posterior.merge_posteriors">merge_posteriors() (in module kaldi.hmm.posterior)</a>
+</li>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.merge_preselect">merge_preselect() (kaldi.gmm.FullGmm method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.VariableMergingOptimizer.merge_variables">merge_variables() (kaldi.nnet3.VariableMergingOptimizer method)</a>
 </li>
@@ -11754,6 +11758,8 @@
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.spectrogram.SpectrogramOptions.register">register() (kaldi.feat.spectrogram.SpectrogramOptions method)</a>
 </li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.window.FrameExtractionOptions.register">register() (kaldi.feat.window.FrameExtractionOptions method)</a>
+</li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.am.UbmClusteringOptions.register">register() (kaldi.gmm.am.UbmClusteringOptions method)</a>
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.MapDiagGmmOptions.register">register() (kaldi.gmm.MapDiagGmmOptions method)</a>
@@ -12942,6 +12948,8 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdVectorFst.set_input_symbols">set_input_symbols() (kaldi.fstext.StdVectorFst method)</a>
 </li>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.set_inv_covars">set_inv_covars() (kaldi.gmm.FullGmm method)</a>
+</li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.set_inv_covars_and_means">set_inv_covars_and_means() (kaldi.gmm.FullGmm method)</a>
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.set_inv_covars_and_means_inv_covars">set_inv_covars_and_means_inv_covars() (kaldi.gmm.FullGmm method)</a>
@@ -13693,6 +13701,10 @@
       <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineIvectorExtractionInfo.splice_opts">splice_opts (kaldi.online2.OnlineIvectorExtractionInfo attribute)</a>
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.mllr.FmllrRawAccs.splice_width">splice_width() (kaldi.transform.mllr.FmllrRawAccs method)</a>
+</li>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.DiagGmm.split">split() (kaldi.gmm.DiagGmm method)</a>
+</li>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.split">split() (kaldi.gmm.FullGmm method)</a>
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm.split_by_count">split_by_count() (kaldi.gmm.am.AmDiagGmm method)</a>
 </li>
@@ -15302,11 +15314,9 @@
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.GmmUpdateFlags.WEIGHTS">WEIGHTS (kaldi.gmm.GmmUpdateFlags attribute)</a>
 </li>
+      <li><a href="api/kaldi.gmm.html#kaldi.gmm.DiagGmm.weights">weights() (kaldi.gmm.DiagGmm method)</a>
+</li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.weights">weights() (kaldi.gmm.FullGmm method)</a>
-</li>
-      <li><a href="api/kaldi.gmm.html#kaldi.gmm.DiagGmm.weights_">weights_ (kaldi.gmm.DiagGmm attribute)</a>
-</li>
-      <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.weights_">weights_ (kaldi.gmm.FullGmm attribute)</a>
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmmNormal.weights_">weights_ (kaldi.gmm.FullGmmNormal attribute)</a>
 </li>

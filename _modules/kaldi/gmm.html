@@ -209,11 +209,12 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">am</span>
 
 <span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">matrix</span> <span class="k">as</span> <span class="n">_matrix</span>
+<span class="kn">from</span> <span class="nn">kaldi.matrix</span> <span class="k">import</span> <span class="n">_matrix_wrapper</span>
+<span class="kn">from</span> <span class="nn">kaldi.matrix.packed</span> <span class="k">import</span> <span class="n">_sp_matrix_wrapper</span>
+
 
 <div class="viewcode-block" id="DiagGmm"><a class="viewcode-back" href="../../api/kaldi.gmm.html#kaldi.gmm.DiagGmm">[docs]</a><span class="k">class</span> <span class="nc">DiagGmm</span><span class="p">(</span><span class="n">_diag_gmm</span><span class="o">.</span><span class="n">DiagGmm</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Python wrapper for Kaldi::DiagGmm&lt;float&gt;.</span>
-
-<span class="sd">    Provides a more pythonic access to C++ methods.</span>
+    <span class="sd">&quot;&quot;&quot;Gaussian Mixture Model with diagonal covariances.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        nmix (int): Number of Gaussians to mix</span>
@@ -248,7 +249,33 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">copy_from_diag</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;src must be either FullGmm or DiagGmm&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="DiagGmm.component_posteriors"><a class="viewcode-back" href="../../api/kaldi.gmm.html#kaldi.gmm.DiagGmm.component_posteriors">[docs]</a>    <span class="k">def</span> <span class="nf">component_posteriors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Computes the posterior probabilities of all Gaussian components given</span>
+<span class="sd">         a data point.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (VectorBase): Data point with the same dimension as each</span>
+<span class="sd">                component.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            2-element tuple containing</span>
+
+<span class="sd">            - **loglike** (:class:`float`): Log-likelihood</span>
+<span class="sd">            - **posteriors** (:class:`~kaldi.matrix.Vector`): Vector with the</span>
+<span class="sd">              posterior probabilities</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError if data is not consistent with gmm dimension.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">dim</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;data dimension </span><span class="si">{}</span><span class="s2"> does not match gmm dimension </span><span class="si">{}</span><span class="s2">&quot;</span>
+                             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">()))</span>
+        <span class="n">posteriors</span> <span class="o">=</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_gauss</span><span class="p">())</span>
+        <span class="n">loglike</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_component_posteriors</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">posteriors</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loglike</span><span class="p">,</span> <span class="n">posteriors</span></div></div>
+
 
 <div class="viewcode-block" id="FullGmm"><a class="viewcode-back" href="../../api/kaldi.gmm.html#kaldi.gmm.FullGmm">[docs]</a><span class="k">class</span> <span class="nc">FullGmm</span><span class="p">(</span><span class="n">_full_gmm</span><span class="o">.</span><span class="n">FullGmm</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Python wrapper for Kaldi::FullGmm&lt;Float&gt;</span>
@@ -309,7 +336,7 @@
 <span class="sd">              posterior probabilities</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            ValueError if data is not consistent with this components dimension.</span>
+<span class="sd">            ValueError if data is not consistent with gmm dimension.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">dim</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;data dimension </span><span class="si">{}</span><span class="s2"> does not match gmm dimension </span><span class="si">{}</span><span class="s2">&quot;</span>
@@ -318,25 +345,11 @@
         <span class="n">loglike</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_component_posteriors</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">posteriors</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">loglike</span><span class="p">,</span> <span class="n">posteriors</span></div>
 
-<div class="viewcode-block" id="FullGmm.weights"><a class="viewcode-back" href="../../api/kaldi.gmm.html#kaldi.gmm.FullGmm.weights">[docs]</a>    <span class="k">def</span> <span class="nf">weights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            A new :class:`~kaldi.matrix.SubVector` containing mixture weights.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">SubVector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights_</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="FullGmm.set_weights"><a class="viewcode-back" href="../../api/kaldi.gmm.html#kaldi.gmm.FullGmm.set_weights">[docs]</a>    <span class="k">def</span> <span class="nf">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Sets gmm mixture weights.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">Vector</span><span class="p">):</span>
             <span class="n">weights</span> <span class="o">=</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="FullGmm.means"><a class="viewcode-back" href="../../api/kaldi.gmm.html#kaldi.gmm.FullGmm.means">[docs]</a>    <span class="k">def</span> <span class="nf">means</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            A new :class:`~kaldi.matrix.SubMatrix` containing component means.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">SubMatrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_means</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="FullGmm.set_means"><a class="viewcode-back" href="../../api/kaldi.gmm.html#kaldi.gmm.FullGmm.set_means">[docs]</a>    <span class="k">def</span> <span class="nf">set_means</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">means</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Sets gmm component means.&quot;&quot;&quot;</span>
@@ -344,13 +357,29 @@
             <span class="n">means</span> <span class="o">=</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">means</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_means</span><span class="p">(</span><span class="n">means</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="FullGmm.covars"><a class="viewcode-back" href="../../api/kaldi.gmm.html#kaldi.gmm.FullGmm.covars">[docs]</a>    <span class="k">def</span> <span class="nf">covars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="FullGmm.inv_covars"><a class="viewcode-back" href="../../api/kaldi.gmm.html#kaldi.gmm.FullGmm.inv_covars">[docs]</a>    <span class="k">def</span> <span class="nf">inv_covars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns:</span>
-<span class="sd">            Component Co-variances</span>
+<span class="sd">            Component inverse covariances</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_covars</span><span class="p">()</span></div></div>
+        <span class="k">return</span> <span class="p">[</span><span class="n">_sp_matrix_wrapper</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span> <span class="k">for</span> <span class="n">sp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inv_covars</span><span class="p">()]</span></div>
 
+<div class="viewcode-block" id="FullGmm.get_covars"><a class="viewcode-back" href="../../api/kaldi.gmm.html#kaldi.gmm.FullGmm.get_covars">[docs]</a>    <span class="k">def</span> <span class="nf">get_covars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Component Covariances</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">_sp_matrix_wrapper</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span> <span class="k">for</span> <span class="n">sp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_covars</span><span class="p">()]</span></div>
+
+<div class="viewcode-block" id="FullGmm.get_covars_and_means"><a class="viewcode-back" href="../../api/kaldi.gmm.html#kaldi.gmm.FullGmm.get_covars_and_means">[docs]</a>    <span class="k">def</span> <span class="nf">get_covars_and_means</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Component Covariances</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">covars</span><span class="p">,</span> <span class="n">means</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_covars_and_means</span><span class="p">()</span>
+        <span class="n">covars</span> <span class="o">=</span> <span class="p">[</span><span class="n">_sp_matrix_wrapper</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span> <span class="k">for</span> <span class="n">sp</span> <span class="ow">in</span> <span class="n">covars</span><span class="p">]</span>
+        <span class="n">means</span> <span class="o">=</span> <span class="n">_matrix_wrapper</span><span class="p">(</span><span class="n">means</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">covars</span><span class="p">,</span> <span class="n">means</span></div></div>
 
 <span class="c1">################################################################################</span>
 

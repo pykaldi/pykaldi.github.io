@@ -231,7 +231,7 @@
         <span class="n">compose_filter</span> <span class="o">=</span> <span class="n">_getters</span><span class="o">.</span><span class="n">GetComposeFilter</span><span class="p">(</span><span class="n">compose_filter</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown compose filter: </span><span class="si">{!r}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">compose_filter</span><span class="p">))</span>
-    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdFst</span><span class="p">()</span>
+    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdVectorFst</span><span class="p">()</span>
     <span class="n">_special_ops</span><span class="o">.</span><span class="n">_compose_context_fst</span><span class="p">(</span><span class="n">ifst1</span><span class="p">,</span> <span class="n">ifst2</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">connect</span><span class="p">,</span>
                                       <span class="n">compose_filter</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ofst</span></div>
@@ -250,9 +250,9 @@
 <span class="sd">        ifst (StdFst): Input FST.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Tuple[StdFst, List[List[int]]]: Output fst, label information tuple.</span>
+<span class="sd">        Tuple[StdVectorFst, List[List[int]]]: Output fst, label information tuple.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdFst</span><span class="p">()</span>
+    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdVectorFst</span><span class="p">()</span>
     <span class="n">ilabels_out</span> <span class="o">=</span> <span class="n">_special_ops</span><span class="o">.</span><span class="n">_compose_context</span><span class="p">(</span><span class="n">disambig_syms</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">ifst</span><span class="p">,</span> <span class="n">ofst</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">ilabels_out</span></div>
 
@@ -274,7 +274,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        A composed FST.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdFst</span><span class="p">()</span>
+    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdVectorFst</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">inverse</span><span class="p">:</span>
         <span class="n">_special_ops</span><span class="o">.</span><span class="n">_compose_deterministic_on_demand_inverse</span><span class="p">(</span><span class="n">fst1</span><span class="p">,</span> <span class="n">fst2</span><span class="p">,</span> <span class="n">ofst</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -310,12 +310,12 @@
 <span class="sd">       http://kaldi-asr.org/doc/determinize-lattice_8h_source.html</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">opts</span> <span class="o">=</span> <span class="n">_determinize_lattice</span><span class="o">.</span><span class="n">DeterminizeLatticeOptions</span><span class="p">()</span>
-    <span class="n">opts</span><span class="o">.</span><span class="n">delta</span><span class="p">,</span> <span class="n">opst</span><span class="o">.</span><span class="n">max_mem</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">max_loop</span> <span class="o">=</span> <span class="n">delta</span><span class="p">,</span> <span class="n">max_mem</span><span class="p">,</span> <span class="n">max_loop</span>
+    <span class="n">opts</span><span class="o">.</span><span class="n">delta</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">max_mem</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">max_loop</span> <span class="o">=</span> <span class="n">delta</span><span class="p">,</span> <span class="n">max_mem</span><span class="p">,</span> <span class="n">max_loop</span>
     <span class="k">if</span> <span class="n">compact_output</span><span class="p">:</span>
-        <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeFst</span><span class="p">()</span>
+        <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeVectorFst</span><span class="p">()</span>
         <span class="n">success</span> <span class="o">=</span> <span class="n">_special_ops</span><span class="o">.</span><span class="n">_determinize_lattice_to_compact</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeFst</span><span class="p">()</span>
+        <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">()</span>
         <span class="n">success</span> <span class="o">=</span> <span class="n">_special_ops</span><span class="o">.</span><span class="n">_determinize_lattice</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ofst</span>
@@ -347,8 +347,8 @@
 <span class="sd">    .. _kaldi/src/fstext/determinize-star.h:</span>
 <span class="sd">       http://kaldi-asr.org/doc/determinize-star_8h_source.html</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdFst</span><span class="p">()</span>
-    <span class="n">success</span> <span class="o">=</span> <span class="n">_special_ops</span><span class="o">.</span><span class="n">_determinize_star</span><span class="p">(</span><span class="n">fst1</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">max_states</span><span class="p">,</span>
+    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdVectorFst</span><span class="p">()</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="n">_special_ops</span><span class="o">.</span><span class="n">_determinize_star</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">max_states</span><span class="p">,</span>
                                              <span class="n">allow_partial</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ofst</span>
@@ -364,7 +364,7 @@
 <span class="sd">    Destructively pushes weights/labels towards initial or final states.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        fst (StdFst): Input fst over the tropical semiring.</span>
+<span class="sd">        fst (StdVectorFst): Input fst over the tropical semiring.</span>
 <span class="sd">        push_weights: Should weights be pushed?</span>
 <span class="sd">        push_labels: Should labels be pushed?</span>
 <span class="sd">        remove_common_affix: If pushing labels, should common prefix/suffix be</span>
@@ -388,7 +388,7 @@
 <span class="sd">    See `kaldi/src/fstext/remove-eps-local.h`_ for details.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        fst (StdFst): Input fst over the tropical semiring.</span>
+<span class="sd">        fst (StdVectorFst): Input fst over the tropical semiring.</span>
 <span class="sd">        special (bool): Preserve stochasticity when casting to log semiring.</span>
 
 <span class="sd">    .. _kaldi/src/fstext/remove-eps-local.h:</span>

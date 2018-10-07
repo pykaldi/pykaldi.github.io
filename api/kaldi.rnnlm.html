@@ -316,7 +316,7 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>max_ngram_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Maximum ngram order.</li>
+<li><strong>max_ngram_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum ngram order.</li>
 <li><strong>info</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmComputeStateInfo" title="kaldi.rnnlm.RnnlmComputeStateInfo"><em>RnnlmComputeStateInfo</em></a>) – State information for RNNLM computation.</li>
 </ul>
 </td>
@@ -346,8 +346,8 @@ in each map which corresponds to the &lt;bos&gt; state.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – State index.</li>
-<li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Arc label.</li>
+<li><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – State index.</li>
+<li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Arc label.</li>
 </ul>
 </td>
 </tr>
@@ -381,7 +381,7 @@ in lattice rescoring.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>info</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmComputeStateInfo" title="kaldi.rnnlm.RnnlmComputeStateInfo"><em>RnnlmComputeStateInfo</em></a>) – State information for RNNLM computation.</li>
-<li><strong>bos_index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Index of the begin-of-sentence symbol.</li>
+<li><strong>bos_index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Index of the begin-of-sentence symbol.</li>
 </ul>
 </td>
 </tr>
@@ -423,7 +423,7 @@ issues, it is set to a very small number.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>next_word</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The next word to process.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>next_word</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The next word to process.</td>
 </tr>
 </tbody>
 </table>
@@ -682,7 +682,7 @@ the first (backward) step, or the second (forward) step of backstitch.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>is_backstitch_step1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true update stats otherwise not.</li>
+<li><strong>is_backstitch_step1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If true update stats otherwise not.</li>
 <li><strong>minibatch</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><em>RnnlmExample</em></a>) – The RNNLM minibatch to train on, containing
 a number of parallel word sequences.  It will not necessarily
 contain words with the ‘original’ numbering, it will in most
@@ -804,7 +804,7 @@ Typically a command-line option parser.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If validation fails.</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If validation fails.</td>
 </tr>
 </tbody>
 </table>
@@ -969,7 +969,7 @@ the first (backward) step, or the second (forward) step of backstitch.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>is_backstitch_step1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true update stats otherwise not.</li>
+<li><strong>is_backstitch_step1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If true update stats otherwise not.</li>
 <li><strong>embedding_deriv</strong> (<em>CuMatrixBase</em>) – The derivative of the objective
 function w.r.t. the word (or feature) embedding matrix.</li>
 </ul>
@@ -996,7 +996,7 @@ the first (backward) step, or the second (forward) step of backstitch.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>is_backstitch_step1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true update stats otherwise not.</li>
+<li><strong>is_backstitch_step1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If true update stats otherwise not.</li>
 <li><strong>active_words</strong> (<a class="reference internal" href="kaldi.cudamatrix.html#kaldi.cudamatrix.CuArray" title="kaldi.cudamatrix.CuArray"><em>CuArray</em></a>) – A sorted, unique list of the word indexes
 used, with dimension equal to <code class="xref py py-obj docutils literal"><span class="pre">word_embedding_deriv.num_rows</span></code>.</li>
 <li><strong>word_embedding_deriv</strong> (<em>CuMatrixBase</em>) – The derivative of the objective
@@ -1225,7 +1225,7 @@ sampled words.  In the not-sampled case it contains actual word indexes
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>is</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.istream" title="kaldi.base.io.istream"><em>istream</em></a>) – The input C++ stream.</li>
-<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether the stream is binary.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether the stream is binary.</li>
 </ul>
 </td>
 </tr>
@@ -1302,7 +1302,7 @@ which this example was obtained; mostly used in bounds checking.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>os</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.ostream" title="kaldi.base.io.ostream"><em>ostream</em></a>) – The output C++ stream.</li>
-<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether the stream is binary.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether the stream is binary.</li>
 </ul>
 </td>
 </tr>
@@ -1467,7 +1467,7 @@ fields.</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The vocabulary size, i.e. the highest-numbered word plus one.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -1582,7 +1582,7 @@ pairs.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>unigram_probs</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em>) – The unigram probabilities for each word.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>unigram_probs</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em>) – The unigram probabilities for each word.
 Each elemenet should be &gt;= 0, and they should sum to a value close to
 1.</td>
 </tr>
@@ -1614,13 +1614,13 @@ iterating over the unigram distribution, so this is fairly fast.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>num_words_to_sample</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of words that we are
+<li><strong>num_words_to_sample</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of words that we are
 directed sample; must be &gt; 0 and less than the number of nonzero
 elements of the ‘unigram_probs’ that this class was constructed
 with.</li>
-<li><strong>unigram_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Must be &gt; 0.0. Search above for p(i) to
+<li><strong>unigram_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Must be &gt; 0.0. Search above for p(i) to
 see what effect it has.</li>
-<li><strong>higher_order_probs</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – A list of pairs (i, p)
+<li><strong>higher_order_probs</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em><em>]</em>) – A list of pairs (i, p)
 where 0 &lt;= i &lt; unigram_probs.size() (referring to the unigram_probs
 list used in the constructor), and p &gt; 0.0.  This list must be
 sorted and unique w.r.t. i.  Note: the probabilities here will be
@@ -1653,18 +1653,18 @@ distribution with sufficiently large probability and then calling
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>num_words_to_sample</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of words that we are
+<li><strong>num_words_to_sample</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of words that we are
 directed sample; must be &gt; 0 and less than the number of nonzero
 elements of the ‘unigram_probs’ that this class was constructed
 with.</li>
-<li><strong>unigram_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Must be &gt; 0.0. Search above for p(i) to
+<li><strong>unigram_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Must be &gt; 0.0. Search above for p(i) to
 see what effect it has.</li>
-<li><strong>higher_order_probs</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – A list of pairs (i, p)
+<li><strong>higher_order_probs</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em><em>]</em>) – A list of pairs (i, p)
 where 0 &lt;= i &lt; unigram_probs.size() (referring to the unigram_probs
 list used in the constructor), and p &gt; 0.0.  This list must be
 sorted and unique w.r.t. i.  Note: the probabilities here will be
 added to the unigram probabilities of the words concerned.</li>
-<li><strong>words_we_must_sample</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – A list of words that must be
+<li><strong>words_we_must_sample</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – A list of words that must be
 sampled. It must be sorted and unique, and all elements <code class="xref py py-obj docutils literal"><span class="pre">i</span></code> must
 satisfy <code class="xref py py-obj docutils literal"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">len(unigram_probs)</span></code>, where <code class="xref py py-obj docutils literal"><span class="pre">unigram_probs</span></code> is the
 list supplied to the constructor.</li>
@@ -1739,7 +1739,7 @@ is supported.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>histories</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – A list of histories with
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>histories</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em><em>]</em>) – A list of histories with
 associated weights.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A scalar <code class="xref py py-obj docutils literal"><span class="pre">unigram_prob</span></code> which is computed by summing all history
@@ -1770,7 +1770,7 @@ but it will be equal to the total of the weights of histories in
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>histories</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – A list of histories with
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>histories</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em><em>]</em>) – A list of histories with
 associated weights.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A scalar <code class="xref py py-obj docutils literal"><span class="pre">unigram_prob</span></code> which is computed by summing all history
@@ -1840,7 +1840,7 @@ symbol id 0 which represents epsilon has probability 0.0</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The n-gram order, e.g. 1 for a unigram LM, 2 for a bigram.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -1858,7 +1858,7 @@ format written by <a class="reference internal" href="#kaldi.rnnlm.SamplingLm.wr
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>is</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.istream" title="kaldi.base.io.istream"><em>istream</em></a>) – The input C++ stream.</li>
-<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether the stream is binary.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether the stream is binary.</li>
 </ul>
 </td>
 </tr>
@@ -1908,7 +1908,7 @@ format written by <a class="reference internal" href="#kaldi.rnnlm.SamplingLm.wr
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The vocabulary size, i.e. the highest-numbered word plus one.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -1924,7 +1924,7 @@ format written by <a class="reference internal" href="#kaldi.rnnlm.SamplingLm.wr
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>os</strong> (<a class="reference internal" href="kaldi.base.html#kaldi.base.io.ostream" title="kaldi.base.io.ostream"><em>ostream</em></a>) – The output C++ stream.</li>
-<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether the stream is binary.</li>
+<li><strong>binary</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether the stream is binary.</li>
 </ul>
 </td>
 </tr>
@@ -1973,7 +1973,7 @@ process slow.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>will_write_arpa</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to retain certain n-grams (required
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>will_write_arpa</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to retain certain n-grams (required
 in the ARPA file format) that would otherwise have been pruned.</td>
 </tr>
 </tbody>
@@ -2027,13 +2027,13 @@ in the ARPA file format) that would otherwise have been pruned.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>corpus_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Weight attached to the corpus from which this
+<li><strong>corpus_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Weight attached to the corpus from which this
 data came. (Note: you shouldn’t repeat sentences when providing
 them to this class, although this is allowed during the actual
 RNNLM training; instead, you should make sure that the multiplicity
 that you use in the RNNLM for this corpus is reflected in
 ‘corpus_weight’.)</li>
-<li><strong>sentence</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – The sentence we are processing. It is not
+<li><strong>sentence</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – The sentence we are processing. It is not
 expected to contain the BOS symbol, and should not be terminated by
 the EOS symbol, although the EOS symbol is allowed internally
 (where it can be used to separate a sequence of sentences from a
@@ -2091,7 +2091,7 @@ include it in the model. Must be &gt;0.0 and &lt;= unigram-factor.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If validation fails.</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If validation fails.</td>
 </tr>
 </tbody>
 </table>
@@ -2172,9 +2172,9 @@ if all of its second values are &gt; 0.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – The input distribution.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em><em>]</em>) – The input distribution.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If validation fails.</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If validation fails.</td>
 </tr>
 </tbody>
 </table>
@@ -2205,7 +2205,7 @@ and objective function computation.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>minibatch</strong> (<a class="reference internal" href="#kaldi.rnnlm.RnnlmExample" title="kaldi.rnnlm.RnnlmExample"><em>RnnlmExample</em></a>) – The input minibatch for which we are
 computing the derived parameters.</li>
-<li><strong>need_embedding_deriv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – True if we are going to be computing
+<li><strong>need_embedding_deriv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – True if we are going to be computing
 derivatives w.r.t. the word embedding (e.g., needed in a typical
 training configuration); if this is True, it will compute
 <code class="xref py py-obj docutils literal"><span class="pre">input_words_tranpose</span></code>.</li>
@@ -2230,8 +2230,8 @@ distributions.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>d1</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – The first input distribution.</li>
-<li><strong>d2</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em><em>]</em>) – The second input distribution.</li>
+<li><strong>d1</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em><em>]</em>) – The first input distribution.</li>
+<li><strong>d2</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em><em>]</em>) – The second input distribution.</li>
 </ul>
 </td>
 </tr>
@@ -2434,7 +2434,7 @@ will definitely not be included.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>probs</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>]</em>) – The input list of inclusion probabilities, with
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>probs</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em>) – The input list of inclusion probabilities, with
 0.0 &lt;= probs[i] &lt;= 1.0, and the sum of <code class="xref py py-obj docutils literal"><span class="pre">probs</span></code> should be close to an
 integer.  (specifically: within 1.0e-03 of a whole number; this
 should be easy to ensure in double precision). Let ‘k’ be this sum,

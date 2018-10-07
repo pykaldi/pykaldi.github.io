@@ -1496,25 +1496,25 @@ shared for the different HMM-positions in the phone.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>qopts</strong> (<a class="reference internal" href="#kaldi.tree.Questions" title="kaldi.tree.Questions"><code class="xref py py-class docutils literal"><span class="pre">Questions</span></code></a>) – Questions options class, contains
 questions for each key</li>
-<li><strong>phone_sets</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Each element of phone_sets is a set of phones
+<li><strong>phone_sets</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Each element of phone_sets is a set of phones
 whose roots are shared together</li>
-<li><strong>phone2num_pdf_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A map from phones to the number of
+<li><strong>phone2num_pdf_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A map from phones to the number of
 pdf_classes in the phone</li>
-<li><strong>share_roots</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A vector the same size as phone_sets; says for
+<li><strong>share_roots</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A vector the same size as phone_sets; says for
 each phone set whether the root should be shared among all the
 pdf-classes or not</li>
-<li><strong>do_split</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A vector the same size as phone_sets; says for
+<li><strong>do_split</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A vector the same size as phone_sets; says for
 each phone set whether decision-tree splitting should be done</li>
-<li><strong>stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – The statistics used in tree-building</li>
-<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Threshold used in decision-tree splitting or you
+<li><strong>stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – The statistics used in tree-building</li>
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Threshold used in decision-tree splitting or you
 may use 0 in which case max_leaves becomes the constraint</li>
-<li><strong>max_leaves</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Maximum number of leaves it will create; set
+<li><strong>max_leaves</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum number of leaves it will create; set
 this to a large number if you want to specify just thresh</li>
-<li><strong>cluster_thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Threshold for clustering leaves after
+<li><strong>cluster_thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Threshold for clustering leaves after
 decision-tree splitting; leaves will be combined if
 log-likelihood change is less than this.</li>
-<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The central position of the phone context window</li>
-<li><strong>round_num_leaves</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true, then the number of leaves in the
+<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The central position of the phone context window</li>
+<li><strong>round_num_leaves</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If true, then the number of leaves in the
 final tree is made a multiple of 8. This is done by further
 clustering the leaves after they are first clustered based on
 log-likelihood change. (See cluster_thresh above) (default: True).</li>
@@ -1541,23 +1541,23 @@ multiple codebooks.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>qopts</strong> (<a class="reference internal" href="#kaldi.tree.Questions" title="kaldi.tree.Questions"><code class="xref py py-class docutils literal"><span class="pre">Questions</span></code></a>) – Questions options class, contains
 questions for each key</li>
-<li><strong>phone_sets</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Each element of phone_sets is a set of phones
+<li><strong>phone_sets</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Each element of phone_sets is a set of phones
 whose roots are shared together</li>
-<li><strong>phone2num_pdf_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A map from phones to the number of
+<li><strong>phone2num_pdf_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A map from phones to the number of
 pdf_classes in the phone</li>
-<li><strong>share_roots</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A vector the same size as phone_sets; says for
+<li><strong>share_roots</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A vector the same size as phone_sets; says for
 each phone set whether the root should be shared among all the
 pdf-classes or not</li>
-<li><strong>do_split</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A vector the same size as phone_sets; says for
+<li><strong>do_split</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A vector the same size as phone_sets; says for
 each phone set whether decision-tree splitting should be done</li>
-<li><strong>stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – The statistics used in tree-building</li>
-<li><strong>max_leaves_first</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Maximum number of leaves it will create
+<li><strong>stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – The statistics used in tree-building</li>
+<li><strong>max_leaves_first</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum number of leaves it will create
 in first level</li>
-<li><strong>max_leaves_second</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Maximum number of leaves it will create
+<li><strong>max_leaves_second</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum number of leaves it will create
 in second level</li>
-<li><strong>cluster_leaves</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true, post-cluster the leaves produced
+<li><strong>cluster_leaves</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If true, post-cluster the leaves produced
 in the second level.</li>
-<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The central position of the phone context window</li>
+<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The central position of the phone context window</li>
 </ul>
 </td>
 </tr>
@@ -1598,7 +1598,7 @@ float ::kaldi::ClusterBottomUpCompartmentalized(::std::vector&lt; ::std::vector&
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">number of leaves combined
 mapping: Mapping for leaves</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">num_leaves (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a>)</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">num_leaves (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -1658,16 +1658,16 @@ The event keys and their corresponding values are:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – dimension of features</li>
-<li><strong>num_stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – approximate number of separate phones-in-context
+<li><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – dimension of features</li>
+<li><strong>num_stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – approximate number of separate phones-in-context
 wanted</li>
-<li><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – context-size</li>
-<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – central-phone position</li>
-<li><strong>phone_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – ids of phones</li>
-<li><strong>hmm_lengths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – lenghts of hmm for phone</li>
-<li><strong>is_ctx_dep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – boolean array whether each phone is
+<li><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – context-size</li>
+<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – central-phone position</li>
+<li><strong>phone_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – ids of phones</li>
+<li><strong>hmm_lengths</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – lenghts of hmm for phone</li>
+<li><strong>is_ctx_dep</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – boolean array whether each phone is
 context-dependant</li>
-<li><strong>ensure_all_phones_covered</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true, ensures that every
+<li><strong>ensure_all_phones_covered</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If true, ensures that every
 phone is seen at least once in the central position</li>
 </ul>
 </td>

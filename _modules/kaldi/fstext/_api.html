@@ -203,8 +203,10 @@
 <span></span><span class="c1"># The Python API was largely adapted from the official OpenFst Python wrapper.</span>
 <span class="c1"># See www.openfst.org for additional documentation.</span>
 
-<span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
 <span class="kn">from</span> <span class="nn">..base.io</span> <span class="k">import</span> <span class="n">ofstream</span><span class="p">,</span> <span class="n">ostringstream</span><span class="p">,</span> <span class="n">stringstream</span>
 
@@ -730,7 +732,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">          The start state if start state is set, -1 otherwise.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">states</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -911,8 +913,8 @@
 
 <span class="sd">        This operation destructively converts the FST to its concatenative</span>
 <span class="sd">        closure. If A transduces string x to y with weight a, then the closure</span>
-<span class="sd">        transduces x to y with weight a, xx to yy with weight a \otimes a,</span>
-<span class="sd">        xxx to yyy with weight a \otimes a \otimes a, and so on. The empty</span>
+<span class="sd">        transduces x to y with weight a, xx to yy with weight a \\otimes a,</span>
+<span class="sd">        xxx to yyy with weight a \\otimes a \\otimes a, and so on. The empty</span>
 <span class="sd">        string is also transduced to itself with semiring One if `closure_plus`</span>
 <span class="sd">        is False.</span>
 
@@ -933,7 +935,7 @@
 <span class="sd">        This operation destructively concatenates the FST with a second FST. If</span>
 <span class="sd">        A transduces string x to y with weight a and B transduces string w to v</span>
 <span class="sd">        with weight b, then their concatenation transduces string xw to yv with</span>
-<span class="sd">        weight a \otimes b.</span>
+<span class="sd">        weight a \\otimes b.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">          ifst: The second input FST.</span>
@@ -1132,7 +1134,7 @@
 
 <span class="sd">        This operation deletes states and arcs in the input FST that do not</span>
 <span class="sd">        belong to a successful path whose weight is no more (w.r.t the natural</span>
-<span class="sd">        semiring order) than the threshold \otimes the weight of the shortest</span>
+<span class="sd">        semiring order) than the threshold \\otimes the weight of the shortest</span>
 <span class="sd">        path in the input FST. Weights must be commutative and have the path</span>
 <span class="sd">        property.</span>
 
@@ -1306,8 +1308,8 @@
 <span class="sd">        This operation destructively reweights an FST according to the</span>
 <span class="sd">        potentials and in the direction specified by the user. An arc of weight</span>
 <span class="sd">        w, with an origin state of potential p and destination state of</span>
-<span class="sd">        potential q, is reweighted by p^{-1} \otimes (w \otimes q) when</span>
-<span class="sd">        reweighting towards the initial state, and by (p \otimes w) \otimes</span>
+<span class="sd">        potential q, is reweighted by p^{-1} \\otimes (w \\otimes q) when</span>
+<span class="sd">        reweighting towards the initial state, and by (p \\otimes w) \\otimes</span>
 <span class="sd">        q^{-1} when reweighting towards the final states. The weights must be</span>
 <span class="sd">        left distributive when reweighting towards the initial state and right</span>
 <span class="sd">        distributive when reweighting towards the final states (e.g.,</span>
@@ -1716,7 +1718,7 @@
 
 <span class="sd">    This operation computes the composition of two FSTs. If A transduces</span>
 <span class="sd">    string x to y with weight a and B transduces y to z with weight b, then</span>
-<span class="sd">    their composition transduces string x to z with weight a \otimes b. The</span>
+<span class="sd">    their composition transduces string x to z with weight a \\otimes b. The</span>
 <span class="sd">    output labels of the first transducer or the input labels of the second</span>
 <span class="sd">    transducer must be sorted (or otherwise support appropriate matchers).</span>
 
@@ -1990,7 +1992,7 @@
 
 <span class="sd">    This operation deletes states and arcs in the input FST that do not belong</span>
 <span class="sd">    to a successful path whose weight is no more (w.r.t the natural semiring</span>
-<span class="sd">    order) than the threshold t \otimes-times the weight of the shortest path in</span>
+<span class="sd">    order) than the threshold t \\otimes the weight of the shortest path in</span>
 <span class="sd">    the input FST. Weights must be commutative and have the path property.</span>
 
 <span class="sd">    Args:</span>
@@ -2103,7 +2105,7 @@
 
 
 <div class="viewcode-block" id="randgen"><a class="viewcode-back" href="../../../api/kaldi.fstext.html#kaldi.fstext.randgen">[docs]</a><span class="k">def</span> <span class="nf">randgen</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">npath</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">select</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
-            <span class="n">max_length</span><span class="o">=</span><span class="n">INT32_MAX</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">remove_total_weight</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="n">max_length</span><span class="o">=</span><span class="n">INT32_MAX</span><span class="p">,</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">remove_total_weight</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Randomly generate successful paths in an FST.</span>
 
@@ -2265,11 +2267,11 @@
 
 <span class="sd">    This operation computes the shortest distance from the initial state (when</span>
 <span class="sd">    `reverse` is False) or from every state to the final state (when `reverse`</span>
-<span class="sd">    is True). The shortest distance from p to q is the \otimes-sum of the</span>
+<span class="sd">    is True). The shortest distance from p to q is the \\otimes-sum of the</span>
 <span class="sd">    weights of all the paths between p and q. The weights must be right (if</span>
 <span class="sd">    `reverse` is False) or left (if `reverse` is True) distributive, and</span>
-<span class="sd">    k-closed (i.e., 1 \otimes x \otimes x^2 \otimes ... \otimes x^{k + 1} = 1</span>
-<span class="sd">    \otimes x \otimes x^2 \otimes ... \otimes x^k; e.g., TropicalWeight).</span>
+<span class="sd">    k-closed (i.e., 1 \\otimes x \\otimes x^2 \\otimes ... \\otimes x^{k + 1} = 1</span>
+<span class="sd">    \\otimes x \\otimes x^2 \\otimes ... \\otimes x^k; e.g., TropicalWeight).</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        ifst: The input FST.</span>
