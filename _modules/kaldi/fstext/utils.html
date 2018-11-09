@@ -276,7 +276,7 @@
 <span class="sd">        fst: The input FST.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A tuple of ``(isymbols: List[int], osymbols: List[int], total_weight)``.</span>
+<span class="sd">        The tuple (isymbols, osymbols, total_weight).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fst</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdFst</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">_fstext_utils_inl</span><span class="o">.</span><span class="n">_get_linear_symbol_sequence_from_std</span><span class="p">(</span><span class="n">fst</span><span class="p">)</span>
