@@ -225,45 +225,70 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.fbank.Fbank" title="kaldi.feat.fbank.Fbank"><code class="xref py py-obj docutils literal"><span class="pre">Fbank</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::FbankComputer&gt;</td>
+<td>Filterbank computer.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.fbank.FbankComputer" title="kaldi.feat.fbank.FbankComputer"><code class="xref py py-obj docutils literal"><span class="pre">FbankComputer</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::FbankComputer</td>
+<td>Fiterbank computer.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.fbank.FbankOptions" title="kaldi.feat.fbank.FbankOptions"><code class="xref py py-obj docutils literal"><span class="pre">FbankOptions</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::FbankOptions</td>
+<td>Options for computing filterbank features.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="kaldi.feat.fbank.Fbank">
 <em class="property">class </em><code class="descclassname">kaldi.feat.fbank.</code><code class="descname">Fbank</code><a class="headerlink" href="#kaldi.feat.fbank.Fbank" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::FbankComputer&gt;</p>
+<dd><p>Filterbank computer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.fbank.FbankOptions" title="kaldi.feat.fbank.FbankOptions"><em>FbankOptions</em></a>) – Options for computing filterbank features.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.feat.fbank.Fbank.compute">
 <code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.fbank.Fbank.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OfflineFeatureTpl&lt;kaldi::FbankComputer&gt;::Compute(::kaldi::VectorBase&lt;float&gt;, float, ::kaldi::Matrix&lt;float&gt;*)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.feat.fbank.Fbank.compute_features">
-<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.fbank.Fbank.compute_features" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the features for one file (one sequence of features).</p>
+<dd><p>Computes the filterbank features from input waveform.</p>
+<p>This interface for computing features requires that the user has
+already checked that the sampling frequency of the waveform is equal to
+the sampling frequency specified in the frame extraction options.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>wave</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – The input waveform</li>
-<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
-sampled. If sample_freq is higher than the frequency specified in
-the config, Kaldi will downsample the waveform</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0)</li>
+<li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.fbank.Fbank.compute_features">
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.fbank.Fbank.compute_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the filterbank features from input waveform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
+<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
+sampled. If sample_freq is higher than the frequency specified in
+the config, the waveform is downsampled.</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index.</p>
 </td>
 </tr>
 </tbody>
@@ -273,15 +298,13 @@ the config, Kaldi will downsample the waveform</li>
 <dl class="method">
 <dt id="kaldi.feat.fbank.Fbank.dim">
 <code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.fbank.Fbank.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OfflineFeatureTpl&lt;kaldi::FbankComputer&gt;::Dim()</p>
+<dd><p>Returns the feature dimension.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.fbank.Fbank.from_other">
 <code class="descname">from_other</code><span class="sig-paren">(</span><em>other:Fbank</em><span class="sig-paren">)</span> &#x2192; Fbank<a class="headerlink" href="#kaldi.feat.fbank.Fbank.from_other" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::FbankComputer&gt;&gt; ::kaldi::OfflineFeatureTpl&lt;kaldi::FbankComputer&gt;::OfflineFeatureTpl(::kaldi::OfflineFeatureTpl&lt; ::kaldi::FbankComputer&gt;)</p>
+<dd><p>Constructs a new Fbank object from another.</p>
 </dd></dl>
 
 </dd></dl>
@@ -289,40 +312,65 @@ std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::FbankComputer&gt;&gt;
 <dl class="class">
 <dt id="kaldi.feat.fbank.FbankComputer">
 <em class="property">class </em><code class="descclassname">kaldi.feat.fbank.</code><code class="descname">FbankComputer</code><a class="headerlink" href="#kaldi.feat.fbank.FbankComputer" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::FbankComputer</p>
+<dd><p>Fiterbank computer.</p>
+<p>This is the low-level interface for computing filterbank features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.fbank.FbankOptions" title="kaldi.feat.fbank.FbankOptions"><em>FbankOptions</em></a>) – Options for computing filterbank features.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.feat.fbank.FbankComputer.compute">
 <code class="descname">compute</code><span class="sig-paren">(</span><em>signal_log_energy:float</em>, <em>vtln_warp:float</em>, <em>signal_frame:VectorBase</em>, <em>feature:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.fbank.FbankComputer.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::FbankComputer::Compute(float, float, ::kaldi::VectorBase&lt;float&gt; <a href="#id1"><span class="problematic" id="id2">*</span></a>, ::kaldi::VectorBase&lt;float&gt; <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+<dd><p>Computes one feature frame from one signal frame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>signal_log_energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The log-energy of the signal frame prior
+to windowing and pre-emphasis, or log(min-positive-float),
+whichever is greater. Ignored if <a class="reference internal" href="#kaldi.feat.fbank.FbankComputer.need_raw_log_energy" title="kaldi.feat.fbank.FbankComputer.need_raw_log_energy"><code class="xref py py-meth docutils literal"><span class="pre">need_raw_log_energy()</span></code></a>
+returns False.</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN warping factor. Normally 1.0, meaning no
+warping is to be done. This value is ignored for feature types
+that don’t support VLTN, such as spectrogram features.</li>
+<li><strong>signal_frame</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – One frame of the signal. The frame vector is
+overwritten with intermedite values during computation to avoid new
+memory allocation.</li>
+<li><strong>feature</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – Output frame of features.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.fbank.FbankComputer.dim">
 <code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.fbank.FbankComputer.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::FbankComputer::Dim()</p>
+<dd><p>Returns feature dimension.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.fbank.FbankComputer.from_other">
 <code class="descname">from_other</code><span class="sig-paren">(</span><em>other:FbankComputer</em><span class="sig-paren">)</span> &#x2192; FbankComputer<a class="headerlink" href="#kaldi.feat.fbank.FbankComputer.from_other" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::FbankComputer&gt; ::kaldi::FbankComputer::FbankComputer(::kaldi::FbankComputer)</p>
+<dd><p>Constructs a new FbankComputer object from another.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.fbank.FbankComputer.get_frame_options">
 <code class="descname">get_frame_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; FrameExtractionOptions<a class="headerlink" href="#kaldi.feat.fbank.FbankComputer.get_frame_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::FrameExtractionOptions ::kaldi::FbankComputer::GetFrameOptions()</p>
+<dd><p>Returns frame extraction options.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.fbank.FbankComputer.need_raw_log_energy">
 <code class="descname">need_raw_log_energy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.fbank.FbankComputer.need_raw_log_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::FbankComputer::NeedRawLogEnergy()</p>
+<dd><p>Whether raw log energy is added to features.</p>
 </dd></dl>
 
 </dd></dl>
@@ -330,60 +378,68 @@ bool ::kaldi::FbankComputer::NeedRawLogEnergy()</p>
 <dl class="class">
 <dt id="kaldi.feat.fbank.FbankOptions">
 <em class="property">class </em><code class="descclassname">kaldi.feat.fbank.</code><code class="descname">FbankOptions</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::FbankOptions</p>
+<dd><p>Options for computing filterbank features.</p>
 <dl class="attribute">
 <dt id="kaldi.feat.fbank.FbankOptions.energy_floor">
 <code class="descname">energy_floor</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.energy_floor" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat FbankOptions.energy_floor</p>
+<dd><p>Absolute energy floor used in filterbank computation (default=0.0)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.fbank.FbankOptions.frame_opts">
 <code class="descname">frame_opts</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.frame_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::FrameExtractionOptions FbankOptions.frame_opts</p>
+<dd><p>Options for frame extraction</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.fbank.FbankOptions.htk_compat">
 <code class="descname">htk_compat</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.htk_compat" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool FbankOptions.htk_compat</p>
+<dd><p>Whether to put energy last (default=False)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.fbank.FbankOptions.mel_opts">
 <code class="descname">mel_opts</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.mel_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::MelBanksOptions FbankOptions.mel_opts</p>
+<dd><p>Options for Mel banks (default #mel-banks is 23)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.fbank.FbankOptions.raw_energy">
 <code class="descname">raw_energy</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.raw_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool FbankOptions.raw_energy</p>
+<dd><p>Whether to compute energy before preemphasis and windowing (default=True)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.fbank.FbankOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::FbankOptions::Register(::kaldi::OptionsItf <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.fbank.FbankOptions.use_energy">
 <code class="descname">use_energy</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.use_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool FbankOptions.use_energy</p>
+<dd><p>Whether to add an extra energy dimension to filterbank output (default=False)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.fbank.FbankOptions.use_log_fbank">
 <code class="descname">use_log_fbank</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.use_log_fbank" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool FbankOptions.use_log_fbank</p>
+<dd><p>Whether to compute log-filterbank (default) or linear-filterbank</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.fbank.FbankOptions.use_power">
 <code class="descname">use_power</code><a class="headerlink" href="#kaldi.feat.fbank.FbankOptions.use_power" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool FbankOptions.use_power</p>
+<dd><p>Whether to use power (default) or magnitude</p>
 </dd></dl>
 
 </dd></dl>
@@ -882,7 +938,7 @@ frames. Number of left and right context frames must be non-negative.</p>
 <dt id="kaldi.feat.mel.MelBanks.compute">
 <code class="descname">compute</code><span class="sig-paren">(</span><em>fft_energies:VectorBase</em>, <em>mel_energies_out:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.mel.MelBanks.compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::MelBanks::Compute(::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt; <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
+void ::kaldi::MelBanks::Compute(::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt; <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -988,21 +1044,21 @@ float ::kaldi::MelBanks::VtlnWarpMelFreq(float, float, float, float, float, floa
 <dt id="kaldi.feat.mel.compute_lifter_coeffs">
 <code class="descclassname">kaldi.feat.mel.</code><code class="descname">compute_lifter_coeffs</code><span class="sig-paren">(</span><em>Q:float</em>, <em>coeffs:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.mel.compute_lifter_coeffs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::ComputeLifterCoeffs(float, ::kaldi::VectorBase&lt;float&gt; <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+void ::kaldi::ComputeLifterCoeffs(float, ::kaldi::VectorBase&lt;float&gt; <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.feat.mel.compute_lpc">
 <code class="descclassname">kaldi.feat.mel.</code><code class="descname">compute_lpc</code><span class="sig-paren">(</span><em>autocorr_in:VectorBase</em>, <em>lpc_out:Vector</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.feat.mel.compute_lpc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-float ::kaldi::ComputeLpc(::kaldi::VectorBase&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
+float ::kaldi::ComputeLpc(::kaldi::VectorBase&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.feat.mel.get_equal_loudness_vector">
 <code class="descclassname">kaldi.feat.mel.</code><code class="descname">get_equal_loudness_vector</code><span class="sig-paren">(</span><em>mel_banks:MelBanks</em>, <em>ans:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.mel.get_equal_loudness_vector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::GetEqualLoudnessVector(::kaldi::MelBanks, ::kaldi::Vector&lt;float&gt; <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
+void ::kaldi::GetEqualLoudnessVector(::kaldi::MelBanks, ::kaldi::Vector&lt;float&gt; <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
 </dd></dl>
 
 </div>
@@ -1016,45 +1072,70 @@ void ::kaldi::GetEqualLoudnessVector(::kaldi::MelBanks, ::kaldi::Vector&lt;float
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.mfcc.Mfcc" title="kaldi.feat.mfcc.Mfcc"><code class="xref py py-obj docutils literal"><span class="pre">Mfcc</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::MfccComputer&gt;</td>
+<td>MFCC computer.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.mfcc.MfccComputer" title="kaldi.feat.mfcc.MfccComputer"><code class="xref py py-obj docutils literal"><span class="pre">MfccComputer</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::MfccComputer</td>
+<td>MFCC computer.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.mfcc.MfccOptions" title="kaldi.feat.mfcc.MfccOptions"><code class="xref py py-obj docutils literal"><span class="pre">MfccOptions</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::MfccOptions</td>
+<td>Options for computing MFCC features.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="kaldi.feat.mfcc.Mfcc">
 <em class="property">class </em><code class="descclassname">kaldi.feat.mfcc.</code><code class="descname">Mfcc</code><a class="headerlink" href="#kaldi.feat.mfcc.Mfcc" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::MfccComputer&gt;</p>
+<dd><p>MFCC computer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.mfcc.MfccOptions" title="kaldi.feat.mfcc.MfccOptions"><em>MfccOptions</em></a>) – Options for computing MFCC features.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.feat.mfcc.Mfcc.compute">
 <code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OfflineFeatureTpl&lt;kaldi::MfccComputer&gt;::Compute(::kaldi::VectorBase&lt;float&gt;, float, ::kaldi::Matrix&lt;float&gt;*)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.feat.mfcc.Mfcc.compute_features">
-<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.compute_features" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the features for one file (one sequence of features).</p>
+<dd><p>Computes the MFCC features from input waveform.</p>
+<p>This interface for computing features requires that the user has
+already checked that the sampling frequency of the waveform is equal to
+the sampling frequency specified in the frame extraction options.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>wave</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – The input waveform</li>
-<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
-sampled. If sample_freq is higher than the frequency specified in
-the config, Kaldi will downsample the waveform</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0)</li>
+<li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.mfcc.Mfcc.compute_features">
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.compute_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the MFCC features from input waveform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
+<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
+sampled. If sample_freq is higher than the frequency specified in
+the config, the waveform is downsampled.</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index.</p>
 </td>
 </tr>
 </tbody>
@@ -1064,15 +1145,13 @@ the config, Kaldi will downsample the waveform</li>
 <dl class="method">
 <dt id="kaldi.feat.mfcc.Mfcc.dim">
 <code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OfflineFeatureTpl&lt;kaldi::MfccComputer&gt;::Dim()</p>
+<dd><p>Returns the feature dimension.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.mfcc.Mfcc.from_other">
 <code class="descname">from_other</code><span class="sig-paren">(</span><em>other:Mfcc</em><span class="sig-paren">)</span> &#x2192; Mfcc<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.from_other" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::MfccComputer&gt;&gt; ::kaldi::OfflineFeatureTpl&lt;kaldi::MfccComputer&gt;::OfflineFeatureTpl(::kaldi::OfflineFeatureTpl&lt; ::kaldi::MfccComputer&gt;)</p>
+<dd><p>Constructs a new Mfcc object from another.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1080,40 +1159,65 @@ std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::MfccComputer&gt;&gt; 
 <dl class="class">
 <dt id="kaldi.feat.mfcc.MfccComputer">
 <em class="property">class </em><code class="descclassname">kaldi.feat.mfcc.</code><code class="descname">MfccComputer</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::MfccComputer</p>
+<dd><p>MFCC computer.</p>
+<p>This is the low-level interface for computing MFCC features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.mfcc.MfccOptions" title="kaldi.feat.mfcc.MfccOptions"><em>MfccOptions</em></a>) – Options for computing MFCC features.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.feat.mfcc.MfccComputer.compute">
 <code class="descname">compute</code><span class="sig-paren">(</span><em>signal_log_energy:float</em>, <em>vtln_warp:float</em>, <em>signal_frame:VectorBase</em>, <em>feature:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::MfccComputer::Compute(float, float, ::kaldi::VectorBase&lt;float&gt; <a href="#id15"><span class="problematic" id="id16">*</span></a>, ::kaldi::VectorBase&lt;float&gt; <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
+<dd><p>Computes one feature frame from one signal frame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>signal_log_energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The log-energy of the signal frame prior
+to windowing and pre-emphasis, or log(min-positive-float),
+whichever is greater. Ignored if <a class="reference internal" href="#kaldi.feat.mfcc.MfccComputer.need_raw_log_energy" title="kaldi.feat.mfcc.MfccComputer.need_raw_log_energy"><code class="xref py py-meth docutils literal"><span class="pre">need_raw_log_energy()</span></code></a>
+returns False.</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN warping factor. Normally 1.0, meaning no
+warping is to be done. This value is ignored for feature types
+that don’t support VLTN, such as spectrogram features.</li>
+<li><strong>signal_frame</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – One frame of the signal. The frame vector is
+overwritten with intermedite values during computation to avoid new
+memory allocation.</li>
+<li><strong>feature</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – Output frame of features.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.mfcc.MfccComputer.dim">
 <code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::MfccComputer::Dim()</p>
+<dd><p>Returns feature dimension.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.mfcc.MfccComputer.from_other">
 <code class="descname">from_other</code><span class="sig-paren">(</span><em>other:MfccComputer</em><span class="sig-paren">)</span> &#x2192; MfccComputer<a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer.from_other" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::MfccComputer&gt; ::kaldi::MfccComputer::MfccComputer(::kaldi::MfccComputer)</p>
+<dd><p>Constructs a new MfccComputer object from another.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.mfcc.MfccComputer.get_frame_options">
 <code class="descname">get_frame_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; FrameExtractionOptions<a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer.get_frame_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::FrameExtractionOptions ::kaldi::MfccComputer::GetFrameOptions()</p>
+<dd><p>Returns frame extraction options.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.mfcc.MfccComputer.need_raw_log_energy">
 <code class="descname">need_raw_log_energy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.mfcc.MfccComputer.need_raw_log_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::MfccComputer::NeedRawLogEnergy()</p>
+<dd><p>Whether raw log energy is added to features.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1121,60 +1225,68 @@ bool ::kaldi::MfccComputer::NeedRawLogEnergy()</p>
 <dl class="class">
 <dt id="kaldi.feat.mfcc.MfccOptions">
 <em class="property">class </em><code class="descclassname">kaldi.feat.mfcc.</code><code class="descname">MfccOptions</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::MfccOptions</p>
+<dd><p>Options for computing MFCC features.</p>
 <dl class="attribute">
 <dt id="kaldi.feat.mfcc.MfccOptions.cepstral_lifter">
 <code class="descname">cepstral_lifter</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.cepstral_lifter" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat MfccOptions.cepstral_lifter</p>
+<dd><p>Constant controlling the scaling of MFCCs (default=22)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.mfcc.MfccOptions.energy_floor">
 <code class="descname">energy_floor</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.energy_floor" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat MfccOptions.energy_floor</p>
+<dd><p>Absolute energy floor used in MFCC computation (default=0.0)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.mfcc.MfccOptions.frame_opts">
 <code class="descname">frame_opts</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.frame_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::FrameExtractionOptions MfccOptions.frame_opts</p>
+<dd><p>Options for frame extraction</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.mfcc.MfccOptions.htk_compat">
 <code class="descname">htk_compat</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.htk_compat" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool MfccOptions.htk_compat</p>
+<dd><p>Whether to put energy (or sqrt(2)*C0) last (default=False)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.mfcc.MfccOptions.mel_opts">
 <code class="descname">mel_opts</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.mel_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::MelBanksOptions MfccOptions.mel_opts</p>
+<dd><p>Options for Mel banks (default #mel-banks is 23)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.mfcc.MfccOptions.num_ceps">
 <code class="descname">num_ceps</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.num_ceps" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 MfccOptions.num_ceps</p>
+<dd><p>Number of cepstral coefficients including C0 (default=13)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.mfcc.MfccOptions.raw_energy">
 <code class="descname">raw_energy</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.raw_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool MfccOptions.raw_energy</p>
+<dd><p>Whether to compute energy before preemphasis and windowing (default=True)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.mfcc.MfccOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::MfccOptions::Register(::kaldi::OptionsItf <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.mfcc.MfccOptions.use_energy">
 <code class="descname">use_energy</code><a class="headerlink" href="#kaldi.feat.mfcc.MfccOptions.use_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool MfccOptions.use_energy</p>
+<dd><p>Whether to use energy (not C0) in MFCC computation (default=True)</p>
 </dd></dl>
 
 </dd></dl>
@@ -1252,7 +1364,7 @@ float ::kaldi::OnlineAppendFeature::FrameShiftInSeconds()</p>
 <dt id="kaldi.feat.online.OnlineAppendFeature.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineAppendFeature.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineAppendFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id21"><span class="problematic" id="id22">*</span></a>)</p>
+void ::kaldi::OnlineAppendFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1300,7 +1412,7 @@ float ::kaldi::OnlineCacheFeature::FrameShiftInSeconds()</p>
 <dt id="kaldi.feat.online.OnlineCacheFeature.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCacheFeature.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineCacheFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id23"><span class="problematic" id="id24">*</span></a>)</p>
+void ::kaldi::OnlineCacheFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1348,7 +1460,7 @@ void ::kaldi::OnlineCmvn::Freeze(int)</p>
 <dt id="kaldi.feat.online.OnlineCmvn.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineCmvn::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id25"><span class="problematic" id="id26">*</span></a>)</p>
+void ::kaldi::OnlineCmvn::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1383,7 +1495,7 @@ void ::kaldi::OnlineCmvn::SetState(::kaldi::OnlineCmvnState)</p>
 <dt id="kaldi.feat.online.OnlineCmvn.without_state">
 <code class="descname">without_state</code><span class="sig-paren">(</span><em>opts:OnlineCmvnOptions</em>, <em>src:OnlineFeatureInterface</em><span class="sig-paren">)</span> &#x2192; OnlineCmvn<a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.without_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::OnlineCmvn&gt; ::kaldi::OnlineCmvn::OnlineCmvn(::kaldi::OnlineCmvnOptions, ::kaldi::OnlineFeatureInterface <a href="#id27"><span class="problematic" id="id28">*</span></a>)</p>
+std::unique_ptr&lt;::kaldi::OnlineCmvn&gt; ::kaldi::OnlineCmvn::OnlineCmvn(::kaldi::OnlineCmvnOptions, ::kaldi::OnlineFeatureInterface <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
 </dd></dl>
 
 </dd></dl>
@@ -1426,7 +1538,7 @@ std::unique_ptr&lt;::kaldi::OnlineCmvn&gt; ::kaldi::OnlineCmvn::OnlineCmvn(::kal
 <dt id="kaldi.feat.online.OnlineCmvnOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:ParseOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCmvnOptions.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineCmvnOptions::Register(::kaldi::ParseOptionsExt <a href="#id29"><span class="problematic" id="id30">*</span></a>)</p>
+void ::kaldi::OnlineCmvnOptions::Register(::kaldi::ParseOptionsExt <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1523,7 +1635,7 @@ float ::kaldi::OnlineDeltaFeature::FrameShiftInSeconds()</p>
 <dt id="kaldi.feat.online.OnlineDeltaFeature.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineDeltaFeature.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineDeltaFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id31"><span class="problematic" id="id32">*</span></a>)</p>
+void ::kaldi::OnlineDeltaFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1571,7 +1683,7 @@ float ::kaldi::OnlineGenericBaseFeature&lt;kaldi::FbankComputer&gt;::FrameShiftI
 <dt id="kaldi.feat.online.OnlineFbank.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineFbank.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::FbankComputer&gt;::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id33"><span class="problematic" id="id34">*</span></a>)</p>
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::FbankComputer&gt;::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id21"><span class="problematic" id="id22">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1619,7 +1731,7 @@ float ::kaldi::OnlineMatrixFeature::FrameShiftInSeconds()</p>
 <dt id="kaldi.feat.online.OnlineMatrixFeature.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineMatrixFeature.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineMatrixFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id35"><span class="problematic" id="id36">*</span></a>)</p>
+void ::kaldi::OnlineMatrixFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id23"><span class="problematic" id="id24">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1667,7 +1779,7 @@ float ::kaldi::OnlineGenericBaseFeature&lt;kaldi::MfccComputer&gt;::FrameShiftIn
 <dt id="kaldi.feat.online.OnlineMfcc.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineMfcc.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::MfccComputer&gt;::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id37"><span class="problematic" id="id38">*</span></a>)</p>
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::MfccComputer&gt;::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id25"><span class="problematic" id="id26">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1722,7 +1834,7 @@ float ::kaldi::OnlineGenericBaseFeature&lt;kaldi::PlpComputer&gt;::FrameShiftInS
 <dt id="kaldi.feat.online.OnlinePlp.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlinePlp.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::PlpComputer&gt;::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id39"><span class="problematic" id="id40">*</span></a>)</p>
+void ::kaldi::OnlineGenericBaseFeature&lt;kaldi::PlpComputer&gt;::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id27"><span class="problematic" id="id28">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1770,7 +1882,7 @@ float ::kaldi::OnlineSpliceFrames::FrameShiftInSeconds()</p>
 <dt id="kaldi.feat.online.OnlineSpliceFrames.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineSpliceFrames.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineSpliceFrames::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id41"><span class="problematic" id="id42">*</span></a>)</p>
+void ::kaldi::OnlineSpliceFrames::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id29"><span class="problematic" id="id30">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1803,7 +1915,7 @@ int ::kaldi::OnlineSpliceFrames::NumFramesReady()</p>
 <dt id="kaldi.feat.online.OnlineSpliceOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>po:ParseOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineSpliceOptions.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineSpliceOptions::Register(::kaldi::ParseOptionsExt <a href="#id43"><span class="problematic" id="id44">*</span></a>)</p>
+void ::kaldi::OnlineSpliceOptions::Register(::kaldi::ParseOptionsExt <a href="#id31"><span class="problematic" id="id32">*</span></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1836,7 +1948,7 @@ float ::kaldi::OnlineTransform::FrameShiftInSeconds()</p>
 <dt id="kaldi.feat.online.OnlineTransform.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineTransform.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineTransform::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id45"><span class="problematic" id="id46">*</span></a>)</p>
+void ::kaldi::OnlineTransform::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id33"><span class="problematic" id="id34">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1926,7 +2038,7 @@ float ::kaldi::OnlineFeatureInterface::FrameShiftInSeconds()</p>
 <dt id="kaldi.feat.pitch.OnlinePitchFeature.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.OnlinePitchFeature.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineFeatureInterface::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id47"><span class="problematic" id="id48">*</span></a>)</p>
+void ::kaldi::OnlineFeatureInterface::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id35"><span class="problematic" id="id36">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1974,7 +2086,7 @@ float ::kaldi::OnlineFeatureInterface::FrameShiftInSeconds()</p>
 <dt id="kaldi.feat.pitch.OnlineProcessPitch.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.OnlineProcessPitch.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineFeatureInterface::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id49"><span class="problematic" id="id50">*</span></a>)</p>
+void ::kaldi::OnlineFeatureInterface::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id37"><span class="problematic" id="id38">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -2099,7 +2211,7 @@ int ::kaldi::PitchExtractionOptions::NccfWindowSize()</p>
 <dt id="kaldi.feat.pitch.PitchExtractionOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.PitchExtractionOptions.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::PitchExtractionOptions::Register(::kaldi::OptionsItf <a href="#id51"><span class="problematic" id="id52">*</span></a>)</p>
+void ::kaldi::PitchExtractionOptions::Register(::kaldi::OptionsItf <a href="#id39"><span class="problematic" id="id40">*</span></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -2226,7 +2338,7 @@ void ::kaldi::PitchExtractionOptions::Register(::kaldi::OptionsItf <a href="#id5
 <dt id="kaldi.feat.pitch.ProcessPitchOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:ParseOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.ProcessPitchOptions.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::ProcessPitchOptions::Register(::kaldi::ParseOptionsExt <a href="#id53"><span class="problematic" id="id54">*</span></a>)</p>
+void ::kaldi::ProcessPitchOptions::Register(::kaldi::ParseOptionsExt <a href="#id41"><span class="problematic" id="id42">*</span></a>)</p>
 </dd></dl>
 
 </dd></dl>
@@ -2263,45 +2375,70 @@ void ::kaldi::ProcessPitch(::kaldi::ProcessPitchOptions, ::kaldi::MatrixBase&lt;
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.plp.Plp" title="kaldi.feat.plp.Plp"><code class="xref py py-obj docutils literal"><span class="pre">Plp</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::PlpComputer&gt;</td>
+<td>PLP computer.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.plp.PlpComputer" title="kaldi.feat.plp.PlpComputer"><code class="xref py py-obj docutils literal"><span class="pre">PlpComputer</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::PlpComputer</td>
+<td>PLP computer.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.plp.PlpOptions" title="kaldi.feat.plp.PlpOptions"><code class="xref py py-obj docutils literal"><span class="pre">PlpOptions</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::PlpOptions</td>
+<td>Options for computing PLP features.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="kaldi.feat.plp.Plp">
 <em class="property">class </em><code class="descclassname">kaldi.feat.plp.</code><code class="descname">Plp</code><a class="headerlink" href="#kaldi.feat.plp.Plp" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::PlpComputer&gt;</p>
+<dd><p>PLP computer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.plp.PlpOptions" title="kaldi.feat.plp.PlpOptions"><em>PlpOptions</em></a>) – Options for computing PLP features.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.feat.plp.Plp.compute">
 <code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.plp.Plp.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OfflineFeatureTpl&lt;kaldi::PlpComputer&gt;::Compute(::kaldi::VectorBase&lt;float&gt;, float, ::kaldi::Matrix&lt;float&gt;*)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.feat.plp.Plp.compute_features">
-<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.plp.Plp.compute_features" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the features for one file (one sequence of features).</p>
+<dd><p>Computes the PLP features from input waveform.</p>
+<p>This interface for computing features requires that the user has
+already checked that the sampling frequency of the waveform is equal to
+the sampling frequency specified in the frame extraction options.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>wave</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – The input waveform</li>
-<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
-sampled. If sample_freq is higher than the frequency specified in
-the config, Kaldi will downsample the waveform</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0)</li>
+<li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.plp.Plp.compute_features">
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.plp.Plp.compute_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the PLP features from input waveform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
+<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
+sampled. If sample_freq is higher than the frequency specified in
+the config, the waveform is downsampled.</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index.</p>
 </td>
 </tr>
 </tbody>
@@ -2311,15 +2448,13 @@ the config, Kaldi will downsample the waveform</li>
 <dl class="method">
 <dt id="kaldi.feat.plp.Plp.dim">
 <code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.plp.Plp.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OfflineFeatureTpl&lt;kaldi::PlpComputer&gt;::Dim()</p>
+<dd><p>Returns the feature dimension.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.plp.Plp.from_other">
 <code class="descname">from_other</code><span class="sig-paren">(</span><em>other:Plp</em><span class="sig-paren">)</span> &#x2192; Plp<a class="headerlink" href="#kaldi.feat.plp.Plp.from_other" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::PlpComputer&gt;&gt; ::kaldi::OfflineFeatureTpl&lt;kaldi::PlpComputer&gt;::OfflineFeatureTpl(::kaldi::OfflineFeatureTpl&lt; ::kaldi::PlpComputer&gt;)</p>
+<dd><p>Constructs a new Plp object from another.</p>
 </dd></dl>
 
 </dd></dl>
@@ -2327,40 +2462,65 @@ std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::PlpComputer&gt;&gt; :
 <dl class="class">
 <dt id="kaldi.feat.plp.PlpComputer">
 <em class="property">class </em><code class="descclassname">kaldi.feat.plp.</code><code class="descname">PlpComputer</code><a class="headerlink" href="#kaldi.feat.plp.PlpComputer" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::PlpComputer</p>
+<dd><p>PLP computer.</p>
+<p>This is the low-level interface for computing PLP features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.plp.PlpOptions" title="kaldi.feat.plp.PlpOptions"><em>PlpOptions</em></a>) – Options for computing PLP features.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.feat.plp.PlpComputer.compute">
 <code class="descname">compute</code><span class="sig-paren">(</span><em>signal_log_energy:float</em>, <em>vtln_warp:float</em>, <em>signal_frame:VectorBase</em>, <em>feature:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.plp.PlpComputer.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::PlpComputer::Compute(float, float, ::kaldi::VectorBase&lt;float&gt; <a href="#id55"><span class="problematic" id="id56">*</span></a>, ::kaldi::VectorBase&lt;float&gt; <a href="#id57"><span class="problematic" id="id58">*</span></a>)</p>
+<dd><p>Computes one feature frame from one signal frame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>signal_log_energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The log-energy of the signal frame prior
+to windowing and pre-emphasis, or log(min-positive-float),
+whichever is greater. Ignored if <a class="reference internal" href="#kaldi.feat.plp.PlpComputer.need_raw_log_energy" title="kaldi.feat.plp.PlpComputer.need_raw_log_energy"><code class="xref py py-meth docutils literal"><span class="pre">need_raw_log_energy()</span></code></a>
+returns False.</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN warping factor. Normally 1.0, meaning no
+warping is to be done. This value is ignored for feature types
+that don’t support VLTN, such as spectrogram features.</li>
+<li><strong>signal_frame</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – One frame of the signal. The frame vector is
+overwritten with intermedite values during computation to avoid new
+memory allocation.</li>
+<li><strong>feature</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – Output frame of features.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.plp.PlpComputer.dim">
 <code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.plp.PlpComputer.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::PlpComputer::Dim()</p>
+<dd><p>Returns feature dimension.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.plp.PlpComputer.from_other">
 <code class="descname">from_other</code><span class="sig-paren">(</span><em>other:PlpComputer</em><span class="sig-paren">)</span> &#x2192; PlpComputer<a class="headerlink" href="#kaldi.feat.plp.PlpComputer.from_other" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::PlpComputer&gt; ::kaldi::PlpComputer::PlpComputer(::kaldi::PlpComputer)</p>
+<dd><p>Constructs a new PlpComputer object from another.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.plp.PlpComputer.get_frame_options">
 <code class="descname">get_frame_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; FrameExtractionOptions<a class="headerlink" href="#kaldi.feat.plp.PlpComputer.get_frame_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::FrameExtractionOptions ::kaldi::PlpComputer::GetFrameOptions()</p>
+<dd><p>Returns frame extraction options.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.plp.PlpComputer.need_raw_log_energy">
 <code class="descname">need_raw_log_energy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.plp.PlpComputer.need_raw_log_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::PlpComputer::NeedRawLogEnergy()</p>
+<dd><p>Whether raw log energy is added to features.</p>
 </dd></dl>
 
 </dd></dl>
@@ -2368,78 +2528,86 @@ bool ::kaldi::PlpComputer::NeedRawLogEnergy()</p>
 <dl class="class">
 <dt id="kaldi.feat.plp.PlpOptions">
 <em class="property">class </em><code class="descclassname">kaldi.feat.plp.</code><code class="descname">PlpOptions</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::PlpOptions</p>
+<dd><p>Options for computing PLP features.</p>
 <dl class="attribute">
 <dt id="kaldi.feat.plp.PlpOptions.cepstral_lifter">
 <code class="descname">cepstral_lifter</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.cepstral_lifter" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 PlpOptions.cepstral_lifter</p>
+<dd><p>Constant controlling the scaling of PLPs (default=22)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.plp.PlpOptions.cepstral_scale">
 <code class="descname">cepstral_scale</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.cepstral_scale" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat PlpOptions.cepstral_scale</p>
+<dd><p>Scaling constant in PLP computation (default=1.0)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.plp.PlpOptions.compress_factor">
 <code class="descname">compress_factor</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.compress_factor" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat PlpOptions.compress_factor</p>
+<dd><p>Compression factor in PLP computation (default=0.33333)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.plp.PlpOptions.energy_floor">
 <code class="descname">energy_floor</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.energy_floor" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat PlpOptions.energy_floor</p>
+<dd><p>Absolute energy floor used in PLP computation (default=0.0)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.plp.PlpOptions.frame_opts">
 <code class="descname">frame_opts</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.frame_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::FrameExtractionOptions PlpOptions.frame_opts</p>
+<dd><p>Options for frame extraction</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.plp.PlpOptions.htk_compat">
 <code class="descname">htk_compat</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.htk_compat" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool PlpOptions.htk_compat</p>
+<dd><p>Whether to put energy (or C0) last (default=False)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.plp.PlpOptions.lpc_order">
 <code class="descname">lpc_order</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.lpc_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 PlpOptions.lpc_order</p>
+<dd><p>Order of LPC analysis (default=12)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.plp.PlpOptions.mel_opts">
 <code class="descname">mel_opts</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.mel_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::MelBanksOptions PlpOptions.mel_opts</p>
+<dd><p>Options for Mel banks (default #mel-banks is 23)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.plp.PlpOptions.num_ceps">
 <code class="descname">num_ceps</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.num_ceps" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 PlpOptions.num_ceps</p>
+<dd><p>Number of cepstral coefficients including C0 (default=13)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.plp.PlpOptions.raw_energy">
 <code class="descname">raw_energy</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.raw_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool PlpOptions.raw_energy</p>
+<dd><p>Whether to compute energy before preemphasis and windowing (default=True)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.plp.PlpOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::PlpOptions::Register(::kaldi::OptionsItf <a href="#id59"><span class="problematic" id="id60">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.plp.PlpOptions.use_energy">
 <code class="descname">use_energy</code><a class="headerlink" href="#kaldi.feat.plp.PlpOptions.use_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool PlpOptions.use_energy</p>
+<dd><p>Whether to use energy (not C0) in MFCC computation (default=True)</p>
 </dd></dl>
 
 </dd></dl>
@@ -2505,14 +2673,14 @@ int ::kaldi::ArbitraryResample::NumSamplesOut()</p>
 <dt id="kaldi.feat.signal.ArbitraryResample.resample">
 <code class="descname">resample</code><span class="sig-paren">(</span><em>input:MatrixBase</em>, <em>output:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.signal.ArbitraryResample.resample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::ArbitraryResample::Resample(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::MatrixBase&lt;float&gt; <a href="#id61"><span class="problematic" id="id62">*</span></a>)</p>
+void ::kaldi::ArbitraryResample::Resample(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::MatrixBase&lt;float&gt; <a href="#id43"><span class="problematic" id="id44">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.signal.ArbitraryResample.resample_vector">
 <code class="descname">resample_vector</code><span class="sig-paren">(</span><em>input:VectorBase</em>, <em>output:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.signal.ArbitraryResample.resample_vector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::ArbitraryResample::Resample(::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt; <a href="#id63"><span class="problematic" id="id64">*</span></a>)</p>
+void ::kaldi::ArbitraryResample::Resample(::kaldi::VectorBase&lt;float&gt;, ::kaldi::VectorBase&lt;float&gt; <a href="#id45"><span class="problematic" id="id46">*</span></a>)</p>
 </dd></dl>
 
 </dd></dl>
@@ -2541,7 +2709,7 @@ void ::kaldi::LinearResample::Reset()</p>
 <dt id="kaldi.feat.signal.convolve_signals">
 <code class="descclassname">kaldi.feat.signal.</code><code class="descname">convolve_signals</code><span class="sig-paren">(</span><em>filter:Vector</em>, <em>signal:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.signal.convolve_signals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::ConvolveSignals(::kaldi::Vector&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id65"><span class="problematic" id="id66">*</span></a>)</p>
+void ::kaldi::ConvolveSignals(::kaldi::Vector&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id47"><span class="problematic" id="id48">*</span></a>)</p>
 </dd></dl>
 
 <dl class="function">
@@ -2555,14 +2723,14 @@ void ::kaldi::DownsampleWaveForm(float, ::kaldi::VectorBase&lt;float&gt;, float,
 <dt id="kaldi.feat.signal.fft_based_block_convolve_signals">
 <code class="descclassname">kaldi.feat.signal.</code><code class="descname">fft_based_block_convolve_signals</code><span class="sig-paren">(</span><em>filter:Vector</em>, <em>signal:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.signal.fft_based_block_convolve_signals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::FFTbasedBlockConvolveSignals(::kaldi::Vector&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id67"><span class="problematic" id="id68">*</span></a>)</p>
+void ::kaldi::FFTbasedBlockConvolveSignals(::kaldi::Vector&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id49"><span class="problematic" id="id50">*</span></a>)</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.feat.signal.fft_based_convolve_signals">
 <code class="descclassname">kaldi.feat.signal.</code><code class="descname">fft_based_convolve_signals</code><span class="sig-paren">(</span><em>filter:Vector</em>, <em>signal:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.signal.fft_based_convolve_signals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::FFTbasedConvolveSignals(::kaldi::Vector&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id69"><span class="problematic" id="id70">*</span></a>)</p>
+void ::kaldi::FFTbasedConvolveSignals(::kaldi::Vector&lt;float&gt;, ::kaldi::Vector&lt;float&gt; <a href="#id51"><span class="problematic" id="id52">*</span></a>)</p>
 </dd></dl>
 
 </div>
@@ -2576,45 +2744,70 @@ void ::kaldi::FFTbasedConvolveSignals(::kaldi::Vector&lt;float&gt;, ::kaldi::Vec
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.spectrogram.Spectrogram" title="kaldi.feat.spectrogram.Spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">Spectrogram</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::SpectrogramComputer&gt;</td>
+<td>Spectrogram computer.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.spectrogram.SpectrogramComputer" title="kaldi.feat.spectrogram.SpectrogramComputer"><code class="xref py py-obj docutils literal"><span class="pre">SpectrogramComputer</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::SpectrogramComputer</td>
+<td>Spectrogram computer.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.spectrogram.SpectrogramOptions" title="kaldi.feat.spectrogram.SpectrogramOptions"><code class="xref py py-obj docutils literal"><span class="pre">SpectrogramOptions</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::SpectrogramOptions</td>
+<td>Options for computing spectrogram features.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="kaldi.feat.spectrogram.Spectrogram">
 <em class="property">class </em><code class="descclassname">kaldi.feat.spectrogram.</code><code class="descname">Spectrogram</code><a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OfflineFeatureTpl&lt; ::kaldi::SpectrogramComputer&gt;</p>
+<dd><p>Spectrogram computer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.spectrogram.SpectrogramOptions" title="kaldi.feat.spectrogram.SpectrogramOptions"><em>SpectrogramOptions</em></a>) – Options for computing spectrogram features.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.feat.spectrogram.Spectrogram.compute">
 <code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OfflineFeatureTpl&lt;kaldi::SpectrogramComputer&gt;::Compute(::kaldi::VectorBase&lt;float&gt;, float, ::kaldi::Matrix&lt;float&gt;*)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.feat.spectrogram.Spectrogram.compute_features">
-<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.compute_features" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the features for one file (one sequence of features).</p>
+<dd><p>Computes the spectrogram features from input waveform.</p>
+<p>This interface for computing features requires that the user has
+already checked that the sampling frequency of the waveform is equal to
+the sampling frequency specified in the frame extraction options.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>wave</strong> (<code class="xref py py-class docutils literal"><span class="pre">kaldi.matrix.VectorBase</span></code>) – The input waveform</li>
-<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
-sampled. If sample_freq is higher than the frequency specified in
-the config, Kaldi will downsample the waveform</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0)</li>
+<li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.spectrogram.Spectrogram.compute_features">
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.compute_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the spectrogram features from input waveform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
+<li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
+sampled. If sample_freq is higher than the frequency specified in
+the config, the waveform is downsampled.</li>
+<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The matrix of features, where the row-index is the frame index.</p>
 </td>
 </tr>
 </tbody>
@@ -2624,15 +2817,13 @@ the config, Kaldi will downsample the waveform</li>
 <dl class="method">
 <dt id="kaldi.feat.spectrogram.Spectrogram.dim">
 <code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OfflineFeatureTpl&lt;kaldi::SpectrogramComputer&gt;::Dim()</p>
+<dd><p>Returns the feature dimension.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.spectrogram.Spectrogram.from_other">
 <code class="descname">from_other</code><span class="sig-paren">(</span><em>other:Spectrogram</em><span class="sig-paren">)</span> &#x2192; Spectrogram<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.from_other" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::SpectrogramComputer&gt;&gt; ::kaldi::OfflineFeatureTpl&lt;kaldi::SpectrogramComputer&gt;::OfflineFeatureTpl(::kaldi::OfflineFeatureTpl&lt; ::kaldi::SpectrogramComputer&gt;)</p>
+<dd><p>Constructs a new Spectrogram object from another.</p>
 </dd></dl>
 
 </dd></dl>
@@ -2640,40 +2831,65 @@ std::unique_ptr&lt;::kaldi::OfflineFeatureTpl&lt; ::kaldi::SpectrogramComputer&g
 <dl class="class">
 <dt id="kaldi.feat.spectrogram.SpectrogramComputer">
 <em class="property">class </em><code class="descclassname">kaldi.feat.spectrogram.</code><code class="descname">SpectrogramComputer</code><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::SpectrogramComputer</p>
+<dd><p>Spectrogram computer.</p>
+<p>This is the low-level interface for computing spectrogram features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.fbank.FbankOptions" title="kaldi.feat.fbank.FbankOptions"><em>FbankOptions</em></a>) – Options for computing spectrogram features.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.feat.spectrogram.SpectrogramComputer.compute">
 <code class="descname">compute</code><span class="sig-paren">(</span><em>signal_log_energy:float</em>, <em>vtln_warp:float</em>, <em>signal_frame:VectorBase</em>, <em>feature:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::SpectrogramComputer::Compute(float, float, ::kaldi::VectorBase&lt;float&gt; <a href="#id71"><span class="problematic" id="id72">*</span></a>, ::kaldi::VectorBase&lt;float&gt; <a href="#id73"><span class="problematic" id="id74">*</span></a>)</p>
+<dd><p>Computes one feature frame from one signal frame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>signal_log_energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The log-energy of the signal frame prior
+to windowing and pre-emphasis, or log(min-positive-float),
+whichever is greater. Ignored if <a class="reference internal" href="#kaldi.feat.spectrogram.SpectrogramComputer.need_raw_log_energy" title="kaldi.feat.spectrogram.SpectrogramComputer.need_raw_log_energy"><code class="xref py py-meth docutils literal"><span class="pre">need_raw_log_energy()</span></code></a>
+returns False.</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN warping factor. Normally 1.0, meaning no
+warping is to be done. This value is ignored for feature types
+that don’t support VLTN, such as spectrogram features.</li>
+<li><strong>signal_frame</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – One frame of the signal. The frame vector is
+overwritten with intermedite values during computation to avoid new
+memory allocation.</li>
+<li><strong>feature</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – Output frame of features.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.spectrogram.SpectrogramComputer.dim">
 <code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::SpectrogramComputer::Dim()</p>
+<dd><p>Returns feature dimension.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.spectrogram.SpectrogramComputer.from_other">
 <code class="descname">from_other</code><span class="sig-paren">(</span><em>other:SpectrogramComputer</em><span class="sig-paren">)</span> &#x2192; SpectrogramComputer<a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer.from_other" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::SpectrogramComputer&gt; ::kaldi::SpectrogramComputer::SpectrogramComputer(::kaldi::SpectrogramComputer)</p>
+<dd><p>Constructs a new SpectrogramComputer object from another.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.spectrogram.SpectrogramComputer.get_frame_options">
 <code class="descname">get_frame_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; FrameExtractionOptions<a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer.get_frame_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::FrameExtractionOptions ::kaldi::SpectrogramComputer::GetFrameOptions()</p>
+<dd><p>Returns frame extraction options.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.spectrogram.SpectrogramComputer.need_raw_log_energy">
 <code class="descname">need_raw_log_energy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramComputer.need_raw_log_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::SpectrogramComputer::NeedRawLogEnergy()</p>
+<dd><p>Whether raw log energy is added to features.</p>
 </dd></dl>
 
 </dd></dl>
@@ -2681,30 +2897,38 @@ bool ::kaldi::SpectrogramComputer::NeedRawLogEnergy()</p>
 <dl class="class">
 <dt id="kaldi.feat.spectrogram.SpectrogramOptions">
 <em class="property">class </em><code class="descclassname">kaldi.feat.spectrogram.</code><code class="descname">SpectrogramOptions</code><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramOptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::SpectrogramOptions</p>
+<dd><p>Options for computing spectrogram features.</p>
 <dl class="attribute">
 <dt id="kaldi.feat.spectrogram.SpectrogramOptions.energy_floor">
 <code class="descname">energy_floor</code><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramOptions.energy_floor" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat SpectrogramOptions.energy_floor</p>
+<dd><p>Absolute energy floor used in spectrogram computation (default=0.0)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.spectrogram.SpectrogramOptions.frame_opts">
 <code class="descname">frame_opts</code><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramOptions.frame_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::FrameExtractionOptions SpectrogramOptions.frame_opts</p>
+<dd><p>Options for frame extraction</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.spectrogram.SpectrogramOptions.raw_energy">
 <code class="descname">raw_energy</code><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramOptions.raw_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool SpectrogramOptions.raw_energy</p>
+<dd><p>Whether to compute energy before preemphasis and windowing (default=True)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.feat.spectrogram.SpectrogramOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.spectrogram.SpectrogramOptions.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::SpectrogramOptions::Register(::kaldi::OptionsItf <a href="#id75"><span class="problematic" id="id76">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -2788,7 +3012,7 @@ void ::kaldi::WaveData::Read(::std::basic_istream&lt;char, ::std::char_traits&lt
 <dt id="kaldi.feat.wave.WaveData.swap">
 <code class="descname">swap</code><span class="sig-paren">(</span><em>other:WaveData</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.wave.WaveData.swap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::WaveData::Swap(::kaldi::WaveData <a href="#id77"><span class="problematic" id="id78">*</span></a>)</p>
+void ::kaldi::WaveData::Swap(::kaldi::WaveData <a href="#id53"><span class="problematic" id="id54">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -2919,7 +3143,7 @@ int ::kaldi::FrameExtractionOptions::PaddedWindowSize()</p>
 <dt id="kaldi.feat.window.FrameExtractionOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.window.FrameExtractionOptions.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::FrameExtractionOptions::Register(::kaldi::OptionsItf <a href="#id79"><span class="problematic" id="id80">*</span></a>)</p>
+void ::kaldi::FrameExtractionOptions::Register(::kaldi::OptionsItf <a href="#id55"><span class="problematic" id="id56">*</span></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -2972,14 +3196,14 @@ int ::kaldi::FrameExtractionOptions::WindowSize()</p>
 <dt id="kaldi.feat.window.dither">
 <code class="descclassname">kaldi.feat.window.</code><code class="descname">dither</code><span class="sig-paren">(</span><em>waveform:VectorBase</em>, <em>dither_value:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.window.dither" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::Dither(::kaldi::VectorBase&lt;float&gt; <a href="#id81"><span class="problematic" id="id82">*</span></a>, float)</p>
+void ::kaldi::Dither(::kaldi::VectorBase&lt;float&gt; <a href="#id57"><span class="problematic" id="id58">*</span></a>, float)</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.feat.window.extract_waveform_remainder">
 <code class="descclassname">kaldi.feat.window.</code><code class="descname">extract_waveform_remainder</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>opts:FrameExtractionOptions</em>, <em>wave_remainder:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.window.extract_waveform_remainder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::ExtractWaveformRemainder(::kaldi::VectorBase&lt;float&gt;, ::kaldi::FrameExtractionOptions, ::kaldi::Vector&lt;float&gt; <a href="#id83"><span class="problematic" id="id84">*</span></a>)</p>
+void ::kaldi::ExtractWaveformRemainder(::kaldi::VectorBase&lt;float&gt;, ::kaldi::FrameExtractionOptions, ::kaldi::Vector&lt;float&gt; <a href="#id59"><span class="problematic" id="id60">*</span></a>)</p>
 </dd></dl>
 
 <dl class="function">
@@ -3000,7 +3224,7 @@ int ::kaldi::NumFrames(long, ::kaldi::FrameExtractionOptions, bool)</p>
 <dt id="kaldi.feat.window.preemphasize">
 <code class="descclassname">kaldi.feat.window.</code><code class="descname">preemphasize</code><span class="sig-paren">(</span><em>waveform:VectorBase</em>, <em>preemph_coeff:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.window.preemphasize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::Preemphasize(::kaldi::VectorBase&lt;float&gt; <a href="#id85"><span class="problematic" id="id86">*</span></a>, float)</p>
+void ::kaldi::Preemphasize(::kaldi::VectorBase&lt;float&gt; <a href="#id61"><span class="problematic" id="id62">*</span></a>, float)</p>
 </dd></dl>
 
 </div>
