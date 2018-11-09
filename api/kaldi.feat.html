@@ -447,7 +447,7 @@ void ::kaldi::FbankOptions::Register(::kaldi::OptionsItf <a href="#id5"><span cl
 </table>
 <dl class="class">
 <dt id="kaldi.feat.functions.DeltaFeatures">
-<em class="property">class </em><code class="descclassname">kaldi.feat.functions.</code><code class="descname">DeltaFeatures</code><a class="headerlink" href="#kaldi.feat.functions.DeltaFeatures" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.feat.functions.</code><code class="descname">DeltaFeatures</code><span class="sig-paren">(</span><em>opts:DeltaFeaturesOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.functions.DeltaFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delta features computer.</p>
 <p>This class provides a low-level function to compute delta features. The
 function takes as input a matrix of features and a frame index that it
@@ -486,15 +486,15 @@ and thus easier to understand.</p>
 
 <dl class="class">
 <dt id="kaldi.feat.functions.DeltaFeaturesOptions">
-<em class="property">class </em><code class="descclassname">kaldi.feat.functions.</code><code class="descname">DeltaFeaturesOptions</code><a class="headerlink" href="#kaldi.feat.functions.DeltaFeaturesOptions" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.feat.functions.</code><code class="descname">DeltaFeaturesOptions</code><span class="sig-paren">(</span><em>order:int=2</em>, <em>window:int=2</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.functions.DeltaFeaturesOptions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Options for delta computation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Delta computation order (default: 2).</li>
-<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Delta computation window (default: 2).
+<li><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Delta computation order (default=2).</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Delta computation window (default=2).
 Actual window size is 2 * window + 1.</li>
 </ul>
 </td>
@@ -508,7 +508,7 @@ Actual window size is 2 * window + 1.</li>
 <dl class="attribute">
 <dt id="kaldi.feat.functions.DeltaFeaturesOptions.order">
 <code class="descname">order</code><a class="headerlink" href="#kaldi.feat.functions.DeltaFeaturesOptions.order" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Delta computation order (default</em> – 2)</p>
+<dd><p>Delta computation order (default=2)</p>
 </dd></dl>
 
 <dl class="method">
@@ -529,14 +529,14 @@ Typically a command-line option parser.</td>
 <dl class="attribute">
 <dt id="kaldi.feat.functions.DeltaFeaturesOptions.window">
 <code class="descname">window</code><a class="headerlink" href="#kaldi.feat.functions.DeltaFeaturesOptions.window" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Delta computation window (default</em> – 2)</p>
+<dd><p>Delta computation window (default=2)</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="kaldi.feat.functions.ShiftedDeltaFeatures">
-<em class="property">class </em><code class="descclassname">kaldi.feat.functions.</code><code class="descname">ShiftedDeltaFeatures</code><a class="headerlink" href="#kaldi.feat.functions.ShiftedDeltaFeatures" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.feat.functions.</code><code class="descname">ShiftedDeltaFeatures</code><span class="sig-paren">(</span><em>opts:ShiftedDeltaFeaturesOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.functions.ShiftedDeltaFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shifted delta features computer.</p>
 <p>This class provides a low-level function to compute shifted delta cesptra
 (SDC). The function takes as input a matrix of features and a frame index
@@ -579,13 +579,13 @@ computation.</td>
 <dl class="attribute">
 <dt id="kaldi.feat.functions.ShiftedDeltaFeaturesOptions.block_shift">
 <code class="descname">block_shift</code><a class="headerlink" href="#kaldi.feat.functions.ShiftedDeltaFeaturesOptions.block_shift" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Distance between each block (default</em> – 3)</p>
+<dd><p>Distance between each block (default=3)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.functions.ShiftedDeltaFeaturesOptions.num_blocks">
 <code class="descname">num_blocks</code><a class="headerlink" href="#kaldi.feat.functions.ShiftedDeltaFeaturesOptions.num_blocks" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Number of blocks in advance of each frame to be concatenated (default</em> – 7)</p>
+<dd><p>Number of blocks in advance of each frame to be concatenated (default=7)</p>
 </dd></dl>
 
 <dl class="method">
@@ -606,7 +606,7 @@ Typically a command-line option parser.</td>
 <dl class="attribute">
 <dt id="kaldi.feat.functions.ShiftedDeltaFeaturesOptions.window">
 <code class="descname">window</code><a class="headerlink" href="#kaldi.feat.functions.ShiftedDeltaFeaturesOptions.window" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Size of time delay and advance (default</em> – 1)</p>
+<dd><p>Size of time delay and advance (default=1)</p>
 </dd></dl>
 
 </dd></dl>
@@ -618,7 +618,7 @@ Typically a command-line option parser.</td>
 <dl class="attribute">
 <dt id="kaldi.feat.functions.SlidingWindowCmnOptions.center">
 <code class="descname">center</code><a class="headerlink" href="#kaldi.feat.functions.SlidingWindowCmnOptions.center" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Whether to center the window on the current frame (default</em> – False)</p>
+<dd><p>Whether to center the window on the current frame (default=False)</p>
 </dd></dl>
 
 <dl class="method">
@@ -634,25 +634,25 @@ Typically a command-line option parser.</td>
 <dl class="attribute">
 <dt id="kaldi.feat.functions.SlidingWindowCmnOptions.cmn_window">
 <code class="descname">cmn_window</code><a class="headerlink" href="#kaldi.feat.functions.SlidingWindowCmnOptions.cmn_window" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Window size for average CMN computation (default</em> – 600)</p>
+<dd><p>Window size for average CMN computation (default=600)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.functions.SlidingWindowCmnOptions.max_warnings">
 <code class="descname">max_warnings</code><a class="headerlink" href="#kaldi.feat.functions.SlidingWindowCmnOptions.max_warnings" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Maximum watning to report per utterance (default</em> – 5)</p>
+<dd><p>Maximum watning to report per utterance (default=5)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.functions.SlidingWindowCmnOptions.min_window">
 <code class="descname">min_window</code><a class="headerlink" href="#kaldi.feat.functions.SlidingWindowCmnOptions.min_window" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Minimum CMN window used at start of decoding (default</em> – 100)</p>
+<dd><p>Minimum CMN window used at start of decoding (default=100)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.feat.functions.SlidingWindowCmnOptions.normalize_variance">
 <code class="descname">normalize_variance</code><a class="headerlink" href="#kaldi.feat.functions.SlidingWindowCmnOptions.normalize_variance" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Whether to normalize variance to one (default</em> – False)</p>
+<dd><p>Whether to normalize variance to one (default=False)</p>
 </dd></dl>
 
 <dl class="method">
@@ -711,6 +711,14 @@ complex FFT of a real signal of size n), this function overwrites the
 first (n/2) + 1 elements of it with the energies of the FFT bins from
 zero to the Nyquist frequency.  Contents of the remaining (n/2) - 1
 elements are undefined at output.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>complex_fft</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – Complex FFT to be converted to a power spectrum.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">

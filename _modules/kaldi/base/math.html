@@ -202,9 +202,8 @@
 <span class="kn">from</span> <span class="nn">._kaldi_math_ext</span> <span class="k">import</span> <span class="o">*</span>
 
 <span class="c1"># Must be imported explicitly</span>
-<span class="kn">from</span> <span class="nn">._kaldi_math</span> <span class="k">import</span> <span class="n">_lcm</span><span class="p">,</span> <span class="n">_factorize</span><span class="p">,</span>\
-                         <span class="n">_with_prob</span><span class="p">,</span> <span class="n">_round_up_to_nearest_power_of_two</span><span class="p">,</span>\
-                         <span class="n">_rand_int</span>
+<span class="kn">from</span> <span class="nn">._kaldi_math</span> <span class="k">import</span> <span class="p">(</span><span class="n">_lcm</span><span class="p">,</span> <span class="n">_factorize</span><span class="p">,</span> <span class="n">_with_prob</span><span class="p">,</span>
+                          <span class="n">_round_up_to_nearest_power_of_two</span><span class="p">,</span> <span class="n">_rand_int</span><span class="p">)</span>
 
 <span class="n">DBL_EPSILON</span> <span class="o">=</span> <span class="mf">2.2204460492503131e-16</span>
 
@@ -234,21 +233,24 @@
     <span class="sd">&quot;&quot;&quot;Returns the least common multiple for x and y.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        x (int), y (int): positive integers</span>
+<span class="sd">        x (int): first positive integer</span>
+<span class="sd">        y (int): second positive integer</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError if x &lt;= 0 or y &lt;= 0</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Lcm parameters must be positive integers.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;lcm parameters must be positive integers.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_lcm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="factorize"><a class="viewcode-back" href="../../../api/kaldi.base.html#kaldi.base.math.factorize">[docs]</a><span class="k">def</span> <span class="nf">factorize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Splits a number into its prime factors, in sorted order from</span>
-<span class="sd">    least to greates, with duplication.</span>
+    <span class="sd">&quot;&quot;&quot;Splits a positive integer into its prime factors.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x (int): positive integer</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[int]: Prime factors in increasing order, with duplication.</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError if x &lt;= 0</span>
@@ -258,47 +260,45 @@
     <span class="k">return</span> <span class="n">_factorize</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="with_prob"><a class="viewcode-back" href="../../../api/kaldi.base.html#kaldi.base.math.with_prob">[docs]</a><span class="k">def</span> <span class="nf">with_prob</span><span class="p">(</span><span class="n">prob</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns a true with probability &#39;prob&#39;.</span>
+    <span class="sd">&quot;&quot;&quot;Returns `True` with probability `prob`.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">            prob (int): probability of True, 0 &lt;= prob &lt;= 1</span>
+<span class="sd">        prob (float): probability of True, 0 &lt;= prob &lt;= 1</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        If prob is negative or greater than 1.0.</span>
+<span class="sd">        ValueError: If `prob` is negative or greater than 1.0.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">prob</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_with_prob</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>
 
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Probability prob should be positive and less than 1.0&quot;</span><span class="p">)</span></div>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;prob should be in the interval [0.0, 1.0]&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="round_up_to_nearest_power_of_two"><a class="viewcode-back" href="../../../api/kaldi.base.html#kaldi.base.math.round_up_to_nearest_power_of_two">[docs]</a><span class="k">def</span> <span class="nf">round_up_to_nearest_power_of_two</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Does the obvious thing.</span>
+    <span class="sd">&quot;&quot;&quot;Rounds input integer up to the nearest power of 2.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        n (int): Positive integer</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        ValueError if n &lt;= 0.0</span>
+<span class="sd">        ValueError if n &lt;= 0</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;n should be a positive integer&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_round_up_to_nearest_power_of_two</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="rand_int"><a class="viewcode-back" href="../../../api/kaldi.base.html#kaldi.base.math.rand_int">[docs]</a><span class="k">def</span> <span class="nf">rand_int</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns a random integer between first and last inclusive.</span>
-<span class="sd">    </span>
+    <span class="sd">&quot;&quot;&quot;Returns a random integer in the given interval.</span>
+
 <span class="sd">    Args:</span>
-<span class="sd">        first (int): Lower bound </span>
+<span class="sd">        first (int): Lower bound</span>
 <span class="sd">        last (int): Upper bound (inclusive)</span>
-<span class="sd">        state (RandomState or None): randomizer seed class</span>
+<span class="sd">        state (RandomState or None): RNG state</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        ValueError if first &gt;= last </span>
+<span class="sd">        ValueError if first &gt;= last</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">first</span> <span class="o">&gt;=</span> <span class="n">last</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;last must be &gt;= than first.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;first must be smaller than last.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_rand_int</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span></div>
 
 <span class="c1">################################################################################</span>

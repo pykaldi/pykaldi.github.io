@@ -1020,7 +1020,7 @@
 </li>
       <li><a href="api/kaldi.chain.html#kaldi.chain.alignment_to_proto_supervision">alignment_to_proto_supervision() (in module kaldi.chain)</a>
 </li>
-      <li><a href="api/kaldi.chain.html#kaldi.chain.alignment_to_proto_supervision_with_phone_durs">alignment_to_proto_supervision_with_phone_durs() (in module kaldi.chain)</a>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.alignment_to_proto_supervision_with_phones_durs">alignment_to_proto_supervision_with_phones_durs() (in module kaldi.chain)</a>
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.GmmUpdateFlags.ALL">ALL (kaldi.gmm.GmmUpdateFlags attribute)</a>
 </li>
@@ -1679,8 +1679,6 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.StatisticsExtractionComponentPrecomputedIndexes.backward_indexes">backward_indexes (kaldi.nnet3.StatisticsExtractionComponentPrecomputedIndexes attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.StatisticsPoolingComponentPrecomputedIndexes.backward_indexes">backward_indexes (kaldi.nnet3.StatisticsPoolingComponentPrecomputedIndexes attribute)</a>
-</li>
-      <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorGraph.backward_transitions">backward_transitions() (kaldi.chain.DenominatorGraph method)</a>
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.mllr.RegtreeFmllrDiagGmm.base_to_reg_class">base_to_reg_class() (kaldi.transform.mllr.RegtreeFmllrDiagGmm method)</a>
 </li>
@@ -4534,8 +4532,6 @@
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.AccumDiagGmm.flags_">flags_ (kaldi.gmm.AccumDiagGmm attribute)</a>
 </li>
-      <li><a href="api/kaldi.base.html#kaldi.base.math.float_rand_prune">float_rand_prune() (in module kaldi.base.math)</a>
-</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.weight.FloatLimits">FloatLimits (class in kaldi.fstext.weight)</a>
 </li>
       <li><a href="api/kaldi.util.html#kaldi.util.table.FloatPairVectorWriter">FloatPairVectorWriter (class in kaldi.util.table)</a>
@@ -4643,8 +4639,6 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.StatisticsPoolingComponentPrecomputedIndexes.forward_indexes">forward_indexes (kaldi.nnet3.StatisticsPoolingComponentPrecomputedIndexes attribute)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.HmmTopology.HmmState.forward_pdf_class">forward_pdf_class (kaldi.hmm.HmmTopology.HmmState attribute)</a>
-</li>
-      <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorGraph.forward_transitions">forward_transitions() (kaldi.chain.DenominatorGraph method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ForwardingDescriptor">ForwardingDescriptor (class in kaldi.nnet3)</a>
 </li>
@@ -4934,8 +4928,6 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.weight.TropicalWeight.from_float">from_float() (kaldi.fstext.weight.TropicalWeight method)</a>
 </li>
-      <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorGraph.from_fst">from_fst() (kaldi.chain.DenominatorGraph method)</a>
-</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetIo.from_general_matrix">from_general_matrix() (kaldi.nnet3.NnetIo method)</a>
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.mllr.FmllrDiagGmmAccs.from_gmm">from_gmm() (kaldi.transform.mllr.FmllrDiagGmmAccs method)</a>
@@ -4977,6 +4969,8 @@
       <li><a href="api/kaldi.feat.html#kaldi.feat.window.FeatureWindowFunction.from_options">from_options() (kaldi.feat.window.FeatureWindowFunction method)</a>
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.SamplingLm.from_options">from_options() (kaldi.rnnlm.SamplingLm method)</a>
+</li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.Supervision.from_other">from_other() (kaldi.chain.Supervision method)</a>
 </li>
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuArray.from_other">from_other() (kaldi.cudamatrix.CuArray method)</a>
 </li>
@@ -8854,8 +8848,6 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.CachingOptimizingCompiler.new_with_optimize_opts">new_with_optimize_opts() (kaldi.nnet3.CachingOptimizingCompiler method)</a>
 </li>
-      <li><a href="api/kaldi.chain.html#kaldi.chain.Supervision.new_with_other">new_with_other() (kaldi.chain.Supervision method)</a>
-</li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.AccumFullGmm.new_with_other">new_with_other() (kaldi.gmm.AccumFullGmm method)</a>
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmmNormal.new_with_other">new_with_other() (kaldi.gmm.FullGmmNormal method)</a>
@@ -11069,6 +11061,8 @@
       <li><a href="api/kaldi.base.html#kaldi.base.math.rand_int">rand_int() (in module kaldi.base.math)</a>
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.math.rand_poisson">rand_poisson() (in module kaldi.base.math)</a>
+</li>
+      <li><a href="api/kaldi.base.html#kaldi.base.math.rand_prune">rand_prune() (in module kaldi.base.math)</a>
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.mllt.MlltAccs.rand_prune_">rand_prune_ (kaldi.transform.mllt.MlltAccs attribute)</a>
 </li>
@@ -14581,8 +14575,6 @@
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.SgmmUpdateFlags.TRANSITIONS">TRANSITIONS (kaldi.gmm.SgmmUpdateFlags attribute)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.HmmTopology.HmmState.transitions">transitions (kaldi.hmm.HmmTopology.HmmState attribute)</a>
-</li>
-      <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorGraph.transitions">transitions() (kaldi.chain.DenominatorGraph method)</a>
 </li>
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuDoubleMatrix.transpose">transpose() (kaldi.cudamatrix.CuDoubleMatrix method)</a>
 </li>

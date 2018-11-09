@@ -767,10 +767,10 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.approx_equal" title="kaldi.base.math.approx_equal"><code class="xref py py-obj docutils literal"><span class="pre">approx_equal</span></code></a></td>
-<td>Return abs(a - b) &lt;= relative_tolerance * (abs(a) + abs(b))</td>
+<td>Returns abs(a - b) &lt;= relative_tolerance * (abs(a) + abs(b))</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.divide_rounding_down" title="kaldi.base.math.divide_rounding_down"><code class="xref py py-obj docutils literal"><span class="pre">divide_rounding_down</span></code></a></td>
-<td>Returns the division</td>
+<td>Returns a / b, rounding towards negative infinity in all cases.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_exp" title="kaldi.base.math.double_exp"><code class="xref py py-obj docutils literal"><span class="pre">double_exp</span></code></a></td>
 <td>Calls C++ function</td>
@@ -806,70 +806,70 @@
 <td>Calls C++ function</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.factorize" title="kaldi.base.math.factorize"><code class="xref py py-obj docutils literal"><span class="pre">factorize</span></code></a></td>
-<td>Splits a number into its prime factors, in sorted order from least to greates, with duplication.</td>
+<td>Splits a positive integer into its prime factors.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.float_rand_prune" title="kaldi.base.math.float_rand_prune"><code class="xref py py-obj docutils literal"><span class="pre">float_rand_prune</span></code></a></td>
-<td>Randomized pruning mechanism that preserves expectations, typically used to prune posteriors.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.gcd" title="kaldi.base.math.gcd"><code class="xref py py-obj docutils literal"><span class="pre">gcd</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.gcd" title="kaldi.base.math.gcd"><code class="xref py py-obj docutils literal"><span class="pre">gcd</span></code></a></td>
 <td>Returns the greatest common divisor of two integers.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.hypot" title="kaldi.base.math.hypot"><code class="xref py py-obj docutils literal"><span class="pre">hypot</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.hypot" title="kaldi.base.math.hypot"><code class="xref py py-obj docutils literal"><span class="pre">hypot</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.isfinite" title="kaldi.base.math.isfinite"><code class="xref py py-obj docutils literal"><span class="pre">isfinite</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.isfinite" title="kaldi.base.math.isfinite"><code class="xref py py-obj docutils literal"><span class="pre">isfinite</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.isinf" title="kaldi.base.math.isinf"><code class="xref py py-obj docutils literal"><span class="pre">isinf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.isinf" title="kaldi.base.math.isinf"><code class="xref py py-obj docutils literal"><span class="pre">isinf</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.isnan" title="kaldi.base.math.isnan"><code class="xref py py-obj docutils literal"><span class="pre">isnan</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.isnan" title="kaldi.base.math.isnan"><code class="xref py py-obj docutils literal"><span class="pre">isnan</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.lcm" title="kaldi.base.math.lcm"><code class="xref py py-obj docutils literal"><span class="pre">lcm</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.lcm" title="kaldi.base.math.lcm"><code class="xref py py-obj docutils literal"><span class="pre">lcm</span></code></a></td>
 <td>Returns the least common multiple for x and y.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log" title="kaldi.base.math.log"><code class="xref py py-obj docutils literal"><span class="pre">log</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log" title="kaldi.base.math.log"><code class="xref py py-obj docutils literal"><span class="pre">log</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log1p" title="kaldi.base.math.log1p"><code class="xref py py-obj docutils literal"><span class="pre">log1p</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log1p" title="kaldi.base.math.log1p"><code class="xref py py-obj docutils literal"><span class="pre">log1p</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log_add" title="kaldi.base.math.log_add"><code class="xref py py-obj docutils literal"><span class="pre">log_add</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log_add" title="kaldi.base.math.log_add"><code class="xref py py-obj docutils literal"><span class="pre">log_add</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log_sub" title="kaldi.base.math.log_sub"><code class="xref py py-obj docutils literal"><span class="pre">log_sub</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log_sub" title="kaldi.base.math.log_sub"><code class="xref py py-obj docutils literal"><span class="pre">log_sub</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log_zero_double" title="kaldi.base.math.log_zero_double"><code class="xref py py-obj docutils literal"><span class="pre">log_zero_double</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log_zero_double" title="kaldi.base.math.log_zero_double"><code class="xref py py-obj docutils literal"><span class="pre">log_zero_double</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log_zero_float" title="kaldi.base.math.log_zero_float"><code class="xref py py-obj docutils literal"><span class="pre">log_zero_float</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log_zero_float" title="kaldi.base.math.log_zero_float"><code class="xref py py-obj docutils literal"><span class="pre">log_zero_float</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.rand" title="kaldi.base.math.rand"><code class="xref py py-obj docutils literal"><span class="pre">rand</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.rand" title="kaldi.base.math.rand"><code class="xref py py-obj docutils literal"><span class="pre">rand</span></code></a></td>
 <td>Returns a random integer between 0 and RAND_MAX, inclusive.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.rand_gauss" title="kaldi.base.math.rand_gauss"><code class="xref py py-obj docutils literal"><span class="pre">rand_gauss</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.rand_gauss" title="kaldi.base.math.rand_gauss"><code class="xref py py-obj docutils literal"><span class="pre">rand_gauss</span></code></a></td>
+<td>Returns a random number from standard normal distribution.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.rand_int" title="kaldi.base.math.rand_int"><code class="xref py py-obj docutils literal"><span class="pre">rand_int</span></code></a></td>
-<td>Returns a random integer between first and last inclusive.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.rand_int" title="kaldi.base.math.rand_int"><code class="xref py py-obj docutils literal"><span class="pre">rand_int</span></code></a></td>
+<td>Returns a random integer in the given interval.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.rand_poisson" title="kaldi.base.math.rand_poisson"><code class="xref py py-obj docutils literal"><span class="pre">rand_poisson</span></code></a></td>
-<td>Returns poisson-distributed random number.</td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.rand_poisson" title="kaldi.base.math.rand_poisson"><code class="xref py py-obj docutils literal"><span class="pre">rand_poisson</span></code></a></td>
+<td>Returns a random number from poisson distribution.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.rand_prune" title="kaldi.base.math.rand_prune"><code class="xref py py-obj docutils literal"><span class="pre">rand_prune</span></code></a></td>
+<td>Prunes by preserving expectations.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.rand_uniform" title="kaldi.base.math.rand_uniform"><code class="xref py py-obj docutils literal"><span class="pre">rand_uniform</span></code></a></td>
-<td>Returns a random number strictly between 0 and 1.</td>
+<td>Returns a random number from uniform distribution (strictly between 0 and 1).</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.round_up_to_nearest_power_of_two" title="kaldi.base.math.round_up_to_nearest_power_of_two"><code class="xref py py-obj docutils literal"><span class="pre">round_up_to_nearest_power_of_two</span></code></a></td>
-<td>Does the obvious thing.</td>
+<td>Rounds input integer up to the nearest power of 2.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.sqr" title="kaldi.base.math.sqr"><code class="xref py py-obj docutils literal"><span class="pre">sqr</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.with_prob" title="kaldi.base.math.with_prob"><code class="xref py py-obj docutils literal"><span class="pre">with_prob</span></code></a></td>
-<td>Returns a true with probability ‘prob’.</td>
+<td>Returns <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a> with probability <code class="xref py py-obj docutils literal"><span class="pre">prob</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -881,18 +881,18 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.RandomState" title="kaldi.base.math.RandomState"><code class="xref py py-obj docutils literal"><span class="pre">RandomState</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::RandomState</td>
+<td>Thread-safe random number generator state.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="kaldi.base.math.RandomState">
 <em class="property">class </em><code class="descclassname">kaldi.base.math.</code><code class="descname">RandomState</code><a class="headerlink" href="#kaldi.base.math.RandomState" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::RandomState</p>
+<dd><p>Thread-safe random number generator state.</p>
 <dl class="attribute">
 <dt id="kaldi.base.math.RandomState.seed">
 <code class="descname">seed</code><a class="headerlink" href="#kaldi.base.math.RandomState.seed" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ unsigned int RandomState.seed</p>
+<dd><p>Seed for generating random numbers</p>
 </dd></dl>
 
 </dd></dl>
@@ -900,13 +900,13 @@
 <dl class="function">
 <dt id="kaldi.base.math.approx_equal">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">approx_equal</code><span class="sig-paren">(</span><em>a:float</em>, <em>b:float</em>, <em>relative_tolerance:float=default</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.approx_equal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return abs(a - b) &lt;= relative_tolerance * (abs(a) + abs(b))</p>
+<dd><p>Returns abs(a - b) &lt;= relative_tolerance * (abs(a) + abs(b))</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.divide_rounding_down">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">divide_rounding_down</code><span class="sig-paren">(</span><em>a:int</em>, <em>b:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.base.math.divide_rounding_down" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the division</p>
+<dd><p>Returns a / b, rounding towards negative infinity in all cases.</p>
 </dd></dl>
 
 <dl class="function">
@@ -989,24 +989,21 @@ float ::kaldi::FloatExp(float)</p>
 <dl class="function">
 <dt id="kaldi.base.math.factorize">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">factorize</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/base/math.html#factorize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.base.math.factorize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Splits a number into its prime factors, in sorted order from
-least to greates, with duplication.</p>
+<dd><p>Splits a positive integer into its prime factors.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – positive integer</td>
 </tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Prime factors in increasing order, with duplication.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]</td>
+</tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError if x &lt;= 0</td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.base.math.float_rand_prune">
-<code class="descclassname">kaldi.base.math.</code><code class="descname">float_rand_prune</code><span class="sig-paren">(</span><em>post:float</em>, <em>prune_tresh:float</em>, <em>state:RandomState=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.float_rand_prune" title="Permalink to this definition">¶</a></dt>
-<dd><p>Randomized pruning mechanism that preserves expectations, typically used to prune posteriors.</p>
 </dd></dl>
 
 <dl class="function">
@@ -1051,9 +1048,14 @@ bool ::FLOAT_KALDI_ISNAN(float)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>)</em><em>, </em><em>y</em><em> (</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – positive integers</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – first positive integer</li>
+<li><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – second positive integer</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError if x &lt;= 0 or y &lt;= 0</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">ValueError if x &lt;= 0 or y &lt;= 0</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1110,14 +1112,13 @@ float ::kaldi::GetkLogZeroFloat()</p>
 <dl class="function">
 <dt id="kaldi.base.math.rand_gauss">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">rand_gauss</code><span class="sig-paren">(</span><em>state:RandomState=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.rand_gauss" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::RandGauss(::kaldi::RandomState <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+<dd><p>Returns a random number from standard normal distribution.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.rand_int">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">rand_int</code><span class="sig-paren">(</span><em>first</em>, <em>last</em>, <em>state=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/base/math.html#rand_int"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.base.math.rand_int" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a random integer between first and last inclusive.</p>
+<dd><p>Returns a random integer in the given interval.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1125,7 +1126,7 @@ float ::kaldi::RandGauss(::kaldi::RandomState <a href="#id1"><span class="proble
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>first</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Lower bound</li>
 <li><strong>last</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Upper bound (inclusive)</li>
-<li><strong>state</strong> (<a class="reference internal" href="#kaldi.base.math.RandomState" title="kaldi.base.math.RandomState"><em>RandomState</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – randomizer seed class</li>
+<li><strong>state</strong> (<a class="reference internal" href="#kaldi.base.math.RandomState" title="kaldi.base.math.RandomState"><em>RandomState</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – RNG state</li>
 </ul>
 </td>
 </tr>
@@ -1139,26 +1140,33 @@ float ::kaldi::RandGauss(::kaldi::RandomState <a href="#id1"><span class="proble
 <dl class="function">
 <dt id="kaldi.base.math.rand_poisson">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">rand_poisson</code><span class="sig-paren">(</span><em>lambda:float</em>, <em>state:RandomState=default</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.base.math.rand_poisson" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns poisson-distributed random number.</p>
+<dd><p>Returns a random number from poisson distribution.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.rand_prune">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">rand_prune</code><span class="sig-paren">(</span><em>post:float</em>, <em>prune_tresh:float</em>, <em>state:RandomState=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.rand_prune" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prunes by preserving expectations.</p>
+<p>This is typically used to prune posteriors.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.rand_uniform">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">rand_uniform</code><span class="sig-paren">(</span><em>state:RandomState=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.rand_uniform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a random number strictly between 0 and 1.</p>
+<dd><p>Returns a random number from uniform distribution (strictly between 0 and 1).</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.round_up_to_nearest_power_of_two">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">round_up_to_nearest_power_of_two</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/base/math.html#round_up_to_nearest_power_of_two"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.base.math.round_up_to_nearest_power_of_two" title="Permalink to this definition">¶</a></dt>
-<dd><p>Does the obvious thing.</p>
+<dd><p>Rounds input integer up to the nearest power of 2.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Positive integer</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError if n &lt;= 0.0</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError if n &lt;= 0</td>
 </tr>
 </tbody>
 </table>
@@ -1174,14 +1182,14 @@ float ::FLOAT_KALDI_SQR(float)</p>
 <dl class="function">
 <dt id="kaldi.base.math.with_prob">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">with_prob</code><span class="sig-paren">(</span><em>prob</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/base/math.html#with_prob"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.base.math.with_prob" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a true with probability ‘prob’.</p>
+<dd><p>Returns <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a> with probability <code class="xref py py-obj docutils literal"><span class="pre">prob</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>prob</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – probability of True, 0 &lt;= prob &lt;= 1</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>prob</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – probability of True, 0 &lt;= prob &lt;= 1</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">If prob is negative or greater than 1.0.</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></a> – If <code class="xref py py-obj docutils literal"><span class="pre">prob</span></code> is negative or greater than 1.0.</td>
 </tr>
 </tbody>
 </table>

@@ -210,37 +210,37 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.add_weight_to_supervision_fst" title="kaldi.chain.add_weight_to_supervision_fst"><code class="xref py py-obj docutils literal"><span class="pre">add_weight_to_supervision_fst</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Adds weights to supervision FST by composing it with normalization FST.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.alignment_to_proto_supervision" title="kaldi.chain.alignment_to_proto_supervision"><code class="xref py py-obj docutils literal"><span class="pre">alignment_to_proto_supervision</span></code></a></td>
-<td>Creates a proto supervision from a phone alignment.</td>
+<td>Creates a proto supervision from lists of phones and durations.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.alignment_to_proto_supervision_with_phone_durs" title="kaldi.chain.alignment_to_proto_supervision_with_phone_durs"><code class="xref py py-obj docutils literal"><span class="pre">alignment_to_proto_supervision_with_phone_durs</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.alignment_to_proto_supervision_with_phones_durs" title="kaldi.chain.alignment_to_proto_supervision_with_phones_durs"><code class="xref py py-obj docutils literal"><span class="pre">alignment_to_proto_supervision_with_phones_durs</span></code></a></td>
+<td>Creates a proto supervision from a list of (phone, duration) pairs.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.compute_fst_state_times" title="kaldi.chain.compute_fst_state_times"><code class="xref py py-obj docutils literal"><span class="pre">compute_fst_state_times</span></code></a></td>
-<td>Returns the total number of frames under certain assumptions.</td>
+<td>Computes the times for FST states.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.create_denominator_fst" title="kaldi.chain.create_denominator_fst"><code class="xref py py-obj docutils literal"><span class="pre">create_denominator_fst</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Creates denominator graph.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.get_weights_for_ranges" title="kaldi.chain.get_weights_for_ranges"><code class="xref py py-obj docutils literal"><span class="pre">get_weights_for_ranges</span></code></a></td>
 <td>This function gets the weights for the derivatives.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.map_fst_to_pdf_ids_plus_one" title="kaldi.chain.map_fst_to_pdf_ids_plus_one"><code class="xref py py-obj docutils literal"><span class="pre">map_fst_to_pdf_ids_plus_one</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Converts transition-ids in input FST to pdf-ids plus one.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.minimize_acceptor_no_push" title="kaldi.chain.minimize_acceptor_no_push"><code class="xref py py-obj docutils literal"><span class="pre">minimize_acceptor_no_push</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Minimizes acceptor without without weight pushing.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.phone_lattice_to_proto_supervision" title="kaldi.chain.phone_lattice_to_proto_supervision"><code class="xref py py-obj docutils literal"><span class="pre">phone_lattice_to_proto_supervision</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Creates a proto supervision from a phone-aligned phone lattice.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.proto_supervision_to_supervision" title="kaldi.chain.proto_supervision_to_supervision"><code class="xref py py-obj docutils literal"><span class="pre">proto_supervision_to_supervision</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Creates a Supervision object from a ProtoSupervision object.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.sort_breadth_first_search" title="kaldi.chain.sort_breadth_first_search"><code class="xref py py-obj docutils literal"><span class="pre">sort_breadth_first_search</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Sorts the states of the Fst in a breadth-first search order.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.split_into_ranges" title="kaldi.chain.split_into_ranges"><code class="xref py py-obj docutils literal"><span class="pre">split_into_ranges</span></code></a></td>
 <td>Pseudo-randomly split a sequence of length num_frames into pieces of length exactly frames_per_range</td>
@@ -255,64 +255,72 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.ChainTrainingOptions" title="kaldi.chain.ChainTrainingOptions"><code class="xref py py-obj docutils literal"><span class="pre">ChainTrainingOptions</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::chain::ChainTrainingOptions</td>
+<td>Options for chain training.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.DenominatorComputation" title="kaldi.chain.DenominatorComputation"><code class="xref py py-obj docutils literal"><span class="pre">DenominatorComputation</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::chain::DenominatorComputation</td>
+<td>Denominator computer used in chain training.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.DenominatorGraph" title="kaldi.chain.DenominatorGraph"><code class="xref py py-obj docutils literal"><span class="pre">DenominatorGraph</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::chain::DenominatorGraph</td>
+<td>Denominator graph.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.LanguageModelEstimator" title="kaldi.chain.LanguageModelEstimator"><code class="xref py py-obj docutils literal"><span class="pre">LanguageModelEstimator</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::chain::LanguageModelEstimator</td>
+<td>Language model estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.LanguageModelOptions" title="kaldi.chain.LanguageModelOptions"><code class="xref py py-obj docutils literal"><span class="pre">LanguageModelOptions</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::chain::LanguageModelOptions</td>
+<td>Options for language model estimation.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.ProtoSupervision" title="kaldi.chain.ProtoSupervision"><code class="xref py py-obj docutils literal"><span class="pre">ProtoSupervision</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::chain::ProtoSupervision</td>
+<td>Proto supervision that is compiled into supervision.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.Supervision" title="kaldi.chain.Supervision"><code class="xref py py-obj docutils literal"><span class="pre">Supervision</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::chain::Supervision</td>
+<td>Supervision information.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.SupervisionOptions" title="kaldi.chain.SupervisionOptions"><code class="xref py py-obj docutils literal"><span class="pre">SupervisionOptions</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::chain::SupervisionOptions</td>
+<td>Supervision options.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.SupervisionSplitter" title="kaldi.chain.SupervisionSplitter"><code class="xref py py-obj docutils literal"><span class="pre">SupervisionSplitter</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::chain::SupervisionSplitter</td>
+<td>Supervision splitter.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.TimeEnforcerFst" title="kaldi.chain.TimeEnforcerFst"><code class="xref py py-obj docutils literal"><span class="pre">TimeEnforcerFst</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::chain::TimeEnforcerFst</td>
+<td>Deterministic on-demand FST to limit the frames each phone is allowed.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="kaldi.chain.ChainTrainingOptions">
 <em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">ChainTrainingOptions</code><a class="headerlink" href="#kaldi.chain.ChainTrainingOptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::chain::ChainTrainingOptions</p>
+<dd><p>Options for chain training.</p>
 <dl class="attribute">
 <dt id="kaldi.chain.ChainTrainingOptions.l2_regularize">
 <code class="descname">l2_regularize</code><a class="headerlink" href="#kaldi.chain.ChainTrainingOptions.l2_regularize" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat ChainTrainingOptions.l2_regularize</p>
+<dd><p>L2 regularization constant on the ‘chain’ output (default=0.0).</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.ChainTrainingOptions.leaky_hmm_coefficient">
 <code class="descname">leaky_hmm_coefficient</code><a class="headerlink" href="#kaldi.chain.ChainTrainingOptions.leaky_hmm_coefficient" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat ChainTrainingOptions.leaky_hmm_coefficient</p>
+<dd><p>Coefficient for ‘Leaky HMM’ (default=1.0e-05).</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.ChainTrainingOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.ChainTrainingOptions.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::ChainTrainingOptions::Register(::kaldi::OptionsItf <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.ChainTrainingOptions.xent_regularize">
 <code class="descname">xent_regularize</code><a class="headerlink" href="#kaldi.chain.ChainTrainingOptions.xent_regularize" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat ChainTrainingOptions.xent_regularize</p>
+<dd><p>Cross-entropy regularization constant (default=0.0).</p>
 </dd></dl>
 
 </dd></dl>
@@ -320,19 +328,62 @@ void ::kaldi::chain::ChainTrainingOptions::Register(::kaldi::OptionsItf <a href=
 <dl class="class">
 <dt id="kaldi.chain.DenominatorComputation">
 <em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">DenominatorComputation</code><a class="headerlink" href="#kaldi.chain.DenominatorComputation" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::chain::DenominatorComputation</p>
+<dd><p>Denominator computer used in chain training.</p>
+<p>This does forward-backward in parallel on a number of sequences, using a
+single HMM.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.chain.ChainTrainingOptions" title="kaldi.chain.ChainTrainingOptions"><em>ChainTrainingOptions</em></a>) – Options for chain training</li>
+<li><strong>den_graph</strong> (<a class="reference internal" href="#kaldi.chain.DenominatorGraph" title="kaldi.chain.DenominatorGraph"><em>DenominatorGraph</em></a>) – The HMM to use for denominator</li>
+<li><strong>num_sequences</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of separate time sequences to work with</li>
+<li><strong>nnet_output</strong> (<a class="reference internal" href="kaldi.cudamatrix.html#kaldi.cudamatrix.CuMatrix" title="kaldi.cudamatrix.CuMatrix"><em>CuMatrix</em></a>) – The output of the neural network for this minibatch</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.chain.DenominatorComputation.backward">
 <code class="descname">backward</code><span class="sig-paren">(</span><em>deriv_weight:float</em>, <em>nnet_output_deriv:CuMatrixBase</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.chain.DenominatorComputation.backward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::chain::DenominatorComputation::Backward(float, ::kaldi::CuMatrixBase&lt;float&gt; <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+<dd><p>Does the backward computation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deriv_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Weight for the derivative of the log-prob wrt
+nnet output.</li>
+<li><strong>nnet_output_deriv</strong> (<a class="reference internal" href="kaldi.cudamatrix.html#kaldi.cudamatrix.CuMatrix" title="kaldi.cudamatrix.CuMatrix"><em>CuMatrix</em></a>) – Output matrix.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">False if a failure is detected, True otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.DenominatorComputation.forward">
 <code class="descname">forward</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.chain.DenominatorComputation.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::chain::DenominatorComputation::Forward()</p>
+<dd><p>Does the forward computation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Total negated log-likelihood summed over all sequences.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -340,88 +391,110 @@ float ::kaldi::chain::DenominatorComputation::Forward()</p>
 <dl class="class">
 <dt id="kaldi.chain.DenominatorGraph">
 <em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">DenominatorGraph</code><a class="headerlink" href="#kaldi.chain.DenominatorGraph" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::chain::DenominatorGraph</p>
-<dl class="method">
-<dt id="kaldi.chain.DenominatorGraph.backward_transitions">
-<code class="descname">backward_transitions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; IntPair<a class="headerlink" href="#kaldi.chain.DenominatorGraph.backward_transitions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-const ::Int32Pair * ::kaldi::chain::DenominatorGraph::BackwardTransitions()</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.chain.DenominatorGraph.forward_transitions">
-<code class="descname">forward_transitions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; IntPair<a class="headerlink" href="#kaldi.chain.DenominatorGraph.forward_transitions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-const ::Int32Pair * ::kaldi::chain::DenominatorGraph::ForwardTransitions()</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.chain.DenominatorGraph.from_fst">
-<code class="descname">from_fst</code><span class="sig-paren">(</span><em>fst:StdVectorFst</em>, <em>num_pdfs:int</em><span class="sig-paren">)</span> &#x2192; DenominatorGraph<a class="headerlink" href="#kaldi.chain.DenominatorGraph.from_fst" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::chain::DenominatorGraph&gt; ::kaldi::chain::DenominatorGraph::DenominatorGraph(::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt; &gt;, int)</p>
-</dd></dl>
-
+<dd><p>Denominator graph.</p>
+<p>This class is responsible for storing the FST that we use as the
+‘anti-model’ or ‘denominator-model’, that models all possible phone
+sequences (or most possible phone sequences, depending how we built
+it). It stores the FST in a format where we can access both the
+transitions out of each state, and the transitions into each state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fst</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – The denominator model FST. It should be an
+epsilon-free acceptor with labels representing pdf-ids + 1.</li>
+<li><strong>num_pds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of PDFs. Used only for checking.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Supports both GPU and non-GPU operation, but is optimized for GPU.</p>
+</div>
 <dl class="method">
 <dt id="kaldi.chain.DenominatorGraph.get_normalization_fst">
 <code class="descname">get_normalization_fst</code><span class="sig-paren">(</span><em>ifst:StdVectorFst</em><span class="sig-paren">)</span> &#x2192; StdVectorFst<a class="headerlink" href="#kaldi.chain.DenominatorGraph.get_normalization_fst" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::DenominatorGraph::GetNormalizationFst(::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt; &gt;, ::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt; &gt;*)</p>
+<dd><p>Outputs the normalization FST.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.DenominatorGraph.initial_probs">
 <code class="descname">initial_probs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; CuVector<a class="headerlink" href="#kaldi.chain.DenominatorGraph.initial_probs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::CuVector&lt;float&gt; ::kaldi::chain::DenominatorGraph::InitialProbs()</p>
+<dd><p>Returns the initial probabilities of HMM states.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.DenominatorGraph.num_pdfs">
 <code class="descname">num_pdfs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.chain.DenominatorGraph.num_pdfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::chain::DenominatorGraph::NumPdfs()</p>
+<dd><p>Returns number of PDFs in the HMM.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.DenominatorGraph.num_states">
 <code class="descname">num_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.chain.DenominatorGraph.num_states" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::chain::DenominatorGraph::NumStates()</p>
+<dd><p>Returns number of states in the HMM.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.DenominatorGraph.scale_initial_probs">
 <code class="descname">scale_initial_probs</code><span class="sig-paren">(</span><em>s:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.DenominatorGraph.scale_initial_probs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::DenominatorGraph::ScaleInitialProbs(float)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.chain.DenominatorGraph.transitions">
-<code class="descname">transitions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; DenominatorGraphTransition<a class="headerlink" href="#kaldi.chain.DenominatorGraph.transitions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-const ::DenominatorGraphTransition * ::kaldi::chain::DenominatorGraph::Transitions()</p>
+<dd><p>Scales initial probabilities of HMM states.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="kaldi.chain.LanguageModelEstimator">
-<em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">LanguageModelEstimator</code><a class="headerlink" href="#kaldi.chain.LanguageModelEstimator" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::chain::LanguageModelEstimator</p>
+<em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">LanguageModelEstimator</code><span class="sig-paren">(</span><em>opts:LanguageModelOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.LanguageModelEstimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Language model estimator.</p>
+<p>This estimates an n-gram language model with a kind of ‘hard’ backoff
+that is intended to reduce the number of arcs in the final compiled FST.
+Basically, we never back off to the lower-order n-gram state, but we
+sometimes just say, “this state’s count is too small so we won’t have
+this state at all”, and this LM state disappears and transitions to it go
+to the lower-order n-gram’s state.</p>
+<p>This language model is implemented as a set of states, and transitions
+between these states; there is no concept of a backoff transition here.
+Because this maps very naturally to an FST, we output it as an FST.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.chain.LanguageModelOptions" title="kaldi.chain.LanguageModelOptions"><em>LanguageModelOptions</em></a>) – Options for Language model estimation.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.chain.LanguageModelEstimator.add_counts">
 <code class="descname">add_counts</code><span class="sig-paren">(</span><em>sentence:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.LanguageModelEstimator.add_counts" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::LanguageModelEstimator::AddCounts(::std::vector&lt; ::int32&gt;)</p>
+<dd><p>Adds counts for input sentence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sentence</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Input sentence. It should not contain zeros.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.LanguageModelEstimator.estimate">
 <code class="descname">estimate</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; StdVectorFst<a class="headerlink" href="#kaldi.chain.LanguageModelEstimator.estimate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::LanguageModelEstimator::Estimate(::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt; &gt;*)</p>
+<dd><p>Estimates the LM.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Output LM as an FST.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst">StdVectorFst</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -429,30 +502,43 @@ void ::kaldi::chain::LanguageModelEstimator::Estimate(::fst::VectorFst&lt; ::fst
 <dl class="class">
 <dt id="kaldi.chain.LanguageModelOptions">
 <em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">LanguageModelOptions</code><a class="headerlink" href="#kaldi.chain.LanguageModelOptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::chain::LanguageModelOptions</p>
+<dd><p>Options for language model estimation.</p>
+<p>These options are for an un-smoothed (phonetic) language model of a
+certain order (e.g. triphone) used as the ‘denominator graph’ in acoustic
+model estimation. The reason for avoiding smoothing is to reduce the
+number of transitions in the language model, which will improve the
+efficiency of training.</p>
 <dl class="attribute">
 <dt id="kaldi.chain.LanguageModelOptions.ngram_order">
 <code class="descname">ngram_order</code><a class="headerlink" href="#kaldi.chain.LanguageModelOptions.ngram_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 LanguageModelOptions.ngram_order</p>
+<dd><p>n-gram order for the (phonetic) language model</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.LanguageModelOptions.no_prune_ngram_order">
 <code class="descname">no_prune_ngram_order</code><a class="headerlink" href="#kaldi.chain.LanguageModelOptions.no_prune_ngram_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 LanguageModelOptions.no_prune_ngram_order</p>
+<dd><p>The n-gram order below which the language model is not pruned</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.LanguageModelOptions.num_extra_lm_states">
 <code class="descname">num_extra_lm_states</code><a class="headerlink" href="#kaldi.chain.LanguageModelOptions.num_extra_lm_states" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 LanguageModelOptions.num_extra_lm_states</p>
+<dd><p>Desired number of extra LM states to keep for long n-grams</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.LanguageModelOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.LanguageModelOptions.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::LanguageModelOptions::Register(::kaldi::OptionsItf <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -460,24 +546,23 @@ void ::kaldi::chain::LanguageModelOptions::Register(::kaldi::OptionsItf <a href=
 <dl class="class">
 <dt id="kaldi.chain.ProtoSupervision">
 <em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">ProtoSupervision</code><a class="headerlink" href="#kaldi.chain.ProtoSupervision" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::chain::ProtoSupervision</p>
+<dd><p>Proto supervision that is compiled into supervision.</p>
 <dl class="attribute">
 <dt id="kaldi.chain.ProtoSupervision.allowed_phones">
 <code class="descname">allowed_phones</code><a class="headerlink" href="#kaldi.chain.ProtoSupervision.allowed_phones" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::vector&lt; ::std::vector&lt; ::int32&gt; &gt; ProtoSupervision.allowed_phones</p>
+<dd><p>Phones allowed at each frame.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.ProtoSupervision.fst">
 <code class="descname">fst</code><a class="headerlink" href="#kaldi.chain.ProtoSupervision.fst" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::fst::StdVectorFst ProtoSupervision.fst</p>
+<dd><p>The FST of phones; an epsilon-free acceptor.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.ProtoSupervision.write">
 <code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.ProtoSupervision.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::ProtoSupervision::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+<dd><p>Writes to output stream for debugging.</p>
 </dd></dl>
 
 </dd></dl>
@@ -485,69 +570,68 @@ void ::kaldi::chain::ProtoSupervision::Write(::std::basic_ostream&lt;char, ::std
 <dl class="class">
 <dt id="kaldi.chain.Supervision">
 <em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">Supervision</code><a class="headerlink" href="#kaldi.chain.Supervision" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::chain::Supervision</p>
+<dd><p>Supervision information.</p>
+<p>Fully-processed supervision information for a whole utterance or (after
+splitting) part of an utterance. It contains the time limits on phones
+encoded into the FST.</p>
 <dl class="method">
 <dt id="kaldi.chain.Supervision.check">
 <code class="descname">check</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.Supervision.check" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks that this supervision objects satisfies some of the properties expected</p>
+<dd><p>Checks if some of the expected properties are satisfied.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.Supervision.frames_per_sequence">
 <code class="descname">frames_per_sequence</code><a class="headerlink" href="#kaldi.chain.Supervision.frames_per_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 Supervision.frames_per_sequence</p>
+<dd><p>Number of frames per sequence (deafult=-1).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.chain.Supervision.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:Supervision</em><span class="sig-paren">)</span> &#x2192; Supervision<a class="headerlink" href="#kaldi.chain.Supervision.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new Supervision object from another.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.Supervision.fst">
 <code class="descname">fst</code><a class="headerlink" href="#kaldi.chain.Supervision.fst" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::fst::StdVectorFst Supervision.fst</p>
+<dd><p>Supervision FST.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.Supervision.label_dim">
 <code class="descname">label_dim</code><a class="headerlink" href="#kaldi.chain.Supervision.label_dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 Supervision.label_dim</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.chain.Supervision.new_with_other">
-<code class="descname">new_with_other</code><span class="sig-paren">(</span><em>other:Supervision</em><span class="sig-paren">)</span> &#x2192; Supervision<a class="headerlink" href="#kaldi.chain.Supervision.new_with_other" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::chain::Supervision&gt; ::kaldi::chain::Supervision::Supervision(::kaldi::chain::Supervision)</p>
+<dd><p>Maximum possible value of the labels in fst (default=-1).</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.Supervision.num_sequences">
 <code class="descname">num_sequences</code><a class="headerlink" href="#kaldi.chain.Supervision.num_sequences" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 Supervision.num_sequences</p>
+<dd><p>Number of sequences (default=1).</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.Supervision.read">
 <code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.Supervision.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::Supervision::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+<dd><p>Reads Supervision object from input stream.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.Supervision.swap">
 <code class="descname">swap</code><span class="sig-paren">(</span><em>other:Supervision</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.Supervision.swap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::Supervision::Swap(::kaldi::chain::Supervision <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
+<dd><p>Swaps contents with another Supervision object.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.Supervision.weight">
 <code class="descname">weight</code><a class="headerlink" href="#kaldi.chain.Supervision.weight" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat Supervision.weight</p>
+<dd><p>Weight of this example (default=1.0).</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.Supervision.write">
 <code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.Supervision.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::Supervision::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+<dd><p>Writes Supervision object to output stream.</p>
 </dd></dl>
 
 </dd></dl>
@@ -555,37 +639,44 @@ void ::kaldi::chain::Supervision::Write(::std::basic_ostream&lt;char, ::std::cha
 <dl class="class">
 <dt id="kaldi.chain.SupervisionOptions">
 <em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">SupervisionOptions</code><a class="headerlink" href="#kaldi.chain.SupervisionOptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::chain::SupervisionOptions</p>
+<dd><p>Supervision options.</p>
 <dl class="method">
 <dt id="kaldi.chain.SupervisionOptions.check">
 <code class="descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.SupervisionOptions.check" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::SupervisionOptions::Check()</p>
+<dd><p>Checks if options are valid.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.SupervisionOptions.frame_subsampling_factor">
 <code class="descname">frame_subsampling_factor</code><a class="headerlink" href="#kaldi.chain.SupervisionOptions.frame_subsampling_factor" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 SupervisionOptions.frame_subsampling_factor</p>
+<dd><p>Frame subsampling factor</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.SupervisionOptions.left_tolerance">
 <code class="descname">left_tolerance</code><a class="headerlink" href="#kaldi.chain.SupervisionOptions.left_tolerance" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 SupervisionOptions.left_tolerance</p>
+<dd><p>Left tolerance for shift in phone position relative to the alignment</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.chain.SupervisionOptions.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.SupervisionOptions.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::SupervisionOptions::Register(::kaldi::OptionsItf <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.chain.SupervisionOptions.right_tolerance">
 <code class="descname">right_tolerance</code><a class="headerlink" href="#kaldi.chain.SupervisionOptions.right_tolerance" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 SupervisionOptions.right_tolerance</p>
+<dd><p>Right tolerance for shift in phone position relative to the alignment</p>
 </dd></dl>
 
 </dd></dl>
@@ -593,12 +684,21 @@ void ::kaldi::chain::SupervisionOptions::Register(::kaldi::OptionsItf <a href="#
 <dl class="class">
 <dt id="kaldi.chain.SupervisionSplitter">
 <em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">SupervisionSplitter</code><a class="headerlink" href="#kaldi.chain.SupervisionSplitter" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::chain::SupervisionSplitter</p>
+<dd><p>Supervision splitter.</p>
+<p>This is used for splitting a Supervision objects into multiple
+Supervision objects corresponding to different frame-ranges.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>supervision</strong> (<a class="reference internal" href="#kaldi.chain.Supervision" title="kaldi.chain.Supervision"><em>Supervision</em></a>) – Input Supervision object.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.chain.SupervisionSplitter.get_frame_range">
 <code class="descname">get_frame_range</code><span class="sig-paren">(</span><em>begin_frame:int</em>, <em>frames_per_sequence:int</em><span class="sig-paren">)</span> &#x2192; Supervision<a class="headerlink" href="#kaldi.chain.SupervisionSplitter.get_frame_range" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::SupervisionSplitter::GetFrameRange(int, int, ::kaldi::chain::Supervision*)</p>
+<dd><p>Extracts the Supervision object for the given frame range.</p>
 </dd></dl>
 
 </dd></dl>
@@ -606,7 +706,31 @@ void ::kaldi::chain::SupervisionSplitter::GetFrameRange(int, int, ::kaldi::chain
 <dl class="class">
 <dt id="kaldi.chain.TimeEnforcerFst">
 <em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">TimeEnforcerFst</code><a class="headerlink" href="#kaldi.chain.TimeEnforcerFst" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::chain::TimeEnforcerFst</p>
+<dd><p>Deterministic on-demand FST to limit the frames each phone is allowed.</p>
+<p>This class wraps the vector of allowed phones for each frame to create a
+DeterministicOnDemandFst that we can compose with the decoding-graph FST to
+limit the frames on which these phones are allowed to appear.  This FST also
+helps us convert the labels from transition-ids to (pdf-ids plus one), which
+is what we’ll be using in the forward-backward (it avoids the need to
+keep the transition model around).</p>
+<p>Suppose the number of frames is T, then there will be T+1 states in
+this FST, numbered from 0 to T+1, where state 0 is initial and state
+T+1 is final.  A transition is only allowed from state t to state t+1
+with a particular transition-id as its ilabel, if the corresponding
+phone is listed in the ‘allowed_phones’ for that frame.  The olabels
+are pdf-ids plus one.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>trans_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – Transition model</li>
+<li><strong>allowed_phones</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em><em>]</em>) – Phones allowed at each frame.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.chain.TimeEnforcerFst.final">
 <code class="descname">final</code><span class="sig-paren">(</span><em>state:int</em><span class="sig-paren">)</span> &#x2192; TropicalWeight<a class="headerlink" href="#kaldi.chain.TimeEnforcerFst.final" title="Permalink to this definition">¶</a></dt>
@@ -644,38 +768,46 @@ void ::kaldi::chain::SupervisionSplitter::GetFrameRange(int, int, ::kaldi::chain
 
 <dl class="function">
 <dt id="kaldi.chain.add_weight_to_supervision_fst">
-<code class="descclassname">kaldi.chain.</code><code class="descname">add_weight_to_supervision_fst</code><span class="sig-paren">(</span><em>normalization_fst:StdVectorFst) -&gt; (success:bool</em>, <em>supervision:Supervision</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.add_weight_to_supervision_fst" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::chain::AddWeightToSupervisionFst(::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt; &gt;, ::kaldi::chain::Supervision*)</p>
+<code class="descclassname">kaldi.chain.</code><code class="descname">add_weight_to_supervision_fst</code><span class="sig-paren">(</span><em>normalization_fst:StdVectorFst</em>, <em>supervision:Supervision</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.chain.add_weight_to_supervision_fst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds weights to supervision FST by composing it with normalization FST.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.chain.alignment_to_proto_supervision">
 <code class="descclassname">kaldi.chain.</code><code class="descname">alignment_to_proto_supervision</code><span class="sig-paren">(</span><em>opts:SupervisionOptions</em>, <em>phones:list&lt;int&gt;</em>, <em>durations:list&lt;int&gt;) -&gt; (success:bool</em>, <em>proto_supervision:ProtoSupervision</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.alignment_to_proto_supervision" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a proto supervision from a phone alignment.</p>
+<dd><p>Creates a proto supervision from lists of phones and durations.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="kaldi.chain.alignment_to_proto_supervision_with_phone_durs">
-<code class="descclassname">kaldi.chain.</code><code class="descname">alignment_to_proto_supervision_with_phone_durs</code><span class="sig-paren">(</span><em>opts:SupervisionOptions</em>, <em>phones_durs:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;) -&gt; (success:bool</em>, <em>proto_supervision:ProtoSupervision</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.alignment_to_proto_supervision_with_phone_durs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::chain::AlignmentToProtoSupervision(::kaldi::chain::SupervisionOptions, ::std::vector&lt; ::std::pair&lt; ::int32, ::int32&gt; &gt;, ::kaldi::chain::ProtoSupervision*)</p>
+<dt id="kaldi.chain.alignment_to_proto_supervision_with_phones_durs">
+<code class="descclassname">kaldi.chain.</code><code class="descname">alignment_to_proto_supervision_with_phones_durs</code><span class="sig-paren">(</span><em>opts:SupervisionOptions</em>, <em>phones_durs:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;) -&gt; (success:bool</em>, <em>proto_supervision:ProtoSupervision</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.alignment_to_proto_supervision_with_phones_durs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a proto supervision from a list of (phone, duration) pairs.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.chain.compute_fst_state_times">
 <code class="descclassname">kaldi.chain.</code><code class="descname">compute_fst_state_times</code><span class="sig-paren">(</span><em>fst:StdVectorFst) -&gt; (path_length:int</em>, <em>state_times:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.compute_fst_state_times" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the total number of frames under certain assumptions.</p>
+<dd><p>Computes the times for FST states.</p>
+<p>Assuming the ‘fst’ is epsilon-free, connected, and has the property that
+all paths from the start-state are of the same length, output a vector
+containing that length (from the start-state to the current state) to
+‘state_times’.  The member ‘fst’ of struct Supervision has this property.</p>
+<p>Similar to <code class="xref py py-obj docutils literal"><span class="pre">lattice_state_times</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">compact_lattice_state_times</span></code>,
+except that it does not allow epsilons– not because they are hard to
+handle but because in this context we don’t expect them.  This function
+also expects that the input fst will have the property that the state
+times are in nondecreasing order (as <a class="reference internal" href="#kaldi.chain.sort_breadth_first_search" title="kaldi.chain.sort_breadth_first_search"><code class="xref py py-obj docutils literal"><span class="pre">sort_breadth_first_search</span></code></a> will
+accomplish for FSTs satsifying the other properties we mentioned). This
+just happens to be something we enforce while creating these FSTs.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fst</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – Input fst; epsilon-free; connected; nonempty; should have the property that all paths to a given state should have the same number of arcs; and its states should be sorted on this path length</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fst</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – Input fst; epsilon-free; connected; nonempty;
+should have the property that all paths to a given state should have
+the same number of arcs; and states should be sorted on this path length</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the path length
-state_times (list of int): state times set to a vector with dimension fst.num_states</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">path_length (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The path length and the state times.</td>
 </tr>
 </tbody>
 </table>
@@ -684,8 +816,10 @@ state_times (list of int): state times set to a vector with dimension fst.num_st
 <dl class="function">
 <dt id="kaldi.chain.create_denominator_fst">
 <code class="descclassname">kaldi.chain.</code><code class="descname">create_denominator_fst</code><span class="sig-paren">(</span><em>ctx_dep:ContextDependency</em>, <em>trans_model:TransitionModel</em>, <em>phone_lm:StdVectorFst</em><span class="sig-paren">)</span> &#x2192; StdVectorFst<a class="headerlink" href="#kaldi.chain.create_denominator_fst" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::CreateDenominatorFst(::kaldi::ContextDependency, ::kaldi::TransitionModel, ::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt; &gt;, ::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt; &gt;*)</p>
+<dd><p>Creates denominator graph.</p>
+<p>Starting from an acceptor on phones that represents some kind of compiled
+language model (with no disambiguation symbols), this funtion creates the
+denominator-graph.</p>
 </dd></dl>
 
 <dl class="function">
@@ -712,36 +846,32 @@ void ::kaldi::chain::CreateDenominatorFst(::kaldi::ContextDependency, ::kaldi::T
 <dl class="function">
 <dt id="kaldi.chain.map_fst_to_pdf_ids_plus_one">
 <code class="descclassname">kaldi.chain.</code><code class="descname">map_fst_to_pdf_ids_plus_one</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>fst:StdVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.map_fst_to_pdf_ids_plus_one" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::MapFstToPdfIdsPlusOne(::kaldi::TransitionModel, ::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt; &gt; <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
+<dd><p>Converts transition-ids in input FST to pdf-ids plus one.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.chain.minimize_acceptor_no_push">
 <code class="descclassname">kaldi.chain.</code><code class="descname">minimize_acceptor_no_push</code><span class="sig-paren">(</span><em>fst:StdVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.minimize_acceptor_no_push" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::MinimizeAcceptorNoPush(::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt; &gt; <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
+<dd><p>Minimizes acceptor without without weight pushing.</p>
+<p>This is useful for constructing denominator graph.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.chain.phone_lattice_to_proto_supervision">
 <code class="descclassname">kaldi.chain.</code><code class="descname">phone_lattice_to_proto_supervision</code><span class="sig-paren">(</span><em>opts:SupervisionOptions</em>, <em>clat:CompactLatticeVectorFst) -&gt; (success:bool</em>, <em>proto_supervision:ProtoSupervision</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.phone_lattice_to_proto_supervision" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::chain::PhoneLatticeToProtoSupervision(::kaldi::chain::SupervisionOptions, ::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::CompactLatticeWeightTpl&lt; ::fst::LatticeWeightTpl&lt;float&gt;, int&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::CompactLatticeWeightTpl&lt; ::fst::LatticeWeightTpl&lt;float&gt;, int&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::CompactLatticeWeightTpl&lt; ::fst::LatticeWeightTpl&lt;float&gt;, int&gt; &gt; &gt; &gt; &gt;, ::kaldi::chain::ProtoSupervision*)</p>
+<dd><p>Creates a proto supervision from a phone-aligned phone lattice.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.chain.proto_supervision_to_supervision">
 <code class="descclassname">kaldi.chain.</code><code class="descname">proto_supervision_to_supervision</code><span class="sig-paren">(</span><em>ctx_dep:ContextDependencyInterface</em>, <em>trans_model:TransitionModel</em>, <em>proto_supervision:ProtoSupervision) -&gt; (success:bool</em>, <em>supervision:Supervision</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.proto_supervision_to_supervision" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::chain::ProtoSupervisionToSupervision(::kaldi::ContextDependencyInterface, ::kaldi::TransitionModel, ::kaldi::chain::ProtoSupervision, ::kaldi::chain::Supervision*)</p>
+<dd><p>Creates a Supervision object from a ProtoSupervision object.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.chain.sort_breadth_first_search">
 <code class="descclassname">kaldi.chain.</code><code class="descname">sort_breadth_first_search</code><span class="sig-paren">(</span><em>fst:StdVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.sort_breadth_first_search" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::chain::SortBreadthFirstSearch(::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt; &gt; <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
+<dd><p>Sorts the states of the Fst in a breadth-first search order.</p>
 </dd></dl>
 
 <dl class="function">
