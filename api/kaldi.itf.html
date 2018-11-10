@@ -418,50 +418,43 @@ int ::kaldi::ContextDependencyInterface::NumPdfs()</p>
 <dl class="method">
 <dt id="kaldi.itf.OnlineBaseFeature.accept_waveform">
 <code class="descname">accept_waveform</code><span class="sig-paren">(</span><em>sampling_rate:float</em>, <em>waveform:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.accept_waveform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineBaseFeature::AcceptWaveform(float, ::kaldi::VectorBase&lt;float&gt;)</p>
+<dd><p>Accepts input waveform for feature extraction.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OnlineBaseFeature.dim">
 <code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OnlineFeatureInterface::Dim()</p>
+<dd><p>Returns feature dimension</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OnlineBaseFeature.frame_shift_in_seconds">
 <code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::OnlineFeatureInterface::FrameShiftInSeconds()</p>
+<dd><p>Returns frame shift in seconds</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OnlineBaseFeature.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.get_frame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineFeatureInterface::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+<dd><p>Returns the features for given frame index</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OnlineBaseFeature.input_finished">
 <code class="descname">input_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.input_finished" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineBaseFeature::InputFinished()</p>
+<dd><p>Marks input as finished.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OnlineBaseFeature.is_last_frame">
 <code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.is_last_frame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::OnlineFeatureInterface::IsLastFrame(int)</p>
+<dd><p>Returns True if this is last frame, otherwise False</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OnlineBaseFeature.num_frames_ready">
 <code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.OnlineBaseFeature.num_frames_ready" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OnlineFeatureInterface::NumFramesReady()</p>
+<dd><p>Returns number of frames ready</p>
 </dd></dl>
 
 </dd></dl>
@@ -473,36 +466,31 @@ int ::kaldi::OnlineFeatureInterface::NumFramesReady()</p>
 <dl class="method">
 <dt id="kaldi.itf.OnlineFeatureInterface.dim">
 <code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.OnlineFeatureInterface.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OnlineFeatureInterface::Dim()</p>
+<dd><p>Returns feature dimension</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OnlineFeatureInterface.frame_shift_in_seconds">
 <code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.itf.OnlineFeatureInterface.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::OnlineFeatureInterface::FrameShiftInSeconds()</p>
+<dd><p>Returns frame shift in seconds</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OnlineFeatureInterface.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OnlineFeatureInterface.get_frame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineFeatureInterface::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+<dd><p>Returns the features for given frame index</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OnlineFeatureInterface.is_last_frame">
 <code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.itf.OnlineFeatureInterface.is_last_frame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::OnlineFeatureInterface::IsLastFrame(int)</p>
+<dd><p>Returns True if this is last frame, otherwise False</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OnlineFeatureInterface.num_frames_ready">
 <code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.itf.OnlineFeatureInterface.num_frames_ready" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OnlineFeatureInterface::NumFramesReady()</p>
+<dd><p>Returns number of frames ready</p>
 </dd></dl>
 
 </dd></dl>
@@ -515,42 +503,42 @@ int ::kaldi::OnlineFeatureInterface::NumFramesReady()</p>
 <dt id="kaldi.itf.OptionsItf.register_bool">
 <code class="descname">register_bool</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:bool</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_bool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OptionsItf::Register(::std::string, bool <a href="#id5"><span class="problematic" id="id6">*</span></a>, ::std::string)</p>
+void ::kaldi::OptionsItf::Register(::std::string, bool <a href="#id1"><span class="problematic" id="id2">*</span></a>, ::std::string)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OptionsItf.register_double">
 <code class="descname">register_double</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:float</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_double" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OptionsItf::Register(::std::string, double <a href="#id7"><span class="problematic" id="id8">*</span></a>, ::std::string)</p>
+void ::kaldi::OptionsItf::Register(::std::string, double <a href="#id3"><span class="problematic" id="id4">*</span></a>, ::std::string)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OptionsItf.register_float">
 <code class="descname">register_float</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:float</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_float" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OptionsItf::Register(::std::string, float <a href="#id9"><span class="problematic" id="id10">*</span></a>, ::std::string)</p>
+void ::kaldi::OptionsItf::Register(::std::string, float <a href="#id5"><span class="problematic" id="id6">*</span></a>, ::std::string)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OptionsItf.register_int">
 <code class="descname">register_int</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:int</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_int" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OptionsItf::Register(::std::string, int <a href="#id11"><span class="problematic" id="id12">*</span></a>, ::std::string)</p>
+void ::kaldi::OptionsItf::Register(::std::string, int <a href="#id7"><span class="problematic" id="id8">*</span></a>, ::std::string)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OptionsItf.register_str">
 <code class="descname">register_str</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:str</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_str" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OptionsItf::Register(::std::string, ::std::basic_string&lt;char, ::std::char_traits&lt;char&gt;, ::std::allocator&lt;char&gt; &gt; <a href="#id13"><span class="problematic" id="id14">*</span></a>, ::std::string)</p>
+void ::kaldi::OptionsItf::Register(::std::string, ::std::basic_string&lt;char, ::std::char_traits&lt;char&gt;, ::std::allocator&lt;char&gt; &gt; <a href="#id9"><span class="problematic" id="id10">*</span></a>, ::std::string)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.itf.OptionsItf.register_uint">
 <code class="descname">register_uint</code><span class="sig-paren">(</span><em>name:str</em>, <em>ptr:int</em>, <em>doc:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.itf.OptionsItf.register_uint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OptionsItf::Register(::std::string, unsigned int <a href="#id15"><span class="problematic" id="id16">*</span></a>, ::std::string)</p>
+void ::kaldi::OptionsItf::Register(::std::string, unsigned int <a href="#id11"><span class="problematic" id="id12">*</span></a>, ::std::string)</p>
 </dd></dl>
 
 </dd></dl>
