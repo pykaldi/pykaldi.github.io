@@ -249,7 +249,7 @@
 </table>
 <dl class="method">
 <dt id="kaldi.feat.fbank.Fbank.compute">
-<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.fbank.Fbank.compute" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtln_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.fbank.Fbank.compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the filterbank features from input waveform.</p>
 <p>This interface for computing features requires that the user has
 already checked that the sampling frequency of the waveform is equal to
@@ -260,7 +260,7 @@ the sampling frequency specified in the frame extraction options.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
@@ -273,7 +273,7 @@ the sampling frequency specified in the frame extraction options.</p>
 
 <dl class="method">
 <dt id="kaldi.feat.fbank.Fbank.compute_features">
-<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.fbank.Fbank.compute_features" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtln_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.fbank.Fbank.compute_features" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the filterbank features from input waveform.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -284,7 +284,7 @@ the sampling frequency specified in the frame extraction options.</p>
 <li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
 sampled. If sample_freq is higher than the frequency specified in
 the config, the waveform is downsampled.</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
@@ -1051,6 +1051,21 @@ frames. Number of left and right context frames must be non-negative.</p>
 <dd><p>Number of triangular Mel-frequency bins (default=25)</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="kaldi.feat.mel.MelBanksOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.mel.MelBanksOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="kaldi.feat.mel.MelBanksOptions.vtln_high">
 <code class="descname">vtln_high</code><a class="headerlink" href="#kaldi.feat.mel.MelBanksOptions.vtln_high" title="Permalink to this definition">¶</a></dt>
@@ -1163,7 +1178,7 @@ len(autocorr_in) - 1.</li>
 </table>
 <dl class="method">
 <dt id="kaldi.feat.mfcc.Mfcc.compute">
-<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.compute" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtln_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the MFCC features from input waveform.</p>
 <p>This interface for computing features requires that the user has
 already checked that the sampling frequency of the waveform is equal to
@@ -1174,7 +1189,7 @@ the sampling frequency specified in the frame extraction options.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
@@ -1187,7 +1202,7 @@ the sampling frequency specified in the frame extraction options.</p>
 
 <dl class="method">
 <dt id="kaldi.feat.mfcc.Mfcc.compute_features">
-<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.compute_features" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtln_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.mfcc.Mfcc.compute_features" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the MFCC features from input waveform.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1198,7 +1213,7 @@ the sampling frequency specified in the frame extraction options.</p>
 <li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
 sampled. If sample_freq is higher than the frequency specified in
 the config, the waveform is downsampled.</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
@@ -2599,7 +2614,7 @@ Typically a command-line option parser.</td>
 </table>
 <dl class="method">
 <dt id="kaldi.feat.plp.Plp.compute">
-<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.plp.Plp.compute" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtln_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.plp.Plp.compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the PLP features from input waveform.</p>
 <p>This interface for computing features requires that the user has
 already checked that the sampling frequency of the waveform is equal to
@@ -2610,7 +2625,7 @@ the sampling frequency specified in the frame extraction options.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
@@ -2623,7 +2638,7 @@ the sampling frequency specified in the frame extraction options.</p>
 
 <dl class="method">
 <dt id="kaldi.feat.plp.Plp.compute_features">
-<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.plp.Plp.compute_features" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtln_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.plp.Plp.compute_features" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the PLP features from input waveform.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2634,7 +2649,7 @@ the sampling frequency specified in the frame extraction options.</p>
 <li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
 sampled. If sample_freq is higher than the frequency specified in
 the config, the waveform is downsampled.</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
@@ -2687,7 +2702,7 @@ whichever is greater. Ignored if <a class="reference internal" href="#kaldi.feat
 returns False.</li>
 <li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN warping factor. Normally 1.0, meaning no
 warping is to be done. This value is ignored for feature types
-that don’t support VLTN, such as spectrogram features.</li>
+that don’t support VTLN, such as spectrogram features.</li>
 <li><strong>signal_frame</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – One frame of the signal. The frame vector is
 overwritten with intermedite values during computation to avoid new
 memory allocation.</li>
@@ -3057,7 +3072,7 @@ as it processes the entire signal with a single FFT.</p>
 </table>
 <dl class="method">
 <dt id="kaldi.feat.spectrogram.Spectrogram.compute">
-<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.compute" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compute</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>vtln_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the spectrogram features from input waveform.</p>
 <p>This interface for computing features requires that the user has
 already checked that the sampling frequency of the waveform is equal to
@@ -3068,7 +3083,7 @@ the sampling frequency specified in the frame extraction options.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>wave</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – The input waveform</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
@@ -3081,7 +3096,7 @@ the sampling frequency specified in the frame extraction options.</p>
 
 <dl class="method">
 <dt id="kaldi.feat.spectrogram.Spectrogram.compute_features">
-<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtnl_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.compute_features" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compute_features</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>sample_freq:float</em>, <em>vtln_warp:float</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.feat.spectrogram.Spectrogram.compute_features" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the spectrogram features from input waveform.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3092,7 +3107,7 @@ the sampling frequency specified in the frame extraction options.</p>
 <li><strong>sample_freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The sampling frequency with which wave is
 sampled. If sample_freq is higher than the frequency specified in
 the config, the waveform is downsampled.</li>
-<li><strong>vtnl_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTNL wrapping factor (normally 1.0).</li>
+<li><strong>vtln_warp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The VTLN wrapping factor (normally 1.0).</li>
 </ul>
 </td>
 </tr>
