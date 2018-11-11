@@ -198,12 +198,29 @@
            <div itemprop="articleBody">
             
   <h1>Source code for kaldi.base.math</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">._kaldi_math</span> <span class="k">import</span> <span class="o">*</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. autoconstant:: DBL_EPSILON</span>
+<span class="sd">.. autoconstant:: FLT_EPSILON</span>
+<span class="sd">.. autoconstant:: M_PI</span>
+<span class="sd">.. autoconstant:: M_SQRT2</span>
+<span class="sd">.. autoconstant:: M_2PI</span>
+<span class="sd">.. autoconstant:: M_SQRT1_2</span>
+<span class="sd">.. autoconstant:: M_LOG_2PI</span>
+<span class="sd">.. autoconstant:: M_LN2</span>
+<span class="sd">.. autoconstant:: M_LN10</span>
+<span class="sd">.. autoconstant:: LOG_ZERO_FLOAT</span>
+<span class="sd">.. autoconstant:: LOG_ZERO_DOUBLE</span>
+<span class="sd">.. autoconstant:: MIN_LOG_DIFF_DOUBLE</span>
+<span class="sd">.. autoconstant:: MIN_LOG_DIFF_FLOAT</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">._kaldi_math</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._kaldi_math_ext</span> <span class="k">import</span> <span class="o">*</span>
 
 <span class="c1"># Must be imported explicitly</span>
 <span class="kn">from</span> <span class="nn">._kaldi_math</span> <span class="k">import</span> <span class="p">(</span><span class="n">_lcm</span><span class="p">,</span> <span class="n">_factorize</span><span class="p">,</span> <span class="n">_with_prob</span><span class="p">,</span>
                           <span class="n">_round_up_to_nearest_power_of_two</span><span class="p">,</span> <span class="n">_rand_int</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">._kaldi_math_ext</span> <span class="k">import</span> <span class="n">_log_zero_float</span><span class="p">,</span> <span class="n">_log_zero_double</span>
 
 <span class="n">DBL_EPSILON</span> <span class="o">=</span> <span class="mf">2.2204460492503131e-16</span>
 
@@ -223,11 +240,10 @@
 
 <span class="n">M_LN10</span> <span class="o">=</span> <span class="mf">2.302585092994045684017991454684</span>
 
-<span class="c1"># These constant let us call function without parenteses</span>
-<span class="n">K_LOG_ZERO_FLOAT</span> <span class="o">=</span> <span class="n">log_zero_float</span><span class="p">()</span>
-<span class="n">K_LOG_ZERO_DOUBLE</span> <span class="o">=</span> <span class="n">log_zero_double</span><span class="p">()</span>
-<span class="n">K_MIN_LOG_DIFF_DOUBLE</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">DBL_EPSILON</span><span class="p">)</span>
-<span class="n">K_MIN_LOG_DIFF_FLOAT</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">FLT_EPSILON</span><span class="p">)</span>
+<span class="n">LOG_ZERO_FLOAT</span> <span class="o">=</span> <span class="n">_log_zero_float</span><span class="p">()</span>
+<span class="n">LOG_ZERO_DOUBLE</span> <span class="o">=</span> <span class="n">_log_zero_double</span><span class="p">()</span>
+<span class="n">MIN_LOG_DIFF_DOUBLE</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">DBL_EPSILON</span><span class="p">)</span>
+<span class="n">MIN_LOG_DIFF_FLOAT</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">FLT_EPSILON</span><span class="p">)</span>
 
 <div class="viewcode-block" id="lcm"><a class="viewcode-back" href="../../../api/kaldi.base.html#kaldi.base.math.lcm">[docs]</a><span class="k">def</span> <span class="nf">lcm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the least common multiple for x and y.</span>

@@ -759,6 +759,71 @@
 </div>
 <div class="section" id="module-kaldi.base.math">
 <span id="kaldi-base-math"></span><h2>kaldi.base.math<a class="headerlink" href="#module-kaldi.base.math" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="kaldi.base.math.DBL_EPSILON">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">DBL_EPSILON</code><em class="property"> = 2.220446049250313e-16</em><a class="headerlink" href="#kaldi.base.math.DBL_EPSILON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.FLT_EPSILON">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">FLT_EPSILON</code><em class="property"> = 1.1920929e-07</em><a class="headerlink" href="#kaldi.base.math.FLT_EPSILON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.M_PI">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">M_PI</code><em class="property"> = 3.141592653589793</em><a class="headerlink" href="#kaldi.base.math.M_PI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.M_SQRT2">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">M_SQRT2</code><em class="property"> = 1.4142135623730951</em><a class="headerlink" href="#kaldi.base.math.M_SQRT2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.M_2PI">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">M_2PI</code><em class="property"> = 6.283185307179586</em><a class="headerlink" href="#kaldi.base.math.M_2PI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.M_SQRT1_2">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">M_SQRT1_2</code><em class="property"> = 0.7071067811865476</em><a class="headerlink" href="#kaldi.base.math.M_SQRT1_2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.M_LOG_2PI">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">M_LOG_2PI</code><em class="property"> = 1.8378770664093456</em><a class="headerlink" href="#kaldi.base.math.M_LOG_2PI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.M_LN2">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">M_LN2</code><em class="property"> = 0.6931471805599453</em><a class="headerlink" href="#kaldi.base.math.M_LN2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.M_LN10">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">M_LN10</code><em class="property"> = 2.302585092994046</em><a class="headerlink" href="#kaldi.base.math.M_LN10" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.LOG_ZERO_FLOAT">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">LOG_ZERO_FLOAT</code><em class="property"> = -inf</em><a class="headerlink" href="#kaldi.base.math.LOG_ZERO_FLOAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.LOG_ZERO_DOUBLE">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">LOG_ZERO_DOUBLE</code><em class="property"> = -inf</em><a class="headerlink" href="#kaldi.base.math.LOG_ZERO_DOUBLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.MIN_LOG_DIFF_DOUBLE">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">MIN_LOG_DIFF_DOUBLE</code><em class="property"> = -36.04365158081055</em><a class="headerlink" href="#kaldi.base.math.MIN_LOG_DIFF_DOUBLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="kaldi.base.math.MIN_LOG_DIFF_FLOAT">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">MIN_LOG_DIFF_FLOAT</code><em class="property"> = -15.942384719848633</em><a class="headerlink" href="#kaldi.base.math.MIN_LOG_DIFF_FLOAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <p class="rubric">Functions</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -773,82 +838,82 @@
 <td>Returns a / b, rounding towards negative infinity in all cases.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_exp" title="kaldi.base.math.double_exp"><code class="xref py py-obj docutils literal"><span class="pre">double_exp</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Computes e raised to the given power.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.double_hypot" title="kaldi.base.math.double_hypot"><code class="xref py py-obj docutils literal"><span class="pre">double_hypot</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Computes square root of the sum of the squares of two given numbers.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_isfinite" title="kaldi.base.math.double_isfinite"><code class="xref py py-obj docutils literal"><span class="pre">double_isfinite</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Determines if the given floating point number has finite value.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.double_isinf" title="kaldi.base.math.double_isinf"><code class="xref py py-obj docutils literal"><span class="pre">double_isinf</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Determines if the given floating point number is a positive or negative infinity.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_isnan" title="kaldi.base.math.double_isnan"><code class="xref py py-obj docutils literal"><span class="pre">double_isnan</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Determines if the given floating point number is a not-a-number (NaN) value.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.double_log" title="kaldi.base.math.double_log"><code class="xref py py-obj docutils literal"><span class="pre">double_log</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Computes the natural (base e) logarithm.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_log1p" title="kaldi.base.math.double_log1p"><code class="xref py py-obj docutils literal"><span class="pre">double_log1p</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Computes natural logarithm of 1 plus the given number (ln(1+x))</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.double_log_add" title="kaldi.base.math.double_log_add"><code class="xref py py-obj docutils literal"><span class="pre">double_log_add</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Computes log(exp(x) + exp(y)) without losing precision.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_log_sub" title="kaldi.base.math.double_log_sub"><code class="xref py py-obj docutils literal"><span class="pre">double_log_sub</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Computes log(exp(x) + exp(y)) without losing precision.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.double_sqr" title="kaldi.base.math.double_sqr"><code class="xref py py-obj docutils literal"><span class="pre">double_sqr</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.double_rand_gauss2" title="kaldi.base.math.double_rand_gauss2"><code class="xref py py-obj docutils literal"><span class="pre">double_rand_gauss2</span></code></a></td>
+<td>Returns a pair of gaussian random numbers using Box-Muller transform</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.exp" title="kaldi.base.math.exp"><code class="xref py py-obj docutils literal"><span class="pre">exp</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.double_sqr" title="kaldi.base.math.double_sqr"><code class="xref py py-obj docutils literal"><span class="pre">double_sqr</span></code></a></td>
+<td>Squares the given floating point number.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.factorize" title="kaldi.base.math.factorize"><code class="xref py py-obj docutils literal"><span class="pre">factorize</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.exp" title="kaldi.base.math.exp"><code class="xref py py-obj docutils literal"><span class="pre">exp</span></code></a></td>
+<td>Computes e raised to the given power.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.factorize" title="kaldi.base.math.factorize"><code class="xref py py-obj docutils literal"><span class="pre">factorize</span></code></a></td>
 <td>Splits a positive integer into its prime factors.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.gcd" title="kaldi.base.math.gcd"><code class="xref py py-obj docutils literal"><span class="pre">gcd</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.gcd" title="kaldi.base.math.gcd"><code class="xref py py-obj docutils literal"><span class="pre">gcd</span></code></a></td>
 <td>Returns the greatest common divisor of two integers.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.hypot" title="kaldi.base.math.hypot"><code class="xref py py-obj docutils literal"><span class="pre">hypot</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.hypot" title="kaldi.base.math.hypot"><code class="xref py py-obj docutils literal"><span class="pre">hypot</span></code></a></td>
+<td>Computes square root of the sum of the squares of two given numbers.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.isfinite" title="kaldi.base.math.isfinite"><code class="xref py py-obj docutils literal"><span class="pre">isfinite</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.isfinite" title="kaldi.base.math.isfinite"><code class="xref py py-obj docutils literal"><span class="pre">isfinite</span></code></a></td>
+<td>Determines if the given floating point number has finite value.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.isinf" title="kaldi.base.math.isinf"><code class="xref py py-obj docutils literal"><span class="pre">isinf</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.isinf" title="kaldi.base.math.isinf"><code class="xref py py-obj docutils literal"><span class="pre">isinf</span></code></a></td>
+<td>Determines if the given floating point number is a positive or negative infinity.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.isnan" title="kaldi.base.math.isnan"><code class="xref py py-obj docutils literal"><span class="pre">isnan</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.isnan" title="kaldi.base.math.isnan"><code class="xref py py-obj docutils literal"><span class="pre">isnan</span></code></a></td>
+<td>Determines if the given floating point number is a not-a-number (NaN) value.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.lcm" title="kaldi.base.math.lcm"><code class="xref py py-obj docutils literal"><span class="pre">lcm</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.lcm" title="kaldi.base.math.lcm"><code class="xref py py-obj docutils literal"><span class="pre">lcm</span></code></a></td>
 <td>Returns the least common multiple for x and y.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log" title="kaldi.base.math.log"><code class="xref py py-obj docutils literal"><span class="pre">log</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log" title="kaldi.base.math.log"><code class="xref py py-obj docutils literal"><span class="pre">log</span></code></a></td>
+<td>Computes the natural (base e) logarithm.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log1p" title="kaldi.base.math.log1p"><code class="xref py py-obj docutils literal"><span class="pre">log1p</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log1p" title="kaldi.base.math.log1p"><code class="xref py py-obj docutils literal"><span class="pre">log1p</span></code></a></td>
+<td>Computes natural logarithm of 1 plus the given number (ln(1+x))</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log_add" title="kaldi.base.math.log_add"><code class="xref py py-obj docutils literal"><span class="pre">log_add</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log_add" title="kaldi.base.math.log_add"><code class="xref py py-obj docutils literal"><span class="pre">log_add</span></code></a></td>
+<td>Computes log(exp(x) + exp(y)) without losing precision.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log_sub" title="kaldi.base.math.log_sub"><code class="xref py py-obj docutils literal"><span class="pre">log_sub</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log_sub" title="kaldi.base.math.log_sub"><code class="xref py py-obj docutils literal"><span class="pre">log_sub</span></code></a></td>
+<td>Computes log(exp(x) - exp(y)) without losing precision.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.log_zero_double" title="kaldi.base.math.log_zero_double"><code class="xref py py-obj docutils literal"><span class="pre">log_zero_double</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.log_zero_float" title="kaldi.base.math.log_zero_float"><code class="xref py py-obj docutils literal"><span class="pre">log_zero_float</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.rand" title="kaldi.base.math.rand"><code class="xref py py-obj docutils literal"><span class="pre">rand</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.rand" title="kaldi.base.math.rand"><code class="xref py py-obj docutils literal"><span class="pre">rand</span></code></a></td>
 <td>Returns a random integer between 0 and RAND_MAX, inclusive.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.rand_gauss" title="kaldi.base.math.rand_gauss"><code class="xref py py-obj docutils literal"><span class="pre">rand_gauss</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.rand_gauss" title="kaldi.base.math.rand_gauss"><code class="xref py py-obj docutils literal"><span class="pre">rand_gauss</span></code></a></td>
 <td>Returns a random number from standard normal distribution.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.rand_gauss2" title="kaldi.base.math.rand_gauss2"><code class="xref py py-obj docutils literal"><span class="pre">rand_gauss2</span></code></a></td>
+<td>Returns a pair of gaussian random numbers using Box-Muller transform</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.rand_int" title="kaldi.base.math.rand_int"><code class="xref py py-obj docutils literal"><span class="pre">rand_int</span></code></a></td>
 <td>Returns a random integer in the given interval.</td>
@@ -866,7 +931,7 @@
 <td>Rounds input integer up to the nearest power of 2.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.base.math.sqr" title="kaldi.base.math.sqr"><code class="xref py py-obj docutils literal"><span class="pre">sqr</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Squares the given floating point number.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.base.math.with_prob" title="kaldi.base.math.with_prob"><code class="xref py py-obj docutils literal"><span class="pre">with_prob</span></code></a></td>
 <td>Returns <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">True</span></code></a> with probability <code class="xref py py-obj docutils literal"><span class="pre">prob</span></code>.</td>
@@ -912,78 +977,73 @@
 <dl class="function">
 <dt id="kaldi.base.math.double_exp">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">double_exp</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_exp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-double ::kaldi::DoubleExp(double)</p>
+<dd><p>Computes e raised to the given power.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.double_hypot">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">double_hypot</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_hypot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-double ::kaldi::DoubleHypot(double, double)</p>
+<dd><p>Computes square root of the sum of the squares of two given numbers.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.double_isfinite">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">double_isfinite</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.double_isfinite" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::DOUBLE_KALDI_ISFINITE(double)</p>
+<dd><p>Determines if the given floating point number has finite value.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.double_isinf">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">double_isinf</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.double_isinf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::DOUBLE_KALDI_ISINF(double)</p>
+<dd><p>Determines if the given floating point number is a positive or negative infinity.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.double_isnan">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">double_isnan</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.double_isnan" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::DOUBLE_KALDI_ISNAN(double)</p>
+<dd><p>Determines if the given floating point number is a not-a-number (NaN) value.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.double_log">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">double_log</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_log" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-double ::kaldi::DoubleLog(double)</p>
+<dd><p>Computes the natural (base e) logarithm.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.double_log1p">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">double_log1p</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_log1p" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-double ::kaldi::DoubleLog1p(double)</p>
+<dd><p>Computes natural logarithm of 1 plus the given number (ln(1+x))</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.double_log_add">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">double_log_add</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_log_add" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-double ::kaldi::DoubleLogAdd(double, double)</p>
+<dd><p>Computes log(exp(x) + exp(y)) without losing precision.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.double_log_sub">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">double_log_sub</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_log_sub" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-double ::kaldi::DoubleLogSub(double, double)</p>
+<dd><p>Computes log(exp(x) + exp(y)) without losing precision.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.double_rand_gauss2">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">double_rand_gauss2</code><span class="sig-paren">(</span><em>state:RandomState=default) -&gt; (a:float</em>, <em>b:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.math.double_rand_gauss2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pair of gaussian random numbers using Box-Muller transform</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.double_sqr">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">double_sqr</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.double_sqr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-double ::DOUBLE_KALDI_SQR(double)</p>
+<dd><p>Squares the given floating point number.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.exp">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">exp</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.exp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::FloatExp(float)</p>
+<dd><p>Computes e raised to the given power.</p>
 </dd></dl>
 
 <dl class="function">
@@ -1015,29 +1075,25 @@ float ::kaldi::FloatExp(float)</p>
 <dl class="function">
 <dt id="kaldi.base.math.hypot">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">hypot</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.hypot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::FloatHypot(float, float)</p>
+<dd><p>Computes square root of the sum of the squares of two given numbers.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.isfinite">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">isfinite</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.isfinite" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::FLOAT_KALDI_ISFINITE(float)</p>
+<dd><p>Determines if the given floating point number has finite value.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.isinf">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">isinf</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.isinf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::FLOAT_KALDI_ISINF(float)</p>
+<dd><p>Determines if the given floating point number is a positive or negative infinity.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.isnan">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">isnan</code><span class="sig-paren">(</span><em>arg:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.base.math.isnan" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::FLOAT_KALDI_ISNAN(float)</p>
+<dd><p>Determines if the given floating point number is a not-a-number (NaN) value.</p>
 </dd></dl>
 
 <dl class="function">
@@ -1064,43 +1120,25 @@ bool ::FLOAT_KALDI_ISNAN(float)</p>
 <dl class="function">
 <dt id="kaldi.base.math.log">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">log</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::FloatLog(float)</p>
+<dd><p>Computes the natural (base e) logarithm.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.log1p">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">log1p</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log1p" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::FloatLog1p(float)</p>
+<dd><p>Computes natural logarithm of 1 plus the given number (ln(1+x))</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.log_add">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">log_add</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log_add" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::FloatLogAdd(float, float)</p>
+<dd><p>Computes log(exp(x) + exp(y)) without losing precision.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.base.math.log_sub">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">log_sub</code><span class="sig-paren">(</span><em>x:float</em>, <em>y:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log_sub" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::FloatLogSub(float, float)</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.base.math.log_zero_double">
-<code class="descclassname">kaldi.base.math.</code><code class="descname">log_zero_double</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log_zero_double" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-double ::kaldi::GetkLogZeroDouble()</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.base.math.log_zero_float">
-<code class="descclassname">kaldi.base.math.</code><code class="descname">log_zero_float</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.log_zero_float" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::GetkLogZeroFloat()</p>
+<dd><p>Computes log(exp(x) - exp(y)) without losing precision.</p>
 </dd></dl>
 
 <dl class="function">
@@ -1113,6 +1151,12 @@ float ::kaldi::GetkLogZeroFloat()</p>
 <dt id="kaldi.base.math.rand_gauss">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">rand_gauss</code><span class="sig-paren">(</span><em>state:RandomState=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.rand_gauss" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a random number from standard normal distribution.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.base.math.rand_gauss2">
+<code class="descclassname">kaldi.base.math.</code><code class="descname">rand_gauss2</code><span class="sig-paren">(</span><em>state:RandomState=default) -&gt; (a:float</em>, <em>b:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.base.math.rand_gauss2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pair of gaussian random numbers using Box-Muller transform</p>
 </dd></dl>
 
 <dl class="function">
@@ -1175,8 +1219,7 @@ float ::kaldi::GetkLogZeroFloat()</p>
 <dl class="function">
 <dt id="kaldi.base.math.sqr">
 <code class="descclassname">kaldi.base.math.</code><code class="descname">sqr</code><span class="sig-paren">(</span><em>x:float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.base.math.sqr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::FLOAT_KALDI_SQR(float)</p>
+<dd><p>Squares the given floating point number.</p>
 </dd></dl>
 
 <dl class="function">
