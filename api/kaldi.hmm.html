@@ -275,18 +275,18 @@ probability estimated by the transition-model is asociated with a transition-id.
 <dt>HMM-state</dt>
 <dd>a number (0, 1, 2…) that indexes TopologyEntry (see hmm-topology.h)</dd>
 <dt>pdf-id</dt>
-<dd>a number output by the Compute function of ContextDependency (it indexes
-pdf’s, either forward or self-loop).  Zero-based.</dd>
+<dd>a number output by the compute method of <code class="xref py py-obj docutils literal"><span class="pre">ContextDependency</span></code> (it indexes
+pdf’s, either forward or self-loop). Zero-based.</dd>
 <dt>transition-state</dt>
 <dd>the states for which we estimate transition probabilities for transitions
 out of them.  In some topologies, will map one-to-one with pdf-ids.
 One-based, since it appears on FSTs.</dd>
 <dt>transition-index</dt>
 <dd>identifier of a transition (or final-prob) in the HMM.  Indexes the
-“transitions” vector in HmmTopology::HmmState.  [if it is out of range,
-equal to transitions.size(), it refers to the final-prob.] Zero-based.</dd>
+“transitions” vector in <a class="reference internal" href="#kaldi.hmm.HmmTopology.HmmState" title="kaldi.hmm.HmmTopology.HmmState"><code class="xref py py-obj docutils literal"><span class="pre">HmmTopology.HmmState</span></code></a>.  [if it is out of range,
+equal to length of transitions, it refers to the final-prob.] Zero-based.</dd>
 <dt>transition-id</dt>
-<dd>identifier of a unique parameter of the TransitionModel. Associated with a
+<dd>identifier of a unique parameter of the <a class="reference internal" href="#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><code class="xref py py-obj docutils literal"><span class="pre">TransitionModel</span></code></a>. Associated with a
 (transition-state, transition-index) pair. One-based, since it appears on
 FSTs.</dd>
 </dl>
@@ -305,12 +305,16 @@ FSTs.</dd>
                                     <span class="n">transition</span><span class="o">-</span><span class="n">state</span> <span class="o">-&gt;</span> <span class="bp">self</span><span class="o">-</span><span class="n">loop</span><span class="o">-</span><span class="n">pdf</span><span class="o">-</span><span class="nb">id</span>
 </pre></div>
 </div>
-<p>The main things the TransitionModel object can do are:
-* Get initialized (need ContextDependency and HmmTopology objects).
-* Read/write.
-* Update [given a vector of counts indexed by transition-id].
-* Do the various integer mappings mentioned above.
-* Get the probability (or log-probability) associated with a particular transition-id.</p>
+<p>The main things the TransitionModel object can do are:</p>
+<ul class="simple">
+<li>Get initialized (need ContextDependency and HmmTopology objects).</li>
+<li>Read/write.</li>
+<li>Update [given a vector of counts indexed by transition-id].</li>
+<li>Do the various integer mappings mentioned above.</li>
+<li>Get the probability (or log-probability) associated with a particular
+transition-id.</li>
+</ul>
+<hr class="docutils" />
 <dl class="data">
 <dt id="kaldi.hmm.NO_PDF">
 <code class="descclassname">kaldi.hmm.</code><code class="descname">NO_PDF</code><em class="property"> = -1</em><a class="headerlink" href="#kaldi.hmm.NO_PDF" title="Permalink to this definition">¶</a></dt>
@@ -327,10 +331,10 @@ FSTs.</dd>
 <td>Accumulates the stats needed for training context-dependency trees.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.get_pdfs_for_phones" title="kaldi.hmm.get_pdfs_for_phones"><code class="xref py py-obj docutils literal"><span class="pre">get_pdfs_for_phones</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Works out which pdfs might correspond to the given phones.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.get_phones_for_pdfs" title="kaldi.hmm.get_phones_for_pdfs"><code class="xref py py-obj docutils literal"><span class="pre">get_phones_for_pdfs</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Works out which phones might correspond to the given pdfs.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.merge_posteriors" title="kaldi.hmm.merge_posteriors"><code class="xref py py-obj docutils literal"><span class="pre">merge_posteriors</span></code></a></td>
 <td>Merges two Posterior objects.</td>
@@ -363,16 +367,16 @@ FSTs.</dd>
 <td>HMM topology information for phones.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.MapTransitionUpdateConfig" title="kaldi.hmm.MapTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MapTransitionUpdateConfig</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::MapTransitionUpdateConfig</td>
+<td>Options for MAP estimation of transition probabilities.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.MleTransitionUpdateConfig" title="kaldi.hmm.MleTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MleTransitionUpdateConfig</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::MleTransitionUpdateConfig</td>
+<td>Options for MLE estimation of transition probabilities.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.Posterior" title="kaldi.hmm.Posterior"><code class="xref py py-obj docutils literal"><span class="pre">Posterior</span></code></a></td>
 <td>Wrapper for frame posteriors.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><code class="xref py py-obj docutils literal"><span class="pre">TransitionModel</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::TransitionModel</td>
+<td>Transition model.</td>
 </tr>
 </tbody>
 </table>
@@ -593,7 +597,7 @@ comes before the self-loop.</p>
 <dl class="class">
 <dt id="kaldi.hmm.MapTransitionUpdateConfig">
 <em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">MapTransitionUpdateConfig</code><a class="headerlink" href="#kaldi.hmm.MapTransitionUpdateConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::MapTransitionUpdateConfig</p>
+<dd><p>Options for MAP estimation of transition probabilities.</p>
 <dl class="method">
 <dt id="kaldi.hmm.MapTransitionUpdateConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.MapTransitionUpdateConfig.register" title="Permalink to this definition">¶</a></dt>
@@ -612,13 +616,13 @@ Typically a command-line option parser.</td>
 <dl class="attribute">
 <dt id="kaldi.hmm.MapTransitionUpdateConfig.share_for_pdfs">
 <code class="descname">share_for_pdfs</code><a class="headerlink" href="#kaldi.hmm.MapTransitionUpdateConfig.share_for_pdfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool MapTransitionUpdateConfig.share_for_pdfs</p>
+<dd><p>Share all transition parameters where the states have the same PDF</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.hmm.MapTransitionUpdateConfig.tau">
 <code class="descname">tau</code><a class="headerlink" href="#kaldi.hmm.MapTransitionUpdateConfig.tau" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat MapTransitionUpdateConfig.tau</p>
+<dd><p>Tau value for MAP estimation of transition probabilities.</p>
 </dd></dl>
 
 </dd></dl>
@@ -626,17 +630,32 @@ Typically a command-line option parser.</td>
 <dl class="class">
 <dt id="kaldi.hmm.MleTransitionUpdateConfig">
 <em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">MleTransitionUpdateConfig</code><a class="headerlink" href="#kaldi.hmm.MleTransitionUpdateConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::MleTransitionUpdateConfig</p>
+<dd><p>Options for MLE estimation of transition probabilities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>floor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Floor for transition probabilities (default=0.01).</li>
+<li><strong>mincount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum count required to update transitions from
+a state (default=5.0).</li>
+<li><strong>share_for_pdfs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Share all transition parameters where the
+states have the same PDF (default=False).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="attribute">
 <dt id="kaldi.hmm.MleTransitionUpdateConfig.floor">
 <code class="descname">floor</code><a class="headerlink" href="#kaldi.hmm.MleTransitionUpdateConfig.floor" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat MleTransitionUpdateConfig.floor</p>
+<dd><p>Floor for transition probabilities</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.hmm.MleTransitionUpdateConfig.mincount">
 <code class="descname">mincount</code><a class="headerlink" href="#kaldi.hmm.MleTransitionUpdateConfig.mincount" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat MleTransitionUpdateConfig.mincount</p>
+<dd><p>Minimum count required to update transitions from a state</p>
 </dd></dl>
 
 <dl class="method">
@@ -657,7 +676,7 @@ Typically a command-line option parser.</td>
 <dl class="attribute">
 <dt id="kaldi.hmm.MleTransitionUpdateConfig.share_for_pdfs">
 <code class="descname">share_for_pdfs</code><a class="headerlink" href="#kaldi.hmm.MleTransitionUpdateConfig.share_for_pdfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool MleTransitionUpdateConfig.share_for_pdfs</p>
+<dd><p>Share all transition parameters where the states have the same PDF</p>
 </dd></dl>
 
 </dd></dl>
@@ -774,264 +793,254 @@ has the effect that frames that are mostly silence get down-weighted.</p>
 <dl class="class">
 <dt id="kaldi.hmm.TransitionModel">
 <em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">TransitionModel</code><a class="headerlink" href="#kaldi.hmm.TransitionModel" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::TransitionModel</p>
+<dd><p>Transition model.</p>
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.accumulate">
 <code class="descname">accumulate</code><span class="sig-paren">(</span><em>prob:float</em>, <em>trans_id:int</em>, <em>stats:DoubleVector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.accumulate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::TransitionModel::Accumulate(float, int, ::kaldi::Vector&lt;double&gt; <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+<dd><p>Accumulates statistics.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.compatible">
 <code class="descname">compatible</code><span class="sig-paren">(</span><em>other:TransitionModel</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.hmm.TransitionModel.compatible" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::TransitionModel::Compatible(::kaldi::TransitionModel)</p>
+<dd><p>Checks if this transition model is compatible with another.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.from_topo">
 <code class="descname">from_topo</code><span class="sig-paren">(</span><em>ctx_dep:ContextDependencyInterface</em>, <em>hmm_topo:HmmTopology</em><span class="sig-paren">)</span> &#x2192; TransitionModel<a class="headerlink" href="#kaldi.hmm.TransitionModel.from_topo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::TransitionModel&gt; ::kaldi::TransitionModel::TransitionModel(::kaldi::ContextDependencyInterface, ::kaldi::HmmTopology)</p>
+<dd><p>Creates a new TransitionModel object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ctx_dep</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.ContextDependencyInterface" title="kaldi.itf.ContextDependencyInterface"><em>ContextDependencyInterface</em></a>) – Context dependency decision
+tree.</li>
+<li><strong>hmm_topo</strong> (<a class="reference internal" href="#kaldi.hmm.HmmTopology" title="kaldi.hmm.HmmTopology"><em>HmmTopology</em></a>) – HMM topology.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.get_non_self_loop_log_prob">
 <code class="descname">get_non_self_loop_log_prob</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_non_self_loop_log_prob" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::TransitionModel::GetNonSelfLoopLogProb(int)</p>
+<dd><p>Returns the log of non-selfloop probability mass for given transition.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.get_phones">
 <code class="descname">get_phones</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_phones" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::std::vector&lt; ::int32&gt; ::kaldi::TransitionModel::GetPhones()</p>
+<dd><p>Returns a sorted, unique list of phones.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.get_topo">
 <code class="descname">get_topo</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; HmmTopology<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_topo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::HmmTopology ::kaldi::TransitionModel::GetTopo()</p>
+<dd><p>Returns the HMM topology.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.get_transition_log_prob">
 <code class="descname">get_transition_log_prob</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_transition_log_prob" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::TransitionModel::GetTransitionLogProb(int)</p>
+<dd><p>Returns the log probability associated with given transition-id.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.get_transition_log_prob_ignoring_self_loops">
 <code class="descname">get_transition_log_prob_ignoring_self_loops</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_transition_log_prob_ignoring_self_loops" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::TransitionModel::GetTransitionLogProbIgnoringSelfLoops(int)</p>
+<dd><p>Returns the log probability associated with given transition-id if selfloop is ignored.</p>
+<p>Returns the log-probability of a particular non-self-loop transition
+after subtracting the probability mass of the self-loop and
+renormalizing.  Specifically: for non-self-loops it returns
+log(prob-for-transition / (1 - prob-for-selfloop)).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – if called on a self-loop.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.get_transition_prob">
 <code class="descname">get_transition_prob</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_transition_prob" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::TransitionModel::GetTransitionProb(int)</p>
+<dd><p>Returns the probability associated with given transition-id.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.init_stats">
 <code class="descname">init_stats</code><span class="sig-paren">(</span><em>stats:DoubleVector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.init_stats" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::TransitionModel::InitStats(::kaldi::Vector&lt;double&gt; <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+<dd><p>Initializes statistics.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.is_final">
 <code class="descname">is_final</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.hmm.TransitionModel.is_final" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::TransitionModel::IsFinal(int)</p>
+<dd><p>Returns True if this transition-id foes to the final state.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.is_self_loop">
 <code class="descname">is_self_loop</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.hmm.TransitionModel.is_self_loop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::TransitionModel::IsSelfLoop(int)</p>
+<dd><p>Returns True if this transition-id corresponds to a self-loop.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.map_update">
 <code class="descname">map_update</code><span class="sig-paren">(</span><em>stats:DoubleVector</em>, <em>cfg:MapTransitionUpdateConfig) -&gt; (objf_impr_out:float</em>, <em>count_out:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.map_update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::TransitionModel::MapUpdate(::kaldi::Vector&lt;double&gt;, ::kaldi::MapTransitionUpdateConfig, float*, float*)</p>
+<dd><p>Does Maximum A Posteriori estimation.</p>
+<p>The stats are counts/weights, indexed by transition-id.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.mle_update">
 <code class="descname">mle_update</code><span class="sig-paren">(</span><em>stats:DoubleVector</em>, <em>cfg:MleTransitionUpdateConfig) -&gt; (objf_impr_out:float</em>, <em>count_out:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.mle_update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::TransitionModel::MleUpdate(::kaldi::Vector&lt;double&gt;, ::kaldi::MleTransitionUpdateConfig, float*, float*)</p>
+<dd><p>Does Maximum Likelihood estimation.</p>
+<p>The stats are counts/weights, indexed by transition-id.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.num_pdfs">
 <code class="descname">num_pdfs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.num_pdfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::NumPdfs()</p>
+<dd><p>Returns the highest numbered PDF we ever saw plus one.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.num_phones">
 <code class="descname">num_phones</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.num_phones" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::NumPhones()</p>
+<dd><p>Returns the highest phone index present.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.num_transition_ids">
 <code class="descname">num_transition_ids</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.num_transition_ids" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::NumTransitionIds()</p>
+<dd><p>Returns the total number of transition-ids.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.num_transition_indices">
 <code class="descname">num_transition_indices</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.num_transition_indices" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::NumTransitionIndices(int)</p>
+<dd><p>Returns the number of transition-indices for given transition-state.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.num_transition_states">
 <code class="descname">num_transition_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.num_transition_states" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::NumTransitionStates()</p>
+<dd><p>Returns the total number of transition-states.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.pair_to_transition_id">
 <code class="descname">pair_to_transition_id</code><span class="sig-paren">(</span><em>trans_state:int</em>, <em>trans_index:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.pair_to_transition_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::PairToTransitionId(int, int)</p>
+<dd><p>Maps (trans-state, trans-index) pair to transition-id.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.print_model">
 <code class="descname">print_model</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>phone_names:list&lt;str&gt;</em>, <em>occs:DoubleVector=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.print_model" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::TransitionModel::Print(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, ::std::vector&lt; ::std::string&gt;, ::kaldi::Vector&lt;double&gt; <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+<dd><p>Prints a human-readable representation of transition model.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.read">
 <code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::TransitionModel::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+<dd><p>Reads TransitionModel object from input stream.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.self_loop_of">
 <code class="descname">self_loop_of</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.self_loop_of" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::SelfLoopOf(int)</p>
+<dd><p>Returns the self-loop transition-id, or zero id this state does not have a self-loop.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_id_to_hmm_state">
 <code class="descname">transition_id_to_hmm_state</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_hmm_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionIdToHmmState(int)</p>
+<dd><p>Maps transition-id to hmm-state.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_id_to_pdf">
 <code class="descname">transition_id_to_pdf</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_pdf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionIdToPdf(int)</p>
+<dd><p>Maps transition-id to pdf-id.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_id_to_pdf_class">
 <code class="descname">transition_id_to_pdf_class</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_pdf_class" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionIdToPdfClass(int)</p>
+<dd><p>Maps transition-id to pdf-class.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_id_to_phone">
 <code class="descname">transition_id_to_phone</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_phone" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionIdToPhone(int)</p>
+<dd><p>Maps transition-id to phone.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_id_to_transition_index">
 <code class="descname">transition_id_to_transition_index</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_transition_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionIdToTransitionIndex(int)</p>
+<dd><p>Maps transition-id to transition-index.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_id_to_transition_state">
 <code class="descname">transition_id_to_transition_state</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_id_to_transition_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionIdToTransitionState(int)</p>
+<dd><p>Maps transition-id to transition-state.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_state_to_forward_pdf">
 <code class="descname">transition_state_to_forward_pdf</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_forward_pdf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionStateToForwardPdf(int)</p>
+<dd><p>Maps transition-state to forward-pdf-id.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_state_to_forward_pdf_class">
 <code class="descname">transition_state_to_forward_pdf_class</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_forward_pdf_class" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionStateToForwardPdfClass(int)</p>
+<dd><p>Maps transition-state to forward-pdf-class.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_state_to_hmm_state">
 <code class="descname">transition_state_to_hmm_state</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_hmm_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionStateToHmmState(int)</p>
+<dd><p>Maps transition-state to hmm-state.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_state_to_phone">
 <code class="descname">transition_state_to_phone</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_phone" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionStateToPhone(int)</p>
+<dd><p>Maps transition-state to phone.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf">
 <code class="descname">transition_state_to_self_loop_pdf</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionStateToSelfLoopPdf(int)</p>
+<dd><p>Maps transition-state to selfloop-pdf-id.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf_class">
 <code class="descname">transition_state_to_self_loop_pdf_class</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf_class" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TransitionStateToSelfLoopPdfClass(int)</p>
+<dd><p>Maps transition-state to selfloop-pdf-class.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.tuple_to_transition_state">
 <code class="descname">tuple_to_transition_state</code><span class="sig-paren">(</span><em>phone:int</em>, <em>hmm_state:int</em>, <em>pdf:int</em>, <em>self_loop_pdf:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.tuple_to_transition_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::TransitionModel::TupleToTransitionState(int, int, int, int)</p>
+<dd><p>Maps (phone, hmm-state, forward-pdf-id, selfloop-pdf-id) tuple to transition-state.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.write">
 <code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.TransitionModel.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::TransitionModel::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+<dd><p>Writes TransitionModel object to output stream.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1045,15 +1054,55 @@ void ::kaldi::TransitionModel::Write(::std::basic_ostream&lt;char, ::std::char_t
 <dl class="function">
 <dt id="kaldi.hmm.get_pdfs_for_phones">
 <code class="descclassname">kaldi.hmm.</code><code class="descname">get_pdfs_for_phones</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>phones:list&lt;int&gt;) -&gt; (ret:bool</em>, <em>pdfs:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.get_pdfs_for_phones" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::GetPdfsForPhones(::kaldi::TransitionModel, ::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::int32&gt;*)</p>
+<dd><p>Works out which pdfs might correspond to the given phones.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>trans_model</strong> (<a class="reference internal" href="#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – Transition-model used to work out this information</li>
+<li><strong>phones</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – A sorted, unique vector that represents a set of phones</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">First return value will be True if returned
+pdf-ids correspond to just the given set of phones, False if they may
+be shared with other phones. Second return value is a sorted, unique
+list of pdf-ids that correspond to given set of phones.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a>, List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.hmm.get_phones_for_pdfs">
 <code class="descclassname">kaldi.hmm.</code><code class="descname">get_phones_for_pdfs</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>pdfs:list&lt;int&gt;) -&gt; (ret:bool</em>, <em>phones:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.get_phones_for_pdfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::GetPhonesForPdfs(::kaldi::TransitionModel, ::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::int32&gt;*)</p>
+<dd><p>Works out which phones might correspond to the given pdfs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>trans_model</strong> (<a class="reference internal" href="#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – Transition-model used to work out this information</li>
+<li><strong>pdfs</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – A sorted, unique vector that represents a set of pdfs</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">First return value will be True if returned
+phones correspond to just the given set of pdfs, False if they may
+be shared with other pdfs. Second return value is a sorted, unique
+list of phones that correspond to given set of pdfs.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a>, List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
