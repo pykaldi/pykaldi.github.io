@@ -117,10 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.hmm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.hmm.posterior">kaldi.hmm.posterior</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.hmm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
@@ -270,8 +267,17 @@ the state, on the input transition to the state.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.get_phones_for_pdfs" title="kaldi.hmm.get_phones_for_pdfs"><code class="xref py py-obj docutils literal"><span class="pre">get_phones_for_pdfs</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.merge_frame_posteriors" title="kaldi.hmm.merge_frame_posteriors"><code class="xref py py-obj docutils literal"><span class="pre">merge_frame_posteriors</span></code></a></td>
+<td>Merges two FramePosterior objects.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior_entries_are_disjoint" title="kaldi.hmm.posterior_entries_are_disjoint"><code class="xref py py-obj docutils literal"><span class="pre">posterior_entries_are_disjoint</span></code></a></td>
+<td>Returns True if the lists have no common first element (transition-id).</td>
+</tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.read_phone_map" title="kaldi.hmm.read_phone_map"><code class="xref py py-obj docutils literal"><span class="pre">read_phone_map</span></code></a></td>
 <td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.vector_to_posterior_entries" title="kaldi.hmm.vector_to_posterior_entries"><code class="xref py py-obj docutils literal"><span class="pre">vector_to_posterior_entries</span></code></a></td>
+<td>Converts log-likelihoods to a list of posterior entries.</td>
 </tr>
 </tbody>
 </table>
@@ -288,16 +294,19 @@ the state, on the input transition to the state.</p>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.AccumulateTreeStatsOptions" title="kaldi.hmm.AccumulateTreeStatsOptions"><code class="xref py py-obj docutils literal"><span class="pre">AccumulateTreeStatsOptions</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::AccumulateTreeStatsOptions</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.HmmTopology" title="kaldi.hmm.HmmTopology"><code class="xref py py-obj docutils literal"><span class="pre">HmmTopology</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.FramePosterior" title="kaldi.hmm.FramePosterior"><code class="xref py py-obj docutils literal"><span class="pre">FramePosterior</span></code></a></td>
+<td>Frame posteriors.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.HmmTopology" title="kaldi.hmm.HmmTopology"><code class="xref py py-obj docutils literal"><span class="pre">HmmTopology</span></code></a></td>
 <td>HMM topology information for phones.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.MapTransitionUpdateConfig" title="kaldi.hmm.MapTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MapTransitionUpdateConfig</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.MapTransitionUpdateConfig" title="kaldi.hmm.MapTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MapTransitionUpdateConfig</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::MapTransitionUpdateConfig</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.MleTransitionUpdateConfig" title="kaldi.hmm.MleTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MleTransitionUpdateConfig</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.MleTransitionUpdateConfig" title="kaldi.hmm.MleTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MleTransitionUpdateConfig</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::MleTransitionUpdateConfig</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><code class="xref py py-obj docutils literal"><span class="pre">TransitionModel</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><code class="xref py py-obj docutils literal"><span class="pre">TransitionModel</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::TransitionModel</td>
 </tr>
 </tbody>
@@ -383,6 +392,112 @@ void ::kaldi::AccumulateTreeStatsOptions::Register(::kaldi::OptionsItf <a href="
 <dt id="kaldi.hmm.AccumulateTreeStatsOptions.var_floor">
 <code class="descname">var_floor</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsOptions.var_floor" title="Permalink to this definition">¶</a></dt>
 <dd><p>C++ ::kaldi::BaseFloat AccumulateTreeStatsOptions.var_floor</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.hmm.FramePosterior">
+<em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">FramePosterior</code><a class="headerlink" href="#kaldi.hmm.FramePosterior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frame posteriors.</p>
+<p>This is a container class for frame posteriors.</p>
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.convert_transitions_to_pdfs">
+<code class="descname">convert_transitions_to_pdfs</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em><span class="sig-paren">)</span> &#x2192; FramePosterior<a class="headerlink" href="#kaldi.hmm.FramePosterior.convert_transitions_to_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts posteriors over transition-ids to posteriors over pdf-ids.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.convert_transitions_to_phones">
+<code class="descname">convert_transitions_to_phones</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em><span class="sig-paren">)</span> &#x2192; FramePosterior<a class="headerlink" href="#kaldi.hmm.FramePosterior.convert_transitions_to_phones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts posteriors over transition-ids to posteriors over phones.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.from_alignment">
+<code class="descname">from_alignment</code><span class="sig-paren">(</span><em>ali:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; FramePosterior<a class="headerlink" href="#kaldi.hmm.FramePosterior.from_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new FramePosterior object from an alignment.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.from_posterior">
+<code class="descname">from_posterior</code><span class="sig-paren">(</span><em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; FramePosterior<a class="headerlink" href="#kaldi.hmm.FramePosterior.from_posterior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new FramePosterior object from frame posteriors.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.get_posterior">
+<code class="descname">get_posterior</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, float&gt;&gt;&gt;<a class="headerlink" href="#kaldi.hmm.FramePosterior.get_posterior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the frame posteriors.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.FramePosterior.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads FramePosterior object from input stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>scale:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.FramePosterior.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scales frame posteriors.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.sort_by_pdfs">
+<code class="descname">sort_by_pdfs</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.FramePosterior.sort_by_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sorts posterior entries by pdf-ids.</p>
+<p>At the end of this operation posterior entries for transition-ids with
+same pdf-ids are next to each other.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.to_matrix">
+<code class="descname">to_matrix</code><span class="sig-paren">(</span><em>post_dim:int</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.hmm.FramePosterior.to_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts frame posteriors to a matrix.</p>
+<p>The number of matrix-rows is the same as the length of the posterior and
+the number of matrix-columns is defined by ‘post_dim’. The elements which
+are not specified in the posterior are equal to zero.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.to_pdf_matrix">
+<code class="descname">to_pdf_matrix</code><span class="sig-paren">(</span><em>model:TransitionModel</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.hmm.FramePosterior.to_pdf_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts frame posteriors to a matrix.</p>
+<p>The number of matrix-rows is the same as the length of the posterior and
+the number of matrix-columns is defined by the number of PDFs in the
+transition model. The elements which are not specified in the posterior
+are equal to zero.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.total">
+<code class="descname">total</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.FramePosterior.total" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the total of all the weights in the frame posteriors.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.weight_silence">
+<code class="descname">weight_silence</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em>, <em>silence_set:ConstIntegerSet</em>, <em>silence_scale:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.FramePosterior.weight_silence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Weights silence phones.</p>
+<p>Any silence phone in the frame posteriors (i.e. any phone in the set
+“silence_set”) is weighted by “silence_scale”.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.weight_silence_distributed">
+<code class="descname">weight_silence_distributed</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em>, <em>silence_set:ConstIntegerSet</em>, <em>silence_scale:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.FramePosterior.weight_silence_distributed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Weights silence phones.</p>
+<p>This is similar to <a class="reference internal" href="#kaldi.hmm.FramePosterior.weight_silence" title="kaldi.hmm.FramePosterior.weight_silence"><code class="xref py py-meth docutils literal"><span class="pre">weight_silence()</span></code></a>, except that on each frame it
+works out the amount by which the overall posterior would be reduced,
+and scales down everything on that frame by the same amount.  It
+has the effect that frames that are mostly silence get down-weighted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.FramePosterior.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.FramePosterior.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes FramePosterior object to output stream.</p>
 </dd></dl>
 
 </dd></dl>
@@ -848,134 +963,52 @@ bool ::kaldi::GetPhonesForPdfs(::kaldi::TransitionModel, ::std::vector&lt; ::int
 </dd></dl>
 
 <dl class="function">
+<dt id="kaldi.hmm.merge_frame_posteriors">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">merge_frame_posteriors</code><span class="sig-paren">(</span><em>post1:FramePosterior</em>, <em>post2:FramePosterior</em>, <em>merge:bool</em>, <em>drop_frames:bool) -&gt; (num_frames:int</em>, <em>post_out:FramePosterior</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.merge_frame_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges two FramePosterior objects.</p>
+<p>Inputs must have the same number of frames. If “merge” is true, it will
+make a common entry whenever there are duplicated entries, adding up the
+weights. If “drop_frames” is true, for frames where the two sets of
+posteriors were originally disjoint, makes no entries for that frame
+(relates to frame dropping, or drop_frames, see Vesely et al, ICASSP
+2013). Also returns the number of frames for which the two posteriors
+were disjoint (i.e. no common transition-ids or whatever index we are
+using).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.posterior_entries_are_disjoint">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">posterior_entries_are_disjoint</code><span class="sig-paren">(</span><em>post_entries1:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em>, <em>post_entries2:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.hmm.posterior_entries_are_disjoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the lists have no common first element (transition-id).</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="kaldi.hmm.read_phone_map">
 <code class="descclassname">kaldi.hmm.</code><code class="descname">read_phone_map</code><span class="sig-paren">(</span><em>phone_map_rxfilename:str</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.hmm.read_phone_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
 void ::kaldi::ReadPhoneMap(::std::string, ::std::vector&lt; ::int32&gt;*)</p>
 </dd></dl>
 
-<div class="section" id="module-kaldi.hmm.posterior">
-<span id="kaldi-hmm-posterior"></span><h2>kaldi.hmm.posterior<a class="headerlink" href="#module-kaldi.hmm.posterior" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">Functions</p>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
+<dl class="function">
+<dt id="kaldi.hmm.vector_to_posterior_entries">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">vector_to_posterior_entries</code><span class="sig-paren">(</span><em>log_likes:VectorBase</em>, <em>num_gselect:int</em>, <em>min_post:float) -&gt; (log_like:float</em>, <em>post_entries:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.vector_to_posterior_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts log-likelihoods to a list of posterior entries.</p>
+<p>Given a vector of log-likelihoods (typically of Gaussians in a GMM
+but could be of pdf-ids), a number gselect &gt;= 1 and a minimum posterior
+0 &lt;= min_post &lt; 1, it gets the posterior for each element of log-likes
+by applying softmax, then prunes the posteriors using “gselect” and
+“min_post” (keeping at least one), and outputs the result into
+“post_entries”, sorted from greatest to least posterior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.alignment_to_posterior" title="kaldi.hmm.posterior.alignment_to_posterior"><code class="xref py py-obj docutils literal"><span class="pre">alignment_to_posterior</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.posterior.convert_posterior_to_pdfs" title="kaldi.hmm.posterior.convert_posterior_to_pdfs"><code class="xref py py-obj docutils literal"><span class="pre">convert_posterior_to_pdfs</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.convert_posterior_to_phones" title="kaldi.hmm.posterior.convert_posterior_to_phones"><code class="xref py py-obj docutils literal"><span class="pre">convert_posterior_to_phones</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.posterior.merge_posteriors" title="kaldi.hmm.posterior.merge_posteriors"><code class="xref py py-obj docutils literal"><span class="pre">merge_posteriors</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.posterior_entries_are_disjoint" title="kaldi.hmm.posterior.posterior_entries_are_disjoint"><code class="xref py py-obj docutils literal"><span class="pre">posterior_entries_are_disjoint</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.posterior.posterior_to_matrix" title="kaldi.hmm.posterior.posterior_to_matrix"><code class="xref py py-obj docutils literal"><span class="pre">posterior_to_matrix</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.posterior_to_pdf_matrix" title="kaldi.hmm.posterior.posterior_to_pdf_matrix"><code class="xref py py-obj docutils literal"><span class="pre">posterior_to_pdf_matrix</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.posterior.read_posterior" title="kaldi.hmm.posterior.read_posterior"><code class="xref py py-obj docutils literal"><span class="pre">read_posterior</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.total_posterior" title="kaldi.hmm.posterior.total_posterior"><code class="xref py py-obj docutils literal"><span class="pre">total_posterior</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.posterior.vector_to_posterior_entry" title="kaldi.hmm.posterior.vector_to_posterior_entry"><code class="xref py py-obj docutils literal"><span class="pre">vector_to_posterior_entry</span></code></a></td>
-<td>Calls C++ function</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.posterior.write_posterior" title="kaldi.hmm.posterior.write_posterior"><code class="xref py py-obj docutils literal"><span class="pre">write_posterior</span></code></a></td>
-<td>Calls C++ function</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The total log-likelihood (the softmax output) and the “post_entries”.</td>
 </tr>
 </tbody>
 </table>
-<dl class="function">
-<dt id="kaldi.hmm.posterior.alignment_to_posterior">
-<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">alignment_to_posterior</code><span class="sig-paren">(</span><em>ali:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, float&gt;&gt;&gt;<a class="headerlink" href="#kaldi.hmm.posterior.alignment_to_posterior" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::AlignmentToPosterior(::std::vector&lt; ::int32&gt;, ::kaldi::Posterior*)</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="kaldi.hmm.posterior.convert_posterior_to_pdfs">
-<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">convert_posterior_to_pdfs</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em>, <em>post_in:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, float&gt;&gt;&gt;<a class="headerlink" href="#kaldi.hmm.posterior.convert_posterior_to_pdfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::ConvertPosteriorToPdfs(::kaldi::TransitionModel, ::kaldi::Posterior, ::kaldi::Posterior*)</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.hmm.posterior.convert_posterior_to_phones">
-<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">convert_posterior_to_phones</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em>, <em>post_in:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, float&gt;&gt;&gt;<a class="headerlink" href="#kaldi.hmm.posterior.convert_posterior_to_phones" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::ConvertPosteriorToPhones(::kaldi::TransitionModel, ::kaldi::Posterior, ::kaldi::Posterior*)</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.hmm.posterior.merge_posteriors">
-<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">merge_posteriors</code><span class="sig-paren">(</span><em>post1:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em>, <em>post2:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em>, <em>merge:bool</em>, <em>drop_frames:bool) -&gt; (num_frames:int</em>, <em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.posterior.merge_posteriors" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::MergePosteriors(::kaldi::Posterior, ::kaldi::Posterior, bool, bool, ::kaldi::Posterior*)</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.hmm.posterior.posterior_entries_are_disjoint">
-<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">posterior_entries_are_disjoint</code><span class="sig-paren">(</span><em>post_elem1:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em>, <em>post_elem2:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.hmm.posterior.posterior_entries_are_disjoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::PosteriorEntriesAreDisjoint(::std::vector&lt; ::std::pair&lt; ::int32, ::kaldi::BaseFloat&gt; &gt;, ::std::vector&lt; ::std::pair&lt; ::int32, ::kaldi::BaseFloat&gt; &gt;)</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.hmm.posterior.posterior_to_matrix">
-<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">posterior_to_matrix</code><span class="sig-paren">(</span><em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em>, <em>post_dim:int</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.hmm.posterior.posterior_to_matrix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::PosteriorToMatrix(::kaldi::Posterior, int, ::kaldi::Matrix&lt;float&gt;*)</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.hmm.posterior.posterior_to_pdf_matrix">
-<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">posterior_to_pdf_matrix</code><span class="sig-paren">(</span><em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em>, <em>model:TransitionModel</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.hmm.posterior.posterior_to_pdf_matrix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::PosteriorToPdfMatrix(::kaldi::Posterior, ::kaldi::TransitionModel, ::kaldi::Matrix&lt;float&gt;*)</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.hmm.posterior.read_posterior">
-<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">read_posterior</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, float&gt;&gt;&gt;<a class="headerlink" href="#kaldi.hmm.posterior.read_posterior" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::ReadPosterior(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::Posterior*)</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.hmm.posterior.total_posterior">
-<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">total_posterior</code><span class="sig-paren">(</span><em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.posterior.total_posterior" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::TotalPosterior(::kaldi::Posterior)</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.hmm.posterior.vector_to_posterior_entry">
-<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">vector_to_posterior_entry</code><span class="sig-paren">(</span><em>log_likes:VectorBase</em>, <em>num_gselect:int</em>, <em>min_post:float) -&gt; (log_like:float</em>, <em>post_entry:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.posterior.vector_to_posterior_entry" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::VectorToPosteriorEntry(::kaldi::VectorBase&lt;float&gt;, int, float, ::std::vector&lt; ::std::pair&lt; ::int32, ::kaldi::BaseFloat&gt; &gt;*)</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.hmm.posterior.write_posterior">
-<code class="descclassname">kaldi.hmm.posterior.</code><code class="descname">write_posterior</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.posterior.write_posterior" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::WritePosterior(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::Posterior)</p>
-</dd></dl>
-
-</div>
 </div>
 
 

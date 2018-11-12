@@ -213,11 +213,83 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.TaskSequencerConfig" title="kaldi.util.TaskSequencerConfig"><code class="xref py py-obj docutils literal"><span class="pre">TaskSequencerConfig</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.ConstIntegerSet" title="kaldi.util.ConstIntegerSet"><code class="xref py py-obj docutils literal"><span class="pre">ConstIntegerSet</span></code></a></td>
+<td>Constant integer set.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.TaskSequencerConfig" title="kaldi.util.TaskSequencerConfig"><code class="xref py py-obj docutils literal"><span class="pre">TaskSequencerConfig</span></code></a></td>
 <td>Task sequencer options.</td>
 </tr>
 </tbody>
 </table>
+<dl class="class">
+<dt id="kaldi.util.ConstIntegerSet">
+<em class="property">class </em><code class="descclassname">kaldi.util.</code><code class="descname">ConstIntegerSet</code><a class="headerlink" href="#kaldi.util.ConstIntegerSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constant integer set.</p>
+<p>This class provides an efficient way of testing whether an integer
+is in a set of integers. It can be initialized with a list or set, but
+cannot be mutated after that.</p>
+<dl class="method">
+<dt id="kaldi.util.ConstIntegerSet.count">
+<code class="descname">count</code><span class="sig-paren">(</span><em>i:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.util.ConstIntegerSet.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns 1 if i is in the set, 0 otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.ConstIntegerSet.empty">
+<code class="descname">empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.util.ConstIntegerSet.empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if set is empty.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.ConstIntegerSet.from_list">
+<code class="descname">from_list</code><span class="sig-paren">(</span><em>input:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; ConstIntegerSet<a class="headerlink" href="#kaldi.util.ConstIntegerSet.from_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new ConstIntegerSet from a list of integers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.ConstIntegerSet.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:ConstIntegerSet</em><span class="sig-paren">)</span> &#x2192; ConstIntegerSet<a class="headerlink" href="#kaldi.util.ConstIntegerSet.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new ConstIntegerSet from another.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.ConstIntegerSet.from_set">
+<code class="descname">from_set</code><span class="sig-paren">(</span><em>input:set&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; ConstIntegerSet<a class="headerlink" href="#kaldi.util.ConstIntegerSet.from_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new ConstIntegerSet from a set of integers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.ConstIntegerSet.init_with_list">
+<code class="descname">init_with_list</code><span class="sig-paren">(</span><em>input:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.ConstIntegerSet.init_with_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes with a list of integers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.ConstIntegerSet.init_with_set">
+<code class="descname">init_with_set</code><span class="sig-paren">(</span><em>input:set&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.ConstIntegerSet.init_with_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes with a set of integers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.ConstIntegerSet.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.ConstIntegerSet.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads object from input stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.ConstIntegerSet.size">
+<code class="descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.util.ConstIntegerSet.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of the set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.ConstIntegerSet.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.ConstIntegerSet.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes object to output stream.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="kaldi.util.TaskSequencerConfig">
 <em class="property">class </em><code class="descclassname">kaldi.util.</code><code class="descname">TaskSequencerConfig</code><a class="headerlink" href="#kaldi.util.TaskSequencerConfig" title="Permalink to this definition">¶</a></dt>
@@ -1071,65 +1143,71 @@ read/write specifiers, see <a class="reference external" href="http://kaldi-asr.
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.FloatWriter" title="kaldi.util.table.FloatWriter"><code class="xref py py-obj docutils literal"><span class="pre">FloatWriter</span></code></a></td>
 <td>Table writer for single precision floats.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.FstWriter" title="kaldi.util.table.FstWriter"><code class="xref py py-obj docutils literal"><span class="pre">FstWriter</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.FramePosteriorWriter" title="kaldi.util.table.FramePosteriorWriter"><code class="xref py py-obj docutils literal"><span class="pre">FramePosteriorWriter</span></code></a></td>
+<td>Table writer for frame posteriors.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.FstWriter" title="kaldi.util.table.FstWriter"><code class="xref py py-obj docutils literal"><span class="pre">FstWriter</span></code></a></td>
 <td>Table writer for FSTs over the tropical semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.IntPairVectorWriter" title="kaldi.util.table.IntPairVectorWriter"><code class="xref py py-obj docutils literal"><span class="pre">IntPairVectorWriter</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.IntPairVectorWriter" title="kaldi.util.table.IntPairVectorWriter"><code class="xref py py-obj docutils literal"><span class="pre">IntPairVectorWriter</span></code></a></td>
 <td>Table writer for sequences of integer pairs.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.IntVectorVectorWriter" title="kaldi.util.table.IntVectorVectorWriter"><code class="xref py py-obj docutils literal"><span class="pre">IntVectorVectorWriter</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.IntVectorVectorWriter" title="kaldi.util.table.IntVectorVectorWriter"><code class="xref py py-obj docutils literal"><span class="pre">IntVectorVectorWriter</span></code></a></td>
 <td>Table writer for sequences of integer sequences.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.IntVectorWriter" title="kaldi.util.table.IntVectorWriter"><code class="xref py py-obj docutils literal"><span class="pre">IntVectorWriter</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.IntVectorWriter" title="kaldi.util.table.IntVectorWriter"><code class="xref py py-obj docutils literal"><span class="pre">IntVectorWriter</span></code></a></td>
 <td>Table writer for integer sequences.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.IntWriter" title="kaldi.util.table.IntWriter"><code class="xref py py-obj docutils literal"><span class="pre">IntWriter</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.IntWriter" title="kaldi.util.table.IntWriter"><code class="xref py py-obj docutils literal"><span class="pre">IntWriter</span></code></a></td>
 <td>Table writer for integers.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.KwsIndexFstWriter" title="kaldi.util.table.KwsIndexFstWriter"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexFstWriter</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.KwsIndexFstWriter" title="kaldi.util.table.KwsIndexFstWriter"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexFstWriter</span></code></a></td>
 <td>Table writer for FSTs over the KWS index semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.LatticeWriter" title="kaldi.util.table.LatticeWriter"><code class="xref py py-obj docutils literal"><span class="pre">LatticeWriter</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.LatticeWriter" title="kaldi.util.table.LatticeWriter"><code class="xref py py-obj docutils literal"><span class="pre">LatticeWriter</span></code></a></td>
 <td>Table writer for lattices.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.LogFstWriter" title="kaldi.util.table.LogFstWriter"><code class="xref py py-obj docutils literal"><span class="pre">LogFstWriter</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.LogFstWriter" title="kaldi.util.table.LogFstWriter"><code class="xref py py-obj docutils literal"><span class="pre">LogFstWriter</span></code></a></td>
 <td>Table writer for FSTs over the log semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.MatrixWriter" title="kaldi.util.table.MatrixWriter"><code class="xref py py-obj docutils literal"><span class="pre">MatrixWriter</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.MatrixWriter" title="kaldi.util.table.MatrixWriter"><code class="xref py py-obj docutils literal"><span class="pre">MatrixWriter</span></code></a></td>
 <td>Table writer for single precision matrices.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.NnetExampleWriter" title="kaldi.util.table.NnetExampleWriter"><code class="xref py py-obj docutils literal"><span class="pre">NnetExampleWriter</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.NnetExampleWriter" title="kaldi.util.table.NnetExampleWriter"><code class="xref py py-obj docutils literal"><span class="pre">NnetExampleWriter</span></code></a></td>
 <td>Table writer for nnet examples.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessBoolReader" title="kaldi.util.table.RandomAccessBoolReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessBoolReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessBoolReader" title="kaldi.util.table.RandomAccessBoolReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessBoolReader</span></code></a></td>
 <td>Random access table reader for Booleans.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessCompactLatticeReader" title="kaldi.util.table.RandomAccessCompactLatticeReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessCompactLatticeReader</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessCompactLatticeReader" title="kaldi.util.table.RandomAccessCompactLatticeReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessCompactLatticeReader</span></code></a></td>
 <td>Random access table reader for compact lattices.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessDoubleMatrixReader" title="kaldi.util.table.RandomAccessDoubleMatrixReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessDoubleMatrixReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessDoubleMatrixReader" title="kaldi.util.table.RandomAccessDoubleMatrixReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessDoubleMatrixReader</span></code></a></td>
 <td>Random access table reader for double precision matrices.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessDoubleMatrixReaderMapped" title="kaldi.util.table.RandomAccessDoubleMatrixReaderMapped"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessDoubleMatrixReaderMapped</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessDoubleMatrixReaderMapped" title="kaldi.util.table.RandomAccessDoubleMatrixReaderMapped"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessDoubleMatrixReaderMapped</span></code></a></td>
 <td>Mapped random access table reader for double precision matrices.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessDoubleReader" title="kaldi.util.table.RandomAccessDoubleReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessDoubleReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessDoubleReader" title="kaldi.util.table.RandomAccessDoubleReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessDoubleReader</span></code></a></td>
 <td>Random access table reader for double precision floats.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessDoubleVectorReader" title="kaldi.util.table.RandomAccessDoubleVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessDoubleVectorReader</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessDoubleVectorReader" title="kaldi.util.table.RandomAccessDoubleVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessDoubleVectorReader</span></code></a></td>
 <td>Random access table reader for double precision vectors.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessDoubleVectorReaderMapped" title="kaldi.util.table.RandomAccessDoubleVectorReaderMapped"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessDoubleVectorReaderMapped</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessDoubleVectorReaderMapped" title="kaldi.util.table.RandomAccessDoubleVectorReaderMapped"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessDoubleVectorReaderMapped</span></code></a></td>
 <td>Mapped random access table reader for double precision vectors.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessFloatPairVectorReader" title="kaldi.util.table.RandomAccessFloatPairVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessFloatPairVectorReader</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessFloatPairVectorReader" title="kaldi.util.table.RandomAccessFloatPairVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessFloatPairVectorReader</span></code></a></td>
 <td>Random access table reader for sequences of single precision float pairs.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessFloatReader" title="kaldi.util.table.RandomAccessFloatReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessFloatReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessFloatReader" title="kaldi.util.table.RandomAccessFloatReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessFloatReader</span></code></a></td>
 <td>Random access table reader for single precision floats.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessFloatReaderMapped" title="kaldi.util.table.RandomAccessFloatReaderMapped"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessFloatReaderMapped</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessFloatReaderMapped" title="kaldi.util.table.RandomAccessFloatReaderMapped"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessFloatReaderMapped</span></code></a></td>
 <td>Mapped random access table reader for single precision floats.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessFramePosteriorReader" title="kaldi.util.table.RandomAccessFramePosteriorReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessFramePosteriorReader</span></code></a></td>
+<td>Random access table reader for frame posteriors.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.RandomAccessFstReader" title="kaldi.util.table.RandomAccessFstReader"><code class="xref py py-obj docutils literal"><span class="pre">RandomAccessFstReader</span></code></a></td>
 <td>Random access table reader for FSTs over the tropical semiring.</td>
@@ -1206,58 +1284,61 @@ read/write specifiers, see <a class="reference external" href="http://kaldi-asr.
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialFloatReader" title="kaldi.util.table.SequentialFloatReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialFloatReader</span></code></a></td>
 <td>Sequential table reader for single precision floats.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialFstReader" title="kaldi.util.table.SequentialFstReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialFstReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialFramePosteriorReader" title="kaldi.util.table.SequentialFramePosteriorReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialFramePosteriorReader</span></code></a></td>
+<td>Sequential table reader for frame posteriors.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialFstReader" title="kaldi.util.table.SequentialFstReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialFstReader</span></code></a></td>
 <td>Sequential table reader for FSTs over the tropical semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialIntPairVectorReader" title="kaldi.util.table.SequentialIntPairVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialIntPairVectorReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialIntPairVectorReader" title="kaldi.util.table.SequentialIntPairVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialIntPairVectorReader</span></code></a></td>
 <td>Sequential table reader for sequences of integer pairs.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialIntReader" title="kaldi.util.table.SequentialIntReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialIntReader</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialIntReader" title="kaldi.util.table.SequentialIntReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialIntReader</span></code></a></td>
 <td>Sequential table reader for integers.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialIntVectorReader" title="kaldi.util.table.SequentialIntVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialIntVectorReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialIntVectorReader" title="kaldi.util.table.SequentialIntVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialIntVectorReader</span></code></a></td>
 <td>Sequential table reader for integer sequences.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialIntVectorVectorReader" title="kaldi.util.table.SequentialIntVectorVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialIntVectorVectorReader</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialIntVectorVectorReader" title="kaldi.util.table.SequentialIntVectorVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialIntVectorVectorReader</span></code></a></td>
 <td>Sequential table reader for sequences of integer sequences.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialKwsIndexFstReader" title="kaldi.util.table.SequentialKwsIndexFstReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialKwsIndexFstReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialKwsIndexFstReader" title="kaldi.util.table.SequentialKwsIndexFstReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialKwsIndexFstReader</span></code></a></td>
 <td>Sequential table reader for FSTs over the KWS index semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialLatticeReader" title="kaldi.util.table.SequentialLatticeReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialLatticeReader</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialLatticeReader" title="kaldi.util.table.SequentialLatticeReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialLatticeReader</span></code></a></td>
 <td>Sequential table reader for lattices.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialLogFstReader" title="kaldi.util.table.SequentialLogFstReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialLogFstReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialLogFstReader" title="kaldi.util.table.SequentialLogFstReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialLogFstReader</span></code></a></td>
 <td>Sequential table reader for FSTs over the log semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialMatrixReader" title="kaldi.util.table.SequentialMatrixReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialMatrixReader</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialMatrixReader" title="kaldi.util.table.SequentialMatrixReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialMatrixReader</span></code></a></td>
 <td>Sequential table reader for single precision matrices.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialNnetExampleReader" title="kaldi.util.table.SequentialNnetExampleReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialNnetExampleReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialNnetExampleReader" title="kaldi.util.table.SequentialNnetExampleReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialNnetExampleReader</span></code></a></td>
 <td>Sequential table reader for nnet examples.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialRnnlmExampleReader" title="kaldi.util.table.SequentialRnnlmExampleReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialRnnlmExampleReader</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialRnnlmExampleReader" title="kaldi.util.table.SequentialRnnlmExampleReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialRnnlmExampleReader</span></code></a></td>
 <td>Sequential table reader for RNNLM examples.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialVectorReader" title="kaldi.util.table.SequentialVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialVectorReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialVectorReader" title="kaldi.util.table.SequentialVectorReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialVectorReader</span></code></a></td>
 <td>Sequential table reader for single precision vectors.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialWaveInfoReader" title="kaldi.util.table.SequentialWaveInfoReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialWaveInfoReader</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialWaveInfoReader" title="kaldi.util.table.SequentialWaveInfoReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialWaveInfoReader</span></code></a></td>
 <td>Sequential table reader for wave file headers.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.SequentialWaveReader" title="kaldi.util.table.SequentialWaveReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialWaveReader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.SequentialWaveReader" title="kaldi.util.table.SequentialWaveReader"><code class="xref py py-obj docutils literal"><span class="pre">SequentialWaveReader</span></code></a></td>
 <td>Sequential table reader for wave files.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.VectorWriter" title="kaldi.util.table.VectorWriter"><code class="xref py py-obj docutils literal"><span class="pre">VectorWriter</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.VectorWriter" title="kaldi.util.table.VectorWriter"><code class="xref py py-obj docutils literal"><span class="pre">VectorWriter</span></code></a></td>
 <td>Table writer for single precision vectors.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.WaveWriter" title="kaldi.util.table.WaveWriter"><code class="xref py py-obj docutils literal"><span class="pre">WaveWriter</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.WaveWriter" title="kaldi.util.table.WaveWriter"><code class="xref py py-obj docutils literal"><span class="pre">WaveWriter</span></code></a></td>
 <td>Table writer for wave files.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.WspecifierOptions" title="kaldi.util.table.WspecifierOptions"><code class="xref py py-obj docutils literal"><span class="pre">WspecifierOptions</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.WspecifierOptions" title="kaldi.util.table.WspecifierOptions"><code class="xref py py-obj docutils literal"><span class="pre">WspecifierOptions</span></code></a></td>
 <td>Write specifier options.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.table.WspecifierType" title="kaldi.util.table.WspecifierType"><code class="xref py py-obj docutils literal"><span class="pre">WspecifierType</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.table.WspecifierType" title="kaldi.util.table.WspecifierType"><code class="xref py py-obj docutils literal"><span class="pre">WspecifierType</span></code></a></td>
 <td>An enumeration.</td>
 </tr>
 </tbody>
@@ -1931,6 +2012,104 @@ If provided, the table is opened for writing.</td>
 <dl class="method">
 <dt id="kaldi.util.table.FloatWriter.write">
 <code class="descname">write</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.FloatWriter.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pair to the table.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The key.</li>
+<li><strong>value</strong> – The value.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.util.table.FramePosteriorWriter">
+<em class="property">class </em><code class="descclassname">kaldi.util.table.</code><code class="descname">FramePosteriorWriter</code><span class="sig-paren">(</span><em>wspecifier=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/util/table.html#FramePosteriorWriter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.util.table.FramePosteriorWriter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Table writer for frame posteriors.</p>
+<p>This class is used for writing objects to an archive or script file. It
+implements the <code class="xref py py-obj docutils literal"><span class="pre">__setitem__</span></code> method to provide a dictionary-like
+interface for writing table entries, e.g. <code class="xref py py-obj docutils literal"><span class="pre">writer[key]</span> <span class="pre">=</span> <span class="pre">value</span></code> writes
+the pair <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> to the table.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wspecifier</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Kaldi wspecifier for writing the table.
+If provided, the table is opened for writing.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code></a> – If opening the table for writing fails.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.util.table.FramePosteriorWriter.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.FramePosteriorWriter.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the table.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if table is closed successfully, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.FramePosteriorWriter.flush">
+<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.FramePosteriorWriter.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flushes the table contents to disk/pipe.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.FramePosteriorWriter.is_open">
+<code class="descname">is_open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.FramePosteriorWriter.is_open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether the table writer is open or not.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table writer is open, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.FramePosteriorWriter.open">
+<code class="descname">open</code><span class="sig-paren">(</span><em>wspecifier</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.FramePosteriorWriter.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens the table for writing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wspecifier</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Kaldi wspecifier for writing the table.
+If provided, the table is opened for writing.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if table is opened successfully, False otherwise.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code></a> – If opening the table for writing fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.FramePosteriorWriter.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.FramePosteriorWriter.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes the <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pair to the table.</p>
 <p>This method is provided for compatibility with the C++ API only;
 most users should use the Pythonic API.</p>
@@ -4042,6 +4221,114 @@ If provided, the map is opened for reading.</li>
 <dl class="method">
 <dt id="kaldi.util.table.RandomAccessFloatReaderMapped.value">
 <code class="descname">value</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.RandomAccessFloatReaderMapped.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value associated with the key.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The key.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value associated with the key.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.util.table.RandomAccessFramePosteriorReader">
+<em class="property">class </em><code class="descclassname">kaldi.util.table.</code><code class="descname">RandomAccessFramePosteriorReader</code><span class="sig-paren">(</span><em>rspecifier=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/util/table.html#RandomAccessFramePosteriorReader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.util.table.RandomAccessFramePosteriorReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random access table reader for frame posteriors.</p>
+<p>This class is used for randomly accessing objects in an archive or
+script file. It implements <code class="xref py py-obj docutils literal"><span class="pre">__contains__</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">__getitem__</span></code> methods to
+provide a dictionary-like interface for accessing table entries. e.g.
+<code class="xref py py-obj docutils literal"><span class="pre">reader[key]</span></code> returns the <a class="reference internal" href="#kaldi.util.table.RandomAccessFramePosteriorReader.value" title="kaldi.util.table.RandomAccessFramePosteriorReader.value"><code class="xref py py-obj docutils literal"><span class="pre">value</span></code></a> associated with the <code class="xref py py-obj docutils literal"><span class="pre">key</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rspecifier</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Kaldi rspecifier for reading the table.
+If provided, the table is opened for reading.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code></a> – If opening the table for reading fails.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.util.table.RandomAccessFramePosteriorReader.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.RandomAccessFramePosteriorReader.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the table.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if table is closed successfully, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.RandomAccessFramePosteriorReader.has_key">
+<code class="descname">has_key</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.RandomAccessFramePosteriorReader.has_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the table has the key.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The key.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the table has the key, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.RandomAccessFramePosteriorReader.is_open">
+<code class="descname">is_open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.RandomAccessFramePosteriorReader.is_open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether the table reader is open or not.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table reader is open, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.RandomAccessFramePosteriorReader.open">
+<code class="descname">open</code><span class="sig-paren">(</span><em>rspecifier</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.RandomAccessFramePosteriorReader.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens the table for reading.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rspecifier</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Kaldi rspecifier for reading the table.
+If provided, the table is opened for reading.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if table is opened successfully, False otherwise.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code></a> – If opening the table for reading fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.RandomAccessFramePosteriorReader.value">
+<code class="descname">value</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.RandomAccessFramePosteriorReader.value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the value associated with the key.</p>
 <p>This method is provided for compatibility with the C++ API only;
 most users should use the Pythonic API.</p>
@@ -6817,6 +7104,144 @@ If provided, the table is opened for reading.</td>
 <dl class="method">
 <dt id="kaldi.util.table.SequentialFloatReader.value">
 <code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.SequentialFloatReader.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current value.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The current value.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.util.table.SequentialFramePosteriorReader">
+<em class="property">class </em><code class="descclassname">kaldi.util.table.</code><code class="descname">SequentialFramePosteriorReader</code><span class="sig-paren">(</span><em>rspecifier=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/util/table.html#SequentialFramePosteriorReader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.util.table.SequentialFramePosteriorReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sequential table reader for frame posteriors.</p>
+<p>This class is used for reading objects sequentially from an archive or
+script file. It implements the iterator protocol similar to how Python
+implements iteration over dictionaries. Each iteration returns a <code class="xref py py-obj docutils literal"><span class="pre">(key,</span>
+<span class="pre">value)</span></code> pair from the table in sequential order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rspecifier</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Kaldi rspecifier for reading the table.
+If provided, the table is opened for reading.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code></a> – If opening the table for reading fails.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.util.table.SequentialFramePosteriorReader.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.SequentialFramePosteriorReader.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the table.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if table is closed successfully, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.SequentialFramePosteriorReader.done">
+<code class="descname">done</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.SequentialFramePosteriorReader.done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether the table reader is exhausted or not.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table reader is exhausted, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.SequentialFramePosteriorReader.free_current">
+<code class="descname">free_current</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.SequentialFramePosteriorReader.free_current" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deallocates the current value.</p>
+<p>This method is provided as an optimization to save memory, for large
+objects.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.SequentialFramePosteriorReader.is_open">
+<code class="descname">is_open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.SequentialFramePosteriorReader.is_open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether the table reader is open or not.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the table reader is open, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.SequentialFramePosteriorReader.key">
+<code class="descname">key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.SequentialFramePosteriorReader.key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current key.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The current key.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.SequentialFramePosteriorReader.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.SequentialFramePosteriorReader.next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advances the table reader.</p>
+<p>This method is provided for compatibility with the C++ API only;
+most users should use the Pythonic API.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.SequentialFramePosteriorReader.open">
+<code class="descname">open</code><span class="sig-paren">(</span><em>rspecifier</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.SequentialFramePosteriorReader.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens the table for reading.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rspecifier</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Kaldi rspecifier for reading the table.
+If provided, the table is opened for reading.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if table is opened successfully, False otherwise.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code></a> – If opening the table for reading fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.util.table.SequentialFramePosteriorReader.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.table.SequentialFramePosteriorReader.value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the current value.</p>
 <p>This method is provided for compatibility with the C++ API only;
 most users should use the Pythonic API.</p>
