@@ -205,6 +205,55 @@
             
   <div class="section" id="module-kaldi.hmm">
 <span id="kaldi-hmm"></span><h1>kaldi.hmm<a class="headerlink" href="#module-kaldi.hmm" title="Permalink to this headline">¶</a></h1>
+<p>The following would be the text form for the “normal” HMM topology. Note that
+the first state is the start state, and the final state, which must have no
+output transitions and must be nonemitting, has an exit probability of one (no
+other state can have nonzero exit probability; you can treat the transition
+probability to the final state as an exit probability).</p>
+<p>Note also that it’s valid to omit the “&lt;PdfClass&gt;” entry of the &lt;State&gt;, which
+will mean we won’t have a pdf on that state [non-emitting state].  This is
+equivalent to setting the &lt;PdfClass&gt; to -1.  We do this normally just for the
+final state.</p>
+<p>The Topology object can have multiple &lt;TopologyEntry&gt; blocks. This is useful if
+there are multiple types of topology in the system.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Topology</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">TopologyEntry</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ForPhones</span><span class="o">&gt;</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="o">&lt;/</span><span class="n">ForPhones</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">State</span><span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&lt;</span><span class="n">PdfClass</span><span class="o">&gt;</span> <span class="mi">0</span>
+<span class="o">&lt;</span><span class="n">Transition</span><span class="o">&gt;</span> <span class="mi">0</span> <span class="mf">0.5</span>
+<span class="o">&lt;</span><span class="n">Transition</span><span class="o">&gt;</span> <span class="mi">1</span> <span class="mf">0.5</span>
+<span class="o">&lt;/</span><span class="n">State</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">State</span><span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&lt;</span><span class="n">PdfClass</span><span class="o">&gt;</span> <span class="mi">1</span>
+<span class="o">&lt;</span><span class="n">Transition</span><span class="o">&gt;</span> <span class="mi">1</span> <span class="mf">0.5</span>
+<span class="o">&lt;</span><span class="n">Transition</span><span class="o">&gt;</span> <span class="mi">2</span> <span class="mf">0.5</span>
+<span class="o">&lt;/</span><span class="n">State</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">State</span><span class="o">&gt;</span> <span class="mi">2</span> <span class="o">&lt;</span><span class="n">PdfClass</span><span class="o">&gt;</span> <span class="mi">2</span>
+<span class="o">&lt;</span><span class="n">Transition</span><span class="o">&gt;</span> <span class="mi">2</span> <span class="mf">0.5</span>
+<span class="o">&lt;</span><span class="n">Transition</span><span class="o">&gt;</span> <span class="mi">3</span> <span class="mf">0.5</span>
+<span class="o">&lt;</span><span class="n">Final</span><span class="o">&gt;</span> <span class="mf">0.5</span>
+<span class="o">&lt;/</span><span class="n">State</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">State</span><span class="o">&gt;</span> <span class="mi">3</span>
+<span class="o">&lt;/</span><span class="n">State</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">TopologyEntry</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">Topology</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>NO_PDF is used where pdf_class or pdf would be used, to indicate, none is
+there.  Mainly useful in skippable models, but also used for end states.</p>
+<p>A caveat with non-emitting states is that their out-transitions are not
+trainable, due to technical issues with the way we decided to accumulate the
+stats.  Any transitions arising from (*) HMM states with “NO_PDF” as the label
+are second-class transitions, They do not have “transition-states” or
+“transition-ids” associated with them.  They are used to create the FST version
+of the HMMs, where they lead to epsilon arcs.</p>
+<p>(*) “arising from” is a bit of a technical term here, due to the way (if
+reorder == true), we put the transition-id associated with the outward arcs of
+the state, on the input transition to the state.</p>
+<dl class="data">
+<dt id="kaldi.hmm.NO_PDF">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">NO_PDF</code><em class="property"> = -1</em><a class="headerlink" href="#kaldi.hmm.NO_PDF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <p class="rubric">Functions</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -240,7 +289,7 @@
 <td>CLIF wrapper for ::kaldi::AccumulateTreeStatsOptions</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.HmmTopology" title="kaldi.hmm.HmmTopology"><code class="xref py py-obj docutils literal"><span class="pre">HmmTopology</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::HmmTopology</td>
+<td>HMM topology information for phones.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.MapTransitionUpdateConfig" title="kaldi.hmm.MapTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MapTransitionUpdateConfig</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::MapTransitionUpdateConfig</td>
@@ -341,41 +390,40 @@ void ::kaldi::AccumulateTreeStatsOptions::Register(::kaldi::OptionsItf <a href="
 <dl class="class">
 <dt id="kaldi.hmm.HmmTopology">
 <em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">HmmTopology</code><a class="headerlink" href="#kaldi.hmm.HmmTopology" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::HmmTopology</p>
+<dd><p>HMM topology information for phones.</p>
 <dl class="class">
 <dt id="kaldi.hmm.HmmTopology.HmmState">
 <em class="property">class </em><code class="descname">HmmState</code><a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::HmmTopology::HmmState</p>
+<dd><p>HMM state.</p>
 <dl class="attribute">
 <dt id="kaldi.hmm.HmmTopology.HmmState.forward_pdf_class">
 <code class="descname">forward_pdf_class</code><a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.forward_pdf_class" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 HmmTopology::HmmState.forward_pdf_class</p>
+<dd><p>Forward PDF class, typically 0, 1 or 2; -1 means non-emitting.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.HmmState.from_forward_and_self_pdf">
+<code class="descname">from_forward_and_self_pdf</code><span class="sig-paren">(</span><em>forward_pdf_class:int</em>, <em>self_loop_pdf_class:int</em><span class="sig-paren">)</span> &#x2192; HmmState<a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.from_forward_and_self_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new HmmState object given PDF classes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.hmm.HmmTopology.HmmState.from_pdf">
+<code class="descname">from_pdf</code><span class="sig-paren">(</span><em>pdf_class:int</em><span class="sig-paren">)</span> &#x2192; HmmState<a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.from_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new HmmState object from given PDF class.</p>
+<p>Both forward and self-loop PDFs are assigned to same class (usual case).</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.hmm.HmmTopology.HmmState.self_loop_pdf_class">
 <code class="descname">self_loop_pdf_class</code><a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.self_loop_pdf_class" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 HmmTopology::HmmState.self_loop_pdf_class</p>
+<dd><p>Self-loop PDF class.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.hmm.HmmTopology.HmmState.transitions">
 <code class="descname">transitions</code><a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.transitions" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::vector&lt; ::std::pair&lt; ::int32, ::kaldi::BaseFloat&gt; &gt; HmmTopology::HmmState.transitions</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.hmm.HmmTopology.HmmState.with_forward_and_self_pdf">
-<code class="descname">with_forward_and_self_pdf</code><span class="sig-paren">(</span><em>forward_pdf_class:int</em>, <em>self_loop_pdf_class:int</em><span class="sig-paren">)</span> &#x2192; HmmState<a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.with_forward_and_self_pdf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::HmmTopology::HmmState&gt; ::kaldi::HmmTopology::HmmState::HmmState(int, int)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.hmm.HmmTopology.HmmState.with_pdf">
-<code class="descname">with_pdf</code><span class="sig-paren">(</span><em>pdf_class:int</em><span class="sig-paren">)</span> &#x2192; HmmState<a class="headerlink" href="#kaldi.hmm.HmmTopology.HmmState.with_pdf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::HmmTopology::HmmState&gt; ::kaldi::HmmTopology::HmmState::HmmState(int)</p>
+<dd><p>List of transitions in the form (next HMM-state index, initial-transition-prob)</p>
 </dd></dl>
 
 </dd></dl>
@@ -383,64 +431,76 @@ std::unique_ptr&lt;::kaldi::HmmTopology::HmmState&gt; ::kaldi::HmmTopology::HmmS
 <dl class="method">
 <dt id="kaldi.hmm.HmmTopology.check">
 <code class="descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.HmmTopology.check" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::HmmTopology::Check()</p>
+<dd><p>Checks if HmmTopology object is valid.</p>
+<dl class="docutils">
+<dt>Throws:</dt>
+<dd>RuntimeError: If object is invalid.</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.HmmTopology.get_phone_to_num_pdf_classes">
 <code class="descname">get_phone_to_num_pdf_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.hmm.HmmTopology.get_phone_to_num_pdf_classes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::HmmTopology::GetPhoneToNumPdfClasses(::std::vector&lt; ::int32&gt;*)</p>
+<dd><p>Returns the number of PDF classes for each phone.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.HmmTopology.get_phones">
 <code class="descname">get_phones</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.hmm.HmmTopology.get_phones" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::std::vector&lt; ::int32&gt; ::kaldi::HmmTopology::GetPhones()</p>
+<dd><p>Returns a sorted, unique list of phones covered by the topology.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.HmmTopology.is_hmm">
 <code class="descname">is_hmm</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.hmm.HmmTopology.is_hmm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::HmmTopology::IsHmm()</p>
+<dd><p>Checks if HmmTopology is ‘hmm-like’.</p>
+<p>A topology is ‘hmm-like’ if the pdf-classes on the self-loop and
+forward transitions of any state are identical. [note: in HMMs, the
+densities are associated with the states.] Topologies that are not
+‘hmm-like’, where those pdf-classes are different, are also supported.
+For instance, ‘chain models’ (AKA lattice-free MMI) use 1-state
+topologies that have different pdf-classes for the self-loop and the
+forward transition for more compact decoding graphs. Note that we
+always use the ‘reorder=true’ option so the forward transition actually
+comes before the self-loop.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.HmmTopology.min_length">
 <code class="descname">min_length</code><span class="sig-paren">(</span><em>phone:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.HmmTopology.min_length" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::HmmTopology::MinLength(int)</p>
+<dd><p>Returns the minimum number of frames it takes to traverse the HMM for given phone.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.HmmTopology.num_pdf_classes">
 <code class="descname">num_pdf_classes</code><span class="sig-paren">(</span><em>phone:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.HmmTopology.num_pdf_classes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::HmmTopology::NumPdfClasses(int)</p>
+<dd><p>Returns the number of PDF classes for given phone.</p>
+<dl class="docutils">
+<dt>Throws:</dt>
+<dd>RuntimeError: If the phone is not covered by the topology.</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.HmmTopology.read">
 <code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.HmmTopology.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::HmmTopology::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+<dd><p>Reads HmmTopology object from input stream.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.HmmTopology.topology_for_phone">
 <code class="descname">topology_for_phone</code><span class="sig-paren">(</span><em>phone:int</em><span class="sig-paren">)</span> &#x2192; list&lt;HmmState&gt;<a class="headerlink" href="#kaldi.hmm.HmmTopology.topology_for_phone" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::HmmTopology::TopologyEntry ::kaldi::HmmTopology::TopologyForPhone(int)</p>
+<dd><p>Returns the topology entry (i.e. list of HMM states) for given phone.</p>
+<dl class="docutils">
+<dt>Throws:</dt>
+<dd>RuntimeError: If the phone is not covered by the topology.</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.HmmTopology.write">
 <code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.HmmTopology.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::HmmTopology::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+<dd><p>Writes HmmTopology object to output stream.</p>
 </dd></dl>
 
 </dd></dl>
