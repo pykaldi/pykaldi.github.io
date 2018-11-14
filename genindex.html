@@ -4182,8 +4182,6 @@
 </li>
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuTimer.elapsed">elapsed() (kaldi.cudamatrix.CuTimer method)</a>
 </li>
-      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineTimer.elapsed">elapsed() (kaldi.online2.OnlineTimer method)</a>
-</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ElementwiseProductComponent">ElementwiseProductComponent (class in kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.Sgmm2PerSpkDerivedVars.empty">empty() (kaldi.sgmm2.Sgmm2PerSpkDerivedVars method)</a>
@@ -4230,7 +4228,7 @@
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnet3Decoder.endpoint_detected">endpoint_detected() (kaldi.online2.SingleUtteranceNnet3Decoder method)</a>
 </li>
-      <li><a href="api/kaldi.online2.html#kaldi.online2.endpoint_detected_with_transition_model">endpoint_detected_with_transition_model() (in module kaldi.online2)</a>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.endpoint_detected_decoder">endpoint_detected_decoder() (in module kaldi.online2)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.fbank.FbankOptions.energy_floor">energy_floor (kaldi.feat.fbank.FbankOptions attribute)</a>
 </li>
@@ -5449,8 +5447,6 @@
       <li><a href="api/kaldi.tfrnnlm.html#kaldi.tfrnnlm.TfRnnlmDeterministicFst.get_arc">get_arc() (kaldi.tfrnnlm.TfRnnlmDeterministicFst method)</a>
 </li>
       <li><a href="api/kaldi.util.html#kaldi.util.options.ParseOptions.get_arg">get_arg() (kaldi.util.options.ParseOptions method)</a>
-</li>
-      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineFeaturePipeline.get_as_matrix">get_as_matrix() (kaldi.online2.OnlineFeaturePipeline method)</a>
 </li>
       <li><a href="api/kaldi.ivector.html#kaldi.ivector.IvectorExtractor.get_auxf">get_auxf() (kaldi.ivector.IvectorExtractor method)</a>
 </li>
@@ -10014,10 +10010,6 @@
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineSpliceOptions">OnlineSpliceOptions (class in kaldi.feat.online)</a>
 </li>
-      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineTimer">OnlineTimer (class in kaldi.online2)</a>
-</li>
-      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineTimingStats">OnlineTimingStats (class in kaldi.online2)</a>
-</li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineTransform">OnlineTransform (class in kaldi.feat.online)</a>
 </li>
       <li><a href="api/kaldi.lm.html#kaldi.lm.ArpaParseOptions.oov_handling">oov_handling (kaldi.lm.ArpaParseOptions attribute)</a>
@@ -10333,8 +10325,6 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.output_dim">output_dim() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputation.PrecomputedIndexesInfo.output_indexes">output_indexes (kaldi.nnet3.NnetComputation.PrecomputedIndexesInfo attribute)</a>
-</li>
-      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineTimer.output_stats">output_stats() (kaldi.online2.OnlineTimer method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeConstFst.output_symbols">output_symbols() (kaldi.fstext.CompactLatticeConstFst method)</a>
 </li>
@@ -10809,8 +10799,6 @@
       <li><a href="api/kaldi.lat.html#kaldi.lat.sausages.MinimumBayesRiskOptions.print_silence">print_silence (kaldi.lat.sausages.MinimumBayesRiskOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ExampleMergingStats.print_stats">print_stats() (kaldi.nnet3.ExampleMergingStats method)</a>
-</li>
-      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineTimingStats.print_stats">print_stats() (kaldi.online2.OnlineTimingStats method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ObjectiveFunctionInfo.print_stats_for_this_phase">print_stats_for_this_phase() (kaldi.nnet3.ObjectiveFunctionInfo method)</a>
 </li>
@@ -12067,6 +12055,8 @@
       <li><a href="api/kaldi.itf.html#kaldi.itf.OptionsItf.register_uint">register_uint() (kaldi.itf.OptionsItf method)</a>
 </li>
       <li><a href="api/kaldi.util.html#kaldi.util.options.ParseOptions.register_uint">register_uint() (kaldi.util.options.ParseOptions method)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineEndpointRule.register_with_prefix">register_with_prefix() (kaldi.online2.OnlineEndpointRule method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineSilenceWeightingConfig.register_with_prefix">register_with_prefix() (kaldi.online2.OnlineSilenceWeightingConfig method)</a>
 </li>
@@ -13764,8 +13754,6 @@
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.cmvn.Cmvn.skip_dims">skip_dims() (kaldi.transform.cmvn.Cmvn method)</a>
 </li>
-      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineTimer.sleep_until">sleep_until() (kaldi.online2.OnlineTimer method)</a>
-</li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.functions.sliding_window_cmn">sliding_window_cmn() (in module kaldi.feat.functions)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.functions.SlidingWindowCmnOptions">SlidingWindowCmnOptions (class in kaldi.feat.functions)</a>
@@ -15460,8 +15448,6 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineTimer.wait_until">wait_until() (kaldi.online2.OnlineTimer method)</a>
-</li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.wave.WAVE_SAMPLE_MAX">WAVE_SAMPLE_MAX (in module kaldi.feat.wave)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.wave.WaveData">WaveData (class in kaldi.feat.wave)</a>

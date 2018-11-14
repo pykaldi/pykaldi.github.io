@@ -198,7 +198,53 @@
            <div itemprop="articleBody">
             
   <h1>Source code for kaldi.online2</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">._online_timing</span> <span class="k">import</span> <span class="o">*</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">------------------</span>
+<span class="sd">Online Endpointing</span>
+<span class="sd">------------------</span>
+
+<span class="sd">This module contains a simple facility for endpointing, that should be used</span>
+<span class="sd">in conjunction with the &quot;online2&quot; online decoding code.  By endpointing in</span>
+<span class="sd">this context we mean &quot;deciding when to stop decoding&quot;, and not generic</span>
+<span class="sd">speech/silence segmentation.  The use-case that we have in mind is some kind</span>
+<span class="sd">of dialog system where, as more speech data comes in, we decode more and</span>
+<span class="sd">more, and we have to decide when to stop decoding.</span>
+
+<span class="sd">The endpointing rule is a disjunction of conjunctions.  The way we have</span>
+<span class="sd">it configured, it&#39;s an OR of five rules, and each rule has the following form:</span>
+
+<span class="sd">  (&lt;contains-nonsilence&gt; || !rule.must_contain_nonsilence)</span>
+<span class="sd">  &amp;&amp; &lt;length-of-trailing-silence&gt; &gt;= rule.min_trailing_silence</span>
+<span class="sd">  &amp;&amp; &lt;relative-cost&gt; &lt;= rule.max_relative_cost</span>
+<span class="sd">  &amp;&amp; &lt;utterance-length&gt; &gt;= rule.min_utterance_length</span>
+
+<span class="sd">where:</span>
+
+<span class="sd">&lt;contains-nonsilence&gt;</span>
+<span class="sd">    is true if the best traceback contains any nonsilence phone;</span>
+<span class="sd">&lt;length-of-trailing-silence&gt;</span>
+<span class="sd">    is the length in seconds of silence phones at the end of the best traceback</span>
+<span class="sd">    (we stop counting when we hit non-silence),</span>
+<span class="sd">&lt;relative-cost&gt;</span>
+<span class="sd">    is a value &gt;= 0 extracted from the decoder, that is zero if a final-state of</span>
+<span class="sd">    the grammar FST had the best cost at the final frame, and infinity if no</span>
+<span class="sd">    final-state was active (and &gt;0 for in-between cases).</span>
+<span class="sd">&lt;utterance-length&gt;</span>
+<span class="sd">    is the number of seconds of the utterance that we have decoded so far.</span>
+
+<span class="sd">All of these pieces of information are obtained from the best-path traceback</span>
+<span class="sd">from the decoder, which is output by the function :meth:`get_best_path`. We do</span>
+<span class="sd">this every time we&#39;re finished processing a chunk of data.</span>
+
+<span class="sd">For details of the default rules, see `OnlineEndpointConfig`.</span>
+
+<span class="sd">It&#39;s up to the caller whether to use final-probs or not when generating the</span>
+<span class="sd">best-path, i.e. ``decoder.get_best_path(use_final_probs=True|False)``, but we</span>
+<span class="sd">recommend not using them.  If you do use them, then depending on the grammar,</span>
+<span class="sd">you may force the best-path to decode non-silence even though that was not what</span>
+<span class="sd">it really preferred to decode.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
 <span class="kn">from</span> <span class="nn">._online_endpoint</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._online_feature_pipeline</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._online_gmm_decodable</span> <span class="k">import</span> <span class="o">*</span>

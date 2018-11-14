@@ -125,7 +125,10 @@
 <li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.online2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.online2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#online-endpointing">Online Endpointing</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
@@ -202,6 +205,44 @@
             
   <div class="section" id="module-kaldi.online2">
 <span id="kaldi-online2"></span><h1>kaldi.online2<a class="headerlink" href="#module-kaldi.online2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="online-endpointing">
+<h2>Online Endpointing<a class="headerlink" href="#online-endpointing" title="Permalink to this headline">¶</a></h2>
+<p>This module contains a simple facility for endpointing, that should be used
+in conjunction with the “online2” online decoding code.  By endpointing in
+this context we mean “deciding when to stop decoding”, and not generic
+speech/silence segmentation.  The use-case that we have in mind is some kind
+of dialog system where, as more speech data comes in, we decode more and
+more, and we have to decide when to stop decoding.</p>
+<p>The endpointing rule is a disjunction of conjunctions.  The way we have
+it configured, it’s an OR of five rules, and each rule has the following form:</p>
+<blockquote>
+<div>(&lt;contains-nonsilence&gt; || !rule.must_contain_nonsilence)
+&amp;&amp; &lt;length-of-trailing-silence&gt; &gt;= rule.min_trailing_silence
+&amp;&amp; &lt;relative-cost&gt; &lt;= rule.max_relative_cost
+&amp;&amp; &lt;utterance-length&gt; &gt;= rule.min_utterance_length</div></blockquote>
+<p>where:</p>
+<dl class="docutils">
+<dt>&lt;contains-nonsilence&gt;</dt>
+<dd>is true if the best traceback contains any nonsilence phone;</dd>
+<dt>&lt;length-of-trailing-silence&gt;</dt>
+<dd>is the length in seconds of silence phones at the end of the best traceback
+(we stop counting when we hit non-silence),</dd>
+<dt>&lt;relative-cost&gt;</dt>
+<dd>is a value &gt;= 0 extracted from the decoder, that is zero if a final-state of
+the grammar FST had the best cost at the final frame, and infinity if no
+final-state was active (and &gt;0 for in-between cases).</dd>
+<dt>&lt;utterance-length&gt;</dt>
+<dd>is the number of seconds of the utterance that we have decoded so far.</dd>
+</dl>
+<p>All of these pieces of information are obtained from the best-path traceback
+from the decoder, which is output by the function <code class="xref py py-meth docutils literal"><span class="pre">get_best_path()</span></code>. We do
+this every time we’re finished processing a chunk of data.</p>
+<p>For details of the default rules, see <a class="reference internal" href="#kaldi.online2.OnlineEndpointConfig" title="kaldi.online2.OnlineEndpointConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineEndpointConfig</span></code></a>.</p>
+<p>It’s up to the caller whether to use final-probs or not when generating the
+best-path, i.e. <code class="docutils literal"><span class="pre">decoder.get_best_path(use_final_probs=True|False)</span></code>, but we
+recommend not using them.  If you do use them, then depending on the grammar,
+you may force the best-path to decode non-silence even though that was not what
+it really preferred to decode.</p>
 <p class="rubric">Functions</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -210,13 +251,13 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.endpoint_detected" title="kaldi.online2.endpoint_detected"><code class="xref py py-obj docutils literal"><span class="pre">endpoint_detected</span></code></a></td>
-<td>Returns true if this set of endpointing rules thinks we should terminate decoding</td>
+<td>Determines if any of the endpointing rules is active for given arguments.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.endpoint_detected_with_transition_model" title="kaldi.online2.endpoint_detected_with_transition_model"><code class="xref py py-obj docutils literal"><span class="pre">endpoint_detected_with_transition_model</span></code></a></td>
-<td>This is a higher-level convenience function that works out the arguments to the <a class="reference internal" href="#kaldi.online2.endpoint_detected" title="kaldi.online2.endpoint_detected"><code class="xref py py-meth docutils literal"><span class="pre">endpoint_detected()</span></code></a> function</td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.endpoint_detected_decoder" title="kaldi.online2.endpoint_detected_decoder"><code class="xref py py-obj docutils literal"><span class="pre">endpoint_detected_decoder</span></code></a></td>
+<td>Determines if we should terminate decoding.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.trailing_silence_length" title="kaldi.online2.trailing_silence_length"><code class="xref py py-obj docutils literal"><span class="pre">trailing_silence_length</span></code></a></td>
-<td>Returns the number of frames of trailing silence in the best-path traceback</td>
+<td>Returns the number of trailing silence frames on the best-path traceback.</td>
 </tr>
 </tbody>
 </table>
@@ -231,19 +272,19 @@
 <td>CLIF wrapper for ::kaldi::DecodableDiagGmmScaledOnline</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineEndpointConfig" title="kaldi.online2.OnlineEndpointConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineEndpointConfig</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineEndpointConfig</td>
+<td>Online endpointing configuration.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineEndpointRule" title="kaldi.online2.OnlineEndpointRule"><code class="xref py py-obj docutils literal"><span class="pre">OnlineEndpointRule</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineEndpointRule</td>
+<td>Online endpointing rule.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineFeaturePipeline" title="kaldi.online2.OnlineFeaturePipeline"><code class="xref py py-obj docutils literal"><span class="pre">OnlineFeaturePipeline</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineFeaturePipeline</td>
+<td>Online feature pipeline.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig" title="kaldi.online2.OnlineFeaturePipelineCommandLineConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineFeaturePipelineCommandLineConfig</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineFeaturePipelineCommandLineConfig</td>
+<td>Command-line configuration options for online feature pipeline.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineFeaturePipelineConfig" title="kaldi.online2.OnlineFeaturePipelineConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineFeaturePipelineConfig</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineFeaturePipelineConfig</td>
+<td>Configuration options for online feature pipeline.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineGmmAdaptationState" title="kaldi.online2.OnlineGmmAdaptationState"><code class="xref py py-obj docutils literal"><span class="pre">OnlineGmmAdaptationState</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::OnlineGmmAdaptationState</td>
@@ -283,12 +324,6 @@
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineSilenceWeightingConfig" title="kaldi.online2.OnlineSilenceWeightingConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineSilenceWeightingConfig</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::OnlineSilenceWeightingConfig</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineTimer" title="kaldi.online2.OnlineTimer"><code class="xref py py-obj docutils literal"><span class="pre">OnlineTimer</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineTimer</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineTimingStats" title="kaldi.online2.OnlineTimingStats"><code class="xref py py-obj docutils literal"><span class="pre">OnlineTimingStats</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineTimingStats</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.SingleUtteranceGmmDecoder" title="kaldi.online2.SingleUtteranceGmmDecoder"><code class="xref py py-obj docutils literal"><span class="pre">SingleUtteranceGmmDecoder</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::SingleUtteranceGmmDecoder</td>
@@ -341,48 +376,57 @@ int ::kaldi::DecodableDiagGmmScaledOnline::NumIndices()</p>
 <dl class="class">
 <dt id="kaldi.online2.OnlineEndpointConfig">
 <em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineEndpointConfig</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineEndpointConfig</p>
+<dd><p>Online endpointing configuration.</p>
+<p>Decoding is terminated if any of the endpointing rules evaluates to True.</p>
 <dl class="method">
 <dt id="kaldi.online2.OnlineEndpointConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineEndpointConfig.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineEndpointConfig::Register(::kaldi::OptionsItf <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineEndpointConfig.rule1">
 <code class="descname">rule1</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointConfig.rule1" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rule1 times out after 5 seconds of silence if decoded nothing</p>
+<dd><p>Default Rule1 times out after 5 seconds of silence even if decoded nothing.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineEndpointConfig.rule2">
 <code class="descname">rule2</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointConfig.rule2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rule2 times out after 0.5 seconds of silence if reached final-state</p>
+<dd><p>Default Rule2 times out after 0.5 seconds of silence if reached final-state with good probability.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineEndpointConfig.rule3">
 <code class="descname">rule3</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointConfig.rule3" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rule3 times out after 1.0 seconds of silence if reached final-state</p>
+<dd><p>Default Rule3 times out after 1.0 seconds of silence if reached final-state with OK probability.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineEndpointConfig.rule4">
 <code class="descname">rule4</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointConfig.rule4" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rule4 times out after 2.0 seconds of silence after decoding something</p>
+<dd><p>Default Rule4 times out after 2.0 seconds of silence after decoding something even if final-state was not reached.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineEndpointConfig.rule5">
 <code class="descname">rule5</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointConfig.rule5" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rule5 times out after the utterance is 20.0 seconds</p>
+<dd><p>Default Rule5 times out after the utterance is 20.0 seconds.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineEndpointConfig.silence_phones">
 <code class="descname">silence_phones</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointConfig.silence_phones" title="Permalink to this definition">¶</a></dt>
-<dd><p>colon separated list of phones to be considered as silence</p>
+<dd><p>Colon separated list of phones to be considered as silence.</p>
 </dd></dl>
 
 </dd></dl>
@@ -390,36 +434,82 @@ void ::kaldi::OnlineEndpointConfig::Register(::kaldi::OptionsItf <a href="#id1">
 <dl class="class">
 <dt id="kaldi.online2.OnlineEndpointRule">
 <em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineEndpointRule</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointRule" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineEndpointRule</p>
+<dd><p>Online endpointing rule.</p>
+<p>Endpointing rule applies if all of the conditions are satisfied.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>must_contain_nonsilence</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If true, endpointing rule applies only
+if best-path traceback contains non-silence.</li>
+<li><strong>min_trailing_silence</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Endpointing rule applies only if duration
+of trailing silence (in seconds) &gt;= this value.</li>
+<li><strong>max_relative_cost</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Endpointing rule applies only if
+relative-cost of final-states &lt;= this value.</li>
+<li><strong>min_utterance_length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Endpointing rule applies only if
+utterance length (in seconds) &gt;= this value.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineEndpointRule.max_relative_cost">
 <code class="descname">max_relative_cost</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointRule.max_relative_cost" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat OnlineEndpointRule.max_relative_cost</p>
+<dd><p>Endpointing rule applies only if relative-cost of final-states &lt;= this value.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineEndpointRule.min_trailing_silence">
 <code class="descname">min_trailing_silence</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointRule.min_trailing_silence" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat OnlineEndpointRule.min_trailing_silence</p>
+<dd><p>Endpointing rule applies only if duration of trailing silence (in seconds) &gt;= this value.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineEndpointRule.min_utterance_length">
 <code class="descname">min_utterance_length</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointRule.min_utterance_length" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat OnlineEndpointRule.min_utterance_length</p>
+<dd><p>Endpointing rule applies only if utterance length (in seconds) &gt;= this value.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineEndpointRule.must_contain_nonsilence">
 <code class="descname">must_contain_nonsilence</code><a class="headerlink" href="#kaldi.online2.OnlineEndpointRule.must_contain_nonsilence" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool OnlineEndpointRule.must_contain_nonsilence</p>
+<dd><p>If true, endpointing rule applies only if best-path traceback contains non-silence.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineEndpointRule.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineEndpointRule.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineEndpointRule::Register(::kaldi::OptionsItf <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.online2.OnlineEndpointRule.register_with_prefix">
+<code class="descname">register_with_prefix</code><span class="sig-paren">(</span><em>prefix:str</em>, <em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineEndpointRule.register_with_prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers prefixed options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – String that will be prepended to option names.</li>
+<li><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -427,99 +517,123 @@ void ::kaldi::OnlineEndpointRule::Register(::kaldi::OptionsItf <a href="#id3"><s
 <dl class="class">
 <dt id="kaldi.online2.OnlineFeaturePipeline">
 <em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineFeaturePipeline</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineFeaturePipeline</p>
+<dd><p>Online feature pipeline.</p>
+<p>This class is responsible for putting together the various stages of the
+feature-processing pipeline, in an online setting. This does not attempt
+to be fully generic, we just try to handle the common case.  Since the
+online-decoding code needs to “know about” things like CMN and fMLLR in
+order to do adaptation, it’s hard to make this completely generic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#kaldi.online2.OnlineFeaturePipelineConfig" title="kaldi.online2.OnlineFeaturePipelineConfig"><em>OnlineFeaturePipelineConfig</em></a>) – Configuration options for online
+feature pipeline.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.accept_waveform">
 <code class="descname">accept_waveform</code><span class="sig-paren">(</span><em>sampling_rate:float</em>, <em>waveform:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.accept_waveform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineFeaturePipeline::AcceptWaveform(float, ::kaldi::VectorBase&lt;float&gt;)</p>
+<dd><p>Accepts more data to process.</p>
+<p>It won’t actually process the data, it will just copy it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sampling_rate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Sampling rate of the waveform. It is needed
+to assert that it matches the sampling rate given in the config.</li>
+<li><strong>waveform</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – More data to process.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.dim">
 <code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OnlineFeaturePipeline::Dim()</p>
+<dd><p>Returns feature dimension</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.frame_shift_in_seconds">
 <code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::OnlineFeaturePipeline::FrameShiftInSeconds()</p>
+<dd><p>Returns frame shift in seconds</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.freeze_cmvn">
 <code class="descname">freeze_cmvn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.freeze_cmvn" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineFeaturePipeline::FreezeCmvn()</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.online2.OnlineFeaturePipeline.get_as_matrix">
-<code class="descname">get_as_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.get_as_matrix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineFeaturePipeline::GetAsMatrix(::kaldi::Matrix&lt;float&gt;*)</p>
+<dd><p>Freezes CMVN.</p>
+<dl class="docutils">
+<dt>Throws:</dt>
+<dd>RuntimeError: If <a class="reference internal" href="#kaldi.online2.OnlineFeaturePipeline.num_frames_ready" title="kaldi.online2.OnlineFeaturePipeline.num_frames_ready"><code class="xref py py-meth docutils literal"><span class="pre">num_frames_ready()</span></code></a> == 0.</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.get_cmvn_state">
 <code class="descname">get_cmvn_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; OnlineCmvnState<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.get_cmvn_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineFeaturePipeline::GetCmvnState(::kaldi::OnlineCmvnState*)</p>
+<dd><p>Returns the CMVN state.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.get_frame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineFeaturePipeline::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+<dd><p>Returns the features for given frame index</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.have_fmllr_transform">
 <code class="descname">have_fmllr_transform</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.have_fmllr_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns true if an fMLLR transform has been set</p>
+<dd><p>Returns True if an fMLLR transform has been set.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.input_finished">
 <code class="descname">input_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.input_finished" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tells the class that you wont be providing any more waveform</p>
+<dd><p>Tells the class that you wont be providing any more waveform.</p>
+<p>This will help flush out the last few frames of delta or LDA features,
+and finalize the pitch features (making them more accurate).</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.is_last_frame">
 <code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.is_last_frame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::OnlineFeaturePipeline::IsLastFrame(int)</p>
+<dd><p>Returns True if this is last frame, otherwise False</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.new">
 <code class="descname">new</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; OnlineFeaturePipeline<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.new" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a newly initialized copy</p>
+<dd><p>Returns a newly initialized copy.</p>
+<p>This does not duplicate all the internal state or the
+speaker-adaptation state, but gives you a freshly initialized version
+of this object, as if you had initialized it using the constructor that
+takes the configuration object.  After calling this you may want to
+call <a class="reference internal" href="#kaldi.online2.OnlineFeaturePipeline.set_cmvn_state" title="kaldi.online2.OnlineFeaturePipeline.set_cmvn_state"><code class="xref py py-meth docutils literal"><span class="pre">set_cmvn_state()</span></code></a> and <a class="reference internal" href="#kaldi.online2.OnlineFeaturePipeline.set_transform" title="kaldi.online2.OnlineFeaturePipeline.set_transform"><code class="xref py py-meth docutils literal"><span class="pre">set_transform()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.num_frames_ready">
 <code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.num_frames_ready" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OnlineFeaturePipeline::NumFramesReady()</p>
+<dd><p>Returns number of frames ready</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.set_cmvn_state">
 <code class="descname">set_cmvn_state</code><span class="sig-paren">(</span><em>cmvn_state:OnlineCmvnState</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.set_cmvn_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineFeaturePipeline::SetCmvnState(::kaldi::OnlineCmvnState)</p>
+<dd><p>Sets the CMVN state.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipeline.set_transform">
 <code class="descname">set_transform</code><span class="sig-paren">(</span><em>transform:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipeline.set_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is used to set the fMLLR transform</p>
+<dd><p>Sets the fMLLR transform.</p>
+<p>Call it with an empty matrix if you want to stop it using any transform.</p>
 </dd></dl>
 
 </dd></dl>
@@ -527,96 +641,110 @@ void ::kaldi::OnlineFeaturePipeline::SetCmvnState(::kaldi::OnlineCmvnState)</p>
 <dl class="class">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig">
 <em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineFeaturePipelineCommandLineConfig</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineFeaturePipelineCommandLineConfig</p>
+<dd><p>Command-line configuration options for online feature pipeline.</p>
+<p>This configuration class is to set up <a class="reference internal" href="#kaldi.online2.OnlineFeaturePipelineConfig" title="kaldi.online2.OnlineFeaturePipelineConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineFeaturePipelineConfig</span></code></a>,
+which in turn is the configuration class for <a class="reference internal" href="#kaldi.online2.OnlineFeaturePipeline" title="kaldi.online2.OnlineFeaturePipeline"><code class="xref py py-obj docutils literal"><span class="pre">OnlineFeaturePipeline</span></code></a>.
+Instead of taking the options for the parts of the feature pipeline
+directly, it reads in the configuration files for each part.</p>
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.add_deltas">
 <code class="descname">add_deltas</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.add_deltas" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool OnlineFeaturePipelineCommandLineConfig.add_deltas</p>
+<dd><p>Append delta features (default=False)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.add_pitch">
 <code class="descname">add_pitch</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.add_pitch" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool OnlineFeaturePipelineCommandLineConfig.add_pitch</p>
+<dd><p>Append pitch features to raw MFCC/PLP features (default=False)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.cmvn_config">
 <code class="descname">cmvn_config</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.cmvn_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineCommandLineConfig.cmvn_config</p>
+<dd><p>Configuration file for online CMVN features (e.g. conf/online_cmvn.conf)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.delta_config">
 <code class="descname">delta_config</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.delta_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineCommandLineConfig.delta_config</p>
+<dd><p>Configuration file for delta features (e.g. conf/delta.conf)</p>
+<p>If not supplied, will not compute delta features; supply empty config to
+use defaults.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.fbank_config">
 <code class="descname">fbank_config</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.fbank_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineCommandLineConfig.fbank_config</p>
+<dd><p>Configuration file for filterbank features (e.g. conf/fbank.conf)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.feature_type">
 <code class="descname">feature_type</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.feature_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineCommandLineConfig.feature_type</p>
+<dd><p>Base feature type [mfcc (default), plp, fbank].</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.global_cmvn_stats_rxfilename">
 <code class="descname">global_cmvn_stats_rxfilename</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.global_cmvn_stats_rxfilename" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineCommandLineConfig.global_cmvn_stats_rxfilename</p>
+<dd><p><a href="#id1"><span class="problematic" id="id2">**</span></a>Extended filename for global CMVN stats (e.g. ‘ark* – matrix-sum scp* – data/train/cmvn.scp’)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.lda_rxfilename">
 <code class="descname">lda_rxfilename</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.lda_rxfilename" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineCommandLineConfig.lda_rxfilename</p>
+<dd><p>Extended filename for LDA or LDA+MLLT matrix, if using LDA (e.g. exp/foo/final.mat)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.mfcc_config">
 <code class="descname">mfcc_config</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.mfcc_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineCommandLineConfig.mfcc_config</p>
+<dd><p>Configuration file for MFCC features (e.g. conf/mfcc.conf)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.pitch_config">
 <code class="descname">pitch_config</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.pitch_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineCommandLineConfig.pitch_config</p>
+<dd><p>Configuration file for pitch features (e.g. conf/pitch.conf)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.pitch_process_config">
 <code class="descname">pitch_process_config</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.pitch_process_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineCommandLineConfig.pitch_process_config</p>
+<dd><p>Configuration file for post-processing pitch features (e.g. conf/pitch_process.conf)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.plp_config">
 <code class="descname">plp_config</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.plp_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineCommandLineConfig.plp_config</p>
+<dd><p>Configuration file for PLP features (e.g. conf/plp.conf)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineFeaturePipelineCommandLineConfig::Register(::kaldi::OptionsItf <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.splice_config">
 <code class="descname">splice_config</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.splice_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineCommandLineConfig.splice_config</p>
+<dd><p>Configuration file for feature splicing, if done (e.g. prior to LDA)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineCommandLineConfig.splice_feats">
 <code class="descname">splice_feats</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.splice_feats" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool OnlineFeaturePipelineCommandLineConfig.splice_feats</p>
+<dd><p>Splice features with left and right context (default=False)</p>
 </dd></dl>
 
 </dd></dl>
@@ -624,103 +752,105 @@ void ::kaldi::OnlineFeaturePipelineCommandLineConfig::Register(::kaldi::OptionsI
 <dl class="class">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig">
 <em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineFeaturePipelineConfig</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineFeaturePipelineConfig</p>
+<dd><p>Configuration options for online feature pipeline.</p>
+<p>This configuration class is responsible for storing the configuration
+options for <a class="reference internal" href="#kaldi.online2.OnlineFeaturePipeline" title="kaldi.online2.OnlineFeaturePipeline"><code class="xref py py-obj docutils literal"><span class="pre">OnlineFeaturePipeline</span></code></a>. The options can be set either
+directly in code or indirectly by reading config files on disk via
+<a class="reference internal" href="#kaldi.online2.OnlineFeaturePipelineCommandLineConfig" title="kaldi.online2.OnlineFeaturePipelineCommandLineConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineFeaturePipelineCommandLineConfig</span></code></a>.</p>
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.add_deltas">
 <code class="descname">add_deltas</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.add_deltas" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool OnlineFeaturePipelineConfig.add_deltas</p>
+<dd><p>Append delta features (default=True)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.add_pitch">
 <code class="descname">add_pitch</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.add_pitch" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool OnlineFeaturePipelineConfig.add_pitch</p>
+<dd><p>Append pitch features to raw MFCC/PLP features (default=False)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.cmvn_opts">
 <code class="descname">cmvn_opts</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.cmvn_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::OnlineCmvnOptions OnlineFeaturePipelineConfig.cmvn_opts</p>
+<dd><p>Options for online CMVN features</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.delta_opts">
 <code class="descname">delta_opts</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.delta_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::DeltaFeaturesOptions OnlineFeaturePipelineConfig.delta_opts</p>
+<dd><p>Options for delta features</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.fbank_opts">
 <code class="descname">fbank_opts</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.fbank_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::FbankOptions OnlineFeaturePipelineConfig.fbank_opts</p>
+<dd><p>Options for filterbank features</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.feature_type">
 <code class="descname">feature_type</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.feature_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineConfig.feature_type</p>
+<dd><p>Base feature type [mfcc (default), plp, fbank]</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.frame_shift_in_seconds">
 <code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::OnlineFeaturePipelineConfig::FrameShiftInSeconds()</p>
+<dd><p>Returns frame shift in seconds.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.global_cmvn_stats_rxfilename">
 <code class="descname">global_cmvn_stats_rxfilename</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.global_cmvn_stats_rxfilename" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineConfig.global_cmvn_stats_rxfilename</p>
+<dd><p><a href="#id3"><span class="problematic" id="id4">**</span></a>Extended filename for global CMVN stats (e.g. ‘ark* – matrix-sum scp* – data/train/cmvn.scp’)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.lda_rxfilename">
 <code class="descname">lda_rxfilename</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.lda_rxfilename" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineFeaturePipelineConfig.lda_rxfilename</p>
+<dd><p>Extended filename for LDA or LDA+MLLT matrix, if using LDA (e.g. exp/foo/final.mat)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.mfcc_opts">
 <code class="descname">mfcc_opts</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.mfcc_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::MfccOptions OnlineFeaturePipelineConfig.mfcc_opts</p>
+<dd><p>Options for MFCC features</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.new_with_config">
 <code class="descname">new_with_config</code><span class="sig-paren">(</span><em>cmdline_config:OnlineFeaturePipelineCommandLineConfig</em><span class="sig-paren">)</span> &#x2192; OnlineFeaturePipelineConfig<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.new_with_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::OnlineFeaturePipelineConfig&gt; ::kaldi::OnlineFeaturePipelineConfig::OnlineFeaturePipelineConfig(::kaldi::OnlineFeaturePipelineCommandLineConfig)</p>
+<dd><p>Creates a new OnlineFeaturePipelineConfig from OnlineFeaturePipelineCommandLineConfig.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.pitch_opts">
 <code class="descname">pitch_opts</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.pitch_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::PitchExtractionOptions OnlineFeaturePipelineConfig.pitch_opts</p>
+<dd><p>Options for pitch features</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.pitch_process_opts">
 <code class="descname">pitch_process_opts</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.pitch_process_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::ProcessPitchOptions OnlineFeaturePipelineConfig.pitch_process_opts</p>
+<dd><p>Options for post-processing pitch features</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.plp_opts">
 <code class="descname">plp_opts</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.plp_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::PlpOptions OnlineFeaturePipelineConfig.plp_opts</p>
+<dd><p>Options for PLP features</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.splice_feats">
 <code class="descname">splice_feats</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.splice_feats" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool OnlineFeaturePipelineConfig.splice_feats</p>
+<dd><p>Splice features with left and right context (default=False)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.splice_opts">
 <code class="descname">splice_opts</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.splice_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::OnlineSpliceOptions OnlineFeaturePipelineConfig.splice_opts</p>
+<dd><p>Options for feature splicing, if done</p>
 </dd></dl>
 
 </dd></dl>
@@ -797,7 +927,7 @@ bool ::kaldi::OnlineGmmDecodingAdaptationPolicyConfig::DoAdapt(float, float, boo
 <dt id="kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineGmmDecodingAdaptationPolicyConfig::Register(::kaldi::OptionsItf <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+void ::kaldi::OnlineGmmDecodingAdaptationPolicyConfig::Register(::kaldi::OptionsItf <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
 </dd></dl>
 
 </dd></dl>
@@ -858,7 +988,7 @@ void ::kaldi::OnlineGmmDecodingAdaptationPolicyConfig::Register(::kaldi::Options
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineGmmDecodingConfig::Register(::kaldi::OptionsItf <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
+void ::kaldi::OnlineGmmDecodingConfig::Register(::kaldi::OptionsItf <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1008,7 +1138,7 @@ void ::kaldi::OnlineGmmDecodingConfig::Register(::kaldi::OptionsItf <a href="#id
 <dt id="kaldi.online2.OnlineIvectorExtractionConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractionConfig.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineIvectorExtractionConfig::Register(::kaldi::OptionsItf <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
+void ::kaldi::OnlineIvectorExtractionConfig::Register(::kaldi::OptionsItf <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1213,7 +1343,7 @@ float ::kaldi::OnlineIvectorFeature::FrameShiftInSeconds()</p>
 <dt id="kaldi.online2.OnlineIvectorFeature.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineIvectorFeature.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineIvectorFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
+void ::kaldi::OnlineIvectorFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1299,14 +1429,14 @@ float ::kaldi::OnlineNnet2FeaturePipeline::FrameShiftInSeconds()</p>
 <dt id="kaldi.online2.OnlineNnet2FeaturePipeline.get_adaptation_state">
 <code class="descname">get_adaptation_state</code><span class="sig-paren">(</span><em>adaptation_state:OnlineIvectorExtractorAdaptationState</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.get_adaptation_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineNnet2FeaturePipeline::GetAdaptationState(::kaldi::OnlineIvectorExtractorAdaptationState <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
+void ::kaldi::OnlineNnet2FeaturePipeline::GetAdaptationState(::kaldi::OnlineIvectorExtractorAdaptationState <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineNnet2FeaturePipeline.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineNnet2FeaturePipeline::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
+void ::kaldi::OnlineNnet2FeaturePipeline::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1408,7 +1538,7 @@ void ::kaldi::OnlineNnet2FeaturePipeline::SetAdaptationState(::kaldi::OnlineIvec
 <dt id="kaldi.online2.OnlineNnet2FeaturePipelineConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineNnet2FeaturePipelineConfig::Register(::kaldi::OptionsItf <a href="#id21"><span class="problematic" id="id22">*</span></a>)</p>
+void ::kaldi::OnlineNnet2FeaturePipelineConfig::Register(::kaldi::OptionsItf <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1561,14 +1691,14 @@ bool ::kaldi::OnlineSilenceWeightingConfig::Active()</p>
 <dt id="kaldi.online2.OnlineSilenceWeightingConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineSilenceWeightingConfig.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineSilenceWeightingConfig::Register(::kaldi::OptionsItf <a href="#id23"><span class="problematic" id="id24">*</span></a>)</p>
+void ::kaldi::OnlineSilenceWeightingConfig::Register(::kaldi::OptionsItf <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineSilenceWeightingConfig.register_with_prefix">
 <code class="descname">register_with_prefix</code><span class="sig-paren">(</span><em>prefix:str</em>, <em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineSilenceWeightingConfig.register_with_prefix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineSilenceWeightingConfig::RegisterWithPrefix(::std::string, ::kaldi::OptionsItf <a href="#id25"><span class="problematic" id="id26">*</span></a>)</p>
+void ::kaldi::OnlineSilenceWeightingConfig::RegisterWithPrefix(::std::string, ::kaldi::OptionsItf <a href="#id21"><span class="problematic" id="id22">*</span></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1581,49 +1711,6 @@ void ::kaldi::OnlineSilenceWeightingConfig::RegisterWithPrefix(::std::string, ::
 <dt id="kaldi.online2.OnlineSilenceWeightingConfig.silence_weight">
 <code class="descname">silence_weight</code><a class="headerlink" href="#kaldi.online2.OnlineSilenceWeightingConfig.silence_weight" title="Permalink to this definition">¶</a></dt>
 <dd><p>C++ ::kaldi::BaseFloat OnlineSilenceWeightingConfig.silence_weight</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kaldi.online2.OnlineTimer">
-<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineTimer</code><a class="headerlink" href="#kaldi.online2.OnlineTimer" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineTimer</p>
-<dl class="method">
-<dt id="kaldi.online2.OnlineTimer.elapsed">
-<code class="descname">elapsed</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.online2.OnlineTimer.elapsed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the time elapsed in seconds since the timer was started</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.online2.OnlineTimer.output_stats">
-<code class="descname">output_stats</code><span class="sig-paren">(</span><em>stats:OnlineTimingStats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineTimer.output_stats" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes the stats to the object that accumulates them</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.online2.OnlineTimer.sleep_until">
-<code class="descname">sleep_until</code><span class="sig-paren">(</span><em>cur_utterance_length:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineTimer.sleep_until" title="Permalink to this definition">¶</a></dt>
-<dd><p>Will sleep until cur_utterance_length seconds after this object was initialized</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.online2.OnlineTimer.wait_until">
-<code class="descname">wait_until</code><span class="sig-paren">(</span><em>cur_utterance_length:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineTimer.wait_until" title="Permalink to this definition">¶</a></dt>
-<dd><p>Simulates the effect of sleeping until cur_utterance_length seconds after this object was initialized but instead of actually sleeping, it increases a counter</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kaldi.online2.OnlineTimingStats">
-<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineTimingStats</code><a class="headerlink" href="#kaldi.online2.OnlineTimingStats" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineTimingStats</p>
-<dl class="method">
-<dt id="kaldi.online2.OnlineTimingStats.print_stats">
-<code class="descname">print_stats</code><span class="sig-paren">(</span><em>online:bool=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineTimingStats.print_stats" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineTimingStats::Print(bool)</p>
 </dd></dl>
 
 </dd></dl>
@@ -1674,7 +1761,7 @@ bool ::kaldi::SingleUtteranceGmmDecoder::EndpointDetected(::kaldi::OnlineEndpoin
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.get_adaptation_state">
 <code class="descname">get_adaptation_state</code><span class="sig-paren">(</span><em>adaptation_state:OnlineGmmAdaptationState</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.get_adaptation_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::SingleUtteranceGmmDecoder::GetAdaptationState(::kaldi::OnlineGmmAdaptationState <a href="#id27"><span class="problematic" id="id28">*</span></a>)</p>
+void ::kaldi::SingleUtteranceGmmDecoder::GetAdaptationState(::kaldi::OnlineGmmAdaptationState <a href="#id23"><span class="problematic" id="id24">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1741,29 +1828,58 @@ int ::kaldi::SingleUtteranceNnet3Decoder::NumFramesDecoded()</p>
 <dl class="function">
 <dt id="kaldi.online2.endpoint_detected">
 <code class="descclassname">kaldi.online2.</code><code class="descname">endpoint_detected</code><span class="sig-paren">(</span><em>config:OnlineEndpointConfig</em>, <em>num_frames_decoded:int</em>, <em>trailing_silence_frames:int</em>, <em>frame_shift_in_seconds:float</em>, <em>final_relative_cost:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.endpoint_detected" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns true if this set of endpointing rules thinks we should terminate decoding</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.online2.endpoint_detected_with_transition_model">
-<code class="descclassname">kaldi.online2.</code><code class="descname">endpoint_detected_with_transition_model</code><span class="sig-paren">(</span><em>config:OnlineEndpointConfig</em>, <em>tmodel:TransitionModel</em>, <em>frame_shift_in_seconds:float</em>, <em>decoder:LatticeFasterOnlineDecoder</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.endpoint_detected_with_transition_model" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is a higher-level convenience function that works out the arguments to the <a class="reference internal" href="#kaldi.online2.endpoint_detected" title="kaldi.online2.endpoint_detected"><code class="xref py py-meth docutils literal"><span class="pre">endpoint_detected()</span></code></a> function</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.online2.trailing_silence_length">
-<code class="descclassname">kaldi.online2.</code><code class="descname">trailing_silence_length</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em>, <em>silence_phones:str</em>, <em>decoder:LatticeFasterOnlineDecoder</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.trailing_silence_length" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the number of frames of trailing silence in the best-path traceback</p>
+<dd><p>Determines if any of the endpointing rules is active for given arguments.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>silence_phones</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – colon-separated list of integer ids of phones to be considered silence</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>config</strong> (<em>OnlineEndpopython:intConfig</em>) – Online endpointing configuration.</li>
+<li><strong>num_frames_decoded</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of frames decoded.</li>
+<li><strong>trailing_silence_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of trailing silence frames decoded.</li>
+<li><strong>frame_shift_in_seconds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frame shift (in seconds).</li>
+<li><strong>final_relative_cost</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Relative cost of final states.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if endpointing rules thinks we should terminate decoding.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
+<dl class="function">
+<dt id="kaldi.online2.endpoint_detected_decoder">
+<code class="descclassname">kaldi.online2.</code><code class="descname">endpoint_detected_decoder</code><span class="sig-paren">(</span><em>config:OnlineEndpointConfig</em>, <em>tmodel:TransitionModel</em>, <em>frame_shift_in_seconds:float</em>, <em>decoder:LatticeFasterOnlineDecoder</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.endpoint_detected_decoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines if we should terminate decoding.</p>
+<p>This is a higher-level convenience function that works out the arguments
+to the <a class="reference internal" href="#kaldi.online2.endpoint_detected" title="kaldi.online2.endpoint_detected"><code class="xref py py-meth docutils literal"><span class="pre">endpoint_detected()</span></code></a> function.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.online2.trailing_silence_length">
+<code class="descclassname">kaldi.online2.</code><code class="descname">trailing_silence_length</code><span class="sig-paren">(</span><em>tmodel:TransitionModel</em>, <em>silence_phones:str</em>, <em>decoder:LatticeFasterOnlineDecoder</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.trailing_silence_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of trailing silence frames on the best-path traceback.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>tmodel</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – Transition model.</li>
+<li><strong>silence_phones</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Colon-separated list of integer ids of silence phones.</li>
+<li><strong>decoder</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder" title="kaldi.decoder.LatticeFasterOnlineDecoder"><em>LatticeFasterOnlineDecoder</em></a>) – Online decoder.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 </div>
 
 
