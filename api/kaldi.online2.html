@@ -330,7 +330,7 @@ it really preferred to decode.</p>
 <td>CLIF wrapper for ::kaldi::SingleUtteranceGmmDecoder</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.SingleUtteranceNnet3Decoder" title="kaldi.online2.SingleUtteranceNnet3Decoder"><code class="xref py py-obj docutils literal"><span class="pre">SingleUtteranceNnet3Decoder</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::SingleUtteranceNnet3Decoder</td>
+<td>Online lattice-generating decoder for nnet3 models.</td>
 </tr>
 </tbody>
 </table>
@@ -1788,40 +1788,121 @@ void ::kaldi::SingleUtteranceGmmDecoder::GetAdaptationState(::kaldi::OnlineGmmAd
 <dl class="class">
 <dt id="kaldi.online2.SingleUtteranceNnet3Decoder">
 <em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">SingleUtteranceNnet3Decoder</code><a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::SingleUtteranceNnet3Decoder</p>
+<dd><p>Online lattice-generating decoder for nnet3 models.</p>
+<p>This class is used for decoding a single utterance in an online fashion
+using nnet3 models.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>decoder_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoderOptions" title="kaldi.decoder.LatticeFasterDecoderOptions"><em>LatticeFasterDecoderOptions</em></a>) – Configuration options for
+lattice-generating decoder.</li>
+<li><strong>trans_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – Transition model.</li>
+<li><strong>info</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.DecodableNnetSimpleLoopedInfo" title="kaldi.nnet3.DecodableNnetSimpleLoopedInfo"><em>DecodableNnetSimpleLoopedInfo</em></a>) – Static pre-computed information
+needed for nnet3 computation (including a reference to the model).</li>
+<li><strong>fst</strong> (<em>StdFst</em>) – Decoding graph.</li>
+<li><strong>features</strong> (<a class="reference internal" href="#kaldi.online2.OnlineNnet2FeaturePipeline" title="kaldi.online2.OnlineNnet2FeaturePipeline"><em>OnlineNnet2FeaturePipeline</em></a>) – Online feature pipeline.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceNnet3Decoder.advance_decoding">
 <code class="descname">advance_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.advance_decoding" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::SingleUtteranceNnet3Decoder::AdvanceDecoding()</p>
+<dd><p>Advances decoding until there are no more frames to decode.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceNnet3Decoder.endpoint_detected">
 <code class="descname">endpoint_detected</code><span class="sig-paren">(</span><em>config:OnlineEndpointConfig</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.endpoint_detected" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::SingleUtteranceNnet3Decoder::EndpointDetected(::kaldi::OnlineEndpointConfig)</p>
+<dd><p>Determines if we should terminate decoding current utterance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#kaldi.online2.OnlineEndpointConfig" title="kaldi.online2.OnlineEndpointConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineEndpointConfig</span></code></a>) – Online endpointing configuration.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if an endpointing rule is active.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.online2.SingleUtteranceNnet3Decoder.finalize_decoding">
+<code class="descname">finalize_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.finalize_decoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finalizes decoding.</p>
+<p>This method may be optionally called after the last call to
+<a class="reference internal" href="#kaldi.online2.SingleUtteranceNnet3Decoder.advance_decoding" title="kaldi.online2.SingleUtteranceNnet3Decoder.advance_decoding"><code class="xref py py-meth docutils literal"><span class="pre">advance_decoding()</span></code></a>. It does an extra pruning step to prune the
+lattices output by <a class="reference internal" href="#kaldi.online2.SingleUtteranceNnet3Decoder.get_lattice" title="kaldi.online2.SingleUtteranceNnet3Decoder.get_lattice"><code class="xref py py-meth docutils literal"><span class="pre">get_lattice()</span></code></a> more accurately.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceNnet3Decoder.get_best_path">
 <code class="descname">get_best_path</code><span class="sig-paren">(</span><em>end_of_utterance:bool</em><span class="sig-paren">)</span> &#x2192; LatticeVectorFst<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.get_best_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::SingleUtteranceNnet3Decoder::GetBestPath(bool, ::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::LatticeWeightTpl&lt;float&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::LatticeWeightTpl&lt;float&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::LatticeWeightTpl&lt;float&gt; &gt; &gt; &gt; &gt;*)</p>
+<dd><p>Gets best path as a lattice.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_of_utterance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code> and a final state of the graph
+is reached, then the output will include final probabilities
+given by the graph. Otherwise all final probabilities are
+treated as one.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The best path.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst">LatticeVectorFst</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – In the unusual circumstances where no tokens survive.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceNnet3Decoder.get_lattice">
 <code class="descname">get_lattice</code><span class="sig-paren">(</span><em>end_of_utterance:bool</em><span class="sig-paren">)</span> &#x2192; CompactLatticeVectorFst<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.get_lattice" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::SingleUtteranceNnet3Decoder::GetLattice(bool, ::fst::VectorFst&lt; ::fst::ArcTpl&lt; ::fst::CompactLatticeWeightTpl&lt; ::fst::LatticeWeightTpl&lt;float&gt;, int&gt; &gt;, ::fst::VectorState&lt; ::fst::ArcTpl&lt; ::fst::CompactLatticeWeightTpl&lt; ::fst::LatticeWeightTpl&lt;float&gt;, int&gt; &gt;, ::std::allocator&lt; ::fst::ArcTpl&lt; ::fst::CompactLatticeWeightTpl&lt; ::fst::LatticeWeightTpl&lt;float&gt;, int&gt; &gt; &gt; &gt; &gt;*)</p>
+<dd><p>Gets the lattice-determinized compact lattice.</p>
+<p>The output is a deterministic compact lattice with a unique path for
+each word sequence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_of_utterance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code> and a final state of the graph
+is reached, then the output will include final probabilities
+given by the graph. Otherwise all final probabilities are
+treated as one.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The lattice-determinized compact lattice.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst">CompactLatticeVectorFst</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – In the unusual circumstances where no tokens survive.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceNnet3Decoder.num_frames_decoded">
 <code class="descname">num_frames_decoded</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.num_frames_decoded" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::SingleUtteranceNnet3Decoder::NumFramesDecoded()</p>
+<dd><p>Queries the number of frames already decoded.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The number of frames already decoded.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -1835,7 +1916,7 @@ int ::kaldi::SingleUtteranceNnet3Decoder::NumFramesDecoded()</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>config</strong> (<em>OnlineEndpopython:intConfig</em>) – Online endpointing configuration.</li>
+<li><strong>config</strong> (<a class="reference internal" href="#kaldi.online2.OnlineEndpointConfig" title="kaldi.online2.OnlineEndpointConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineEndpointConfig</span></code></a>) – Online endpointing configuration.</li>
 <li><strong>num_frames_decoded</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of frames decoded.</li>
 <li><strong>trailing_silence_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of trailing silence frames decoded.</li>
 <li><strong>frame_shift_in_seconds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frame shift (in seconds).</li>
@@ -1843,7 +1924,7 @@ int ::kaldi::SingleUtteranceNnet3Decoder::NumFramesDecoded()</p>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if endpointing rules thinks we should terminate decoding.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if endpointing rules determines we should terminate decoding.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
@@ -1859,6 +1940,26 @@ int ::kaldi::SingleUtteranceNnet3Decoder::NumFramesDecoded()</p>
 <dd><p>Determines if we should terminate decoding.</p>
 <p>This is a higher-level convenience function that works out the arguments
 to the <a class="reference internal" href="#kaldi.online2.endpoint_detected" title="kaldi.online2.endpoint_detected"><code class="xref py py-meth docutils literal"><span class="pre">endpoint_detected()</span></code></a> function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>config</strong> (<a class="reference internal" href="#kaldi.online2.OnlineEndpointConfig" title="kaldi.online2.OnlineEndpointConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineEndpointConfig</span></code></a>) – Online endpointing configuration.</li>
+<li><strong>tmodel</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – Transition model.</li>
+<li><strong>frame_shift_in_seconds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frame shift (in seconds).</li>
+<li><strong>decoder</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder" title="kaldi.decoder.LatticeFasterOnlineDecoder"><em>LatticeFasterOnlineDecoder</em></a>) – Online lattice-generating decoder.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if endpointing rules determines we should terminate decoding.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
