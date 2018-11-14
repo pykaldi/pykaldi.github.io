@@ -311,14 +311,14 @@ it really preferred to decode.</p>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineIvectorFeature" title="kaldi.online2.OnlineIvectorFeature"><code class="xref py py-obj docutils literal"><span class="pre">OnlineIvectorFeature</span></code></a></td>
 <td>OnlineIvectorFeature is an online feature-extraction class that’s responsible for extracting iVectors from raw features such as MFCC, PLP or filterbank.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineNnet2FeaturePipeline" title="kaldi.online2.OnlineNnet2FeaturePipeline"><code class="xref py py-obj docutils literal"><span class="pre">OnlineNnet2FeaturePipeline</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineNnet2FeaturePipeline</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineNnetFeaturePipeline" title="kaldi.online2.OnlineNnetFeaturePipeline"><code class="xref py py-obj docutils literal"><span class="pre">OnlineNnetFeaturePipeline</span></code></a></td>
+<td>Online feature pipeline for neural network decoding.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig" title="kaldi.online2.OnlineNnet2FeaturePipelineConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineNnet2FeaturePipelineConfig</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineNnet2FeaturePipelineConfig</td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig" title="kaldi.online2.OnlineNnetFeaturePipelineConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineNnetFeaturePipelineConfig</span></code></a></td>
+<td>Command-line configuration options for online neural network feature pipeline.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo" title="kaldi.online2.OnlineNnet2FeaturePipelineInfo"><code class="xref py py-obj docutils literal"><span class="pre">OnlineNnet2FeaturePipelineInfo</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineNnet2FeaturePipelineInfo</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo" title="kaldi.online2.OnlineNnetFeaturePipelineInfo"><code class="xref py py-obj docutils literal"><span class="pre">OnlineNnetFeaturePipelineInfo</span></code></a></td>
+<td>Configuration options for online neural network feature pipeline.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineSilenceWeighting" title="kaldi.online2.OnlineSilenceWeighting"><code class="xref py py-obj docutils literal"><span class="pre">OnlineSilenceWeighting</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::OnlineSilenceWeighting</td>
@@ -329,8 +329,8 @@ it really preferred to decode.</p>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.SingleUtteranceGmmDecoder" title="kaldi.online2.SingleUtteranceGmmDecoder"><code class="xref py py-obj docutils literal"><span class="pre">SingleUtteranceGmmDecoder</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::SingleUtteranceGmmDecoder</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.SingleUtteranceNnet3Decoder" title="kaldi.online2.SingleUtteranceNnet3Decoder"><code class="xref py py-obj docutils literal"><span class="pre">SingleUtteranceNnet3Decoder</span></code></a></td>
-<td>Online lattice-generating decoder for nnet3 models.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.SingleUtteranceNnetDecoder" title="kaldi.online2.SingleUtteranceNnetDecoder"><code class="xref py py-obj docutils literal"><span class="pre">SingleUtteranceNnetDecoder</span></code></a></td>
+<td>Online lattice-generating decoder for neural network models.</td>
 </tr>
 </tbody>
 </table>
@@ -800,6 +800,12 @@ directly in code or indirectly by reading config files on disk via
 <dd><p>Returns frame shift in seconds.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="kaldi.online2.OnlineFeaturePipelineConfig.from_config">
+<code class="descname">from_config</code><span class="sig-paren">(</span><em>cmdline_config:OnlineFeaturePipelineCommandLineConfig</em><span class="sig-paren">)</span> &#x2192; OnlineFeaturePipelineConfig<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new OnlineFeaturePipelineConfig from OnlineFeaturePipelineCommandLineConfig.</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.global_cmvn_stats_rxfilename">
 <code class="descname">global_cmvn_stats_rxfilename</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.global_cmvn_stats_rxfilename" title="Permalink to this definition">¶</a></dt>
@@ -816,12 +822,6 @@ directly in code or indirectly by reading config files on disk via
 <dt id="kaldi.online2.OnlineFeaturePipelineConfig.mfcc_opts">
 <code class="descname">mfcc_opts</code><a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.mfcc_opts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Options for MFCC features</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.online2.OnlineFeaturePipelineConfig.new_with_config">
-<code class="descname">new_with_config</code><span class="sig-paren">(</span><em>cmdline_config:OnlineFeaturePipelineCommandLineConfig</em><span class="sig-paren">)</span> &#x2192; OnlineFeaturePipelineConfig<a class="headerlink" href="#kaldi.online2.OnlineFeaturePipelineConfig.new_with_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a new OnlineFeaturePipelineConfig from OnlineFeaturePipelineCommandLineConfig.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1402,231 +1402,266 @@ void ::kaldi::OnlineIvectorFeature::UpdateFrameWeights(::std::vector&lt; ::std::
 </dd></dl>
 
 <dl class="class">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline">
-<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineNnet2FeaturePipeline</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineNnet2FeaturePipeline</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline">
+<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineNnetFeaturePipeline</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Online feature pipeline for neural network decoding.</p>
+<p>This is a different version of the online feature pipeline specialized
+for use in neural network decoding with iVectors. Our recipe is that we
+extract iVectors that will be used as an additional input to the neural
+network, in addition to a window of several frames of spliced raw
+features (MFCC, PLP or filterbanks). The iVectors are extracted on top of
+a (splice+LDA+MLLT) feature pipeline, with the added complication that
+the GMM posteriors used for the iVector extraction are obtained with a
+version of the features that has online cepstral mean (and optionally
+variance) normalization, whereas the stats for iVector are accumulated
+with a non-mean-normalized version of the features. The idea here is that
+we want the iVector to learn the mean offset, but we want the posteriors
+to be somewhat invariant to mean offsets.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo" title="kaldi.online2.OnlineNnetFeaturePipelineInfo"><em>OnlineNnetFeaturePipelineInfo</em></a>) – Configuration options for
+online neural network feature pipeline.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.accept_waveform">
-<code class="descname">accept_waveform</code><span class="sig-paren">(</span><em>sampling_rate:float</em>, <em>waveform:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.accept_waveform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineNnet2FeaturePipeline::AcceptWaveform(float, ::kaldi::VectorBase&lt;float&gt;)</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline.accept_waveform">
+<code class="descname">accept_waveform</code><span class="sig-paren">(</span><em>sampling_rate:float</em>, <em>waveform:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline.accept_waveform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accepts more data to process.</p>
+<p>It won’t actually process the data, it will just copy it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sampling_rate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Sampling rate of the waveform. It is needed
+to assert that it matches the sampling rate given in the config.</li>
+<li><strong>waveform</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – More data to process.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.dim">
-<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OnlineNnet2FeaturePipeline::Dim()</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline.dim">
+<code class="descname">dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns feature dimension</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.frame_shift_in_seconds">
-<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::OnlineNnet2FeaturePipeline::FrameShiftInSeconds()</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns frame shift in seconds</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.get_adaptation_state">
-<code class="descname">get_adaptation_state</code><span class="sig-paren">(</span><em>adaptation_state:OnlineIvectorExtractorAdaptationState</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.get_adaptation_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineNnet2FeaturePipeline::GetAdaptationState(::kaldi::OnlineIvectorExtractorAdaptationState <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline.get_adaptation_state">
+<code class="descname">get_adaptation_state</code><span class="sig-paren">(</span><em>adaptation_state:OnlineIvectorExtractorAdaptationState</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline.get_adaptation_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets online iVector adaptation state.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.get_frame">
-<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.get_frame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineNnet2FeaturePipeline::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame index</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.input_feature">
-<code class="descname">input_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; OnlineIvectorFeature<a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.input_feature" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a part of the feature pipeline that would be given as the primary (non-iVector) input to neural network in nnet3</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline.input_feature">
+<code class="descname">input_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; OnlineFeatureInterface<a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline.input_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the part of the feature pipeline that would be given as the primary (non-iVector) input to neural network.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.input_finished">
-<code class="descname">input_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.input_finished" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineNnet2FeaturePipeline::InputFinished()</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline.input_finished">
+<code class="descname">input_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline.input_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tells the class that you wont be providing any more waveform.</p>
+<p>This will help flush out the last few frames of delta or LDA features,
+and finalize the pitch features (making them more accurate).</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.is_last_frame">
-<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.is_last_frame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::OnlineNnet2FeaturePipeline::IsLastFrame(int)</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if this is last frame, otherwise False</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.ivector_feature">
-<code class="descname">ivector_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; OnlineIvectorFeature<a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.ivector_feature" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the ivector-extracting part of the feature pipeline (or NULL if iVectors are not being used).</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline.ivector_feature">
+<code class="descname">ivector_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; OnlineIvectorFeature<a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline.ivector_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the ivector-extraction part of the feature pipeline (or None if iVectors are not being used).</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.new_with_info">
-<code class="descname">new_with_info</code><span class="sig-paren">(</span><em>info:OnlineNnet2FeaturePipelineInfo</em><span class="sig-paren">)</span> &#x2192; OnlineNnet2FeaturePipeline<a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.new_with_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::OnlineNnet2FeaturePipeline&gt; ::kaldi::OnlineNnet2FeaturePipeline::OnlineNnet2FeaturePipeline(::kaldi::OnlineNnet2FeaturePipelineInfo)</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of frames ready</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.num_frames_ready">
-<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.num_frames_ready" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OnlineNnet2FeaturePipeline::NumFramesReady()</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipeline.set_adaptation_state">
-<code class="descname">set_adaptation_state</code><span class="sig-paren">(</span><em>adaptation_state:OnlineIvectorExtractorAdaptationState</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipeline.set_adaptation_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineNnet2FeaturePipeline::SetAdaptationState(::kaldi::OnlineIvectorExtractorAdaptationState)</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipeline.set_adaptation_state">
+<code class="descname">set_adaptation_state</code><span class="sig-paren">(</span><em>adaptation_state:OnlineIvectorExtractorAdaptationState</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipeline.set_adaptation_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets online iVector adaptation state.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineConfig">
-<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineNnet2FeaturePipelineConfig</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineNnet2FeaturePipelineConfig</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineConfig">
+<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineNnetFeaturePipelineConfig</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Command-line configuration options for online neural network feature pipeline.</p>
+<p>This configuration class is to set up <a class="reference internal" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo" title="kaldi.online2.OnlineNnetFeaturePipelineInfo"><code class="xref py py-obj docutils literal"><span class="pre">OnlineNnetFeaturePipelineInfo</span></code></a>,
+which in turn is the configuration class for <a class="reference internal" href="#kaldi.online2.OnlineNnetFeaturePipeline" title="kaldi.online2.OnlineNnetFeaturePipeline"><code class="xref py py-obj docutils literal"><span class="pre">OnlineNnetFeaturePipeline</span></code></a>.
+Instead of taking the options for the parts of the feature pipeline
+directly, it reads in the configuration files for each part.</p>
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineConfig.add_pitch">
-<code class="descname">add_pitch</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig.add_pitch" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool OnlineNnet2FeaturePipelineConfig.add_pitch</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineConfig.add_pitch">
+<code class="descname">add_pitch</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig.add_pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append pitch features to raw MFCC/PLP features (default=False)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineConfig.fbank_config">
-<code class="descname">fbank_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig.fbank_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineNnet2FeaturePipelineConfig.fbank_config</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineConfig.fbank_config">
+<code class="descname">fbank_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig.fbank_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configuration file for filterbank features (e.g. conf/fbank.conf)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineConfig.feature_type">
-<code class="descname">feature_type</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig.feature_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineNnet2FeaturePipelineConfig.feature_type</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineConfig.feature_type">
+<code class="descname">feature_type</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig.feature_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base feature type [mfcc (default), plp, fbank].</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineConfig.ivector_extraction_config">
-<code class="descname">ivector_extraction_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig.ivector_extraction_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineNnet2FeaturePipelineConfig.ivector_extraction_config</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineConfig.ivector_extraction_config">
+<code class="descname">ivector_extraction_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig.ivector_extraction_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configuration file for online iVector extraction (e.g. conf/ivector.conf)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineConfig.mfcc_config">
-<code class="descname">mfcc_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig.mfcc_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineNnet2FeaturePipelineConfig.mfcc_config</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineConfig.mfcc_config">
+<code class="descname">mfcc_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig.mfcc_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configuration file for MFCC features (e.g. conf/mfcc.conf)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineConfig.online_pitch_config">
-<code class="descname">online_pitch_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig.online_pitch_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineNnet2FeaturePipelineConfig.online_pitch_config</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineConfig.online_pitch_config">
+<code class="descname">online_pitch_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig.online_pitch_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configuration file for online pitch features (e.g. conf/online_pitch.conf)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineConfig.plp_config">
-<code class="descname">plp_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig.plp_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineNnet2FeaturePipelineConfig.plp_config</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineConfig.plp_config">
+<code class="descname">plp_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig.plp_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configuration file for PLP features (e.g. conf/plp.conf)</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineConfig.register">
-<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineNnet2FeaturePipelineConfig::Register(::kaldi::OptionsItf <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineConfig.silence_weighting_config">
-<code class="descname">silence_weighting_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineConfig.silence_weighting_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::OnlineSilenceWeightingConfig OnlineNnet2FeaturePipelineConfig.silence_weighting_config</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineConfig.silence_weighting_config">
+<code class="descname">silence_weighting_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig.silence_weighting_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for online silence weighting</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo">
-<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineNnet2FeaturePipelineInfo</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineNnet2FeaturePipelineInfo</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo">
+<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineNnetFeaturePipelineInfo</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configuration options for online neural network feature pipeline.</p>
+<p>This configuration class is responsible for storing the configuration
+options for <a class="reference internal" href="#kaldi.online2.OnlineNnetFeaturePipeline" title="kaldi.online2.OnlineNnetFeaturePipeline"><code class="xref py py-obj docutils literal"><span class="pre">OnlineNnetFeaturePipeline</span></code></a> (including the actual LDA and
+CMVN-stats matrices, and the iVector extractor). The options can be set
+either directly in code or indirectly by reading config files on disk via
+<a class="reference internal" href="#kaldi.online2.OnlineNnetFeaturePipelineConfig" title="kaldi.online2.OnlineNnetFeaturePipelineConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineNnetFeaturePipelineConfig</span></code></a>.</p>
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.add_pitch">
-<code class="descname">add_pitch</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.add_pitch" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool OnlineNnet2FeaturePipelineInfo.add_pitch</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.add_pitch">
+<code class="descname">add_pitch</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.add_pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append pitch features to raw MFCC/PLP features (default=False)</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.fbank_opts">
-<code class="descname">fbank_opts</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.fbank_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::FbankOptions OnlineNnet2FeaturePipelineInfo.fbank_opts</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.fbank_opts">
+<code class="descname">fbank_opts</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.fbank_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for filterbank features</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.feature_type">
-<code class="descname">feature_type</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.feature_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineNnet2FeaturePipelineInfo.feature_type</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.feature_type">
+<code class="descname">feature_type</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.feature_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base feature type [mfcc (default), plp, fbank]</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.frame_shift_in_seconds">
-<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::OnlineNnet2FeaturePipelineInfo::FrameShiftInSeconds()</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.frame_shift_in_seconds">
+<code class="descname">frame_shift_in_seconds</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.frame_shift_in_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns frame shift in seconds.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.ivector_dim">
-<code class="descname">ivector_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.ivector_dim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::OnlineNnet2FeaturePipelineInfo::IvectorDim()</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.mfcc_opts">
-<code class="descname">mfcc_opts</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.mfcc_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::MfccOptions OnlineNnet2FeaturePipelineInfo.mfcc_opts</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.from_config">
+<code class="descname">from_config</code><span class="sig-paren">(</span><em>config:OnlineNnetFeaturePipelineConfig</em><span class="sig-paren">)</span> &#x2192; OnlineNnetFeaturePipelineInfo<a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new OnlineNnetFeaturePipelineInfo from OnlineNnetFeaturePipelineConfig.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.new_with_config">
-<code class="descname">new_with_config</code><span class="sig-paren">(</span><em>config:OnlineNnet2FeaturePipelineConfig</em><span class="sig-paren">)</span> &#x2192; OnlineNnet2FeaturePipelineInfo<a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.new_with_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::OnlineNnet2FeaturePipelineInfo&gt; ::kaldi::OnlineNnet2FeaturePipelineInfo::OnlineNnet2FeaturePipelineInfo(::kaldi::OnlineNnet2FeaturePipelineConfig)</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.ivector_dim">
+<code class="descname">ivector_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.ivector_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns iVector dimension.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.pitch_opts">
-<code class="descname">pitch_opts</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.pitch_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::PitchExtractionOptions OnlineNnet2FeaturePipelineInfo.pitch_opts</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.mfcc_opts">
+<code class="descname">mfcc_opts</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.mfcc_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for MFCC features</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.pitch_process_opts">
-<code class="descname">pitch_process_opts</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.pitch_process_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::ProcessPitchOptions OnlineNnet2FeaturePipelineInfo.pitch_process_opts</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.pitch_opts">
+<code class="descname">pitch_opts</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.pitch_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for pitch features</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.plp_opts">
-<code class="descname">plp_opts</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.plp_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::PlpOptions OnlineNnet2FeaturePipelineInfo.plp_opts</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.pitch_process_opts">
+<code class="descname">pitch_process_opts</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.pitch_process_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for post-processing pitch features</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.silence_weighting_config">
-<code class="descname">silence_weighting_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.silence_weighting_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::OnlineSilenceWeightingConfig OnlineNnet2FeaturePipelineInfo.silence_weighting_config</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.plp_opts">
+<code class="descname">plp_opts</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.plp_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for PLP features</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="kaldi.online2.OnlineNnet2FeaturePipelineInfo.use_ivectors">
-<code class="descname">use_ivectors</code><a class="headerlink" href="#kaldi.online2.OnlineNnet2FeaturePipelineInfo.use_ivectors" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ bool OnlineNnet2FeaturePipelineInfo.use_ivectors</p>
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.silence_weighting_config">
+<code class="descname">silence_weighting_config</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.silence_weighting_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for weighting silence in iVector adaptation.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.use_ivectors">
+<code class="descname">use_ivectors</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.use_ivectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use iVectors as an extra input to the neural net</p>
 </dd></dl>
 
 </dd></dl>
@@ -1692,14 +1727,14 @@ bool ::kaldi::OnlineSilenceWeightingConfig::Active()</p>
 <dt id="kaldi.online2.OnlineSilenceWeightingConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineSilenceWeightingConfig.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineSilenceWeightingConfig::Register(::kaldi::OptionsItf <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
+void ::kaldi::OnlineSilenceWeightingConfig::Register(::kaldi::OptionsItf <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineSilenceWeightingConfig.register_with_prefix">
 <code class="descname">register_with_prefix</code><span class="sig-paren">(</span><em>prefix:str</em>, <em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineSilenceWeightingConfig.register_with_prefix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineSilenceWeightingConfig::RegisterWithPrefix(::std::string, ::kaldi::OptionsItf <a href="#id21"><span class="problematic" id="id22">*</span></a>)</p>
+void ::kaldi::OnlineSilenceWeightingConfig::RegisterWithPrefix(::std::string, ::kaldi::OptionsItf <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1762,7 +1797,7 @@ bool ::kaldi::SingleUtteranceGmmDecoder::EndpointDetected(::kaldi::OnlineEndpoin
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.get_adaptation_state">
 <code class="descname">get_adaptation_state</code><span class="sig-paren">(</span><em>adaptation_state:OnlineGmmAdaptationState</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.get_adaptation_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::SingleUtteranceGmmDecoder::GetAdaptationState(::kaldi::OnlineGmmAdaptationState <a href="#id23"><span class="problematic" id="id24">*</span></a>)</p>
+void ::kaldi::SingleUtteranceGmmDecoder::GetAdaptationState(::kaldi::OnlineGmmAdaptationState <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1786,11 +1821,11 @@ void ::kaldi::SingleUtteranceGmmDecoder::GetAdaptationState(::kaldi::OnlineGmmAd
 </dd></dl>
 
 <dl class="class">
-<dt id="kaldi.online2.SingleUtteranceNnet3Decoder">
-<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">SingleUtteranceNnet3Decoder</code><a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Online lattice-generating decoder for nnet3 models.</p>
+<dt id="kaldi.online2.SingleUtteranceNnetDecoder">
+<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">SingleUtteranceNnetDecoder</code><a class="headerlink" href="#kaldi.online2.SingleUtteranceNnetDecoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Online lattice-generating decoder for neural network models.</p>
 <p>This class is used for decoding a single utterance in an online fashion
-using nnet3 models.</p>
+using (nnet3) neural network models.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1802,21 +1837,28 @@ lattice-generating decoder.</li>
 <li><strong>info</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.DecodableNnetSimpleLoopedInfo" title="kaldi.nnet3.DecodableNnetSimpleLoopedInfo"><em>DecodableNnetSimpleLoopedInfo</em></a>) – Static pre-computed information
 needed for nnet3 computation (including a reference to the model).</li>
 <li><strong>fst</strong> (<em>StdFst</em>) – Decoding graph.</li>
-<li><strong>features</strong> (<a class="reference internal" href="#kaldi.online2.OnlineNnet2FeaturePipeline" title="kaldi.online2.OnlineNnet2FeaturePipeline"><em>OnlineNnet2FeaturePipeline</em></a>) – Online feature pipeline.</li>
+<li><strong>features</strong> (<a class="reference internal" href="#kaldi.online2.OnlineNnetFeaturePipeline" title="kaldi.online2.OnlineNnetFeaturePipeline"><em>OnlineNnetFeaturePipeline</em></a>) – Online feature pipeline.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="kaldi.online2.SingleUtteranceNnet3Decoder.advance_decoding">
-<code class="descname">advance_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.advance_decoding" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.online2.SingleUtteranceNnetDecoder.advance_decoding">
+<code class="descname">advance_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceNnetDecoder.advance_decoding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Advances decoding until there are no more frames to decode.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.SingleUtteranceNnet3Decoder.endpoint_detected">
-<code class="descname">endpoint_detected</code><span class="sig-paren">(</span><em>config:OnlineEndpointConfig</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.endpoint_detected" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.online2.SingleUtteranceNnetDecoder.decoder">
+<code class="descname">decoder</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; LatticeFasterOnlineDecoder<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnetDecoder.decoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::LatticeFasterOnlineDecoder * ::kaldi::SingleUtteranceNnet3Decoder::DecoderPtr()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.online2.SingleUtteranceNnetDecoder.endpoint_detected">
+<code class="descname">endpoint_detected</code><span class="sig-paren">(</span><em>config:OnlineEndpointConfig</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnetDecoder.endpoint_detected" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines if we should terminate decoding current utterance.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1833,17 +1875,17 @@ needed for nnet3 computation (including a reference to the model).</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.SingleUtteranceNnet3Decoder.finalize_decoding">
-<code class="descname">finalize_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.finalize_decoding" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.online2.SingleUtteranceNnetDecoder.finalize_decoding">
+<code class="descname">finalize_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceNnetDecoder.finalize_decoding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finalizes decoding.</p>
 <p>This method may be optionally called after the last call to
-<a class="reference internal" href="#kaldi.online2.SingleUtteranceNnet3Decoder.advance_decoding" title="kaldi.online2.SingleUtteranceNnet3Decoder.advance_decoding"><code class="xref py py-meth docutils literal"><span class="pre">advance_decoding()</span></code></a>. It does an extra pruning step to prune the
-lattices output by <a class="reference internal" href="#kaldi.online2.SingleUtteranceNnet3Decoder.get_lattice" title="kaldi.online2.SingleUtteranceNnet3Decoder.get_lattice"><code class="xref py py-meth docutils literal"><span class="pre">get_lattice()</span></code></a> more accurately.</p>
+<a class="reference internal" href="#kaldi.online2.SingleUtteranceNnetDecoder.advance_decoding" title="kaldi.online2.SingleUtteranceNnetDecoder.advance_decoding"><code class="xref py py-meth docutils literal"><span class="pre">advance_decoding()</span></code></a>. It does an extra pruning step to prune the
+lattices output by <a class="reference internal" href="#kaldi.online2.SingleUtteranceNnetDecoder.get_lattice" title="kaldi.online2.SingleUtteranceNnetDecoder.get_lattice"><code class="xref py py-meth docutils literal"><span class="pre">get_lattice()</span></code></a> more accurately.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.SingleUtteranceNnet3Decoder.get_best_path">
-<code class="descname">get_best_path</code><span class="sig-paren">(</span><em>end_of_utterance:bool</em><span class="sig-paren">)</span> &#x2192; LatticeVectorFst<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.get_best_path" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.online2.SingleUtteranceNnetDecoder.get_best_path">
+<code class="descname">get_best_path</code><span class="sig-paren">(</span><em>end_of_utterance:bool</em><span class="sig-paren">)</span> &#x2192; LatticeVectorFst<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnetDecoder.get_best_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets best path as a lattice.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1865,8 +1907,8 @@ treated as one.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.SingleUtteranceNnet3Decoder.get_lattice">
-<code class="descname">get_lattice</code><span class="sig-paren">(</span><em>end_of_utterance:bool</em><span class="sig-paren">)</span> &#x2192; CompactLatticeVectorFst<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.get_lattice" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.online2.SingleUtteranceNnetDecoder.get_lattice">
+<code class="descname">get_lattice</code><span class="sig-paren">(</span><em>end_of_utterance:bool</em><span class="sig-paren">)</span> &#x2192; CompactLatticeVectorFst<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnetDecoder.get_lattice" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the lattice-determinized compact lattice.</p>
 <p>The output is a deterministic compact lattice with a unique path for
 each word sequence.</p>
@@ -1890,8 +1932,8 @@ treated as one.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.SingleUtteranceNnet3Decoder.num_frames_decoded">
-<code class="descname">num_frames_decoded</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnet3Decoder.num_frames_decoded" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.online2.SingleUtteranceNnetDecoder.num_frames_decoded">
+<code class="descname">num_frames_decoded</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnetDecoder.num_frames_decoded" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queries the number of frames already decoded.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
