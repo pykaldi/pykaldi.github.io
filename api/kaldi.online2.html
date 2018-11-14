@@ -215,11 +215,12 @@ of dialog system where, as more speech data comes in, we decode more and
 more, and we have to decide when to stop decoding.</p>
 <p>The endpointing rule is a disjunction of conjunctions.  The way we have
 it configured, it’s an OR of five rules, and each rule has the following form:</p>
-<blockquote>
-<div>(&lt;contains-nonsilence&gt; || !rule.must_contain_nonsilence)
+<div class="highlight-default"><div class="highlight"><pre><span></span>(&lt;contains-nonsilence&gt; || !rule.must_contain_nonsilence)
 &amp;&amp; &lt;length-of-trailing-silence&gt; &gt;= rule.min_trailing_silence
 &amp;&amp; &lt;relative-cost&gt; &lt;= rule.max_relative_cost
-&amp;&amp; &lt;utterance-length&gt; &gt;= rule.min_utterance_length</div></blockquote>
+&amp;&amp; &lt;utterance-length&gt; &gt;= rule.min_utterance_length
+</pre></div>
+</div>
 <p>where:</p>
 <dl class="docutils">
 <dt>&lt;contains-nonsilence&gt;</dt>
