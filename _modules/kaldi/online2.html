@@ -203,12 +203,12 @@
 <span class="sd">Online Endpointing</span>
 <span class="sd">------------------</span>
 
-<span class="sd">This module contains a simple facility for endpointing, that should be used</span>
-<span class="sd">in conjunction with the &quot;online2&quot; online decoding code.  By endpointing in</span>
-<span class="sd">this context we mean &quot;deciding when to stop decoding&quot;, and not generic</span>
-<span class="sd">speech/silence segmentation.  The use-case that we have in mind is some kind</span>
-<span class="sd">of dialog system where, as more speech data comes in, we decode more and</span>
-<span class="sd">more, and we have to decide when to stop decoding.</span>
+<span class="sd">This module contains a simple facility for endpointing, that should be used in</span>
+<span class="sd">conjunction with the online decoding code.  By endpointing in this context we</span>
+<span class="sd">mean &quot;deciding when to stop decoding&quot;, and not generic speech/silence</span>
+<span class="sd">segmentation.  The use-case that we have in mind is some kind of dialog system</span>
+<span class="sd">where, as more speech data comes in, we decode more and more, and we have to</span>
+<span class="sd">decide when to stop decoding.</span>
 
 <span class="sd">The endpointing rule is a disjunction of conjunctions.  The way we have</span>
 <span class="sd">it configured, it&#39;s an OR of five rules, and each rule has the following form::</span>
@@ -257,6 +257,7 @@
 <span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">matrix</span> <span class="k">as</span> <span class="n">_matrix</span>
 
 <div class="viewcode-block" id="OnlineIvectorExtractionInfo"><a class="viewcode-back" href="../../api/kaldi.online2.html#kaldi.online2.OnlineIvectorExtractionInfo">[docs]</a><span class="k">class</span> <span class="nc">OnlineIvectorExtractionInfo</span><span class="p">(</span><span class="n">_OnlineIvectorExtractionInfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Configuration options for online iVector extraction.&quot;&quot;&quot;</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">lda_mat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">SubMatrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lda_mat</span><span class="p">)</span>

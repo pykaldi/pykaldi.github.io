@@ -207,12 +207,12 @@
 <span id="kaldi-online2"></span><h1>kaldi.online2<a class="headerlink" href="#module-kaldi.online2" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="online-endpointing">
 <h2>Online Endpointing<a class="headerlink" href="#online-endpointing" title="Permalink to this headline">¶</a></h2>
-<p>This module contains a simple facility for endpointing, that should be used
-in conjunction with the “online2” online decoding code.  By endpointing in
-this context we mean “deciding when to stop decoding”, and not generic
-speech/silence segmentation.  The use-case that we have in mind is some kind
-of dialog system where, as more speech data comes in, we decode more and
-more, and we have to decide when to stop decoding.</p>
+<p>This module contains a simple facility for endpointing, that should be used in
+conjunction with the online decoding code.  By endpointing in this context we
+mean “deciding when to stop decoding”, and not generic speech/silence
+segmentation.  The use-case that we have in mind is some kind of dialog system
+where, as more speech data comes in, we decode more and more, and we have to
+decide when to stop decoding.</p>
 <p>The endpointing rule is a disjunction of conjunctions.  The way we have
 it configured, it’s an OR of five rules, and each rule has the following form:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>(&lt;contains-nonsilence&gt; || !rule.must_contain_nonsilence)
@@ -303,7 +303,7 @@ it really preferred to decode.</p>
 <td>CLIF wrapper for ::kaldi::OnlineIvectorExtractionConfig</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineIvectorExtractionInfo" title="kaldi.online2.OnlineIvectorExtractionInfo"><code class="xref py py-obj docutils literal"><span class="pre">OnlineIvectorExtractionInfo</span></code></a></td>
-<td></td>
+<td>Configuration options for online iVector extraction.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineIvectorExtractorAdaptationState" title="kaldi.online2.OnlineIvectorExtractorAdaptationState"><code class="xref py py-obj docutils literal"><span class="pre">OnlineIvectorExtractorAdaptationState</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::OnlineIvectorExtractorAdaptationState</td>
@@ -1159,7 +1159,8 @@ void ::kaldi::OnlineIvectorExtractionConfig::Register(::kaldi::OptionsItf <a hre
 <dl class="class">
 <dt id="kaldi.online2.OnlineIvectorExtractionInfo">
 <em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineIvectorExtractionInfo</code><a class="reference internal" href="../_modules/kaldi/online2.html#OnlineIvectorExtractionInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractionInfo" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>Configuration options for online iVector extraction.</p>
+<dl class="method">
 <dt id="kaldi.online2.OnlineIvectorExtractionInfo.check">
 <code class="descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractionInfo.check" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
