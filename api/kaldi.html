@@ -202,6 +202,13 @@
             
   <div class="section" id="module-kaldi.asr">
 <span id="kaldi-asr"></span><h1>kaldi.asr<a class="headerlink" href="#module-kaldi.asr" title="Permalink to this headline">¶</a></h1>
+<p>This module provides a general <a class="reference internal" href="#kaldi.asr.Recognizer" title="kaldi.asr.Recognizer"><code class="xref py py-obj docutils literal"><span class="pre">Recognizer</span></code></a> base class and a number of
+high-level speech recognizers with an easy to use API.</p>
+<p>Note that in Kaldi, therefore in PyKaldi, there is no single “canonical”
+decoder, or a fixed interface that decoders must satisfy. Same is true for the
+models. The decoders and models provided by Kaldi/PyKaldi can be mixed and
+matched to construct specialized speech recognizers. The high-level speech
+recognizers in this module cover only the most “typical” combinations.</p>
 <p class="rubric">Functions</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -221,8 +228,14 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.asr.Recognizer" title="kaldi.asr.Recognizer"><code class="xref py py-obj docutils literal"><span class="pre">Recognizer</span></code></a>(decoder,&nbsp;decodable_wrapper[,&nbsp;symbols])</td>
-<td>Simple speech recognizer.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">GmmLatticeRecognizer</span></code>(transition_model,&nbsp;…)</td>
+<td>GMM-based lattice generating speech recognizer.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">GmmRecognizer</span></code>(transition_model,&nbsp;…[,&nbsp;…])</td>
+<td>GMM-based speech recognizer.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.asr.Recognizer" title="kaldi.asr.Recognizer"><code class="xref py py-obj docutils literal"><span class="pre">Recognizer</span></code></a>(transition_model,&nbsp;acoustic_model,&nbsp;…)</td>
+<td>Speech recognizer.</td>
 </tr>
 </tbody>
 </table>
@@ -255,19 +268,24 @@
 
 <dl class="class">
 <dt id="kaldi.asr.Recognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">Recognizer</code><span class="sig-paren">(</span><em>decoder</em>, <em>decodable_wrapper</em>, <em>symbols=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#Recognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.Recognizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Simple speech recognizer.</p>
-<p>This class provides a simple interface for decoding acoustic features.</p>
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">Recognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>acoustic_scale=0.1</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#Recognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.Recognizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Speech recognizer.</p>
+<p>This is an abstract base class defining a simple interface for decoding
+acoustic features. All subclasses should override <a class="reference internal" href="#kaldi.asr.Recognizer.make_decodable" title="kaldi.asr.Recognizer.make_decodable"><code class="xref py py-meth docutils literal"><span class="pre">make_decodable()</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>acoustic_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The acoustic model.</li>
 <li><strong>decoder</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The decoder.</li>
-<li><strong>decodable_wrapper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.7)"><em>callable</em></a>) – The model wrapper returning decodable
-objects given features and acoustic scale.</li>
 <li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
 <a class="reference internal" href="#kaldi.asr.Recognizer.decode" title="kaldi.asr.Recognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
+final state was active on the last frame.</li>
+<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
 </ul>
 </td>
 </tr>
@@ -275,7 +293,7 @@ objects given features and acoustic scale.</li>
 </table>
 <dl class="method">
 <dt id="kaldi.asr.Recognizer.decode">
-<code class="descname">decode</code><span class="sig-paren">(</span><em>features</em>, <em>acoustic_scale=0.1</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>trans_model=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#Recognizer.decode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.Recognizer.decode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">decode</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#Recognizer.decode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.Recognizer.decode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decodes acoustic features.</p>
 <p>Decoding output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
 <table border="1" class="docutils">
@@ -321,35 +339,40 @@ objects given features and acoustic scale.</li>
 </tr>
 </tbody>
 </table>
-<p>The “lattice” output requires a lattice generating decoder. It will be a
-raw state-level lattice if <code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice</span> <span class="pre">==</span> <span class="pre">False</span></code>. Otherwise, it
-will be a compact deterministic lattice. If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>,
-the “text” output will be a string of space separated integer indices.
-Otherwise it will be a string of space separated symbols. The “weight”
-output is a lattice weight consisting of (graph-score, acoustic-score).</p>
+<p>The “lattice” output is produced only if the decoder can generate
+lattices. It will be a raw state-level lattice if <code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice</span>
+<span class="pre">==</span> <span class="pre">False</span></code>. Otherwise, it will be a compact deterministic lattice.</p>
+<p>If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the “text” output will be a string of
+space separated integer indices. Otherwise it will be a string of space
+separated symbols. The “weight” output is a lattice weight consisting of
+(graph-score, acoustic-score).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>features</strong> (<em>MatrixBase</em>) – Features to decode.</li>
-<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
-<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
-final state was active on the last frame.</li>
-<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
-<li><strong>trans_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model used for
-determinizing output lattices.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to decode.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary representing decoding output.</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing decoding output.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code></a> – If feature matrix is empty.</li>
-<li><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If decoding fails.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If decoding fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.asr.Recognizer.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#Recognizer.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.Recognizer.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface">DecodableInterface</a></td>
 </tr>
 </tbody>
 </table>

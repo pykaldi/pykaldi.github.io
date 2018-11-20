@@ -20,6 +20,8 @@ kaldi\.asr
 
    .. autosummary::
    
+      GmmLatticeRecognizer
+      GmmRecognizer
       Recognizer
    
    
