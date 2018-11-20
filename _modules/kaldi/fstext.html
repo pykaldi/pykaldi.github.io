@@ -304,6 +304,52 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">next</span><span class="p">()</span></div>
 
 
+<div class="viewcode-block" id="indices_to_symbols"><a class="viewcode-back" href="../../api/kaldi.fstext.html#kaldi.fstext.indices_to_symbols">[docs]</a><span class="k">def</span> <span class="nf">indices_to_symbols</span><span class="p">(</span><span class="n">symbol_table</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts indices to symbols by looking them up in the symbol table.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        symbol_table (SymbolTable): The symbol table.</span>
+<span class="sd">        indices (List[int]): The list of indices.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[str]: The list of symbols corresponding to the given indices.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        KeyError: If an index is not found in the symbol table.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+        <span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol_table</span><span class="o">.</span><span class="n">find_symbol</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Index </span><span class="si">{}</span><span class="s2"> is not found in the symbol table.&quot;</span>
+                           <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
+        <span class="n">symbols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">symbols</span></div>
+
+
+<div class="viewcode-block" id="symbols_to_indices"><a class="viewcode-back" href="../../api/kaldi.fstext.html#kaldi.fstext.symbols_to_indices">[docs]</a><span class="k">def</span> <span class="nf">symbols_to_indices</span><span class="p">(</span><span class="n">symbol_table</span><span class="p">,</span> <span class="n">symbols</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts symbols to indices by looking them up in the symbol table.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        symbol_table (SymbolTable): The symbol table.</span>
+<span class="sd">        indices (List[str]): The list of symbols.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[int]: The list of indices corresponding to the given symbols.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        KeyError: If a symbol is not found in the symbol table.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">symbol_table</span><span class="o">.</span><span class="n">find_index</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Symbol </span><span class="si">{}</span><span class="s2"> is not found in the symbol table.&quot;</span>
+                           <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">symbol</span><span class="p">))</span>
+        <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">indices</span></div>
+
+
 <span class="c1"># Tropical semiring</span>
 
 <div class="viewcode-block" id="TropicalWeight"><a class="viewcode-back" href="../../api/kaldi.fstext.html#kaldi.fstext.TropicalWeight">[docs]</a><span class="k">class</span> <span class="nc">TropicalWeight</span><span class="p">(</span><span class="n">_float_weight</span><span class="o">.</span><span class="n">TropicalWeight</span><span class="p">):</span>

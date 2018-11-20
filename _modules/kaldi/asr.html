@@ -220,30 +220,7 @@
 <span class="kn">from</span> <span class="nn">.util</span> <span class="k">import</span> <span class="n">io</span> <span class="k">as</span> <span class="n">_io</span>
 
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;convert_indices_to_symbols&#39;</span><span class="p">,</span> <span class="s1">&#39;Recognizer&#39;</span><span class="p">]</span>
-
-
-<div class="viewcode-block" id="convert_indices_to_symbols"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.convert_indices_to_symbols">[docs]</a><span class="k">def</span> <span class="nf">convert_indices_to_symbols</span><span class="p">(</span><span class="n">symbol_table</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Converts indices to symbols by looking them up in the symbol table.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        symbol_table (SymbolTable): The symbol table.</span>
-<span class="sd">        indices (List[int]): The list of indices.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        List[str]: The list of symbols corresponding to the given indices.</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">        KeyError: If an index is not found in the symbol table.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">symbols</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
-        <span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol_table</span><span class="o">.</span><span class="n">find_symbol</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Index </span><span class="si">{}</span><span class="s2"> is not found in the symbol table.&quot;</span>
-                           <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
-        <span class="n">symbols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">symbols</span></div>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Recognizer&#39;</span><span class="p">,</span> <span class="s1">&#39;GmmRecognizer&#39;</span><span class="p">,</span> <span class="s1">&#39;GmmLatticeRecognizer&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="Recognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.Recognizer">[docs]</a><span class="k">class</span> <span class="nc">Recognizer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -333,7 +310,7 @@
         <span class="n">ali</span><span class="p">,</span> <span class="n">words</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">_utils</span><span class="o">.</span><span class="n">get_linear_symbol_sequence</span><span class="p">(</span><span class="n">best_path</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">:</span>
-            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">convert_indices_to_symbols</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span> <span class="n">words</span><span class="p">))</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_fst</span><span class="o">.</span><span class="n">indices_to_symbols</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span> <span class="n">words</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">words</span><span class="p">))</span>
 
@@ -492,7 +469,7 @@
                    <span class="n">acoustic_scale</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">,</span> <span class="n">determinize_lattice</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">GmmRecognizer</span><span class="p">(</span><span class="n">_GmmRecognizer</span><span class="p">,</span> <span class="n">_DecoderMixin</span><span class="p">,</span> <span class="n">_OnDiskModelsMixin</span><span class="p">):</span>
+<div class="viewcode-block" id="GmmRecognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.GmmRecognizer">[docs]</a><span class="k">class</span> <span class="nc">GmmRecognizer</span><span class="p">(</span><span class="n">_GmmRecognizer</span><span class="p">,</span> <span class="n">_DecoderMixin</span><span class="p">,</span> <span class="n">_OnDiskModelsMixin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;GMM-based speech recognizer.</span>
 
 <span class="sd">    This class provides a simple interface for decoding acoustic features with a</span>
@@ -508,10 +485,11 @@
 <span class="sd">        allow_partial (bool): Whether to output decoding results if no</span>
 <span class="sd">            final state was active on the last frame.</span>
 <span class="sd">        determinize_lattice (bool): Whether to determinize output lattice.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 
 
-<span class="k">class</span> <span class="nc">GmmLatticeRecognizer</span><span class="p">(</span><span class="n">_GmmRecognizer</span><span class="p">,</span> <span class="n">_LatticeDecoderMixin</span><span class="p">,</span> <span class="n">_OnDiskModelsMixin</span><span class="p">):</span>
+<div class="viewcode-block" id="GmmLatticeRecognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.GmmLatticeRecognizer">[docs]</a><span class="k">class</span> <span class="nc">GmmLatticeRecognizer</span><span class="p">(</span><span class="n">_GmmRecognizer</span><span class="p">,</span> <span class="n">_LatticeDecoderMixin</span><span class="p">,</span>
+                           <span class="n">_OnDiskModelsMixin</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;GMM-based lattice generating speech recognizer.</span>
 
 <span class="sd">    This class provides a simple interface for decoding acoustic features with a</span>
@@ -527,7 +505,7 @@
 <span class="sd">        allow_partial (bool): Whether to output decoding results if no</span>
 <span class="sd">            final state was active on the last frame.</span>
 <span class="sd">        determinize_lattice (bool): Whether to determinize output lattice.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 </pre></div>
 
            </div>
