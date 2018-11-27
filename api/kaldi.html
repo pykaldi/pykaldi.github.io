@@ -223,7 +223,7 @@
 </table>
 <dl class="class">
 <dt id="kaldi.alignment.Aligner">
-<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">Aligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1eba8e0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">Aligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x200ee60&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract base class for speech aligners.</p>
 <p>All concrete subclasses should override <a class="reference internal" href="#kaldi.alignment.Aligner.make_decodable" title="kaldi.alignment.Aligner.make_decodable"><code class="xref py py-meth docutils literal"><span class="pre">make_decodable()</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -233,7 +233,7 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
 <li><strong>acoustic_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The acoustic model.</li>
-<li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – </li>
+<li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – The phonetic decision tree.</li>
 <li><strong>lexicon</strong> (<em>StdFst</em>) – The lexicon FST.</li>
 <li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
 <code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code> includes symbols instead of integer indices.</li>
@@ -411,7 +411,7 @@ optional silences.</p>
 
 <dl class="class">
 <dt id="kaldi.alignment.GmmAligner">
-<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">GmmAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1eba8e0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">GmmAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x200ee60&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner" title="Permalink to this definition">¶</a></dt>
 <dd><p>GMM-based speech aligner.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -420,7 +420,7 @@ optional silences.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
 <li><strong>acoustic_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The acoustic model.</li>
-<li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – </li>
+<li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – The phonetic decision tree.</li>
 <li><strong>lexicon</strong> (<em>StdFst</em>) – The lexicon FST.</li>
 <li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” input of
 <a class="reference internal" href="#kaldi.alignment.GmmAligner.align" title="kaldi.alignment.GmmAligner.align"><code class="xref py py-meth docutils literal"><span class="pre">align()</span></code></a> should include symbols instead of integer indices.</li>
@@ -500,7 +500,7 @@ weight consisting of (graph-score, acoustic-score).</p>
 
 <dl class="classmethod">
 <dt id="kaldi.alignment.GmmAligner.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1e8f2b0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x2015e40&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new GMM aligner from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -642,7 +642,7 @@ optional silences.</p>
 
 <dl class="class">
 <dt id="kaldi.alignment.NnetAligner">
-<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">NnetAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x2129390&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x21006d0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">NnetAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1acacf0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2030010&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Nnet3-based speech aligner.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -651,7 +651,7 @@ optional silences.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
 <li><strong>acoustic_model</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.AmNnetSimple" title="kaldi.nnet3.AmNnetSimple"><em>AmNnetSimple</em></a>) – The acoustic model.</li>
-<li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – </li>
+<li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – The phonetic decision tree.</li>
 <li><strong>lexicon</strong> (<em>StdFst</em>) – The lexicon FST.</li>
 <li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” input of
 <a class="reference internal" href="#kaldi.alignment.NnetAligner.align" title="kaldi.alignment.NnetAligner.align"><code class="xref py py-meth docutils literal"><span class="pre">align()</span></code></a> should include symbols instead of integer indices.</li>
@@ -734,7 +734,7 @@ weight consisting of (graph-score, acoustic-score).</p>
 
 <dl class="classmethod">
 <dt id="kaldi.alignment.NnetAligner.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1e3a830&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x21b08c0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x2030ae0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x202fd70&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new nnet3 aligner from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1251,7 +1251,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.FasterGmmRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_faster_decoder.FasterDecoderOptions object at 0x20db6c0&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_faster_decoder.FasterDecoderOptions object at 0x1ab5830&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new GMM recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1399,7 +1399,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.LatticeGmmRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x1ee20f0&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x1886210&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new GMM recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1547,7 +1547,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.LatticeBiglmGmmRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>old_lm_rxfilename</em>, <em>new_lm_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x13423c0&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>old_lm_rxfilename</em>, <em>new_lm_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0xf34eb0&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new GMM recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1605,7 +1605,7 @@ log-likelihoods.</td>
 
 <dl class="class">
 <dt id="kaldi.asr.NnetRecognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">NnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x219c0d0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#NnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.NnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">NnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x205ee00&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#NnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.NnetRecognizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for nnet3-based speech recognizers.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1729,7 +1729,7 @@ log-likelihoods.</td>
 
 <dl class="class">
 <dt id="kaldi.asr.FasterNnetRecognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">FasterNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x216c610&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">FasterNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x1a7b060&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Faster nnet3-based speech recognizer.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1824,7 +1824,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.FasterNnetRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_faster_decoder.FasterDecoderOptions object at 0x21306d0&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2092af0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_faster_decoder.FasterDecoderOptions object at 0x202fc80&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2032a80&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new nnet3 recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1885,7 +1885,7 @@ log-likelihoods.</td>
 
 <dl class="class">
 <dt id="kaldi.asr.LatticeNnetRecognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x1e3a720&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x230f500&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice generating nnet3-based speech recognizer.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1980,7 +1980,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.LatticeNnetRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x1e6e4b0&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2118d20&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x202d6b0&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2507a00&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new nnet3 recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2041,7 +2041,7 @@ log-likelihoods.</td>
 
 <dl class="class">
 <dt id="kaldi.asr.LatticeBiglmNnetRecognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeBiglmNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x1e0deb0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeBiglmNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x250bf10&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice generating big LM nnet3-based speech recognizer.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2136,7 +2136,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.LatticeBiglmNnetRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>old_lm_rxfilename</em>, <em>new_lm_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x1f1c690&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x1e0dde0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>old_lm_rxfilename</em>, <em>new_lm_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x2511570&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2506080&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new GMM recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
