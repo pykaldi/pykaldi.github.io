@@ -108,7 +108,8 @@
 </ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="api/kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/kaldi.html">kaldi.alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/kaldi.html#module-kaldi.asr">kaldi.asr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/kaldi.base.html">kaldi.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/kaldi.chain.html">kaldi.chain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
@@ -794,6 +795,8 @@
 </li>
       <li><a href="api/kaldi.ivector.html#kaldi.ivector.PldaStats.add_samples">add_samples() (kaldi.ivector.PldaStats method)</a>
 </li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.add_self_loops">add_self_loops() (in module kaldi.hmm)</a>
+</li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.packed.DoubleSpMatrix.add_smat_2_sp_">add_smat_2_sp_() (kaldi.matrix.packed.DoubleSpMatrix method)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.packed.SpMatrix.add_smat_2_sp_">add_smat_2_sp_() (kaldi.matrix.packed.SpMatrix method)</a>
@@ -879,6 +882,10 @@
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.packed.DoubleTpMatrix.add_tp">add_tp() (kaldi.matrix.packed.DoubleTpMatrix method)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.packed.TpMatrix.add_tp">add_tp() (kaldi.matrix.packed.TpMatrix method)</a>
+</li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.add_transition_probs">add_transition_probs() (in module kaldi.hmm)</a>
+</li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.add_transition_probs_lat">add_transition_probs_lat() (in module kaldi.hmm)</a>
 </li>
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuDoubleSubVector.add_vec">add_vec() (kaldi.cudamatrix.CuDoubleSubVector method)</a>
 </li>
@@ -1015,6 +1022,14 @@
       <li><a href="api/kaldi.ivector.html#kaldi.ivector.AhcCluster">AhcCluster (class in kaldi.ivector)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.FstWriteOptions.align">align (kaldi.fstext.FstWriteOptions attribute)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.Aligner.align">align() (kaldi.alignment.Aligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.GmmAligner.align">align() (kaldi.alignment.GmmAligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.NnetAligner.align">align() (kaldi.alignment.NnetAligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.Aligner">Aligner (class in kaldi.alignment)</a>
 </li>
       <li><a href="api/kaldi.chain.html#kaldi.chain.alignment_to_proto_supervision">alignment_to_proto_supervision() (in module kaldi.chain)</a>
 </li>
@@ -2608,6 +2623,10 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.convert_addition_to_assignment">convert_addition_to_assignment() (in module kaldi.nnet3)</a>
 </li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.convert_alignment">convert_alignment() (in module kaldi.hmm)</a>
+</li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.convert_alignment_with_phone_map">convert_alignment_with_phone_map() (in module kaldi.hmm)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.utils.convert_compact_lattice_to_lattice">convert_compact_lattice_to_lattice() (in module kaldi.fstext.utils)</a>
 </li>
       <li><a href="api/kaldi.lat.html#kaldi.lat.functions.convert_compact_lattice_to_phones">convert_compact_lattice_to_phones() (in module kaldi.lat.functions)</a>
@@ -2619,6 +2638,8 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.utils.convert_lattice_to_std">convert_lattice_to_std() (in module kaldi.fstext.utils)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.utils.convert_nbest_to_list">convert_nbest_to_list() (in module kaldi.fstext.utils)</a>
+</li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.convert_phnx_to_prons">convert_phnx_to_prons() (in module kaldi.hmm)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.convert_repeated_to_block_affine">convert_repeated_to_block_affine() (in module kaldi.nnet3)</a>
 </li>
@@ -3382,9 +3403,21 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.EncodeType.DECODE">DECODE (kaldi.fstext.EncodeType attribute)</a>
 </li>
-      <li><a href="api/kaldi.html#kaldi.asr.GmmLatticeRecognizer.decode">decode() (kaldi.asr.GmmLatticeRecognizer method)</a>
+      <li><a href="api/kaldi.html#kaldi.asr.FasterGmmRecognizer.decode">decode() (kaldi.asr.FasterGmmRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.FasterNnetRecognizer.decode">decode() (kaldi.asr.FasterNnetRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.html#kaldi.asr.GmmRecognizer.decode">decode() (kaldi.asr.GmmRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeBiglmGmmRecognizer.decode">decode() (kaldi.asr.LatticeBiglmGmmRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeBiglmNnetRecognizer.decode">decode() (kaldi.asr.LatticeBiglmNnetRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeGmmRecognizer.decode">decode() (kaldi.asr.LatticeGmmRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeNnetRecognizer.decode">decode() (kaldi.asr.LatticeNnetRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.NnetRecognizer.decode">decode() (kaldi.asr.NnetRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.html#kaldi.asr.Recognizer.decode">decode() (kaldi.asr.Recognizer method)</a>
 </li>
@@ -4362,6 +4395,10 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.FasterDecoderOptions">FasterDecoderOptions (class in kaldi.decoder)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.asr.FasterGmmRecognizer">FasterGmmRecognizer (class in kaldi.asr)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.FasterNnetRecognizer">FasterNnetRecognizer (class in kaldi.asr)</a>
+</li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.fbank.Fbank">Fbank (class in kaldi.feat.fbank)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineFeaturePipelineCommandLineConfig.fbank_config">fbank_config (kaldi.online2.OnlineFeaturePipelineCommandLineConfig attribute)</a>
@@ -4980,9 +5017,21 @@
 </li>
       <li><a href="api/kaldi.lat.html#kaldi.lat.align.WordBoundaryInfo.from_file">from_file() (kaldi.lat.align.WordBoundaryInfo method)</a>
 </li>
-      <li><a href="api/kaldi.html#kaldi.asr.GmmLatticeRecognizer.from_files">from_files() (kaldi.asr.GmmLatticeRecognizer method)</a>
+      <li><a href="api/kaldi.html#kaldi.alignment.GmmAligner.from_files">from_files() (kaldi.alignment.GmmAligner class method)</a>
 </li>
-      <li><a href="api/kaldi.html#kaldi.asr.GmmRecognizer.from_files">from_files() (kaldi.asr.GmmRecognizer method)</a>
+      <li><a href="api/kaldi.html#kaldi.alignment.NnetAligner.from_files">from_files() (kaldi.alignment.NnetAligner class method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.FasterGmmRecognizer.from_files">from_files() (kaldi.asr.FasterGmmRecognizer class method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.FasterNnetRecognizer.from_files">from_files() (kaldi.asr.FasterNnetRecognizer class method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeBiglmGmmRecognizer.from_files">from_files() (kaldi.asr.LatticeBiglmGmmRecognizer class method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeBiglmNnetRecognizer.from_files">from_files() (kaldi.asr.LatticeBiglmNnetRecognizer class method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeGmmRecognizer.from_files">from_files() (kaldi.asr.LatticeGmmRecognizer class method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeNnetRecognizer.from_files">from_files() (kaldi.asr.LatticeNnetRecognizer class method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogWeight.from_float">from_float() (kaldi.fstext.LogWeight method)</a>
 </li>
@@ -5624,7 +5673,11 @@
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm.get_gaussian_variance">get_gaussian_variance() (kaldi.gmm.am.AmDiagGmm method)</a>
 </li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.get_h_transducer">get_h_transducer() (in module kaldi.hmm)</a>
+</li>
       <li><a href="api/kaldi.lm.html#kaldi.lm.KaldiRnnlmWrapper.get_hidden_layer_size">get_hidden_layer_size() (kaldi.lm.KaldiRnnlmWrapper method)</a>
+</li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.get_ilabel_mapping">get_ilabel_mapping() (in module kaldi.hmm)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.AffineComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.AffineComponent method)</a>
 </li>
@@ -6044,7 +6097,7 @@
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.gmm_flags_to_string">gmm_flags_to_string() (in module kaldi.gmm)</a>
 </li>
-      <li><a href="api/kaldi.html#kaldi.asr.GmmLatticeRecognizer">GmmLatticeRecognizer (class in kaldi.asr)</a>
+      <li><a href="api/kaldi.html#kaldi.alignment.GmmAligner">GmmAligner (class in kaldi.alignment)</a>
 </li>
       <li><a href="api/kaldi.html#kaldi.asr.GmmRecognizer">GmmRecognizer (class in kaldi.asr)</a>
 </li>
@@ -6281,6 +6334,8 @@
       <li><a href="api/kaldi.feat.html#kaldi.feat.mel.MelBanksOptions.htk_mode">htk_mode (kaldi.feat.mel.MelBanksOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.htk.HtkHeader">HtkHeader (class in kaldi.matrix.htk)</a>
+</li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.HTransducerConfig">HTransducerConfig (class in kaldi.hmm)</a>
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.math.hypot">hypot() (in module kaldi.base.math)</a>
 </li>
@@ -7408,6 +7463,8 @@
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.mllr.FmllrDiagGmmAccs.K_">K_ (kaldi.transform.mllr.FmllrDiagGmmAccs attribute)</a>
 </li>
+      <li><a href="api/kaldi.html#module-kaldi.alignment">kaldi.alignment (module)</a>
+</li>
       <li><a href="api/kaldi.html#module-kaldi.asr">kaldi.asr (module)</a>
 </li>
       <li><a href="api/kaldi.base.html#module-kaldi.base">kaldi.base (module)</a>
@@ -7700,6 +7757,10 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeBiglmFasterDecoder">LatticeBiglmFasterDecoder (class in kaldi.decoder)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeBiglmGmmRecognizer">LatticeBiglmGmmRecognizer (class in kaldi.asr)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeBiglmNnetRecognizer">LatticeBiglmNnetRecognizer (class in kaldi.asr)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LatticeConstFst">LatticeConstFst (class in kaldi.fstext)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LatticeConstFstArcIterator">LatticeConstFstArcIterator (class in kaldi.fstext)</a>
@@ -7720,7 +7781,11 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LatticeFstCompiler">LatticeFstCompiler (class in kaldi.fstext)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeGmmRecognizer">LatticeGmmRecognizer (class in kaldi.asr)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.weight.LatticeNaturalLess">LatticeNaturalLess (class in kaldi.fstext.weight)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeNnetRecognizer">LatticeNnetRecognizer (class in kaldi.asr)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LatticeVectorFst">LatticeVectorFst (class in kaldi.fstext)</a>
 </li>
@@ -8036,15 +8101,29 @@
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.math.M_SQRT2">M_SQRT2 (in module kaldi.base.math)</a>
 </li>
-      <li><a href="api/kaldi.html#kaldi.asr.GmmLatticeRecognizer.make_decodable">make_decodable() (kaldi.asr.GmmLatticeRecognizer method)</a>
+      <li><a href="api/kaldi.html#kaldi.alignment.Aligner.make_decodable">make_decodable() (kaldi.alignment.Aligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.GmmAligner.make_decodable">make_decodable() (kaldi.alignment.GmmAligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.NnetAligner.make_decodable">make_decodable() (kaldi.alignment.NnetAligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.FasterGmmRecognizer.make_decodable">make_decodable() (kaldi.asr.FasterGmmRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.FasterNnetRecognizer.make_decodable">make_decodable() (kaldi.asr.FasterNnetRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.html#kaldi.asr.GmmRecognizer.make_decodable">make_decodable() (kaldi.asr.GmmRecognizer method)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeBiglmGmmRecognizer.make_decodable">make_decodable() (kaldi.asr.LatticeBiglmGmmRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeBiglmNnetRecognizer.make_decodable">make_decodable() (kaldi.asr.LatticeBiglmNnetRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeGmmRecognizer.make_decodable">make_decodable() (kaldi.asr.LatticeGmmRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeNnetRecognizer.make_decodable">make_decodable() (kaldi.asr.LatticeNnetRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.NnetRecognizer.make_decodable">make_decodable() (kaldi.asr.NnetRecognizer method)</a>
+</li>
       <li><a href="api/kaldi.html#kaldi.asr.Recognizer.make_decodable">make_decodable() (kaldi.asr.Recognizer method)</a>
-</li>
-      <li><a href="api/kaldi.html#kaldi.asr.GmmLatticeRecognizer.make_decoder">make_decoder() (kaldi.asr.GmmLatticeRecognizer method)</a>
-</li>
-      <li><a href="api/kaldi.html#kaldi.asr.GmmRecognizer.make_decoder">make_decoder() (kaldi.asr.GmmRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.tree.html#kaldi.tree.make_event_pair">make_event_pair() (in module kaldi.tree)</a>
 </li>
@@ -9146,6 +9225,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.nnet_to_directed_graph">nnet_to_directed_graph() (in module kaldi.nnet3)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.alignment.NnetAligner">NnetAligner (class in kaldi.alignment)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputation">NnetComputation (class in kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputation.Command">NnetComputation.Command (class in kaldi.nnet3)</a>
@@ -9175,6 +9256,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetIo">NnetIo (class in kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetOptimizeOptions">NnetOptimizeOptions (class in kaldi.nnet3)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.NnetRecognizer">NnetRecognizer (class in kaldi.asr)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions">NnetSimpleComputationOptions (class in kaldi.nnet3)</a>
 </li>
@@ -10844,6 +10927,8 @@
 </li>
       <li><a href="api/kaldi.ivector.html#kaldi.ivector.OnlineIvectorEstimationStats.prior_offset">prior_offset() (kaldi.ivector.OnlineIvectorEstimationStats method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.AmNnetSimple.priors">priors() (kaldi.nnet3.AmNnetSimple method)</a>
+</li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.functions.DeltaFeatures.process">process() (kaldi.feat.functions.DeltaFeatures method)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.functions.ShiftedDeltaFeatures.process">process() (kaldi.feat.functions.ShiftedDeltaFeatures method)</a>
@@ -11664,6 +11749,12 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.read_config_lines">read_config_lines() (in module kaldi.nnet3)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.alignment.Aligner.read_disambig_symbols">read_disambig_symbols() (kaldi.alignment.Aligner static method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.GmmAligner.read_disambig_symbols">read_disambig_symbols() (kaldi.alignment.GmmAligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.NnetAligner.read_disambig_symbols">read_disambig_symbols() (kaldi.alignment.NnetAligner method)</a>
+</li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.read_double">read_double() (in module kaldi.base.io)</a>
 </li>
       <li><a href="api/kaldi.util.html#kaldi.util.io.read_double_matrix">read_double_matrix() (in module kaldi.util.io)</a>
@@ -11720,15 +11811,37 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.FstReadOptions.read_isymbols">read_isymbols (kaldi.fstext.FstReadOptions attribute)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.alignment.Aligner.read_lexicon">read_lexicon() (kaldi.alignment.Aligner static method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.GmmAligner.read_lexicon">read_lexicon() (kaldi.alignment.GmmAligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.NnetAligner.read_lexicon">read_lexicon() (kaldi.alignment.NnetAligner method)</a>
+</li>
       <li><a href="api/kaldi.lat.html#kaldi.lat.align.read_lexicon_for_word_align">read_lexicon_for_word_align() (in module kaldi.lat.align)</a>
 </li>
       <li><a href="api/kaldi.util.html#kaldi.util.io.read_matrix">read_matrix() (in module kaldi.util.io)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.FstReadOptions.read_mode">read_mode() (kaldi.fstext.FstReadOptions method)</a>
 </li>
-      <li><a href="api/kaldi.html#kaldi.asr.GmmLatticeRecognizer.read_model">read_model() (kaldi.asr.GmmLatticeRecognizer method)</a>
+      <li><a href="api/kaldi.html#kaldi.alignment.GmmAligner.read_model">read_model() (kaldi.alignment.GmmAligner static method)</a>
 </li>
-      <li><a href="api/kaldi.html#kaldi.asr.GmmRecognizer.read_model">read_model() (kaldi.asr.GmmRecognizer method)</a>
+      <li><a href="api/kaldi.html#kaldi.alignment.NnetAligner.read_model">read_model() (kaldi.alignment.NnetAligner static method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.FasterGmmRecognizer.read_model">read_model() (kaldi.asr.FasterGmmRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.FasterNnetRecognizer.read_model">read_model() (kaldi.asr.FasterNnetRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.GmmRecognizer.read_model">read_model() (kaldi.asr.GmmRecognizer static method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeBiglmGmmRecognizer.read_model">read_model() (kaldi.asr.LatticeBiglmGmmRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeBiglmNnetRecognizer.read_model">read_model() (kaldi.asr.LatticeBiglmNnetRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeGmmRecognizer.read_model">read_model() (kaldi.asr.LatticeGmmRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.LatticeNnetRecognizer.read_model">read_model() (kaldi.asr.LatticeNnetRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.asr.NnetRecognizer.read_model">read_model() (kaldi.asr.NnetRecognizer static method)</a>
 </li>
       <li><a href="api/kaldi.itf.html#kaldi.itf.Clusterable.read_new">read_new() (kaldi.itf.Clusterable method)</a>
 </li>
@@ -11852,11 +11965,23 @@
 </li>
       <li><a href="api/kaldi.tree.html#kaldi.tree.read_symbol_table_as_integers">read_symbol_table_as_integers() (in module kaldi.tree)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.alignment.Aligner.read_symbols">read_symbols() (kaldi.alignment.Aligner static method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.GmmAligner.read_symbols">read_symbols() (kaldi.alignment.GmmAligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.NnetAligner.read_symbols">read_symbols() (kaldi.alignment.NnetAligner method)</a>
+</li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.read_text">read_text() (in module kaldi.base.io)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.SymbolTable.read_text">read_text() (kaldi.fstext.SymbolTable method)</a>
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.read_token">read_token() (in module kaldi.base.io)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.Aligner.read_tree">read_tree() (kaldi.alignment.Aligner static method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.GmmAligner.read_tree">read_tree() (kaldi.alignment.GmmAligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.NnetAligner.read_tree">read_tree() (kaldi.alignment.NnetAligner method)</a>
 </li>
       <li><a href="api/kaldi.util.html#kaldi.util.io.read_vector">read_vector() (in module kaldi.util.io)</a>
 </li>
@@ -11947,6 +12072,8 @@
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.MleFullGmmOptions.register">register() (kaldi.gmm.MleFullGmmOptions method)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.AccumulateTreeStatsOptions.register">register() (kaldi.hmm.AccumulateTreeStatsOptions method)</a>
+</li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.HTransducerConfig.register">register() (kaldi.hmm.HTransducerConfig method)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.MapTransitionUpdateConfig.register">register() (kaldi.hmm.MapTransitionUpdateConfig method)</a>
 </li>
@@ -13918,6 +14045,8 @@
 </li>
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.AmSgmm2.split_substates">split_substates() (kaldi.sgmm2.AmSgmm2 method)</a>
 </li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.split_to_phones">split_to_phones() (in module kaldi.hmm)</a>
+</li>
       <li><a href="api/kaldi.tree.html#kaldi.tree.SplitEventMap">SplitEventMap (class in kaldi.tree)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.packed.SpMatrix">SpMatrix (class in kaldi.matrix.packed)</a>
@@ -14606,11 +14735,23 @@
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.Posterior.to_pdf_matrix">to_pdf_matrix() (kaldi.hmm.Posterior method)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.alignment.Aligner.to_phone_alignment">to_phone_alignment() (kaldi.alignment.Aligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.GmmAligner.to_phone_alignment">to_phone_alignment() (kaldi.alignment.GmmAligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.NnetAligner.to_phone_alignment">to_phone_alignment() (kaldi.alignment.NnetAligner method)</a>
+</li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.istringstream.to_str">to_str() (kaldi.base.io.istringstream method)</a>
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.ostringstream.to_str">to_str() (kaldi.base.io.ostringstream method)</a>
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.stringstream.to_str">to_str() (kaldi.base.io.stringstream method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.Aligner.to_word_alignment">to_word_alignment() (kaldi.alignment.Aligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.GmmAligner.to_word_alignment">to_word_alignment() (kaldi.alignment.GmmAligner method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.alignment.NnetAligner.to_word_alignment">to_word_alignment() (kaldi.alignment.NnetAligner method)</a>
 </li>
       <li><a href="api/kaldi.tree.html#kaldi.tree.RefineClustersOptions.top_n">top_n (kaldi.tree.RefineClustersOptions attribute)</a>
 </li>
@@ -14755,6 +14896,8 @@
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.TransitionModel.transition_id_to_transition_state">transition_id_to_transition_state() (kaldi.hmm.TransitionModel method)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.TrainingGraphCompilerOptions.transition_scale">transition_scale (kaldi.decoder.TrainingGraphCompilerOptions attribute)</a>
+</li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.HTransducerConfig.transition_scale">transition_scale (kaldi.hmm.HTransducerConfig attribute)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.TransitionModel.transition_state_to_forward_pdf">transition_state_to_forward_pdf() (kaldi.hmm.TransitionModel method)</a>
 </li>

@@ -109,7 +109,8 @@
 </ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html#module-kaldi.asr">kaldi.asr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
@@ -330,6 +331,30 @@ transition-id.</li>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.accumulate_tree_stats" title="kaldi.hmm.accumulate_tree_stats"><code class="xref py py-obj docutils literal"><span class="pre">accumulate_tree_stats</span></code></a></td>
 <td>Accumulates the stats needed for training context-dependency trees.</td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.add_self_loops" title="kaldi.hmm.add_self_loops"><code class="xref py py-obj docutils literal"><span class="pre">add_self_loops</span></code></a></td>
+<td>Expands an FST that has been built without self-loops.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.add_transition_probs" title="kaldi.hmm.add_transition_probs"><code class="xref py py-obj docutils literal"><span class="pre">add_transition_probs</span></code></a></td>
+<td>Adds transition probabilities with the supplied scales to the graph.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.add_transition_probs_lat" title="kaldi.hmm.add_transition_probs_lat"><code class="xref py py-obj docutils literal"><span class="pre">add_transition_probs_lat</span></code></a></td>
+<td>Adds transition probabilities with the supplied scales to the lattice.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.convert_alignment" title="kaldi.hmm.convert_alignment"><code class="xref py py-obj docutils literal"><span class="pre">convert_alignment</span></code></a></td>
+<td>Converts an alignment that was created using one model to another.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.convert_alignment_with_phone_map" title="kaldi.hmm.convert_alignment_with_phone_map"><code class="xref py py-obj docutils literal"><span class="pre">convert_alignment_with_phone_map</span></code></a></td>
+<td>Converts an alignment that was created using one model to another.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.convert_phnx_to_prons" title="kaldi.hmm.convert_phnx_to_prons"><code class="xref py py-obj docutils literal"><span class="pre">convert_phnx_to_prons</span></code></a></td>
+<td>Converts a phone sequence and a word sequence to a list of pronunciations</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.get_h_transducer" title="kaldi.hmm.get_h_transducer"><code class="xref py py-obj docutils literal"><span class="pre">get_h_transducer</span></code></a></td>
+<td>Creates the H transducer.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.get_ilabel_mapping" title="kaldi.hmm.get_ilabel_mapping"><code class="xref py py-obj docutils literal"><span class="pre">get_ilabel_mapping</span></code></a></td>
+<td>Produces a mapping from logical to physical HMMs.</td>
+</tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.get_pdfs_for_phones" title="kaldi.hmm.get_pdfs_for_phones"><code class="xref py py-obj docutils literal"><span class="pre">get_pdfs_for_phones</span></code></a></td>
 <td>Works out which pdfs might correspond to the given phones.</td>
 </tr>
@@ -345,7 +370,10 @@ transition-id.</li>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.read_phone_map" title="kaldi.hmm.read_phone_map"><code class="xref py py-obj docutils literal"><span class="pre">read_phone_map</span></code></a></td>
 <td>Reads a mapping from one phone set to another.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.vector_to_posterior_entries" title="kaldi.hmm.vector_to_posterior_entries"><code class="xref py py-obj docutils literal"><span class="pre">vector_to_posterior_entries</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.split_to_phones" title="kaldi.hmm.split_to_phones"><code class="xref py py-obj docutils literal"><span class="pre">split_to_phones</span></code></a></td>
+<td>Splits transition-ids in alignment into phones (one list per phone).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.vector_to_posterior_entries" title="kaldi.hmm.vector_to_posterior_entries"><code class="xref py py-obj docutils literal"><span class="pre">vector_to_posterior_entries</span></code></a></td>
 <td>Converts log-likelihoods to a list of posterior entries.</td>
 </tr>
 </tbody>
@@ -363,19 +391,22 @@ transition-id.</li>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.AccumulateTreeStatsOptions" title="kaldi.hmm.AccumulateTreeStatsOptions"><code class="xref py py-obj docutils literal"><span class="pre">AccumulateTreeStatsOptions</span></code></a></td>
 <td>Options for accumulating tree statistics.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.HmmTopology" title="kaldi.hmm.HmmTopology"><code class="xref py py-obj docutils literal"><span class="pre">HmmTopology</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.HTransducerConfig" title="kaldi.hmm.HTransducerConfig"><code class="xref py py-obj docutils literal"><span class="pre">HTransducerConfig</span></code></a></td>
+<td>CLIF wrapper for ::kaldi::HTransducerConfig</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.HmmTopology" title="kaldi.hmm.HmmTopology"><code class="xref py py-obj docutils literal"><span class="pre">HmmTopology</span></code></a></td>
 <td>HMM topology information for phones.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.MapTransitionUpdateConfig" title="kaldi.hmm.MapTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MapTransitionUpdateConfig</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.MapTransitionUpdateConfig" title="kaldi.hmm.MapTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MapTransitionUpdateConfig</span></code></a></td>
 <td>Options for MAP estimation of transition probabilities.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.MleTransitionUpdateConfig" title="kaldi.hmm.MleTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MleTransitionUpdateConfig</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.MleTransitionUpdateConfig" title="kaldi.hmm.MleTransitionUpdateConfig"><code class="xref py py-obj docutils literal"><span class="pre">MleTransitionUpdateConfig</span></code></a></td>
 <td>Options for MLE estimation of transition probabilities.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.Posterior" title="kaldi.hmm.Posterior"><code class="xref py py-obj docutils literal"><span class="pre">Posterior</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.Posterior" title="kaldi.hmm.Posterior"><code class="xref py py-obj docutils literal"><span class="pre">Posterior</span></code></a></td>
 <td>Wrapper for frame posteriors.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><code class="xref py py-obj docutils literal"><span class="pre">TransitionModel</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><code class="xref py py-obj docutils literal"><span class="pre">TransitionModel</span></code></a></td>
 <td>Transition model.</td>
 </tr>
 </tbody>
@@ -472,6 +503,33 @@ Typically a command-line option parser.</td>
 <dt id="kaldi.hmm.AccumulateTreeStatsOptions.var_floor">
 <code class="descname">var_floor</code><a class="headerlink" href="#kaldi.hmm.AccumulateTreeStatsOptions.var_floor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Variance floor for tree clustering (default=0.01).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.hmm.HTransducerConfig">
+<em class="property">class </em><code class="descclassname">kaldi.hmm.</code><code class="descname">HTransducerConfig</code><a class="headerlink" href="#kaldi.hmm.HTransducerConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>CLIF wrapper for ::kaldi::HTransducerConfig</p>
+<dl class="method">
+<dt id="kaldi.hmm.HTransducerConfig.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.HTransducerConfig.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.hmm.HTransducerConfig.transition_scale">
+<code class="descname">transition_scale</code><a class="headerlink" href="#kaldi.hmm.HTransducerConfig.transition_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scale of transition probabilities (relative to language model)</p>
 </dd></dl>
 
 </dd></dl>
@@ -828,7 +886,7 @@ tree.</li>
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.get_non_self_loop_log_prob">
 <code class="descname">get_non_self_loop_log_prob</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_non_self_loop_log_prob" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the log of non-selfloop probability mass for given transition.</p>
+<dd><p>Returns the log of non-self-loop probability mass for given transition.</p>
 </dd></dl>
 
 <dl class="method">
@@ -852,11 +910,11 @@ tree.</li>
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.get_transition_log_prob_ignoring_self_loops">
 <code class="descname">get_transition_log_prob_ignoring_self_loops</code><span class="sig-paren">(</span><em>trans_id:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.hmm.TransitionModel.get_transition_log_prob_ignoring_self_loops" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the log probability associated with given transition-id if selfloop is ignored.</p>
+<dd><p>Returns the log probability associated with given transition-id if self-loop is ignored.</p>
 <p>Returns the log-probability of a particular non-self-loop transition
 after subtracting the probability mass of the self-loop and
 renormalizing.  Specifically: for non-self-loops it returns
-log(prob-for-transition / (1 - prob-for-selfloop)).</p>
+log(prob-for-transition / (1 - prob-for-sel-floop)).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1022,19 +1080,19 @@ log(prob-for-transition / (1 - prob-for-selfloop)).</p>
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf">
 <code class="descname">transition_state_to_self_loop_pdf</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Maps transition-state to selfloop-pdf-id.</p>
+<dd><p>Maps transition-state to self-loop-pdf-id.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf_class">
 <code class="descname">transition_state_to_self_loop_pdf_class</code><span class="sig-paren">(</span><em>trans_state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.transition_state_to_self_loop_pdf_class" title="Permalink to this definition">¶</a></dt>
-<dd><p>Maps transition-state to selfloop-pdf-class.</p>
+<dd><p>Maps transition-state to self-loop-pdf-class.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.hmm.TransitionModel.tuple_to_transition_state">
 <code class="descname">tuple_to_transition_state</code><span class="sig-paren">(</span><em>phone:int</em>, <em>hmm_state:int</em>, <em>pdf:int</em>, <em>self_loop_pdf:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.hmm.TransitionModel.tuple_to_transition_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Maps (phone, hmm-state, forward-pdf-id, selfloop-pdf-id) tuple to transition-state.</p>
+<dd><p>Maps (phone, hmm-state, forward-pdf-id, self-loop-pdf-id) tuple to transition-state.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1049,6 +1107,54 @@ log(prob-for-transition / (1 - prob-for-selfloop)).</p>
 <dt id="kaldi.hmm.accumulate_tree_stats">
 <code class="descclassname">kaldi.hmm.</code><code class="descname">accumulate_tree_stats</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>info:AccumulateTreeStatsInfo</em>, <em>alignment:list&lt;int&gt;</em>, <em>features:Matrix</em><span class="sig-paren">)</span> &#x2192; dict&lt;list&lt;tuple&lt;int, int&gt;&gt;, GaussClusterable&gt;<a class="headerlink" href="#kaldi.hmm.accumulate_tree_stats" title="Permalink to this definition">¶</a></dt>
 <dd><p>Accumulates the stats needed for training context-dependency trees.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.add_self_loops">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">add_self_loops</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>disambig_syms:list&lt;int&gt;</em>, <em>self_loop_scale:float</em>, <em>reorder:bool</em>, <em>fst:StdVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.add_self_loops" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expands an FST that has been built without self-loops.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.add_transition_probs">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">add_transition_probs</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>disambig_syms:list&lt;int&gt;</em>, <em>transition_scale:float</em>, <em>self_loop_scale:float</em>, <em>fst:StdVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.add_transition_probs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds transition probabilities with the supplied scales to the graph.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.add_transition_probs_lat">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">add_transition_probs_lat</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>transition_scale:float</em>, <em>self_loop_scale:float</em>, <em>fst:LatticeVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.add_transition_probs_lat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds transition probabilities with the supplied scales to the lattice.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.convert_alignment">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">convert_alignment</code><span class="sig-paren">(</span><em>old_trans_model:TransitionModel</em>, <em>new_trans_model:TransitionModel</em>, <em>new_ctx_dep:ContextDependencyInterface</em>, <em>old_alignment:list&lt;int&gt;</em>, <em>subsample_factor:int</em>, <em>repeat_frames:bool</em>, <em>reorder:bool) -&gt; (success:bool</em>, <em>new_alignment:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.convert_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an alignment that was created using one model to another.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.convert_alignment_with_phone_map">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">convert_alignment_with_phone_map</code><span class="sig-paren">(</span><em>old_trans_model:TransitionModel</em>, <em>new_trans_model:TransitionModel</em>, <em>new_ctx_dep:ContextDependencyInterface</em>, <em>old_alignment:list&lt;int&gt;</em>, <em>subsample_factor:int</em>, <em>repeat_frames:bool</em>, <em>reorder:bool</em>, <em>phone_map:list&lt;int&gt;) -&gt; (success:bool</em>, <em>new_alignment:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.convert_alignment_with_phone_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an alignment that was created using one model to another.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.convert_phnx_to_prons">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">convert_phnx_to_prons</code><span class="sig-paren">(</span><em>phnx:list&lt;int&gt;</em>, <em>words:list&lt;int&gt;</em>, <em>word_start_sym:int</em>, <em>word_end_sym:int) -&gt; (success:bool</em>, <em>prons:list&lt;list&lt;int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.convert_phnx_to_prons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a phone sequence and a word sequence to a list of pronunciations</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.get_h_transducer">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">get_h_transducer</code><span class="sig-paren">(</span><em>ilabel_info:list&lt;list&lt;int&gt;&gt;</em>, <em>ctx_dep:ContextDependencyInterface</em>, <em>trans_model:TransitionModel</em>, <em>config:HTransducerConfig) -&gt; (h_transducer:StdVectorFst</em>, <em>disambig_syms_left:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.get_h_transducer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the H transducer.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.get_ilabel_mapping">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">get_ilabel_mapping</code><span class="sig-paren">(</span><em>ilabel_info_old:list&lt;list&lt;int&gt;&gt;</em>, <em>ctx_dep:ContextDependencyInterface</em>, <em>trans_model:TransitionModel</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.hmm.get_ilabel_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produces a mapping from logical to physical HMMs.</p>
 </dd></dl>
 
 <dl class="function">
@@ -1155,6 +1261,12 @@ defined.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.hmm.split_to_phones">
+<code class="descclassname">kaldi.hmm.</code><code class="descname">split_to_phones</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>alignment:list&lt;int&gt;) -&gt; (success:bool</em>, <em>split_alignment:list&lt;list&lt;int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.hmm.split_to_phones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits transition-ids in alignment into phones (one list per phone).</p>
 </dd></dl>
 
 <dl class="function">

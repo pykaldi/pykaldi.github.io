@@ -108,7 +108,8 @@
 </ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.html">kaldi.alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.html#module-kaldi.asr">kaldi.asr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.base.html">kaldi.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.chain.html">kaldi.chain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
@@ -295,10 +296,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">opts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">opts</span> <span class="o">=</span> <span class="n">DeterminizeLatticePhonePrunedOptions</span><span class="p">()</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">destructive</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">_api</span><span class="o">.</span><span class="n">MutableFstBase</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">destructive</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">_api</span><span class="o">.</span><span class="n">_MutableFstBase</span><span class="p">):</span>
         <span class="n">ifst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">(</span><span class="n">ifst</span><span class="p">)</span>
     <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeVectorFst</span><span class="p">()</span>
-    <span class="n">success</span> <span class="o">=</span> <span class="n">_dlp</span><span class="o">.</span><span class="n">_determinize_lattice_phone_pruned_wrapper</span><span class="p">(</span><span class="n">ifst</span><span class="p">,</span> <span class="n">trans_model</span><span class="p">,</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="n">_dlp</span><span class="o">.</span><span class="n">_determinize_lattice_phone_pruned_wrapper</span><span class="p">(</span><span class="n">trans_model</span><span class="p">,</span> <span class="n">ifst</span><span class="p">,</span>
                                                              <span class="n">prune</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>

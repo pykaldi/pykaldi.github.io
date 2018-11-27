@@ -109,7 +109,8 @@
 </ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html">kaldi.alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.html#module-kaldi.asr">kaldi.asr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
@@ -1348,7 +1349,7 @@ std::unique_ptr&lt;::kaldi::nnet3::AmNnetSimple&gt; ::kaldi::nnet3::AmNnetSimple
 <dt id="kaldi.nnet3.AmNnetSimple.get_nnet">
 <code class="descname">get_nnet</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Nnet<a class="headerlink" href="#kaldi.nnet3.AmNnetSimple.get_nnet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-::kaldi::nnet3::Nnet ::kaldi::nnet3::AmNnetSimple::GetNnet()</p>
+::kaldi::nnet3::Nnet * ::kaldi::nnet3::AmNnetSimple::GetNnetPtr()</p>
 </dd></dl>
 
 <dl class="method">
@@ -1384,6 +1385,13 @@ int ::kaldi::nnet3::AmNnetSimple::LeftContext()</p>
 <code class="descname">num_pdfs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.nnet3.AmNnetSimple.num_pdfs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
 int ::kaldi::nnet3::AmNnetSimple::NumPdfs()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.nnet3.AmNnetSimple.priors">
+<code class="descname">priors</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; VectorBase<a class="headerlink" href="#kaldi.nnet3.AmNnetSimple.priors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::kaldi::VectorBase&lt;float&gt; * ::kaldi::nnet3::AmNnetSimple::PriorsPtr()</p>
 </dd></dl>
 
 <dl class="method">

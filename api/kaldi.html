@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.asr &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>kaldi.alignment &mdash; PyKaldi 0.0.9 documentation</title>
   
 
   
@@ -109,7 +109,8 @@
 </ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.asr</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-kaldi.asr">kaldi.asr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
@@ -181,7 +182,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>kaldi.asr</li>
+      <li>kaldi.alignment</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -200,7 +201,686 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-kaldi.asr">
+  <div class="section" id="module-kaldi.alignment">
+<span id="kaldi-alignment"></span><h1>kaldi.alignment<a class="headerlink" href="#module-kaldi.alignment" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.alignment.Aligner" title="kaldi.alignment.Aligner"><code class="xref py py-obj docutils literal"><span class="pre">Aligner</span></code></a>(transition_model,&nbsp;acoustic_model,&nbsp;…)</td>
+<td>Abstract base class for speech aligners.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.alignment.GmmAligner" title="kaldi.alignment.GmmAligner"><code class="xref py py-obj docutils literal"><span class="pre">GmmAligner</span></code></a>(transition_model,&nbsp;acoustic_model,&nbsp;…)</td>
+<td>GMM-based speech aligner.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.alignment.NnetAligner" title="kaldi.alignment.NnetAligner"><code class="xref py py-obj docutils literal"><span class="pre">NnetAligner</span></code></a>(transition_model,&nbsp;…[,&nbsp;…])</td>
+<td>Nnet3-based speech aligner.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.alignment.Aligner">
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">Aligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1eba8e0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract base class for speech aligners.</p>
+<p>All concrete subclasses should override <a class="reference internal" href="#kaldi.alignment.Aligner.make_decodable" title="kaldi.alignment.Aligner.make_decodable"><code class="xref py py-meth docutils literal"><span class="pre">make_decodable()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>acoustic_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The acoustic model.</li>
+<li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – </li>
+<li><strong>lexicon</strong> (<em>StdFst</em>) – The lexicon FST.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
+<code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code> includes symbols instead of integer indices.</li>
+<li><strong>disambig_symbols</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Disambiguation symbols.</li>
+<li><strong>graph_compiler_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.TrainingGraphCompilerOptions" title="kaldi.decoder.TrainingGraphCompilerOptions"><em>TrainingGraphCompilerOptions</em></a>) – Configuration
+options for graph compiler.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Decoding beam used in alignment.</li>
+<li><strong>transition_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on non-self-loop transition
+probabilities.</li>
+<li><strong>self_loop_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on self-loop transition
+probabilities.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.alignment.Aligner.align">
+<code class="descname">align</code><span class="sig-paren">(</span><em>features</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.align"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns acoustic features with text.</p>
+<p>Alignment output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level alignment</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the “text” input should be a
+string of space separated integer indices. Otherwise it should be a
+string of space separated symbols. The “weight” output is a lattice
+weight consisting of (graph-score, acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to align.</li>
+<li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Reference text to align.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary representing alignment output.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If alignment fails.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.Aligner.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface">DecodableInterface</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.alignment.Aligner.read_disambig_symbols">
+<em class="property">static </em><code class="descname">read_disambig_symbols</code><span class="sig-paren">(</span><em>disambig_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.read_disambig_symbols"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.read_disambig_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads disambiguation symbols from an extended filename.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.alignment.Aligner.read_lexicon">
+<em class="property">static </em><code class="descname">read_lexicon</code><span class="sig-paren">(</span><em>lexicon_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.read_lexicon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.read_lexicon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads lexicon FST from an extended filename.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.alignment.Aligner.read_symbols">
+<em class="property">static </em><code class="descname">read_symbols</code><span class="sig-paren">(</span><em>symbols_filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.read_symbols"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.read_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads symbol table from file.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.alignment.Aligner.read_tree">
+<em class="property">static </em><code class="descname">read_tree</code><span class="sig-paren">(</span><em>tree_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.read_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.read_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads phonetic decision tree from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.Aligner.to_phone_alignment">
+<code class="descname">to_phone_alignment</code><span class="sig-paren">(</span><em>alignment</em>, <em>phones=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.to_phone_alignment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.to_phone_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts frame-level alignment to phone-level alignment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>alignment</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Frame-level alignment.</li>
+<li><strong>phones</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The phone symbol table. If provided, output
+includes symbols instead of integer indices.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of triplets representing, for
+each phone in the input, the phone index/symbol, the begin time (in
+frames) and the duration (in frames).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List[<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.Aligner.to_word_alignment">
+<code class="descname">to_word_alignment</code><span class="sig-paren">(</span><em>best_path</em>, <em>word_boundary_info</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.to_word_alignment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.to_word_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts best alignment path to word-level alignment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>best_path</strong> (<em>CompactLattice</em>) – Best alignment path.</li>
+<li><strong>word_boundary_info</strong> (<a class="reference internal" href="kaldi.lat.html#kaldi.lat.align.WordBoundaryInfo" title="kaldi.lat.align.WordBoundaryInfo"><em>WordBoundaryInfo</em></a>) – Word boundary information.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of triplets representing, for each
+word in the input, the word index/symbol, the begin time (in frames)
+and the duration (in frames). The zero/epsilon words correspond to
+optional silences.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List[<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.alignment.GmmAligner">
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">GmmAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1eba8e0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner" title="Permalink to this definition">¶</a></dt>
+<dd><p>GMM-based speech aligner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>acoustic_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The acoustic model.</li>
+<li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – </li>
+<li><strong>lexicon</strong> (<em>StdFst</em>) – The lexicon FST.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” input of
+<a class="reference internal" href="#kaldi.alignment.GmmAligner.align" title="kaldi.alignment.GmmAligner.align"><code class="xref py py-meth docutils literal"><span class="pre">align()</span></code></a> should include symbols instead of integer indices.</li>
+<li><strong>disambig_symbols</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Disambiguation symbols.</li>
+<li><strong>graph_compiler_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.TrainingGraphCompilerOptions" title="kaldi.decoder.TrainingGraphCompilerOptions"><em>TrainingGraphCompilerOptions</em></a>) – Configuration
+options for graph compiler.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Decoding beam used in alignment.</li>
+<li><strong>transition_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on non-self-loop transition
+probabilities.</li>
+<li><strong>self_loop_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on self-loop transition
+probabilities.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.alignment.GmmAligner.align">
+<code class="descname">align</code><span class="sig-paren">(</span><em>features</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns acoustic features with text.</p>
+<p>Alignment output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level alignment</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the “text” input should be a
+string of space separated integer indices. Otherwise it should be a
+string of space separated symbols. The “weight” output is a lattice
+weight consisting of (graph-score, acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to align.</li>
+<li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Reference text to align.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary representing alignment output.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If alignment fails.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kaldi.alignment.GmmAligner.from_files">
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1e8f2b0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new GMM aligner from given files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the model.</li>
+<li><strong>tree_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the phonetic
+decision tree.</li>
+<li><strong>lexicon_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the lexicon
+FST.</li>
+<li><strong>symbols_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The symbols file. If provided, “text” input
+of <a class="reference internal" href="#kaldi.alignment.GmmAligner.align" title="kaldi.alignment.GmmAligner.align"><code class="xref py py-meth docutils literal"><span class="pre">align()</span></code></a> should include symbols instead of integer
+indices.</li>
+<li><strong>disambig_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the list
+of disambiguation symbols.</li>
+<li><strong>graph_compiler_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.TrainingGraphCompilerOptions" title="kaldi.decoder.TrainingGraphCompilerOptions"><em>TrainingGraphCompilerOptions</em></a>) – Configuration
+options for graph compiler.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Decoding beam used in alignment.</li>
+<li><strong>transition_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on non-self-loop transition
+probabilities.</li>
+<li><strong>self_loop_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on self-loop transition
+probabilities.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new GMM aligner object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.GmmAligner.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
+log-likelihoods.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.DecodableAmDiagGmmScaled" title="kaldi.gmm.am.DecodableAmDiagGmmScaled">DecodableAmDiagGmmScaled</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.GmmAligner.read_disambig_symbols">
+<code class="descname">read_disambig_symbols</code><span class="sig-paren">(</span><em>disambig_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.read_disambig_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads disambiguation symbols from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.GmmAligner.read_lexicon">
+<code class="descname">read_lexicon</code><span class="sig-paren">(</span><em>lexicon_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.read_lexicon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads lexicon FST from an extended filename.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.alignment.GmmAligner.read_model">
+<em class="property">static </em><code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner.read_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads model from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.GmmAligner.read_symbols">
+<code class="descname">read_symbols</code><span class="sig-paren">(</span><em>symbols_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.read_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads symbol table from file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.GmmAligner.read_tree">
+<code class="descname">read_tree</code><span class="sig-paren">(</span><em>tree_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.read_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads phonetic decision tree from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.GmmAligner.to_phone_alignment">
+<code class="descname">to_phone_alignment</code><span class="sig-paren">(</span><em>alignment</em>, <em>phones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.to_phone_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts frame-level alignment to phone-level alignment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>alignment</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Frame-level alignment.</li>
+<li><strong>phones</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The phone symbol table. If provided, output
+includes symbols instead of integer indices.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of triplets representing, for
+each phone in the input, the phone index/symbol, the begin time (in
+frames) and the duration (in frames).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List[<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.GmmAligner.to_word_alignment">
+<code class="descname">to_word_alignment</code><span class="sig-paren">(</span><em>best_path</em>, <em>word_boundary_info</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.to_word_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts best alignment path to word-level alignment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>best_path</strong> (<em>CompactLattice</em>) – Best alignment path.</li>
+<li><strong>word_boundary_info</strong> (<a class="reference internal" href="kaldi.lat.html#kaldi.lat.align.WordBoundaryInfo" title="kaldi.lat.align.WordBoundaryInfo"><em>WordBoundaryInfo</em></a>) – Word boundary information.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of triplets representing, for each
+word in the input, the word index/symbol, the begin time (in frames)
+and the duration (in frames). The zero/epsilon words correspond to
+optional silences.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List[<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.alignment.NnetAligner">
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">NnetAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x2129390&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x21006d0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nnet3-based speech aligner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>acoustic_model</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.AmNnetSimple" title="kaldi.nnet3.AmNnetSimple"><em>AmNnetSimple</em></a>) – The acoustic model.</li>
+<li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – </li>
+<li><strong>lexicon</strong> (<em>StdFst</em>) – The lexicon FST.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” input of
+<a class="reference internal" href="#kaldi.alignment.NnetAligner.align" title="kaldi.alignment.NnetAligner.align"><code class="xref py py-meth docutils literal"><span class="pre">align()</span></code></a> should include symbols instead of integer indices.</li>
+<li><strong>disambig_symbols</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Disambiguation symbols.</li>
+<li><strong>graph_compiler_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.TrainingGraphCompilerOptions" title="kaldi.decoder.TrainingGraphCompilerOptions"><em>TrainingGraphCompilerOptions</em></a>) – Configuration
+options for graph compiler.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Decoding beam used in alignment.</li>
+<li><strong>transition_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on non-self-loop transition
+probabilities.</li>
+<li><strong>self_loop_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on self-loop transition
+probabilities.</li>
+<li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options for
+simple nnet3 am decodable objects.</li>
+<li><strong>online_ivector_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Onlne ivector period. Relevant only if
+online ivectors are used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.alignment.NnetAligner.align">
+<code class="descname">align</code><span class="sig-paren">(</span><em>features</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns acoustic features with text.</p>
+<p>Alignment output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level alignment</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the “text” input should be a
+string of space separated integer indices. Otherwise it should be a
+string of space separated symbols. The “weight” output is a lattice
+weight consisting of (graph-score, acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to align.</li>
+<li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Reference text to align.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary representing alignment output.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If alignment fails.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kaldi.alignment.NnetAligner.from_files">
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1e3a830&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x21b08c0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new nnet3 aligner from given files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the model.</li>
+<li><strong>tree_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the phonetic
+decision tree.</li>
+<li><strong>lexicon_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the lexicon
+FST.</li>
+<li><strong>symbols_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The symbols file. If provided, “text” input
+of <a class="reference internal" href="#kaldi.alignment.NnetAligner.align" title="kaldi.alignment.NnetAligner.align"><code class="xref py py-meth docutils literal"><span class="pre">align()</span></code></a> should include symbols instead of integer
+indices.</li>
+<li><strong>disambig_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the list
+of disambiguation symbols.</li>
+<li><strong>graph_compiler_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.TrainingGraphCompilerOptions" title="kaldi.decoder.TrainingGraphCompilerOptions"><em>TrainingGraphCompilerOptions</em></a>) – Configuration
+options for graph compiler.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Decoding beam used in alignment.</li>
+<li><strong>transition_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on non-self-loop transition
+probabilities.</li>
+<li><strong>self_loop_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on self-loop transition
+probabilities.</li>
+<li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options
+for simple nnet3 am decodable objects.</li>
+<li><strong>online_ivector_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Onlne ivector period. Relevant only if
+online ivectors are used.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new nnet3 aligner object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.NnetAligner.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<p>Input can be just a feature matrix or a tuple of a feature matrix and
+an ivector or a tuple of a feature matrix and an online ivector matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a><em>] or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>]</em>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
+log-likelihoods.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.DecodableAmNnetSimple" title="kaldi.nnet3.DecodableAmNnetSimple">DecodableAmNnetSimple</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.NnetAligner.read_disambig_symbols">
+<code class="descname">read_disambig_symbols</code><span class="sig-paren">(</span><em>disambig_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.read_disambig_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads disambiguation symbols from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.NnetAligner.read_lexicon">
+<code class="descname">read_lexicon</code><span class="sig-paren">(</span><em>lexicon_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.read_lexicon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads lexicon FST from an extended filename.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.alignment.NnetAligner.read_model">
+<em class="property">static </em><code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner.read_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads model from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.NnetAligner.read_symbols">
+<code class="descname">read_symbols</code><span class="sig-paren">(</span><em>symbols_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.read_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads symbol table from file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.NnetAligner.read_tree">
+<code class="descname">read_tree</code><span class="sig-paren">(</span><em>tree_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.read_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads phonetic decision tree from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.NnetAligner.to_phone_alignment">
+<code class="descname">to_phone_alignment</code><span class="sig-paren">(</span><em>alignment</em>, <em>phones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.to_phone_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts frame-level alignment to phone-level alignment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>alignment</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Frame-level alignment.</li>
+<li><strong>phones</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The phone symbol table. If provided, output
+includes symbols instead of integer indices.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of triplets representing, for
+each phone in the input, the phone index/symbol, the begin time (in
+frames) and the duration (in frames).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List[<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.NnetAligner.to_word_alignment">
+<code class="descname">to_word_alignment</code><span class="sig-paren">(</span><em>best_path</em>, <em>word_boundary_info</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.to_word_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts best alignment path to word-level alignment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>best_path</strong> (<em>CompactLattice</em>) – Best alignment path.</li>
+<li><strong>word_boundary_info</strong> (<a class="reference internal" href="kaldi.lat.html#kaldi.lat.align.WordBoundaryInfo" title="kaldi.lat.align.WordBoundaryInfo"><em>WordBoundaryInfo</em></a>) – Word boundary information.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of triplets representing, for each
+word in the input, the word index/symbol, the begin time (in frames)
+and the duration (in frames). The zero/epsilon words correspond to
+optional silences.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List[<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.asr">
 <span id="kaldi-asr"></span><h1>kaldi.asr<a class="headerlink" href="#module-kaldi.asr" title="Permalink to this headline">¶</a></h1>
 <p>This module provides a general <a class="reference internal" href="#kaldi.asr.Recognizer" title="kaldi.asr.Recognizer"><code class="xref py py-obj docutils literal"><span class="pre">Recognizer</span></code></a> base class and a number of
 high-level speech recognizers with an easy to use API.</p>
@@ -216,23 +896,40 @@ recognizers in this module cover only the most “typical” combinations.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.asr.GmmLatticeRecognizer" title="kaldi.asr.GmmLatticeRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">GmmLatticeRecognizer</span></code></a>(transition_model,&nbsp;…)</td>
-<td>GMM-based lattice generating speech recognizer.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.asr.FasterGmmRecognizer" title="kaldi.asr.FasterGmmRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">FasterGmmRecognizer</span></code></a>(transition_model,&nbsp;…[,&nbsp;…])</td>
+<td>Faster GMM-based speech recognizer.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.asr.GmmRecognizer" title="kaldi.asr.GmmRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">GmmRecognizer</span></code></a>(transition_model,&nbsp;…[,&nbsp;…])</td>
-<td>GMM-based speech recognizer.</td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.asr.FasterNnetRecognizer" title="kaldi.asr.FasterNnetRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">FasterNnetRecognizer</span></code></a>(transition_model,&nbsp;…)</td>
+<td>Faster nnet3-based speech recognizer.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.asr.GmmRecognizer" title="kaldi.asr.GmmRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">GmmRecognizer</span></code></a>(transition_model,&nbsp;…[,&nbsp;…])</td>
+<td>Base class for GMM-based speech recognizers.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.asr.LatticeBiglmGmmRecognizer" title="kaldi.asr.LatticeBiglmGmmRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">LatticeBiglmGmmRecognizer</span></code></a>(transition_model,&nbsp;…)</td>
+<td>Lattice generating big LM GMM-based speech recognizer.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.asr.LatticeBiglmNnetRecognizer" title="kaldi.asr.LatticeBiglmNnetRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">LatticeBiglmNnetRecognizer</span></code></a>(transition_model,&nbsp;…)</td>
+<td>Lattice generating big LM nnet3-based speech recognizer.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.asr.LatticeGmmRecognizer" title="kaldi.asr.LatticeGmmRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">LatticeGmmRecognizer</span></code></a>(transition_model,&nbsp;…)</td>
+<td>Lattice generating GMM-based speech recognizer.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.asr.LatticeNnetRecognizer" title="kaldi.asr.LatticeNnetRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">LatticeNnetRecognizer</span></code></a>(transition_model,&nbsp;…)</td>
+<td>Lattice generating nnet3-based speech recognizer.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.asr.NnetRecognizer" title="kaldi.asr.NnetRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">NnetRecognizer</span></code></a>(transition_model,&nbsp;…[,&nbsp;…])</td>
+<td>Base class for nnet3-based speech recognizers.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.asr.Recognizer" title="kaldi.asr.Recognizer"><code class="xref py py-obj docutils literal"><span class="pre">Recognizer</span></code></a>(transition_model,&nbsp;acoustic_model,&nbsp;…)</td>
-<td>Speech recognizer.</td>
+<td>Abstract base class for speech recognizers.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="kaldi.asr.Recognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">Recognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>acoustic_scale=0.1</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#Recognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.Recognizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Speech recognizer.</p>
-<p>This is an abstract base class defining a simple interface for decoding
-acoustic features. All subclasses should override <a class="reference internal" href="#kaldi.asr.Recognizer.make_decodable" title="kaldi.asr.Recognizer.make_decodable"><code class="xref py py-meth docutils literal"><span class="pre">make_decodable()</span></code></a>.</p>
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">Recognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#Recognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.Recognizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract base class for speech recognizers.</p>
+<p>All concrete subclasses should override <a class="reference internal" href="#kaldi.asr.Recognizer.make_decodable" title="kaldi.asr.Recognizer.make_decodable"><code class="xref py py-meth docutils literal"><span class="pre">make_decodable()</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -243,10 +940,10 @@ acoustic features. All subclasses should override <a class="reference internal" 
 <li><strong>decoder</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The decoder.</li>
 <li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
 <a class="reference internal" href="#kaldi.asr.Recognizer.decode" title="kaldi.asr.Recognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
-<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
 <li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
 final state was active on the last frame.</li>
 <li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
 </ul>
 </td>
 </tr>
@@ -259,9 +956,9 @@ final state was active on the last frame.</li>
 <p>Decoding output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="18%" />
-<col width="38%" />
-<col width="44%" />
+<col width="17%" />
+<col width="39%" />
+<col width="43%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">key</th>
@@ -271,31 +968,31 @@ final state was active on the last frame.</li>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>“alignment”</td>
-<td>Frame-level alignment.</td>
+<td>Frame-level alignment</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
 </tr>
 <tr class="row-odd"><td>“best_path”</td>
-<td>Best lattice path.</td>
+<td>Best lattice path</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
 </tr>
 <tr class="row-even"><td>“lattice”</td>
-<td>Output lattice.</td>
+<td>Output lattice</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">Lattice</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
 </tr>
 <tr class="row-odd"><td>“likelihood”</td>
-<td>Log-likehood of best path.</td>
+<td>Log-likelihood of best path</td>
 <td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
 </tr>
 <tr class="row-even"><td>“text”</td>
-<td>Output transcript.</td>
+<td>Output transcript</td>
 <td><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
 </tr>
 <tr class="row-odd"><td>“weight”</td>
-<td>Cost of best path.</td>
+<td>Cost of best path</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
 </tr>
 <tr class="row-even"><td>“words”</td>
-<td>Words on best path.</td>
+<td>Words on best path</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
 </tr>
 </tbody>
@@ -343,10 +1040,8 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="class">
 <dt id="kaldi.asr.GmmRecognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">GmmRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>acoustic_scale=0.1</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#GmmRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.GmmRecognizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>GMM-based speech recognizer.</p>
-<p>This class provides a simple interface for decoding acoustic features with a
-diagonal GMM.</p>
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">GmmRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#GmmRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.GmmRecognizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for GMM-based speech recognizers.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -354,13 +1049,13 @@ diagonal GMM.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
 <li><strong>acoustic_model</strong> (<a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm" title="kaldi.gmm.am.AmDiagGmm"><em>AmDiagGmm</em></a>) – The acoustic model.</li>
-<li><strong>decoder</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.FasterDecoder" title="kaldi.decoder.FasterDecoder"><em>FasterDecoder</em></a>) – The decoder.</li>
+<li><strong>decoder</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The decoder.</li>
 <li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
 <a class="reference internal" href="#kaldi.asr.GmmRecognizer.decode" title="kaldi.asr.GmmRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
-<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
 <li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
 final state was active on the last frame.</li>
 <li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
 </ul>
 </td>
 </tr>
@@ -373,9 +1068,9 @@ final state was active on the last frame.</li>
 <p>Decoding output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="18%" />
-<col width="38%" />
-<col width="44%" />
+<col width="17%" />
+<col width="39%" />
+<col width="43%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">key</th>
@@ -385,31 +1080,31 @@ final state was active on the last frame.</li>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>“alignment”</td>
-<td>Frame-level alignment.</td>
+<td>Frame-level alignment</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
 </tr>
 <tr class="row-odd"><td>“best_path”</td>
-<td>Best lattice path.</td>
+<td>Best lattice path</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
 </tr>
 <tr class="row-even"><td>“lattice”</td>
-<td>Output lattice.</td>
+<td>Output lattice</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">Lattice</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
 </tr>
 <tr class="row-odd"><td>“likelihood”</td>
-<td>Log-likehood of best path.</td>
+<td>Log-likelihood of best path</td>
 <td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
 </tr>
 <tr class="row-even"><td>“text”</td>
-<td>Output transcript.</td>
+<td>Output transcript</td>
 <td><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
 </tr>
 <tr class="row-odd"><td>“weight”</td>
-<td>Cost of best path.</td>
+<td>Cost of best path</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
 </tr>
 <tr class="row-even"><td>“words”</td>
-<td>Words on best path.</td>
+<td>Words on best path</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
 </tr>
 </tbody>
@@ -436,9 +1131,128 @@ separated symbols. The “weight” output is a lattice weight consisting of
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.asr.GmmRecognizer.from_files">
-<code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>decoder_opts=None</em>, <em>acoustic_scale=0.1</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.GmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a new recognizer from given files.</p>
+<dt id="kaldi.asr.GmmRecognizer.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#GmmRecognizer.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.GmmRecognizer.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
+log-likelihoods.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.DecodableAmDiagGmmScaled" title="kaldi.gmm.am.DecodableAmDiagGmmScaled">DecodableAmDiagGmmScaled</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.asr.GmmRecognizer.read_model">
+<em class="property">static </em><code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#GmmRecognizer.read_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.GmmRecognizer.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads model from an extended filename.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.asr.FasterGmmRecognizer">
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">FasterGmmRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterGmmRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterGmmRecognizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Faster GMM-based speech recognizer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>acoustic_model</strong> (<a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm" title="kaldi.gmm.am.AmDiagGmm"><em>AmDiagGmm</em></a>) – The acoustic model.</li>
+<li><strong>decoder</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.FasterDecoder" title="kaldi.decoder.FasterDecoder"><em>FasterDecoder</em></a>) – The decoder.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
+<a class="reference internal" href="#kaldi.asr.FasterGmmRecognizer.decode" title="kaldi.asr.FasterGmmRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
+final state was active on the last frame.</li>
+<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.asr.FasterGmmRecognizer.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.FasterGmmRecognizer.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes acoustic features.</p>
+<p>Decoding output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="39%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level alignment</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“lattice”</td>
+<td>Output lattice</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">Lattice</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-odd"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-even"><td>“text”</td>
+<td>Output transcript</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+<tr class="row-even"><td>“words”</td>
+<td>Words on best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The “lattice” output is produced only if the decoder can generate
+lattices. It will be a raw state-level lattice if <code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice</span>
+<span class="pre">==</span> <span class="pre">False</span></code>. Otherwise, it will be a compact deterministic lattice.</p>
+<p>If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the “text” output will be a string of
+space separated integer indices. Otherwise it will be a string of space
+separated symbols. The “weight” output is a lattice weight consisting of
+(graph-score, acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to decode.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing decoding output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If decoding fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kaldi.asr.FasterGmmRecognizer.from_files">
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_faster_decoder.FasterDecoderOptions object at 0x20db6c0&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new GMM recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -447,16 +1261,17 @@ separated symbols. The “weight” output is a lattice weight consisting of
 <li><strong>model_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the model.</li>
 <li><strong>graph_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the graph.</li>
 <li><strong>symbols_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The symbols file. If provided, “text” output
-of <a class="reference internal" href="#kaldi.asr.GmmRecognizer.decode" title="kaldi.asr.GmmRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
-<li><strong>decoder_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Configuration options for the decoder.</li>
-<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+of <a class="reference internal" href="#kaldi.asr.FasterGmmRecognizer.decode" title="kaldi.asr.FasterGmmRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
 <li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
 final state was active on the last frame.</li>
 <li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>decoder_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.FasterDecoderOptions" title="kaldi.decoder.FasterDecoderOptions"><em>FasterDecoderOptions</em></a>) – Configuration options for the
+decoder.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new recognizer object.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new GMM recognizer object.</p>
 </td>
 </tr>
 </tbody>
@@ -464,8 +1279,8 @@ final state was active on the last frame.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.asr.GmmRecognizer.make_decodable">
-<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.GmmRecognizer.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.asr.FasterGmmRecognizer.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.FasterGmmRecognizer.make_decodable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new decodable object from input features.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -483,25 +1298,17 @@ log-likelihoods.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.asr.GmmRecognizer.make_decoder">
-<code class="descname">make_decoder</code><span class="sig-paren">(</span><em>graph</em>, <em>opts=&lt;_faster_decoder.FasterDecoderOptions object at 0x2b85cd0&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.GmmRecognizer.make_decoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a new decoder from the graph and configuration options.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.asr.GmmRecognizer.read_model">
-<code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.GmmRecognizer.read_model" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.asr.FasterGmmRecognizer.read_model">
+<code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.FasterGmmRecognizer.read_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads model from an extended filename.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
-<dt id="kaldi.asr.GmmLatticeRecognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">GmmLatticeRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>acoustic_scale=0.1</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#GmmLatticeRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.GmmLatticeRecognizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>GMM-based lattice generating speech recognizer.</p>
-<p>This class provides a simple interface for decoding acoustic features with a
-diagonal GMM.</p>
+<dt id="kaldi.asr.LatticeGmmRecognizer">
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeGmmRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeGmmRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeGmmRecognizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lattice generating GMM-based speech recognizer.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -511,26 +1318,26 @@ diagonal GMM.</p>
 <li><strong>acoustic_model</strong> (<a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm" title="kaldi.gmm.am.AmDiagGmm"><em>AmDiagGmm</em></a>) – The acoustic model.</li>
 <li><strong>decoder</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder" title="kaldi.decoder.LatticeFasterDecoder"><em>LatticeFasterDecoder</em></a>) – The decoder.</li>
 <li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
-<a class="reference internal" href="#kaldi.asr.GmmLatticeRecognizer.decode" title="kaldi.asr.GmmLatticeRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
-<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+<a class="reference internal" href="#kaldi.asr.LatticeGmmRecognizer.decode" title="kaldi.asr.LatticeGmmRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
 <li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
 final state was active on the last frame.</li>
 <li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="kaldi.asr.GmmLatticeRecognizer.decode">
-<code class="descname">decode</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.GmmLatticeRecognizer.decode" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.asr.LatticeGmmRecognizer.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeGmmRecognizer.decode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decodes acoustic features.</p>
 <p>Decoding output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="18%" />
-<col width="38%" />
-<col width="44%" />
+<col width="17%" />
+<col width="39%" />
+<col width="43%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">key</th>
@@ -540,31 +1347,332 @@ final state was active on the last frame.</li>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>“alignment”</td>
-<td>Frame-level alignment.</td>
+<td>Frame-level alignment</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
 </tr>
 <tr class="row-odd"><td>“best_path”</td>
-<td>Best lattice path.</td>
+<td>Best lattice path</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
 </tr>
 <tr class="row-even"><td>“lattice”</td>
-<td>Output lattice.</td>
+<td>Output lattice</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">Lattice</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
 </tr>
 <tr class="row-odd"><td>“likelihood”</td>
-<td>Log-likehood of best path.</td>
+<td>Log-likelihood of best path</td>
 <td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
 </tr>
 <tr class="row-even"><td>“text”</td>
-<td>Output transcript.</td>
+<td>Output transcript</td>
 <td><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
 </tr>
 <tr class="row-odd"><td>“weight”</td>
-<td>Cost of best path.</td>
+<td>Cost of best path</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
 </tr>
 <tr class="row-even"><td>“words”</td>
-<td>Words on best path.</td>
+<td>Words on best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The “lattice” output is produced only if the decoder can generate
+lattices. It will be a raw state-level lattice if <code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice</span>
+<span class="pre">==</span> <span class="pre">False</span></code>. Otherwise, it will be a compact deterministic lattice.</p>
+<p>If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the “text” output will be a string of
+space separated integer indices. Otherwise it will be a string of space
+separated symbols. The “weight” output is a lattice weight consisting of
+(graph-score, acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to decode.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing decoding output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If decoding fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kaldi.asr.LatticeGmmRecognizer.from_files">
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x1ee20f0&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new GMM recognizer from given files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the model.</li>
+<li><strong>graph_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the graph.</li>
+<li><strong>symbols_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The symbols file. If provided, “text” output
+of <a class="reference internal" href="#kaldi.asr.LatticeGmmRecognizer.decode" title="kaldi.asr.LatticeGmmRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
+final state was active on the last frame.</li>
+<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>decoder_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoderOptions" title="kaldi.decoder.LatticeFasterDecoderOptions"><em>LatticeFasterDecoderOptions</em></a>) – Configuration options
+for the decoder.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new GMM recognizer object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.asr.LatticeGmmRecognizer.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeGmmRecognizer.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
+log-likelihoods.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.DecodableAmDiagGmmScaled" title="kaldi.gmm.am.DecodableAmDiagGmmScaled">DecodableAmDiagGmmScaled</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.asr.LatticeGmmRecognizer.read_model">
+<code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeGmmRecognizer.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads model from an extended filename.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.asr.LatticeBiglmGmmRecognizer">
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeBiglmGmmRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmGmmRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmGmmRecognizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lattice generating big LM GMM-based speech recognizer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>acoustic_model</strong> (<a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm" title="kaldi.gmm.am.AmDiagGmm"><em>AmDiagGmm</em></a>) – The acoustic model.</li>
+<li><strong>decoder</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeBiglmFasterDecoder" title="kaldi.decoder.LatticeBiglmFasterDecoder"><em>LatticeBiglmFasterDecoder</em></a>) – The decoder.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
+<a class="reference internal" href="#kaldi.asr.LatticeBiglmGmmRecognizer.decode" title="kaldi.asr.LatticeBiglmGmmRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
+final state was active on the last frame.</li>
+<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.asr.LatticeBiglmGmmRecognizer.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeBiglmGmmRecognizer.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes acoustic features.</p>
+<p>Decoding output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="39%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level alignment</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“lattice”</td>
+<td>Output lattice</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">Lattice</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-odd"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-even"><td>“text”</td>
+<td>Output transcript</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+<tr class="row-even"><td>“words”</td>
+<td>Words on best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The “lattice” output is produced only if the decoder can generate
+lattices. It will be a raw state-level lattice if <code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice</span>
+<span class="pre">==</span> <span class="pre">False</span></code>. Otherwise, it will be a compact deterministic lattice.</p>
+<p>If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the “text” output will be a string of
+space separated integer indices. Otherwise it will be a string of space
+separated symbols. The “weight” output is a lattice weight consisting of
+(graph-score, acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to decode.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing decoding output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If decoding fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kaldi.asr.LatticeBiglmGmmRecognizer.from_files">
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>old_lm_rxfilename</em>, <em>new_lm_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x13423c0&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new GMM recognizer from given files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the model.</li>
+<li><strong>graph_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the graph.</li>
+<li><strong>old_lm_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the old LM.</li>
+<li><strong>new_lm_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the new LM.</li>
+<li><strong>symbols_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The symbols file. If provided, “text” output
+of <a class="reference internal" href="#kaldi.asr.LatticeBiglmGmmRecognizer.decode" title="kaldi.asr.LatticeBiglmGmmRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
+final state was active on the last frame.</li>
+<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>decoder_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoderOptions" title="kaldi.decoder.LatticeFasterDecoderOptions"><em>LatticeFasterDecoderOptions</em></a>) – Configuration
+options for the decoder.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new GMM recognizer object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.asr.LatticeBiglmGmmRecognizer.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeBiglmGmmRecognizer.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
+log-likelihoods.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.DecodableAmDiagGmmScaled" title="kaldi.gmm.am.DecodableAmDiagGmmScaled">DecodableAmDiagGmmScaled</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.asr.LatticeBiglmGmmRecognizer.read_model">
+<code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeBiglmGmmRecognizer.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads model from an extended filename.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.asr.NnetRecognizer">
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">NnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x219c0d0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#NnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.NnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for nnet3-based speech recognizers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>acoustic_model</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.AmNnetSimple" title="kaldi.nnet3.AmNnetSimple"><em>AmNnetSimple</em></a>) – The acoustic model.</li>
+<li><strong>decoder</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The decoder.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
+<a class="reference internal" href="#kaldi.asr.NnetRecognizer.decode" title="kaldi.asr.NnetRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
+final state was active on the last frame.</li>
+<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options for
+simple nnet3 am decodable objects.</li>
+<li><strong>online_ivector_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Onlne ivector period. Relevant only if
+online ivectors are used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.asr.NnetRecognizer.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.NnetRecognizer.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes acoustic features.</p>
+<p>Decoding output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="39%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level alignment</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“lattice”</td>
+<td>Output lattice</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">Lattice</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-odd"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-even"><td>“text”</td>
+<td>Output transcript</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+<tr class="row-even"><td>“words”</td>
+<td>Words on best path</td>
 <td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
 </tr>
 </tbody>
@@ -591,9 +1699,133 @@ separated symbols. The “weight” output is a lattice weight consisting of
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.asr.GmmLatticeRecognizer.from_files">
-<code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>decoder_opts=None</em>, <em>acoustic_scale=0.1</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.GmmLatticeRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a new recognizer from given files.</p>
+<dt id="kaldi.asr.NnetRecognizer.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#NnetRecognizer.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.NnetRecognizer.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<p>Input can be just a feature matrix or a tuple of a feature matrix and
+an ivector or a tuple of a feature matrix and an online ivector matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a><em>] or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>]</em>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
+log-likelihoods.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.DecodableAmNnetSimple" title="kaldi.nnet3.DecodableAmNnetSimple">DecodableAmNnetSimple</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.asr.NnetRecognizer.read_model">
+<em class="property">static </em><code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#NnetRecognizer.read_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.NnetRecognizer.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads model from an extended filename.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.asr.FasterNnetRecognizer">
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">FasterNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x216c610&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Faster nnet3-based speech recognizer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>acoustic_model</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.AmNnetSimple" title="kaldi.nnet3.AmNnetSimple"><em>AmNnetSimple</em></a>) – The acoustic model.</li>
+<li><strong>decoder</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.FasterDecoder" title="kaldi.decoder.FasterDecoder"><em>FasterDecoder</em></a>) – The decoder.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
+<a class="reference internal" href="#kaldi.asr.FasterNnetRecognizer.decode" title="kaldi.asr.FasterNnetRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
+final state was active on the last frame.</li>
+<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options for
+simple nnet3 am decodable objects.</li>
+<li><strong>online_ivector_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Onlne ivector period. Relevant only if
+online ivectors are used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.asr.FasterNnetRecognizer.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes acoustic features.</p>
+<p>Decoding output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="39%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level alignment</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“lattice”</td>
+<td>Output lattice</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">Lattice</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-odd"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-even"><td>“text”</td>
+<td>Output transcript</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+<tr class="row-even"><td>“words”</td>
+<td>Words on best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The “lattice” output is produced only if the decoder can generate
+lattices. It will be a raw state-level lattice if <code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice</span>
+<span class="pre">==</span> <span class="pre">False</span></code>. Otherwise, it will be a compact deterministic lattice.</p>
+<p>If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the “text” output will be a string of
+space separated integer indices. Otherwise it will be a string of space
+separated symbols. The “weight” output is a lattice weight consisting of
+(graph-score, acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to decode.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing decoding output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If decoding fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kaldi.asr.FasterNnetRecognizer.from_files">
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_faster_decoder.FasterDecoderOptions object at 0x21306d0&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2092af0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new nnet3 recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -602,16 +1834,20 @@ separated symbols. The “weight” output is a lattice weight consisting of
 <li><strong>model_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the model.</li>
 <li><strong>graph_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the graph.</li>
 <li><strong>symbols_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The symbols file. If provided, “text” output
-of <a class="reference internal" href="#kaldi.asr.GmmLatticeRecognizer.decode" title="kaldi.asr.GmmLatticeRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
-<li><strong>decoder_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Configuration options for the decoder.</li>
-<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+of <a class="reference internal" href="#kaldi.asr.FasterNnetRecognizer.decode" title="kaldi.asr.FasterNnetRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
 <li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
 final state was active on the last frame.</li>
 <li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>decoder_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.FasterDecoderOptions" title="kaldi.decoder.FasterDecoderOptions"><em>FasterDecoderOptions</em></a>) – Configuration options for the
+decoder.</li>
+<li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options
+for simple nnet3 am decodable objects.</li>
+<li><strong>online_ivector_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Onlne ivector period. Relevant only if
+online ivectors are used.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new recognizer object.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new nnet3 recognizer object.</p>
 </td>
 </tr>
 </tbody>
@@ -619,33 +1855,343 @@ final state was active on the last frame.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.asr.GmmLatticeRecognizer.make_decodable">
-<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.GmmLatticeRecognizer.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.asr.FasterNnetRecognizer.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer.make_decodable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new decodable object from input features.</p>
+<p>Input can be just a feature matrix or a tuple of a feature matrix and
+an ivector or a tuple of a feature matrix and an online ivector matrix.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a><em>] or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>]</em>) – Input features.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
 log-likelihoods.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.DecodableAmDiagGmmScaled" title="kaldi.gmm.am.DecodableAmDiagGmmScaled">DecodableAmDiagGmmScaled</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.DecodableAmNnetSimple" title="kaldi.nnet3.DecodableAmNnetSimple">DecodableAmNnetSimple</a></td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.asr.GmmLatticeRecognizer.make_decoder">
-<code class="descname">make_decoder</code><span class="sig-paren">(</span><em>graph</em>, <em>opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x2bd7430&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.GmmLatticeRecognizer.make_decoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a new decoder from the graph and configuration options.</p>
+<dt id="kaldi.asr.FasterNnetRecognizer.read_model">
+<code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads model from an extended filename.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.asr.LatticeNnetRecognizer">
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x1e3a720&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lattice generating nnet3-based speech recognizer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>acoustic_model</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.AmNnetSimple" title="kaldi.nnet3.AmNnetSimple"><em>AmNnetSimple</em></a>) – The acoustic model.</li>
+<li><strong>decoder</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder" title="kaldi.decoder.LatticeFasterDecoder"><em>LatticeFasterDecoder</em></a>) – The decoder.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
+<a class="reference internal" href="#kaldi.asr.LatticeNnetRecognizer.decode" title="kaldi.asr.LatticeNnetRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
+final state was active on the last frame.</li>
+<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options for
+simple nnet3 am decodable objects.</li>
+<li><strong>online_ivector_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Onlne ivector period. Relevant only if
+online ivectors are used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.asr.LatticeNnetRecognizer.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes acoustic features.</p>
+<p>Decoding output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="39%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level alignment</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“lattice”</td>
+<td>Output lattice</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">Lattice</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-odd"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-even"><td>“text”</td>
+<td>Output transcript</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+<tr class="row-even"><td>“words”</td>
+<td>Words on best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The “lattice” output is produced only if the decoder can generate
+lattices. It will be a raw state-level lattice if <code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice</span>
+<span class="pre">==</span> <span class="pre">False</span></code>. Otherwise, it will be a compact deterministic lattice.</p>
+<p>If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the “text” output will be a string of
+space separated integer indices. Otherwise it will be a string of space
+separated symbols. The “weight” output is a lattice weight consisting of
+(graph-score, acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to decode.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing decoding output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If decoding fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kaldi.asr.LatticeNnetRecognizer.from_files">
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x1e6e4b0&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2118d20&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new nnet3 recognizer from given files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the model.</li>
+<li><strong>graph_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the graph.</li>
+<li><strong>symbols_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The symbols file. If provided, “text” output
+of <a class="reference internal" href="#kaldi.asr.LatticeNnetRecognizer.decode" title="kaldi.asr.LatticeNnetRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
+final state was active on the last frame.</li>
+<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>decoder_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.FasterDecoderOptions" title="kaldi.decoder.FasterDecoderOptions"><em>FasterDecoderOptions</em></a>) – Configuration options for the
+decoder.</li>
+<li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options
+for simple nnet3 am decodable objects.</li>
+<li><strong>online_ivector_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Onlne ivector period. Relevant only if
+online ivectors are used.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new nnet3 recognizer object.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.asr.GmmLatticeRecognizer.read_model">
-<code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.GmmLatticeRecognizer.read_model" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.asr.LatticeNnetRecognizer.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<p>Input can be just a feature matrix or a tuple of a feature matrix and
+an ivector or a tuple of a feature matrix and an online ivector matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a><em>] or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>]</em>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
+log-likelihoods.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.DecodableAmNnetSimple" title="kaldi.nnet3.DecodableAmNnetSimple">DecodableAmNnetSimple</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.asr.LatticeNnetRecognizer.read_model">
+<code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads model from an extended filename.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.asr.LatticeBiglmNnetRecognizer">
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeBiglmNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x1e0deb0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lattice generating big LM nnet3-based speech recognizer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>acoustic_model</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.AmNnetSimple" title="kaldi.nnet3.AmNnetSimple"><em>AmNnetSimple</em></a>) – The acoustic model.</li>
+<li><strong>decoder</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeBiglmFasterDecoder" title="kaldi.decoder.LatticeBiglmFasterDecoder"><em>LatticeBiglmFasterDecoder</em></a>) – The decoder.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
+<a class="reference internal" href="#kaldi.asr.LatticeBiglmNnetRecognizer.decode" title="kaldi.asr.LatticeBiglmNnetRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
+final state was active on the last frame.</li>
+<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options for
+simple nnet3 am decodable objects.</li>
+<li><strong>online_ivector_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Onlne ivector period. Relevant only if
+online ivectors are used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.asr.LatticeBiglmNnetRecognizer.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes acoustic features.</p>
+<p>Decoding output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="39%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level alignment</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“lattice”</td>
+<td>Output lattice</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">Lattice</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-odd"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-even"><td>“text”</td>
+<td>Output transcript</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+<tr class="row-even"><td>“words”</td>
+<td>Words on best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The “lattice” output is produced only if the decoder can generate
+lattices. It will be a raw state-level lattice if <code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice</span>
+<span class="pre">==</span> <span class="pre">False</span></code>. Otherwise, it will be a compact deterministic lattice.</p>
+<p>If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the “text” output will be a string of
+space separated integer indices. Otherwise it will be a string of space
+separated symbols. The “weight” output is a lattice weight consisting of
+(graph-score, acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to decode.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing decoding output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If decoding fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="kaldi.asr.LatticeBiglmNnetRecognizer.from_files">
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>old_lm_rxfilename</em>, <em>new_lm_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x1f1c690&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x1e0dde0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new GMM recognizer from given files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the model.</li>
+<li><strong>graph_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the graph.</li>
+<li><strong>old_lm_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the old LM.</li>
+<li><strong>new_lm_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the new LM.</li>
+<li><strong>symbols_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The symbols file. If provided, “text” output
+of <a class="reference internal" href="#kaldi.asr.LatticeBiglmNnetRecognizer.decode" title="kaldi.asr.LatticeBiglmNnetRecognizer.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a> includes symbols instead of integer indices.</li>
+<li><strong>allow_partial</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to output decoding results if no
+final state was active on the last frame.</li>
+<li><strong>determinize_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to determinize output lattice.</li>
+<li><strong>decoder_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoderOptions" title="kaldi.decoder.LatticeFasterDecoderOptions"><em>LatticeFasterDecoderOptions</em></a>) – Configuration
+options for the decoder.</li>
+<li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options
+for simple nnet3 am decodable objects.</li>
+<li><strong>online_ivector_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Onlne ivector period. Relevant only if
+online ivectors are used.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new GMM recognizer object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.asr.LatticeBiglmNnetRecognizer.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<p>Input can be just a feature matrix or a tuple of a feature matrix and
+an ivector or a tuple of a feature matrix and an online ivector matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a><em>] or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>]</em>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
+log-likelihoods.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.DecodableAmNnetSimple" title="kaldi.nnet3.DecodableAmNnetSimple">DecodableAmNnetSimple</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.asr.LatticeBiglmNnetRecognizer.read_model">
+<code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer.read_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads model from an extended filename.</p>
 </dd></dl>
 
