@@ -108,6 +108,8 @@
 </ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.alignment.html">kaldi.alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.asr.html">kaldi.asr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.base.html">kaldi.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.chain.html">kaldi.chain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
@@ -125,6 +127,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.online2.html">kaldi.online2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.segmentation.html">kaldi.segmentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.transform.html">kaldi.transform</a></li>
@@ -228,7 +231,7 @@
            <span class="s1">&#39;LatticeBiglmNnetRecognizer&#39;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="Recognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.Recognizer">[docs]</a><span class="k">class</span> <span class="nc">Recognizer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Recognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.Recognizer">[docs]</a><span class="k">class</span> <span class="nc">Recognizer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Abstract base class for speech recognizers.</span>
 
 <span class="sd">    All concrete subclasses should override :meth:`make_decodable`.</span>
@@ -255,7 +258,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">determinize_lattice</span> <span class="o">=</span> <span class="n">determinize_lattice</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">=</span> <span class="n">acoustic_scale</span>
 
-<div class="viewcode-block" id="Recognizer.make_decodable"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.Recognizer.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="viewcode-block" id="Recognizer.make_decodable"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.Recognizer.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
 
 <span class="sd">        Args:</span>
@@ -266,7 +269,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
-<div class="viewcode-block" id="Recognizer.decode"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.Recognizer.decode">[docs]</a>    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="viewcode-block" id="Recognizer.decode"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.Recognizer.decode">[docs]</a>    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Decodes acoustic features.</span>
 
 <span class="sd">        Decoding output is a dictionary with the following `(key, value)` pairs:</span>
@@ -363,7 +366,7 @@
         <span class="p">}</span></div></div>
 
 
-<div class="viewcode-block" id="GmmRecognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.GmmRecognizer">[docs]</a><span class="k">class</span> <span class="nc">GmmRecognizer</span><span class="p">(</span><span class="n">Recognizer</span><span class="p">):</span>
+<div class="viewcode-block" id="GmmRecognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.GmmRecognizer">[docs]</a><span class="k">class</span> <span class="nc">GmmRecognizer</span><span class="p">(</span><span class="n">Recognizer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class for GMM-based speech recognizers.</span>
 
 <span class="sd">    Args:</span>
@@ -386,7 +389,7 @@
                                             <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">,</span>
                                             <span class="n">determinize_lattice</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">)</span>
 
-<div class="viewcode-block" id="GmmRecognizer.read_model"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.GmmRecognizer.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="GmmRecognizer.read_model"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.GmmRecognizer.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads model from an extended filename.&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
@@ -395,7 +398,7 @@
             <span class="n">acoustic_model</span> <span class="o">=</span> <span class="n">_gmm_am</span><span class="o">.</span><span class="n">AmDiagGmm</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span></div>
 
-<div class="viewcode-block" id="GmmRecognizer.make_decodable"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.GmmRecognizer.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="viewcode-block" id="GmmRecognizer.make_decodable"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.GmmRecognizer.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
 
 <span class="sd">        Args:</span>
@@ -412,7 +415,7 @@
                                                 <span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="FasterGmmRecognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.FasterGmmRecognizer">[docs]</a><span class="k">class</span> <span class="nc">FasterGmmRecognizer</span><span class="p">(</span><span class="n">GmmRecognizer</span><span class="p">):</span>
+<div class="viewcode-block" id="FasterGmmRecognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.FasterGmmRecognizer">[docs]</a><span class="k">class</span> <span class="nc">FasterGmmRecognizer</span><span class="p">(</span><span class="n">GmmRecognizer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Faster GMM-based speech recognizer.</span>
 
 <span class="sd">    Args:</span>
@@ -435,7 +438,7 @@
             <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">,</span>
             <span class="n">determinize_lattice</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">)</span>
 
-<div class="viewcode-block" id="FasterGmmRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.FasterGmmRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="FasterGmmRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.FasterGmmRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">graph_rxfilename</span><span class="p">,</span>
                    <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                    <span class="n">determinize_lattice</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -469,7 +472,7 @@
                    <span class="n">allow_partial</span><span class="p">,</span> <span class="n">determinize_lattice</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="LatticeGmmRecognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.LatticeGmmRecognizer">[docs]</a><span class="k">class</span> <span class="nc">LatticeGmmRecognizer</span><span class="p">(</span><span class="n">GmmRecognizer</span><span class="p">):</span>
+<div class="viewcode-block" id="LatticeGmmRecognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.LatticeGmmRecognizer">[docs]</a><span class="k">class</span> <span class="nc">LatticeGmmRecognizer</span><span class="p">(</span><span class="n">GmmRecognizer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Lattice generating GMM-based speech recognizer.</span>
 
 <span class="sd">    Args:</span>
@@ -492,7 +495,7 @@
             <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">,</span>
             <span class="n">determinize_lattice</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">)</span>
 
-<div class="viewcode-block" id="LatticeGmmRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.LatticeGmmRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="LatticeGmmRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.LatticeGmmRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">graph_rxfilename</span><span class="p">,</span>
                    <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                    <span class="n">determinize_lattice</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -526,7 +529,7 @@
                    <span class="n">allow_partial</span><span class="p">,</span> <span class="n">determinize_lattice</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="LatticeBiglmGmmRecognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.LatticeBiglmGmmRecognizer">[docs]</a><span class="k">class</span> <span class="nc">LatticeBiglmGmmRecognizer</span><span class="p">(</span><span class="n">GmmRecognizer</span><span class="p">):</span>
+<div class="viewcode-block" id="LatticeBiglmGmmRecognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.LatticeBiglmGmmRecognizer">[docs]</a><span class="k">class</span> <span class="nc">LatticeBiglmGmmRecognizer</span><span class="p">(</span><span class="n">GmmRecognizer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Lattice generating big LM GMM-based speech recognizer.</span>
 
 <span class="sd">    Args:</span>
@@ -550,7 +553,7 @@
             <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">,</span>
             <span class="n">determinize_lattice</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">)</span>
 
-<div class="viewcode-block" id="LatticeBiglmGmmRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.LatticeBiglmGmmRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="LatticeBiglmGmmRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.LatticeBiglmGmmRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">graph_rxfilename</span><span class="p">,</span> <span class="n">old_lm_rxfilename</span><span class="p">,</span>
                    <span class="n">new_lm_rxfilename</span><span class="p">,</span> <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                    <span class="n">determinize_lattice</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -596,7 +599,7 @@
                    <span class="n">allow_partial</span><span class="p">,</span> <span class="n">determinize_lattice</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="NnetRecognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.NnetRecognizer">[docs]</a><span class="k">class</span> <span class="nc">NnetRecognizer</span><span class="p">(</span><span class="n">Recognizer</span><span class="p">):</span>
+<div class="viewcode-block" id="NnetRecognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.NnetRecognizer">[docs]</a><span class="k">class</span> <span class="nc">NnetRecognizer</span><span class="p">(</span><span class="n">Recognizer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class for nnet3-based speech recognizers.</span>
 
 <span class="sd">    Args:</span>
@@ -632,7 +635,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">compiler</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">CachingOptimizingCompiler</span><span class="o">.</span><span class="n">new_with_optimize_opts</span><span class="p">(</span>
             <span class="n">nnet</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="o">.</span><span class="n">optimize_config</span><span class="p">)</span>
 
-<div class="viewcode-block" id="NnetRecognizer.make_decodable"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.NnetRecognizer.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="viewcode-block" id="NnetRecognizer.make_decodable"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.NnetRecognizer.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
 
 <span class="sd">        Input can be just a feature matrix or a tuple of a feature matrix and</span>
@@ -660,7 +663,7 @@
             <span class="n">features</span><span class="p">,</span> <span class="n">ivector</span><span class="p">,</span> <span class="n">online_ivectors</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">online_ivector_period</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">compiler</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="NnetRecognizer.read_model"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.NnetRecognizer.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="NnetRecognizer.read_model"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.NnetRecognizer.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads model from an extended filename.&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
@@ -670,7 +673,7 @@
         <span class="k">return</span> <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span></div></div>
 
 
-<div class="viewcode-block" id="FasterNnetRecognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.FasterNnetRecognizer">[docs]</a><span class="k">class</span> <span class="nc">FasterNnetRecognizer</span><span class="p">(</span><span class="n">NnetRecognizer</span><span class="p">):</span>
+<div class="viewcode-block" id="FasterNnetRecognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.FasterNnetRecognizer">[docs]</a><span class="k">class</span> <span class="nc">FasterNnetRecognizer</span><span class="p">(</span><span class="n">NnetRecognizer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Faster nnet3-based speech recognizer.</span>
 
 <span class="sd">    Args:</span>
@@ -697,7 +700,7 @@
             <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">,</span>
             <span class="n">determinize_lattice</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="p">,</span> <span class="n">online_ivector_period</span><span class="p">)</span>
 
-<div class="viewcode-block" id="FasterNnetRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.FasterNnetRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="FasterNnetRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.FasterNnetRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">graph_rxfilename</span><span class="p">,</span>
                    <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                    <span class="n">determinize_lattice</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -736,7 +739,7 @@
                    <span class="n">online_ivector_period</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="LatticeNnetRecognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.LatticeNnetRecognizer">[docs]</a><span class="k">class</span> <span class="nc">LatticeNnetRecognizer</span><span class="p">(</span><span class="n">NnetRecognizer</span><span class="p">):</span>
+<div class="viewcode-block" id="LatticeNnetRecognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.LatticeNnetRecognizer">[docs]</a><span class="k">class</span> <span class="nc">LatticeNnetRecognizer</span><span class="p">(</span><span class="n">NnetRecognizer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Lattice generating nnet3-based speech recognizer.</span>
 
 <span class="sd">    Args:</span>
@@ -763,7 +766,7 @@
             <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">,</span>
             <span class="n">determinize_lattice</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="p">,</span> <span class="n">online_ivector_period</span><span class="p">)</span>
 
-<div class="viewcode-block" id="LatticeNnetRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.LatticeNnetRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="LatticeNnetRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.LatticeNnetRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">graph_rxfilename</span><span class="p">,</span>
                    <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                    <span class="n">determinize_lattice</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -802,7 +805,7 @@
                    <span class="n">online_ivector_period</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="LatticeBiglmNnetRecognizer"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.LatticeBiglmNnetRecognizer">[docs]</a><span class="k">class</span> <span class="nc">LatticeBiglmNnetRecognizer</span><span class="p">(</span><span class="n">NnetRecognizer</span><span class="p">):</span>
+<div class="viewcode-block" id="LatticeBiglmNnetRecognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.LatticeBiglmNnetRecognizer">[docs]</a><span class="k">class</span> <span class="nc">LatticeBiglmNnetRecognizer</span><span class="p">(</span><span class="n">NnetRecognizer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Lattice generating big LM nnet3-based speech recognizer.</span>
 
 <span class="sd">    Args:</span>
@@ -830,7 +833,7 @@
             <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">,</span>
             <span class="n">determinize_lattice</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="p">,</span> <span class="n">online_ivector_period</span><span class="p">)</span>
 
-<div class="viewcode-block" id="LatticeBiglmNnetRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.asr.LatticeBiglmNnetRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="LatticeBiglmNnetRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.LatticeBiglmNnetRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">graph_rxfilename</span><span class="p">,</span> <span class="n">old_lm_rxfilename</span><span class="p">,</span>
                    <span class="n">new_lm_rxfilename</span><span class="p">,</span> <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                    <span class="n">determinize_lattice</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>

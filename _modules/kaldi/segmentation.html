@@ -108,6 +108,8 @@
 </ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.alignment.html">kaldi.alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.asr.html">kaldi.asr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.base.html">kaldi.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.chain.html">kaldi.chain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
@@ -125,6 +127,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.online2.html">kaldi.online2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.segmentation.html">kaldi.segmentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.transform.html">kaldi.transform</a></li>
@@ -213,7 +216,7 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Segmenter&#39;</span><span class="p">,</span> <span class="s1">&#39;NnetSAD&#39;</span><span class="p">,</span> <span class="s1">&#39;SegmentationProcessor&#39;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="Segmenter"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.Segmenter">[docs]</a><span class="k">class</span> <span class="nc">Segmenter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Segmenter"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.Segmenter">[docs]</a><span class="k">class</span> <span class="nc">Segmenter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Abstract base class for segmenters.</span>
 
 <span class="sd">    All concrete subclasses should override :meth:`make_decodable`.</span>
@@ -234,7 +237,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">_dec</span><span class="o">.</span><span class="n">FasterDecoder</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">decoder_opts</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">=</span> <span class="n">acoustic_scale</span>
 
-<div class="viewcode-block" id="Segmenter.make_decodable"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.Segmenter.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="viewcode-block" id="Segmenter.make_decodable"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.Segmenter.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
 
 <span class="sd">        Args:</span>
@@ -245,7 +248,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
-<div class="viewcode-block" id="Segmenter.segment"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.Segmenter.segment">[docs]</a>    <span class="k">def</span> <span class="nf">segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="viewcode-block" id="Segmenter.segment"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.Segmenter.segment">[docs]</a>    <span class="k">def</span> <span class="nf">segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Segments acoustic features.</span>
 
 <span class="sd">        Output is a dictionary with the following `(key, value)` pairs:</span>
@@ -297,7 +300,7 @@
         <span class="p">}</span></div></div>
 
 
-<div class="viewcode-block" id="NnetSAD"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD">[docs]</a><span class="k">class</span> <span class="nc">NnetSAD</span><span class="p">(</span><span class="n">Segmenter</span><span class="p">):</span>
+<div class="viewcode-block" id="NnetSAD"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.NnetSAD">[docs]</a><span class="k">class</span> <span class="nc">NnetSAD</span><span class="p">(</span><span class="n">Segmenter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Nnet3-based speech activity detection (SAD).</span>
 
 <span class="sd">    Args:</span>
@@ -325,7 +328,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">compiler</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">CachingOptimizingCompiler</span><span class="o">.</span><span class="n">new_with_optimize_opts</span><span class="p">(</span>
             <span class="n">model</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="o">.</span><span class="n">optimize_config</span><span class="p">)</span>
 
-<div class="viewcode-block" id="NnetSAD.make_decodable"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="viewcode-block" id="NnetSAD.make_decodable"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.NnetSAD.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
 
 <span class="sd">        Args:</span>
@@ -356,19 +359,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_log_likes</span><span class="o">.</span><span class="n">apply_log_</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">_dec</span><span class="o">.</span><span class="n">DecodableMatrixScaled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_log_likes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="NnetSAD.read_model"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="NnetSAD.read_model"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.NnetSAD.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads SAD model from an extended filename.&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">Nnet</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="NnetSAD.read_average_posteriors"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD.read_average_posteriors">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="NnetSAD.read_average_posteriors"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.NnetSAD.read_average_posteriors">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_average_posteriors</span><span class="p">(</span><span class="n">post_rxfilename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads average SAD label posteriors from an extended filename.&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">post_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">_mat</span><span class="o">.</span><span class="n">Vector</span><span class="p">()</span><span class="o">.</span><span class="n">read_</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="NnetSAD.make_sad_transform"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD.make_sad_transform">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="NnetSAD.make_sad_transform"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.NnetSAD.make_sad_transform">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">make_sad_transform</span><span class="p">(</span><span class="n">priors</span><span class="p">,</span> <span class="n">sil_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                            <span class="n">sil_in_speech_weight</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
                            <span class="n">speech_in_sil_weight</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
@@ -409,7 +412,7 @@
                              <span class="mf">1.0</span> <span class="o">/</span> <span class="n">speech_prior</span><span class="p">,</span>
                              <span class="n">garbage_in_speech_weight</span> <span class="o">/</span> <span class="n">garbage_prior</span><span class="p">]])</span></div>
 
-<div class="viewcode-block" id="NnetSAD.make_sad_graph"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD.make_sad_graph">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="NnetSAD.make_sad_graph"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.NnetSAD.make_sad_graph">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">make_sad_graph</span><span class="p">(</span><span class="n">transition_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
                        <span class="n">min_silence_duration</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">min_speech_duration</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
                        <span class="n">max_speech_duration</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">frame_shift</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
@@ -521,7 +524,7 @@
         <span class="k">return</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span></div></div>
 
 
-<div class="viewcode-block" id="SegmentationProcessor"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor">[docs]</a><span class="k">class</span> <span class="nc">SegmentationProcessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentationProcessor"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.SegmentationProcessor">[docs]</a><span class="k">class</span> <span class="nc">SegmentationProcessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Segmentation post-processor.</span>
 
 <span class="sd">    This class is used for converting segmentation labels to a list of segments.</span>
@@ -565,7 +568,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">max_merged_segment_dur</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_merged_segment_dur</span> <span class="o">/</span> <span class="n">frame_shift</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Stats</span><span class="p">()</span>
 
-<div class="viewcode-block" id="SegmentationProcessor.Stats"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.Stats">[docs]</a>    <span class="k">class</span> <span class="nc">Stats</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentationProcessor.Stats"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.SegmentationProcessor.Stats">[docs]</a>    <span class="k">class</span> <span class="nc">Stats</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Stores segmentation post-processing stats.&quot;&quot;&quot;</span>
 
         <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -578,7 +581,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">filter_short_duration</span> <span class="o">=</span> <span class="mf">0.0</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">final_duration</span> <span class="o">=</span> <span class="mf">0.0</span>
 
-<div class="viewcode-block" id="SegmentationProcessor.Stats.add"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.Stats.add">[docs]</a>        <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentationProcessor.Stats.add"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.SegmentationProcessor.Stats.add">[docs]</a>        <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
             <span class="sd">&quot;&quot;&quot;Adds stats from another&quot;&quot;&quot;</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">num_segments_initial</span> <span class="o">+=</span> <span class="n">other</span><span class="o">.</span><span class="n">num_segments_initial</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">num_short_segments_filtered</span> <span class="o">+=</span> <span class="n">other</span><span class="o">.</span><span class="n">num_short_segments_filtered</span>
@@ -607,7 +610,7 @@
                 <span class="n">padding_duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">padding_duration</span><span class="p">,</span>
                 <span class="n">final_duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">final_duration</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="SegmentationProcessor.process"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alignment</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentationProcessor.process"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.SegmentationProcessor.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alignment</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Converts frame-level segmentation labels to a list of segments.</span>
 
 <span class="sd">        Args:</span>
@@ -626,7 +629,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">segments</span><span class="p">,</span> <span class="n">stats</span></div>
 
-<div class="viewcode-block" id="SegmentationProcessor.initialize_segments"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.initialize_segments">[docs]</a>    <span class="k">def</span> <span class="nf">initialize_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentationProcessor.initialize_segments"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.SegmentationProcessor.initialize_segments">[docs]</a>    <span class="k">def</span> <span class="nf">initialize_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initializes segments.</span>
 
 <span class="sd">        The alignment is frame-level segmentation labels. Output includes only</span>
@@ -651,7 +654,7 @@
         <span class="n">stats</span><span class="o">.</span><span class="n">final_duration</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">initial_duration</span>
         <span class="k">return</span> <span class="n">segments</span></div>
 
-<div class="viewcode-block" id="SegmentationProcessor.filter_short_segments"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.filter_short_segments">[docs]</a>    <span class="k">def</span> <span class="nf">filter_short_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentationProcessor.filter_short_segments"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.SegmentationProcessor.filter_short_segments">[docs]</a>    <span class="k">def</span> <span class="nf">filter_short_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Filters out short segments.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_segment_dur</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">segments</span>
@@ -667,7 +670,7 @@
         <span class="n">stats</span><span class="o">.</span><span class="n">final_duration</span> <span class="o">-=</span> <span class="n">stats</span><span class="o">.</span><span class="n">filter_short_duration</span>
         <span class="k">return</span> <span class="n">filtered_segments</span></div>
 
-<div class="viewcode-block" id="SegmentationProcessor.pad_segments"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.pad_segments">[docs]</a>    <span class="k">def</span> <span class="nf">pad_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">num_utt_frames</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentationProcessor.pad_segments"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.SegmentationProcessor.pad_segments">[docs]</a>    <span class="k">def</span> <span class="nf">pad_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">num_utt_frames</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Pads segments on both sides.</span>
 
 <span class="sd">        Ensures that the segments do not go beyond the neighboring segments or</span>
@@ -705,7 +708,7 @@
         <span class="n">stats</span><span class="o">.</span><span class="n">final_duration</span> <span class="o">+=</span> <span class="n">stats</span><span class="o">.</span><span class="n">padding_duration</span>
         <span class="k">return</span> <span class="n">padded_segments</span></div>
 
-<div class="viewcode-block" id="SegmentationProcessor.merge_consecutive_segments"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.merge_consecutive_segments">[docs]</a>    <span class="k">def</span> <span class="nf">merge_consecutive_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentationProcessor.merge_consecutive_segments"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.SegmentationProcessor.merge_consecutive_segments">[docs]</a>    <span class="k">def</span> <span class="nf">merge_consecutive_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Merges consecutive segments.</span>
 
 <span class="sd">        Done after padding. Consecutive segments that share a boundary are</span>
@@ -728,7 +731,7 @@
         <span class="n">stats</span><span class="o">.</span><span class="n">num_segments_final</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">merged_segments</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">merged_segments</span></div>
 
-<div class="viewcode-block" id="SegmentationProcessor.write"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">file_handle</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentationProcessor.write"><a class="viewcode-back" href="../../api/kaldi.segmentation.html#kaldi.segmentation.SegmentationProcessor.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">file_handle</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes segments to file&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">:</span>
             <span class="nb">id</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{key}</span><span class="s2">-</span><span class="si">{label}</span><span class="s2">-</span><span class="si">{begin:07d}</span><span class="s2">-</span><span class="si">{end:07d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>

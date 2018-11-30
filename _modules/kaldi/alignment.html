@@ -108,6 +108,8 @@
 </ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.alignment.html">kaldi.alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.asr.html">kaldi.asr</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.base.html">kaldi.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.chain.html">kaldi.chain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
@@ -125,6 +127,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.online2.html">kaldi.online2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.segmentation.html">kaldi.segmentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.transform.html">kaldi.transform</a></li>
@@ -216,7 +219,7 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aligner&#39;</span><span class="p">,</span> <span class="s1">&#39;GmmAligner&#39;</span><span class="p">,</span> <span class="s1">&#39;NnetAligner&#39;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="Aligner"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.Aligner">[docs]</a><span class="k">class</span> <span class="nc">Aligner</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Aligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner">[docs]</a><span class="k">class</span> <span class="nc">Aligner</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Abstract base class for speech aligners.</span>
 
 <span class="sd">    All concrete subclasses should override :meth:`make_decodable`.</span>
@@ -255,7 +258,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">self_loop_scale</span> <span class="o">=</span> <span class="n">self_loop_scale</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">=</span> <span class="n">acoustic_scale</span>
 
-<div class="viewcode-block" id="Aligner.align"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.Aligner.align">[docs]</a>    <span class="k">def</span> <span class="nf">align</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+<div class="viewcode-block" id="Aligner.align"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.align">[docs]</a>    <span class="k">def</span> <span class="nf">align</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Aligns acoustic features with text.</span>
 
 <span class="sd">        Alignment output is a dictionary with the following `(key, value)` pairs:</span>
@@ -320,7 +323,7 @@
             <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span>
         <span class="p">}</span></div>
 
-<div class="viewcode-block" id="Aligner.make_decodable"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.Aligner.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="viewcode-block" id="Aligner.make_decodable"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
 
 <span class="sd">        Args:</span>
@@ -331,7 +334,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
-<div class="viewcode-block" id="Aligner.read_tree"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.Aligner.read_tree">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Aligner.read_tree"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.read_tree">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_tree</span><span class="p">(</span><span class="n">tree_rxfilename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads phonetic decision tree from an extended filename.&quot;&quot;&quot;</span>
         <span class="n">tree</span> <span class="o">=</span> <span class="n">_tree</span><span class="o">.</span><span class="n">ContextDependency</span><span class="p">()</span>
@@ -339,12 +342,12 @@
             <span class="n">tree</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">tree</span></div>
 
-<div class="viewcode-block" id="Aligner.read_lexicon"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.Aligner.read_lexicon">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Aligner.read_lexicon"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.read_lexicon">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_lexicon</span><span class="p">(</span><span class="n">lexicon_rxfilename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads lexicon FST from an extended filename.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">_fst</span><span class="o">.</span><span class="n">read_fst_kaldi</span><span class="p">(</span><span class="n">lexicon_rxfilename</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Aligner.read_symbols"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.Aligner.read_symbols">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Aligner.read_symbols"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.read_symbols">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_symbols</span><span class="p">(</span><span class="n">symbols_filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads symbol table from file.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">symbols_filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -352,7 +355,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">_fst</span><span class="o">.</span><span class="n">SymbolTable</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">symbols_filename</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Aligner.read_disambig_symbols"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.Aligner.read_disambig_symbols">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Aligner.read_disambig_symbols"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.read_disambig_symbols">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_disambig_symbols</span><span class="p">(</span><span class="n">disambig_rxfilename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads disambiguation symbols from an extended filename.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">disambig_rxfilename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -361,7 +364,7 @@
             <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">disambig_rxfilename</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">ki</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Aligner.to_phone_alignment"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.Aligner.to_phone_alignment">[docs]</a>    <span class="k">def</span> <span class="nf">to_phone_alignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">phones</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Aligner.to_phone_alignment"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.to_phone_alignment">[docs]</a>    <span class="k">def</span> <span class="nf">to_phone_alignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">phones</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Converts frame-level alignment to phone-level alignment.</span>
 
 <span class="sd">        Args:</span>
@@ -388,7 +391,7 @@
             <span class="n">phone_start</span> <span class="o">+=</span> <span class="n">phone_duration</span>
         <span class="k">return</span> <span class="n">phone_alignment</span></div>
 
-<div class="viewcode-block" id="Aligner.to_word_alignment"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.Aligner.to_word_alignment">[docs]</a>    <span class="k">def</span> <span class="nf">to_word_alignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">best_path</span><span class="p">,</span> <span class="n">word_boundary_info</span><span class="p">):</span>
+<div class="viewcode-block" id="Aligner.to_word_alignment"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.to_word_alignment">[docs]</a>    <span class="k">def</span> <span class="nf">to_word_alignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">best_path</span><span class="p">,</span> <span class="n">word_boundary_info</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Converts best alignment path to word-level alignment.</span>
 
 <span class="sd">        Args:</span>
@@ -413,7 +416,7 @@
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">word_alignment</span><span class="p">)))</span></div></div>
 
 
-<div class="viewcode-block" id="GmmAligner"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.GmmAligner">[docs]</a><span class="k">class</span> <span class="nc">GmmAligner</span><span class="p">(</span><span class="n">Aligner</span><span class="p">):</span>
+<div class="viewcode-block" id="GmmAligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.GmmAligner">[docs]</a><span class="k">class</span> <span class="nc">GmmAligner</span><span class="p">(</span><span class="n">Aligner</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;GMM-based speech aligner.</span>
 
 <span class="sd">    Args:</span>
@@ -434,7 +437,7 @@
 <span class="sd">        acoustic_scale (float): Acoustic score scale.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="GmmAligner.make_decodable"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.GmmAligner.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="viewcode-block" id="GmmAligner.make_decodable"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.GmmAligner.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
 
 <span class="sd">        Args:</span>
@@ -450,7 +453,7 @@
                                                 <span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span>
                                                 <span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="GmmAligner.read_model"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.GmmAligner.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="GmmAligner.read_model"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.GmmAligner.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads model from an extended filename.&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
@@ -459,7 +462,7 @@
             <span class="n">acoustic_model</span> <span class="o">=</span> <span class="n">_gmm_am</span><span class="o">.</span><span class="n">AmDiagGmm</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span></div>
 
-<div class="viewcode-block" id="GmmAligner.from_files"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.GmmAligner.from_files">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="GmmAligner.from_files"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.GmmAligner.from_files">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">tree_rxfilename</span><span class="p">,</span> <span class="n">lexicon_rxfilename</span><span class="p">,</span>
                    <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">disambig_rxfilename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="n">_dec</span><span class="o">.</span><span class="n">TrainingGraphCompilerOptions</span><span class="p">(),</span>
@@ -500,7 +503,7 @@
                    <span class="n">transition_scale</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="NnetAligner"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.NnetAligner">[docs]</a><span class="k">class</span> <span class="nc">NnetAligner</span><span class="p">(</span><span class="n">Aligner</span><span class="p">):</span>
+<div class="viewcode-block" id="NnetAligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.NnetAligner">[docs]</a><span class="k">class</span> <span class="nc">NnetAligner</span><span class="p">(</span><span class="n">Aligner</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Nnet3-based speech aligner.</span>
 
 <span class="sd">    Args:</span>
@@ -544,7 +547,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">compiler</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">CachingOptimizingCompiler</span><span class="o">.</span><span class="n">new_with_optimize_opts</span><span class="p">(</span>
             <span class="n">nnet</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="o">.</span><span class="n">optimize_config</span><span class="p">)</span>
 
-<div class="viewcode-block" id="NnetAligner.make_decodable"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.NnetAligner.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="viewcode-block" id="NnetAligner.make_decodable"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.NnetAligner.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
 
 <span class="sd">        Input can be just a feature matrix or a tuple of a feature matrix and</span>
@@ -572,7 +575,7 @@
             <span class="n">features</span><span class="p">,</span> <span class="n">ivector</span><span class="p">,</span> <span class="n">online_ivectors</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">online_ivector_period</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">compiler</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="NnetAligner.read_model"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.NnetAligner.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="NnetAligner.read_model"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.NnetAligner.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads model from an extended filename.&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
@@ -581,7 +584,7 @@
             <span class="n">acoustic_model</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">AmNnetSimple</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span></div>
 
-<div class="viewcode-block" id="NnetAligner.from_files"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.alignment.NnetAligner.from_files">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="NnetAligner.from_files"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.NnetAligner.from_files">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">tree_rxfilename</span><span class="p">,</span> <span class="n">lexicon_rxfilename</span><span class="p">,</span>
                    <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">disambig_rxfilename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="n">_dec</span><span class="o">.</span><span class="n">TrainingGraphCompilerOptions</span><span class="p">(),</span>

@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.segmentation &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+        <link rel="next" title="kaldi.sgmm2" href="kaldi.sgmm2.html"/>
+        <link rel="prev" title="kaldi.rnnlm" href="kaldi.rnnlm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kaldi.alignment.html">kaldi.alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.asr.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kaldi.segmentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/kaldi.segmentation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kaldi.segmentation">
+<span id="kaldi-segmentation"></span><h1>kaldi.segmentation<a class="headerlink" href="#module-kaldi.segmentation" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.segmentation.NnetSAD" title="kaldi.segmentation.NnetSAD"><code class="xref py py-obj docutils literal"><span class="pre">NnetSAD</span></code></a>(model,&nbsp;transform,&nbsp;graph[,&nbsp;beam,&nbsp;…])</td>
+<td>Nnet3-based speech activity detection (SAD).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.segmentation.SegmentationProcessor" title="kaldi.segmentation.SegmentationProcessor"><code class="xref py py-obj docutils literal"><span class="pre">SegmentationProcessor</span></code></a>(target_labels[,&nbsp;…])</td>
+<td>Segmentation post-processor.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.segmentation.Segmenter" title="kaldi.segmentation.Segmenter"><code class="xref py py-obj docutils literal"><span class="pre">Segmenter</span></code></a>(model,&nbsp;graph[,&nbsp;beam,&nbsp;max_active,&nbsp;…])</td>
+<td>Abstract base class for segmenters.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.segmentation.Segmenter">
+<em class="property">class </em><code class="descclassname">kaldi.segmentation.</code><code class="descname">Segmenter</code><span class="sig-paren">(</span><em>model</em>, <em>graph</em>, <em>beam=8</em>, <em>max_active=1000</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#Segmenter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.Segmenter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract base class for segmenters.</p>
+<p>All concrete subclasses should override <a class="reference internal" href="#kaldi.segmentation.Segmenter.make_decodable" title="kaldi.segmentation.Segmenter.make_decodable"><code class="xref py py-meth docutils literal"><span class="pre">make_decodable()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Segmentation model.</li>
+<li><strong>graph</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – Segmentation graph.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Logarithmic decoding beam.</li>
+<li><strong>max_active</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum number of active states in decoding.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.segmentation.Segmenter.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#Segmenter.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.Segmenter.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface">DecodableInterface</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.Segmenter.segment">
+<code class="descname">segment</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#Segmenter.segment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.Segmenter.segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Segments acoustic features.</p>
+<p>Output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="43%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level segmentation</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The “weight” output is a lattice weight consisting of (graph-score,
+acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing segmentation output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If segmentation fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.segmentation.NnetSAD">
+<em class="property">class </em><code class="descclassname">kaldi.segmentation.</code><code class="descname">NnetSAD</code><span class="sig-paren">(</span><em>model</em>, <em>transform</em>, <em>graph</em>, <em>beam=8</em>, <em>max_active=1000</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x237a1e0&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nnet3-based speech activity detection (SAD).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.Nnet" title="kaldi.nnet3.Nnet"><em>Nnet</em></a>) – SAD model.</li>
+<li><strong>transform</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – Transformation applied to SAD label posteriors.</li>
+<li><strong>graph</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – SAD graph.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Logarithmic decoding beam.</li>
+<li><strong>max_active</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum number of active states in decoding.</li>
+<li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options for
+the SAD model.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.segmentation.NnetSAD.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
+log-likelihoods.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.DecodableMatrixScaled" title="kaldi.decoder.DecodableMatrixScaled">DecodableMatrixScaled</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.segmentation.NnetSAD.make_sad_graph">
+<em class="property">static </em><code class="descname">make_sad_graph</code><span class="sig-paren">(</span><em>transition_scale=1.0</em>, <em>self_loop_scale=0.1</em>, <em>min_silence_duration=0.03</em>, <em>min_speech_duration=0.3</em>, <em>max_speech_duration=10.0</em>, <em>frame_shift=0.01</em>, <em>edge_silence_probability=0.5</em>, <em>transition_probability=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.make_sad_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.make_sad_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a decoding graph with a simple HMM topology suitable for SAD.</p>
+<p>Output graph uses label 1 for ‘silence’ and label 2 for ‘speech’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>transition_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Scale on transition log-probabilities
+relative to LM weights.</li>
+<li><strong>self_loop_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Scale on self-loop log-probabilities
+relative to LM weights.</li>
+<li><strong>min_silence_duration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum duration for silence.</li>
+<li><strong>min_speech_duration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum duration for speech.</li>
+<li><strong>max_speech_duration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Maximum duration for speech.</li>
+<li><strong>frame_shift</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frame shift in seconds.</li>
+<li><strong>edge_silence_probability</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Probability of silence at the
+edges.</li>
+<li><strong>transition_probability</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Transition probability for silence
+to speech or vice-versa.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A simple decoding graph suitable for SAD.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst">StdVectorFst</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.segmentation.NnetSAD.make_sad_transform">
+<em class="property">static </em><code class="descname">make_sad_transform</code><span class="sig-paren">(</span><em>priors</em>, <em>sil_scale=1.0</em>, <em>sil_in_speech_weight=0.0</em>, <em>speech_in_sil_weight=0.0</em>, <em>garbage_in_speech_weight=0.0</em>, <em>garbage_in_sil_weight=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.make_sad_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.make_sad_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates SAD posterior transformation matrix.</p>
+<p>The 3x2 transformation matrix is used to convert length Nx3 posterior
+probability matrices to Nx2 pseudo-likelihood matrices.</p>
+<p>The “priors” vector can be a proper prior probability distribution over
+SAD labels or simply average SAD label posteriors. This vector is
+normalized to derive a prior probability distribution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>priors</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – SAD label priors to remove from the neural network
+output posteriors to convert them to pseudo likelihoods.</li>
+<li><strong>sil_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Scale on the silence probability. Make this more
+than one to encourage decoding silence.</li>
+<li><strong>sil_in_speech_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fraction of silence probability to
+add to speech probability.</li>
+<li><strong>speech_in_sil_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fraction of speech probability to
+add to silence probability.</li>
+<li><strong>garbage_in_speech_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fraction of garbage
+probability to add to speech probability.</li>
+<li><strong>garbage_in_sil_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fraction of garbage probability
+to add to silence probability.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.segmentation.NnetSAD.read_average_posteriors">
+<em class="property">static </em><code class="descname">read_average_posteriors</code><span class="sig-paren">(</span><em>post_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.read_average_posteriors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.read_average_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads average SAD label posteriors from an extended filename.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.segmentation.NnetSAD.read_model">
+<em class="property">static </em><code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.read_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads SAD model from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.NnetSAD.segment">
+<code class="descname">segment</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.segmentation.NnetSAD.segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Segments acoustic features.</p>
+<p>Output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="43%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level segmentation</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The “weight” output is a lattice weight consisting of (graph-score,
+acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing segmentation output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If segmentation fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.segmentation.SegmentationProcessor">
+<em class="property">class </em><code class="descclassname">kaldi.segmentation.</code><code class="descname">SegmentationProcessor</code><span class="sig-paren">(</span><em>target_labels</em>, <em>frame_shift=0.01</em>, <em>segment_padding=0.2</em>, <em>min_segment_dur=0</em>, <em>max_merged_segment_dur=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Segmentation post-processor.</p>
+<p>This class is used for converting segmentation labels to a list of segments.
+Output includes only those segments labeled with the target labels.</p>
+<dl class="docutils">
+<dt>Post-processing operations include::</dt>
+<dd><ul class="first last simple">
+<li>filtering out short segments</li>
+<li>padding segments</li>
+<li>merging consecutive segments</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>target_labels</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Target labels. Typically the speech labels.</li>
+<li><strong>frame_shift</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frame shift in seconds.</li>
+<li><strong>segment_padding</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Additional padding on target segments.
+Padding does not go beyond the adjacent segment. This is typically
+used for padding speech segments with silence. Must be an integral
+multiple of frame shift.</li>
+<li><strong>min_segment_dur</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum duration (in seconds) required for a
+segment to be included. This is before any padding. Segments shorter
+than this duration will be removed.</li>
+<li><strong>max_merged_segment_dur</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Merge consecutive segments as long as
+the merged segment is no longer than this many seconds. The segments
+are only merged if their boundaries are touching. This is after
+padding by –segment-padding seconds. 0 means do not merge. Use
+‘inf’ to not limit the duration.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><p class="first last"><strong>stats</strong> (<a class="reference internal" href="#kaldi.segmentation.SegmentationProcessor.Stats" title="kaldi.segmentation.SegmentationProcessor.Stats"><em>SegmentationProcessor.Stats</em></a>) – Global segmentation post-processing
+stats.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.segmentation.SegmentationProcessor.Stats">
+<em class="property">class </em><code class="descname">Stats</code><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.Stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.Stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores segmentation post-processing stats.</p>
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.Stats.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.Stats.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.Stats.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds stats from another</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.filter_short_segments">
+<code class="descname">filter_short_segments</code><span class="sig-paren">(</span><em>segments</em>, <em>stats</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.filter_short_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.filter_short_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters out short segments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.initialize_segments">
+<code class="descname">initialize_segments</code><span class="sig-paren">(</span><em>alignment</em>, <em>stats</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.initialize_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.initialize_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes segments.</p>
+<p>The alignment is frame-level segmentation labels. Output includes only
+those segments labeled with the target labels.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.merge_consecutive_segments">
+<code class="descname">merge_consecutive_segments</code><span class="sig-paren">(</span><em>segments</em>, <em>stats</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.merge_consecutive_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.merge_consecutive_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges consecutive segments.</p>
+<p>Done after padding. Consecutive segments that share a boundary are
+merged if they have the same label and the merged segment is no longer
+than ‘max_merged_segment_dur’.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.pad_segments">
+<code class="descname">pad_segments</code><span class="sig-paren">(</span><em>segments</em>, <em>stats</em>, <em>num_utt_frames=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.pad_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.pad_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pads segments on both sides.</p>
+<p>Ensures that the segments do not go beyond the neighboring segments or
+utterance boundaries.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>alignment</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts frame-level segmentation labels to a list of segments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alignment</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Frame-level segmentation labels.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List
+of segments, where each entry is a (segment-beg, segment-end, label)
+tuple, along with segmentation post-processing stats.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[List[<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]], <a class="reference internal" href="#kaldi.segmentation.SegmentationProcessor.Stats" title="kaldi.segmentation.SegmentationProcessor.Stats">SegmentationProcessor.Stats</a>]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>key</em>, <em>segments</em>, <em>file_handle</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes segments to file</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kaldi.sgmm2.html" class="btn btn-neutral float-right" title="kaldi.sgmm2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kaldi.rnnlm.html" class="btn btn-neutral" title="kaldi.rnnlm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
