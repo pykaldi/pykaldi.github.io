@@ -5,47 +5,19 @@
    api/kaldi.alignment
    api/kaldi.asr
    api/kaldi.base
-   api/kaldi.base.io
-   api/kaldi.base.math
    api/kaldi.chain
    api/kaldi.cudamatrix
    api/kaldi.decoder
    api/kaldi.feat
-   api/kaldi.feat.fbank
-   api/kaldi.feat.functions
-   api/kaldi.feat.mel
-   api/kaldi.feat.mfcc
-   api/kaldi.feat.online
-   api/kaldi.feat.pitch
-   api/kaldi.feat.plp
-   api/kaldi.feat.signal
-   api/kaldi.feat.spectrogram
-   api/kaldi.feat.wave
-   api/kaldi.feat.window
    api/kaldi.fstext
-   api/kaldi.fstext.properties
-   api/kaldi.fstext.special
-   api/kaldi.fstext.utils
-   api/kaldi.fstext.weight
    api/kaldi.gmm
-   api/kaldi.gmm.am
    api/kaldi.hmm
    api/kaldi.itf
    api/kaldi.ivector
    api/kaldi.kws
    api/kaldi.lat
-   api/kaldi.lat.align
-   api/kaldi.lat.functions
-   api/kaldi.lat.sausages
    api/kaldi.lm
    api/kaldi.matrix
-   api/kaldi.matrix.common
-   api/kaldi.matrix.compressed
-   api/kaldi.matrix.functions
-   api/kaldi.matrix.htk
-   api/kaldi.matrix.optimization
-   api/kaldi.matrix.packed
-   api/kaldi.matrix.sparse
    api/kaldi.nnet3
    api/kaldi.online2
    api/kaldi.rnnlm
@@ -53,14 +25,5 @@
    api/kaldi.sgmm2
    api/kaldi.tfrnnlm
    api/kaldi.transform
-   api/kaldi.transform.cmvn
-   api/kaldi.transform.fmpe
-   api/kaldi.transform.lda
-   api/kaldi.transform.lvtln
-   api/kaldi.transform.mllr
-   api/kaldi.transform.mllt
    api/kaldi.tree
    api/kaldi.util
-   api/kaldi.util.io
-   api/kaldi.util.options
-   api/kaldi.util.table
