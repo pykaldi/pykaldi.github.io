@@ -111,6 +111,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.alignment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-kaldi.asr">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-kaldi.segmentation">kaldi.segmentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.base.html">kaldi.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.chain.html">kaldi.chain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
@@ -223,7 +224,7 @@
 </table>
 <dl class="class">
 <dt id="kaldi.alignment.Aligner">
-<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">Aligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x200ee60&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">Aligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1798e60&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract base class for speech aligners.</p>
 <p>All concrete subclasses should override <a class="reference internal" href="#kaldi.alignment.Aligner.make_decodable" title="kaldi.alignment.Aligner.make_decodable"><code class="xref py py-meth docutils literal"><span class="pre">make_decodable()</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -411,7 +412,7 @@ optional silences.</p>
 
 <dl class="class">
 <dt id="kaldi.alignment.GmmAligner">
-<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">GmmAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x200ee60&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">GmmAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1798e60&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner" title="Permalink to this definition">¶</a></dt>
 <dd><p>GMM-based speech aligner.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -500,7 +501,7 @@ weight consisting of (graph-score, acoustic-score).</p>
 
 <dl class="classmethod">
 <dt id="kaldi.alignment.GmmAligner.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x2015e40&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x231f330&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new GMM aligner from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -642,7 +643,7 @@ optional silences.</p>
 
 <dl class="class">
 <dt id="kaldi.alignment.NnetAligner">
-<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">NnetAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1acacf0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2030010&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">NnetAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x2366020&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x236fc90&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Nnet3-based speech aligner.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -734,7 +735,7 @@ weight consisting of (graph-score, acoustic-score).</p>
 
 <dl class="classmethod">
 <dt id="kaldi.alignment.NnetAligner.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x2030ae0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x202fd70&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x1e373c0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2351e90&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new nnet3 aligner from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1251,7 +1252,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.FasterGmmRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_faster_decoder.FasterDecoderOptions object at 0x1ab5830&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_faster_decoder.FasterDecoderOptions object at 0x23c29b0&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new GMM recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1399,7 +1400,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.LatticeGmmRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x1886210&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x22f4ee0&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new GMM recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1547,7 +1548,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.LatticeBiglmGmmRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>old_lm_rxfilename</em>, <em>new_lm_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0xf34eb0&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>old_lm_rxfilename</em>, <em>new_lm_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x2319e80&gt;</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmGmmRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmGmmRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new GMM recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1605,7 +1606,7 @@ log-likelihoods.</td>
 
 <dl class="class">
 <dt id="kaldi.asr.NnetRecognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">NnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x205ee00&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#NnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.NnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">NnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x233f290&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#NnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.NnetRecognizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for nnet3-based speech recognizers.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1729,7 +1730,7 @@ log-likelihoods.</td>
 
 <dl class="class">
 <dt id="kaldi.asr.FasterNnetRecognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">FasterNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x1a7b060&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">FasterNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2312c80&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Faster nnet3-based speech recognizer.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1824,7 +1825,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.FasterNnetRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_faster_decoder.FasterDecoderOptions object at 0x202fc80&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2032a80&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_faster_decoder.FasterDecoderOptions object at 0xda1ef0&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x234c5e0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#FasterNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.FasterNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new nnet3 recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1885,7 +1886,7 @@ log-likelihoods.</td>
 
 <dl class="class">
 <dt id="kaldi.asr.LatticeNnetRecognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x230f500&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x1e09f00&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice generating nnet3-based speech recognizer.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1980,7 +1981,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.LatticeNnetRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x202d6b0&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2507a00&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x2330020&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x23c9cf0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new nnet3 recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2041,7 +2042,7 @@ log-likelihoods.</td>
 
 <dl class="class">
 <dt id="kaldi.asr.LatticeBiglmNnetRecognizer">
-<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeBiglmNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x250bf10&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeBiglmNnetRecognizer</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>decoder</em>, <em>symbols=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x1e087c0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmNnetRecognizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice generating big LM nnet3-based speech recognizer.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2136,7 +2137,7 @@ separated symbols. The “weight” output is a lattice weight consisting of
 
 <dl class="classmethod">
 <dt id="kaldi.asr.LatticeBiglmNnetRecognizer.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>old_lm_rxfilename</em>, <em>new_lm_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x2511570&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2506080&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>graph_rxfilename</em>, <em>old_lm_rxfilename</em>, <em>new_lm_rxfilename</em>, <em>symbols_filename=None</em>, <em>allow_partial=True</em>, <em>determinize_lattice=False</em>, <em>decoder_opts=&lt;_lattice_faster_decoder.LatticeFasterDecoderOptions object at 0x2381a60&gt;</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x1e40b50&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeBiglmNnetRecognizer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new GMM recognizer from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2193,6 +2194,407 @@ log-likelihoods.</td>
 <dt id="kaldi.asr.LatticeBiglmNnetRecognizer.read_model">
 <code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.asr.LatticeBiglmNnetRecognizer.read_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads model from an extended filename.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kaldi.segmentation">
+<span id="kaldi-segmentation"></span><h1>kaldi.segmentation<a class="headerlink" href="#module-kaldi.segmentation" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.segmentation.NnetSAD" title="kaldi.segmentation.NnetSAD"><code class="xref py py-obj docutils literal"><span class="pre">NnetSAD</span></code></a>(model,&nbsp;transform,&nbsp;graph[,&nbsp;beam,&nbsp;…])</td>
+<td>Nnet3-based speech activity detection (SAD).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.segmentation.SegmentationProcessor" title="kaldi.segmentation.SegmentationProcessor"><code class="xref py py-obj docutils literal"><span class="pre">SegmentationProcessor</span></code></a>(target_labels[,&nbsp;…])</td>
+<td>Segmentation post-processor.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.segmentation.Segmenter" title="kaldi.segmentation.Segmenter"><code class="xref py py-obj docutils literal"><span class="pre">Segmenter</span></code></a>(model,&nbsp;graph[,&nbsp;beam,&nbsp;max_active,&nbsp;…])</td>
+<td>Abstract base class for segmenters.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.segmentation.Segmenter">
+<em class="property">class </em><code class="descclassname">kaldi.segmentation.</code><code class="descname">Segmenter</code><span class="sig-paren">(</span><em>model</em>, <em>graph</em>, <em>beam=8</em>, <em>max_active=1000</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#Segmenter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.Segmenter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract base class for segmenters.</p>
+<p>All concrete subclasses should override <a class="reference internal" href="#kaldi.segmentation.Segmenter.make_decodable" title="kaldi.segmentation.Segmenter.make_decodable"><code class="xref py py-meth docutils literal"><span class="pre">make_decodable()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Segmentation model.</li>
+<li><strong>graph</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – Segmentation graph.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Logarithmic decoding beam.</li>
+<li><strong>max_active</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum number of active states in decoding.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.segmentation.Segmenter.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#Segmenter.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.Segmenter.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface">DecodableInterface</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.Segmenter.segment">
+<code class="descname">segment</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#Segmenter.segment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.Segmenter.segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Segments acoustic features.</p>
+<p>Output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="43%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level segmentation</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The “weight” output is a lattice weight consisting of (graph-score,
+acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing segmentation output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If segmentation fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.segmentation.NnetSAD">
+<em class="property">class </em><code class="descclassname">kaldi.segmentation.</code><code class="descname">NnetSAD</code><span class="sig-paren">(</span><em>model</em>, <em>transform</em>, <em>graph</em>, <em>beam=8</em>, <em>max_active=1000</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x236db30&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nnet3-based speech activity detection (SAD).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.Nnet" title="kaldi.nnet3.Nnet"><em>Nnet</em></a>) – SAD model.</li>
+<li><strong>transform</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – Transformation applied to SAD label posteriors.</li>
+<li><strong>graph</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – SAD graph.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Logarithmic decoding beam.</li>
+<li><strong>max_active</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum number of active states in decoding.</li>
+<li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options for
+the SAD model.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.segmentation.NnetSAD.make_decodable">
+<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.make_decodable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new decodable object from input features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
+log-likelihoods.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.DecodableMatrixScaled" title="kaldi.decoder.DecodableMatrixScaled">DecodableMatrixScaled</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.segmentation.NnetSAD.make_sad_graph">
+<em class="property">static </em><code class="descname">make_sad_graph</code><span class="sig-paren">(</span><em>transition_scale=1.0</em>, <em>self_loop_scale=0.1</em>, <em>min_silence_duration=0.03</em>, <em>min_speech_duration=0.3</em>, <em>max_speech_duration=10.0</em>, <em>frame_shift=0.01</em>, <em>edge_silence_probability=0.5</em>, <em>transition_probability=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.make_sad_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.make_sad_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a decoding graph with a simple HMM topology suitable for SAD.</p>
+<p>Output graph uses label 1 for ‘silence’ and label 2 for ‘speech’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>transition_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Scale on transition log-probabilities
+relative to LM weights.</li>
+<li><strong>self_loop_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Scale on self-loop log-probabilities
+relative to LM weights.</li>
+<li><strong>min_silence_duration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum duration for silence.</li>
+<li><strong>min_speech_duration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum duration for speech.</li>
+<li><strong>max_speech_duration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Maximum duration for speech.</li>
+<li><strong>frame_shift</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frame shift in seconds.</li>
+<li><strong>edge_silence_probability</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Probability of silence at the
+edges.</li>
+<li><strong>transition_probability</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Transition probability for silence
+to speech or vice-versa.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A simple decoding graph suitable for SAD.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst">StdVectorFst</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.segmentation.NnetSAD.make_sad_transform">
+<em class="property">static </em><code class="descname">make_sad_transform</code><span class="sig-paren">(</span><em>priors</em>, <em>sil_scale=1.0</em>, <em>sil_in_speech_weight=0.0</em>, <em>speech_in_sil_weight=0.0</em>, <em>garbage_in_speech_weight=0.0</em>, <em>garbage_in_sil_weight=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.make_sad_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.make_sad_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates SAD posterior transformation matrix.</p>
+<p>The 3x2 transformation matrix is used to convert length Nx3 posterior
+probability matrices to Nx2 pseudo-likelihood matrices.</p>
+<p>The “priors” vector can be a proper prior probability distribution over
+SAD labels or simply average SAD label posteriors. This vector is
+normalized to derive a prior probability distribution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>priors</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a>) – SAD label priors to remove from the neural network
+output posteriors to convert them to pseudo likelihoods.</li>
+<li><strong>sil_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Scale on the silence probability. Make this more
+than one to encourage decoding silence.</li>
+<li><strong>sil_in_speech_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fraction of silence probability to
+add to speech probability.</li>
+<li><strong>speech_in_sil_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fraction of speech probability to
+add to silence probability.</li>
+<li><strong>garbage_in_speech_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fraction of garbage
+probability to add to speech probability.</li>
+<li><strong>garbage_in_sil_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fraction of garbage probability
+to add to silence probability.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.segmentation.NnetSAD.read_average_posteriors">
+<em class="property">static </em><code class="descname">read_average_posteriors</code><span class="sig-paren">(</span><em>post_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.read_average_posteriors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.read_average_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads average SAD label posteriors from an extended filename.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.segmentation.NnetSAD.read_model">
+<em class="property">static </em><code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.read_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads SAD model from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.NnetSAD.segment">
+<code class="descname">segment</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.segmentation.NnetSAD.segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Segments acoustic features.</p>
+<p>Output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="43%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level segmentation</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The “weight” output is a lattice weight consisting of (graph-score,
+acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing segmentation output.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If segmentation fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.segmentation.SegmentationProcessor">
+<em class="property">class </em><code class="descclassname">kaldi.segmentation.</code><code class="descname">SegmentationProcessor</code><span class="sig-paren">(</span><em>target_labels</em>, <em>frame_shift=0.01</em>, <em>segment_padding=0.2</em>, <em>min_segment_dur=0</em>, <em>max_merged_segment_dur=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Segmentation post-processor.</p>
+<p>This class is used for converting segmentation labels to a list of segments.
+Output includes only those segments labeled with the target labels.</p>
+<dl class="docutils">
+<dt>Post-processing operations include::</dt>
+<dd><ul class="first last simple">
+<li>filtering out short segments</li>
+<li>padding segments</li>
+<li>merging consecutive segments</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>target_labels</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Target labels. Typically the speech labels.</li>
+<li><strong>frame_shift</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frame shift in seconds.</li>
+<li><strong>segment_padding</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Additional padding on target segments.
+Padding does not go beyond the adjacent segment. This is typically
+used for padding speech segments with silence. Must be an integral
+multiple of frame shift.</li>
+<li><strong>min_segment_dur</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum duration (in seconds) required for a
+segment to be included. This is before any padding. Segments shorter
+than this duration will be removed.</li>
+<li><strong>max_merged_segment_dur</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Merge consecutive segments as long as
+the merged segment is no longer than this many seconds. The segments
+are only merged if their boundaries are touching. This is after
+padding by –segment-padding seconds. 0 means do not merge. Use
+‘inf’ to not limit the duration.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><p class="first last"><strong>stats</strong> (<a class="reference internal" href="#kaldi.segmentation.SegmentationProcessor.Stats" title="kaldi.segmentation.SegmentationProcessor.Stats"><em>SegmentationProcessor.Stats</em></a>) – Global segmentation post-processing
+stats.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.segmentation.SegmentationProcessor.Stats">
+<em class="property">class </em><code class="descname">Stats</code><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.Stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.Stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores segmentation post-processing stats.</p>
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.Stats.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.Stats.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.Stats.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds stats from another</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.filter_short_segments">
+<code class="descname">filter_short_segments</code><span class="sig-paren">(</span><em>segments</em>, <em>stats</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.filter_short_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.filter_short_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters out short segments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.initialize_segments">
+<code class="descname">initialize_segments</code><span class="sig-paren">(</span><em>alignment</em>, <em>stats</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.initialize_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.initialize_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes segments.</p>
+<p>The alignment is frame-level segmentation labels. Output includes only
+those segments labeled with the target labels.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.merge_consecutive_segments">
+<code class="descname">merge_consecutive_segments</code><span class="sig-paren">(</span><em>segments</em>, <em>stats</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.merge_consecutive_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.merge_consecutive_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges consecutive segments.</p>
+<p>Done after padding. Consecutive segments that share a boundary are
+merged if they have the same label and the merged segment is no longer
+than ‘max_merged_segment_dur’.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.pad_segments">
+<code class="descname">pad_segments</code><span class="sig-paren">(</span><em>segments</em>, <em>stats</em>, <em>num_utt_frames=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.pad_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.pad_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pads segments on both sides.</p>
+<p>Ensures that the segments do not go beyond the neighboring segments or
+utterance boundaries.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>alignment</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts frame-level segmentation labels to a list of segments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alignment</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Frame-level segmentation labels.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List
+of segments, where each entry is a (segment-beg, segment-end, label)
+tuple, along with segmentation post-processing stats.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[List[<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]], <a class="reference internal" href="#kaldi.segmentation.SegmentationProcessor.Stats" title="kaldi.segmentation.SegmentationProcessor.Stats">SegmentationProcessor.Stats</a>]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.segmentation.SegmentationProcessor.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>key</em>, <em>segments</em>, <em>file_handle</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#SegmentationProcessor.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.SegmentationProcessor.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes segments to file</p>
 </dd></dl>
 
 </dd></dl>

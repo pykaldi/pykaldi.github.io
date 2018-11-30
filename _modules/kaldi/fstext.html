@@ -110,6 +110,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.html">kaldi.alignment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.html#module-kaldi.asr">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.html#module-kaldi.segmentation">kaldi.segmentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.base.html">kaldi.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.chain.html">kaldi.chain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
@@ -388,9 +389,7 @@
 
 <div class="viewcode-block" id="StdFstCompiler"><a class="viewcode-back" href="../../api/kaldi.fstext.html#kaldi.fstext.StdFstCompiler">[docs]</a><span class="k">class</span> <span class="nc">StdFstCompiler</span><span class="p">(</span><span class="n">_api</span><span class="o">.</span><span class="n">_FstCompiler</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compiler for FSTs over the tropical semiring.&quot;&quot;&quot;</span>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_compiler_type</span><span class="p">():</span>
-        <span class="k">return</span> <span class="n">_compiler</span><span class="o">.</span><span class="n">StdFstCompiler</span></div>
+    <span class="n">_compiler_type</span> <span class="o">=</span> <span class="n">_compiler</span><span class="o">.</span><span class="n">StdFstCompiler</span></div>
 
 
 <span class="k">class</span> <span class="nc">_StdFstDrawer</span><span class="p">(</span><span class="n">_api</span><span class="o">.</span><span class="n">_FstDrawer</span><span class="p">,</span> <span class="n">_drawer</span><span class="o">.</span><span class="n">StdFstDrawer</span><span class="p">):</span>
@@ -572,9 +571,7 @@
 
 <div class="viewcode-block" id="LogFstCompiler"><a class="viewcode-back" href="../../api/kaldi.fstext.html#kaldi.fstext.LogFstCompiler">[docs]</a><span class="k">class</span> <span class="nc">LogFstCompiler</span><span class="p">(</span><span class="n">_api</span><span class="o">.</span><span class="n">_FstCompiler</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compiler for FSTs over the log semiring.&quot;&quot;&quot;</span>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_compiler_type</span><span class="p">():</span>
-        <span class="k">return</span> <span class="n">_compiler</span><span class="o">.</span><span class="n">LogFstCompiler</span></div>
+    <span class="n">_compiler_type</span> <span class="o">=</span> <span class="n">_compiler</span><span class="o">.</span><span class="n">LogFstCompiler</span></div>
 
 
 <span class="k">class</span> <span class="nc">_LogFstDrawer</span><span class="p">(</span><span class="n">_api</span><span class="o">.</span><span class="n">_FstDrawer</span><span class="p">,</span> <span class="n">_drawer</span><span class="o">.</span><span class="n">LogFstDrawer</span><span class="p">):</span>
@@ -767,9 +764,7 @@
 
 <div class="viewcode-block" id="LatticeFstCompiler"><a class="viewcode-back" href="../../api/kaldi.fstext.html#kaldi.fstext.LatticeFstCompiler">[docs]</a><span class="k">class</span> <span class="nc">LatticeFstCompiler</span><span class="p">(</span><span class="n">_api</span><span class="o">.</span><span class="n">_FstCompiler</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compiler for FSTs over the lattice semiring.&quot;&quot;&quot;</span>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_compiler_type</span><span class="p">():</span>
-        <span class="k">return</span> <span class="n">_compiler</span><span class="o">.</span><span class="n">LatticeFstCompiler</span></div>
+    <span class="n">_compiler_type</span> <span class="o">=</span> <span class="n">_compiler</span><span class="o">.</span><span class="n">LatticeFstCompiler</span></div>
 
 
 <span class="k">class</span> <span class="nc">_LatticeFstDrawer</span><span class="p">(</span><span class="n">_api</span><span class="o">.</span><span class="n">_FstDrawer</span><span class="p">,</span> <span class="n">_drawer</span><span class="o">.</span><span class="n">LatticeFstDrawer</span><span class="p">):</span>
@@ -973,9 +968,7 @@
 
 <div class="viewcode-block" id="CompactLatticeFstCompiler"><a class="viewcode-back" href="../../api/kaldi.fstext.html#kaldi.fstext.CompactLatticeFstCompiler">[docs]</a><span class="k">class</span> <span class="nc">CompactLatticeFstCompiler</span><span class="p">(</span><span class="n">_api</span><span class="o">.</span><span class="n">_FstCompiler</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compiler for FSTs over the compact lattice semiring.&quot;&quot;&quot;</span>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_compiler_type</span><span class="p">():</span>
-        <span class="k">return</span> <span class="n">_compiler</span><span class="o">.</span><span class="n">compactLatticeFstCompiler</span></div>
+    <span class="n">_compiler_type</span> <span class="o">=</span> <span class="n">_compiler</span><span class="o">.</span><span class="n">CompactLatticeFstCompiler</span></div>
 
 
 <span class="k">class</span> <span class="nc">_CompactLatticeFstDrawer</span><span class="p">(</span><span class="n">_api</span><span class="o">.</span><span class="n">_FstDrawer</span><span class="p">,</span> <span class="n">_drawer</span><span class="o">.</span><span class="n">CompactLatticeFstDrawer</span><span class="p">):</span>
@@ -1220,9 +1213,7 @@
 
 <div class="viewcode-block" id="KwsIndexFstCompiler"><a class="viewcode-back" href="../../api/kaldi.fstext.html#kaldi.fstext.KwsIndexFstCompiler">[docs]</a><span class="k">class</span> <span class="nc">KwsIndexFstCompiler</span><span class="p">(</span><span class="n">_api</span><span class="o">.</span><span class="n">_FstCompiler</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compiler for FSTs over the KWS index semiring.&quot;&quot;&quot;</span>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_compiler_type</span><span class="p">():</span>
-        <span class="k">return</span> <span class="n">_compiler</span><span class="o">.</span><span class="n">KwsIndexFstCompiler</span></div>
+    <span class="n">_compiler_type</span> <span class="o">=</span> <span class="n">_compiler</span><span class="o">.</span><span class="n">KwsIndexFstCompiler</span></div>
 
 
 <span class="k">class</span> <span class="nc">_KwsIndexFstDrawer</span><span class="p">(</span><span class="n">_api</span><span class="o">.</span><span class="n">_FstDrawer</span><span class="p">,</span> <span class="n">_drawer</span><span class="o">.</span><span class="n">KwsIndexFstDrawer</span><span class="p">):</span>

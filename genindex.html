@@ -110,6 +110,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/kaldi.html">kaldi.alignment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/kaldi.html#module-kaldi.asr">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/kaldi.html#module-kaldi.segmentation">kaldi.segmentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/kaldi.base.html">kaldi.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/kaldi.chain.html">kaldi.chain</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
@@ -512,6 +513,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.add">add() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.UpdatableComponent.add">add() (kaldi.nnet3.UpdatableComponent method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.SegmentationProcessor.Stats.add">add() (kaldi.segmentation.SegmentationProcessor.Stats method)</a>
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.AffineXformStats.add">add() (kaldi.transform.AffineXformStats method)</a>
 </li>
@@ -4447,6 +4450,8 @@
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.functions.filter_matrix_rows">filter_matrix_rows() (in module kaldi.matrix.functions)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.SegmentationProcessor.filter_short_segments">filter_short_segments() (kaldi.segmentation.SegmentationProcessor method)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.TableComposeOptions.filter_type">filter_type (kaldi.fstext.special.TableComposeOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.chain.html#kaldi.chain.TimeEnforcerFst.final">final() (kaldi.chain.TimeEnforcerFst method)</a>
@@ -6707,6 +6712,8 @@
 </li>
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.AmSgmm2.initialize_from_full_gmm">initialize_from_full_gmm() (kaldi.sgmm2.AmSgmm2 method)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.SegmentationProcessor.initialize_segments">initialize_segments() (kaldi.segmentation.SegmentationProcessor method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetOptimizeOptions.initialize_undefined">initialize_undefined (kaldi.nnet3.NnetOptimizeOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.util.html#kaldi.util.io.Input">Input (class in kaldi.util.io)</a>
@@ -7557,6 +7564,8 @@
 </li>
       <li><a href="api/kaldi.rnnlm.html#module-kaldi.rnnlm">kaldi.rnnlm (module)</a>
 </li>
+      <li><a href="api/kaldi.html#module-kaldi.segmentation">kaldi.segmentation (module)</a>
+</li>
       <li><a href="api/kaldi.sgmm2.html#module-kaldi.sgmm2">kaldi.sgmm2 (module)</a>
 </li>
       <li><a href="api/kaldi.tfrnnlm.html#module-kaldi.tfrnnlm">kaldi.tfrnnlm (module)</a>
@@ -8125,6 +8134,10 @@
 </li>
       <li><a href="api/kaldi.html#kaldi.asr.Recognizer.make_decodable">make_decodable() (kaldi.asr.Recognizer method)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.NnetSAD.make_decodable">make_decodable() (kaldi.segmentation.NnetSAD method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.Segmenter.make_decodable">make_decodable() (kaldi.segmentation.Segmenter method)</a>
+</li>
       <li><a href="api/kaldi.tree.html#kaldi.tree.make_event_pair">make_event_pair() (in module kaldi.tree)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.utils.make_following_input_symbols_same">make_following_input_symbols_same() (in module kaldi.fstext.utils)</a>
@@ -8134,6 +8147,10 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.utils.make_linear_acceptor_with_alternatives">make_linear_acceptor_with_alternatives() (in module kaldi.fstext.utils)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.utils.make_preceding_input_symbols_same">make_preceding_input_symbols_same() (in module kaldi.fstext.utils)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.NnetSAD.make_sad_graph">make_sad_graph() (kaldi.segmentation.NnetSAD static method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.NnetSAD.make_sad_transform">make_sad_transform() (kaldi.segmentation.NnetSAD static method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.make_scc_graph">make_scc_graph() (in module kaldi.nnet3)</a>
 </li>
@@ -8458,6 +8475,8 @@
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.FullGmm.merge">merge() (kaldi.gmm.FullGmm method)</a>
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm.merge_by_count">merge_by_count() (kaldi.gmm.am.AmDiagGmm method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.SegmentationProcessor.merge_consecutive_segments">merge_consecutive_segments() (kaldi.segmentation.SegmentationProcessor method)</a>
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.merge_distributions">merge_distributions() (in module kaldi.rnnlm)</a>
 </li>
@@ -9258,6 +9277,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetOptimizeOptions">NnetOptimizeOptions (class in kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.html#kaldi.asr.NnetRecognizer">NnetRecognizer (class in kaldi.asr)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.NnetSAD">NnetSAD (class in kaldi.segmentation)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions">NnetSimpleComputationOptions (class in kaldi.nnet3)</a>
 </li>
@@ -10491,6 +10512,8 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/kaldi.html#kaldi.segmentation.SegmentationProcessor.pad_segments">pad_segments() (kaldi.segmentation.SegmentationProcessor method)</a>
+</li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.window.FrameExtractionOptions.padded_window_size">padded_window_size() (kaldi.feat.window.FrameExtractionOptions method)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.TransitionModel.pair_to_transition_id">pair_to_transition_id() (kaldi.hmm.TransitionModel method)</a>
@@ -10936,6 +10959,8 @@
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.RnnlmExampleCreator.process">process() (kaldi.rnnlm.RnnlmExampleCreator method)</a>
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.SamplingLmEstimator.process">process() (kaldi.rnnlm.SamplingLmEstimator method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.SegmentationProcessor.process">process() (kaldi.segmentation.SegmentationProcessor method)</a>
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.SamplingLmEstimator.process_line">process_line() (kaldi.rnnlm.SamplingLmEstimator method)</a>
 </li>
@@ -11733,6 +11758,8 @@
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.SamplingLm.read_arpa">read_arpa() (kaldi.rnnlm.SamplingLm method)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.NnetSAD.read_average_posteriors">read_average_posteriors() (kaldi.segmentation.NnetSAD static method)</a>
+</li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.read_bool">read_bool() (in module kaldi.base.io)</a>
 </li>
       <li><a href="api/kaldi.tree.html#kaldi.tree.read_build_tree_stats">read_build_tree_stats() (in module kaldi.tree)</a>
@@ -11842,6 +11869,8 @@
       <li><a href="api/kaldi.html#kaldi.asr.LatticeNnetRecognizer.read_model">read_model() (kaldi.asr.LatticeNnetRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.html#kaldi.asr.NnetRecognizer.read_model">read_model() (kaldi.asr.NnetRecognizer static method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.NnetSAD.read_model">read_model() (kaldi.segmentation.NnetSAD static method)</a>
 </li>
       <li><a href="api/kaldi.itf.html#kaldi.itf.Clusterable.read_new">read_new() (kaldi.itf.Clusterable method)</a>
 </li>
@@ -13007,7 +13036,17 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdVectorFstMutableArcIterator.seek">seek() (kaldi.fstext.StdVectorFstMutableArcIterator method)</a>
 </li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.NnetSAD.segment">segment() (kaldi.segmentation.NnetSAD method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.Segmenter.segment">segment() (kaldi.segmentation.Segmenter method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ComputationGraph.segment_ends">segment_ends (kaldi.nnet3.ComputationGraph attribute)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.SegmentationProcessor">SegmentationProcessor (class in kaldi.segmentation)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.SegmentationProcessor.Stats">SegmentationProcessor.Stats (class in kaldi.segmentation)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.Segmenter">Segmenter (class in kaldi.segmentation)</a>
 </li>
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuDevice.select_gpu_id">select_gpu_id() (kaldi.cudamatrix.CuDevice method)</a>
 </li>
@@ -15994,6 +16033,8 @@
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.RnnlmExample.write">write() (kaldi.rnnlm.RnnlmExample method)</a>
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.SamplingLm.write">write() (kaldi.rnnlm.SamplingLm method)</a>
+</li>
+      <li><a href="api/kaldi.html#kaldi.segmentation.SegmentationProcessor.write">write() (kaldi.segmentation.SegmentationProcessor method)</a>
 </li>
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.AmSgmm2.write">write() (kaldi.sgmm2.AmSgmm2 method)</a>
 </li>

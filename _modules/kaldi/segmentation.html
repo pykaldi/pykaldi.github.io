@@ -1,0 +1,809 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.segmentation &mdash; PyKaldi 0.0.9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.html">kaldi.alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.html#module-kaldi.asr">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.html#module-kaldi.segmentation">kaldi.segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.itf.html">kaldi.itf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>kaldi.segmentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kaldi.segmentation</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">decoder</span> <span class="k">as</span> <span class="n">_dec</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">fstext</span> <span class="k">as</span> <span class="n">_fst</span>
+<span class="kn">from</span> <span class="nn">.fstext</span> <span class="k">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">_fst_utils</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">matrix</span> <span class="k">as</span> <span class="n">_mat</span>
+<span class="kn">from</span> <span class="nn">.matrix</span> <span class="k">import</span> <span class="n">common</span> <span class="k">as</span> <span class="n">_mat_comm</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">nnet3</span> <span class="k">as</span> <span class="n">_nnet3</span>
+<span class="kn">from</span> <span class="nn">.util</span> <span class="k">import</span> <span class="n">io</span> <span class="k">as</span> <span class="n">_util_io</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Segmenter&#39;</span><span class="p">,</span> <span class="s1">&#39;NnetSAD&#39;</span><span class="p">,</span> <span class="s1">&#39;SegmentationProcessor&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="Segmenter"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.Segmenter">[docs]</a><span class="k">class</span> <span class="nc">Segmenter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Abstract base class for segmenters.</span>
+
+<span class="sd">    All concrete subclasses should override :meth:`make_decodable`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model (object): Segmentation model.</span>
+<span class="sd">        graph (StdVectorFst): Segmentation graph.</span>
+<span class="sd">        beam (float): Logarithmic decoding beam.</span>
+<span class="sd">        max_active (int): Maximum number of active states in decoding.</span>
+<span class="sd">        acoustic_scale (float): Acoustic score scale.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">beam</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_active</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                 <span class="n">acoustic_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="n">decoder_opts</span> <span class="o">=</span> <span class="n">_dec</span><span class="o">.</span><span class="n">FasterDecoderOptions</span><span class="p">()</span>
+        <span class="n">decoder_opts</span><span class="o">.</span><span class="n">beam</span> <span class="o">=</span> <span class="n">beam</span>
+        <span class="n">decoder_opts</span><span class="o">.</span><span class="n">max_active</span> <span class="o">=</span> <span class="n">max_active</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">_dec</span><span class="o">.</span><span class="n">FasterDecoder</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">decoder_opts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">=</span> <span class="n">acoustic_scale</span>
+
+<div class="viewcode-block" id="Segmenter.make_decodable"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.Segmenter.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            features (object): Input features.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DecodableInterface: A decodable object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+<div class="viewcode-block" id="Segmenter.segment"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.Segmenter.segment">[docs]</a>    <span class="k">def</span> <span class="nf">segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Segments acoustic features.</span>
+
+<span class="sd">        Output is a dictionary with the following `(key, value)` pairs:</span>
+
+<span class="sd">        ============== ============================== ==========================</span>
+<span class="sd">        key            value                          value type</span>
+<span class="sd">        ============== ============================== ==========================</span>
+<span class="sd">        &quot;alignment&quot;    Frame-level segmentation       `List[int]`</span>
+<span class="sd">        &quot;best_path&quot;    Best lattice path              `CompactLattice`</span>
+<span class="sd">        &quot;likelihood&quot;   Log-likelihood of best path    `float`</span>
+<span class="sd">        &quot;weight&quot;       Cost of best path              `LatticeWeight`</span>
+<span class="sd">        ============== ============================== ==========================</span>
+
+<span class="sd">        The &quot;weight&quot; output is a lattice weight consisting of (graph-score,</span>
+<span class="sd">        acoustic-score).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            features (object): Input features.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A dictionary representing segmentation output.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If segmentation fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">make_decodable</span><span class="p">(</span><span class="n">features</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">reached_final</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No final state was active on the last frame.&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">best_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">get_best_path</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Empty segmentation output.&quot;</span><span class="p">)</span>
+
+        <span class="n">ali</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">get_linear_symbol_sequence</span><span class="p">(</span><span class="n">best_path</span><span class="p">)</span>
+        <span class="n">likelihood</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">value1</span> <span class="o">+</span> <span class="n">weight</span><span class="o">.</span><span class="n">value2</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">acoustic_lattice_scale</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span>
+            <span class="n">_fst_utils</span><span class="o">.</span><span class="n">scale_lattice</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">best_path</span><span class="p">)</span>
+        <span class="n">best_path</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">convert_lattice_to_compact_lattice</span><span class="p">(</span><span class="n">best_path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;alignment&quot;</span><span class="p">:</span> <span class="n">ali</span><span class="p">,</span>
+            <span class="s2">&quot;best_path&quot;</span><span class="p">:</span> <span class="n">best_path</span><span class="p">,</span>
+            <span class="s2">&quot;likelihood&quot;</span><span class="p">:</span> <span class="n">likelihood</span><span class="p">,</span>
+            <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span><span class="p">,</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="NnetSAD"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD">[docs]</a><span class="k">class</span> <span class="nc">NnetSAD</span><span class="p">(</span><span class="n">Segmenter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Nnet3-based speech activity detection (SAD).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model (Nnet): SAD model.</span>
+<span class="sd">        transform (Matrix): Transformation applied to SAD label posteriors.</span>
+<span class="sd">        graph (StdVectorFst): SAD graph.</span>
+<span class="sd">        beam (float): Logarithmic decoding beam.</span>
+<span class="sd">        max_active (int): Maximum number of active states in decoding.</span>
+<span class="sd">        decodable_opts (NnetSimpleComputationOptions): Configuration options for</span>
+<span class="sd">            the SAD model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">beam</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_active</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                 <span class="n">decodable_opts</span><span class="o">=</span><span class="n">_nnet3</span><span class="o">.</span><span class="n">NnetSimpleComputationOptions</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">Nnet</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;model argument should be a Nnet object&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NnetSAD</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">beam</span><span class="p">,</span> <span class="n">max_active</span><span class="p">,</span>
+                                      <span class="n">decodable_opts</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priors</span> <span class="o">=</span> <span class="n">_mat</span><span class="o">.</span><span class="n">Vector</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span> <span class="o">=</span> <span class="n">decodable_opts</span>
+        <span class="n">_nnet3</span><span class="o">.</span><span class="n">set_batchnorm_test_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+        <span class="n">_nnet3</span><span class="o">.</span><span class="n">set_dropout_test_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+        <span class="n">_nnet3</span><span class="o">.</span><span class="n">collapse_model</span><span class="p">(</span><span class="n">_nnet3</span><span class="o">.</span><span class="n">CollapseModelConfig</span><span class="p">(),</span> <span class="n">model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compiler</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">CachingOptimizingCompiler</span><span class="o">.</span><span class="n">new_with_optimize_opts</span><span class="p">(</span>
+            <span class="n">model</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="o">.</span><span class="n">optimize_config</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NnetSAD.make_decodable"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            features (Matrix): Input features.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DecodableMatrixScaled: A decodable object for computing scaled</span>
+<span class="sd">            log-likelihoods.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">features</span><span class="o">.</span><span class="n">num_rows</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Empty feature matrix.&quot;</span><span class="p">)</span>
+
+        <span class="n">nnet_computer</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">DecodableNnetSimple</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">priors</span><span class="p">,</span>
+            <span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">compiler</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">post</span> <span class="o">=</span> <span class="n">_mat</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">nnet_computer</span><span class="o">.</span><span class="n">num_frames</span><span class="p">(),</span>
+                           <span class="n">nnet_computer</span><span class="o">.</span><span class="n">output_dim</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nnet_computer</span><span class="o">.</span><span class="n">num_frames</span><span class="p">()):</span>
+            <span class="n">nnet_computer</span><span class="o">.</span><span class="n">get_output_for_frame</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">post</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+        <span class="n">post</span><span class="o">.</span><span class="n">apply_exp_</span><span class="p">()</span>
+        <span class="c1"># FIXME: Need to keep a reference to log_likes to keep it in scope</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_likes</span> <span class="o">=</span> <span class="n">_mat</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">num_rows</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">num_rows</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_likes</span><span class="o">.</span><span class="n">add_mat_mat_</span><span class="p">(</span><span class="n">post</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">,</span>
+                                     <span class="n">_mat_comm</span><span class="o">.</span><span class="n">MatrixTransposeType</span><span class="o">.</span><span class="n">NO_TRANS</span><span class="p">,</span>
+                                     <span class="n">_mat_comm</span><span class="o">.</span><span class="n">MatrixTransposeType</span><span class="o">.</span><span class="n">TRANS</span><span class="p">,</span>
+                                     <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_likes</span><span class="o">.</span><span class="n">apply_log_</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">_dec</span><span class="o">.</span><span class="n">DecodableMatrixScaled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_log_likes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NnetSAD.read_model"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads SAD model from an extended filename.&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">Nnet</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NnetSAD.read_average_posteriors"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD.read_average_posteriors">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">read_average_posteriors</span><span class="p">(</span><span class="n">post_rxfilename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads average SAD label posteriors from an extended filename.&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">post_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_mat</span><span class="o">.</span><span class="n">Vector</span><span class="p">()</span><span class="o">.</span><span class="n">read_</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NnetSAD.make_sad_transform"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD.make_sad_transform">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">make_sad_transform</span><span class="p">(</span><span class="n">priors</span><span class="p">,</span> <span class="n">sil_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                           <span class="n">sil_in_speech_weight</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                           <span class="n">speech_in_sil_weight</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                           <span class="n">garbage_in_speech_weight</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                           <span class="n">garbage_in_sil_weight</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates SAD posterior transformation matrix.</span>
+
+<span class="sd">        The 3x2 transformation matrix is used to convert length Nx3 posterior</span>
+<span class="sd">        probability matrices to Nx2 pseudo-likelihood matrices.</span>
+
+<span class="sd">        The &quot;priors&quot; vector can be a proper prior probability distribution over</span>
+<span class="sd">        SAD labels or simply average SAD label posteriors. This vector is</span>
+<span class="sd">        normalized to derive a prior probability distribution.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            priors (Vector): SAD label priors to remove from the neural network</span>
+<span class="sd">                output posteriors to convert them to pseudo likelihoods.</span>
+<span class="sd">            sil_scale (float): Scale on the silence probability. Make this more</span>
+<span class="sd">                than one to encourage decoding silence.</span>
+<span class="sd">            sil_in_speech_weight (float): The fraction of silence probability to</span>
+<span class="sd">                add to speech probability.</span>
+<span class="sd">            speech_in_sil_weight (float): The fraction of speech probability to</span>
+<span class="sd">                add to silence probability.</span>
+<span class="sd">            garbage_in_speech_weight (float): The fraction of garbage</span>
+<span class="sd">                probability to add to speech probability.</span>
+<span class="sd">            garbage_in_sil_weight (float): The fraction of garbage probability</span>
+<span class="sd">                to add to silence probability.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">priors_sum</span> <span class="o">=</span> <span class="n">priors</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">sil_prior</span> <span class="o">=</span> <span class="n">priors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">priors_sum</span>
+        <span class="n">speech_prior</span> <span class="o">=</span> <span class="n">priors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">priors_sum</span>
+        <span class="n">garbage_prior</span> <span class="o">=</span> <span class="n">priors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">priors_sum</span>
+
+        <span class="k">return</span> <span class="n">_mat</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="n">sil_scale</span> <span class="o">/</span> <span class="n">sil_prior</span><span class="p">,</span>
+                             <span class="n">speech_in_sil_weight</span> <span class="o">/</span> <span class="n">speech_prior</span><span class="p">,</span>
+                             <span class="n">garbage_in_sil_weight</span> <span class="o">/</span> <span class="n">garbage_prior</span><span class="p">],</span>
+                            <span class="p">[</span><span class="n">sil_in_speech_weight</span> <span class="o">/</span> <span class="n">sil_prior</span><span class="p">,</span>
+                             <span class="mf">1.0</span> <span class="o">/</span> <span class="n">speech_prior</span><span class="p">,</span>
+                             <span class="n">garbage_in_speech_weight</span> <span class="o">/</span> <span class="n">garbage_prior</span><span class="p">]])</span></div>
+
+<div class="viewcode-block" id="NnetSAD.make_sad_graph"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.NnetSAD.make_sad_graph">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">make_sad_graph</span><span class="p">(</span><span class="n">transition_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                       <span class="n">min_silence_duration</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">min_speech_duration</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+                       <span class="n">max_speech_duration</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">frame_shift</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                       <span class="n">edge_silence_probability</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">transition_probability</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Makes a decoding graph with a simple HMM topology suitable for SAD.</span>
+
+<span class="sd">        Output graph uses label 1 for &#39;silence&#39; and label 2 for &#39;speech&#39;.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            transition_scale (float): Scale on transition log-probabilities</span>
+<span class="sd">                relative to LM weights.</span>
+<span class="sd">            self_loop_scale (float): Scale on self-loop log-probabilities</span>
+<span class="sd">                relative to LM weights.</span>
+<span class="sd">            min_silence_duration (float): Minimum duration for silence.</span>
+<span class="sd">            min_speech_duration (float): Minimum duration for speech.</span>
+<span class="sd">            max_speech_duration (float): Maximum duration for speech.</span>
+<span class="sd">            frame_shift (float): Frame shift in seconds.</span>
+<span class="sd">            edge_silence_probability (float): Probability of silence at the</span>
+<span class="sd">                edges.</span>
+<span class="sd">            transition_probability (float): Transition probability for silence</span>
+<span class="sd">                to speech or vice-versa.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            StdVectorFst: A simple decoding graph suitable for SAD.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">min_states_silence</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">min_silence_duration</span> <span class="o">/</span> <span class="n">frame_shift</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">min_states_speech</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">min_speech_duration</span> <span class="o">/</span> <span class="n">frame_shift</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">max_states_speech</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_speech_duration</span> <span class="o">/</span> <span class="n">frame_shift</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+
+        <span class="n">symbols</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">SymbolTable</span><span class="p">()</span>
+        <span class="n">symbols</span><span class="o">.</span><span class="n">add_symbol</span><span class="p">(</span><span class="s2">&quot;&lt;eps&gt;&quot;</span><span class="p">)</span>
+        <span class="n">symbols</span><span class="o">.</span><span class="n">add_symbol</span><span class="p">(</span><span class="s2">&quot;silence&quot;</span><span class="p">)</span>
+        <span class="n">symbols</span><span class="o">.</span><span class="n">add_symbol</span><span class="p">(</span><span class="s2">&quot;speech&quot;</span><span class="p">)</span>
+        <span class="n">compiler</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdFstCompiler</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="n">symbols</span><span class="p">)</span>
+
+        <span class="c1"># Initial transition to silence</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0 1 silence silence </span><span class="si">{cost}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">cost</span><span class="o">=-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">edge_silence_probability</span><span class="p">)),</span>
+              <span class="n">file</span><span class="o">=</span><span class="n">compiler</span><span class="p">)</span>
+        <span class="n">silence_start_state</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Silence min duration transitions</span>
+        <span class="c1"># 1-&gt;2, 2-&gt;3 and so on until</span>
+        <span class="c1"># (1 + min_states_silence - 2) -&gt; (1 + min_states_silence - 1)  ...</span>
+        <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">silence_start_state</span><span class="p">,</span>
+                           <span class="n">silence_start_state</span> <span class="o">+</span> <span class="n">min_states_silence</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{state}</span><span class="s2"> </span><span class="si">{next_state}</span><span class="s2"> silence silence </span><span class="si">{cost}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> <span class="n">next_state</span><span class="o">=</span><span class="n">state</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mf">0.0</span><span class="p">),</span>
+                   <span class="n">file</span><span class="o">=</span><span class="n">compiler</span><span class="p">)</span>
+        <span class="n">silence_last_state</span> <span class="o">=</span> <span class="n">silence_start_state</span> <span class="o">+</span> <span class="n">min_states_silence</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="c1"># Silence self-loop</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{state}</span><span class="s2"> </span><span class="si">{state}</span><span class="s2"> silence silence </span><span class="si">{cost}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">state</span><span class="o">=</span><span class="n">silence_last_state</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mf">0.0</span><span class="p">),</span>
+               <span class="n">file</span><span class="o">=</span><span class="n">compiler</span><span class="p">)</span>
+
+        <span class="n">speech_start_state</span> <span class="o">=</span> <span class="n">silence_last_state</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="c1"># Initial transition to speech</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;0 </span><span class="si">{state}</span><span class="s2"> speech speech </span><span class="si">{cost}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">state</span><span class="o">=</span><span class="n">speech_start_state</span><span class="p">,</span>
+                    <span class="n">cost</span><span class="o">=-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">edge_silence_probability</span><span class="p">)),</span>
+               <span class="n">file</span><span class="o">=</span><span class="n">compiler</span><span class="p">)</span>
+
+        <span class="c1"># Silence to speech transition</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{sil_state}</span><span class="s2"> </span><span class="si">{speech_state}</span><span class="s2"> speech speech </span><span class="si">{cost}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">sil_state</span><span class="o">=</span><span class="n">silence_last_state</span><span class="p">,</span>
+                    <span class="n">speech_state</span><span class="o">=</span><span class="n">speech_start_state</span><span class="p">,</span>
+                    <span class="n">cost</span><span class="o">=-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">transition_probability</span><span class="p">)),</span>
+               <span class="n">file</span><span class="o">=</span><span class="n">compiler</span><span class="p">)</span>
+
+        <span class="c1"># Speech min duration</span>
+        <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">speech_start_state</span><span class="p">,</span>
+                           <span class="n">speech_start_state</span> <span class="o">+</span> <span class="n">min_states_speech</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{state}</span><span class="s2"> </span><span class="si">{next_state}</span><span class="s2"> speech speech </span><span class="si">{cost}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> <span class="n">next_state</span><span class="o">=</span><span class="n">state</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mf">0.0</span><span class="p">),</span>
+                   <span class="n">file</span><span class="o">=</span><span class="n">compiler</span><span class="p">)</span>
+
+        <span class="c1"># Speech max duration</span>
+        <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">speech_start_state</span> <span class="o">+</span> <span class="n">min_states_speech</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+                           <span class="n">speech_start_state</span> <span class="o">+</span> <span class="n">max_states_speech</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{state}</span><span class="s2"> </span><span class="si">{next_state}</span><span class="s2"> speech speech </span><span class="si">{cost}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> <span class="n">next_state</span><span class="o">=</span><span class="n">state</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mf">0.0</span><span class="p">),</span>
+                   <span class="n">file</span><span class="o">=</span><span class="n">compiler</span><span class="p">)</span>
+
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{state}</span><span class="s2"> </span><span class="si">{sil_state}</span><span class="s2"> silence silence </span><span class="si">{cost}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> <span class="n">sil_state</span><span class="o">=</span><span class="n">silence_start_state</span><span class="p">,</span>
+                        <span class="n">cost</span><span class="o">=-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">transition_probability</span><span class="p">)),</span>
+                   <span class="n">file</span><span class="o">=</span><span class="n">compiler</span><span class="p">)</span>
+        <span class="n">speech_last_state</span> <span class="o">=</span> <span class="n">speech_start_state</span> <span class="o">+</span> <span class="n">max_states_speech</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="c1"># Transition to silence after max duration of speech</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{state}</span><span class="s2"> </span><span class="si">{sil_state}</span><span class="s2"> silence silence </span><span class="si">{cost}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">state</span><span class="o">=</span><span class="n">speech_last_state</span><span class="p">,</span> <span class="n">sil_state</span><span class="o">=</span><span class="n">silence_start_state</span><span class="p">,</span>
+                    <span class="n">cost</span><span class="o">=</span><span class="mf">0.0</span><span class="p">),</span>
+               <span class="n">file</span><span class="o">=</span><span class="n">compiler</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">speech_start_state</span><span class="p">):</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{state}</span><span class="s2"> </span><span class="si">{cost}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> <span class="n">cost</span><span class="o">=-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">edge_silence_probability</span><span class="p">)),</span>
+                   <span class="n">file</span><span class="o">=</span><span class="n">compiler</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">speech_start_state</span><span class="p">,</span> <span class="n">speech_last_state</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{state}</span><span class="s2"> </span><span class="si">{cost}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span>
+                        <span class="n">cost</span><span class="o">=-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">edge_silence_probability</span><span class="p">)),</span>
+                   <span class="n">file</span><span class="o">=</span><span class="n">compiler</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="SegmentationProcessor"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor">[docs]</a><span class="k">class</span> <span class="nc">SegmentationProcessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Segmentation post-processor.</span>
+
+<span class="sd">    This class is used for converting segmentation labels to a list of segments.</span>
+<span class="sd">    Output includes only those segments labeled with the target labels.</span>
+
+<span class="sd">    Post-processing operations include::</span>
+<span class="sd">        * filtering out short segments</span>
+<span class="sd">        * padding segments</span>
+<span class="sd">        * merging consecutive segments</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        target_labels (List[int]): Target labels. Typically the speech labels.</span>
+<span class="sd">        frame_shift (float): Frame shift in seconds.</span>
+<span class="sd">        segment_padding (float): Additional padding on target segments.</span>
+<span class="sd">            Padding does not go beyond the adjacent segment. This is typically</span>
+<span class="sd">            used for padding speech segments with silence. Must be an integral</span>
+<span class="sd">            multiple of frame shift.</span>
+<span class="sd">        min_segment_dur (float): Minimum duration (in seconds) required for a</span>
+<span class="sd">            segment to be included. This is before any padding. Segments shorter</span>
+<span class="sd">            than this duration will be removed.</span>
+<span class="sd">        max_merged_segment_dur (float): Merge consecutive segments as long as</span>
+<span class="sd">            the merged segment is no longer than this many seconds. The segments</span>
+<span class="sd">            are only merged if their boundaries are touching. This is after</span>
+<span class="sd">            padding by --segment-padding seconds. 0 means do not merge. Use</span>
+<span class="sd">            &#39;inf&#39; to not limit the duration.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        stats (SegmentationProcessor.Stats): Global segmentation post-processing</span>
+<span class="sd">            stats.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_labels</span><span class="p">,</span> <span class="n">frame_shift</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">segment_padding</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                 <span class="n">min_segment_dur</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_merged_segment_dur</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">float</span><span class="p">(</span><span class="n">segment_padding</span> <span class="o">/</span> <span class="n">frame_shift</span><span class="p">)</span><span class="o">.</span><span class="n">is_integer</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;segment_padding = </span><span class="si">{}</span><span class="s2"> is not an integral &quot;</span>
+                             <span class="s2">&quot;multiple of frame_shift = </span><span class="si">{}</span><span class="s2">&quot;</span>
+                             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">segment_padding</span><span class="p">,</span><span class="n">frame_shift</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_labels</span> <span class="o">=</span> <span class="n">target_labels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_shift</span> <span class="o">=</span> <span class="n">frame_shift</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">segment_padding</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">segment_padding</span> <span class="o">/</span> <span class="n">frame_shift</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_segment_dur</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">min_segment_dur</span> <span class="o">/</span> <span class="n">frame_shift</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_merged_segment_dur</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_merged_segment_dur</span> <span class="o">/</span> <span class="n">frame_shift</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Stats</span><span class="p">()</span>
+
+<div class="viewcode-block" id="SegmentationProcessor.Stats"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.Stats">[docs]</a>    <span class="k">class</span> <span class="nc">Stats</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stores segmentation post-processing stats.&quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_segments_initial</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_short_segments_filtered</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_merges</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_segments_final</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">initial_duration</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">padding_duration</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">filter_short_duration</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">final_duration</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<div class="viewcode-block" id="SegmentationProcessor.Stats.add"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.Stats.add">[docs]</a>        <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Adds stats from another&quot;&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_segments_initial</span> <span class="o">+=</span> <span class="n">other</span><span class="o">.</span><span class="n">num_segments_initial</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_short_segments_filtered</span> <span class="o">+=</span> <span class="n">other</span><span class="o">.</span><span class="n">num_short_segments_filtered</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_merges</span> <span class="o">+=</span> <span class="n">other</span><span class="o">.</span><span class="n">num_merges</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_segments_final</span> <span class="o">+=</span> <span class="n">other</span><span class="o">.</span><span class="n">num_segments_final</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">initial_duration</span> <span class="o">+=</span> <span class="n">other</span><span class="o">.</span><span class="n">initial_duration</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">filter_short_duration</span> <span class="o">+=</span> <span class="n">other</span><span class="o">.</span><span class="n">filter_short_duration</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">padding_duration</span> <span class="o">+=</span> <span class="n">other</span><span class="o">.</span><span class="n">padding_duration</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">final_duration</span> <span class="o">+=</span> <span class="n">other</span><span class="o">.</span><span class="n">final_duration</span></div>
+
+        <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;num-segments-initial=</span><span class="si">{num_segments_initial}</span><span class="s2">, &quot;</span>
+                    <span class="s2">&quot;num-short-segments-filtered=</span><span class="si">{num_short_segments_filtered}</span><span class="s2">, &quot;</span>
+                    <span class="s2">&quot;num-merges=</span><span class="si">{num_merges}</span><span class="s2">, &quot;</span>
+                    <span class="s2">&quot;num-segments-final=</span><span class="si">{num_segments_final}</span><span class="s2">, &quot;</span>
+                    <span class="s2">&quot;initial-duration=</span><span class="si">{initial_duration}</span><span class="s2">, &quot;</span>
+                    <span class="s2">&quot;filter-short-duration=</span><span class="si">{filter_short_duration}</span><span class="s2">, &quot;</span>
+                    <span class="s2">&quot;padding-duration=</span><span class="si">{padding_duration}</span><span class="s2">, &quot;</span>
+                    <span class="s2">&quot;final-duration=</span><span class="si">{final_duration}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">num_segments_initial</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_segments_initial</span><span class="p">,</span>
+                <span class="n">num_short_segments_filtered</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_short_segments_filtered</span><span class="p">,</span>
+                <span class="n">num_merges</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_merges</span><span class="p">,</span>
+                <span class="n">num_segments_final</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_segments_final</span><span class="p">,</span>
+                <span class="n">initial_duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_duration</span><span class="p">,</span>
+                <span class="n">filter_short_duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">filter_short_duration</span><span class="p">,</span>
+                <span class="n">padding_duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">padding_duration</span><span class="p">,</span>
+                <span class="n">final_duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">final_duration</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="SegmentationProcessor.process"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alignment</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts frame-level segmentation labels to a list of segments.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            alignment (List[int]): Frame-level segmentation labels.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple[List[Tuple[int, int, int]], SegmentationProcessor.Stats]: List</span>
+<span class="sd">            of segments, where each entry is a (segment-beg, segment-end, label)</span>
+<span class="sd">            tuple, along with segmentation post-processing stats.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Stats</span><span class="p">()</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialize_segments</span><span class="p">(</span><span class="n">alignment</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_short_segments</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_segments</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">alignment</span><span class="p">))</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge_consecutive_segments</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">segments</span><span class="p">,</span> <span class="n">stats</span></div>
+
+<div class="viewcode-block" id="SegmentationProcessor.initialize_segments"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.initialize_segments">[docs]</a>    <span class="k">def</span> <span class="nf">initialize_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initializes segments.</span>
+
+<span class="sd">        The alignment is frame-level segmentation labels. Output includes only</span>
+<span class="sd">        those segments labeled with the target labels.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">segments</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">alignment</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">segments</span>
+        <span class="n">num_target_frames</span><span class="p">,</span> <span class="n">seg_begin</span><span class="p">,</span> <span class="n">seg_label</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">alignment</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">alignment</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">label</span> <span class="o">!=</span> <span class="n">seg_label</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">seg_label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_labels</span><span class="p">:</span>
+                    <span class="n">segments</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">seg_begin</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">seg_label</span><span class="p">))</span>
+                    <span class="n">num_target_frames</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">seg_begin</span>
+                <span class="n">seg_begin</span><span class="p">,</span> <span class="n">seg_label</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span>
+        <span class="k">if</span> <span class="n">seg_label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_labels</span><span class="p">:</span>
+            <span class="n">segments</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">seg_begin</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">alignment</span><span class="p">),</span> <span class="n">seg_label</span><span class="p">))</span>
+            <span class="n">num_target_frames</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span> <span class="o">-</span> <span class="n">seg_begin</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">num_segments_initial</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">num_segments_final</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">initial_duration</span> <span class="o">=</span> <span class="n">num_target_frames</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_shift</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">final_duration</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">initial_duration</span>
+        <span class="k">return</span> <span class="n">segments</span></div>
+
+<div class="viewcode-block" id="SegmentationProcessor.filter_short_segments"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.filter_short_segments">[docs]</a>    <span class="k">def</span> <span class="nf">filter_short_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Filters out short segments.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_segment_dur</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">segments</span>
+        <span class="n">filtered_segments</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">:</span>
+            <span class="n">dur</span> <span class="o">=</span> <span class="n">segment</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">segment</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">dur</span> <span class="o">&lt;</span> <span class="n">min_segment_dur</span><span class="p">:</span>
+                <span class="n">stats</span><span class="o">.</span><span class="n">filter_short_duration</span> <span class="o">+=</span> <span class="n">dur</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_shift</span>
+                <span class="n">stats</span><span class="o">.</span><span class="n">num_short_segments_filtered</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">filtered_segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">num_segments_final</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">filtered_segments</span><span class="p">)</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">final_duration</span> <span class="o">-=</span> <span class="n">stats</span><span class="o">.</span><span class="n">filter_short_duration</span>
+        <span class="k">return</span> <span class="n">filtered_segments</span></div>
+
+<div class="viewcode-block" id="SegmentationProcessor.pad_segments"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.pad_segments">[docs]</a>    <span class="k">def</span> <span class="nf">pad_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">num_utt_frames</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pads segments on both sides.</span>
+
+<span class="sd">        Ensures that the segments do not go beyond the neighboring segments or</span>
+<span class="sd">        utterance boundaries.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">num_padded_frames</span><span class="p">,</span> <span class="n">padded_segments</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">seg_beg</span><span class="p">,</span> <span class="n">seg_end</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">segments</span><span class="p">):</span>
+            <span class="n">seg_beg</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">segment_padding</span>  <span class="c1"># try padding on the left side</span>
+            <span class="n">num_padded_frames</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">segment_padding</span>
+            <span class="k">if</span> <span class="n">seg_beg</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># Padded segment start is before the beginning of the utterance.</span>
+                <span class="c1"># Reduce padding.</span>
+                <span class="n">num_padded_frames</span> <span class="o">+=</span> <span class="n">seg_beg</span>
+                <span class="n">seg_beg</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">prev_seg_end</span> <span class="o">&gt;</span> <span class="n">seg_beg</span><span class="p">:</span>
+                <span class="c1"># Padded segment start is before the end of previous segment.</span>
+                <span class="c1"># Reduce padding.</span>
+                <span class="n">num_padded_frames</span> <span class="o">-=</span> <span class="n">prev_seg_end</span> <span class="o">-</span> <span class="n">seg_beg</span>
+                <span class="n">seg_beg</span> <span class="o">=</span> <span class="n">prev_seg_end</span>
+            <span class="n">seg_end</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">segment_padding</span>
+            <span class="n">num_padded_frames</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">segment_padding</span>
+            <span class="k">if</span> <span class="n">num_utt_frames</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">seg_end</span> <span class="o">&gt;</span> <span class="n">num_utt_frames</span><span class="p">:</span>
+                <span class="c1"># Padded segment end is beyond the max duration.</span>
+                <span class="c1"># Reduce padding.</span>
+                <span class="n">num_padded_frames</span> <span class="o">-=</span> <span class="n">seg_end</span> <span class="o">-</span> <span class="n">num_utt_frames</span>
+                <span class="n">seg_end</span> <span class="o">=</span> <span class="n">num_utt_frames</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span> <span class="ow">and</span> <span class="n">seg_end</span> <span class="o">&gt;</span> <span class="n">segments</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="c1"># Padded segment end is beyond the start of the next segment.</span>
+                <span class="c1"># Reduce padding.</span>
+                <span class="n">num_padded_frames</span> <span class="o">-=</span> <span class="n">seg_end</span> <span class="o">-</span> <span class="n">segments</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">seg_end</span> <span class="o">=</span> <span class="n">segments</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">padded_segments</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">seg_beg</span><span class="p">,</span> <span class="n">seg_end</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
+            <span class="n">prev_seg_end</span> <span class="o">=</span> <span class="n">seg_end</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">padding_duration</span> <span class="o">=</span> <span class="n">num_padded_frames</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_shift</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">final_duration</span> <span class="o">+=</span> <span class="n">stats</span><span class="o">.</span><span class="n">padding_duration</span>
+        <span class="k">return</span> <span class="n">padded_segments</span></div>
+
+<div class="viewcode-block" id="SegmentationProcessor.merge_consecutive_segments"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.merge_consecutive_segments">[docs]</a>    <span class="k">def</span> <span class="nf">merge_consecutive_segments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Merges consecutive segments.</span>
+
+<span class="sd">        Done after padding. Consecutive segments that share a boundary are</span>
+<span class="sd">        merged if they have the same label and the merged segment is no longer</span>
+<span class="sd">        than &#39;max_merged_segment_dur&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_merged_segment_dur</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">segments</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">segments</span>
+
+        <span class="n">merged_segments</span> <span class="o">=</span> <span class="p">[</span><span class="n">segments</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="k">for</span> <span class="n">seg_beg</span><span class="p">,</span> <span class="n">seg_end</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+            <span class="n">prev_seg_beg</span><span class="p">,</span> <span class="n">prev_seg_end</span><span class="p">,</span> <span class="n">prev_label</span> <span class="o">=</span> <span class="n">merged_segments</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">seg_beg</span> <span class="o">==</span> <span class="n">prev_seg_end</span> <span class="ow">and</span> <span class="n">label</span> <span class="o">==</span> <span class="n">prev_label</span> <span class="ow">and</span>
+                <span class="n">seg_end</span> <span class="o">-</span> <span class="n">prev_seg_beg</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_merged_segment_dur</span><span class="p">):</span>
+                <span class="n">merged_segments</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">prev_seg_beg</span><span class="p">,</span> <span class="n">seg_end</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+                <span class="n">stats</span><span class="o">.</span><span class="n">num_merges</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">merged_segments</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">seg_beg</span><span class="p">,</span> <span class="n">seg_end</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
+
+        <span class="n">stats</span><span class="o">.</span><span class="n">num_segments_final</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">merged_segments</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">merged_segments</span></div>
+
+<div class="viewcode-block" id="SegmentationProcessor.write"><a class="viewcode-back" href="../../api/kaldi.html#kaldi.segmentation.SegmentationProcessor.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">file_handle</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes segments to file&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">:</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{key}</span><span class="s2">-</span><span class="si">{label}</span><span class="s2">-</span><span class="si">{begin:07d}</span><span class="s2">-</span><span class="si">{end:07d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">begin</span><span class="o">=</span><span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{id}</span><span class="s2"> </span><span class="si">{key}</span><span class="s2"> </span><span class="si">{begin:.2f}</span><span class="s2"> </span><span class="si">{end:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                      <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">begin</span><span class="o">=</span><span class="n">begin</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_shift</span><span class="p">,</span>
+                      <span class="n">end</span><span class="o">=</span><span class="n">end</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_shift</span><span class="p">),</span>
+                  <span class="n">file</span><span class="o">=</span><span class="n">file_handle</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.0.9',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
