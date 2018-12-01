@@ -211,29 +211,30 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.alignment.Aligner" title="kaldi.alignment.Aligner"><code class="xref py py-obj docutils literal"><span class="pre">Aligner</span></code></a>(transition_model,&nbsp;acoustic_model,&nbsp;…)</td>
-<td>Abstract base class for speech aligners.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.alignment.Aligner" title="kaldi.alignment.Aligner"><code class="xref py py-obj docutils literal"><span class="pre">Aligner</span></code></a>(transition_model,&nbsp;tree,&nbsp;lexicon[,&nbsp;…])</td>
+<td>Speech aligner.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.alignment.GmmAligner" title="kaldi.alignment.GmmAligner"><code class="xref py py-obj docutils literal"><span class="pre">GmmAligner</span></code></a>(transition_model,&nbsp;acoustic_model,&nbsp;…)</td>
-<td>GMM-based speech aligner.</td>
+<td>GMM based speech aligner.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.alignment.NnetAligner" title="kaldi.alignment.NnetAligner"><code class="xref py py-obj docutils literal"><span class="pre">NnetAligner</span></code></a>(transition_model,&nbsp;…[,&nbsp;…])</td>
-<td>Nnet3-based speech aligner.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.alignment.MappedAligner" title="kaldi.alignment.MappedAligner"><code class="xref py py-obj docutils literal"><span class="pre">MappedAligner</span></code></a>(transition_model,&nbsp;tree,&nbsp;lexicon)</td>
+<td>Mapped speech aligner.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.alignment.NnetAligner" title="kaldi.alignment.NnetAligner"><code class="xref py py-obj docutils literal"><span class="pre">NnetAligner</span></code></a>(transition_model,&nbsp;…[,&nbsp;…])</td>
+<td>Neural network based speech aligner.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="kaldi.alignment.Aligner">
-<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">Aligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x2a1e5a0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Abstract base class for speech aligners.</p>
-<p>All concrete subclasses should override <a class="reference internal" href="#kaldi.alignment.Aligner.make_decodable" title="kaldi.alignment.Aligner.make_decodable"><code class="xref py py-meth docutils literal"><span class="pre">make_decodable()</span></code></a>.</p>
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">Aligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Speech aligner.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
-<li><strong>acoustic_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The acoustic model.</li>
 <li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – The phonetic decision tree.</li>
 <li><strong>lexicon</strong> (<em>StdFst</em>) – The lexicon FST.</li>
 <li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
@@ -254,9 +255,9 @@ probabilities.</li>
 </table>
 <dl class="method">
 <dt id="kaldi.alignment.Aligner.align">
-<code class="descname">align</code><span class="sig-paren">(</span><em>features</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.align"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.align" title="Permalink to this definition">¶</a></dt>
-<dd><p>Aligns acoustic features with text.</p>
-<p>Alignment output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<code class="descname">align</code><span class="sig-paren">(</span><em>input</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.align"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns input with text.</p>
+<p>Output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -297,7 +298,7 @@ weight consisting of (graph-score, acoustic-score).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to align.</li>
+<li><strong>input</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input to align.</li>
 <li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Reference text to align.</li>
 </ul>
 </td>
@@ -312,19 +313,39 @@ weight consisting of (graph-score, acoustic-score).</p>
 </table>
 </dd></dl>
 
-<dl class="method">
-<dt id="kaldi.alignment.Aligner.make_decodable">
-<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.make_decodable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a new decodable object from input features.</p>
+<dl class="classmethod">
+<dt id="kaldi.alignment.Aligner.from_files">
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new GMM aligner from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the transition
+model.</li>
+<li><strong>tree_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the phonetic
+decision tree.</li>
+<li><strong>lexicon_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the lexicon
+FST.</li>
+<li><strong>symbols_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The symbols file. If provided, “text” input
+of <a class="reference internal" href="#kaldi.alignment.Aligner.align" title="kaldi.alignment.Aligner.align"><code class="xref py py-meth docutils literal"><span class="pre">align()</span></code></a> should include symbols instead of integer
+indices.</li>
+<li><strong>disambig_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the list
+of disambiguation symbols.</li>
+<li><strong>graph_compiler_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.TrainingGraphCompilerOptions" title="kaldi.decoder.TrainingGraphCompilerOptions"><em>TrainingGraphCompilerOptions</em></a>) – Configuration
+options for graph compiler.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Decoding beam used in alignment.</li>
+<li><strong>transition_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on non-self-loop transition
+probabilities.</li>
+<li><strong>self_loop_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on self-loop transition
+probabilities.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface">DecodableInterface</a></td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new GMM aligner object.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -340,6 +361,12 @@ weight consisting of (graph-score, acoustic-score).</p>
 <dt id="kaldi.alignment.Aligner.read_lexicon">
 <em class="property">static </em><code class="descname">read_lexicon</code><span class="sig-paren">(</span><em>lexicon_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.read_lexicon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.read_lexicon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads lexicon FST from an extended filename.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="kaldi.alignment.Aligner.read_model">
+<em class="property">static </em><code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.read_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads transition model from an extended filename.</p>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -411,20 +438,19 @@ optional silences.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="kaldi.alignment.GmmAligner">
-<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">GmmAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x2a1e5a0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner" title="Permalink to this definition">¶</a></dt>
-<dd><p>GMM-based speech aligner.</p>
+<dt id="kaldi.alignment.MappedAligner">
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">MappedAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#MappedAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.MappedAligner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mapped speech aligner.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
-<li><strong>acoustic_model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The acoustic model.</li>
 <li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – The phonetic decision tree.</li>
 <li><strong>lexicon</strong> (<em>StdFst</em>) – The lexicon FST.</li>
-<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” input of
-<a class="reference internal" href="#kaldi.alignment.GmmAligner.align" title="kaldi.alignment.GmmAligner.align"><code class="xref py py-meth docutils literal"><span class="pre">align()</span></code></a> should include symbols instead of integer indices.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” output of
+<code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code> includes symbols instead of integer indices.</li>
 <li><strong>disambig_symbols</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Disambiguation symbols.</li>
 <li><strong>graph_compiler_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.TrainingGraphCompilerOptions" title="kaldi.decoder.TrainingGraphCompilerOptions"><em>TrainingGraphCompilerOptions</em></a>) – Configuration
 options for graph compiler.</li>
@@ -440,10 +466,10 @@ probabilities.</li>
 </tbody>
 </table>
 <dl class="method">
-<dt id="kaldi.alignment.GmmAligner.align">
-<code class="descname">align</code><span class="sig-paren">(</span><em>features</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.align" title="Permalink to this definition">¶</a></dt>
-<dd><p>Aligns acoustic features with text.</p>
-<p>Alignment output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<dt id="kaldi.alignment.MappedAligner.align">
+<code class="descname">align</code><span class="sig-paren">(</span><em>input</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns input with text.</p>
+<p>Output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -484,7 +510,220 @@ weight consisting of (graph-score, acoustic-score).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to align.</li>
+<li><strong>input</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input to align.</li>
+<li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Reference text to align.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary representing alignment output.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – If alignment fails.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.MappedAligner.from_files">
+<code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new GMM aligner from given files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the transition
+model.</li>
+<li><strong>tree_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the phonetic
+decision tree.</li>
+<li><strong>lexicon_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the lexicon
+FST.</li>
+<li><strong>symbols_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The symbols file. If provided, “text” input
+of <a class="reference internal" href="#kaldi.alignment.MappedAligner.align" title="kaldi.alignment.MappedAligner.align"><code class="xref py py-meth docutils literal"><span class="pre">align()</span></code></a> should include symbols instead of integer
+indices.</li>
+<li><strong>disambig_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the list
+of disambiguation symbols.</li>
+<li><strong>graph_compiler_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.TrainingGraphCompilerOptions" title="kaldi.decoder.TrainingGraphCompilerOptions"><em>TrainingGraphCompilerOptions</em></a>) – Configuration
+options for graph compiler.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Decoding beam used in alignment.</li>
+<li><strong>transition_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on non-self-loop transition
+probabilities.</li>
+<li><strong>self_loop_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on self-loop transition
+probabilities.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new GMM aligner object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.MappedAligner.read_disambig_symbols">
+<code class="descname">read_disambig_symbols</code><span class="sig-paren">(</span><em>disambig_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.read_disambig_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads disambiguation symbols from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.MappedAligner.read_lexicon">
+<code class="descname">read_lexicon</code><span class="sig-paren">(</span><em>lexicon_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.read_lexicon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads lexicon FST from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.MappedAligner.read_model">
+<code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.read_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads transition model from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.MappedAligner.read_symbols">
+<code class="descname">read_symbols</code><span class="sig-paren">(</span><em>symbols_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.read_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads symbol table from file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.MappedAligner.read_tree">
+<code class="descname">read_tree</code><span class="sig-paren">(</span><em>tree_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.read_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads phonetic decision tree from an extended filename.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.MappedAligner.to_phone_alignment">
+<code class="descname">to_phone_alignment</code><span class="sig-paren">(</span><em>alignment</em>, <em>phones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.to_phone_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts frame-level alignment to phone-level alignment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>alignment</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Frame-level alignment.</li>
+<li><strong>phones</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The phone symbol table. If provided, output
+includes symbols instead of integer indices.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of triplets representing, for
+each phone in the input, the phone index/symbol, the begin time (in
+frames) and the duration (in frames).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List[<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.alignment.MappedAligner.to_word_alignment">
+<code class="descname">to_word_alignment</code><span class="sig-paren">(</span><em>best_path</em>, <em>word_boundary_info</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.to_word_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts best alignment path to word-level alignment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>best_path</strong> (<em>CompactLattice</em>) – Best alignment path.</li>
+<li><strong>word_boundary_info</strong> (<a class="reference internal" href="kaldi.lat.html#kaldi.lat.align.WordBoundaryInfo" title="kaldi.lat.align.WordBoundaryInfo"><em>WordBoundaryInfo</em></a>) – Word boundary information.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of triplets representing, for each
+word in the input, the word index/symbol, the begin time (in frames)
+and the duration (in frames). The zero/epsilon words correspond to
+optional silences.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List[<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>,<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.alignment.GmmAligner">
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">GmmAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner" title="Permalink to this definition">¶</a></dt>
+<dd><p>GMM based speech aligner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>transition_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model.</li>
+<li><strong>acoustic_model</strong> (<a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm" title="kaldi.gmm.am.AmDiagGmm"><em>AmDiagGmm</em></a>) – The acoustic model.</li>
+<li><strong>tree</strong> (<a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><em>ContextDependency</em></a>) – The phonetic decision tree.</li>
+<li><strong>lexicon</strong> (<em>StdFst</em>) – The lexicon FST.</li>
+<li><strong>symbols</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable"><em>SymbolTable</em></a>) – The symbol table. If provided, “text” input of
+<a class="reference internal" href="#kaldi.alignment.GmmAligner.align" title="kaldi.alignment.GmmAligner.align"><code class="xref py py-meth docutils literal"><span class="pre">align()</span></code></a> should include symbols instead of integer indices.</li>
+<li><strong>disambig_symbols</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Disambiguation symbols.</li>
+<li><strong>graph_compiler_opts</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.TrainingGraphCompilerOptions" title="kaldi.decoder.TrainingGraphCompilerOptions"><em>TrainingGraphCompilerOptions</em></a>) – Configuration
+options for graph compiler.</li>
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Decoding beam used in alignment.</li>
+<li><strong>transition_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on non-self-loop transition
+probabilities.</li>
+<li><strong>self_loop_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scale on self-loop transition
+probabilities.</li>
+<li><strong>acoustic_scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic score scale.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.alignment.GmmAligner.align">
+<code class="descname">align</code><span class="sig-paren">(</span><em>input</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns input with text.</p>
+<p>Output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="39%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">key</th>
+<th class="head">value</th>
+<th class="head">value type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“alignment”</td>
+<td>Frame-level alignment</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">List[int]</span></code></td>
+</tr>
+<tr class="row-odd"><td>“best_path”</td>
+<td>Best lattice path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">CompactLattice</span></code></td>
+</tr>
+<tr class="row-even"><td>“likelihood”</td>
+<td>Log-likelihood of best path</td>
+<td><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></td>
+</tr>
+<tr class="row-odd"><td>“weight”</td>
+<td>Cost of best path</td>
+<td><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>If <code class="xref py py-attr docutils literal"><span class="pre">symbols</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the “text” input should be a
+string of space separated integer indices. Otherwise it should be a
+string of space separated symbols. The “weight” output is a lattice
+weight consisting of (graph-score, acoustic-score).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input to align.</li>
 <li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Reference text to align.</li>
 </ul>
 </td>
@@ -501,7 +740,7 @@ weight consisting of (graph-score, acoustic-score).</p>
 
 <dl class="classmethod">
 <dt id="kaldi.alignment.GmmAligner.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x29a8ce0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new GMM aligner from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -531,25 +770,6 @@ probabilities.</li>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new GMM aligner object.</p>
 </td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.alignment.GmmAligner.make_decodable">
-<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner.make_decodable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a new decodable object from input features.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
-log-likelihoods.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.DecodableAmDiagGmmScaled" title="kaldi.gmm.am.DecodableAmDiagGmmScaled">DecodableAmDiagGmmScaled</a></td>
 </tr>
 </tbody>
 </table>
@@ -643,8 +863,8 @@ optional silences.</p>
 
 <dl class="class">
 <dt id="kaldi.alignment.NnetAligner">
-<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">NnetAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x2a177e0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2a268b0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Nnet3-based speech aligner.</p>
+<em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">NnetAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=None</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Neural network based speech aligner.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -675,9 +895,9 @@ online ivectors are used.</li>
 </table>
 <dl class="method">
 <dt id="kaldi.alignment.NnetAligner.align">
-<code class="descname">align</code><span class="sig-paren">(</span><em>features</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.align" title="Permalink to this definition">¶</a></dt>
-<dd><p>Aligns acoustic features with text.</p>
-<p>Alignment output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
+<code class="descname">align</code><span class="sig-paren">(</span><em>input</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns input with text.</p>
+<p>Output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -718,7 +938,7 @@ weight consisting of (graph-score, acoustic-score).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Features to align.</li>
+<li><strong>input</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input to align.</li>
 <li><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Reference text to align.</li>
 </ul>
 </td>
@@ -735,7 +955,7 @@ weight consisting of (graph-score, acoustic-score).</p>
 
 <dl class="classmethod">
 <dt id="kaldi.alignment.NnetAligner.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=&lt;_training_graph_compiler.TrainingGraphCompilerOptions object at 0x29d2ba0&gt;</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x2ff7dc0&gt;</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>model_rxfilename</em>, <em>tree_rxfilename</em>, <em>lexicon_rxfilename</em>, <em>symbols_filename=None</em>, <em>disambig_rxfilename=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=None</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a new nnet3 aligner from given files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -768,27 +988,6 @@ online ivectors are used.</li>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new nnet3 aligner object.</p>
 </td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.alignment.NnetAligner.make_decodable">
-<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner.make_decodable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a new decodable object from input features.</p>
-<p>Input can be just a feature matrix or a tuple of a feature matrix and
-an ivector or a tuple of a feature matrix and an online ivector matrix.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em> or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Vector" title="kaldi.matrix.Vector"><em>Vector</em></a><em>] or </em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>, </em><a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a><em>]</em>) – Input features.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
-log-likelihoods.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.DecodableAmNnetSimple" title="kaldi.nnet3.DecodableAmNnetSimple">DecodableAmNnetSimple</a></td>
 </tr>
 </tbody>
 </table>

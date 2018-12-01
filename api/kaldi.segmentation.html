@@ -212,27 +212,25 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.segmentation.NnetSAD" title="kaldi.segmentation.NnetSAD"><code class="xref py py-obj docutils literal"><span class="pre">NnetSAD</span></code></a>(model,&nbsp;transform,&nbsp;graph[,&nbsp;beam,&nbsp;…])</td>
-<td>Nnet3-based speech activity detection (SAD).</td>
+<td>Neural network based speech activity detection (SAD).</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.segmentation.SegmentationProcessor" title="kaldi.segmentation.SegmentationProcessor"><code class="xref py py-obj docutils literal"><span class="pre">SegmentationProcessor</span></code></a>(target_labels[,&nbsp;…])</td>
 <td>Segmentation post-processor.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.segmentation.Segmenter" title="kaldi.segmentation.Segmenter"><code class="xref py py-obj docutils literal"><span class="pre">Segmenter</span></code></a>(model,&nbsp;graph[,&nbsp;beam,&nbsp;max_active,&nbsp;…])</td>
-<td>Abstract base class for segmenters.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.segmentation.Segmenter" title="kaldi.segmentation.Segmenter"><code class="xref py py-obj docutils literal"><span class="pre">Segmenter</span></code></a>(graph[,&nbsp;beam,&nbsp;max_active,&nbsp;…])</td>
+<td>Base class for speech segmenters.</td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="kaldi.segmentation.Segmenter">
-<em class="property">class </em><code class="descclassname">kaldi.segmentation.</code><code class="descname">Segmenter</code><span class="sig-paren">(</span><em>model</em>, <em>graph</em>, <em>beam=8</em>, <em>max_active=1000</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#Segmenter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.Segmenter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Abstract base class for segmenters.</p>
-<p>All concrete subclasses should override <a class="reference internal" href="#kaldi.segmentation.Segmenter.make_decodable" title="kaldi.segmentation.Segmenter.make_decodable"><code class="xref py py-meth docutils literal"><span class="pre">make_decodable()</span></code></a>.</p>
+<em class="property">class </em><code class="descclassname">kaldi.segmentation.</code><code class="descname">Segmenter</code><span class="sig-paren">(</span><em>graph</em>, <em>beam=8</em>, <em>max_active=1000</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#Segmenter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.Segmenter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for speech segmenters.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>model</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Segmentation model.</li>
 <li><strong>graph</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – Segmentation graph.</li>
 <li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Logarithmic decoding beam.</li>
 <li><strong>max_active</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum number of active states in decoding.</li>
@@ -243,27 +241,9 @@
 </tbody>
 </table>
 <dl class="method">
-<dt id="kaldi.segmentation.Segmenter.make_decodable">
-<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#Segmenter.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.Segmenter.make_decodable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a new decodable object from input features.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface">DecodableInterface</a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="kaldi.segmentation.Segmenter.segment">
-<code class="descname">segment</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#Segmenter.segment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.Segmenter.segment" title="Permalink to this definition">¶</a></dt>
-<dd><p>Segments acoustic features.</p>
+<code class="descname">segment</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#Segmenter.segment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.Segmenter.segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Segments input.</p>
 <p>Output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -302,7 +282,7 @@ acoustic-score).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input to segment.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing segmentation output.</td>
 </tr>
@@ -316,16 +296,20 @@ acoustic-score).</p>
 
 <dl class="class">
 <dt id="kaldi.segmentation.NnetSAD">
-<em class="property">class </em><code class="descclassname">kaldi.segmentation.</code><code class="descname">NnetSAD</code><span class="sig-paren">(</span><em>model</em>, <em>transform</em>, <em>graph</em>, <em>beam=8</em>, <em>max_active=1000</em>, <em>decodable_opts=&lt;_nnet_am_decodable_simple.NnetSimpleComputationOptions object at 0x237a1e0&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD" title="Permalink to this definition">¶</a></dt>
-<dd><p>Nnet3-based speech activity detection (SAD).</p>
+<em class="property">class </em><code class="descclassname">kaldi.segmentation.</code><code class="descname">NnetSAD</code><span class="sig-paren">(</span><em>model</em>, <em>transform</em>, <em>graph</em>, <em>beam=8</em>, <em>max_active=1000</em>, <em>decodable_opts=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Neural network based speech activity detection (SAD).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>model</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.Nnet" title="kaldi.nnet3.Nnet"><em>Nnet</em></a>) – SAD model.</li>
-<li><strong>transform</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – Transformation applied to SAD label posteriors.</li>
-<li><strong>graph</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – SAD graph.</li>
+<li><strong>model</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.Nnet" title="kaldi.nnet3.Nnet"><em>Nnet</em></a>) – SAD model. Model output should be log-posteriors for
+[silence, speech, garbage] labels.</li>
+<li><strong>transform</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – Transformation applied to SAD label posteriors. It
+should be a 3x2 matrix mapping [silence, speech, garbage] posteriors
+to [silence, speech] pseudo-likelihoods.</li>
+<li><strong>graph</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – SAD graph. Silence and speech arcs should be
+labeled respectively with 1 and 2.</li>
 <li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Logarithmic decoding beam.</li>
 <li><strong>max_active</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum number of active states in decoding.</li>
 <li><strong>decodable_opts</strong> (<a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions" title="kaldi.nnet3.NnetSimpleComputationOptions"><em>NnetSimpleComputationOptions</em></a>) – Configuration options for
@@ -335,25 +319,6 @@ the SAD model.</li>
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="kaldi.segmentation.NnetSAD.make_decodable">
-<code class="descname">make_decodable</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.make_decodable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.make_decodable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a new decodable object from input features.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – Input features.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A decodable object for computing scaled
-log-likelihoods.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.DecodableMatrixScaled" title="kaldi.decoder.DecodableMatrixScaled">DecodableMatrixScaled</a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <dl class="staticmethod">
 <dt id="kaldi.segmentation.NnetSAD.make_sad_graph">
 <em class="property">static </em><code class="descname">make_sad_graph</code><span class="sig-paren">(</span><em>transition_scale=1.0</em>, <em>self_loop_scale=0.1</em>, <em>min_silence_duration=0.03</em>, <em>min_speech_duration=0.3</em>, <em>max_speech_duration=10.0</em>, <em>frame_shift=0.01</em>, <em>edge_silence_probability=0.5</em>, <em>transition_probability=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/segmentation.html#NnetSAD.make_sad_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.segmentation.NnetSAD.make_sad_graph" title="Permalink to this definition">¶</a></dt>
@@ -436,8 +401,8 @@ to add to silence probability.</li>
 
 <dl class="method">
 <dt id="kaldi.segmentation.NnetSAD.segment">
-<code class="descname">segment</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.segmentation.NnetSAD.segment" title="Permalink to this definition">¶</a></dt>
-<dd><p>Segments acoustic features.</p>
+<code class="descname">segment</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.segmentation.NnetSAD.segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Segments input.</p>
 <p>Output is a dictionary with the following <code class="xref py py-obj docutils literal"><span class="pre">(key,</span> <span class="pre">value)</span></code> pairs:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -476,7 +441,7 @@ acoustic-score).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input features.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input to segment.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary representing segmentation output.</td>
 </tr>

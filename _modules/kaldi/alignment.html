@@ -216,17 +216,14 @@
 <span class="kn">from</span> <span class="nn">.util</span> <span class="k">import</span> <span class="n">io</span> <span class="k">as</span> <span class="n">_util_io</span>
 
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aligner&#39;</span><span class="p">,</span> <span class="s1">&#39;GmmAligner&#39;</span><span class="p">,</span> <span class="s1">&#39;NnetAligner&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aligner&#39;</span><span class="p">,</span> <span class="s1">&#39;MappedAligner&#39;</span><span class="p">,</span> <span class="s1">&#39;GmmAligner&#39;</span><span class="p">,</span> <span class="s1">&#39;NnetAligner&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="Aligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner">[docs]</a><span class="k">class</span> <span class="nc">Aligner</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Abstract base class for speech aligners.</span>
-
-<span class="sd">    All concrete subclasses should override :meth:`make_decodable`.</span>
+    <span class="sd">&quot;&quot;&quot;Speech aligner.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        transition_model (TransitionModel): The transition model.</span>
-<span class="sd">        acoustic_model (object): The acoustic model.</span>
 <span class="sd">        tree (ContextDependency): The phonetic decision tree.</span>
 <span class="sd">        lexicon (StdFst): The lexicon FST.</span>
 <span class="sd">        symbols (SymbolTable): The symbol table. If provided, &quot;text&quot; output of</span>
@@ -241,14 +238,13 @@
 <span class="sd">            probabilities.</span>
 <span class="sd">        acoustic_scale (float): Acoustic score scale.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">,</span>
-                 <span class="n">symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">disambig_symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="n">_dec</span><span class="o">.</span><span class="n">TrainingGraphCompilerOptions</span><span class="p">(),</span>
-                 <span class="n">beam</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">transition_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-                 <span class="n">acoustic_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition_model</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">,</span> <span class="n">symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">disambig_symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">beam</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span>
+                 <span class="n">transition_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span> <span class="o">=</span> <span class="n">transition_model</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_model</span> <span class="o">=</span> <span class="n">acoustic_model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span> <span class="o">=</span> <span class="n">symbols</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">graph_compiler_opts</span><span class="p">:</span>
+            <span class="n">graph_compiler_opts</span> <span class="o">=</span> <span class="n">_dec</span><span class="o">.</span><span class="n">TrainingGraphCompilerOptions</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">graph_compiler</span> <span class="o">=</span> <span class="n">_dec</span><span class="o">.</span><span class="n">TrainingGraphCompiler</span><span class="p">(</span>
             <span class="n">transition_model</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">,</span>
             <span class="n">disambig_symbols</span><span class="p">,</span> <span class="n">graph_compiler_opts</span><span class="p">)</span>
@@ -257,82 +253,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">transition_scale</span> <span class="o">=</span> <span class="n">transition_scale</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">self_loop_scale</span> <span class="o">=</span> <span class="n">self_loop_scale</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">=</span> <span class="n">acoustic_scale</span>
-
-<div class="viewcode-block" id="Aligner.align"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.align">[docs]</a>    <span class="k">def</span> <span class="nf">align</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Aligns acoustic features with text.</span>
-
-<span class="sd">        Alignment output is a dictionary with the following `(key, value)` pairs:</span>
-
-<span class="sd">        ================ =========================== ===========================</span>
-<span class="sd">        key              value                       value type</span>
-<span class="sd">        ================ =========================== ===========================</span>
-<span class="sd">        &quot;alignment&quot;      Frame-level alignment       `List[int]`</span>
-<span class="sd">        &quot;best_path&quot;      Best lattice path           `CompactLattice`</span>
-<span class="sd">        &quot;likelihood&quot;     Log-likelihood of best path `float`</span>
-<span class="sd">        &quot;weight&quot;         Cost of best path           `LatticeWeight`</span>
-<span class="sd">        ================ =========================== ===========================</span>
-
-<span class="sd">        If :attr:`symbols` is ``None``, the &quot;text&quot; input should be a</span>
-<span class="sd">        string of space separated integer indices. Otherwise it should be a</span>
-<span class="sd">        string of space separated symbols. The &quot;weight&quot; output is a lattice</span>
-<span class="sd">        weight consisting of (graph-score, acoustic-score).</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            features (object): Features to align.</span>
-<span class="sd">            text (str): Reference text to align.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            A dictionary representing alignment output.</span>
-
-<span class="sd">        Raises:</span>
-<span class="sd">            RuntimeError: If alignment fails.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">:</span>
-            <span class="n">words</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">symbols_to_indices</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-
-        <span class="n">graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_compiler</span><span class="o">.</span><span class="n">compile_graph_from_text</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-        <span class="n">_hmm</span><span class="o">.</span><span class="n">add_transition_probs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span> <span class="p">[],</span>
-                                  <span class="bp">self</span><span class="o">.</span><span class="n">transition_scale</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">self_loop_scale</span><span class="p">,</span>
-                                  <span class="n">graph</span><span class="p">)</span>
-        <span class="n">decoder</span> <span class="o">=</span> <span class="n">_dec</span><span class="o">.</span><span class="n">FasterDecoder</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder_opts</span><span class="p">)</span>
-        <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">make_decodable</span><span class="p">(</span><span class="n">features</span><span class="p">))</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">decoder</span><span class="o">.</span><span class="n">reached_final</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No final state was active on the last frame.&quot;</span><span class="p">)</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">best_path</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="n">get_best_path</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Empty alignment output.&quot;</span><span class="p">)</span>
-
-        <span class="n">ali</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">get_linear_symbol_sequence</span><span class="p">(</span><span class="n">best_path</span><span class="p">)</span>
-        <span class="n">likelihood</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">value1</span> <span class="o">+</span> <span class="n">weight</span><span class="o">.</span><span class="n">value2</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="n">scale</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">acoustic_lattice_scale</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span>
-            <span class="n">_fst_utils</span><span class="o">.</span><span class="n">scale_lattice</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">best_path</span><span class="p">)</span>
-
-        <span class="n">best_path</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">convert_lattice_to_compact_lattice</span><span class="p">(</span><span class="n">best_path</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;alignment&quot;</span><span class="p">:</span> <span class="n">ali</span><span class="p">,</span>
-            <span class="s2">&quot;best_path&quot;</span><span class="p">:</span> <span class="n">best_path</span><span class="p">,</span>
-            <span class="s2">&quot;likelihood&quot;</span><span class="p">:</span> <span class="n">likelihood</span><span class="p">,</span>
-            <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span>
-        <span class="p">}</span></div>
-
-<div class="viewcode-block" id="Aligner.make_decodable"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            features (object): Input features.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            DecodableInterface: A decodable object.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
 <div class="viewcode-block" id="Aligner.read_tree"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.read_tree">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_tree</span><span class="p">(</span><span class="n">tree_rxfilename</span><span class="p">):</span>
@@ -363,6 +283,131 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">disambig_rxfilename</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">ki</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Aligner.read_model"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads transition model from an extended filename.&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_hmm</span><span class="o">.</span><span class="n">TransitionModel</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Aligner.from_files"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.from_files">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">tree_rxfilename</span><span class="p">,</span> <span class="n">lexicon_rxfilename</span><span class="p">,</span>
+                   <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">disambig_rxfilename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">beam</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">transition_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                   <span class="n">self_loop_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new GMM aligner from given files.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model_rxfilename (str): Extended filename for reading the transition</span>
+<span class="sd">                model.</span>
+<span class="sd">            tree_rxfilename (str): Extended filename for reading the phonetic</span>
+<span class="sd">                decision tree.</span>
+<span class="sd">            lexicon_rxfilename (str): Extended filename for reading the lexicon</span>
+<span class="sd">                FST.</span>
+<span class="sd">            symbols_filename (str): The symbols file. If provided, &quot;text&quot; input</span>
+<span class="sd">                of :meth:`align` should include symbols instead of integer</span>
+<span class="sd">                indices.</span>
+<span class="sd">            disambig_rxfilename (str): Extended filename for reading the list</span>
+<span class="sd">                of disambiguation symbols.</span>
+<span class="sd">            graph_compiler_opts (TrainingGraphCompilerOptions): Configuration</span>
+<span class="sd">                options for graph compiler.</span>
+<span class="sd">            beam (float): Decoding beam used in alignment.</span>
+<span class="sd">            transition_scale (float): The scale on non-self-loop transition</span>
+<span class="sd">                probabilities.</span>
+<span class="sd">            self_loop_scale (float): The scale on self-loop transition</span>
+<span class="sd">                probabilities.</span>
+<span class="sd">            acoustic_scale (float): Acoustic score scale.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A new GMM aligner object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">transition_model</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_tree</span><span class="p">(</span><span class="n">tree_rxfilename</span><span class="p">)</span>
+        <span class="n">lexicon</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_lexicon</span><span class="p">(</span><span class="n">lexicon_rxfilename</span><span class="p">)</span>
+        <span class="n">symbols</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_symbols</span><span class="p">(</span><span class="n">symbols_filename</span><span class="p">)</span>
+        <span class="n">disambig_symbols</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_disambig_symbols</span><span class="p">(</span><span class="n">disambig_rxfilename</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">transition_model</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span>
+                   <span class="n">disambig_symbols</span><span class="p">,</span> <span class="n">graph_compiler_opts</span><span class="p">,</span> <span class="n">beam</span><span class="p">,</span>
+                   <span class="n">transition_scale</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loglikes</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input log-likelihoods.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            loglikes (object): Input log-likelihoods.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DecodableMatrixScaled: A decodable object for computing scaled</span>
+<span class="sd">            log-likelihoods.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">loglikes</span><span class="o">.</span><span class="n">num_rows</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Empty loglikes matrix.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_dec</span><span class="o">.</span><span class="n">DecodableMatrixScaled</span><span class="p">(</span><span class="n">loglikes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Aligner.align"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.align">[docs]</a>    <span class="k">def</span> <span class="nf">align</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Aligns input with text.</span>
+
+<span class="sd">        Output is a dictionary with the following `(key, value)` pairs:</span>
+
+<span class="sd">        ================ =========================== ===========================</span>
+<span class="sd">        key              value                       value type</span>
+<span class="sd">        ================ =========================== ===========================</span>
+<span class="sd">        &quot;alignment&quot;      Frame-level alignment       `List[int]`</span>
+<span class="sd">        &quot;best_path&quot;      Best lattice path           `CompactLattice`</span>
+<span class="sd">        &quot;likelihood&quot;     Log-likelihood of best path `float`</span>
+<span class="sd">        &quot;weight&quot;         Cost of best path           `LatticeWeight`</span>
+<span class="sd">        ================ =========================== ===========================</span>
+
+<span class="sd">        If :attr:`symbols` is ``None``, the &quot;text&quot; input should be a</span>
+<span class="sd">        string of space separated integer indices. Otherwise it should be a</span>
+<span class="sd">        string of space separated symbols. The &quot;weight&quot; output is a lattice</span>
+<span class="sd">        weight consisting of (graph-score, acoustic-score).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input (object): Input to align.</span>
+<span class="sd">            text (str): Reference text to align.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A dictionary representing alignment output.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If alignment fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">:</span>
+            <span class="n">words</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">symbols_to_indices</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+        <span class="n">graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_compiler</span><span class="o">.</span><span class="n">compile_graph_from_text</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+        <span class="n">_hmm</span><span class="o">.</span><span class="n">add_transition_probs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span> <span class="p">[],</span>
+                                  <span class="bp">self</span><span class="o">.</span><span class="n">transition_scale</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">self_loop_scale</span><span class="p">,</span>
+                                  <span class="n">graph</span><span class="p">)</span>
+        <span class="n">decoder</span> <span class="o">=</span> <span class="n">_dec</span><span class="o">.</span><span class="n">FasterDecoder</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder_opts</span><span class="p">)</span>
+        <span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_make_decodable</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">decoder</span><span class="o">.</span><span class="n">reached_final</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No final state was active on the last frame.&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">best_path</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="n">get_best_path</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Empty alignment output.&quot;</span><span class="p">)</span>
+
+        <span class="n">ali</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">get_linear_symbol_sequence</span><span class="p">(</span><span class="n">best_path</span><span class="p">)</span>
+        <span class="n">likelihood</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">value1</span> <span class="o">+</span> <span class="n">weight</span><span class="o">.</span><span class="n">value2</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">acoustic_lattice_scale</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span>
+            <span class="n">_fst_utils</span><span class="o">.</span><span class="n">scale_lattice</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">best_path</span><span class="p">)</span>
+
+        <span class="n">best_path</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">convert_lattice_to_compact_lattice</span><span class="p">(</span><span class="n">best_path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;alignment&quot;</span><span class="p">:</span> <span class="n">ali</span><span class="p">,</span>
+            <span class="s2">&quot;best_path&quot;</span><span class="p">:</span> <span class="n">best_path</span><span class="p">,</span>
+            <span class="s2">&quot;likelihood&quot;</span><span class="p">:</span> <span class="n">likelihood</span><span class="p">,</span>
+            <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span>
+        <span class="p">}</span></div>
 
 <div class="viewcode-block" id="Aligner.to_phone_alignment"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.to_phone_alignment">[docs]</a>    <span class="k">def</span> <span class="nf">to_phone_alignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">phones</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Converts frame-level alignment to phone-level alignment.</span>
@@ -416,12 +461,48 @@
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">word_alignment</span><span class="p">)))</span></div></div>
 
 
-<div class="viewcode-block" id="GmmAligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.GmmAligner">[docs]</a><span class="k">class</span> <span class="nc">GmmAligner</span><span class="p">(</span><span class="n">Aligner</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;GMM-based speech aligner.</span>
+<div class="viewcode-block" id="MappedAligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.MappedAligner">[docs]</a><span class="k">class</span> <span class="nc">MappedAligner</span><span class="p">(</span><span class="n">Aligner</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mapped speech aligner.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        transition_model (TransitionModel): The transition model.</span>
-<span class="sd">        acoustic_model (object): The acoustic model.</span>
+<span class="sd">        tree (ContextDependency): The phonetic decision tree.</span>
+<span class="sd">        lexicon (StdFst): The lexicon FST.</span>
+<span class="sd">        symbols (SymbolTable): The symbol table. If provided, &quot;text&quot; output of</span>
+<span class="sd">            :meth:`decode` includes symbols instead of integer indices.</span>
+<span class="sd">        disambig_symbols (List[int]): Disambiguation symbols.</span>
+<span class="sd">        graph_compiler_opts (TrainingGraphCompilerOptions): Configuration</span>
+<span class="sd">            options for graph compiler.</span>
+<span class="sd">        beam (float): Decoding beam used in alignment.</span>
+<span class="sd">        transition_scale (float): The scale on non-self-loop transition</span>
+<span class="sd">            probabilities.</span>
+<span class="sd">        self_loop_scale (float): The scale on self-loop transition</span>
+<span class="sd">            probabilities.</span>
+<span class="sd">        acoustic_scale (float): Acoustic score scale.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loglikes</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input log-likelihoods.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            loglikes (object): Input log-likelihoods.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DecodableMatrixScaledMapped: A decodable object for computing scaled</span>
+<span class="sd">            log-likelihoods.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">loglikes</span><span class="o">.</span><span class="n">num_rows</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Empty loglikes matrix.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_dec</span><span class="o">.</span><span class="n">DecodableMatrixScaledMapped</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span> <span class="n">loglikes</span><span class="p">,</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GmmAligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.GmmAligner">[docs]</a><span class="k">class</span> <span class="nc">GmmAligner</span><span class="p">(</span><span class="n">Aligner</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;GMM based speech aligner.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        transition_model (TransitionModel): The transition model.</span>
+<span class="sd">        acoustic_model (AmDiagGmm): The acoustic model.</span>
 <span class="sd">        tree (ContextDependency): The phonetic decision tree.</span>
 <span class="sd">        lexicon (StdFst): The lexicon FST.</span>
 <span class="sd">        symbols (SymbolTable): The symbol table. If provided, &quot;text&quot; input of</span>
@@ -436,22 +517,18 @@
 <span class="sd">            probabilities.</span>
 <span class="sd">        acoustic_scale (float): Acoustic score scale.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-<div class="viewcode-block" id="GmmAligner.make_decodable"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.GmmAligner.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            features (object): Input features.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            DecodableAmDiagGmmScaled: A decodable object for computing scaled</span>
-<span class="sd">            log-likelihoods.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">features</span><span class="o">.</span><span class="n">num_rows</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Empty feature matrix.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">_gmm_am</span><span class="o">.</span><span class="n">DecodableAmDiagGmmScaled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">acoustic_model</span><span class="p">,</span>
-                                                <span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span>
-                                                <span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">,</span>
+                 <span class="n">symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">disambig_symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">beam</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">transition_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                 <span class="n">acoustic_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">acoustic_model</span><span class="p">,</span> <span class="n">_gmm_am</span><span class="o">.</span><span class="n">AmDiagGmm</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;acoustic_model should be a AmDiagGmm object&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_model</span> <span class="o">=</span> <span class="n">acoustic_model</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GmmAligner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">transition_model</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">,</span>
+                                         <span class="n">symbols</span><span class="p">,</span> <span class="n">disambig_symbols</span><span class="p">,</span>
+                                         <span class="n">graph_compiler_opts</span><span class="p">,</span> <span class="n">beam</span><span class="p">,</span>
+                                         <span class="n">transition_scale</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="p">,</span>
+                                         <span class="n">acoustic_scale</span><span class="p">)</span>
 
 <div class="viewcode-block" id="GmmAligner.read_model"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.GmmAligner.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
@@ -465,9 +542,8 @@
 <div class="viewcode-block" id="GmmAligner.from_files"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.GmmAligner.from_files">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">tree_rxfilename</span><span class="p">,</span> <span class="n">lexicon_rxfilename</span><span class="p">,</span>
                    <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">disambig_rxfilename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                   <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="n">_dec</span><span class="o">.</span><span class="n">TrainingGraphCompilerOptions</span><span class="p">(),</span>
-                   <span class="n">beam</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">transition_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-                   <span class="n">acoustic_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+                   <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">beam</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">transition_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                   <span class="n">self_loop_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a new GMM aligner from given files.</span>
 
 <span class="sd">        Args:</span>
@@ -500,11 +576,27 @@
         <span class="n">disambig_symbols</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_disambig_symbols</span><span class="p">(</span><span class="n">disambig_rxfilename</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span>
                    <span class="n">disambig_symbols</span><span class="p">,</span> <span class="n">graph_compiler_opts</span><span class="p">,</span> <span class="n">beam</span><span class="p">,</span>
-                   <span class="n">transition_scale</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">)</span></div></div>
+                   <span class="n">transition_scale</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            features (object): Input features.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DecodableAmDiagGmmScaled: A decodable object for computing scaled</span>
+<span class="sd">            log-likelihoods.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">features</span><span class="o">.</span><span class="n">num_rows</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Empty feature matrix.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_gmm_am</span><span class="o">.</span><span class="n">DecodableAmDiagGmmScaled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">acoustic_model</span><span class="p">,</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span>
+                                                <span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="NnetAligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.NnetAligner">[docs]</a><span class="k">class</span> <span class="nc">NnetAligner</span><span class="p">(</span><span class="n">Aligner</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Nnet3-based speech aligner.</span>
+    <span class="sd">&quot;&quot;&quot;Neural network based speech aligner.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        transition_model (TransitionModel): The transition model.</span>
@@ -527,53 +619,32 @@
 <span class="sd">            online ivectors are used.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">,</span>
-                 <span class="n">symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">disambig_symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="n">_dec</span><span class="o">.</span><span class="n">TrainingGraphCompilerOptions</span><span class="p">(),</span>
+                 <span class="n">symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">disambig_symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">beam</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">transition_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-                 <span class="n">decodable_opts</span><span class="o">=</span><span class="n">_nnet3</span><span class="o">.</span><span class="n">NnetSimpleComputationOptions</span><span class="p">(),</span>
-                 <span class="n">online_ivector_period</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">NnetAligner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span>
-                                          <span class="n">tree</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span>
-                                          <span class="n">disambig_symbols</span><span class="p">,</span> <span class="n">graph_compiler_opts</span><span class="p">,</span>
-                                          <span class="n">beam</span><span class="p">,</span> <span class="n">transition_scale</span><span class="p">,</span>
-                                          <span class="n">self_loop_scale</span><span class="p">,</span>
-                                          <span class="n">decodable_opts</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span> <span class="o">=</span> <span class="n">decodable_opts</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">online_ivector_period</span> <span class="o">=</span> <span class="n">online_ivector_period</span>
+                 <span class="n">decodable_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">online_ivector_period</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">acoustic_model</span><span class="p">,</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">AmNnetSimple</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;acoustic_model should be a AmNnetSimple object&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_model</span> <span class="o">=</span> <span class="n">acoustic_model</span>
         <span class="n">nnet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_model</span><span class="o">.</span><span class="n">get_nnet</span><span class="p">()</span>
         <span class="n">_nnet3</span><span class="o">.</span><span class="n">set_batchnorm_test_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">nnet</span><span class="p">)</span>
         <span class="n">_nnet3</span><span class="o">.</span><span class="n">set_dropout_test_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">nnet</span><span class="p">)</span>
         <span class="n">_nnet3</span><span class="o">.</span><span class="n">collapse_model</span><span class="p">(</span><span class="n">_nnet3</span><span class="o">.</span><span class="n">CollapseModelConfig</span><span class="p">(),</span> <span class="n">nnet</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">decodable_opts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">decodable_opts</span><span class="p">,</span>
+                              <span class="n">_nnet3</span><span class="o">.</span><span class="n">NnetSimpleComputationOptions</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;decodable_opts should be either None or a &quot;</span>
+                                <span class="s2">&quot;NnetSimpleComputationOptions object&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span> <span class="o">=</span> <span class="n">decodable_opts</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">NnetSimpleComputationOptions</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">compiler</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">CachingOptimizingCompiler</span><span class="o">.</span><span class="n">new_with_optimize_opts</span><span class="p">(</span>
-            <span class="n">nnet</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="o">.</span><span class="n">optimize_config</span><span class="p">)</span>
-
-<div class="viewcode-block" id="NnetAligner.make_decodable"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.NnetAligner.make_decodable">[docs]</a>    <span class="k">def</span> <span class="nf">make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
-
-<span class="sd">        Input can be just a feature matrix or a tuple of a feature matrix and</span>
-<span class="sd">        an ivector or a tuple of a feature matrix and an online ivector matrix.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            features (Matrix or Tuple[Matrix, Vector] or Tuple[Matrix, Matrix]):</span>
-<span class="sd">                Input features.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            DecodableAmNnetSimple: A decodable object for computing scaled</span>
-<span class="sd">            log-likelihoods.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">ivector</span><span class="p">,</span> <span class="n">online_ivectors</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-            <span class="n">features</span><span class="p">,</span> <span class="n">ivector_features</span> <span class="o">=</span> <span class="n">features</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ivector_features</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">):</span>
-                <span class="n">online_ivectors</span> <span class="o">=</span> <span class="n">ivector_features</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">ivector</span> <span class="o">=</span> <span class="n">ivector_features</span>
-        <span class="k">if</span> <span class="n">features</span><span class="o">.</span><span class="n">num_rows</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Empty feature matrix.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">DecodableAmNnetSimple</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_model</span><span class="p">,</span>
-            <span class="n">features</span><span class="p">,</span> <span class="n">ivector</span><span class="p">,</span> <span class="n">online_ivectors</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">online_ivector_period</span><span class="p">,</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">compiler</span><span class="p">)</span></div>
+            <span class="n">nnet</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span><span class="o">.</span><span class="n">optimize_config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">online_ivector_period</span> <span class="o">=</span> <span class="n">online_ivector_period</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NnetAligner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">transition_model</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">,</span>
+                                          <span class="n">symbols</span><span class="p">,</span> <span class="n">disambig_symbols</span><span class="p">,</span>
+                                          <span class="n">graph_compiler_opts</span><span class="p">,</span> <span class="n">beam</span><span class="p">,</span>
+                                          <span class="n">transition_scale</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="p">,</span>
+                                          <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span>
 
 <div class="viewcode-block" id="NnetAligner.read_model"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.NnetAligner.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
@@ -587,9 +658,8 @@
 <div class="viewcode-block" id="NnetAligner.from_files"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.NnetAligner.from_files">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">tree_rxfilename</span><span class="p">,</span> <span class="n">lexicon_rxfilename</span><span class="p">,</span>
                    <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">disambig_rxfilename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                   <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="n">_dec</span><span class="o">.</span><span class="n">TrainingGraphCompilerOptions</span><span class="p">(),</span>
-                   <span class="n">beam</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">transition_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-                   <span class="n">decodable_opts</span><span class="o">=</span><span class="n">_nnet3</span><span class="o">.</span><span class="n">NnetSimpleComputationOptions</span><span class="p">(),</span>
+                   <span class="n">graph_compiler_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">beam</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">transition_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                   <span class="n">self_loop_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">online_ivector_period</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a new nnet3 aligner from given files.</span>
 
@@ -627,7 +697,35 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">tree</span><span class="p">,</span> <span class="n">lexicon</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span>
                    <span class="n">disambig_symbols</span><span class="p">,</span> <span class="n">graph_compiler_opts</span><span class="p">,</span> <span class="n">beam</span><span class="p">,</span>
                    <span class="n">transition_scale</span><span class="p">,</span> <span class="n">self_loop_scale</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="p">,</span>
-                   <span class="n">online_ivector_period</span><span class="p">)</span></div></div>
+                   <span class="n">online_ivector_period</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new decodable object from input features.</span>
+
+<span class="sd">        Input can be just a feature matrix or a tuple of a feature matrix and</span>
+<span class="sd">        an ivector or a tuple of a feature matrix and an online ivector matrix.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            features (Matrix or Tuple[Matrix, Vector] or Tuple[Matrix, Matrix]):</span>
+<span class="sd">                Input features.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DecodableAmNnetSimple: A decodable object for computing scaled</span>
+<span class="sd">            log-likelihoods.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ivector</span><span class="p">,</span> <span class="n">online_ivectors</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">features</span><span class="p">,</span> <span class="n">ivector_features</span> <span class="o">=</span> <span class="n">features</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ivector_features</span><span class="p">,</span> <span class="n">_kaldi_matrix</span><span class="o">.</span><span class="n">MatrixBase</span><span class="p">):</span>
+                <span class="n">online_ivectors</span> <span class="o">=</span> <span class="n">ivector_features</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ivector</span> <span class="o">=</span> <span class="n">ivector_features</span>
+        <span class="k">if</span> <span class="n">features</span><span class="o">.</span><span class="n">num_rows</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Empty feature matrix.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">DecodableAmNnetSimple</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_model</span><span class="p">,</span>
+            <span class="n">features</span><span class="p">,</span> <span class="n">ivector</span><span class="p">,</span> <span class="n">online_ivectors</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">online_ivector_period</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">compiler</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
