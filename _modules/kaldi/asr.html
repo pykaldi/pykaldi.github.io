@@ -221,6 +221,7 @@
 <span class="kn">from</span> <span class="nn">.lat</span> <span class="k">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">_lat_funcs</span>
 <span class="kn">from</span> <span class="nn">.matrix</span> <span class="k">import</span> <span class="n">_kaldi_matrix</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">nnet3</span> <span class="k">as</span> <span class="n">_nnet3</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">online2</span> <span class="k">as</span> <span class="n">_online2</span>
 <span class="kn">from</span> <span class="nn">.util</span> <span class="k">import</span> <span class="n">io</span> <span class="k">as</span> <span class="n">_util_io</span>
 
 
@@ -231,7 +232,9 @@
            <span class="s1">&#39;GmmRecognizer&#39;</span><span class="p">,</span> <span class="s1">&#39;GmmFasterRecognizer&#39;</span><span class="p">,</span>
            <span class="s1">&#39;GmmLatticeFasterRecognizer&#39;</span><span class="p">,</span> <span class="s1">&#39;GmmLatticeBiglmFasterRecognizer&#39;</span><span class="p">,</span>
            <span class="s1">&#39;NnetRecognizer&#39;</span><span class="p">,</span> <span class="s1">&#39;NnetFasterRecognizer&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;NnetLatticeFasterRecognizer&#39;</span><span class="p">,</span> <span class="s1">&#39;NnetLatticeBiglmFasterRecognizer&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;NnetLatticeFasterRecognizer&#39;</span><span class="p">,</span> <span class="s1">&#39;NnetLatticeBiglmFasterRecognizer&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;OnlineRecognizer&#39;</span><span class="p">,</span> <span class="s1">&#39;NnetOnlineRecognizer&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;NnetLatticeFasterOnlineRecognizer&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="Recognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.Recognizer">[docs]</a><span class="k">class</span> <span class="nc">Recognizer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -289,7 +292,7 @@
 <div class="viewcode-block" id="Recognizer.decode"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.Recognizer.decode">[docs]</a>    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Decodes input.</span>
 
-<span class="sd">        Decoding output is a dictionary with the following `(key, value)` pairs:</span>
+<span class="sd">        Output is a dictionary with the following `(key, value)` pairs:</span>
 
 <span class="sd">        ============ =========================== ==============================</span>
 <span class="sd">        key          value                       value type</span>
@@ -1317,6 +1320,449 @@
             <span class="n">symbols</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">SymbolTable</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">symbols_filename</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span>
                    <span class="n">allow_partial</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="p">,</span> <span class="n">online_ivector_period</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="OnlineRecognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.OnlineRecognizer">[docs]</a><span class="k">class</span> <span class="nc">OnlineRecognizer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for online speech recognizers.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        decoder (object): The online decoder.</span>
+<span class="sd">        symbols (SymbolTable): The symbol table. If provided, &quot;text&quot; output of</span>
+<span class="sd">            :meth:`decode` includes symbols instead of integer indices.</span>
+<span class="sd">        allow_partial (bool): Whether to output decoding results if no</span>
+<span class="sd">            final state was active on the last frame.</span>
+<span class="sd">        acoustic_scale (float): Acoustic score scale.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">acoustic_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">decoder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span> <span class="o">=</span> <span class="n">symbols</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allow_partial</span> <span class="o">=</span> <span class="n">allow_partial</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">=</span> <span class="n">acoustic_scale</span>
+
+    <span class="k">def</span> <span class="nf">_make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_pipeline</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new online decodable object from input pipeline.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_pipeline (object): Input pipeline.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DecodableInterface: An online decodable object for computing scaled</span>
+<span class="sd">            log-likelihoods.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">_determinize_lattice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lattice</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Determinizes raw state-level lattice.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            lattice (Lattice): Raw state-level lattice.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            CompactLattice or Lattice: A deterministic compact lattice if the</span>
+<span class="sd">            decoder is configured to determinize lattices. Otherwise, a raw</span>
+<span class="sd">            state-level lattice.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">get_options</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">determinize_lattice</span><span class="p">:</span>
+            <span class="n">det_opts</span> <span class="o">=</span> <span class="n">_lat_funcs</span><span class="o">.</span><span class="n">DeterminizeLatticePrunedOptions</span><span class="p">()</span>
+            <span class="n">det_opts</span><span class="o">.</span><span class="n">max_mem</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">det_opts</span><span class="o">.</span><span class="n">max_mem</span>
+            <span class="k">return</span> <span class="n">_lat_funcs</span><span class="o">.</span><span class="n">determinize_lattice_pruned</span><span class="p">(</span>
+                <span class="n">lattice</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">lattice_beam</span><span class="p">,</span> <span class="n">det_opts</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">lattice</span>
+
+<div class="viewcode-block" id="OnlineRecognizer.set_input_pipeline"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.OnlineRecognizer.set_input_pipeline">[docs]</a>    <span class="k">def</span> <span class="nf">set_input_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_pipeline</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets input pipeline.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_pipeline (object): Input pipeline to decode online.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_decodable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_decodable</span><span class="p">(</span><span class="n">input_pipeline</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OnlineRecognizer.init_decoding"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.OnlineRecognizer.init_decoding">[docs]</a>    <span class="k">def</span> <span class="nf">init_decoding</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initializes decoding.</span>
+
+<span class="sd">        This should only be used if you intend to call :meth:`advance_decoding`.</span>
+<span class="sd">        If you intend to call :meth:`decode`, you don&#39;t need to call this. You</span>
+<span class="sd">        can also call this method if you have already decoded an utterance and</span>
+<span class="sd">        want to start with a new utterance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">init_decoding</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="OnlineRecognizer.advance_decoding"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.OnlineRecognizer.advance_decoding">[docs]</a>    <span class="k">def</span> <span class="nf">advance_decoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_num_frames</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Advances decoding.</span>
+
+<span class="sd">        This will decode until there are no more frames ready in the input</span>
+<span class="sd">        pipeline or `max_num_frames` are decoded. You can keep calling this as</span>
+<span class="sd">        more frames become available.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            max_num_frames (int): Maximum number of frames to decode. If</span>
+<span class="sd">                negative, all available frames are decoded.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">advance_decoding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_decodable</span><span class="p">,</span> <span class="n">max_num_frames</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OnlineRecognizer.finalize_decoding"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.OnlineRecognizer.finalize_decoding">[docs]</a>    <span class="k">def</span> <span class="nf">finalize_decoding</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Finalizes decoding.</span>
+
+<span class="sd">        This function may be optionally called after :meth:`advance_decoding`,</span>
+<span class="sd">        when you do not plan to decode any further. It does an extra pruning</span>
+<span class="sd">        step that will help to prune the output lattices more accurately,</span>
+<span class="sd">        particularly toward the end of the utterance. It does this by using the</span>
+<span class="sd">        final-probs in pruning (if any final-state survived); it also does a</span>
+<span class="sd">        final pruning step that visits all states (the pruning that is done</span>
+<span class="sd">        during decoding may fail to prune states that are within pruning_scale =</span>
+<span class="sd">        0.1 outside of the beam). If you call this, you cannot call</span>
+<span class="sd">        :meth:`advance_decoding` again (it will fail), and you cannot call</span>
+<span class="sd">        get_lattice and related functions with use_final_probs = false.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">finalize_decoding</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="OnlineRecognizer.decode"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.OnlineRecognizer.decode">[docs]</a>    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Decodes all frames in the input pipeline and returns the output.</span>
+
+<span class="sd">        Output is a dictionary with the following `(key, value)` pairs:</span>
+
+<span class="sd">        ============ =========================== ==============================</span>
+<span class="sd">        key          value                       value type</span>
+<span class="sd">        ============ =========================== ==============================</span>
+<span class="sd">        &quot;alignment&quot;  Frame-level alignment       `List[int]`</span>
+<span class="sd">        &quot;best_path&quot;  Best lattice path           `CompactLattice`</span>
+<span class="sd">        &quot;lattice&quot;    Output lattice              `Lattice` or `CompactLattice`</span>
+<span class="sd">        &quot;likelihood&quot; Log-likelihood of best path `float`</span>
+<span class="sd">        &quot;text&quot;       Output transcript           `str`</span>
+<span class="sd">        &quot;weight&quot;     Cost of best path           `LatticeWeight`</span>
+<span class="sd">        &quot;words&quot;      Words on best path          `List[int]`</span>
+<span class="sd">        ============ =========================== ==============================</span>
+
+<span class="sd">        The &quot;lattice&quot; output is produced only if the decoder can generate</span>
+<span class="sd">        lattices. It will be a deterministic compact lattice if the decoder is</span>
+<span class="sd">        configured to determinize lattices. Otherwise, it will be a raw</span>
+<span class="sd">        state-level lattice.</span>
+
+<span class="sd">        If :attr:`symbols` is ``None``, the &quot;text&quot; output will be a string of</span>
+<span class="sd">        space separated integer indices. Otherwise it will be a string of space</span>
+<span class="sd">        separated symbols. The &quot;weight&quot; output is a lattice weight consisting of</span>
+<span class="sd">        (graph-score, acoustic-score).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input (object): Input to decode.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A dictionary representing decoding output.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If decoding fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_decodable</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_output</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="OnlineRecognizer.get_output"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.OnlineRecognizer.get_output">[docs]</a>    <span class="k">def</span> <span class="nf">get_output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns decoding output.</span>
+
+<span class="sd">        Output is a dictionary with the following `(key, value)` pairs:</span>
+
+<span class="sd">        ============ =========================== ==============================</span>
+<span class="sd">        key          value                       value type</span>
+<span class="sd">        ============ =========================== ==============================</span>
+<span class="sd">        &quot;alignment&quot;  Frame-level alignment       `List[int]`</span>
+<span class="sd">        &quot;best_path&quot;  Best lattice path           `CompactLattice`</span>
+<span class="sd">        &quot;lattice&quot;    Output lattice              `Lattice` or `CompactLattice`</span>
+<span class="sd">        &quot;likelihood&quot; Log-likelihood of best path `float`</span>
+<span class="sd">        &quot;text&quot;       Output transcript           `str`</span>
+<span class="sd">        &quot;weight&quot;     Cost of best path           `LatticeWeight`</span>
+<span class="sd">        &quot;words&quot;      Words on best path          `List[int]`</span>
+<span class="sd">        ============ =========================== ==============================</span>
+
+<span class="sd">        The &quot;lattice&quot; output is produced only if the decoder can generate</span>
+<span class="sd">        lattices. It will be a deterministic compact lattice if the decoder is</span>
+<span class="sd">        configured to determinize lattices. Otherwise, it will be a raw</span>
+<span class="sd">        state-level lattice.</span>
+
+<span class="sd">        If :attr:`symbols` is ``None``, the &quot;text&quot; output will be a string of</span>
+<span class="sd">        space separated integer indices. Otherwise it will be a string of space</span>
+<span class="sd">        separated symbols. The &quot;weight&quot; output is a lattice weight consisting of</span>
+<span class="sd">        (graph-score, acoustic-score).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A dictionary representing decoding output.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If decoding fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">allow_partial</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">reached_final</span><span class="p">()):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No final state was active on the last frame.&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">best_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">get_best_path</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Empty decoding output.&quot;</span><span class="p">)</span>
+
+        <span class="n">ali</span><span class="p">,</span> <span class="n">words</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">get_linear_symbol_sequence</span><span class="p">(</span><span class="n">best_path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_fst</span><span class="o">.</span><span class="n">indices_to_symbols</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span> <span class="n">words</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">words</span><span class="p">))</span>
+
+        <span class="n">likelihood</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">value1</span> <span class="o">+</span> <span class="n">weight</span><span class="o">.</span><span class="n">value2</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">acoustic_lattice_scale</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span>
+            <span class="n">_fst_utils</span><span class="o">.</span><span class="n">scale_lattice</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">best_path</span><span class="p">)</span>
+        <span class="n">best_path</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">convert_lattice_to_compact_lattice</span><span class="p">(</span><span class="n">best_path</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">lat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">get_raw_lattice</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s2">&quot;alignment&quot;</span><span class="p">:</span> <span class="n">ali</span><span class="p">,</span>
+                <span class="s2">&quot;best_path&quot;</span><span class="p">:</span> <span class="n">best_path</span><span class="p">,</span>
+                <span class="s2">&quot;likelihood&quot;</span><span class="p">:</span> <span class="n">likelihood</span><span class="p">,</span>
+                <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
+                <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span><span class="p">,</span>
+                <span class="s2">&quot;words&quot;</span><span class="p">:</span> <span class="n">words</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="k">if</span> <span class="n">lat</span><span class="o">.</span><span class="n">num_states</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Empty output lattice.&quot;</span><span class="p">)</span>
+        <span class="n">lat</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+        <span class="n">lat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determinize_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeVectorFst</span><span class="p">):</span>
+                <span class="n">_fst_utils</span><span class="o">.</span><span class="n">scale_compact_lattice</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_fst_utils</span><span class="o">.</span><span class="n">scale_lattice</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;alignment&quot;</span><span class="p">:</span> <span class="n">ali</span><span class="p">,</span>
+            <span class="s2">&quot;best_path&quot;</span><span class="p">:</span> <span class="n">best_path</span><span class="p">,</span>
+            <span class="s2">&quot;lattice&quot;</span><span class="p">:</span> <span class="n">lat</span><span class="p">,</span>
+            <span class="s2">&quot;likelihood&quot;</span><span class="p">:</span> <span class="n">likelihood</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
+            <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span><span class="p">,</span>
+            <span class="s2">&quot;words&quot;</span><span class="p">:</span> <span class="n">words</span><span class="p">,</span>
+        <span class="p">}</span></div>
+
+<div class="viewcode-block" id="OnlineRecognizer.get_partial_output"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.OnlineRecognizer.get_partial_output">[docs]</a>    <span class="k">def</span> <span class="nf">get_partial_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">use_final_probs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns partial decoding output.</span>
+
+<span class="sd">        Output is a dictionary with the following `(key, value)` pairs:</span>
+
+<span class="sd">        ============ =========================== ==============================</span>
+<span class="sd">        key          value                       value type</span>
+<span class="sd">        ============ =========================== ==============================</span>
+<span class="sd">        &quot;alignment&quot;  Frame-level alignment       `List[int]`</span>
+<span class="sd">        &quot;best_path&quot;  Best lattice path           `Lattice`</span>
+<span class="sd">        &quot;likelihood&quot; Log-likelihood of best path `float`</span>
+<span class="sd">        &quot;text&quot;       Output transcript           `str`</span>
+<span class="sd">        &quot;weight&quot;     Cost of best path           `LatticeWeight`</span>
+<span class="sd">        &quot;words&quot;      Words on best path          `List[int]`</span>
+<span class="sd">        ============ =========================== ==============================</span>
+
+<span class="sd">        If :attr:`symbols` is ``None``, the &quot;text&quot; output will be a string of</span>
+<span class="sd">        space separated integer indices. Otherwise it will be a string of space</span>
+<span class="sd">        separated symbols. The &quot;weight&quot; output is a lattice weight consisting of</span>
+<span class="sd">        (graph-score, acoustic-score).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            use_final_probs (bool): Whether to use final probabilities when</span>
+<span class="sd">                computing best path.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A dictionary representing decoding output.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If decoding fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">best_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">get_best_path</span><span class="p">(</span><span class="n">use_final_probs</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Empty decoding output.&quot;</span><span class="p">)</span>
+
+        <span class="n">ali</span><span class="p">,</span> <span class="n">words</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">get_linear_symbol_sequence</span><span class="p">(</span><span class="n">best_path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_fst</span><span class="o">.</span><span class="n">indices_to_symbols</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">,</span> <span class="n">words</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">words</span><span class="p">))</span>
+
+        <span class="n">likelihood</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">value1</span> <span class="o">+</span> <span class="n">weight</span><span class="o">.</span><span class="n">value2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;alignment&quot;</span><span class="p">:</span> <span class="n">ali</span><span class="p">,</span>
+            <span class="s2">&quot;best_path&quot;</span><span class="p">:</span> <span class="n">best_path</span><span class="p">,</span>
+            <span class="s2">&quot;likelihood&quot;</span><span class="p">:</span> <span class="n">likelihood</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
+            <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">weight</span><span class="p">,</span>
+            <span class="s2">&quot;words&quot;</span><span class="p">:</span> <span class="n">words</span><span class="p">,</span>
+        <span class="p">}</span></div></div>
+
+
+<div class="viewcode-block" id="NnetOnlineRecognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.NnetOnlineRecognizer">[docs]</a><span class="k">class</span> <span class="nc">NnetOnlineRecognizer</span><span class="p">(</span><span class="n">OnlineRecognizer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for neural network based online speech recognizers.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        transition_model (TransitionModel): The transition model.</span>
+<span class="sd">        acoustic_model (AmNnetSimple): The acoustic model.</span>
+<span class="sd">        decoder (object): The online decoder.</span>
+<span class="sd">        symbols (SymbolTable): The symbol table. If provided, &quot;text&quot; output of</span>
+<span class="sd">            :meth:`decode` includes symbols instead of integer indices.</span>
+<span class="sd">        allow_partial (bool): Whether to output decoding results if no</span>
+<span class="sd">            final state was active on the last frame.</span>
+<span class="sd">        decodable_opts (NnetSimpleLoopedComputationOptions): Configuration</span>
+<span class="sd">            options for simple looped neural network computation.</span>
+<span class="sd">        endpoint_opts (OnlineEndpointConfig): Online endpointing configuration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">endpoint_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">acoustic_model</span><span class="p">,</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">AmNnetSimple</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;acoustic_model should be a AmNnetSimple object&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span> <span class="o">=</span> <span class="n">transition_model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_model</span> <span class="o">=</span> <span class="n">acoustic_model</span>
+        <span class="n">nnet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_model</span><span class="o">.</span><span class="n">get_nnet</span><span class="p">()</span>
+        <span class="n">_nnet3</span><span class="o">.</span><span class="n">set_batchnorm_test_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">nnet</span><span class="p">)</span>
+        <span class="n">_nnet3</span><span class="o">.</span><span class="n">set_dropout_test_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">nnet</span><span class="p">)</span>
+        <span class="n">_nnet3</span><span class="o">.</span><span class="n">collapse_model</span><span class="p">(</span><span class="n">_nnet3</span><span class="o">.</span><span class="n">CollapseModelConfig</span><span class="p">(),</span> <span class="n">nnet</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">decodable_opts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">decodable_opts</span><span class="p">,</span>
+                              <span class="n">_nnet3</span><span class="o">.</span><span class="n">NnetSimpleLoopedComputationOptions</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;decodable_opts should be either None or a &quot;</span>
+                                <span class="s2">&quot;NnetSimpleLoopedComputationOptions object&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span> <span class="o">=</span> <span class="n">decodable_opts</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">NnetSimpleLoopedComputationOptions</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decodable_info</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">DecodableNnetSimpleLoopedInfo</span><span class="o">.</span><span class="n">from_am</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_model</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">endpoint_opts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">endpoint_opts</span><span class="p">,</span>
+                              <span class="n">_online2</span><span class="o">.</span><span class="n">OnlineEndpointConfig</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;decodable_opts should be either None or a &quot;</span>
+                                <span class="s2">&quot;OnlineEndpointConfig object&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">endpoint_opts</span> <span class="o">=</span> <span class="n">endpoint_opts</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">endpoint_opts</span> <span class="o">=</span> <span class="n">_online2</span><span class="o">.</span><span class="n">OnlineEndpointConfig</span><span class="p">()</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">NnetOnlineRecognizer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NnetOnlineRecognizer.read_model"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.NnetOnlineRecognizer.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads model from an extended filename.&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
+            <span class="n">transition_model</span> <span class="o">=</span> <span class="n">_hmm</span><span class="o">.</span><span class="n">TransitionModel</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span>
+                                                           <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+            <span class="n">acoustic_model</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">AmNnetSimple</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span></div>
+
+    <span class="k">def</span> <span class="nf">_make_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature_pipeline</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new online decodable object from input feature pipeline.</span>
+
+<span class="sd">        This method also sets output_frame_shift which is used in endpointing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            feature_pipeline (OnlineNnetFeaturePipeline): Input feature</span>
+<span class="sd">                pipeline.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DecodableAmNnetLoopedOnline: A decodable object for computing scaled</span>
+<span class="sd">            log-likelihoods.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_frame_shift</span> <span class="o">=</span> <span class="p">(</span><span class="n">feature_pipeline</span><span class="o">.</span><span class="n">frame_shift_in_seconds</span><span class="p">()</span> <span class="o">*</span>
+                                   <span class="bp">self</span><span class="o">.</span><span class="n">decodable_opts</span><span class="o">.</span><span class="n">frame_subsampling_factor</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">DecodableAmNnetLoopedOnline</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">decodable_info</span><span class="p">,</span>
+            <span class="n">feature_pipeline</span><span class="o">.</span><span class="n">input_feature</span><span class="p">(),</span>
+            <span class="n">feature_pipeline</span><span class="o">.</span><span class="n">ivector_feature</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">_determinize_lattice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lattice</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Determinizes raw state-level lattice.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            lattice (Lattice): Raw state-level lattice.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            CompactLattice or Lattice: A deterministic compact lattice if the</span>
+<span class="sd">            decoder is configured to determinize lattices. Otherwise, a raw</span>
+<span class="sd">            state-level lattice.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">get_options</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">determinize_lattice</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_lat_funcs</span><span class="o">.</span><span class="n">determinize_lattice_phone_pruned</span><span class="p">(</span>
+                <span class="n">lattice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">lattice_beam</span><span class="p">,</span>
+                <span class="n">opts</span><span class="o">.</span><span class="n">det_opts</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">lattice</span>
+
+<div class="viewcode-block" id="NnetOnlineRecognizer.endpoint_detected"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.NnetOnlineRecognizer.endpoint_detected">[docs]</a>    <span class="k">def</span> <span class="nf">endpoint_detected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Determines if any of the endpointing rules are active.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">_online2</span><span class="o">.</span><span class="n">decoding_endpoint_detected</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">endpoint_opts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_frame_shift</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="NnetLatticeFasterOnlineRecognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer">[docs]</a><span class="k">class</span> <span class="nc">NnetLatticeFasterOnlineRecognizer</span><span class="p">(</span><span class="n">NnetOnlineRecognizer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Neural network based lattice generating faster online speech recognizer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        transition_model (TransitionModel): The transition model.</span>
+<span class="sd">        acoustic_model (AmNnetSimple): The acoustic model.</span>
+<span class="sd">        decoder (LatticeFasterOnlineDecoder): The online decoder.</span>
+<span class="sd">        symbols (SymbolTable): The symbol table. If provided, &quot;text&quot; output of</span>
+<span class="sd">            :meth:`decode` includes symbols instead of integer indices.</span>
+<span class="sd">        allow_partial (bool): Whether to output decoding results if no</span>
+<span class="sd">            final state was active on the last frame.</span>
+<span class="sd">        decodable_opts (NnetSimpleLoopedComputationOptions): Configuration</span>
+<span class="sd">            options for simple looped neural network computation.</span>
+<span class="sd">        endpoint_opts (OnlineEndpointConfig): Online endpointing configuration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">endpoint_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">decoder</span><span class="p">,</span> <span class="n">_dec</span><span class="o">.</span><span class="n">LatticeFasterOnlineDecoder</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;decoder argument should be a &quot;</span>
+                            <span class="s2">&quot;LatticeFasterOnlineDecoder&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NnetLatticeFasterOnlineRecognizer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">allow_partial</span><span class="p">,</span>
+            <span class="n">decodable_opts</span><span class="p">,</span> <span class="n">endpoint_opts</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NnetLatticeFasterOnlineRecognizer.from_files"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model_rxfilename</span><span class="p">,</span> <span class="n">graph_rxfilename</span><span class="p">,</span>
+                   <span class="n">symbols_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_partial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                   <span class="n">decoder_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">endpoint_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new recognizer from given files.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model_rxfilename (str): Extended filename for reading the model.</span>
+<span class="sd">            graph_rxfilename (str): Extended filename for reading the graph.</span>
+<span class="sd">            symbols_filename (str): The symbols file. If provided, &quot;text&quot; output</span>
+<span class="sd">                of :meth:`decode` includes symbols instead of integer indices.</span>
+<span class="sd">            allow_partial (bool): Whether to output decoding results if no</span>
+<span class="sd">                final state was active on the last frame.</span>
+<span class="sd">            decoder_opts (FasterDecoderOptions): Configuration options for the</span>
+<span class="sd">                decoder.</span>
+<span class="sd">            decodable_opts (NnetSimpleLoopedComputationOptions): Configuration</span>
+<span class="sd">                options for simple looped neural network computation.</span>
+<span class="sd">            endpoint_opts (OnlineEndpointConfig): Online endpointing</span>
+<span class="sd">                configuration.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            NnetLatticeFasterOnlineRecognizer: A new recognizer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">read_fst_kaldi</span><span class="p">(</span><span class="n">graph_rxfilename</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">decoder_opts</span><span class="p">:</span>
+            <span class="n">decoder_opts</span> <span class="o">=</span> <span class="n">_dec</span><span class="o">.</span><span class="n">LatticeFasterDecoderOptions</span><span class="p">()</span>
+        <span class="n">decoder</span> <span class="o">=</span> <span class="n">_dec</span><span class="o">.</span><span class="n">LatticeFasterOnlineDecoder</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">decoder_opts</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">symbols_filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">symbols</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">symbols</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">SymbolTable</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">symbols_filename</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span>
+                   <span class="n">allow_partial</span><span class="p">,</span> <span class="n">decodable_opts</span><span class="p">,</span> <span class="n">endpoint_opts</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

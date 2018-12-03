@@ -253,11 +253,11 @@ it really preferred to decode.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.endpoint_detected" title="kaldi.online2.endpoint_detected"><code class="xref py py-obj docutils literal"><span class="pre">endpoint_detected</span></code></a></td>
-<td>Determines if any of the endpointing rules is active for given arguments.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.endpoint_detected_decoder" title="kaldi.online2.endpoint_detected_decoder"><code class="xref py py-obj docutils literal"><span class="pre">endpoint_detected_decoder</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.decoding_endpoint_detected" title="kaldi.online2.decoding_endpoint_detected"><code class="xref py py-obj docutils literal"><span class="pre">decoding_endpoint_detected</span></code></a></td>
 <td>Determines if we should terminate decoding.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.endpoint_detected" title="kaldi.online2.endpoint_detected"><code class="xref py py-obj docutils literal"><span class="pre">endpoint_detected</span></code></a></td>
+<td>Determines if any of the endpointing rules are active for given arguments.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.trailing_silence_length" title="kaldi.online2.trailing_silence_length"><code class="xref py py-obj docutils literal"><span class="pre">trailing_silence_length</span></code></a></td>
 <td>Returns the number of trailing silence frames on the best-path traceback.</td>
@@ -1181,6 +1181,13 @@ void ::kaldi::OnlineIvectorExtractionInfo::Check()</p>
 <dd><p>C++ ::kaldi::IvectorExtractor OnlineIvectorExtractionInfo.extractor</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="kaldi.online2.OnlineIvectorExtractionInfo.from_config">
+<code class="descname">from_config</code><span class="sig-paren">(</span><em>config:OnlineIvectorExtractionConfig</em><span class="sig-paren">)</span> &#x2192; _OnlineIvectorExtractionInfo<a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractionInfo.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OnlineIvectorExtractionInfo&gt; ::kaldi::OnlineIvectorExtractionInfo::OnlineIvectorExtractionInfo(::kaldi::OnlineIvectorExtractionConfig)</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineIvectorExtractionInfo.global_cmvn_stats">
 <code class="descname">global_cmvn_stats</code><a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractionInfo.global_cmvn_stats" title="Permalink to this definition">¶</a></dt>
@@ -1228,13 +1235,6 @@ void ::kaldi::OnlineIvectorExtractionInfo::Init(::kaldi::OnlineIvectorExtraction
 <dd><p>C++ ::kaldi::BaseFloat OnlineIvectorExtractionInfo.min_post</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="kaldi.online2.OnlineIvectorExtractionInfo.new_with_config">
-<code class="descname">new_with_config</code><span class="sig-paren">(</span><em>config:OnlineIvectorExtractionConfig</em><span class="sig-paren">)</span> &#x2192; _OnlineIvectorExtractionInfo<a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractionInfo.new_with_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::OnlineIvectorExtractionInfo&gt; ::kaldi::OnlineIvectorExtractionInfo::OnlineIvectorExtractionInfo(::kaldi::OnlineIvectorExtractionConfig)</p>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineIvectorExtractionInfo.num_cg_iters">
 <code class="descname">num_cg_iters</code><a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractionInfo.num_cg_iters" title="Permalink to this definition">¶</a></dt>
@@ -1277,6 +1277,20 @@ std::unique_ptr&lt;::kaldi::OnlineIvectorExtractionInfo&gt; ::kaldi::OnlineIvect
 <dd><p>C++ ::kaldi::OnlineCmvnState OnlineIvectorExtractorAdaptationState.cmvn_state</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="kaldi.online2.OnlineIvectorExtractorAdaptationState.from_info">
+<code class="descname">from_info</code><span class="sig-paren">(</span><em>info:_OnlineIvectorExtractionInfo</em><span class="sig-paren">)</span> &#x2192; OnlineIvectorExtractorAdaptationState<a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractorAdaptationState.from_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OnlineIvectorExtractorAdaptationState&gt; ::kaldi::OnlineIvectorExtractorAdaptationState::OnlineIvectorExtractorAdaptationState(::kaldi::OnlineIvectorExtractionInfo)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.online2.OnlineIvectorExtractorAdaptationState.from_other">
+<code class="descname">from_other</code><span class="sig-paren">(</span><em>other:OnlineIvectorExtractorAdaptationState</em><span class="sig-paren">)</span> &#x2192; OnlineIvectorExtractorAdaptationState<a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractorAdaptationState.from_other" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::OnlineIvectorExtractorAdaptationState&gt; ::kaldi::OnlineIvectorExtractorAdaptationState::OnlineIvectorExtractorAdaptationState(::kaldi::OnlineIvectorExtractorAdaptationState)</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineIvectorExtractorAdaptationState.ivector_stats">
 <code class="descname">ivector_stats</code><a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractorAdaptationState.ivector_stats" title="Permalink to this definition">¶</a></dt>
@@ -1287,20 +1301,6 @@ std::unique_ptr&lt;::kaldi::OnlineIvectorExtractionInfo&gt; ::kaldi::OnlineIvect
 <dt id="kaldi.online2.OnlineIvectorExtractorAdaptationState.limit_frames">
 <code class="descname">limit_frames</code><span class="sig-paren">(</span><em>max_remembered_frames:float</em>, <em>posterior_scale:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractorAdaptationState.limit_frames" title="Permalink to this definition">¶</a></dt>
 <dd><p>Scales down the stats if needed to ensure the number of frames in the speaker-specific CMVN stats does not exceed max_remembered_frames</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.online2.OnlineIvectorExtractorAdaptationState.new_with_info">
-<code class="descname">new_with_info</code><span class="sig-paren">(</span><em>info:_OnlineIvectorExtractionInfo</em><span class="sig-paren">)</span> &#x2192; OnlineIvectorExtractorAdaptationState<a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractorAdaptationState.new_with_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::OnlineIvectorExtractorAdaptationState&gt; ::kaldi::OnlineIvectorExtractorAdaptationState::OnlineIvectorExtractorAdaptationState(::kaldi::OnlineIvectorExtractionInfo)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.online2.OnlineIvectorExtractorAdaptationState.new_with_other">
-<code class="descname">new_with_other</code><span class="sig-paren">(</span><em>other:OnlineIvectorExtractorAdaptationState</em><span class="sig-paren">)</span> &#x2192; OnlineIvectorExtractorAdaptationState<a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractorAdaptationState.new_with_other" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::OnlineIvectorExtractorAdaptationState&gt; ::kaldi::OnlineIvectorExtractorAdaptationState::OnlineIvectorExtractorAdaptationState(::kaldi::OnlineIvectorExtractorAdaptationState)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1396,8 +1396,8 @@ int ::kaldi::OnlineIvectorFeature::NumFramesReady()</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.OnlineIvectorFeature.update_weight_frames">
-<code class="descname">update_weight_frames</code><span class="sig-paren">(</span><em>delta_weights:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineIvectorFeature.update_weight_frames" title="Permalink to this definition">¶</a></dt>
+<dt id="kaldi.online2.OnlineIvectorFeature.update_frame_weights">
+<code class="descname">update_frame_weights</code><span class="sig-paren">(</span><em>delta_weights:list&lt;tuple&lt;int</em>, <em>float&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineIvectorFeature.update_frame_weights" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
 void ::kaldi::OnlineIvectorFeature::UpdateFrameWeights(::std::vector&lt; ::std::pair&lt; ::int32, ::kaldi::BaseFloat&gt; &gt;)</p>
 </dd></dl>
@@ -1629,6 +1629,12 @@ either directly in code or indirectly by reading config files on disk via
 <dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.ivector_dim">
 <code class="descname">ivector_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.ivector_dim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns iVector dimension.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.online2.OnlineNnetFeaturePipelineInfo.ivector_extractor_info">
+<code class="descname">ivector_extractor_info</code><a class="headerlink" href="#kaldi.online2.OnlineNnetFeaturePipelineInfo.ivector_extractor_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for online iVector extraction.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1953,19 +1959,20 @@ treated as one.</td>
 </dd></dl>
 
 <dl class="function">
-<dt id="kaldi.online2.endpoint_detected">
-<code class="descclassname">kaldi.online2.</code><code class="descname">endpoint_detected</code><span class="sig-paren">(</span><em>config:OnlineEndpointConfig</em>, <em>num_frames_decoded:int</em>, <em>trailing_silence_frames:int</em>, <em>frame_shift_in_seconds:float</em>, <em>final_relative_cost:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.endpoint_detected" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines if any of the endpointing rules is active for given arguments.</p>
+<dt id="kaldi.online2.decoding_endpoint_detected">
+<code class="descclassname">kaldi.online2.</code><code class="descname">decoding_endpoint_detected</code><span class="sig-paren">(</span><em>config:OnlineEndpointConfig</em>, <em>tmodel:TransitionModel</em>, <em>frame_shift_in_seconds:float</em>, <em>decoder:LatticeFasterOnlineDecoder</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.decoding_endpoint_detected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines if we should terminate decoding.</p>
+<p>This is a higher-level convenience function that works out the arguments
+to the <a class="reference internal" href="#kaldi.online2.endpoint_detected" title="kaldi.online2.endpoint_detected"><code class="xref py py-meth docutils literal"><span class="pre">endpoint_detected()</span></code></a> function.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>config</strong> (<a class="reference internal" href="#kaldi.online2.OnlineEndpointConfig" title="kaldi.online2.OnlineEndpointConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineEndpointConfig</span></code></a>) – Online endpointing configuration.</li>
-<li><strong>num_frames_decoded</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of frames decoded.</li>
-<li><strong>trailing_silence_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of trailing silence frames decoded.</li>
+<li><strong>tmodel</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – Transition model.</li>
 <li><strong>frame_shift_in_seconds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frame shift (in seconds).</li>
-<li><strong>final_relative_cost</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Relative cost of final states.</li>
+<li><strong>decoder</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder" title="kaldi.decoder.LatticeFasterOnlineDecoder"><em>LatticeFasterOnlineDecoder</em></a>) – Online lattice-generating decoder.</li>
 </ul>
 </td>
 </tr>
@@ -1980,20 +1987,19 @@ treated as one.</td>
 </dd></dl>
 
 <dl class="function">
-<dt id="kaldi.online2.endpoint_detected_decoder">
-<code class="descclassname">kaldi.online2.</code><code class="descname">endpoint_detected_decoder</code><span class="sig-paren">(</span><em>config:OnlineEndpointConfig</em>, <em>tmodel:TransitionModel</em>, <em>frame_shift_in_seconds:float</em>, <em>decoder:LatticeFasterOnlineDecoder</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.endpoint_detected_decoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines if we should terminate decoding.</p>
-<p>This is a higher-level convenience function that works out the arguments
-to the <a class="reference internal" href="#kaldi.online2.endpoint_detected" title="kaldi.online2.endpoint_detected"><code class="xref py py-meth docutils literal"><span class="pre">endpoint_detected()</span></code></a> function.</p>
+<dt id="kaldi.online2.endpoint_detected">
+<code class="descclassname">kaldi.online2.</code><code class="descname">endpoint_detected</code><span class="sig-paren">(</span><em>config:OnlineEndpointConfig</em>, <em>num_frames_decoded:int</em>, <em>trailing_silence_frames:int</em>, <em>frame_shift_in_seconds:float</em>, <em>final_relative_cost:float</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.endpoint_detected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines if any of the endpointing rules are active for given arguments.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>config</strong> (<a class="reference internal" href="#kaldi.online2.OnlineEndpointConfig" title="kaldi.online2.OnlineEndpointConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineEndpointConfig</span></code></a>) – Online endpointing configuration.</li>
-<li><strong>tmodel</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – Transition model.</li>
+<li><strong>num_frames_decoded</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of frames decoded.</li>
+<li><strong>trailing_silence_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of trailing silence frames decoded.</li>
 <li><strong>frame_shift_in_seconds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frame shift (in seconds).</li>
-<li><strong>decoder</strong> (<a class="reference internal" href="kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder" title="kaldi.decoder.LatticeFasterOnlineDecoder"><em>LatticeFasterOnlineDecoder</em></a>) – Online lattice-generating decoder.</li>
+<li><strong>final_relative_cost</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Relative cost of final states.</li>
 </ul>
 </td>
 </tr>
