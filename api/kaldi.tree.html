@@ -119,7 +119,6 @@
 <li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
@@ -251,10 +250,10 @@
 <td>Remaps the event-map leaves using this mapping indexed by number of leaf</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.monophone_context_dependency" title="kaldi.tree.monophone_context_dependency"><code class="xref py py-obj docutils literal"><span class="pre">monophone_context_dependency</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Returns a new ContextDependency object for a monophone system.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.monophone_context_dependency_shared" title="kaldi.tree.monophone_context_dependency_shared"><code class="xref py py-obj docutils literal"><span class="pre">monophone_context_dependency_shared</span></code></a></td>
-<td>Calls C++ function</td>
+<td>Returns a new ContextDependency object for a monophone system with shared PDFs.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.objf_given_map" title="kaldi.tree.objf_given_map"><code class="xref py py-obj docutils literal"><span class="pre">objf_given_map</span></code></a></td>
 <td>Cluster the stats given the event map return the total objf given those clusters</td>
@@ -329,7 +328,7 @@
 <td>CLIF wrapper for ::kaldi::ConstantEventMap</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency"><code class="xref py py-obj docutils literal"><span class="pre">ContextDependency</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::ContextDependency</td>
+<td>Phonetic decision tree.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.tree.EventMap" title="kaldi.tree.EventMap"><code class="xref py py-obj docutils literal"><span class="pre">EventMap</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::EventMap</td>
@@ -531,82 +530,71 @@ void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&l
 <dl class="class">
 <dt id="kaldi.tree.ContextDependency">
 <em class="property">class </em><code class="descclassname">kaldi.tree.</code><code class="descname">ContextDependency</code><a class="headerlink" href="#kaldi.tree.ContextDependency" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::ContextDependency</p>
+<dd><p>Phonetic decision tree.</p>
 <dl class="method">
 <dt id="kaldi.tree.ContextDependency.central_position">
 <code class="descname">central_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.tree.ContextDependency.central_position" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::ContextDependency::CentralPosition()</p>
+<dd><p>Returns central position of the context.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.tree.ContextDependency.compute">
 <code class="descname">compute</code><span class="sig-paren">(</span><em>phoneseq:list&lt;int&gt;</em>, <em>pdf_class:int) -&gt; (success:bool</em>, <em>pdf_id:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ContextDependency.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::ContextDependency::Compute(::std::vector&lt; ::int32&gt;, int, int*)</p>
+<dd><p>Returns the pdf-id for given phone seq and pdf class.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.tree.ContextDependency.context_width">
 <code class="descname">context_width</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.tree.ContextDependency.context_width" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::ContextDependency::ContextWidth()</p>
+<dd><p>Returns context width.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.tree.ContextDependency.copy">
 <code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ContextDependencyInterface<a class="headerlink" href="#kaldi.tree.ContextDependency.copy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::ContextDependencyInterface * ::kaldi::ContextDependency::Copy()</p>
+<dd><p>Returns a copy of this object.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.tree.ContextDependency.from_event_map">
 <code class="descname">from_event_map</code><span class="sig-paren">(</span><em>N:int</em>, <em>P:int</em>, <em>to_pdf:EventMap</em><span class="sig-paren">)</span> &#x2192; ContextDependency<a class="headerlink" href="#kaldi.tree.ContextDependency.from_event_map" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::ContextDependency&gt; ::kaldi::ContextDependency::ContextDependency(int, int, ::kaldi::EventMap <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+<dd><p>Constructs a new ContextDependency object from an event map.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.tree.ContextDependency.get_pdf_info">
 <code class="descname">get_pdf_info</code><span class="sig-paren">(</span><em>phones:list&lt;int&gt;</em>, <em>num_pdf_classes:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;tuple&lt;int, int&gt;&gt;&gt;<a class="headerlink" href="#kaldi.tree.ContextDependency.get_pdf_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::ContextDependency::GetPdfInfo(::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::std::vector&lt; ::std::pair&lt; ::int32, ::int32&gt; &gt; &gt;*)</p>
+<dd><p>Returns the list of (phone, pdf-id) pairs each pdf-id can correspond to.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.tree.ContextDependency.get_pdf_pair_info">
 <code class="descname">get_pdf_pair_info</code><span class="sig-paren">(</span><em>phones:list&lt;int&gt;</em>, <em>pdf_class_pairs:list&lt;list&lt;tuple&lt;int</em>, <em>int&gt;&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;list&lt;tuple&lt;int, int&gt;&gt;&gt;&gt;<a class="headerlink" href="#kaldi.tree.ContextDependency.get_pdf_pair_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::ContextDependency::GetPdfInfo(::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::std::vector&lt; ::std::pair&lt; ::int32, ::int32&gt; &gt; &gt;, ::std::vector&lt; ::std::vector&lt; ::std::vector&lt; ::std::pair&lt; ::int32, ::int32&gt; &gt; &gt; &gt;*)</p>
+<dd><p>Returns indo about what possible pdf-ids can be generated for HMM-states.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.tree.ContextDependency.num_pdfs">
 <code class="descname">num_pdfs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.tree.ContextDependency.num_pdfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::ContextDependency::NumPdfs()</p>
+<dd><p>Returns the number of PDFs.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.tree.ContextDependency.read">
 <code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ContextDependency.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::ContextDependency::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+<dd><p>Reads the object from an input stream.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.tree.ContextDependency.to_pdf_map">
 <code class="descname">to_pdf_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.ContextDependency.to_pdf_map" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::EventMap * ::kaldi::ContextDependency::ToPdfMapPtr()</p>
+<dd><p>Returns the event map.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.tree.ContextDependency.write">
 <code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.ContextDependency.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::ContextDependency::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+<dd><p>Writes the object to an output stream.</p>
 </dd></dl>
 
 </dd></dl>
@@ -633,7 +621,7 @@ void ::kaldi::EventMap::Check(::kaldi::EventType)</p>
 <dt id="kaldi.tree.EventMap.copy_with_new_leaves">
 <code class="descname">copy_with_new_leaves</code><span class="sig-paren">(</span><em>new_leaves:list&lt;EventMap&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.EventMap.copy_with_new_leaves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-::kaldi::EventMap * ::kaldi::EventMap::Copy(::std::vector&lt; ::kaldi::EventMap <a href="#id7"><span class="problematic" id="id8">*</span></a>&gt;)</p>
+::kaldi::EventMap * ::kaldi::EventMap::Copy(::std::vector&lt; ::kaldi::EventMap <a href="#id5"><span class="problematic" id="id6">*</span></a>&gt;)</p>
 </dd></dl>
 
 <dl class="method">
@@ -696,7 +684,7 @@ void ::kaldi::EventMap::MultiMap(::kaldi::EventType, ::std::vector&lt; ::kaldi::
 <dt id="kaldi.tree.EventMap.write_event_map">
 <code class="descname">write_event_map</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>emap:EventMap</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.EventMap.write_event_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventMap <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventMap <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1106,7 +1094,7 @@ void ::kaldi::EventMap::Check(::kaldi::EventType)</p>
 <dt id="kaldi.tree.SplitEventMap.copy_with_new_leaves">
 <code class="descname">copy_with_new_leaves</code><span class="sig-paren">(</span><em>new_leaves:list&lt;EventMap&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.SplitEventMap.copy_with_new_leaves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-::kaldi::EventMap * ::kaldi::SplitEventMap::Copy(::std::vector&lt; ::kaldi::EventMap <a href="#id11"><span class="problematic" id="id12">*</span></a>&gt;)</p>
+::kaldi::EventMap * ::kaldi::SplitEventMap::Copy(::std::vector&lt; ::kaldi::EventMap <a href="#id9"><span class="problematic" id="id10">*</span></a>&gt;)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1183,7 +1171,7 @@ void ::kaldi::SplitEventMap::Write(::std::basic_ostream&lt;char, ::std::char_tra
 <dt id="kaldi.tree.SplitEventMap.write_event_map">
 <code class="descname">write_event_map</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>emap:EventMap</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.SplitEventMap.write_event_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventMap <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
+void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventMap <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1217,7 +1205,7 @@ void ::kaldi::EventMap::Check(::kaldi::EventType)</p>
 <dt id="kaldi.tree.TableEventMap.copy_with_new_leaves">
 <code class="descname">copy_with_new_leaves</code><span class="sig-paren">(</span><em>new_leaves:list&lt;EventMap&gt;</em><span class="sig-paren">)</span> &#x2192; EventMap<a class="headerlink" href="#kaldi.tree.TableEventMap.copy_with_new_leaves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-::kaldi::EventMap * ::kaldi::TableEventMap::Copy(::std::vector&lt; ::kaldi::EventMap <a href="#id15"><span class="problematic" id="id16">*</span></a>&gt;)</p>
+::kaldi::EventMap * ::kaldi::TableEventMap::Copy(::std::vector&lt; ::kaldi::EventMap <a href="#id13"><span class="problematic" id="id14">*</span></a>&gt;)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1231,7 +1219,7 @@ std::unique_ptr&lt;::kaldi::TableEventMap&gt; ::kaldi::TableEventMap::TableEvent
 <dt id="kaldi.tree.TableEventMap.from_val_map_table">
 <code class="descname">from_val_map_table</code><span class="sig-paren">(</span><em>key:int</em>, <em>map_in:dict&lt;int</em>, <em>EventMap&gt;</em><span class="sig-paren">)</span> &#x2192; TableEventMap<a class="headerlink" href="#kaldi.tree.TableEventMap.from_val_map_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-std::unique_ptr&lt;::kaldi::TableEventMap&gt; ::kaldi::TableEventMap::TableEventMap(int, ::std::map&lt; ::kaldi::EventValueType, ::kaldi::EventMap <a href="#id17"><span class="problematic" id="id18">*</span></a>&gt;)</p>
+std::unique_ptr&lt;::kaldi::TableEventMap&gt; ::kaldi::TableEventMap::TableEventMap(int, ::std::map&lt; ::kaldi::EventValueType, ::kaldi::EventMap <a href="#id15"><span class="problematic" id="id16">*</span></a>&gt;)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1308,7 +1296,7 @@ void ::kaldi::TableEventMap::Write(::std::basic_ostream&lt;char, ::std::char_tra
 <dt id="kaldi.tree.TableEventMap.write_event_map">
 <code class="descname">write_event_map</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em>, <em>emap:EventMap</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.tree.TableEventMap.write_event_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventMap <a href="#id19"><span class="problematic" id="id20">*</span></a>)</p>
+void ::kaldi::EventMap::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool, ::kaldi::EventMap <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1704,15 +1692,13 @@ bool ::kaldi::GetTreeStructure(::kaldi::EventMap, int*, ::std::vector&lt; ::int3
 <dl class="function">
 <dt id="kaldi.tree.monophone_context_dependency">
 <code class="descclassname">kaldi.tree.</code><code class="descname">monophone_context_dependency</code><span class="sig-paren">(</span><em>phones:list&lt;int&gt;</em>, <em>phone2num_pdf_classes:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; ContextDependency<a class="headerlink" href="#kaldi.tree.monophone_context_dependency" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::ContextDependency * ::kaldi::MonophoneContextDependency(::std::vector&lt; ::int32&gt;, ::std::vector&lt; ::int32&gt;)</p>
+<dd><p>Returns a new ContextDependency object for a monophone system.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.tree.monophone_context_dependency_shared">
 <code class="descclassname">kaldi.tree.</code><code class="descname">monophone_context_dependency_shared</code><span class="sig-paren">(</span><em>phone_classes:list&lt;list&lt;int&gt;&gt;</em>, <em>phone2num_pdf_classes:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; ContextDependency<a class="headerlink" href="#kaldi.tree.monophone_context_dependency_shared" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::ContextDependency * ::kaldi::MonophoneContextDependencyShared(::std::vector&lt; ::std::vector&lt; ::int32&gt; &gt;, ::std::vector&lt; ::int32&gt;)</p>
+<dd><p>Returns a new ContextDependency object for a monophone system with shared PDFs.</p>
 </dd></dl>
 
 <dl class="function">
@@ -1783,21 +1769,21 @@ void ::kaldi::ReadEventType(::std::basic_istream&lt;char, ::std::char_traits&lt;
 <dt id="kaldi.tree.sum_clusterable">
 <code class="descclassname">kaldi.tree.</code><code class="descname">sum_clusterable</code><span class="sig-paren">(</span><em>vec:list&lt;Clusterable&gt;</em><span class="sig-paren">)</span> &#x2192; Clusterable<a class="headerlink" href="#kaldi.tree.sum_clusterable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-::kaldi::Clusterable * ::kaldi::SumClusterable(::std::vector&lt; ::kaldi::Clusterable <a href="#id21"><span class="problematic" id="id22">*</span></a>&gt;)</p>
+::kaldi::Clusterable * ::kaldi::SumClusterable(::std::vector&lt; ::kaldi::Clusterable <a href="#id19"><span class="problematic" id="id20">*</span></a>&gt;)</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.tree.sum_clusterable_normalizer">
 <code class="descclassname">kaldi.tree.</code><code class="descname">sum_clusterable_normalizer</code><span class="sig-paren">(</span><em>vec:list&lt;Clusterable&gt;</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.sum_clusterable_normalizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-float ::kaldi::SumClusterableNormalizer(::std::vector&lt; ::kaldi::Clusterable <a href="#id23"><span class="problematic" id="id24">*</span></a>&gt;)</p>
+float ::kaldi::SumClusterableNormalizer(::std::vector&lt; ::kaldi::Clusterable <a href="#id21"><span class="problematic" id="id22">*</span></a>&gt;)</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="kaldi.tree.sum_clusterable_objf">
 <code class="descclassname">kaldi.tree.</code><code class="descname">sum_clusterable_objf</code><span class="sig-paren">(</span><em>vec:list&lt;Clusterable&gt;</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.tree.sum_clusterable_objf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-float ::kaldi::SumClusterableObjf(::std::vector&lt; ::kaldi::Clusterable <a href="#id25"><span class="problematic" id="id26">*</span></a>&gt;)</p>
+float ::kaldi::SumClusterableObjf(::std::vector&lt; ::kaldi::Clusterable <a href="#id23"><span class="problematic" id="id24">*</span></a>&gt;)</p>
 </dd></dl>
 
 <dl class="function">

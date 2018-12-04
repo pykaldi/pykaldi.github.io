@@ -119,7 +119,6 @@
 <li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
@@ -291,7 +290,7 @@ with and the LM the decoding graph <code class="xref py py-attr docutils literal
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The decodable object.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</td>
 </tr>
 </tbody>
 </table>
@@ -393,7 +392,7 @@ treated as one.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<li><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</li>
 <li><strong>full</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code>, registers obscure options too.</li>
 </ul>
@@ -415,7 +414,7 @@ Typically a command-line option parser.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>index_map</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – The index mapping.</li>
-<li><strong>d</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The other decodable object.</li>
+<li><strong>d</strong> (<em>DecodableInterface</em>) – The other decodable object.</li>
 </ul>
 </td>
 </tr>
@@ -626,9 +625,9 @@ to PDF IDs.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>d1</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The first decodable object.</li>
+<li><strong>d1</strong> (<em>DecodableInterface</em>) – The first decodable object.</li>
 <li><strong>w1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The weight for the scores obtained from <code class="xref py py-attr docutils literal"><span class="pre">d1</span></code>.</li>
-<li><strong>d2</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The second decodable object.</li>
+<li><strong>d2</strong> (<em>DecodableInterface</em>) – The second decodable object.</li>
 <li><strong>w2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The weight for the scores obtained from <code class="xref py py-attr docutils literal"><span class="pre">d2</span></code>.</li>
 </ul>
 </td>
@@ -661,7 +660,7 @@ to PDF IDs.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodables</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em><em>]</em>) – The list of
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodables</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><em>DecodableInterface</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em><em>]</em>) – The list of
 (decodable, weight) pairs.</td>
 </tr>
 </tbody>
@@ -691,9 +690,9 @@ to PDF IDs.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>d1</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The first decodable object.</li>
+<li><strong>d1</strong> (<em>DecodableInterface</em>) – The first decodable object.</li>
 <li><strong>w1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The weight for the scores obtained from <code class="xref py py-attr docutils literal"><span class="pre">d1</span></code>.</li>
-<li><strong>d2</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The second decodable object.</li>
+<li><strong>d2</strong> (<em>DecodableInterface</em>) – The second decodable object.</li>
 <li><strong>w2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The weight for the scores obtained from <code class="xref py py-attr docutils literal"><span class="pre">d2</span></code>.</li>
 <li><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scalar multiplier for the sum.</li>
 </ul>
@@ -728,7 +727,7 @@ to PDF IDs.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>decodables</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em><em>]</em>) – The list of
+<li><strong>decodables</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><em>DecodableInterface</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>]</em><em>]</em>) – The list of
 (decodable, weight) pairs.</li>
 <li><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The scalar multiplier for the sum.</li>
 </ul>
@@ -780,7 +779,7 @@ many frames.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>decodable</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The decodable object.</li>
+<li><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</li>
 <li><strong>max_num_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Max number of frames to decode. Defaults to
 <code class="docutils literal"><span class="pre">-1</span></code> which means decode all available frames.</li>
 </ul>
@@ -798,7 +797,7 @@ many frames.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The decodable object.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</td>
 </tr>
 </tbody>
 </table>
@@ -922,7 +921,7 @@ and then call <a class="reference internal" href="#kaldi.decoder.FasterDecoder.a
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<li><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</li>
 <li><strong>full</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code>, registers obscure options too.</li>
 </ul>
@@ -965,7 +964,7 @@ with and the LM the decoding graph <code class="xref py py-attr docutils literal
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The decodable object.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if any kind of traceback is available (not necessarily from a
 final state).</td>
@@ -1104,7 +1103,7 @@ many frames.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>decodable</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The decodable object.</li>
+<li><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</li>
 <li><strong>max_num_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Max number of frames to decode. Defaults to
 <code class="docutils literal"><span class="pre">-1</span></code> which means decode all available frames.</li>
 </ul>
@@ -1123,7 +1122,7 @@ many frames.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The decodable object.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if any kind of traceback is available (not necessarily from a
 final state).</td>
@@ -1373,7 +1372,7 @@ and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterDe
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -1413,7 +1412,7 @@ many frames.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>decodable</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The decodable object.</li>
+<li><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</li>
 <li><strong>max_num_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Max number of frames to decode. Defaults to
 <code class="docutils literal"><span class="pre">-1</span></code> which means decode all available frames.</li>
 </ul>
@@ -1432,7 +1431,7 @@ many frames.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.DecodableInterface" title="kaldi.itf.DecodableInterface"><em>DecodableInterface</em></a>) – The decodable object.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if any kind of traceback is available (not necessarily from a
 final state).</td>
@@ -1751,7 +1750,7 @@ and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterOn
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>

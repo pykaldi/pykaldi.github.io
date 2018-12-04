@@ -132,7 +132,6 @@
 <li class="toctree-l1"><a class="reference internal" href="kaldi.fstext.html">kaldi.fstext</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.gmm.html">kaldi.gmm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.hmm.html">kaldi.hmm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
@@ -419,7 +418,7 @@ memory allocation.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -577,7 +576,7 @@ Actual window size is 2 * window + 1.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -654,7 +653,7 @@ computation.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -721,7 +720,7 @@ Typically a command-line option parser.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -1061,7 +1060,7 @@ frames. Number of left and right context frames must be non-negative.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -1360,7 +1359,7 @@ memory allocation.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -1435,8 +1434,8 @@ Typically a command-line option parser.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>src1</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OnlineFeatureInterface" title="kaldi.itf.OnlineFeatureInterface"><em>OnlineFeatureInterface</em></a>) – First source of online features.</li>
-<li><strong>src2</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OnlineFeatureInterface" title="kaldi.itf.OnlineFeatureInterface"><em>OnlineFeatureInterface</em></a>) – Second source of online features.</li>
+<li><strong>src1</strong> (<em>OnlineFeatureInterface</em>) – First source of online features.</li>
+<li><strong>src2</strong> (<em>OnlineFeatureInterface</em>) – Second source of online features.</li>
 </ul>
 </td>
 </tr>
@@ -1482,7 +1481,7 @@ Typically a command-line option parser.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>src</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OnlineFeatureInterface" title="kaldi.itf.OnlineFeatureInterface"><em>OnlineFeatureInterface</em></a>) – Source online features.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>src</strong> (<em>OnlineFeatureInterface</em>) – Source online features.</td>
 </tr>
 </tbody>
 </table>
@@ -1535,7 +1534,7 @@ Typically a command-line option parser.</td>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.online.OnlineCmvnOptions" title="kaldi.feat.online.OnlineCmvnOptions"><em>OnlineCmvnOptions</em></a>) – Options for online CMVN features.</li>
 <li><strong>cmvn_state</strong> (<a class="reference internal" href="#kaldi.feat.online.OnlineCmvnState" title="kaldi.feat.online.OnlineCmvnState"><em>OnlineCmvnState</em></a>) – Online CMVN state.</li>
-<li><strong>src</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OnlineFeatureInterface" title="kaldi.itf.OnlineFeatureInterface"><em>OnlineFeatureInterface</em></a>) – Source online features.</li>
+<li><strong>src</strong> (<em>OnlineFeatureInterface</em>) – Source online features.</li>
 </ul>
 </td>
 </tr>
@@ -1733,7 +1732,7 @@ Typically a command-line option parser.</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.functions.DeltaFeaturesOptions" title="kaldi.feat.functions.DeltaFeaturesOptions"><em>DeltaFeaturesOptions</em></a>) – Options for delta features.</li>
-<li><strong>src</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OnlineFeatureInterface" title="kaldi.itf.OnlineFeatureInterface"><em>OnlineFeatureInterface</em></a>) – Source online features.</li>
+<li><strong>src</strong> (<em>OnlineFeatureInterface</em>) – Source online features.</li>
 </ul>
 </td>
 </tr>
@@ -1993,7 +1992,7 @@ Typically a command-line option parser.</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.online.OnlineSpliceOptions" title="kaldi.feat.online.OnlineSpliceOptions"><em>OnlineSpliceOptions</em></a>) – Options for online feature splicing.</li>
-<li><strong>src</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OnlineFeatureInterface" title="kaldi.itf.OnlineFeatureInterface"><em>OnlineFeatureInterface</em></a>) – Source online features.</li>
+<li><strong>src</strong> (<em>OnlineFeatureInterface</em>) – Source online features.</li>
 </ul>
 </td>
 </tr>
@@ -2073,7 +2072,7 @@ Typically a command-line option parser.</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>transform</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – Feature transformation matrix.</li>
-<li><strong>src</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OnlineFeatureInterface" title="kaldi.itf.OnlineFeatureInterface"><em>OnlineFeatureInterface</em></a>) – Source online features.</li>
+<li><strong>src</strong> (<em>OnlineFeatureInterface</em>) – Source online features.</li>
 </ul>
 </td>
 </tr>
@@ -2219,7 +2218,7 @@ Typically a command-line option parser.</td>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>opts</strong> (<a class="reference internal" href="#kaldi.feat.pitch.ProcessPitchOptions" title="kaldi.feat.pitch.ProcessPitchOptions"><em>ProcessPitchOptions</em></a>) – Options for pitch postprocessing.</li>
-<li><strong>src</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OnlineFeatureInterface" title="kaldi.itf.OnlineFeatureInterface"><em>OnlineFeatureInterface</em></a>) – Source pitch features.</li>
+<li><strong>src</strong> (<em>OnlineFeatureInterface</em>) – Source pitch features.</li>
 </ul>
 </td>
 </tr>
@@ -2365,7 +2364,7 @@ Typically a command-line option parser.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -2814,7 +2813,7 @@ memory allocation.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -3230,7 +3229,7 @@ memory allocation.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -3558,7 +3557,7 @@ the beginning of the wave data.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>

@@ -40,7 +40,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
-        <link rel="next" title="kaldi.itf" href="kaldi.itf.html"/>
+        <link rel="next" title="kaldi.ivector" href="kaldi.ivector.html"/>
         <link rel="prev" title="kaldi.gmm" href="kaldi.gmm.html"/> 
 
   
@@ -123,7 +123,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#transition-model">Transition Model</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="kaldi.itf.html">kaldi.itf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.ivector.html">kaldi.ivector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.kws.html">kaldi.kws</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.lat.html">kaldi.lat</a></li>
@@ -493,7 +492,7 @@ statistics.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -520,7 +519,7 @@ Typically a command-line option parser.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -665,7 +664,7 @@ comes before the self-loop.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -725,7 +724,7 @@ states have the same PDF (default=False).</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.OptionsItf" title="kaldi.itf.OptionsItf"><em>OptionsItf</em></a>) – An object implementing the options interface.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
 </tr>
 </tbody>
@@ -874,7 +873,7 @@ has the effect that frames that are mostly silence get down-weighted.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>ctx_dep</strong> (<a class="reference internal" href="kaldi.itf.html#kaldi.itf.ContextDependencyInterface" title="kaldi.itf.ContextDependencyInterface"><em>ContextDependencyInterface</em></a>) – Context dependency decision
+<li><strong>ctx_dep</strong> (<em>ContextDependencyInterface</em>) – Context dependency decision
 tree.</li>
 <li><strong>hmm_topo</strong> (<a class="reference internal" href="#kaldi.hmm.HmmTopology" title="kaldi.hmm.HmmTopology"><em>HmmTopology</em></a>) – HMM topology.</li>
 </ul>
@@ -1303,7 +1302,7 @@ by applying softmax, then prunes the posteriors using “gselect” and
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="kaldi.itf.html" class="btn btn-neutral float-right" title="kaldi.itf" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="kaldi.ivector.html" class="btn btn-neutral float-right" title="kaldi.ivector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="kaldi.gmm.html" class="btn btn-neutral" title="kaldi.gmm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
