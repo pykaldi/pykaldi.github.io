@@ -228,6 +228,8 @@
 <dt id="kaldi.alignment.Aligner">
 <em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">Aligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Speech aligner.</p>
+<p>This can be used to align transition-id log-likelihood matrices with
+reference texts.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -343,7 +345,7 @@ probabilities.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new GMM aligner object.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new aligner object.</p>
 </td>
 </tr>
 </tbody>
@@ -354,30 +356,80 @@ probabilities.</li>
 <dt id="kaldi.alignment.Aligner.read_disambig_symbols">
 <em class="property">static </em><code class="descname">read_disambig_symbols</code><span class="sig-paren">(</span><em>disambig_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.read_disambig_symbols"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.read_disambig_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads disambiguation symbols from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of disambiguation symbols.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="kaldi.alignment.Aligner.read_lexicon">
 <em class="property">static </em><code class="descname">read_lexicon</code><span class="sig-paren">(</span><em>lexicon_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.read_lexicon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.read_lexicon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads lexicon FST from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Lexicon FST.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">StdFst</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="kaldi.alignment.Aligner.read_model">
 <em class="property">static </em><code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.read_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.read_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads transition model from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Transition model.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel">TransitionModel</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="kaldi.alignment.Aligner.read_symbols">
 <em class="property">static </em><code class="descname">read_symbols</code><span class="sig-paren">(</span><em>symbols_filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.read_symbols"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.read_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads symbol table from file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Symbol table.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable">SymbolTable</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="kaldi.alignment.Aligner.read_tree">
 <em class="property">static </em><code class="descname">read_tree</code><span class="sig-paren">(</span><em>tree_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#Aligner.read_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.Aligner.read_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads phonetic decision tree from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Phonetic decision tree.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency">ContextDependency</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -440,6 +492,8 @@ optional silences.</p>
 <dt id="kaldi.alignment.MappedAligner">
 <em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">MappedAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#MappedAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.MappedAligner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mapped speech aligner.</p>
+<p>This can be used to align phone-id log-likelihood matrices with reference
+texts.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -555,7 +609,7 @@ probabilities.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new GMM aligner object.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new aligner object.</p>
 </td>
 </tr>
 </tbody>
@@ -566,30 +620,80 @@ probabilities.</li>
 <dt id="kaldi.alignment.MappedAligner.read_disambig_symbols">
 <code class="descname">read_disambig_symbols</code><span class="sig-paren">(</span><em>disambig_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.read_disambig_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads disambiguation symbols from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of disambiguation symbols.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.alignment.MappedAligner.read_lexicon">
 <code class="descname">read_lexicon</code><span class="sig-paren">(</span><em>lexicon_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.read_lexicon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads lexicon FST from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Lexicon FST.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">StdFst</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.alignment.MappedAligner.read_model">
 <code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.read_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads transition model from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Transition model.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel">TransitionModel</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.alignment.MappedAligner.read_symbols">
 <code class="descname">read_symbols</code><span class="sig-paren">(</span><em>symbols_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.read_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads symbol table from file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Symbol table.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable">SymbolTable</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.alignment.MappedAligner.read_tree">
 <code class="descname">read_tree</code><span class="sig-paren">(</span><em>tree_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.MappedAligner.read_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads phonetic decision tree from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Phonetic decision tree.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency">ContextDependency</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -652,6 +756,7 @@ optional silences.</p>
 <dt id="kaldi.alignment.GmmAligner">
 <em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">GmmAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>acoustic_scale=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner" title="Permalink to this definition">¶</a></dt>
 <dd><p>GMM based speech aligner.</p>
+<p>This can be used to align feature matrices with reference texts.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -767,7 +872,7 @@ probabilities.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new GMM aligner object.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new aligner object.</p>
 </td>
 </tr>
 </tbody>
@@ -778,30 +883,81 @@ probabilities.</li>
 <dt id="kaldi.alignment.GmmAligner.read_disambig_symbols">
 <code class="descname">read_disambig_symbols</code><span class="sig-paren">(</span><em>disambig_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.read_disambig_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads disambiguation symbols from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of disambiguation symbols.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.alignment.GmmAligner.read_lexicon">
 <code class="descname">read_lexicon</code><span class="sig-paren">(</span><em>lexicon_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.read_lexicon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads lexicon FST from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Lexicon FST.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">StdFst</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="kaldi.alignment.GmmAligner.read_model">
 <em class="property">static </em><code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#GmmAligner.read_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.GmmAligner.read_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads model from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A (transition model, acoustic
+model) pair.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel">TransitionModel</a>, <a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm" title="kaldi.gmm.am.AmDiagGmm">AmDiagGmm</a>]</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.alignment.GmmAligner.read_symbols">
 <code class="descname">read_symbols</code><span class="sig-paren">(</span><em>symbols_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.read_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads symbol table from file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Symbol table.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable">SymbolTable</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.alignment.GmmAligner.read_tree">
 <code class="descname">read_tree</code><span class="sig-paren">(</span><em>tree_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.GmmAligner.read_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads phonetic decision tree from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Phonetic decision tree.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency">ContextDependency</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -864,6 +1020,7 @@ optional silences.</p>
 <dt id="kaldi.alignment.NnetAligner">
 <em class="property">class </em><code class="descclassname">kaldi.alignment.</code><code class="descname">NnetAligner</code><span class="sig-paren">(</span><em>transition_model</em>, <em>acoustic_model</em>, <em>tree</em>, <em>lexicon</em>, <em>symbols=None</em>, <em>disambig_symbols=None</em>, <em>graph_compiler_opts=None</em>, <em>beam=200.0</em>, <em>transition_scale=1.0</em>, <em>self_loop_scale=1.0</em>, <em>decodable_opts=None</em>, <em>online_ivector_period=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Neural network based speech aligner.</p>
+<p>This can be used to align feature matrices with reference texts.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -985,7 +1142,7 @@ online ivectors are used.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new nnet3 aligner object.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A new aligner object.</p>
 </td>
 </tr>
 </tbody>
@@ -996,30 +1153,81 @@ online ivectors are used.</li>
 <dt id="kaldi.alignment.NnetAligner.read_disambig_symbols">
 <code class="descname">read_disambig_symbols</code><span class="sig-paren">(</span><em>disambig_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.read_disambig_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads disambiguation symbols from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of disambiguation symbols.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.alignment.NnetAligner.read_lexicon">
 <code class="descname">read_lexicon</code><span class="sig-paren">(</span><em>lexicon_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.read_lexicon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads lexicon FST from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Lexicon FST.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">StdFst</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="kaldi.alignment.NnetAligner.read_model">
 <em class="property">static </em><code class="descname">read_model</code><span class="sig-paren">(</span><em>model_rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/alignment.html#NnetAligner.read_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.alignment.NnetAligner.read_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads model from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A (transition model, acoustic
+model) pair.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel">TransitionModel</a>, <a class="reference internal" href="kaldi.nnet3.html#kaldi.nnet3.AmNnetSimple" title="kaldi.nnet3.AmNnetSimple">AmNnetSimple</a>]</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.alignment.NnetAligner.read_symbols">
 <code class="descname">read_symbols</code><span class="sig-paren">(</span><em>symbols_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.read_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads symbol table from file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Symbol table.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.SymbolTable" title="kaldi.fstext.SymbolTable">SymbolTable</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.alignment.NnetAligner.read_tree">
 <code class="descname">read_tree</code><span class="sig-paren">(</span><em>tree_rxfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.alignment.NnetAligner.read_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads phonetic decision tree from an extended filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Phonetic decision tree.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.tree.html#kaldi.tree.ContextDependency" title="kaldi.tree.ContextDependency">ContextDependency</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">

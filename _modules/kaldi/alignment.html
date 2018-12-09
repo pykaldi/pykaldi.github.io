@@ -221,6 +221,9 @@
 <div class="viewcode-block" id="Aligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner">[docs]</a><span class="k">class</span> <span class="nc">Aligner</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Speech aligner.</span>
 
+<span class="sd">    This can be used to align transition-id log-likelihood matrices with</span>
+<span class="sd">    reference texts.</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        transition_model (TransitionModel): The transition model.</span>
 <span class="sd">        tree (ContextDependency): The phonetic decision tree.</span>
@@ -255,7 +258,11 @@
 
 <div class="viewcode-block" id="Aligner.read_tree"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.read_tree">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_tree</span><span class="p">(</span><span class="n">tree_rxfilename</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads phonetic decision tree from an extended filename.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Reads phonetic decision tree from an extended filename.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ContextDependency: Phonetic decision tree.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tree</span> <span class="o">=</span> <span class="n">_tree</span><span class="o">.</span><span class="n">ContextDependency</span><span class="p">()</span>
         <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">tree_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
             <span class="n">tree</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
@@ -263,12 +270,20 @@
 
 <div class="viewcode-block" id="Aligner.read_lexicon"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.read_lexicon">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_lexicon</span><span class="p">(</span><span class="n">lexicon_rxfilename</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads lexicon FST from an extended filename.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Reads lexicon FST from an extended filename.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            StdFst: Lexicon FST.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">_fst</span><span class="o">.</span><span class="n">read_fst_kaldi</span><span class="p">(</span><span class="n">lexicon_rxfilename</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Aligner.read_symbols"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.read_symbols">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_symbols</span><span class="p">(</span><span class="n">symbols_filename</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads symbol table from file.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Reads symbol table from file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            SymbolTable: Symbol table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">symbols_filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
@@ -276,7 +291,11 @@
 
 <div class="viewcode-block" id="Aligner.read_disambig_symbols"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.read_disambig_symbols">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_disambig_symbols</span><span class="p">(</span><span class="n">disambig_rxfilename</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads disambiguation symbols from an extended filename.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Reads disambiguation symbols from an extended filename.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[int]: List of disambiguation symbols.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">disambig_rxfilename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
@@ -285,7 +304,11 @@
 
 <div class="viewcode-block" id="Aligner.read_model"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.Aligner.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads transition model from an extended filename.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Reads transition model from an extended filename.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            TransitionModel: Transition model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">_hmm</span><span class="o">.</span><span class="n">TransitionModel</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span></div>
 
@@ -318,7 +341,7 @@
 <span class="sd">            acoustic_scale (float): Acoustic score scale.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A new GMM aligner object.</span>
+<span class="sd">            A new aligner object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">transition_model</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span>
         <span class="n">tree</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_tree</span><span class="p">(</span><span class="n">tree_rxfilename</span><span class="p">)</span>
@@ -463,6 +486,9 @@
 <div class="viewcode-block" id="MappedAligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.MappedAligner">[docs]</a><span class="k">class</span> <span class="nc">MappedAligner</span><span class="p">(</span><span class="n">Aligner</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Mapped speech aligner.</span>
 
+<span class="sd">    This can be used to align phone-id log-likelihood matrices with reference</span>
+<span class="sd">    texts.</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        transition_model (TransitionModel): The transition model.</span>
 <span class="sd">        tree (ContextDependency): The phonetic decision tree.</span>
@@ -499,6 +525,8 @@
 <div class="viewcode-block" id="GmmAligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.GmmAligner">[docs]</a><span class="k">class</span> <span class="nc">GmmAligner</span><span class="p">(</span><span class="n">Aligner</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;GMM based speech aligner.</span>
 
+<span class="sd">    This can be used to align feature matrices with reference texts.</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        transition_model (TransitionModel): The transition model.</span>
 <span class="sd">        acoustic_model (AmDiagGmm): The acoustic model.</span>
@@ -531,7 +559,12 @@
 
 <div class="viewcode-block" id="GmmAligner.read_model"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.GmmAligner.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads model from an extended filename.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Reads model from an extended filename.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple[TransitionModel, AmDiagGmm]: A (transition model, acoustic</span>
+<span class="sd">            model) pair.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
             <span class="n">transition_model</span> <span class="o">=</span> <span class="n">_hmm</span><span class="o">.</span><span class="n">TransitionModel</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span>
                                                            <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
@@ -566,7 +599,7 @@
 <span class="sd">            acoustic_scale (float): Acoustic score scale.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A new GMM aligner object.</span>
+<span class="sd">            A new aligner object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span>
         <span class="n">tree</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_tree</span><span class="p">(</span><span class="n">tree_rxfilename</span><span class="p">)</span>
@@ -596,6 +629,8 @@
 
 <div class="viewcode-block" id="NnetAligner"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.NnetAligner">[docs]</a><span class="k">class</span> <span class="nc">NnetAligner</span><span class="p">(</span><span class="n">Aligner</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Neural network based speech aligner.</span>
+
+<span class="sd">    This can be used to align feature matrices with reference texts.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        transition_model (TransitionModel): The transition model.</span>
@@ -647,7 +682,12 @@
 
 <div class="viewcode-block" id="NnetAligner.read_model"><a class="viewcode-back" href="../../api/kaldi.alignment.html#kaldi.alignment.NnetAligner.read_model">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reads model from an extended filename.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Reads model from an extended filename.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple[TransitionModel, AmNnetSimple]: A (transition model, acoustic</span>
+<span class="sd">            model) pair.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
             <span class="n">transition_model</span> <span class="o">=</span> <span class="n">_hmm</span><span class="o">.</span><span class="n">TransitionModel</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span>
                                                            <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
@@ -686,7 +726,7 @@
 <span class="sd">                online ivectors are used.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A new nnet3 aligner object.</span>
+<span class="sd">            A new aligner object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">transition_model</span><span class="p">,</span> <span class="n">acoustic_model</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_model</span><span class="p">(</span><span class="n">model_rxfilename</span><span class="p">)</span>
         <span class="n">tree</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_tree</span><span class="p">(</span><span class="n">tree_rxfilename</span><span class="p">)</span>
