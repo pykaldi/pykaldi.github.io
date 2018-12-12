@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview: module code &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>Overview: module code &mdash; PyKaldi 0.1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/> 
+    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -71,7 +71,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.1.0
               </div>
             
           
@@ -206,8 +206,11 @@
 <li><a href="_basis_fmllr_diag_gmm.html">_basis_fmllr_diag_gmm</a></li>
 <li><a href="_biglm_faster_decoder.html">_biglm_faster_decoder</a></li>
 <li><a href="_build_tree_questions.html">_build_tree_questions</a></li>
+<li><a href="_chain_datastruct.html">_chain_datastruct</a></li>
 <li><a href="_chain_den_graph.html">_chain_den_graph</a></li>
 <li><a href="_chain_denominator.html">_chain_denominator</a></li>
+<li><a href="_chain_generic_numerator.html">_chain_generic_numerator</a></li>
+<li><a href="_chain_numerator.html">_chain_numerator</a></li>
 <li><a href="_chain_supervision.html">_chain_supervision</a></li>
 <li><a href="_chain_training.html">_chain_training</a></li>
 <li><a href="_cluster_utils.html">_cluster_utils</a></li>
@@ -260,6 +263,8 @@
 <li><a href="_fst.html">_fst</a></li>
 <li><a href="_fstream.html">_fstream</a></li>
 <li><a href="_full_gmm_normal.html">_full_gmm_normal</a></li>
+<li><a href="_grammar_context_fst.html">_grammar_context_fst</a></li>
+<li><a href="_grammar_fst.html">_grammar_fst</a></li>
 <li><a href="_hmm_topology.html">_hmm_topology</a></li>
 <ul><li><a href="_hmm_topology/HmmTopology.html">_hmm_topology.HmmTopology</a></li>
 </ul><li><a href="_hmm_utils.html">_hmm_utils</a></li>
@@ -286,6 +291,8 @@
 <li><a href="_nnet_am_decodable_simple.html">_nnet_am_decodable_simple</a></li>
 <li><a href="_nnet_analyze.html">_nnet_analyze</a></li>
 <li><a href="_nnet_attention_component.html">_nnet_attention_component</a></li>
+<li><a href="_nnet_batch_compute.html">_nnet_batch_compute</a></li>
+<li><a href="_nnet_combined_component.html">_nnet_combined_component</a></li>
 <li><a href="_nnet_common.html">_nnet_common</a></li>
 <li><a href="_nnet_compile.html">_nnet_compile</a></li>
 <li><a href="_nnet_component_itf.html">_nnet_component_itf</a></li>
@@ -319,6 +326,7 @@
 <li><a href="_online_ivector_feature.html">_online_ivector_feature</a></li>
 <li><a href="_online_nnet2_feature_pipeline.html">_online_nnet2_feature_pipeline</a></li>
 <li><a href="_online_nnet3_decoding.html">_online_nnet3_decoding</a></li>
+<li><a href="_online_nnet3_decoding_ext.html">_online_nnet3_decoding_ext</a></li>
 <li><a href="_optimization.html">_optimization</a></li>
 <li><a href="_options_itf.html">_options_itf</a></li>
 <li><a href="_phone_align_lattice.html">_phone_align_lattice</a></li>
@@ -371,12 +379,15 @@
 <li><a href="kaldi/base/math.html">kaldi.base.math</a></li>
 <li><a href="kaldi/chain/_chain_den_graph.html">kaldi.chain._chain_den_graph</a></li>
 <li><a href="kaldi/chain/_chain_supervision.html">kaldi.chain._chain_supervision</a></li>
+<li><a href="kaldi/chain/_chain_training_ext.html">kaldi.chain._chain_training_ext</a></li>
 <li><a href="kaldi/cudamatrix.html">kaldi.cudamatrix</a></li>
-<ul><li><a href="kaldi/cudamatrix/_cu_matrix.html">kaldi.cudamatrix._cu_matrix</a></li>
+<ul><li><a href="kaldi/cudamatrix/_cu_device.html">kaldi.cudamatrix._cu_device</a></li>
+<li><a href="kaldi/cudamatrix/_cu_matrix.html">kaldi.cudamatrix._cu_matrix</a></li>
 <li><a href="kaldi/cudamatrix/_cu_sparse_matrix.html">kaldi.cudamatrix._cu_sparse_matrix</a></li>
 <li><a href="kaldi/cudamatrix/_cu_vector.html">kaldi.cudamatrix._cu_vector</a></li>
 </ul><li><a href="kaldi/decoder.html">kaldi.decoder</a></li>
-<li><a href="kaldi/feat/_feature_functions.html">kaldi.feat._feature_functions</a></li>
+<ul><li><a href="kaldi/decoder/_grammar_fst.html">kaldi.decoder._grammar_fst</a></li>
+</ul><li><a href="kaldi/feat/_feature_functions.html">kaldi.feat._feature_functions</a></li>
 <li><a href="kaldi/feat/_feature_window.html">kaldi.feat._feature_window</a></li>
 <li><a href="kaldi/feat/_mel_computations.html">kaldi.feat._mel_computations</a></li>
 <li><a href="kaldi/feat/_pitch_functions.html">kaldi.feat._pitch_functions</a></li>
@@ -384,11 +395,13 @@
 <li><a href="kaldi/feat/_signal.html">kaldi.feat._signal</a></li>
 <li><a href="kaldi/fstext.html">kaldi.fstext</a></li>
 <ul><li><a href="kaldi/fstext/_api.html">kaldi.fstext._api</a></li>
+<li><a href="kaldi/fstext/_context_fst.html">kaldi.fstext._context_fst</a></li>
 <li><a href="kaldi/fstext/_context_fst_inl.html">kaldi.fstext._context_fst_inl</a></li>
 <li><a href="kaldi/fstext/_float_weight.html">kaldi.fstext._float_weight</a></li>
 <li><a href="kaldi/fstext/_fstext_shims.html">kaldi.fstext._fstext_shims</a></li>
 <li><a href="kaldi/fstext/_fstext_utils.html">kaldi.fstext._fstext_utils</a></li>
 <li><a href="kaldi/fstext/_fstext_utils_inl.html">kaldi.fstext._fstext_utils_inl</a></li>
+<li><a href="kaldi/fstext/_grammar_context_fst.html">kaldi.fstext._grammar_context_fst</a></li>
 <li><a href="kaldi/fstext/_lattice_utils.html">kaldi.fstext._lattice_utils</a></li>
 <li><a href="kaldi/fstext/_lattice_weight.html">kaldi.fstext._lattice_weight</a></li>
 <li><a href="kaldi/fstext/_lexicographic_weight.html">kaldi.fstext._lexicographic_weight</a></li>
@@ -501,7 +514,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.9',
+            VERSION:'0.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.fstext.special &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>kaldi.fstext.special &mdash; PyKaldi 0.1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../../../index.html"/>
         <link rel="up" title="kaldi.fstext" href="../fstext.html"/> 
 
   
@@ -72,7 +72,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.1.0
               </div>
             
           
@@ -201,9 +201,9 @@
            <div itemprop="articleBody">
             
   <h1>Source code for kaldi.fstext.special</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">._context_fst</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">._context_fst_inl</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">._deterministic_fst</span> <span class="k">import</span> <span class="o">*</span>
+<span></span><span class="kn">from</span> <span class="nn">._deterministic_fst</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._context_fst</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._grammar_context_fst</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_determinize_lattice</span>
 <span class="kn">from</span> <span class="nn">._push_special</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_special_ops</span>
@@ -213,29 +213,6 @@
 <span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">fstext</span> <span class="k">as</span> <span class="n">_fst</span>
 <span class="kn">import</span> <span class="nn">_getters</span>
 <span class="kn">import</span> <span class="nn">_weight</span>
-
-
-<div class="viewcode-block" id="compose_context_fst"><a class="viewcode-back" href="../../../api/kaldi.fstext.html#kaldi.fstext.special.compose_context_fst">[docs]</a><span class="k">def</span> <span class="nf">compose_context_fst</span><span class="p">(</span><span class="n">ifst1</span><span class="p">,</span> <span class="n">ifst2</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">compose_filter</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Composes context FST with an FST over the tropical semiring.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        ifst1 (StdContextFst): The input context FST over the tropical semiring.</span>
-<span class="sd">        ifst2 (StdFst): The input FST over the tropical semiring.</span>
-<span class="sd">        connect (bool): Should output be trimmed?</span>
-<span class="sd">        compose_filter: A string matching a known composition filter; one of:</span>
-<span class="sd">            &quot;alt_sequence&quot;, &quot;auto&quot;, &quot;match&quot;, &quot;null&quot;, &quot;sequence&quot;, &quot;trivial&quot;.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        A composed FST.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">compose_filter</span> <span class="o">=</span> <span class="n">_getters</span><span class="o">.</span><span class="n">GetComposeFilter</span><span class="p">(</span><span class="n">compose_filter</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown compose filter: </span><span class="si">{!r}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">compose_filter</span><span class="p">))</span>
-    <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdVectorFst</span><span class="p">()</span>
-    <span class="n">_special_ops</span><span class="o">.</span><span class="n">_compose_context_fst</span><span class="p">(</span><span class="n">ifst1</span><span class="p">,</span> <span class="n">ifst2</span><span class="p">,</span> <span class="n">ofst</span><span class="p">,</span> <span class="n">connect</span><span class="p">,</span>
-                                      <span class="n">compose_filter</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ofst</span></div>
 
 
 <div class="viewcode-block" id="compose_context"><a class="viewcode-back" href="../../../api/kaldi.fstext.html#kaldi.fstext.special.compose_context">[docs]</a><span class="k">def</span> <span class="nf">compose_context</span><span class="p">(</span><span class="n">disambig_syms</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">ifst</span><span class="p">):</span>
@@ -440,7 +417,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.9',
+            VERSION:'0.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

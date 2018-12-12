@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.chain &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>kaldi.chain &mdash; PyKaldi 0.1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/>
         <link rel="next" title="kaldi.cudamatrix" href="kaldi.cudamatrix.html"/>
         <link rel="prev" title="kaldi.base" href="kaldi.base.html"/> 
 
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.1.0
               </div>
             
           
@@ -219,8 +219,14 @@
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.alignment_to_proto_supervision_with_phones_durs" title="kaldi.chain.alignment_to_proto_supervision_with_phones_durs"><code class="xref py py-obj docutils literal"><span class="pre">alignment_to_proto_supervision_with_phones_durs</span></code></a></td>
 <td>Creates a proto supervision from a list of (phone, duration) pairs.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.compute_fst_state_times" title="kaldi.chain.compute_fst_state_times"><code class="xref py py-obj docutils literal"><span class="pre">compute_fst_state_times</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.compute_chain_objf_and_deriv" title="kaldi.chain.compute_chain_objf_and_deriv"><code class="xref py py-obj docutils literal"><span class="pre">compute_chain_objf_and_deriv</span></code></a></td>
+<td>Does both the numerator and denominator parts of the chain computation in one call.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.compute_fst_state_times" title="kaldi.chain.compute_fst_state_times"><code class="xref py py-obj docutils literal"><span class="pre">compute_fst_state_times</span></code></a></td>
 <td>Computes the times for FST states.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.convert_supervision_to_unconstrained" title="kaldi.chain.convert_supervision_to_unconstrained"><code class="xref py py-obj docutils literal"><span class="pre">convert_supervision_to_unconstrained</span></code></a></td>
+<td>Converts supervision to an unconstrained supervision.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.create_denominator_fst" title="kaldi.chain.create_denominator_fst"><code class="xref py py-obj docutils literal"><span class="pre">create_denominator_fst</span></code></a></td>
 <td>Creates denominator graph.</td>
@@ -246,6 +252,9 @@
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.split_into_ranges" title="kaldi.chain.split_into_ranges"><code class="xref py py-obj docutils literal"><span class="pre">split_into_ranges</span></code></a></td>
 <td>Pseudo-randomly split a sequence of length num_frames into pieces of length exactly frames_per_range</td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.training_graph_to_supervision_e2e" title="kaldi.chain.training_graph_to_supervision_e2e"><code class="xref py py-obj docutils literal"><span class="pre">training_graph_to_supervision_e2e</span></code></a></td>
+<td>Creates and initializes an end-to-end supervision object from training FST.</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Classes</p>
@@ -264,25 +273,34 @@
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.DenominatorGraph" title="kaldi.chain.DenominatorGraph"><code class="xref py py-obj docutils literal"><span class="pre">DenominatorGraph</span></code></a></td>
 <td>Denominator graph.</td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.DenominatorGraphTransition" title="kaldi.chain.DenominatorGraphTransition"><code class="xref py py-obj docutils literal"><span class="pre">DenominatorGraphTransition</span></code></a></td>
+<td>Denominator graph transition.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.GenericNumeratorComputation" title="kaldi.chain.GenericNumeratorComputation"><code class="xref py py-obj docutils literal"><span class="pre">GenericNumeratorComputation</span></code></a></td>
+<td>Numerator computer used in end-to-end chain training.</td>
+</tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.LanguageModelEstimator" title="kaldi.chain.LanguageModelEstimator"><code class="xref py py-obj docutils literal"><span class="pre">LanguageModelEstimator</span></code></a></td>
 <td>Language model estimator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.LanguageModelOptions" title="kaldi.chain.LanguageModelOptions"><code class="xref py py-obj docutils literal"><span class="pre">LanguageModelOptions</span></code></a></td>
 <td>Options for language model estimation.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.ProtoSupervision" title="kaldi.chain.ProtoSupervision"><code class="xref py py-obj docutils literal"><span class="pre">ProtoSupervision</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.NumeratorComputation" title="kaldi.chain.NumeratorComputation"><code class="xref py py-obj docutils literal"><span class="pre">NumeratorComputation</span></code></a></td>
+<td>Numerator computer used in chain training.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.ProtoSupervision" title="kaldi.chain.ProtoSupervision"><code class="xref py py-obj docutils literal"><span class="pre">ProtoSupervision</span></code></a></td>
 <td>Proto supervision that is compiled into supervision.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.Supervision" title="kaldi.chain.Supervision"><code class="xref py py-obj docutils literal"><span class="pre">Supervision</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.Supervision" title="kaldi.chain.Supervision"><code class="xref py py-obj docutils literal"><span class="pre">Supervision</span></code></a></td>
 <td>Supervision information.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.SupervisionOptions" title="kaldi.chain.SupervisionOptions"><code class="xref py py-obj docutils literal"><span class="pre">SupervisionOptions</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.SupervisionOptions" title="kaldi.chain.SupervisionOptions"><code class="xref py py-obj docutils literal"><span class="pre">SupervisionOptions</span></code></a></td>
 <td>Supervision options.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.SupervisionSplitter" title="kaldi.chain.SupervisionSplitter"><code class="xref py py-obj docutils literal"><span class="pre">SupervisionSplitter</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.SupervisionSplitter" title="kaldi.chain.SupervisionSplitter"><code class="xref py py-obj docutils literal"><span class="pre">SupervisionSplitter</span></code></a></td>
 <td>Supervision splitter.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.chain.TimeEnforcerFst" title="kaldi.chain.TimeEnforcerFst"><code class="xref py py-obj docutils literal"><span class="pre">TimeEnforcerFst</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.chain.TimeEnforcerFst" title="kaldi.chain.TimeEnforcerFst"><code class="xref py py-obj docutils literal"><span class="pre">TimeEnforcerFst</span></code></a></td>
 <td>Deterministic on-demand FST to limit the frames each phone is allowed.</td>
 </tr>
 </tbody>
@@ -448,6 +466,62 @@ epsilon-free acceptor with labels representing pdf-ids + 1.</li>
 </dd></dl>
 
 <dl class="class">
+<dt id="kaldi.chain.DenominatorGraphTransition">
+<em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">DenominatorGraphTransition</code><a class="headerlink" href="#kaldi.chain.DenominatorGraphTransition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Denominator graph transition.</p>
+<dl class="attribute">
+<dt id="kaldi.chain.DenominatorGraphTransition.hmm_state">
+<code class="descname">hmm_state</code><a class="headerlink" href="#kaldi.chain.DenominatorGraphTransition.hmm_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>HMM state</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.chain.DenominatorGraphTransition.pdf_id">
+<code class="descname">pdf_id</code><a class="headerlink" href="#kaldi.chain.DenominatorGraphTransition.pdf_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>PDF id</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.chain.DenominatorGraphTransition.transition_prob">
+<code class="descname">transition_prob</code><a class="headerlink" href="#kaldi.chain.DenominatorGraphTransition.transition_prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transition probability</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.chain.GenericNumeratorComputation">
+<em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">GenericNumeratorComputation</code><a class="headerlink" href="#kaldi.chain.GenericNumeratorComputation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Numerator computer used in end-to-end chain training.</p>
+<p>This does forward-backward of the end-to-end ‘supervision’ (numerator)
+FSTs. This kind of FST can have self-loops.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>supervision</strong> (<a class="reference internal" href="#kaldi.chain.Supervision" title="kaldi.chain.Supervision"><em>Supervision</em></a>) – Supervision for this minibatch</li>
+<li><strong>nnet_output</strong> (<a class="reference internal" href="kaldi.cudamatrix.html#kaldi.cudamatrix.CuMatrix" title="kaldi.cudamatrix.CuMatrix"><em>CuMatrix</em></a>) – The output of the neural network for this minibatch</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.chain.GenericNumeratorComputation.compute_objf">
+<code class="descname">compute_objf</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.chain.GenericNumeratorComputation.compute_objf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the objective function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.chain.GenericNumeratorComputation.forward_backward">
+<code class="descname">forward_backward</code><span class="sig-paren">(</span><em>total_loglike:float</em>, <em>nnet_output_deriv:CuMatrixBase</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.chain.GenericNumeratorComputation.forward_backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does the forward-backward computation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="kaldi.chain.LanguageModelEstimator">
 <em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">LanguageModelEstimator</code><span class="sig-paren">(</span><em>opts:LanguageModelOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.LanguageModelEstimator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Language model estimator.</p>
@@ -537,6 +611,55 @@ efficiency of training.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
 Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.chain.NumeratorComputation">
+<em class="property">class </em><code class="descclassname">kaldi.chain.</code><code class="descname">NumeratorComputation</code><a class="headerlink" href="#kaldi.chain.NumeratorComputation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Numerator computer used in chain training.</p>
+<p>This does forward-backward of the ‘supervision’ (numerator) FSTs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>supervision</strong> (<a class="reference internal" href="#kaldi.chain.Supervision" title="kaldi.chain.Supervision"><em>Supervision</em></a>) – Supervision for this minibatch</li>
+<li><strong>nnet_output</strong> (<a class="reference internal" href="kaldi.cudamatrix.html#kaldi.cudamatrix.CuMatrix" title="kaldi.cudamatrix.CuMatrix"><em>CuMatrix</em></a>) – The output of the neural network for this minibatch</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.chain.NumeratorComputation.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>nnet_output_deriv:CuMatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.NumeratorComputation.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does the backward computation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nnet_output_deriv</strong> (<a class="reference internal" href="kaldi.cudamatrix.html#kaldi.cudamatrix.CuMatrix" title="kaldi.cudamatrix.CuMatrix"><em>CuMatrix</em></a>) – Output matrix.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.chain.NumeratorComputation.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.chain.NumeratorComputation.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does the forward computation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Total log-prob multiplied by supervision.weight.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
 </tr>
 </tbody>
 </table>
@@ -648,6 +771,12 @@ encoded into the FST.</p>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="kaldi.chain.SupervisionOptions.convert_to_pdfs">
+<code class="descname">convert_to_pdfs</code><a class="headerlink" href="#kaldi.chain.SupervisionOptions.convert_to_pdfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert transition-ids to pdf-ids + 1 in supervision FST</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="kaldi.chain.SupervisionOptions.frame_subsampling_factor">
 <code class="descname">frame_subsampling_factor</code><a class="headerlink" href="#kaldi.chain.SupervisionOptions.frame_subsampling_factor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Frame subsampling factor</p>
@@ -657,6 +786,12 @@ encoded into the FST.</p>
 <dt id="kaldi.chain.SupervisionOptions.left_tolerance">
 <code class="descname">left_tolerance</code><a class="headerlink" href="#kaldi.chain.SupervisionOptions.left_tolerance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Left tolerance for shift in phone position relative to the alignment</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.chain.SupervisionOptions.lm_scale">
+<code class="descname">lm_scale</code><a class="headerlink" href="#kaldi.chain.SupervisionOptions.lm_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>The scale on graph weights from phone lattice included in the supervision FST</p>
 </dd></dl>
 
 <dl class="method">
@@ -678,6 +813,12 @@ Typically a command-line option parser.</td>
 <dt id="kaldi.chain.SupervisionOptions.right_tolerance">
 <code class="descname">right_tolerance</code><a class="headerlink" href="#kaldi.chain.SupervisionOptions.right_tolerance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Right tolerance for shift in phone position relative to the alignment</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.chain.SupervisionOptions.weight">
+<code class="descname">weight</code><a class="headerlink" href="#kaldi.chain.SupervisionOptions.weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supervision weight for training</p>
 </dd></dl>
 
 </dd></dl>
@@ -726,6 +867,9 @@ are pdf-ids plus one.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>trans_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – Transition model</li>
+<li><strong>convert_to_pdfs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If True, this FST will map from transition-id
+on the inpurt side to pdf-id plus one on the output side. Otherwise,
+both sides’ labels will be transition-id.</li>
 <li><strong>allowed_phones</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em><em>]</em>) – Phones allowed at each frame.</li>
 </ul>
 </td>
@@ -786,6 +930,36 @@ are pdf-ids plus one.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="kaldi.chain.compute_chain_objf_and_deriv">
+<code class="descclassname">kaldi.chain.</code><code class="descname">compute_chain_objf_and_deriv</code><span class="sig-paren">(</span><em>opts:ChainTrainingOptions</em>, <em>den_graph:DenominatorGraph</em>, <em>supervision:Supervision</em>, <em>nnet_output:CuMatrixBase</em>, <em>nnet_output_deriv:CuMatrixBase</em>, <em>xent_output_deriv:CuMatrix) -&gt; (objf:float</em>, <em>l2_term:float</em>, <em>weight:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.compute_chain_objf_and_deriv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does both the numerator and denominator parts of the chain computation in one call.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.chain.ChainTrainingOptions" title="kaldi.chain.ChainTrainingOptions"><em>ChainTrainingOptions</em></a>) – Struct containing options</li>
+<li><strong>den_graph</strong> (<a class="reference internal" href="#kaldi.chain.DenominatorGraph" title="kaldi.chain.DenominatorGraph"><em>DenominatorGraph</em></a>) – The denominator graph, derived from denominator fst.</li>
+<li><strong>supervision</strong> (<a class="reference internal" href="#kaldi.chain.Supervision" title="kaldi.chain.Supervision"><em>Supervision</em></a>) – The supervision object containing the supervision paths and constrains</li>
+<li><strong>nnet_output</strong> (<em>CuMatrixBase</em>) – The output of the neural net; dimension must equal ((supervision.num_sequences * supervision.frames_per_sequence) by den_graph.num_pdfs)</li>
+<li><strong>nnet_output_deriv</strong> (<em>CuMatrixBase</em>) – The derivative of the objective function w.r.t. the neural net output</li>
+<li><strong>xent_output_deriv</strong> (<a class="reference internal" href="kaldi.cudamatrix.html#kaldi.cudamatrix.CuMatrix" title="kaldi.cudamatrix.CuMatrix"><em>CuMatrix</em></a>) – If non-NULL, then the numerator part of the derivative (equals the posterior from the numerator forward-backward, scaled by the supervision weight)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The [num -den] objective function computed for this example
+l2_term (float): The l2 regularization term in the objective function
+weight (float): The weight to normalize the objective function by</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.tree.html#kaldi.tree.GaussClusterable.objf" title="kaldi.tree.GaussClusterable.objf">objf</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a>)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="kaldi.chain.compute_fst_state_times">
 <code class="descclassname">kaldi.chain.</code><code class="descname">compute_fst_state_times</code><span class="sig-paren">(</span><em>fst:StdVectorFst) -&gt; (path_length:int</em>, <em>state_times:list&lt;int&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.compute_fst_state_times" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the times for FST states.</p>
@@ -812,6 +986,18 @@ the same number of arcs; and states should be sorted on this path length</td>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.chain.convert_supervision_to_unconstrained">
+<code class="descclassname">kaldi.chain.</code><code class="descname">convert_supervision_to_unconstrained</code><span class="sig-paren">(</span><em>trans_model:TransitionModel</em>, <em>supervision:Supervision</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.chain.convert_supervision_to_unconstrained" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts supervision to an unconstrained supervision.</p>
+<p>This function converts a ‘Supervision’ object that has a non-cyclic FST
+as its ‘fst’ member, and converts it to one that has a cyclic FST in
+its e2e_fsts[0], and has ‘alignment_pdfs’ set to a random path through
+the original ‘fst’ (this used only in the binary nnet3-chain-acc-lda-stats).
+This can be used to train without any constraints on the alignment of phones
+internal to chunks, while still imposing constraints at chunk boundaries.</p>
 </dd></dl>
 
 <dl class="function">
@@ -865,7 +1051,7 @@ denominator-graph.</p>
 
 <dl class="function">
 <dt id="kaldi.chain.proto_supervision_to_supervision">
-<code class="descclassname">kaldi.chain.</code><code class="descname">proto_supervision_to_supervision</code><span class="sig-paren">(</span><em>ctx_dep:ContextDependencyInterface</em>, <em>trans_model:TransitionModel</em>, <em>proto_supervision:ProtoSupervision) -&gt; (success:bool</em>, <em>supervision:Supervision</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.proto_supervision_to_supervision" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">kaldi.chain.</code><code class="descname">proto_supervision_to_supervision</code><span class="sig-paren">(</span><em>ctx_dep:ContextDependencyInterface</em>, <em>trans_model:TransitionModel</em>, <em>proto_supervision:ProtoSupervision</em>, <em>convert_to_pdfs:bool) -&gt; (success:bool</em>, <em>supervision:Supervision</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.proto_supervision_to_supervision" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a Supervision object from a ProtoSupervision object.</p>
 </dd></dl>
 
@@ -879,6 +1065,12 @@ denominator-graph.</p>
 <dt id="kaldi.chain.split_into_ranges">
 <code class="descclassname">kaldi.chain.</code><code class="descname">split_into_ranges</code><span class="sig-paren">(</span><em>num_frames:int</em>, <em>frames_per_range:int</em><span class="sig-paren">)</span> &#x2192; list&lt;int&gt;<a class="headerlink" href="#kaldi.chain.split_into_ranges" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pseudo-randomly split a sequence of length num_frames into pieces of length exactly frames_per_range</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.chain.training_graph_to_supervision_e2e">
+<code class="descclassname">kaldi.chain.</code><code class="descname">training_graph_to_supervision_e2e</code><span class="sig-paren">(</span><em>training_graph:StdVectorFst</em>, <em>trans_model:TransitionModel</em>, <em>num_frames:int) -&gt; (success:bool</em>, <em>supervision:Supervision</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.chain.training_graph_to_supervision_e2e" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and initializes an end-to-end supervision object from training FST.</p>
 </dd></dl>
 
 </div>
@@ -927,7 +1119,7 @@ denominator-graph.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.9',
+            VERSION:'0.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

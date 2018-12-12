@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.feat &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>kaldi.feat &mdash; PyKaldi 0.1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/>
         <link rel="next" title="kaldi.fstext" href="kaldi.fstext.html"/>
         <link rel="prev" title="kaldi.decoder" href="kaldi.decoder.html"/> 
 
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.1.0
               </div>
             
           
@@ -1460,6 +1460,12 @@ Typically a command-line option parser.</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="kaldi.feat.online.OnlineAppendFeature.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineAppendFeature.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kaldi.feat.online.OnlineAppendFeature.is_last_frame">
 <code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineAppendFeature.is_last_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns True if this is last frame, otherwise False</p>
@@ -1507,6 +1513,12 @@ Typically a command-line option parser.</td>
 <dt id="kaldi.feat.online.OnlineCacheFeature.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCacheFeature.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the features for given frame index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCacheFeature.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCacheFeature.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
 </dd></dl>
 
 <dl class="method">
@@ -1562,6 +1574,12 @@ Typically a command-line option parser.</td>
 <dt id="kaldi.feat.online.OnlineCmvn.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the features for given frame index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineCmvn.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineCmvn.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
 </dd></dl>
 
 <dl class="method">
@@ -1757,6 +1775,12 @@ Typically a command-line option parser.</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="kaldi.feat.online.OnlineDeltaFeature.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineDeltaFeature.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kaldi.feat.online.OnlineDeltaFeature.is_last_frame">
 <code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineDeltaFeature.is_last_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns True if this is last frame, otherwise False</p>
@@ -1804,6 +1828,12 @@ Typically a command-line option parser.</td>
 <dt id="kaldi.feat.online.OnlineFbank.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineFbank.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the features for given frame index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineFbank.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineFbank.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
 </dd></dl>
 
 <dl class="method">
@@ -1857,6 +1887,12 @@ Typically a command-line option parser.</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="kaldi.feat.online.OnlineMatrixFeature.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineMatrixFeature.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kaldi.feat.online.OnlineMatrixFeature.is_last_frame">
 <code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.feat.online.OnlineMatrixFeature.is_last_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns True if this is last frame, otherwise False</p>
@@ -1904,6 +1940,12 @@ Typically a command-line option parser.</td>
 <dt id="kaldi.feat.online.OnlineMfcc.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineMfcc.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the features for given frame index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineMfcc.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineMfcc.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
 </dd></dl>
 
 <dl class="method">
@@ -1963,6 +2005,12 @@ Typically a command-line option parser.</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="kaldi.feat.online.OnlinePlp.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlinePlp.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kaldi.feat.online.OnlinePlp.input_finished">
 <code class="descname">input_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlinePlp.input_finished" title="Permalink to this definition">¶</a></dt>
 <dd><p>Marks input as finished.</p>
@@ -2014,6 +2062,12 @@ Typically a command-line option parser.</td>
 <dt id="kaldi.feat.online.OnlineSpliceFrames.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineSpliceFrames.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the features for given frame index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineSpliceFrames.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineSpliceFrames.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
 </dd></dl>
 
 <dl class="method">
@@ -2094,6 +2148,12 @@ Typically a command-line option parser.</td>
 <dt id="kaldi.feat.online.OnlineTransform.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineTransform.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the features for given frame index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.online.OnlineTransform.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.online.OnlineTransform.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
 </dd></dl>
 
 <dl class="method">
@@ -2189,6 +2249,12 @@ Typically a command-line option parser.</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="kaldi.feat.pitch.OnlinePitchFeature.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.OnlinePitchFeature.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kaldi.feat.pitch.OnlinePitchFeature.input_finished">
 <code class="descname">input_finished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.OnlinePitchFeature.input_finished" title="Permalink to this definition">¶</a></dt>
 <dd><p>Marks input as finished.</p>
@@ -2240,6 +2306,12 @@ Typically a command-line option parser.</td>
 <dt id="kaldi.feat.pitch.OnlineProcessPitch.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.OnlineProcessPitch.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the features for given frame index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.feat.pitch.OnlineProcessPitch.get_frames">
+<code class="descname">get_frames</code><span class="sig-paren">(</span><em>frames:list&lt;int&gt;</em>, <em>feats:MatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.pitch.OnlineProcessPitch.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the features for given frame indices</p>
 </dd></dl>
 
 <dl class="method">
@@ -3444,22 +3516,19 @@ the beginning of the wave data.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.window.dither" title="kaldi.feat.window.dither"><code class="xref py py-obj docutils literal"><span class="pre">dither</span></code></a></td>
 <td>Dithers waveform.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.window.extract_waveform_remainder" title="kaldi.feat.window.extract_waveform_remainder"><code class="xref py py-obj docutils literal"><span class="pre">extract_waveform_remainder</span></code></a></td>
-<td>Extracts waveform reaminder.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.window.extract_window" title="kaldi.feat.window.extract_window"><code class="xref py py-obj docutils literal"><span class="pre">extract_window</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.window.extract_window" title="kaldi.feat.window.extract_window"><code class="xref py py-obj docutils literal"><span class="pre">extract_window</span></code></a></td>
 <td>Extracts a windowed frame of waveform.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.window.first_sample_of_frame" title="kaldi.feat.window.first_sample_of_frame"><code class="xref py py-obj docutils literal"><span class="pre">first_sample_of_frame</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.window.first_sample_of_frame" title="kaldi.feat.window.first_sample_of_frame"><code class="xref py py-obj docutils literal"><span class="pre">first_sample_of_frame</span></code></a></td>
 <td>Computes the index of the first sample of a given frame.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.window.num_frames" title="kaldi.feat.window.num_frames"><code class="xref py py-obj docutils literal"><span class="pre">num_frames</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.window.num_frames" title="kaldi.feat.window.num_frames"><code class="xref py py-obj docutils literal"><span class="pre">num_frames</span></code></a></td>
 <td>Computes the number of frames that we can extact from a waveform.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.window.preemphasize" title="kaldi.feat.window.preemphasize"><code class="xref py py-obj docutils literal"><span class="pre">preemphasize</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.window.preemphasize" title="kaldi.feat.window.preemphasize"><code class="xref py py-obj docutils literal"><span class="pre">preemphasize</span></code></a></td>
 <td>Preemphasizes waveform.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.feat.window.process_window" title="kaldi.feat.window.process_window"><code class="xref py py-obj docutils literal"><span class="pre">process_window</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.feat.window.process_window" title="kaldi.feat.window.process_window"><code class="xref py py-obj docutils literal"><span class="pre">process_window</span></code></a></td>
 <td>Does all the windowing steps after extracting the windowed signal.</td>
 </tr>
 </tbody>
@@ -3624,12 +3693,6 @@ Typically a command-line option parser.</td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="function">
-<dt id="kaldi.feat.window.extract_waveform_remainder">
-<code class="descclassname">kaldi.feat.window.</code><code class="descname">extract_waveform_remainder</code><span class="sig-paren">(</span><em>wave:VectorBase</em>, <em>opts:FrameExtractionOptions</em>, <em>wave_remainder:Vector</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.feat.window.extract_waveform_remainder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Extracts waveform reaminder.</p>
 </dd></dl>
 
 <dl class="function">
@@ -3806,7 +3869,7 @@ match ‘opts.padded_window_size()’.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.9',
+            VERSION:'0.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

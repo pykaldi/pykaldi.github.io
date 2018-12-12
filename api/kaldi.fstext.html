@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.fstext &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>kaldi.fstext &mdash; PyKaldi 0.1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/>
         <link rel="next" title="kaldi.gmm" href="kaldi.gmm.html"/>
         <link rel="prev" title="kaldi.feat" href="kaldi.feat.html"/> 
 
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.1.0
               </div>
             
           
@@ -13893,11 +13893,6 @@ memory, e.g.</p>
 <span class="n">table</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s2">&quot;alphabet.syms&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="attribute">
-<dt id="kaldi.fstext.SymbolTable.NO_SYMBOL">
-<code class="descname">NO_SYMBOL</code><em class="property"> = -1</em><a class="headerlink" href="#kaldi.fstext.SymbolTable.NO_SYMBOL" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="kaldi.fstext.SymbolTable.add_pair">
 <code class="descname">add_pair</code><span class="sig-paren">(</span><em>symbol:str</em>, <em>key:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.fstext.SymbolTable.add_pair" title="Permalink to this definition">¶</a></dt>
@@ -15540,8 +15535,8 @@ delay, i.e., the delay of every cycle must be zero.</p>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.compose_context" title="kaldi.fstext.special.compose_context"><code class="xref py py-obj docutils literal"><span class="pre">compose_context</span></code></a></td>
 <td>Creates a context FST and composes it on the left with input fst.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.compose_context_fst" title="kaldi.fstext.special.compose_context_fst"><code class="xref py py-obj docutils literal"><span class="pre">compose_context_fst</span></code></a></td>
-<td>Composes context FST with an FST over the tropical semiring.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.compose_context_left_biphone" title="kaldi.fstext.special.compose_context_left_biphone"><code class="xref py py-obj docutils literal"><span class="pre">compose_context_left_biphone</span></code></a></td>
+<td>Creates a context FST and composes it on the left with input fst.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.compose_deterministic_on_demand_fst" title="kaldi.fstext.special.compose_deterministic_on_demand_fst"><code class="xref py py-obj docutils literal"><span class="pre">compose_deterministic_on_demand_fst</span></code></a></td>
 <td>Composes an FST with a deterministic on demand FST.</td>
@@ -15558,25 +15553,28 @@ delay, i.e., the delay of every cycle must be zero.</p>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.determinize_star_in_log" title="kaldi.fstext.special.determinize_star_in_log"><code class="xref py py-obj docutils literal"><span class="pre">determinize_star_in_log</span></code></a></td>
 <td>Performs determinize_star in place in log semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.push_in_log" title="kaldi.fstext.special.push_in_log"><code class="xref py py-obj docutils literal"><span class="pre">push_in_log</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.get_encoding_multiple" title="kaldi.fstext.special.get_encoding_multiple"><code class="xref py py-obj docutils literal"><span class="pre">get_encoding_multiple</span></code></a></td>
+<td>Returns the smallest multiple of 1000 &gt; nonterm_phones_offset.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.push_in_log" title="kaldi.fstext.special.push_in_log"><code class="xref py py-obj docutils literal"><span class="pre">push_in_log</span></code></a></td>
 <td>Push weights/labels in log semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.push_special" title="kaldi.fstext.special.push_special"><code class="xref py py-obj docutils literal"><span class="pre">push_special</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.push_special" title="kaldi.fstext.special.push_special"><code class="xref py py-obj docutils literal"><span class="pre">push_special</span></code></a></td>
 <td>Pushes weights in log semiring in a special way.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.read_ilabel_info" title="kaldi.fstext.special.read_ilabel_info"><code class="xref py py-obj docutils literal"><span class="pre">read_ilabel_info</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.read_ilabel_info" title="kaldi.fstext.special.read_ilabel_info"><code class="xref py py-obj docutils literal"><span class="pre">read_ilabel_info</span></code></a></td>
 <td>Reads ilabel info from input stream.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.remove_eps_local" title="kaldi.fstext.special.remove_eps_local"><code class="xref py py-obj docutils literal"><span class="pre">remove_eps_local</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.remove_eps_local" title="kaldi.fstext.special.remove_eps_local"><code class="xref py py-obj docutils literal"><span class="pre">remove_eps_local</span></code></a></td>
 <td>Removes epsilon arcs locally.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.table_compose" title="kaldi.fstext.special.table_compose"><code class="xref py py-obj docutils literal"><span class="pre">table_compose</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.table_compose" title="kaldi.fstext.special.table_compose"><code class="xref py py-obj docutils literal"><span class="pre">table_compose</span></code></a></td>
 <td>Performs table composition.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.table_compose_cache" title="kaldi.fstext.special.table_compose_cache"><code class="xref py py-obj docutils literal"><span class="pre">table_compose_cache</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.table_compose_cache" title="kaldi.fstext.special.table_compose_cache"><code class="xref py py-obj docutils literal"><span class="pre">table_compose_cache</span></code></a></td>
 <td>Performs table composition using the cached table matcher.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.write_ilabel_info" title="kaldi.fstext.special.write_ilabel_info"><code class="xref py py-obj docutils literal"><span class="pre">write_ilabel_info</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.write_ilabel_info" title="kaldi.fstext.special.write_ilabel_info"><code class="xref py py-obj docutils literal"><span class="pre">write_ilabel_info</span></code></a></td>
 <td>Writes ilabel info to output stream.</td>
 </tr>
 </tbody>
@@ -15588,26 +15586,26 @@ delay, i.e., the delay of every cycle must be zero.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.StdBackoffDeterministicOnDemandFst" title="kaldi.fstext.special.StdBackoffDeterministicOnDemandFst"><code class="xref py py-obj docutils literal"><span class="pre">StdBackoffDeterministicOnDemandFst</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.NonterminalValues" title="kaldi.fstext.special.NonterminalValues"><code class="xref py py-obj docutils literal"><span class="pre">NonterminalValues</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.StdBackoffDeterministicOnDemandFst" title="kaldi.fstext.special.StdBackoffDeterministicOnDemandFst"><code class="xref py py-obj docutils literal"><span class="pre">StdBackoffDeterministicOnDemandFst</span></code></a></td>
 <td>Deterministic on demand backoff language model.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.StdCacheDeterministicOnDemandFst" title="kaldi.fstext.special.StdCacheDeterministicOnDemandFst"><code class="xref py py-obj docutils literal"><span class="pre">StdCacheDeterministicOnDemandFst</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.StdCacheDeterministicOnDemandFst" title="kaldi.fstext.special.StdCacheDeterministicOnDemandFst"><code class="xref py py-obj docutils literal"><span class="pre">StdCacheDeterministicOnDemandFst</span></code></a></td>
 <td>A DeterministicOnDemandFst caching the arcs of another.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.StdComposeDeterministicOnDemandFst" title="kaldi.fstext.special.StdComposeDeterministicOnDemandFst"><code class="xref py py-obj docutils literal"><span class="pre">StdComposeDeterministicOnDemandFst</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.StdComposeDeterministicOnDemandFst" title="kaldi.fstext.special.StdComposeDeterministicOnDemandFst"><code class="xref py py-obj docutils literal"><span class="pre">StdComposeDeterministicOnDemandFst</span></code></a></td>
 <td>A DeterministicOnDemandFst implementing the composition of others.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.StdContextFst" title="kaldi.fstext.special.StdContextFst"><code class="xref py py-obj docutils literal"><span class="pre">StdContextFst</span></code></a></td>
-<td>Context FST over the tropical semiring.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.StdContextFstArcIterator" title="kaldi.fstext.special.StdContextFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">StdContextFstArcIterator</span></code></a></td>
-<td>Arc iterator for context FST over the tropical semiring.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.StdContextFstStateIterator" title="kaldi.fstext.special.StdContextFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">StdContextFstStateIterator</span></code></a></td>
-<td>State iterator for context FST over the tropical semiring.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.StdDeterministicOnDemandFst" title="kaldi.fstext.special.StdDeterministicOnDemandFst"><code class="xref py py-obj docutils literal"><span class="pre">StdDeterministicOnDemandFst</span></code></a></td>
 <td>Base class for deterministic on demand FSTs over the tropical semiring.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.StdInverseContextFst" title="kaldi.fstext.special.StdInverseContextFst"><code class="xref py py-obj docutils literal"><span class="pre">StdInverseContextFst</span></code></a></td>
+<td>Inverse of the context FST “C” in “HCLG” over the tropical semiring.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.special.StdInverseLeftBiphoneContextFst" title="kaldi.fstext.special.StdInverseLeftBiphoneContextFst"><code class="xref py py-obj docutils literal"><span class="pre">StdInverseLeftBiphoneContextFst</span></code></a></td>
+<td>Inverse of the left-biphone context FST “C” over the tropical semiring.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.special.StdUnweightedNgramFst" title="kaldi.fstext.special.StdUnweightedNgramFst"><code class="xref py py-obj docutils literal"><span class="pre">StdUnweightedNgramFst</span></code></a></td>
 <td>A DeterministicOnDemandFst in which states encode an n-gram history.</td>
@@ -15623,6 +15621,47 @@ delay, i.e., the delay of every cycle must be zero.</p>
 </tr>
 </tbody>
 </table>
+<dl class="class">
+<dt id="kaldi.fstext.special.NonterminalValues">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.special.</code><code class="descname">NonterminalValues</code><a class="headerlink" href="#kaldi.fstext.special.NonterminalValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.special.NonterminalValues.kNontermBegin">
+<code class="descname">kNontermBegin</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.special.NonterminalValues.kNontermBegin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.special.NonterminalValues.kNontermBigNumber">
+<code class="descname">kNontermBigNumber</code><em class="property"> = 10000000</em><a class="headerlink" href="#kaldi.fstext.special.NonterminalValues.kNontermBigNumber" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.special.NonterminalValues.kNontermBos">
+<code class="descname">kNontermBos</code><em class="property"> = 0</em><a class="headerlink" href="#kaldi.fstext.special.NonterminalValues.kNontermBos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.special.NonterminalValues.kNontermEnd">
+<code class="descname">kNontermEnd</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.special.NonterminalValues.kNontermEnd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.special.NonterminalValues.kNontermMediumNumber">
+<code class="descname">kNontermMediumNumber</code><em class="property"> = 1000</em><a class="headerlink" href="#kaldi.fstext.special.NonterminalValues.kNontermMediumNumber" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.special.NonterminalValues.kNontermReenter">
+<code class="descname">kNontermReenter</code><em class="property"> = 3</em><a class="headerlink" href="#kaldi.fstext.special.NonterminalValues.kNontermReenter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.special.NonterminalValues.kNontermUserDefined">
+<code class="descname">kNontermUserDefined</code><em class="property"> = 4</em><a class="headerlink" href="#kaldi.fstext.special.NonterminalValues.kNontermUserDefined" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="kaldi.fstext.special.StdBackoffDeterministicOnDemandFst">
 <em class="property">class </em><code class="descclassname">kaldi.fstext.special.</code><code class="descname">StdBackoffDeterministicOnDemandFst</code><a class="headerlink" href="#kaldi.fstext.special.StdBackoffDeterministicOnDemandFst" title="Permalink to this definition">¶</a></dt>
@@ -15779,227 +15818,6 @@ found at the current state.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="kaldi.fstext.special.StdContextFst">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.special.</code><code class="descname">StdContextFst</code><a class="headerlink" href="#kaldi.fstext.special.StdContextFst" title="Permalink to this definition">¶</a></dt>
-<dd><p>Context FST over the tropical semiring.</p>
-<p>Context FST “C” transduces from symbols representing phone context
-windows (e.g. “a, b, c”) to individual phone, e.g. “a”.  The context
-FST is an on-demand FST.  It has its own matcher type that makes it
-particularly efficient to compose with.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>subsequential_symbol</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Integer index of the subsequential symbol.</li>
-<li><strong>phones</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Integer indices for the phones.</li>
-<li><strong>disambig_syms</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Integer indices for disambiguation symbols.</li>
-<li><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Size of context window.</li>
-<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Position of central phone in context window, from 0..N-1.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFst.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><em>safe:bool=default</em><span class="sig-paren">)</span> &#x2192; StdContextFst<a class="headerlink" href="#kaldi.fstext.special.StdContextFst.copy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a copy of the context FST.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFst.create_arc">
-<code class="descname">create_arc</code><span class="sig-paren">(</span><em>s:int</em>, <em>olabel:int) -&gt; (success:bool</em>, <em>oarc:StdArc</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.special.StdContextFst.create_arc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates an on demand arc and returns it.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – State index.</li>
-<li><strong>olabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Output label of the arc.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The created arc.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFst.from_other">
-<code class="descname">from_other</code><span class="sig-paren">(</span><em>fst:StdContextFst</em>, <em>safe:bool=default</em><span class="sig-paren">)</span> &#x2192; StdContextFst<a class="headerlink" href="#kaldi.fstext.special.StdContextFst.from_other" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a new context FST from another.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFst.ilabel_info">
-<code class="descname">ilabel_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;int&gt;&gt;<a class="headerlink" href="#kaldi.fstext.special.StdContextFst.ilabel_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns input label info.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kaldi.fstext.special.StdContextFstArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.special.</code><code class="descname">StdContextFstArcIterator</code><a class="headerlink" href="#kaldi.fstext.special.StdContextFstArcIterator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Arc iterator for context FST over the tropical semiring.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>fst</strong> – The context FST.</li>
-<li><strong>state</strong> – The state index.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstArcIterator.done">
-<code class="descname">done</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.fstext.special.StdContextFstArcIterator.done" title="Permalink to this definition">¶</a></dt>
-<dd><p>Indicates whether the iterator is exhausted or not.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the iterator is exhausted, False otherwise.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstArcIterator.flags">
-<code class="descname">flags</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.fstext.special.StdContextFstArcIterator.flags" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the current iterator behavioral flags.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The current iterator behavioral flags as an integer.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstArcIterator.next">
-<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.special.StdContextFstArcIterator.next" title="Permalink to this definition">¶</a></dt>
-<dd><p>Advances the iterator.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstArcIterator.position">
-<code class="descname">position</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.fstext.special.StdContextFstArcIterator.position" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the position of the iterator.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The iterator’s position, expressed as an integer.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstArcIterator.reset">
-<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.special.StdContextFstArcIterator.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resets the iterator to the initial position.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstArcIterator.seek">
-<code class="descname">seek</code><span class="sig-paren">(</span><em>a:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.special.StdContextFstArcIterator.seek" title="Permalink to this definition">¶</a></dt>
-<dd><p>Advance the iterator to a new position.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The position to seek to.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstArcIterator.set_flags">
-<code class="descname">set_flags</code><span class="sig-paren">(</span><em>flags:int</em>, <em>mask:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.special.StdContextFstArcIterator.set_flags" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the current iterator behavioral flags.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>flags</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The properties to be set.</li>
-<li><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – A mask to be applied to the <a class="reference internal" href="#kaldi.fstext.special.StdContextFstArcIterator.flags" title="kaldi.fstext.special.StdContextFstArcIterator.flags"><code class="xref py py-obj docutils literal"><span class="pre">flags</span></code></a> argument before
-setting them.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstArcIterator.value">
-<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; StdArc<a class="headerlink" href="#kaldi.fstext.special.StdContextFstArcIterator.value" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the current arc.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kaldi.fstext.special.StdContextFstStateIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.special.</code><code class="descname">StdContextFstStateIterator</code><a class="headerlink" href="#kaldi.fstext.special.StdContextFstStateIterator" title="Permalink to this definition">¶</a></dt>
-<dd><p>State iterator for context FST over the tropical semiring.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fst</strong> – The context FST.</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstStateIterator.done">
-<code class="descname">done</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.fstext.special.StdContextFstStateIterator.done" title="Permalink to this definition">¶</a></dt>
-<dd><p>Indicates whether the iterator is exhausted or not.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the iterator is exhausted, False otherwise.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstStateIterator.next">
-<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.special.StdContextFstStateIterator.next" title="Permalink to this definition">¶</a></dt>
-<dd><p>Advances the iterator.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstStateIterator.reset">
-<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.special.StdContextFstStateIterator.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resets the iterator to the initial position.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.fstext.special.StdContextFstStateIterator.value">
-<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.fstext.special.StdContextFstStateIterator.value" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the current state index.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="kaldi.fstext.special.StdDeterministicOnDemandFst">
 <em class="property">class </em><code class="descclassname">kaldi.fstext.special.</code><code class="descname">StdDeterministicOnDemandFst</code><a class="headerlink" href="#kaldi.fstext.special.StdDeterministicOnDemandFst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for deterministic on demand FSTs over the tropical semiring.</p>
@@ -16033,6 +15851,143 @@ setting them.</li>
 <dl class="method">
 <dt id="kaldi.fstext.special.StdDeterministicOnDemandFst.start">
 <code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.fstext.special.StdDeterministicOnDemandFst.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the start state index.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.special.StdInverseContextFst">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.special.</code><code class="descname">StdInverseContextFst</code><a class="headerlink" href="#kaldi.fstext.special.StdInverseContextFst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse of the context FST “C” in “HCLG” over the tropical semiring.</p>
+<p>InverseContextFst represents the inverse of the context FST “C” (the “C”
+in “HCLG”) which transduces from symbols representing phone context
+windows (e.g. “a, b, c”) to individual phones, e.g. “a”.  So
+InverseContextFst transduces from phones to symbols representing phone
+context windows.  The point is that the inverse is deterministic, so the
+DeterministicOnDemandFst interface is applicable, which turns out to be a
+convenient way to implement this.</p>
+<p>This doesn’t implement the full Fst interface, it implements the
+DeterministicOnDemandFst interface which is much simpler and which is
+sufficient for what we need to do with this.</p>
+<p>Search for “hbka.pdf” (“Speech Recognition with Weighted Finite State
+Transducers”) by M. Mohri, for more context.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>subsequential_symbol</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Integer index of the subsequential symbol.</li>
+<li><strong>phones</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Integer indices for the phones.</li>
+<li><strong>disambig_syms</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Integer indices for disambiguation symbols.</li>
+<li><strong>context_width</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Size of context window.</li>
+<li><strong>central_position</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Position of central phone in context window,
+from 0..N-1.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.fstext.special.StdInverseContextFst.final">
+<code class="descname">final</code><span class="sig-paren">(</span><em>state:int</em><span class="sig-paren">)</span> &#x2192; TropicalWeight<a class="headerlink" href="#kaldi.fstext.special.StdInverseContextFst.final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final weight of the given state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.fstext.special.StdInverseContextFst.get_arc">
+<code class="descname">get_arc</code><span class="sig-paren">(</span><em>s:int</em>, <em>ilabel:int) -&gt; (success:bool</em>, <em>oarc:StdArc</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.special.StdInverseContextFst.get_arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an on demand arc and returns it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – State index.</li>
+<li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Arc label.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The created arc.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.fstext.special.StdInverseContextFst.ilabel_info">
+<code class="descname">ilabel_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;int&gt;&gt;<a class="headerlink" href="#kaldi.fstext.special.StdInverseContextFst.ilabel_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns input label info.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.fstext.special.StdInverseContextFst.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.fstext.special.StdInverseContextFst.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the start state index.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.special.StdInverseLeftBiphoneContextFst">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.special.</code><code class="descname">StdInverseLeftBiphoneContextFst</code><a class="headerlink" href="#kaldi.fstext.special.StdInverseLeftBiphoneContextFst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse of the left-biphone context FST “C” over the tropical semiring.</p>
+<p>This does not take the arguments ‘context_width’ or ‘central_position’
+because they are assumed to be (2, 1) meaning a system with left-biphone
+context; and there is no subsequential symbol because it is not needed in
+systems without right context.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nonterm_phones_offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Integer index of the first non-terminal
+symbol. Set to a large value, e.g. 1 million, if not using
+non-terminals.</li>
+<li><strong>phones</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Integer indices for the phones.</li>
+<li><strong>disambig_syms</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Integer indices for disambiguation symbols.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.fstext.special.StdInverseLeftBiphoneContextFst.final">
+<code class="descname">final</code><span class="sig-paren">(</span><em>state:int</em><span class="sig-paren">)</span> &#x2192; TropicalWeight<a class="headerlink" href="#kaldi.fstext.special.StdInverseLeftBiphoneContextFst.final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final weight of the given state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.fstext.special.StdInverseLeftBiphoneContextFst.get_arc">
+<code class="descname">get_arc</code><span class="sig-paren">(</span><em>s:int</em>, <em>ilabel:int) -&gt; (success:bool</em>, <em>oarc:StdArc</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.special.StdInverseLeftBiphoneContextFst.get_arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an on demand arc and returns it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – State index.</li>
+<li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Arc label.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The created arc.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.fstext.special.StdInverseLeftBiphoneContextFst.ilabel_info">
+<code class="descname">ilabel_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;int&gt;&gt;<a class="headerlink" href="#kaldi.fstext.special.StdInverseLeftBiphoneContextFst.ilabel_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns input label info.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.fstext.special.StdInverseLeftBiphoneContextFst.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.fstext.special.StdInverseLeftBiphoneContextFst.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the start state index.</p>
 </dd></dl>
 
@@ -16232,23 +16187,30 @@ be mutable since the algorithm adds the subsequential loop to it.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="kaldi.fstext.special.compose_context_fst">
-<code class="descclassname">kaldi.fstext.special.</code><code class="descname">compose_context_fst</code><span class="sig-paren">(</span><em>ifst1</em>, <em>ifst2</em>, <em>connect=True</em>, <em>compose_filter='auto'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/special.html#compose_context_fst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.special.compose_context_fst" title="Permalink to this definition">¶</a></dt>
-<dd><p>Composes context FST with an FST over the tropical semiring.</p>
+<dt id="kaldi.fstext.special.compose_context_left_biphone">
+<code class="descclassname">kaldi.fstext.special.</code><code class="descname">compose_context_left_biphone</code><span class="sig-paren">(</span><em>nonterm_phones_offset:int</em>, <em>disambig_syms:list&lt;int&gt;</em>, <em>ifst:StdVectorFst</em>, <em>ofst:StdVectorFst</em><span class="sig-paren">)</span> &#x2192; list&lt;list&lt;int&gt;&gt;<a class="headerlink" href="#kaldi.fstext.special.compose_context_left_biphone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a context FST and composes it on the left with input fst.</p>
+<p>This is a variant of the function :meth:compose_context which is to be
+used with the “grammar FST” framework. This does not take the
+‘context_width’ and ‘central_position’ arguments because they are assumed
+to be 2 and 1 respectively (meaning, left-biphone phonetic context).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>ifst1</strong> (<a class="reference internal" href="#kaldi.fstext.special.StdContextFst" title="kaldi.fstext.special.StdContextFst"><em>StdContextFst</em></a>) – The input context FST over the tropical semiring.</li>
-<li><strong>ifst2</strong> (<em>StdFst</em>) – The input FST over the tropical semiring.</li>
-<li><strong>connect</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Should output be trimmed?</li>
-<li><strong>compose_filter</strong> – A string matching a known composition filter; one of:
-“alt_sequence”, “auto”, “match”, “null”, “sequence”, “trivial”.</li>
+<li><strong>nonterm_phones_offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The integer index of the first
+non-terminal symbol.</li>
+<li><strong>disambig_syms</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Disambiguation symbols.</li>
+<li><strong>ifst</strong> (<a class="reference internal" href="#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – Input FST.</li>
+<li><strong>ofst</strong> (<a class="reference internal" href="#kaldi.fstext.StdVectorFst" title="kaldi.fstext.StdVectorFst"><em>StdVectorFst</em></a>) – Output FST.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A composed FST.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Label information.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List[List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]</p>
 </td>
 </tr>
 </tbody>
@@ -16371,6 +16333,12 @@ is reached.</li>
 </tbody>
 </table>
 <p>See Also: <a class="reference internal" href="#kaldi.fstext.special.determinize_star" title="kaldi.fstext.special.determinize_star"><code class="xref py py-meth docutils literal"><span class="pre">determinize_star()</span></code></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.special.get_encoding_multiple">
+<code class="descclassname">kaldi.fstext.special.</code><code class="descname">get_encoding_multiple</code><span class="sig-paren">(</span><em>nonterm_phones_offset:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.fstext.special.get_encoding_multiple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the smallest multiple of 1000 &gt; nonterm_phones_offset.</p>
 </dd></dl>
 
 <dl class="function">
@@ -18089,7 +18057,7 @@ acoustics by <code class="xref py py-obj docutils literal"><span class="pre">acw
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.9',
+            VERSION:'0.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

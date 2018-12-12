@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.matrix &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>kaldi.matrix &mdash; PyKaldi 0.1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/>
         <link rel="next" title="kaldi.nnet3" href="kaldi.nnet3.html"/>
         <link rel="prev" title="kaldi.lm" href="kaldi.lm.html"/> 
 
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.1.0
               </div>
             
           
@@ -16426,6 +16426,20 @@ void ::kaldi::SparseMatrix&lt;float&gt;::CopyToMat(::kaldi::MatrixBase&lt;float&
 </dd></dl>
 
 <dl class="method">
+<dt id="kaldi.matrix.sparse.SparseMatrix.from_matrix">
+<code class="descname">from_matrix</code><span class="sig-paren">(</span><em>mat:MatrixBase</em><span class="sig-paren">)</span> &#x2192; SparseMatrix<a class="headerlink" href="#kaldi.matrix.sparse.SparseMatrix.from_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialization by copying the elements of a matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mat</strong> (<a class="reference internal" href="#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – A matrix</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="kaldi.matrix.sparse.SparseMatrix.from_other">
 <code class="descname">from_other</code><span class="sig-paren">(</span><em>other:SparseMatrix</em><span class="sig-paren">)</span> &#x2192; SparseMatrix<a class="headerlink" href="#kaldi.matrix.sparse.SparseMatrix.from_other" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialization by copying the elements of another sparse matrix.</p>
@@ -16682,6 +16696,12 @@ in the vector and its corresponding value</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="kaldi.matrix.sparse.SparseVector.from_vector">
+<code class="descname">from_vector</code><span class="sig-paren">(</span><em>vec:VectorBase</em><span class="sig-paren">)</span> &#x2192; SparseVector<a class="headerlink" href="#kaldi.matrix.sparse.SparseVector.from_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialization by copying the elements of vector.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kaldi.matrix.sparse.SparseVector.get_elements">
 <code class="descname">get_elements</code><span class="sig-paren">(</span><em>i:int</em><span class="sig-paren">)</span> &#x2192; tuple&lt;int, float&gt;<a class="headerlink" href="#kaldi.matrix.sparse.SparseVector.get_elements" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get an indexed element.</p>
@@ -16879,7 +16899,7 @@ due to re-compression (no loss in most cases).</div></blockquote>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.9',
+            VERSION:'0.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>Index &mdash; PyKaldi 0.1.0 documentation</title>
   
 
   
@@ -40,7 +40,7 @@
         <link rel="index" title="Index"
               href="#"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PyKaldi 0.0.9 documentation" href="index.html"/> 
+    <link rel="top" title="PyKaldi 0.1.0 documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -72,7 +72,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.1.0
               </div>
             
           
@@ -239,9 +239,17 @@
 </li>
       <li><a href="api/kaldi.ivector.html#kaldi.ivector.IvectorExtractorStats.acc_stats_for_utterance">acc_stats_for_utterance() (kaldi.ivector.IvectorExtractorStats method)</a>
 </li>
+      <li><a href="api/kaldi.ivector.html#kaldi.ivector.OnlineIvectorEstimationStats.acc_stats_sequence">acc_stats_sequence() (kaldi.ivector.OnlineIvectorEstimationStats method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ExampleMerger.accept_example">accept_example() (kaldi.nnet3.ExampleMerger method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.CommandType.ACCEPT_INPUT">ACCEPT_INPUT (kaldi.nnet3.CommandType attribute)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterBatchRecognizer.accept_input">accept_input() (kaldi.asr.NnetLatticeFasterBatchRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchDecoder.accept_input">accept_input() (kaldi.nnet3.NnetBatchDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchInference.accept_input">accept_input() (kaldi.nnet3.NnetBatchInference method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputer.accept_input">accept_input() (kaldi.nnet3.NnetComputer method)</a>
 </li>
@@ -363,6 +371,8 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.utils.acoustic_lattice_scale">acoustic_lattice_scale() (in module kaldi.fstext.utils)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.acoustic_scale">acoustic_scale (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions.acoustic_scale">acoustic_scale (kaldi.nnet3.NnetSimpleComputationOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleLoopedComputationOptions.acoustic_scale">acoustic_scale (kaldi.nnet3.NnetSimpleLoopedComputationOptions attribute)</a>
@@ -374,8 +384,6 @@
       <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineSilenceWeighting.active">active() (kaldi.online2.OnlineSilenceWeighting method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineSilenceWeightingConfig.active">active() (kaldi.online2.OnlineSilenceWeightingConfig method)</a>
-</li>
-      <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuDevice.active_gpu_id">active_gpu_id() (kaldi.cudamatrix.CuDevice method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.properties.ACYCLIC">ACYCLIC (in module kaldi.fstext.properties)</a>
 </li>
@@ -451,6 +459,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.add">add() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.add">add() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.add">add() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.add">add() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -468,6 +478,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.add">add() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.add">add() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.add">add() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.add">add() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -504,6 +516,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.add">add() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.add">add() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.add">add() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.add">add() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -999,6 +1013,8 @@
 </li>
       <li><a href="api/kaldi.lat.html#kaldi.lat.functions.add_word_ins_pen_to_compact_lattice">add_word_ins_pen_to_compact_lattice() (in module kaldi.lat.functions)</a>
 </li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer.advance_decoding">advance_decoding() (kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer method)</a>
+</li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.advance_decoding">advance_decoding() (kaldi.asr.NnetLatticeFasterOnlineRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetOnlineRecognizer.advance_decoding">advance_decoding() (kaldi.asr.NnetOnlineRecognizer method)</a>
@@ -1009,11 +1025,17 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.advance_decoding">advance_decoding() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.advance_decoding">advance_decoding() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.advance_decoding">advance_decoding() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.advance_decoding">advance_decoding() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceGmmDecoder.advance_decoding">advance_decoding() (kaldi.online2.SingleUtteranceGmmDecoder method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetDecoder.advance_decoding">advance_decoding() (kaldi.online2.SingleUtteranceNnetDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetGrammarDecoder.advance_decoding">advance_decoding() (kaldi.online2.SingleUtteranceNnetGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.AffineComponent">AffineComponent (class in kaldi.nnet3)</a>
 </li>
@@ -1080,6 +1102,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetGenerationOptions.allow_multiple_inputs">allow_multiple_inputs (kaldi.nnet3.NnetGenerationOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetGenerationOptions.allow_multiple_outputs">allow_multiple_outputs (kaldi.nnet3.NnetGenerationOptions attribute)</a>
+</li>
+      <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuDevice.allow_multithreading">allow_multithreading() (kaldi.cudamatrix.CuDevice method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.SymbolTableTextOptions.allow_negative_labels">allow_negative_labels (kaldi.fstext.SymbolTableTextOptions attribute)</a>
 </li>
@@ -1198,6 +1222,10 @@
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.SubVector.apply_exp_">apply_exp_() (kaldi.matrix.SubVector method)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.Vector.apply_exp_">apply_exp_() (kaldi.matrix.Vector method)</a>
+</li>
+      <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuMatrix.apply_exp_limited">apply_exp_limited() (kaldi.cudamatrix.CuMatrix method)</a>
+</li>
+      <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuSubMatrix.apply_exp_limited">apply_exp_limited() (kaldi.cudamatrix.CuSubMatrix method)</a>
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.mllr.apply_feature_transform_to_stats">apply_feature_transform_to_stats() (in module kaldi.transform.mllr)</a>
 </li>
@@ -1617,6 +1645,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.backprop">backprop() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.backprop">backprop() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.backprop">backprop() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.backprop">backprop() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -1632,6 +1662,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.backprop">backprop() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.backprop">backprop() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.backprop">backprop() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.backprop">backprop() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -1662,6 +1694,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.backprop">backprop() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.backprop">backprop() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.backprop">backprop() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.backprop">backprop() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -1694,6 +1728,8 @@
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.RnnlmEmbeddingTrainerOptions.backstitch_training_scale">backstitch_training_scale (kaldi.rnnlm.RnnlmEmbeddingTrainerOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorComputation.backward">backward() (kaldi.chain.DenominatorComputation method)</a>
+</li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.NumeratorComputation.backward">backward() (kaldi.chain.NumeratorComputation method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.StatisticsExtractionComponentPrecomputedIndexes.backward_indexes">backward_indexes (kaldi.nnet3.StatisticsExtractionComponentPrecomputedIndexes attribute)</a>
 </li>
@@ -2309,6 +2345,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.Compiler">Compiler (class in kaldi.nnet3)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.compiler_config">compiler_config (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputeProbOptions.compiler_config">compiler_config (kaldi.nnet3.NnetComputeProbOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions.compiler_config">compiler_config (kaldi.nnet3.NnetSimpleComputationOptions attribute)</a>
@@ -2347,7 +2385,7 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.compose_context">compose_context() (in module kaldi.fstext.special)</a>
 </li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.compose_context_fst">compose_context_fst() (in module kaldi.fstext.special)</a>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.compose_context_left_biphone">compose_context_left_biphone() (in module kaldi.fstext.special)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.compose_deterministic_on_demand_fst">compose_deterministic_on_demand_fst() (in module kaldi.fstext.special)</a>
 </li>
@@ -2427,6 +2465,8 @@
 </li>
       <li><a href="api/kaldi.ivector.html#kaldi.ivector.IvectorExtractorStatsOptions.compute_auxf">compute_auxf (kaldi.ivector.IvectorExtractorStatsOptions attribute)</a>
 </li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.compute_chain_objf_and_deriv">compute_chain_objf_and_deriv() (in module kaldi.chain)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.compute_command_attributes">compute_command_attributes() (in module kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.lat.html#kaldi.lat.functions.compute_compact_lattice_alphas">compute_compact_lattice_alphas() (in module kaldi.lat.functions)</a>
@@ -2434,6 +2474,8 @@
       <li><a href="api/kaldi.lat.html#kaldi.lat.functions.compute_compact_lattice_betas">compute_compact_lattice_betas() (in module kaldi.lat.functions)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.compute_computation_phases">compute_computation_phases() (in module kaldi.nnet3)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.compute_config">compute_config (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputeProbOptions.compute_config">compute_config (kaldi.nnet3.NnetComputeProbOptions attribute)</a>
 </li>
@@ -2448,6 +2490,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputation.compute_cuda_indexes">compute_cuda_indexes() (kaldi.nnet3.NnetComputation method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineSilenceWeighting.compute_current_traceback">compute_current_traceback() (kaldi.online2.OnlineSilenceWeighting method)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineSilenceWeighting.compute_current_traceback_grammar">compute_current_traceback_grammar() (kaldi.online2.OnlineSilenceWeighting method)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.functions.compute_dct_matrix">compute_dct_matrix() (in module kaldi.matrix.functions)</a>
 </li>
@@ -2521,6 +2565,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.compute_objective_function">compute_objective_function() (in module kaldi.nnet3)</a>
 </li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.GenericNumeratorComputation.compute_objf">compute_objf() (kaldi.chain.GenericNumeratorComputation method)</a>
+</li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.functions.compute_pca">compute_pca() (in module kaldi.matrix.functions)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputeProbOptions.compute_per_dim_accuracy">compute_per_dim_accuracy (kaldi.nnet3.NnetComputeProbOptions attribute)</a>
@@ -2585,6 +2631,110 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.consolidate_io_operations">consolidate_io_operations() (in module kaldi.nnet3)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.consolidate_memory">consolidate_memory() (in module kaldi.nnet3)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.AffineComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.AffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.BackpropTruncationComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.BackpropTruncationComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.BackpropTruncationComponentPrecomputedIndexes.consolidate_memory">consolidate_memory() (kaldi.nnet3.BackpropTruncationComponentPrecomputedIndexes method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.BatchNormComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.BatchNormComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.BlockAffineComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.BlockAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ClipGradientComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.ClipGradientComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.Component.consolidate_memory">consolidate_memory() (kaldi.nnet3.Component method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.CompositeComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.CompositeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.ConstantComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantFunctionComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.ConstantFunctionComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.DistributeComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.DistributeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.DropoutComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.DropoutComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.DropoutMaskComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.DropoutMaskComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ElementwiseProductComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.ElementwiseProductComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.FixedAffineComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.FixedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.FixedBiasComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.FixedBiasComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.FixedScaleComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.FixedScaleComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.GeneralDropoutComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.LinearComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.LogSoftmaxComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientPerElementScaleComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.NaturalGradientPerElementScaleComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NonlinearComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.NonlinearComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.NoOpComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.PerElementOffsetComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementScaleComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.PerElementScaleComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PermuteComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.PermuteComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PnormComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.PnormComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RandomComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.RandomComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RectifiedLinearComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.RectifiedLinearComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RestrictedAttentionComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.RestrictedAttentionComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ScaleAndOffsetComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.ScaleAndOffsetComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SigmoidComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.SigmoidComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SoftmaxComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.SoftmaxComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.StatisticsExtractionComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.StatisticsExtractionComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.StatisticsExtractionComponentPrecomputedIndexes.consolidate_memory">consolidate_memory() (kaldi.nnet3.StatisticsExtractionComponentPrecomputedIndexes method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.StatisticsPoolingComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.StatisticsPoolingComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.StatisticsPoolingComponentPrecomputedIndexes.consolidate_memory">consolidate_memory() (kaldi.nnet3.StatisticsPoolingComponentPrecomputedIndexes method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumBlockComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.SumBlockComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.SumGroupComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.TdnnComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.UpdatableComponent.consolidate_memory">consolidate_memory() (kaldi.nnet3.UpdatableComponent method)</a>
+</li>
+      <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.RnnlmCoreTrainer.consolidate_memory">consolidate_memory() (kaldi.rnnlm.RnnlmCoreTrainer method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetOptimizeOptions.consolidate_model_update">consolidate_model_update (kaldi.nnet3.NnetOptimizeOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.consolidate_model_update">consolidate_model_update() (in module kaldi.nnet3)</a>
@@ -2643,7 +2793,11 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.utils.convert_std_to_lattice">convert_std_to_lattice() (in module kaldi.fstext.utils)</a>
 </li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.convert_supervision_to_unconstrained">convert_supervision_to_unconstrained() (in module kaldi.chain)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDescriptor.convert_to_descriptor">convert_to_descriptor() (kaldi.nnet3.GeneralDescriptor method)</a>
+</li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.SupervisionOptions.convert_to_pdfs">convert_to_pdfs (kaldi.chain.SupervisionOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.Posterior.convert_transitions_to_pdfs">convert_transitions_to_pdfs() (kaldi.hmm.Posterior method)</a>
 </li>
@@ -2666,8 +2820,6 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogConstFst.copy">copy() (kaldi.fstext.LogConstFst method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFst.copy">copy() (kaldi.fstext.LogVectorFst method)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFst.copy">copy() (kaldi.fstext.special.StdContextFst method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFst.copy">copy() (kaldi.fstext.StdConstFst method)</a>
 </li>
@@ -2721,6 +2873,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponentPrecomputedIndexes.copy">copy() (kaldi.nnet3.GeneralDropoutComponentPrecomputedIndexes method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.copy">copy() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.copy">copy() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.copy">copy() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -2742,6 +2896,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OffsetForwardingDescriptor.copy">copy() (kaldi.nnet3.OffsetForwardingDescriptor method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OptionalSumDescriptor.copy">copy() (kaldi.nnet3.OptionalSumDescriptor method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.copy">copy() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.copy">copy() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -2786,6 +2942,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SwitchingForwardingDescriptor.copy">copy() (kaldi.nnet3.SwitchingForwardingDescriptor method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.copy">copy() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.copy">copy() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.copy">copy() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -3235,8 +3393,6 @@
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.SgmmUpdateFlags.COVARIANCE_MATRIX">COVARIANCE_MATRIX (kaldi.gmm.SgmmUpdateFlags attribute)</a>
 </li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFst.create_arc">create_arc() (kaldi.fstext.special.StdContextFst method)</a>
-</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.Compiler.create_computation">create_computation() (kaldi.nnet3.Compiler method)</a>
 </li>
       <li><a href="api/kaldi.chain.html#kaldi.chain.create_denominator_fst">create_denominator_fst() (in module kaldi.chain)</a>
@@ -3331,6 +3487,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputeOptions.debug">debug (kaldi.nnet3.NnetComputeOptions attribute)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.debug_computation">debug_computation (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputeProbOptions.debug_computation">debug_computation (kaldi.nnet3.NnetComputeProbOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions.debug_computation">debug_computation (kaldi.nnet3.NnetSimpleComputationOptions attribute)</a>
@@ -3372,6 +3530,8 @@
       <li><a href="api/kaldi.online2.html#kaldi.online2.DecodableDiagGmmScaledOnline">DecodableDiagGmmScaledOnline (class in kaldi.online2)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMapped">DecodableMapped (class in kaldi.decoder)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMatrixMapped">DecodableMatrixMapped (class in kaldi.decoder)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMatrixMappedOffset">DecodableMatrixMappedOffset (class in kaldi.decoder)</a>
 </li>
@@ -3419,6 +3579,10 @@
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeBiglmFasterRecognizer.decode">decode() (kaldi.asr.NnetLatticeBiglmFasterRecognizer method)</a>
 </li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterGrammarRecognizer.decode">decode() (kaldi.asr.NnetLatticeFasterGrammarRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer.decode">decode() (kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer method)</a>
+</li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.decode">decode() (kaldi.asr.NnetLatticeFasterOnlineRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterRecognizer.decode">decode() (kaldi.asr.NnetLatticeFasterRecognizer method)</a>
@@ -3439,7 +3603,11 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.decode">decode() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.decode">decode() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.decode">decode() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.decode">decode() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.decode">decode() (kaldi.fstext.CompactLatticeEncodeTable method)</a>
 </li>
@@ -3465,7 +3633,11 @@
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetDecoder.decoder">decoder() (kaldi.online2.SingleUtteranceNnetDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetGrammarDecoder.decoder">decoder() (kaldi.online2.SingleUtteranceNnetGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.decoding_endpoint_detected">decoding_endpoint_detected() (in module kaldi.online2)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.decoding_endpoint_detected_grammar">decoding_endpoint_detected_grammar() (in module kaldi.online2)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.CommandType.DECOMPRESS_MATRIX">DECOMPRESS_MATRIX (kaldi.nnet3.CommandType attribute)</a>
 </li>
@@ -3523,6 +3695,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.delete_memo">delete_memo() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.delete_memo">delete_memo() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.delete_memo">delete_memo() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.delete_memo">delete_memo() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -3540,6 +3714,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.delete_memo">delete_memo() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.delete_memo">delete_memo() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.delete_memo">delete_memo() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.delete_memo">delete_memo() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -3576,6 +3752,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.delete_memo">delete_memo() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.delete_memo">delete_memo() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.delete_memo">delete_memo() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.delete_memo">delete_memo() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -3620,6 +3798,8 @@
       <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorComputation">DenominatorComputation (class in kaldi.chain)</a>
 </li>
       <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorGraph">DenominatorGraph (class in kaldi.chain)</a>
+</li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorGraphTransition">DenominatorGraphTransition (class in kaldi.chain)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ComputationGraph.dependencies">dependencies (kaldi.nnet3.ComputationGraph attribute)</a>
 </li>
@@ -3993,6 +4173,8 @@
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.optimization.OptimizeLbfgs.do_step_approx_hessian">do_step_approx_hessian() (kaldi.matrix.optimization.OptimizeLbfgs method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFstArcIterator.done">done() (kaldi.decoder.GrammarFstArcIterator method)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeConstFstArcIterator.done">done() (kaldi.fstext.CompactLatticeConstFstArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeConstFstStateIterator.done">done() (kaldi.fstext.CompactLatticeConstFstStateIterator method)</a>
@@ -4032,10 +4214,6 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstMutableArcIterator.done">done() (kaldi.fstext.LogVectorFstMutableArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstStateIterator.done">done() (kaldi.fstext.LogVectorFstStateIterator method)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstArcIterator.done">done() (kaldi.fstext.special.StdContextFstArcIterator method)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstStateIterator.done">done() (kaldi.fstext.special.StdContextFstStateIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFstArcIterator.done">done() (kaldi.fstext.StdConstFstArcIterator method)</a>
 </li>
@@ -4107,6 +4285,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantFunctionComponent.dot_product">dot_product() (kaldi.nnet3.ConstantFunctionComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.dot_product">dot_product() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.dot_product">dot_product() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.dot_product">dot_product() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
@@ -4117,6 +4297,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.dot_product">dot_product() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.dot_product">dot_product() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.dot_product">dot_product() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementScaleComponent.dot_product">dot_product() (kaldi.nnet3.PerElementScaleComponent method)</a>
@@ -4124,6 +4306,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.dot_product">dot_product() (kaldi.nnet3.RepeatedAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ScaleAndOffsetComponent.dot_product">dot_product() (kaldi.nnet3.ScaleAndOffsetComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.dot_product">dot_product() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.dot_product">dot_product() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -4213,6 +4397,8 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.edge_minibatch_size">edge_minibatch_size (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
+</li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.DoubleMatrix.eig">eig() (kaldi.matrix.DoubleMatrix method)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.DoubleSubMatrix.eig">eig() (kaldi.matrix.DoubleSubMatrix method)</a>
@@ -4267,13 +4453,15 @@
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.endpoint_detected">endpoint_detected() (in module kaldi.online2)</a>
 </li>
-      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.endpoint_detected">endpoint_detected() (kaldi.asr.NnetLatticeFasterOnlineRecognizer method)</a>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer.endpoint_detected">endpoint_detected() (kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer method)</a>
 </li>
-      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetOnlineRecognizer.endpoint_detected">endpoint_detected() (kaldi.asr.NnetOnlineRecognizer method)</a>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.endpoint_detected">endpoint_detected() (kaldi.asr.NnetLatticeFasterOnlineRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceGmmDecoder.endpoint_detected">endpoint_detected() (kaldi.online2.SingleUtteranceGmmDecoder method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetDecoder.endpoint_detected">endpoint_detected() (kaldi.online2.SingleUtteranceNnetDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetGrammarDecoder.endpoint_detected">endpoint_detected() (kaldi.online2.SingleUtteranceNnetGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.fbank.FbankOptions.energy_floor">energy_floor (kaldi.feat.fbank.FbankOptions attribute)</a>
 </li>
@@ -4282,6 +4470,8 @@
       <li><a href="api/kaldi.feat.html#kaldi.feat.plp.PlpOptions.energy_floor">energy_floor (kaldi.feat.plp.PlpOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.spectrogram.SpectrogramOptions.energy_floor">energy_floor (kaldi.feat.spectrogram.SpectrogramOptions attribute)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.ensure_exact_final_context">ensure_exact_final_context (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.RnnlmComputeStateComputationOptions.eos_index">eos_index (kaldi.rnnlm.RnnlmComputeStateComputationOptions attribute)</a>
 </li>
@@ -4369,19 +4559,25 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.extend_matrices">extend_matrices() (in module kaldi.nnet3)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.extra_left_context">extra_left_context (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions.extra_left_context">extra_left_context (kaldi.nnet3.NnetSimpleComputationOptions attribute)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.extra_left_context_initial">extra_left_context_initial (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions.extra_left_context_initial">extra_left_context_initial (kaldi.nnet3.NnetSimpleComputationOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleLoopedComputationOptions.extra_left_context_initial">extra_left_context_initial (kaldi.nnet3.NnetSimpleLoopedComputationOptions attribute)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.extra_right_context">extra_right_context (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions.extra_right_context">extra_right_context (kaldi.nnet3.NnetSimpleComputationOptions attribute)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.extra_right_context_final">extra_right_context_final (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions.extra_right_context_final">extra_right_context_final (kaldi.nnet3.NnetSimpleComputationOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.sparse.extract_row_range_with_padding">extract_row_range_with_padding() (in module kaldi.matrix.sparse)</a>
-</li>
-      <li><a href="api/kaldi.feat.html#kaldi.feat.window.extract_waveform_remainder">extract_waveform_remainder() (in module kaldi.feat.window)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.window.extract_window">extract_window() (in module kaldi.feat.window)</a>
 </li>
@@ -4459,6 +4655,8 @@
 </li>
       <li><a href="api/kaldi.chain.html#kaldi.chain.TimeEnforcerFst.final">final() (kaldi.chain.TimeEnforcerFst method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFst.final">final() (kaldi.decoder.GrammarFst method)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeConstFst.final">final() (kaldi.fstext.CompactLatticeConstFst method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst.final">final() (kaldi.fstext.CompactLatticeVectorFst method)</a>
@@ -4483,6 +4681,10 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdDeterministicOnDemandFst.final">final() (kaldi.fstext.special.StdDeterministicOnDemandFst method)</a>
 </li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdInverseContextFst.final">final() (kaldi.fstext.special.StdInverseContextFst method)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdInverseLeftBiphoneContextFst.final">final() (kaldi.fstext.special.StdInverseLeftBiphoneContextFst method)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdUnweightedNgramFst.final">final() (kaldi.fstext.special.StdUnweightedNgramFst method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFst.final">final() (kaldi.fstext.StdConstFst method)</a>
@@ -4499,9 +4701,15 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.final_relative_cost">final_relative_cost() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.final_relative_cost">final_relative_cost() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.final_relative_cost">final_relative_cost() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.final_relative_cost">final_relative_cost() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceGmmDecoder.final_relative_cost">final_relative_cost() (kaldi.online2.SingleUtteranceGmmDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer.finalize_decoding">finalize_decoding() (kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.finalize_decoding">finalize_decoding() (kaldi.asr.NnetLatticeFasterOnlineRecognizer method)</a>
 </li>
@@ -4511,11 +4719,17 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.finalize_decoding">finalize_decoding() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.finalize_decoding">finalize_decoding() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.finalize_decoding">finalize_decoding() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.finalize_decoding">finalize_decoding() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceGmmDecoder.finalize_decoding">finalize_decoding() (kaldi.online2.SingleUtteranceGmmDecoder method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetDecoder.finalize_decoding">finalize_decoding() (kaldi.online2.SingleUtteranceNnetDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetGrammarDecoder.finalize_decoding">finalize_decoding() (kaldi.online2.SingleUtteranceNnetGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.tree.html#kaldi.tree.find_all_keys">find_all_keys() (in module kaldi.tree)</a>
 </li>
@@ -4538,6 +4752,12 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.SymbolTable.find_symbol">find_symbol() (kaldi.fstext.SymbolTable method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ExampleMerger.finish">finish() (kaldi.nnet3.ExampleMerger method)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterBatchRecognizer.finished">finished() (kaldi.asr.NnetLatticeFasterBatchRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchDecoder.finished">finished() (kaldi.nnet3.NnetBatchDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchInference.finished">finished() (kaldi.nnet3.NnetBatchInference method)</a>
 </li>
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.IntPair.first">first (kaldi.cudamatrix.IntPair attribute)</a>
 </li>
@@ -4608,8 +4828,6 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstArcIterator.flags">flags() (kaldi.fstext.LogVectorFstArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstMutableArcIterator.flags">flags() (kaldi.fstext.LogVectorFstMutableArcIterator method)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstArcIterator.flags">flags() (kaldi.fstext.special.StdContextFstArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFstArcIterator.flags">flags() (kaldi.fstext.StdConstFstArcIterator method)</a>
 </li>
@@ -4733,6 +4951,10 @@
 </li>
       <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorComputation.forward">forward() (kaldi.chain.DenominatorComputation method)</a>
 </li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.NumeratorComputation.forward">forward() (kaldi.chain.NumeratorComputation method)</a>
+</li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.GenericNumeratorComputation.forward_backward">forward_backward() (kaldi.chain.GenericNumeratorComputation method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.StatisticsExtractionComponentPrecomputedIndexes.forward_indexes">forward_indexes (kaldi.nnet3.StatisticsExtractionComponentPrecomputedIndexes attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.StatisticsPoolingComponentPrecomputedIndexes.forward_indexes">forward_indexes (kaldi.nnet3.StatisticsPoolingComponentPrecomputedIndexes attribute)</a>
@@ -4795,6 +5017,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ExampleGenerationConfig.frame_subsampling_factor">frame_subsampling_factor (kaldi.nnet3.ExampleGenerationConfig attribute)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.frame_subsampling_factor">frame_subsampling_factor (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions.frame_subsampling_factor">frame_subsampling_factor (kaldi.nnet3.NnetSimpleComputationOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleLoopedComputationOptions.frame_subsampling_factor">frame_subsampling_factor (kaldi.nnet3.NnetSimpleLoopedComputationOptions attribute)</a>
@@ -4810,6 +5034,8 @@
       <li><a href="api/kaldi.feat.html#kaldi.feat.pitch.PitchExtractionOptions.frames_per_chunk">frames_per_chunk (kaldi.feat.pitch.PitchExtractionOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.DecodableNnetSimpleLoopedInfo.frames_per_chunk">frames_per_chunk (kaldi.nnet3.DecodableNnetSimpleLoopedInfo attribute)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.frames_per_chunk">frames_per_chunk (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions.frames_per_chunk">frames_per_chunk (kaldi.nnet3.NnetSimpleComputationOptions attribute)</a>
 </li>
@@ -4881,6 +5107,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.freeze_natural_gradient">freeze_natural_gradient() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.freeze_natural_gradient">freeze_natural_gradient() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.freeze_natural_gradient">freeze_natural_gradient() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.freeze_natural_gradient">freeze_natural_gradient() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
@@ -4891,7 +5119,11 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.freeze_natural_gradient">freeze_natural_gradient() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.freeze_natural_gradient">freeze_natural_gradient() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.freeze_natural_gradient">freeze_natural_gradient() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.freeze_natural_gradient">freeze_natural_gradient() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.freeze_natural_gradient">freeze_natural_gradient() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -4938,6 +5170,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputation.MatrixInfo.from_args">from_args() (kaldi.nnet3.NnetComputation.MatrixInfo method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputation.SubMatrixInfo.from_args">from_args() (kaldi.nnet3.NnetComputation.SubMatrixInfo method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFstArc.from_attrs">from_attrs() (kaldi.decoder.GrammarFstArc method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeArc.from_attrs">from_attrs() (kaldi.fstext.CompactLatticeArc method)</a>
 </li>
@@ -5059,6 +5293,12 @@
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeBiglmFasterRecognizer.from_files">from_files() (kaldi.asr.NnetLatticeBiglmFasterRecognizer class method)</a>
 </li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterBatchRecognizer.from_files">from_files() (kaldi.asr.NnetLatticeFasterBatchRecognizer class method)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterGrammarRecognizer.from_files">from_files() (kaldi.asr.NnetLatticeFasterGrammarRecognizer class method)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer.from_files">from_files() (kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer class method)</a>
+</li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.from_files">from_files() (kaldi.asr.NnetLatticeFasterOnlineRecognizer class method)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterRecognizer.from_files">from_files() (kaldi.asr.NnetLatticeFasterRecognizer class method)</a>
@@ -5074,6 +5314,8 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.weight.TropicalWeight.from_float">from_float() (kaldi.fstext.weight.TropicalWeight method)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.HmmTopology.HmmState.from_forward_and_self_pdf">from_forward_and_self_pdf() (kaldi.hmm.HmmTopology.HmmState method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFst.from_fsts">from_fsts() (kaldi.decoder.GrammarFst method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetIo.from_general_matrix">from_general_matrix() (kaldi.nnet3.NnetIo method)</a>
 </li>
@@ -5106,6 +5348,8 @@
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.packed.SpMatrix.from_matrix">from_matrix() (kaldi.matrix.packed.SpMatrix method)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.sparse.GeneralMatrix.from_matrix">from_matrix() (kaldi.matrix.sparse.GeneralMatrix method)</a>
+</li>
+      <li><a href="api/kaldi.matrix.html#kaldi.matrix.sparse.SparseMatrix.from_matrix">from_matrix() (kaldi.matrix.sparse.SparseMatrix method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetIo.from_matrix">from_matrix() (kaldi.nnet3.NnetIo method)</a>
 </li>
@@ -5181,8 +5425,6 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogWeight.from_other">from_other() (kaldi.fstext.LogWeight method)</a>
 </li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFst.from_other">from_other() (kaldi.fstext.special.StdContextFst method)</a>
-</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdEncodeMapper.from_other">from_other() (kaldi.fstext.StdEncodeMapper method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.TropicalWeight.from_other">from_other() (kaldi.fstext.TropicalWeight method)</a>
@@ -5241,6 +5483,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.from_other">from_other() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.from_other">from_other() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.IoSpecification.from_other">from_other() (kaldi.nnet3.IoSpecification method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.from_other">from_other() (kaldi.nnet3.LinearComponent method)</a>
@@ -5271,6 +5515,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OnlineNaturalGradient.from_other">from_other() (kaldi.nnet3.OnlineNaturalGradient method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.from_other">from_other() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.from_other">from_other() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementScaleComponent.from_other">from_other() (kaldi.nnet3.PerElementScaleComponent method)</a>
@@ -5294,6 +5540,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumBlockComponent.from_other">from_other() (kaldi.nnet3.SumBlockComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.from_other">from_other() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.from_other">from_other() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.from_other">from_other() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -5409,6 +5657,8 @@
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.DoubleVector.from_vector">from_vector() (kaldi.matrix.DoubleVector method)</a>
 </li>
+      <li><a href="api/kaldi.matrix.html#kaldi.matrix.sparse.SparseVector.from_vector">from_vector() (kaldi.matrix.sparse.SparseVector method)</a>
+</li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.Vector.from_vector">from_vector() (kaldi.matrix.Vector method)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineCmvnState.frozen_state">frozen_state (kaldi.feat.online.OnlineCmvnState attribute)</a>
@@ -5505,6 +5755,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.generate_simple_nnet_training_example">generate_simple_nnet_training_example() (in module kaldi.nnet3)</a>
 </li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.GenericNumeratorComputation">GenericNumeratorComputation (class in kaldi.chain)</a>
+</li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.am.AccumAmDiagGmm.get_acc">get_acc() (kaldi.gmm.am.AccumAmDiagGmm method)</a>
 </li>
       <li><a href="api/kaldi.ivector.html#kaldi.ivector.IvectorExtractor.get_acoustic_auxf_gconst">get_acoustic_auxf_gconst() (kaldi.ivector.IvectorExtractor method)</a>
@@ -5533,6 +5785,10 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdDeterministicOnDemandFst.get_arc">get_arc() (kaldi.fstext.special.StdDeterministicOnDemandFst method)</a>
 </li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdInverseContextFst.get_arc">get_arc() (kaldi.fstext.special.StdInverseContextFst method)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdInverseLeftBiphoneContextFst.get_arc">get_arc() (kaldi.fstext.special.StdInverseLeftBiphoneContextFst method)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdUnweightedNgramFst.get_arc">get_arc() (kaldi.fstext.special.StdUnweightedNgramFst method)</a>
 </li>
       <li><a href="api/kaldi.lm.html#kaldi.lm.ConstArpaLmDeterministicFst.get_arc">get_arc() (kaldi.lm.ConstArpaLmDeterministicFst method)</a>
@@ -5559,11 +5815,17 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.get_best_path">get_best_path() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.get_best_path">get_best_path() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.get_best_path">get_best_path() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_best_path">get_best_path() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceGmmDecoder.get_best_path">get_best_path() (kaldi.online2.SingleUtteranceGmmDecoder method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetDecoder.get_best_path">get_best_path() (kaldi.online2.SingleUtteranceNnetDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetGrammarDecoder.get_best_path">get_best_path() (kaldi.online2.SingleUtteranceNnetGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConfigLine.get_bool">get_bool() (kaldi.nnet3.ConfigLine method)</a>
 </li>
@@ -5645,6 +5907,8 @@
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.sparse.SparseVector.get_elements">get_elements() (kaldi.matrix.sparse.SparseVector method)</a>
 </li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.get_encoding_multiple">get_encoding_multiple() (in module kaldi.fstext.special)</a>
+</li>
       <li><a href="api/kaldi.lm.html#kaldi.lm.KaldiRnnlmWrapper.get_eos">get_eos() (kaldi.lm.KaldiRnnlmWrapper method)</a>
 </li>
       <li><a href="api/kaldi.lm.html#kaldi.lm.ConstArpaLm.get_eos_symbol">get_eos_symbol() (kaldi.lm.ConstArpaLm method)</a>
@@ -5697,6 +5961,36 @@
 </li>
       <li><a href="api/kaldi.chain.html#kaldi.chain.SupervisionSplitter.get_frame_range">get_frame_range() (kaldi.chain.SupervisionSplitter method)</a>
 </li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineAppendFeature.get_frames">get_frames() (kaldi.feat.online.OnlineAppendFeature method)</a>
+</li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineCacheFeature.get_frames">get_frames() (kaldi.feat.online.OnlineCacheFeature method)</a>
+</li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineCmvn.get_frames">get_frames() (kaldi.feat.online.OnlineCmvn method)</a>
+</li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineDeltaFeature.get_frames">get_frames() (kaldi.feat.online.OnlineDeltaFeature method)</a>
+</li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineFbank.get_frames">get_frames() (kaldi.feat.online.OnlineFbank method)</a>
+</li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineMatrixFeature.get_frames">get_frames() (kaldi.feat.online.OnlineMatrixFeature method)</a>
+</li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineMfcc.get_frames">get_frames() (kaldi.feat.online.OnlineMfcc method)</a>
+</li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlinePlp.get_frames">get_frames() (kaldi.feat.online.OnlinePlp method)</a>
+</li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineSpliceFrames.get_frames">get_frames() (kaldi.feat.online.OnlineSpliceFrames method)</a>
+</li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineTransform.get_frames">get_frames() (kaldi.feat.online.OnlineTransform method)</a>
+</li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.pitch.OnlinePitchFeature.get_frames">get_frames() (kaldi.feat.pitch.OnlinePitchFeature method)</a>
+</li>
+      <li><a href="api/kaldi.feat.html#kaldi.feat.pitch.OnlineProcessPitch.get_frames">get_frames() (kaldi.feat.pitch.OnlineProcessPitch method)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineFeaturePipeline.get_frames">get_frames() (kaldi.online2.OnlineFeaturePipeline method)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineIvectorFeature.get_frames">get_frames() (kaldi.online2.OnlineIvectorFeature method)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.OnlineNnetFeaturePipeline.get_frames">get_frames() (kaldi.online2.OnlineNnetFeaturePipeline method)</a>
+</li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.sparse.GeneralMatrix.get_full_matrix">get_full_matrix() (kaldi.matrix.sparse.GeneralMatrix method)</a>
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm.get_gaussian_mean">get_gaussian_mean() (kaldi.gmm.am.AmDiagGmm method)</a>
@@ -5745,6 +6039,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -5762,6 +6058,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -5798,6 +6096,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.get_input_indexes">get_input_indexes() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -5843,11 +6143,17 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.get_lattice">get_lattice() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.get_lattice">get_lattice() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.get_lattice">get_lattice() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_lattice">get_lattice() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceGmmDecoder.get_lattice">get_lattice() (kaldi.online2.SingleUtteranceGmmDecoder method)</a>
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetDecoder.get_lattice">get_lattice() (kaldi.online2.SingleUtteranceNnetDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetGrammarDecoder.get_lattice">get_lattice() (kaldi.online2.SingleUtteranceNnetGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.utils.get_linear_symbol_sequence">get_linear_symbol_sequence() (in module kaldi.fstext.utils)</a>
 </li>
@@ -5947,7 +6253,15 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.get_options">get_options() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.get_options">get_options() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.get_options">get_options() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_options">get_options() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterBatchRecognizer.get_output">get_output() (kaldi.asr.NnetLatticeFasterBatchRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer.get_output">get_output() (kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.get_output">get_output() (kaldi.asr.NnetLatticeFasterOnlineRecognizer method)</a>
 </li>
@@ -5959,6 +6273,10 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.DecodableNnetSimpleLooped.get_output">get_output() (kaldi.nnet3.DecodableNnetSimpleLooped method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchDecoder.get_output">get_output() (kaldi.nnet3.NnetBatchDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchInference.get_output">get_output() (kaldi.nnet3.NnetBatchInference method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputer.get_output_destructive">get_output_destructive() (kaldi.nnet3.NnetComputer method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.DecodableNnetSimple.get_output_for_frame">get_output_for_frame() (kaldi.nnet3.DecodableNnetSimple method)</a>
@@ -5966,6 +6284,10 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.DecodableNnetSimpleLooped.get_output_for_frame">get_output_for_frame() (kaldi.nnet3.DecodableNnetSimpleLooped method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.utils.get_output_symbols">get_output_symbols() (in module kaldi.fstext.utils)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterBatchRecognizer.get_outputs">get_outputs() (kaldi.asr.NnetLatticeFasterBatchRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer.get_partial_output">get_partial_output() (kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.get_partial_output">get_partial_output() (kaldi.asr.NnetLatticeFasterOnlineRecognizer method)</a>
 </li>
@@ -6001,9 +6323,17 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.get_raw_lattice">get_raw_lattice() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.get_raw_lattice">get_raw_lattice() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.get_raw_lattice">get_raw_lattice() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice">get_raw_lattice() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.get_raw_lattice_pruned">get_raw_lattice_pruned() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice_pruned">get_raw_lattice_pruned() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchDecoder.get_raw_output">get_raw_output() (kaldi.nnet3.NnetBatchDecoder method)</a>
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.get_rnnlm_computation_request">get_rnnlm_computation_request() (in module kaldi.rnnlm)</a>
 </li>
@@ -6034,6 +6364,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SimpleSumDescriptor.get_scale_for_node">get_scale_for_node() (kaldi.nnet3.SimpleSumDescriptor method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SwitchingForwardingDescriptor.get_scale_for_node">get_scale_for_node() (kaldi.nnet3.SwitchingForwardingDescriptor method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.CachingOptimizingCompiler.get_simple_nnet_context">get_simple_nnet_context() (kaldi.nnet3.CachingOptimizingCompiler method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.get_sizes">get_sizes() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
@@ -6167,6 +6499,14 @@
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.mllr.BasisFmllrAccus.grad_scatter_">grad_scatter_ (kaldi.transform.mllr.BasisFmllrAccus attribute)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.grammar_to_vector_fst">grammar_to_vector_fst() (in module kaldi.decoder)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFst">GrammarFst (class in kaldi.decoder)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFstArc">GrammarFstArc (class in kaldi.decoder)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFstArcIterator">GrammarFstArcIterator (class in kaldi.decoder)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.graph_has_cycles">graph_has_cycles() (in module kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.utils.graph_lattice_scale">graph_lattice_scale() (in module kaldi.fstext.utils)</a>
@@ -6230,6 +6570,8 @@
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.Matrix.group_pnorm_deriv_">group_pnorm_deriv_() (kaldi.matrix.Matrix method)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.SubMatrix.group_pnorm_deriv_">group_pnorm_deriv_() (kaldi.matrix.SubMatrix method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent">GruNonlinearityComponent (class in kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.Sgmm2GauPostElement.gselect">gselect (kaldi.sgmm2.Sgmm2GauPostElement attribute)</a>
 </li>
@@ -6365,6 +6707,8 @@
 </li>
       <li><a href="api/kaldi.lm.html#kaldi.lm.ConstArpaLm.history_state_exists">history_state_exists() (kaldi.lm.ConstArpaLm method)</a>
 </li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorGraphTransition.hmm_state">hmm_state (kaldi.chain.DenominatorGraphTransition attribute)</a>
+</li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.HmmTopology">HmmTopology (class in kaldi.hmm)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.HmmTopology.HmmState">HmmTopology.HmmState (class in kaldi.hmm)</a>
@@ -6407,6 +6751,8 @@
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.ifstream">ifstream (class in kaldi.base.io)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFstArc.ilabel">ilabel (kaldi.decoder.GrammarFstArc attribute)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeArc.ilabel">ilabel (kaldi.fstext.CompactLatticeArc attribute)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple.ilabel">ilabel (kaldi.fstext.CompactLatticeEncodeTable.Tuple attribute)</a>
@@ -6427,7 +6773,9 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdEncodeTable.Tuple.ilabel">ilabel (kaldi.fstext.StdEncodeTable.Tuple attribute)</a>
 </li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFst.ilabel_info">ilabel_info() (kaldi.fstext.special.StdContextFst method)</a>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdInverseContextFst.ilabel_info">ilabel_info() (kaldi.fstext.special.StdInverseContextFst method)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdInverseLeftBiphoneContextFst.ilabel_info">ilabel_info() (kaldi.fstext.special.StdInverseLeftBiphoneContextFst method)</a>
 </li>
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.AmSgmm2.increase_phone_space_dim">increase_phone_space_dim() (kaldi.sgmm2.AmSgmm2 method)</a>
 </li>
@@ -6497,6 +6845,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.info">info() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.info">info() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.info">info() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.info">info() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -6516,6 +6866,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.info">info() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.info">info() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.info">info() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.info">info() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -6552,6 +6904,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.info">info() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.info">info() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.info">info() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.info">info() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -6631,6 +6985,8 @@
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.mllt.MlltAccs.init">init() (kaldi.transform.mllt.MlltAccs method)</a>
 </li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer.init_decoding">init_decoding() (kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer method)</a>
+</li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.init_decoding">init_decoding() (kaldi.asr.NnetLatticeFasterOnlineRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetOnlineRecognizer.init_decoding">init_decoding() (kaldi.asr.NnetOnlineRecognizer method)</a>
@@ -6641,7 +6997,11 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.init_decoding">init_decoding() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.init_decoding">init_decoding() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.init_decoding">init_decoding() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.init_decoding">init_decoding() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.mllr.init_fmllr">init_fmllr() (in module kaldi.transform.mllr)</a>
 </li>
@@ -6677,6 +7037,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.init_from_config">init_from_config() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.init_from_config">init_from_config() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.init_from_config">init_from_config() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.init_from_config">init_from_config() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -6694,6 +7056,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.init_from_config">init_from_config() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.init_from_config">init_from_config() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.init_from_config">init_from_config() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.init_from_config">init_from_config() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -6724,6 +7088,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.init_from_config">init_from_config() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.init_from_config">init_from_config() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.init_from_config">init_from_config() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.init_from_config">init_from_config() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -6801,6 +7167,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.input_dim">input_dim() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.input_dim">input_dim() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.input_dim">input_dim() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.input_dim">input_dim() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -6820,6 +7188,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.input_dim">input_dim() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.input_dim">input_dim() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.input_dim">input_dim() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.input_dim">input_dim() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -6850,6 +7220,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.input_dim">input_dim() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.input_dim">input_dim() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.input_dim">input_dim() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.input_dim">input_dim() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -7061,6 +7433,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.is_computable">is_computable() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.is_computable">is_computable() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.is_computable">is_computable() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.is_computable">is_computable() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -7078,6 +7452,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.is_computable">is_computable() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.is_computable">is_computable() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.is_computable">is_computable() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.is_computable">is_computable() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -7115,9 +7491,13 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.is_computable">is_computable() (kaldi.nnet3.TanhComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.is_computable">is_computable() (kaldi.nnet3.TdnnComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.is_computable">is_computable() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.UpdatableComponent.is_computable">is_computable() (kaldi.nnet3.UpdatableComponent method)</a>
+</li>
+      <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuDevice.is_compute_exclusive">is_compute_exclusive() (kaldi.cudamatrix.CuDevice method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputation.MatrixDebugInfo.is_deriv">is_deriv (kaldi.nnet3.NnetComputation.MatrixDebugInfo attribute)</a>
 </li>
@@ -7150,6 +7530,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.Nnet.is_input_node">is_input_node() (kaldi.nnet3.Nnet method)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMapped.is_last_frame">is_last_frame() (kaldi.decoder.DecodableMapped method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMatrixMapped.is_last_frame">is_last_frame() (kaldi.decoder.DecodableMatrixMapped method)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMatrixMappedOffset.is_last_frame">is_last_frame() (kaldi.decoder.DecodableMatrixMappedOffset method)</a>
 </li>
@@ -7689,6 +8071,20 @@
 </li>
       <li><a href="api/kaldi.tree.html#kaldi.tree.TreeClusterOptions.kmeans_cfg">kmeans_cfg (kaldi.tree.TreeClusterOptions attribute)</a>
 </li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.NonterminalValues.kNontermBegin">kNontermBegin (kaldi.fstext.special.NonterminalValues attribute)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.NonterminalValues.kNontermBigNumber">kNontermBigNumber (kaldi.fstext.special.NonterminalValues attribute)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.NonterminalValues.kNontermBos">kNontermBos (kaldi.fstext.special.NonterminalValues attribute)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.NonterminalValues.kNontermEnd">kNontermEnd (kaldi.fstext.special.NonterminalValues attribute)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.NonterminalValues.kNontermMediumNumber">kNontermMediumNumber (kaldi.fstext.special.NonterminalValues attribute)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.NonterminalValues.kNontermReenter">kNontermReenter (kaldi.fstext.special.NonterminalValues attribute)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.NonterminalValues.kNontermUserDefined">kNontermUserDefined (kaldi.fstext.special.NonterminalValues attribute)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.KwsIndexArc">KwsIndexArc (class in kaldi.fstext)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.KwsIndexConstFst">KwsIndexConstFst (class in kaldi.fstext)</a>
@@ -7735,11 +8131,19 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.l2_regularization">l2_regularization() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.l2_regularization">l2_regularization() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.l2_regularization">l2_regularization() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.l2_regularization">l2_regularization() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.l2_regularization">l2_regularization() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.l2_regularization">l2_regularization() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.l2_regularization">l2_regularization() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.l2_regularization">l2_regularization() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.l2_regularization">l2_regularization() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -7821,7 +8225,11 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoderOptions">LatticeFasterDecoderOptions (class in kaldi.decoder)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder">LatticeFasterGrammarDecoder (class in kaldi.decoder)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder">LatticeFasterOnlineDecoder (class in kaldi.decoder)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder">LatticeFasterOnlineGrammarDecoder (class in kaldi.decoder)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.LatticeFasterRecognizer">LatticeFasterRecognizer (class in kaldi.asr)</a>
 </li>
@@ -7871,11 +8279,19 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.learning_rate">learning_rate() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.learning_rate">learning_rate() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.learning_rate">learning_rate() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.learning_rate">learning_rate() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.learning_rate">learning_rate() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.learning_rate">learning_rate() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.learning_rate">learning_rate() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.learning_rate">learning_rate() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.learning_rate">learning_rate() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -7887,11 +8303,19 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.learning_rate_factor">learning_rate_factor() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.learning_rate_factor">learning_rate_factor() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.learning_rate_factor">learning_rate_factor() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.learning_rate_factor">learning_rate_factor() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.learning_rate_factor">learning_rate_factor() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.learning_rate_factor">learning_rate_factor() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.learning_rate_factor">learning_rate_factor() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.learning_rate_factor">learning_rate_factor() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.learning_rate_factor">learning_rate_factor() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -7951,6 +8375,8 @@
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.lvtln.LinearVtln">LinearVtln (class in kaldi.transform.lvtln)</a>
 </li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.SupervisionOptions.lm_scale">lm_scale (kaldi.chain.SupervisionOptions attribute)</a>
+</li>
       <li><a href="api/kaldi.base.html#kaldi.base.math.log">log() (in module kaldi.base.math)</a>
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.math.log1p">log1p() (in module kaldi.base.math)</a>
@@ -7968,6 +8394,8 @@
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.Sgmm2LikelihoodCache.PdfCacheElement.log_like">log_like (kaldi.sgmm2.Sgmm2LikelihoodCache.PdfCacheElement attribute)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMapped.log_likelihood">log_likelihood() (kaldi.decoder.DecodableMapped method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMatrixMapped.log_likelihood">log_likelihood() (kaldi.decoder.DecodableMatrixMapped method)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMatrixMappedOffset.log_likelihood">log_likelihood() (kaldi.decoder.DecodableMatrixMappedOffset method)</a>
 </li>
@@ -8317,11 +8745,19 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.max_change">max_change() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.max_change">max_change() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.max_change">max_change() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.max_change">max_change() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.max_change">max_change() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.max_change">max_change() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.max_change">max_change() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.max_change">max_change() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.max_change">max_change() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -8650,6 +9086,8 @@
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.MleTransitionUpdateConfig.mincount">mincount (kaldi.hmm.MleTransitionUpdateConfig attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ExampleMergingConfig.minibatch_size">minibatch_size (kaldi.nnet3.ExampleMergingConfig attribute)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.minibatch_size">minibatch_size (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ObjectiveFunctionInfo.minibatches_this_phase">minibatches_this_phase (kaldi.nnet3.ObjectiveFunctionInfo attribute)</a>
 </li>
@@ -9017,6 +9455,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -9034,6 +9474,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -9070,6 +9512,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.new_component_of_type">new_component_of_type() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -9123,6 +9567,8 @@
 </li>
       <li><a href="api/kaldi.lat.html#kaldi.lat.sausages.MinimumBayesRisk.new_with_words_times">new_with_words_times() (kaldi.lat.sausages.MinimumBayesRisk method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFstArcIterator.next">next() (kaldi.decoder.GrammarFstArcIterator method)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeConstFstArcIterator.next">next() (kaldi.fstext.CompactLatticeConstFstArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeConstFstStateIterator.next">next() (kaldi.fstext.CompactLatticeConstFstStateIterator method)</a>
@@ -9162,10 +9608,6 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstMutableArcIterator.next">next() (kaldi.fstext.LogVectorFstMutableArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstStateIterator.next">next() (kaldi.fstext.LogVectorFstStateIterator method)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstArcIterator.next">next() (kaldi.fstext.special.StdContextFstArcIterator method)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstStateIterator.next">next() (kaldi.fstext.special.StdContextFstStateIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFstArcIterator.next">next() (kaldi.fstext.StdConstFstArcIterator method)</a>
 </li>
@@ -9227,6 +9669,8 @@
 </li>
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.Sgmm2LikelihoodCache.next_frame">next_frame() (kaldi.sgmm2.Sgmm2LikelihoodCache method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFstArc.nextstate">nextstate (kaldi.decoder.GrammarFstArc attribute)</a>
+</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeArc.nextstate">nextstate (kaldi.fstext.CompactLatticeArc attribute)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.KwsIndexArc.nextstate">nextstate (kaldi.fstext.KwsIndexArc attribute)</a>
@@ -9252,6 +9696,14 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.nnet_to_directed_graph">nnet_to_directed_graph() (in module kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.alignment.html#kaldi.alignment.NnetAligner">NnetAligner (class in kaldi.alignment)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputer">NnetBatchComputer (class in kaldi.nnet3)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions">NnetBatchComputerOptions (class in kaldi.nnet3)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchDecoder">NnetBatchDecoder (class in kaldi.nnet3)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchInference">NnetBatchInference (class in kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputation">NnetComputation (class in kaldi.nnet3)</a>
 </li>
@@ -9284,6 +9736,12 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetIo">NnetIo (class in kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeBiglmFasterRecognizer">NnetLatticeBiglmFasterRecognizer (class in kaldi.asr)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterBatchRecognizer">NnetLatticeFasterBatchRecognizer (class in kaldi.asr)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterGrammarRecognizer">NnetLatticeFasterGrammarRecognizer (class in kaldi.asr)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer">NnetLatticeFasterOnlineGrammarRecognizer (class in kaldi.asr)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer">NnetLatticeFasterOnlineRecognizer (class in kaldi.asr)</a>
 </li>
@@ -9335,8 +9793,6 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.NO_STATE_ID">NO_STATE_ID (in module kaldi.fstext)</a>
 </li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.SymbolTable.NO_SYMBOL">NO_SYMBOL (kaldi.fstext.SymbolTable attribute)</a>
-</li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.common.MatrixTransposeType.NO_TRANS">NO_TRANS (kaldi.matrix.common.MatrixTransposeType attribute)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeWeight.no_weight">no_weight() (kaldi.fstext.CompactLatticeWeight method)</a>
@@ -9374,6 +9830,10 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NodeType.NONE">NONE (kaldi.nnet3.NodeType attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NonlinearComponent">NonlinearComponent (class in kaldi.nnet3)</a>
+</li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.HTransducerConfig.nonterm_phones_offset">nonterm_phones_offset (kaldi.hmm.HTransducerConfig attribute)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.NonterminalValues">NonterminalValues (class in kaldi.fstext.special)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent">NoOpComponent (class in kaldi.nnet3)</a>
 </li>
@@ -9577,13 +10037,21 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.num_frames_decoded">num_frames_decoded() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.num_frames_decoded">num_frames_decoded() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.num_frames_decoded">num_frames_decoded() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.num_frames_decoded">num_frames_decoded() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetDecoder.num_frames_decoded">num_frames_decoded() (kaldi.online2.SingleUtteranceNnetDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetGrammarDecoder.num_frames_decoded">num_frames_decoded() (kaldi.online2.SingleUtteranceNnetGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ExampleGenerationConfig.num_frames_overlap">num_frames_overlap (kaldi.nnet3.ExampleGenerationConfig attribute)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMapped.num_frames_ready">num_frames_ready() (kaldi.decoder.DecodableMapped method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMatrixMapped.num_frames_ready">num_frames_ready() (kaldi.decoder.DecodableMatrixMapped method)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMatrixMappedOffset.num_frames_ready">num_frames_ready() (kaldi.decoder.DecodableMatrixMappedOffset method)</a>
 </li>
@@ -9683,6 +10151,8 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMapped.num_indices">num_indices() (kaldi.decoder.DecodableMapped method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMatrixMapped.num_indices">num_indices() (kaldi.decoder.DecodableMatrixMapped method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMatrixMappedOffset.num_indices">num_indices() (kaldi.decoder.DecodableMatrixMappedOffset method)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.DecodableMatrixScaled.num_indices">num_indices() (kaldi.decoder.DecodableMatrixScaled method)</a>
@@ -9718,6 +10188,8 @@
       <li><a href="api/kaldi.transform.html#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr.num_indices">num_indices() (kaldi.transform.mllr.DecodableAmDiagGmmRegtreeFmllr method)</a>
 </li>
       <li><a href="api/kaldi.transform.html#kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr.num_indices">num_indices() (kaldi.transform.mllr.DecodableAmDiagGmmRegtreeMllr method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFst.num_input_epsilons">num_input_epsilons() (kaldi.decoder.GrammarFst method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeConstFst.num_input_epsilons">num_input_epsilons() (kaldi.fstext.CompactLatticeConstFst method)</a>
 </li>
@@ -9795,6 +10267,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantFunctionComponent.num_parameters">num_parameters() (kaldi.nnet3.ConstantFunctionComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.num_parameters">num_parameters() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.num_parameters">num_parameters() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.num_parameters">num_parameters() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
@@ -9805,6 +10279,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.num_parameters">num_parameters() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.num_parameters">num_parameters() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.num_parameters">num_parameters() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementScaleComponent.num_parameters">num_parameters() (kaldi.nnet3.PerElementScaleComponent method)</a>
@@ -9812,6 +10288,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.num_parameters">num_parameters() (kaldi.nnet3.RepeatedAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ScaleAndOffsetComponent.num_parameters">num_parameters() (kaldi.nnet3.ScaleAndOffsetComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.num_parameters">num_parameters() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.num_parameters">num_parameters() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -9945,6 +10423,8 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.weight.FloatLimits.number_bad">number_bad() (kaldi.fstext.weight.FloatLimits method)</a>
 </li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.NumeratorComputation">NumeratorComputation (class in kaldi.chain)</a>
+</li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.DoubleMatrix.numpy">numpy() (kaldi.matrix.DoubleMatrix method)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.DoubleSubMatrix.numpy">numpy() (kaldi.matrix.DoubleSubMatrix method)</a>
@@ -10010,6 +10490,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OffsetForwardingDescriptor">OffsetForwardingDescriptor (class in kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.ofstream">ofstream (class in kaldi.base.io)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFstArc.olabel">olabel (kaldi.decoder.GrammarFstArc attribute)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeArc.olabel">olabel (kaldi.fstext.CompactLatticeArc attribute)</a>
 </li>
@@ -10295,6 +10777,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.optimize">optimize() (in module kaldi.nnet3)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.optimize_config">optimize_config (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputeProbOptions.optimize_config">optimize_config (kaldi.nnet3.NnetComputeProbOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetSimpleComputationOptions.optimize_config">optimize_config (kaldi.nnet3.NnetSimpleComputationOptions attribute)</a>
@@ -10344,6 +10828,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.orthonormal_constraint">orthonormal_constraint() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.orthonormal_constraint">orthonormal_constraint() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.orthonormal_constraint">orthonormal_constraint() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.ostream">ostream (class in kaldi.base.io)</a>
 </li>
@@ -10395,6 +10881,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.output_dim">output_dim() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.output_dim">output_dim() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.output_dim">output_dim() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.output_dim">output_dim() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -10414,6 +10902,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.output_dim">output_dim() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.output_dim">output_dim() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.output_dim">output_dim() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.output_dim">output_dim() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -10444,6 +10934,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.output_dim">output_dim() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.output_dim">output_dim() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.output_dim">output_dim() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.output_dim">output_dim() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -10495,6 +10987,8 @@
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.RnnlmExample.output_words">output_words (kaldi.rnnlm.RnnlmExample attribute)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent">OutputGruNonlinearityComponent (class in kaldi.nnet3)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ComputationRequest.outputs">outputs (kaldi.nnet3.ComputationRequest attribute)</a>
 </li>
       <li><a href="api/kaldi.util.html#kaldi.util.io.OutputType">OutputType (class in kaldi.util.io)</a>
@@ -10535,6 +11029,8 @@
 </li>
       <li><a href="api/kaldi.util.html#kaldi.util.options.ParseOptions">ParseOptions (class in kaldi.util.options)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.partial_minibatch_factor">partial_minibatch_factor (kaldi.nnet3.NnetBatchComputerOptions attribute)</a>
+</li>
       <li><a href="api/kaldi.lat.html#kaldi.lat.align.WordAlignLatticeLexiconOpts.partial_word_label">partial_word_label (kaldi.lat.align.WordAlignLatticeLexiconOpts attribute)</a>
 </li>
       <li><a href="api/kaldi.lat.html#kaldi.lat.align.WordBoundaryInfo.partial_word_label">partial_word_label (kaldi.lat.align.WordBoundaryInfo attribute)</a>
@@ -10546,6 +11042,8 @@
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.AmSgmm2.pdf2group">pdf2group() (kaldi.sgmm2.AmSgmm2 method)</a>
 </li>
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.Sgmm2LikelihoodCache.pdf_cache">pdf_cache (kaldi.sgmm2.Sgmm2LikelihoodCache attribute)</a>
+</li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorGraphTransition.pdf_id">pdf_id (kaldi.chain.DenominatorGraphTransition attribute)</a>
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.peek">peek() (in module kaldi.base.io)</a>
 </li>
@@ -10583,6 +11081,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantFunctionComponent.perturb_params">perturb_params() (kaldi.nnet3.ConstantFunctionComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.perturb_params">perturb_params() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.perturb_params">perturb_params() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.perturb_params">perturb_params() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
@@ -10593,6 +11093,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.perturb_params">perturb_params() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.perturb_params">perturb_params() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.perturb_params">perturb_params() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementScaleComponent.perturb_params">perturb_params() (kaldi.nnet3.PerElementScaleComponent method)</a>
@@ -10600,6 +11102,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.perturb_params">perturb_params() (kaldi.nnet3.RepeatedAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ScaleAndOffsetComponent.perturb_params">perturb_params() (kaldi.nnet3.ScaleAndOffsetComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.perturb_params">perturb_params() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.perturb_params">perturb_params() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -10719,8 +11223,6 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstMutableArcIterator.position">position() (kaldi.fstext.LogVectorFstMutableArcIterator method)</a>
 </li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstArcIterator.position">position() (kaldi.fstext.special.StdContextFstArcIterator method)</a>
-</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFstArcIterator.position">position() (kaldi.fstext.StdConstFstArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdVectorFstArcIterator.position">position() (kaldi.fstext.StdVectorFstArcIterator method)</a>
@@ -10803,6 +11305,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -10820,6 +11324,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -10857,6 +11363,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.TanhComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.TdnnComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.UpdatableComponent.precompute_indexes">precompute_indexes() (kaldi.nnet3.UpdatableComponent method)</a>
@@ -10868,6 +11376,8 @@
       <li><a href="api/kaldi.feat.html#kaldi.feat.window.FrameExtractionOptions.preemph_coeff">preemph_coeff (kaldi.feat.window.FrameExtractionOptions attribute)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.window.preemphasize">preemphasize() (in module kaldi.feat.window)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.prepare_for_grammar_fst">prepare_for_grammar_fst() (in module kaldi.decoder)</a>
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.SamplingLmEstimator.print_as_arpa">print_as_arpa() (kaldi.rnnlm.SamplingLmEstimator method)</a>
 </li>
@@ -10916,8 +11426,6 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.print_parameter_matrix_stats">print_parameter_matrix_stats() (in module kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.print_parameter_vector_stats">print_parameter_vector_stats() (in module kaldi.nnet3)</a>
-</li>
-      <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuDevice.print_profile">print_profile() (kaldi.cudamatrix.CuDevice method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ComputationRequest.print_request">print_request() (kaldi.nnet3.ComputationRequest method)</a>
 </li>
@@ -11015,6 +11523,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.propagate">propagate() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.propagate">propagate() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.propagate">propagate() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.propagate">propagate() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -11030,6 +11540,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.propagate">propagate() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.propagate">propagate() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.propagate">propagate() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.propagate">propagate() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -11060,6 +11572,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.propagate">propagate() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.propagate">propagate() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.propagate">propagate() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.propagate">propagate() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -11159,6 +11673,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.properties">properties() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.properties">properties() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.properties">properties() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.properties">properties() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -11174,6 +11690,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.properties">properties() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.properties">properties() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.properties">properties() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.properties">properties() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -11204,6 +11722,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.properties">properties() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.properties">properties() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.properties">properties() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.properties">properties() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -11431,7 +11951,11 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.reached_final">reached_final() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.reached_final">reached_final() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.reached_final">reached_final() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.reached_final">reached_final() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.base.html#kaldi.base.io.read">read() (in module kaldi.base.io)</a>
 </li>
@@ -11446,6 +11970,8 @@
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuMatrix.read">read() (kaldi.cudamatrix.CuMatrix method)</a>
 </li>
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuVector.read">read() (kaldi.cudamatrix.CuVector method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFst.read">read() (kaldi.decoder.GrammarFst method)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineCmvnState.read">read() (kaldi.feat.online.OnlineCmvnState method)</a>
 </li>
@@ -11573,6 +12099,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponentPrecomputedIndexes.read">read() (kaldi.nnet3.GeneralDropoutComponentPrecomputedIndexes method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.read">read() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.Index.read">read() (kaldi.nnet3.Index method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.IoSpecification.read">read() (kaldi.nnet3.IoSpecification method)</a>
@@ -11613,6 +12141,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.read">read() (kaldi.nnet3.NormalizeComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.read">read() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.read">read() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementScaleComponent.read">read() (kaldi.nnet3.PerElementScaleComponent method)</a>
@@ -11646,6 +12176,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.read">read() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.read">read() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.read">read() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.read">read() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -11877,6 +12409,12 @@
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeBiglmFasterRecognizer.read_model">read_model() (kaldi.asr.NnetLatticeBiglmFasterRecognizer method)</a>
 </li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterBatchRecognizer.read_model">read_model() (kaldi.asr.NnetLatticeFasterBatchRecognizer static method)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterGrammarRecognizer.read_model">read_model() (kaldi.asr.NnetLatticeFasterGrammarRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer.read_model">read_model() (kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer method)</a>
+</li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.read_model">read_model() (kaldi.asr.NnetLatticeFasterOnlineRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterRecognizer.read_model">read_model() (kaldi.asr.NnetLatticeFasterRecognizer method)</a>
@@ -11929,6 +12467,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponentPrecomputedIndexes.read_new">read_new() (kaldi.nnet3.GeneralDropoutComponentPrecomputedIndexes method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.read_new">read_new() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.read_new">read_new() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.read_new">read_new() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -11946,6 +12486,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.read_new">read_new() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.read_new">read_new() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.read_new">read_new() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.read_new">read_new() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -11982,6 +12524,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.read_new">read_new() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.read_new">read_new() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.read_new">read_new() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.read_new">read_new() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -12164,6 +12708,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ExampleGenerationConfig.register">register() (kaldi.nnet3.ExampleGenerationConfig method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ExampleMergingConfig.register">register() (kaldi.nnet3.ExampleMergingConfig method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchComputerOptions.register">register() (kaldi.nnet3.NnetBatchComputerOptions method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetComputeOptions.register">register() (kaldi.nnet3.NnetComputeOptions method)</a>
 </li>
@@ -12475,10 +13021,6 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstStateIterator.reset">reset() (kaldi.fstext.LogVectorFstStateIterator method)</a>
 </li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstArcIterator.reset">reset() (kaldi.fstext.special.StdContextFstArcIterator method)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstStateIterator.reset">reset() (kaldi.fstext.special.StdContextFstStateIterator method)</a>
-</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFstArcIterator.reset">reset() (kaldi.fstext.StdConstFstArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFstStateIterator.reset">reset() (kaldi.fstext.StdConstFstStateIterator method)</a>
@@ -12504,8 +13046,6 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.reset_generators">reset_generators() (in module kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.Nnet.reset_generators">reset_generators() (kaldi.nnet3.Nnet method)</a>
-</li>
-      <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuDevice.reset_profile">reset_profile() (kaldi.cudamatrix.CuDevice method)</a>
 </li>
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuArray.resize">resize() (kaldi.cudamatrix.CuArray method)</a>
 </li>
@@ -12871,6 +13411,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.scale">scale() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.scale">scale() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.scale">scale() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.scale">scale() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -12888,6 +13430,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.scale">scale() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.scale">scale() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.scale">scale() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.scale">scale() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -12924,6 +13468,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.scale">scale() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.scale">scale() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.scale">scale() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.scale">scale() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -13030,8 +13576,6 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstArcIterator.seek">seek() (kaldi.fstext.LogVectorFstArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstMutableArcIterator.seek">seek() (kaldi.fstext.LogVectorFstMutableArcIterator method)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstArcIterator.seek">seek() (kaldi.fstext.special.StdContextFstArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFstArcIterator.seek">seek() (kaldi.fstext.StdConstFstArcIterator method)</a>
 </li>
@@ -13151,11 +13695,19 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.set_actual_learning_rate">set_actual_learning_rate() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.set_actual_learning_rate">set_actual_learning_rate() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.set_actual_learning_rate">set_actual_learning_rate() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.set_actual_learning_rate">set_actual_learning_rate() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.set_actual_learning_rate">set_actual_learning_rate() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.set_actual_learning_rate">set_actual_learning_rate() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.set_actual_learning_rate">set_actual_learning_rate() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.set_actual_learning_rate">set_actual_learning_rate() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.set_actual_learning_rate">set_actual_learning_rate() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -13179,11 +13731,19 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.set_as_gradient">set_as_gradient() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.set_as_gradient">set_as_gradient() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.set_as_gradient">set_as_gradient() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.set_as_gradient">set_as_gradient() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.set_as_gradient">set_as_gradient() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.set_as_gradient">set_as_gradient() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.set_as_gradient">set_as_gradient() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.set_as_gradient">set_as_gradient() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.set_as_gradient">set_as_gradient() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -13269,8 +13829,6 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstMutableArcIterator.set_flags">set_flags() (kaldi.fstext.LogVectorFstMutableArcIterator method)</a>
 </li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstArcIterator.set_flags">set_flags() (kaldi.fstext.special.StdContextFstArcIterator method)</a>
-</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFstArcIterator.set_flags">set_flags() (kaldi.fstext.StdConstFstArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdVectorFstArcIterator.set_flags">set_flags() (kaldi.fstext.StdVectorFstArcIterator method)</a>
@@ -13280,6 +13838,8 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.FstHeader.set_fst_type">set_fst_type() (kaldi.fstext.FstHeader method)</a>
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm.set_gaussian_mean">set_gaussian_mean() (kaldi.gmm.am.AmDiagGmm method)</a>
+</li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer.set_input_pipeline">set_input_pipeline() (kaldi.asr.NnetLatticeFasterOnlineGrammarRecognizer method)</a>
 </li>
       <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterOnlineRecognizer.set_input_pipeline">set_input_pipeline() (kaldi.asr.NnetLatticeFasterOnlineRecognizer method)</a>
 </li>
@@ -13333,11 +13893,19 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.set_l2_regularization">set_l2_regularization() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.set_l2_regularization">set_l2_regularization() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.set_l2_regularization">set_l2_regularization() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.set_l2_regularization">set_l2_regularization() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.set_l2_regularization">set_l2_regularization() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.set_l2_regularization">set_l2_regularization() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.set_l2_regularization">set_l2_regularization() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.set_l2_regularization">set_l2_regularization() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.set_l2_regularization">set_l2_regularization() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -13351,11 +13919,19 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.set_learning_rate_factor">set_learning_rate_factor() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.set_learning_rate_factor">set_learning_rate_factor() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.set_learning_rate_factor">set_learning_rate_factor() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.set_learning_rate_factor">set_learning_rate_factor() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.set_learning_rate_factor">set_learning_rate_factor() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.set_learning_rate_factor">set_learning_rate_factor() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.set_learning_rate_factor">set_learning_rate_factor() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.set_learning_rate_factor">set_learning_rate_factor() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.set_learning_rate_factor">set_learning_rate_factor() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -13383,11 +13959,19 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.set_max_change">set_max_change() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.set_max_change">set_max_change() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.set_max_change">set_max_change() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.set_max_change">set_max_change() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.set_max_change">set_max_change() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.set_max_change">set_max_change() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.set_max_change">set_max_change() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.set_max_change">set_max_change() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.set_max_change">set_max_change() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -13421,7 +14005,11 @@
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterDecoder.set_options">set_options() (kaldi.decoder.LatticeFasterDecoder method)</a>
 </li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder.set_options">set_options() (kaldi.decoder.LatticeFasterGrammarDecoder method)</a>
+</li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineDecoder.set_options">set_options() (kaldi.decoder.LatticeFasterOnlineDecoder method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.set_options">set_options() (kaldi.decoder.LatticeFasterOnlineGrammarDecoder method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeMapper.set_output_symbols">set_output_symbols() (kaldi.fstext.CompactLatticeEncodeMapper method)</a>
 </li>
@@ -13609,11 +14197,19 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.set_underlying_learning_rate">set_underlying_learning_rate() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.set_underlying_learning_rate">set_underlying_learning_rate() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.set_underlying_learning_rate">set_underlying_learning_rate() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.set_underlying_learning_rate">set_underlying_learning_rate() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.set_underlying_learning_rate">set_underlying_learning_rate() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.set_underlying_learning_rate">set_underlying_learning_rate() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.set_underlying_learning_rate">set_underlying_learning_rate() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.set_underlying_learning_rate">set_underlying_learning_rate() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.set_underlying_learning_rate">set_underlying_learning_rate() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -13645,11 +14241,19 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantComponent.set_updatable_configs">set_updatable_configs() (kaldi.nnet3.ConstantComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.set_updatable_configs">set_updatable_configs() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.set_updatable_configs">set_updatable_configs() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientAffineComponent.set_updatable_configs">set_updatable_configs() (kaldi.nnet3.NaturalGradientAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.set_updatable_configs">set_updatable_configs() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.set_updatable_configs">set_updatable_configs() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.set_updatable_configs">set_updatable_configs() (kaldi.nnet3.RepeatedAffineComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.set_updatable_configs">set_updatable_configs() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.set_updatable_configs">set_updatable_configs() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -13871,6 +14475,8 @@
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetDecoder">SingleUtteranceNnetDecoder (class in kaldi.online2)</a>
 </li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.SingleUtteranceNnetGrammarDecoder">SingleUtteranceNnetGrammarDecoder (class in kaldi.online2)</a>
+</li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.DoubleMatrix.singular_values">singular_values() (kaldi.matrix.DoubleMatrix method)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.DoubleSubMatrix.singular_values">singular_values() (kaldi.matrix.DoubleSubMatrix method)</a>
@@ -14083,6 +14689,10 @@
 </li>
       <li><a href="api/kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm.split_pdf">split_pdf() (kaldi.gmm.am.AmDiagGmm method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetOptimizeOptions.split_row_ops">split_row_ops (kaldi.nnet3.NnetOptimizeOptions attribute)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.split_row_ops">split_row_ops() (in module kaldi.nnet3)</a>
+</li>
       <li><a href="api/kaldi.tree.html#kaldi.tree.split_stats_by_key">split_stats_by_key() (in module kaldi.tree)</a>
 </li>
       <li><a href="api/kaldi.tree.html#kaldi.tree.split_stats_by_map">split_stats_by_map() (in module kaldi.tree)</a>
@@ -14104,6 +14714,8 @@
       <li><a href="api/kaldi.util.html#kaldi.util.io.OutputType.STANDARD_OUTPUT">STANDARD_OUTPUT (kaldi.util.io.OutputType attribute)</a>
 </li>
       <li><a href="api/kaldi.chain.html#kaldi.chain.TimeEnforcerFst.start">start() (kaldi.chain.TimeEnforcerFst method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFst.start">start() (kaldi.decoder.GrammarFst method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeConstFst.start">start() (kaldi.fstext.CompactLatticeConstFst method)</a>
 </li>
@@ -14130,6 +14742,10 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdComposeDeterministicOnDemandFst.start">start() (kaldi.fstext.special.StdComposeDeterministicOnDemandFst method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdDeterministicOnDemandFst.start">start() (kaldi.fstext.special.StdDeterministicOnDemandFst method)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdInverseContextFst.start">start() (kaldi.fstext.special.StdInverseContextFst method)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdInverseLeftBiphoneContextFst.start">start() (kaldi.fstext.special.StdInverseLeftBiphoneContextFst method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdUnweightedNgramFst.start">start() (kaldi.fstext.special.StdUnweightedNgramFst method)</a>
 </li>
@@ -14193,12 +14809,6 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFstStateIterator">StdConstFstStateIterator (class in kaldi.fstext)</a>
 </li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFst">StdContextFst (class in kaldi.fstext.special)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstArcIterator">StdContextFstArcIterator (class in kaldi.fstext.special)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstStateIterator">StdContextFstStateIterator (class in kaldi.fstext.special)</a>
-</li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdDeterministicOnDemandFst">StdDeterministicOnDemandFst (class in kaldi.fstext.special)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdEncodeMapper">StdEncodeMapper (class in kaldi.fstext)</a>
@@ -14208,6 +14818,10 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdEncodeTable.Tuple">StdEncodeTable.Tuple (class in kaldi.fstext)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdFstCompiler">StdFstCompiler (class in kaldi.fstext)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdInverseContextFst">StdInverseContextFst (class in kaldi.fstext.special)</a>
+</li>
+      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdInverseLeftBiphoneContextFst">StdInverseLeftBiphoneContextFst (class in kaldi.fstext.special)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdUnweightedNgramFst">StdUnweightedNgramFst (class in kaldi.fstext.special)</a>
 </li>
@@ -14265,6 +14879,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.store_stats">store_stats() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.store_stats">store_stats() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.store_stats">store_stats() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.store_stats">store_stats() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -14282,6 +14898,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.store_stats">store_stats() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.store_stats">store_stats() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.store_stats">store_stats() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.store_stats">store_stats() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -14318,6 +14936,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.store_stats">store_stats() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.store_stats">store_stats() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.store_stats">store_stats() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.store_stats">store_stats() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -14509,6 +15129,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetIo.swap">swap() (kaldi.nnet3.NnetIo method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OnlineNaturalGradient.swap">swap() (kaldi.nnet3.OnlineNaturalGradient method)</a>
+</li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.RnnlmExample.swap">swap() (kaldi.rnnlm.RnnlmExample method)</a>
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.RnnlmExampleDerived.swap">swap() (kaldi.rnnlm.RnnlmExampleDerived method)</a>
@@ -14625,6 +15247,8 @@
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.synchronize">synchronize() (in module kaldi.fstext)</a>
 </li>
+      <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.synchronize_gpu">synchronize_gpu() (in module kaldi.cudamatrix)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -14698,6 +15322,8 @@
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.MleAmSgmm2Options.tau_c">tau_c (kaldi.sgmm2.MleAmSgmm2Options attribute)</a>
 </li>
       <li><a href="api/kaldi.sgmm2.html#kaldi.sgmm2.MleAmSgmm2Options.tau_map_M">tau_map_M (kaldi.sgmm2.MleAmSgmm2Options attribute)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent">TdnnComponent (class in kaldi.nnet3)</a>
 </li>
       <li><a href="api/kaldi.lat.html#kaldi.lat.align.WordAlignLatticeLexiconOpts.test">test (kaldi.lat.align.WordAlignLatticeLexiconOpts attribute)</a>
 </li>
@@ -14893,6 +15519,8 @@
 </li>
       <li><a href="api/kaldi.online2.html#kaldi.online2.trailing_silence_length">trailing_silence_length() (in module kaldi.online2)</a>
 </li>
+      <li><a href="api/kaldi.online2.html#kaldi.online2.trailing_silence_length_grammar">trailing_silence_length_grammar() (in module kaldi.online2)</a>
+</li>
       <li><a href="api/kaldi.ivector.html#kaldi.ivector.LogisticRegression.train">train() (kaldi.ivector.LogisticRegression method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetTrainer.train">train() (kaldi.nnet3.NnetTrainer method)</a>
@@ -14910,6 +15538,8 @@
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.RnnlmEmbeddingTrainer.train_backstitch_with_subsampling">train_backstitch_with_subsampling() (kaldi.rnnlm.RnnlmEmbeddingTrainer method)</a>
 </li>
       <li><a href="api/kaldi.rnnlm.html#kaldi.rnnlm.RnnlmEmbeddingTrainer.train_with_subsampling">train_with_subsampling() (kaldi.rnnlm.RnnlmEmbeddingTrainer method)</a>
+</li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.training_graph_to_supervision_e2e">training_graph_to_supervision_e2e() (in module kaldi.chain)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.TrainingGraphCompiler">TrainingGraphCompiler (class in kaldi.decoder)</a>
 </li>
@@ -14937,11 +15567,15 @@
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.TransitionModel.transition_id_to_pdf_class">transition_id_to_pdf_class() (kaldi.hmm.TransitionModel method)</a>
 </li>
+      <li><a href="api/kaldi.hmm.html#kaldi.hmm.TransitionModel.transition_id_to_pdf_fast">transition_id_to_pdf_fast() (kaldi.hmm.TransitionModel method)</a>
+</li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.TransitionModel.transition_id_to_phone">transition_id_to_phone() (kaldi.hmm.TransitionModel method)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.TransitionModel.transition_id_to_transition_index">transition_id_to_transition_index() (kaldi.hmm.TransitionModel method)</a>
 </li>
       <li><a href="api/kaldi.hmm.html#kaldi.hmm.TransitionModel.transition_id_to_transition_state">transition_id_to_transition_state() (kaldi.hmm.TransitionModel method)</a>
+</li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.DenominatorGraphTransition.transition_prob">transition_prob (kaldi.chain.DenominatorGraphTransition attribute)</a>
 </li>
       <li><a href="api/kaldi.decoder.html#kaldi.decoder.TrainingGraphCompilerOptions.transition_scale">transition_scale (kaldi.decoder.TrainingGraphCompilerOptions attribute)</a>
 </li>
@@ -15004,6 +15638,8 @@
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.compressed.CompressionMethod.TWO_BYTE_SIGNED_INTEGER">TWO_BYTE_SIGNED_INTEGER (kaldi.matrix.compressed.CompressionMethod attribute)</a>
 </li>
       <li><a href="api/kaldi.matrix.html#kaldi.matrix.compressed.CompressionMethod.TWO_BYTE_ZERO_ONE">TWO_BYTE_ZERO_ONE (kaldi.matrix.compressed.CompressionMethod attribute)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFst.type">type() (kaldi.decoder.GrammarFst method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeArc.type">type() (kaldi.fstext.CompactLatticeArc method)</a>
 </li>
@@ -15109,6 +15745,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponentPrecomputedIndexes.type">type() (kaldi.nnet3.GeneralDropoutComponentPrecomputedIndexes method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.type">type() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.type">type() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.type">type() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -15124,6 +15762,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.type">type() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.type">type() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.type">type() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.type">type() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -15158,6 +15798,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.type">type() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.type">type() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.type">type() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.type">type() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -15221,6 +15863,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantFunctionComponent.unvectorize">unvectorize() (kaldi.nnet3.ConstantFunctionComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.unvectorize">unvectorize() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.unvectorize">unvectorize() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.unvectorize">unvectorize() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
@@ -15231,6 +15875,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.unvectorize">unvectorize() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.unvectorize">unvectorize() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.unvectorize">unvectorize() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementScaleComponent.unvectorize">unvectorize() (kaldi.nnet3.PerElementScaleComponent method)</a>
@@ -15238,6 +15884,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.unvectorize">unvectorize() (kaldi.nnet3.RepeatedAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ScaleAndOffsetComponent.unvectorize">unvectorize() (kaldi.nnet3.ScaleAndOffsetComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.unvectorize">unvectorize() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.unvectorize">unvectorize() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -15315,6 +15963,10 @@
 </li>
       <li><a href="api/kaldi.ivector.html#kaldi.ivector.AhcCluster.utt_ids">utt_ids (kaldi.ivector.AhcCluster attribute)</a>
 </li>
+      <li><a href="api/kaldi.asr.html#kaldi.asr.NnetLatticeFasterBatchRecognizer.utterance_failed">utterance_failed() (kaldi.asr.NnetLatticeFasterBatchRecognizer method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NnetBatchDecoder.utterance_failed">utterance_failed() (kaldi.nnet3.NnetBatchDecoder method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.UtteranceSplitter">UtteranceSplitter (class in kaldi.nnet3)</a>
 </li>
   </ul></td>
@@ -15344,6 +15996,8 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.weight.LogWeight.value">value (kaldi.fstext.weight.LogWeight attribute)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.weight.TropicalWeight.value">value (kaldi.fstext.weight.TropicalWeight attribute)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFstArcIterator.value">value() (kaldi.decoder.GrammarFstArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeConstFstArcIterator.value">value() (kaldi.fstext.CompactLatticeConstFstArcIterator method)</a>
 </li>
@@ -15384,10 +16038,6 @@
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstMutableArcIterator.value">value() (kaldi.fstext.LogVectorFstMutableArcIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.LogVectorFstStateIterator.value">value() (kaldi.fstext.LogVectorFstStateIterator method)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstArcIterator.value">value() (kaldi.fstext.special.StdContextFstArcIterator method)</a>
-</li>
-      <li><a href="api/kaldi.fstext.html#kaldi.fstext.special.StdContextFstStateIterator.value">value() (kaldi.fstext.special.StdContextFstStateIterator method)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.StdConstFstArcIterator.value">value() (kaldi.fstext.StdConstFstArcIterator method)</a>
 </li>
@@ -15593,6 +16243,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ConstantFunctionComponent.vectorize">vectorize() (kaldi.nnet3.ConstantFunctionComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.vectorize">vectorize() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.vectorize">vectorize() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LstmNonlinearityComponent.vectorize">vectorize() (kaldi.nnet3.LstmNonlinearityComponent method)</a>
@@ -15603,6 +16255,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NaturalGradientRepeatedAffineComponent.vectorize">vectorize() (kaldi.nnet3.NaturalGradientRepeatedAffineComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.vectorize">vectorize() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.vectorize">vectorize() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementScaleComponent.vectorize">vectorize() (kaldi.nnet3.PerElementScaleComponent method)</a>
@@ -15610,6 +16264,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.RepeatedAffineComponent.vectorize">vectorize() (kaldi.nnet3.RepeatedAffineComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.ScaleAndOffsetComponent.vectorize">vectorize() (kaldi.nnet3.ScaleAndOffsetComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.vectorize">vectorize() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.vectorize">vectorize() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -15677,9 +16333,13 @@
 </li>
       <li><a href="api/kaldi.chain.html#kaldi.chain.Supervision.weight">weight (kaldi.chain.Supervision attribute)</a>
 </li>
+      <li><a href="api/kaldi.chain.html#kaldi.chain.SupervisionOptions.weight">weight (kaldi.chain.SupervisionOptions attribute)</a>
+</li>
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.DoubleMatrixElement.weight">weight (kaldi.cudamatrix.DoubleMatrixElement attribute)</a>
 </li>
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.MatrixElement.weight">weight (kaldi.cudamatrix.MatrixElement attribute)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFstArc.weight">weight (kaldi.decoder.GrammarFstArc attribute)</a>
 </li>
       <li><a href="api/kaldi.fstext.html#kaldi.fstext.CompactLatticeArc.weight">weight (kaldi.fstext.CompactLatticeArc attribute)</a>
 </li>
@@ -15790,6 +16450,8 @@
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuSubMatrix.write">write() (kaldi.cudamatrix.CuSubMatrix method)</a>
 </li>
       <li><a href="api/kaldi.cudamatrix.html#kaldi.cudamatrix.CuVector.write">write() (kaldi.cudamatrix.CuVector method)</a>
+</li>
+      <li><a href="api/kaldi.decoder.html#kaldi.decoder.GrammarFst.write">write() (kaldi.decoder.GrammarFst method)</a>
 </li>
       <li><a href="api/kaldi.feat.html#kaldi.feat.online.OnlineCmvnState.write">write() (kaldi.feat.online.OnlineCmvnState method)</a>
 </li>
@@ -15955,6 +16617,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponentPrecomputedIndexes.write">write() (kaldi.nnet3.GeneralDropoutComponentPrecomputedIndexes method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.write">write() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.Index.write">write() (kaldi.nnet3.Index method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.IoSpecification.write">write() (kaldi.nnet3.IoSpecification method)</a>
@@ -15995,6 +16659,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.write">write() (kaldi.nnet3.NormalizeComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.write">write() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.write">write() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementScaleComponent.write">write() (kaldi.nnet3.PerElementScaleComponent method)</a>
@@ -16028,6 +16694,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.write">write() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.write">write() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.write">write() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.write">write() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -16373,6 +17041,8 @@
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GeneralDropoutComponent.zero_stats">zero_stats() (kaldi.nnet3.GeneralDropoutComponent method)</a>
 </li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.GruNonlinearityComponent.zero_stats">zero_stats() (kaldi.nnet3.GruNonlinearityComponent method)</a>
+</li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LinearComponent.zero_stats">zero_stats() (kaldi.nnet3.LinearComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.LogSoftmaxComponent.zero_stats">zero_stats() (kaldi.nnet3.LogSoftmaxComponent method)</a>
@@ -16390,6 +17060,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NoOpComponent.zero_stats">zero_stats() (kaldi.nnet3.NoOpComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.NormalizeComponent.zero_stats">zero_stats() (kaldi.nnet3.NormalizeComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.OutputGruNonlinearityComponent.zero_stats">zero_stats() (kaldi.nnet3.OutputGruNonlinearityComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.PerElementOffsetComponent.zero_stats">zero_stats() (kaldi.nnet3.PerElementOffsetComponent method)</a>
 </li>
@@ -16426,6 +17098,8 @@
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.SumGroupComponent.zero_stats">zero_stats() (kaldi.nnet3.SumGroupComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TanhComponent.zero_stats">zero_stats() (kaldi.nnet3.TanhComponent method)</a>
+</li>
+      <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TdnnComponent.zero_stats">zero_stats() (kaldi.nnet3.TdnnComponent method)</a>
 </li>
       <li><a href="api/kaldi.nnet3.html#kaldi.nnet3.TimeHeightConvolutionComponent.zero_stats">zero_stats() (kaldi.nnet3.TimeHeightConvolutionComponent method)</a>
 </li>
@@ -16476,7 +17150,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.9',
+            VERSION:'0.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

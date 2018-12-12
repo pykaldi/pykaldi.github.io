@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.ivector &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>kaldi.ivector &mdash; PyKaldi 0.1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/>
         <link rel="next" title="kaldi.kws" href="kaldi.kws.html"/>
         <link rel="prev" title="kaldi.hmm" href="kaldi.hmm.html"/> 
 
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.1.0
               </div>
             
           
@@ -788,6 +788,13 @@ void ::kaldi::OnlineIvectorEstimationStats::AccStats(::kaldi::IvectorExtractor, 
 </dd></dl>
 
 <dl class="method">
+<dt id="kaldi.ivector.OnlineIvectorEstimationStats.acc_stats_sequence">
+<code class="descname">acc_stats_sequence</code><span class="sig-paren">(</span><em>extractor:IvectorExtractor</em>, <em>features:MatrixBase</em>, <em>gauss_post:list&lt;list&lt;tuple&lt;int</em>, <em>float&gt;&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.acc_stats_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::OnlineIvectorEstimationStats::AccStats(::kaldi::IvectorExtractor, ::kaldi::MatrixBase&lt;float&gt;, ::std::vector&lt; ::std::vector&lt; ::std::pair&lt; ::int32, ::kaldi::BaseFloat&gt; &gt; &gt;)</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kaldi.ivector.OnlineIvectorEstimationStats.count">
 <code class="descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.ivector.OnlineIvectorEstimationStats.count" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
@@ -1179,7 +1186,7 @@ void ::kaldi::ComputeVadEnergy(::kaldi::VadEnergyOptions, ::kaldi::MatrixBase&lt
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.9',
+            VERSION:'0.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

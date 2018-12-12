@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.decoder &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>kaldi.decoder &mdash; PyKaldi 0.1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -72,7 +72,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.1.0
               </div>
             
           
@@ -199,14 +199,17 @@
            <div itemprop="articleBody">
             
   <h1>Source code for kaldi.decoder</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">._decodable_matrix</span> <span class="k">import</span> <span class="o">*</span>
+<span></span><span class="kn">from</span> <span class="nn">._grammar_fst</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._decodable_matrix</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._decodable_mapped</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._decodable_sum</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._faster_decoder</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._biglm_faster_decoder</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._lattice_faster_decoder</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._lattice_faster_decoder_ext</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._lattice_biglm_faster_decoder</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._lattice_faster_online_decoder</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._lattice_faster_online_decoder_ext</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._training_graph_compiler</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">._training_graph_compiler_ext</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">fstext</span> <span class="k">as</span> <span class="n">_fst</span>
@@ -367,6 +370,18 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">LatticeFasterDecoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fst</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fst</span> <span class="o">=</span> <span class="n">fst</span>  <span class="c1"># keep a reference to FST to keep it in scope</span></div>
 
+<div class="viewcode-block" id="LatticeFasterGrammarDecoder"><a class="viewcode-back" href="../../api/kaldi.decoder.html#kaldi.decoder.LatticeFasterGrammarDecoder">[docs]</a><span class="k">class</span> <span class="nc">LatticeFasterGrammarDecoder</span><span class="p">(</span>
+    <span class="n">_LatticeDecoderBase</span><span class="p">,</span>
+    <span class="n">_lattice_faster_decoder_ext</span><span class="o">.</span><span class="n">LatticeFasterGrammarDecoder</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Lattice generating faster grammar decoder.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fst (GrammarFst): Decoding graph `HCLG`.</span>
+<span class="sd">        opts (LatticeFasterDecoderOptions): Decoder options.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fst</span><span class="p">,</span> <span class="n">opts</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LatticeFasterGrammarDecoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fst</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fst</span> <span class="o">=</span> <span class="n">fst</span>  <span class="c1"># keep a reference to FST to keep it in scope</span></div>
 
 <div class="viewcode-block" id="LatticeBiglmFasterDecoder"><a class="viewcode-back" href="../../api/kaldi.decoder.html#kaldi.decoder.LatticeBiglmFasterDecoder">[docs]</a><span class="k">class</span> <span class="nc">LatticeBiglmFasterDecoder</span><span class="p">(</span>
     <span class="n">_LatticeDecoderBase</span><span class="p">,</span>
@@ -405,6 +420,38 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fst</span><span class="p">,</span> <span class="n">opts</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">LatticeFasterOnlineDecoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fst</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fst</span> <span class="o">=</span> <span class="n">fst</span>  <span class="c1"># keep a reference to FST to keep it in scope</span>
+
+    <span class="c1"># This method is missing from the C++ class so we implement it here.</span>
+    <span class="k">def</span> <span class="nf">_get_lattice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">use_final_probs</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">raw_fst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_raw_lattice</span><span class="p">(</span><span class="n">use_final_probs</span><span class="p">)</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span><span class="o">.</span><span class="n">arcsort</span><span class="p">()</span>
+        <span class="n">lat_opts</span> <span class="o">=</span> <span class="n">_lat</span><span class="o">.</span><span class="n">DeterminizeLatticePrunedOptions</span><span class="p">()</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_options</span><span class="p">()</span>
+        <span class="n">lat_opts</span><span class="o">.</span><span class="n">max_mem</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">det_opts</span><span class="o">.</span><span class="n">max_mem</span>
+        <span class="n">ofst</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeVectorFst</span><span class="p">()</span>
+        <span class="n">_lat</span><span class="o">.</span><span class="n">determinize_lattice_pruned</span><span class="p">(</span><span class="n">raw_fst</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">lattice_beam</span><span class="p">,</span>
+                                        <span class="n">ofst</span><span class="p">,</span> <span class="n">lat_opts</span><span class="p">)</span>
+        <span class="n">ofst</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">ofst</span><span class="o">.</span><span class="n">num_states</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Decoding failed. No tokens survived.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ofst</span></div>
+
+
+<div class="viewcode-block" id="LatticeFasterOnlineGrammarDecoder"><a class="viewcode-back" href="../../api/kaldi.decoder.html#kaldi.decoder.LatticeFasterOnlineGrammarDecoder">[docs]</a><span class="k">class</span> <span class="nc">LatticeFasterOnlineGrammarDecoder</span><span class="p">(</span>
+    <span class="n">_LatticeOnlineDecoderBase</span><span class="p">,</span>
+    <span class="n">_lattice_faster_online_decoder_ext</span><span class="o">.</span><span class="n">LatticeFasterOnlineGrammarDecoder</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Lattice generating faster online grammar decoder.</span>
+
+<span class="sd">    Similar to :class:`LatticeFasterGrammarDecoder` but computes the best path</span>
+<span class="sd">    without generating the entire raw lattice and finding the best path</span>
+<span class="sd">    through it. Instead, it traces back through the lattice.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fst (GrammarFst): Decoding graph `HCLG`.</span>
+<span class="sd">        opts (LatticeFasterDecoderOptions): Decoder options.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fst</span><span class="p">,</span> <span class="n">opts</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LatticeFasterOnlineGrammarDecoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fst</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fst</span> <span class="o">=</span> <span class="n">fst</span>  <span class="c1"># keep a reference to FST to keep it in scope</span>
 
     <span class="c1"># This method is missing from the C++ class so we implement it here.</span>
@@ -533,7 +580,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.0.9',
+            VERSION:'0.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

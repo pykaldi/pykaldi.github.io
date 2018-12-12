@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.cudamatrix &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>kaldi.cudamatrix &mdash; PyKaldi 0.1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/>
         <link rel="next" title="kaldi.decoder" href="kaldi.decoder.html"/>
         <link rel="prev" title="kaldi.chain" href="kaldi.chain.html"/> 
 
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.1.0
               </div>
             
           
@@ -249,7 +249,10 @@
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.cudamatrix.same_dim_cu_matrix" title="kaldi.cudamatrix.same_dim_cu_matrix"><code class="xref py py-obj docutils literal"><span class="pre">same_dim_cu_matrix</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.cudamatrix.trace_mat_smat" title="kaldi.cudamatrix.trace_mat_smat"><code class="xref py py-obj docutils literal"><span class="pre">trace_mat_smat</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.cudamatrix.synchronize_gpu" title="kaldi.cudamatrix.synchronize_gpu"><code class="xref py py-obj docutils literal"><span class="pre">synchronize_gpu</span></code></a></td>
+<td>Synchronizes threads.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.cudamatrix.trace_mat_smat" title="kaldi.cudamatrix.trace_mat_smat"><code class="xref py py-obj docutils literal"><span class="pre">trace_mat_smat</span></code></a></td>
 <td>If trans==kNoTrans compute Trace(A*B).</td>
 </tr>
 </tbody>
@@ -268,7 +271,7 @@
 <td>CLIF wrapper for ::<a href="#id71"><span class="problematic" id="id72">CuBlockMatrixData_</span></a></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.cudamatrix.CuDevice" title="kaldi.cudamatrix.CuDevice"><code class="xref py py-obj docutils literal"><span class="pre">CuDevice</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::CuDevice</td>
+<td>CUDA Device.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.cudamatrix.CuDoubleMatrix" title="kaldi.cudamatrix.CuDoubleMatrix"><code class="xref py py-obj docutils literal"><span class="pre">CuDoubleMatrix</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::CuMatrix&lt;double&gt;</td>
@@ -313,7 +316,7 @@
 <td>CLIF wrapper for ::kaldi::CuSubVector&lt;float&gt;</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.cudamatrix.CuTimer" title="kaldi.cudamatrix.CuTimer"><code class="xref py py-obj docutils literal"><span class="pre">CuTimer</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::CuTimer</td>
+<td>Convenience wrapper for Timer.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.cudamatrix.CuVector" title="kaldi.cudamatrix.CuVector"><code class="xref py py-obj docutils literal"><span class="pre">CuVector</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::CuVector&lt;float&gt;</td>
@@ -488,75 +491,106 @@ std::unique_ptr&lt;::kaldi::CuArray&lt;int&gt;&gt; ::kaldi::CuArray&lt;int&gt;::
 <dl class="class">
 <dt id="kaldi.cudamatrix.CuDevice">
 <em class="property">class </em><code class="descclassname">kaldi.cudamatrix.</code><code class="descname">CuDevice</code><a class="headerlink" href="#kaldi.cudamatrix.CuDevice" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::CuDevice</p>
+<dd><p>CUDA Device.</p>
+<p>This class is for initializing, selecting and querying a CUDA device.</p>
+<p>There is a separate instance of the CuDevice object for each thread of
+the program, but many of its variables are static (hence, shared between
+all instances).</p>
 <dl class="method">
-<dt id="kaldi.cudamatrix.CuDevice.active_gpu_id">
-<code class="descname">active_gpu_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.cudamatrix.CuDevice.active_gpu_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::CuDevice::ActiveGpuId()</p>
+<dt id="kaldi.cudamatrix.CuDevice.allow_multithreading">
+<code class="descname">allow_multithreading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.cudamatrix.CuDevice.allow_multithreading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables multi-threaded access to GPU.</p>
+<p>The user should call this if the program plans to access the GPU (e.g.
+via using class CuMatrix) from more than one thread. If you fail to
+call this for a multi-threaded program, it may occasionally segfault
+(and also the code will detect that you failed to call it, and will
+print a warning).</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.cudamatrix.CuDevice.check_gpu_health">
 <code class="descname">check_gpu_health</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.cudamatrix.CuDevice.check_gpu_health" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::CuDevice::CheckGpuHealth()</p>
+<dd><p>Check if GPU is in good condition.</p>
+<p>This is done by multiplying small matrices on GPU+CPU. Overheated GPUs
+may give inaccurate results, which we want to detect.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.cudamatrix.CuDevice.double_precision_supported">
 <code class="descname">double_precision_supported</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.cudamatrix.CuDevice.double_precision_supported" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::CuDevice::DoublePrecisionSupported()</p>
+<dd><p>Checks if double precision is supported.</p>
+<p>Returns true if either we have no GPU, or we have a GPU and it supports
+double precision.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.cudamatrix.CuDevice.enabled">
 <code class="descname">enabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.cudamatrix.CuDevice.enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::CuDevice::Enabled()</p>
+<dd><p>Checks if the CUDA GPU is selected for use.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.cudamatrix.CuDevice.instantiate">
 <code class="descname">instantiate</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; CuDevice<a class="headerlink" href="#kaldi.cudamatrix.CuDevice.instantiate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::CuDevice * ::kaldi::CuDevice::InstantiatePtr()</p>
+<dd><p>Instantiates a new CuDevice.</p>
+<p>You obtain the CuDevice for the current thread by calling
+<a class="reference internal" href="#kaldi.cudamatrix.CuDevice.instantiate" title="kaldi.cudamatrix.CuDevice.instantiate"><code class="xref py py-obj docutils literal"><span class="pre">CuDevice.instantiate</span></code></a>
+At the beginning of the program, if you want to use a GPU, you
+should call <code class="xref py py-obj docutils literal"><span class="pre">CuDevice.instantiate().select_gpu_id(..)</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.cudamatrix.CuDevice.is_compute_exclusive">
+<code class="descname">is_compute_exclusive</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.cudamatrix.CuDevice.is_compute_exclusive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the GPU is set to compute exclusive mode.</p>
+<p>You can set this mode, if you are root, by doing: <code class="xref py py-obj docutils literal"><span class="pre">nvidia-smi</span> <span class="pre">-c</span> <span class="pre">3</span></code>.</p>
+<p>Returns True if we have a GPU and it is running in compute exclusive
+mode.  Returns false otherwise. WILL CRASH if we are not using a GPU at
+all.  If calling this as a user (i.e. from outside the class), call
+this only if <a class="reference internal" href="#kaldi.cudamatrix.CuDevice.enabled" title="kaldi.cudamatrix.CuDevice.enabled"><code class="xref py py-meth docutils literal"><span class="pre">enabled()</span></code></a> returns True.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.cudamatrix.CuDevice.print_memory_usage">
 <code class="descname">print_memory_usage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.cudamatrix.CuDevice.print_memory_usage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::CuDevice::PrintMemoryUsage()</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.cudamatrix.CuDevice.print_profile">
-<code class="descname">print_profile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.cudamatrix.CuDevice.print_profile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::CuDevice::PrintProfile()</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="kaldi.cudamatrix.CuDevice.reset_profile">
-<code class="descname">reset_profile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.cudamatrix.CuDevice.reset_profile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::CuDevice::ResetProfile()</p>
+<dd><p>Print some memory-usage information using KALDI_LOG.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.cudamatrix.CuDevice.select_gpu_id">
 <code class="descname">select_gpu_id</code><span class="sig-paren">(</span><em>use_gpu:str</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.cudamatrix.CuDevice.select_gpu_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::CuDevice::SelectGpuId(::std::string)</p>
+<dd><p>Selects a GPU for computation.</p>
+<p>This function is supposed to be called just once, at the beginning of
+the program (from the main thread), or not at all.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>use_gpu</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – GPU use mode. One of “yes”, “optional” or “no”.
+“yes” – Select GPU automatically and die if this fails. If you
+have set the GPUs to exclusive mode it will select one
+pseudo-randomly; otherwise it will choose whichever one has the
+most free memory (but we recommend to set GPUs to exclusive mode,
+or controlling which GPU to use by setting the variable
+CUDA_VISIBLE_DEVICES to the id of the GPU you want the program to
+use. “optional” – Do as above, but if it fails, back off to CPU.
+“no” – Run on CPU.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.cudamatrix.CuDevice.set_debug_stride_mode">
 <code class="descname">set_debug_stride_mode</code><span class="sig-paren">(</span><em>mode:bool</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.cudamatrix.CuDevice.set_debug_stride_mode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::CuDevice::SetDebugStrideMode(bool)</p>
+<dd><p>Activates debug stride mode.</p>
+<p>Activates a mode where calls to MallocPitch will purposely allocate
+arrays with different pitch (inconsistent between calls). This is only
+useful for testing code. This function returns the previous mode, where
+true means inconsistent pitch. Note that you cannot ever rely on the
+strides from MallocPitch() being consistent for the same request, but
+in practice they tend to be consistent unless you are close to running
+out of memory.</p>
 </dd></dl>
 
 </dd></dl>
@@ -2732,6 +2766,13 @@ void ::kaldi::CuMatrixBase&lt;float&gt;::ApplyExp()</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kaldi.cudamatrix.CuMatrix.apply_exp_limited">
+<code class="descname">apply_exp_limited</code><span class="sig-paren">(</span><em>lower_limit:float</em>, <em>upper_limit:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.cudamatrix.CuMatrix.apply_exp_limited" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::CuMatrixBase&lt;float&gt;::ApplyExpLimited(float, float)</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kaldi.cudamatrix.CuMatrix.apply_floor">
 <code class="descname">apply_floor</code><span class="sig-paren">(</span><em>floor_val:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.cudamatrix.CuMatrix.apply_floor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
@@ -3678,6 +3719,13 @@ void ::kaldi::CuMatrixBase&lt;float&gt;::ApplyExp()</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="kaldi.cudamatrix.CuSubMatrix.apply_exp_limited">
+<code class="descname">apply_exp_limited</code><span class="sig-paren">(</span><em>lower_limit:float</em>, <em>upper_limit:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.cudamatrix.CuSubMatrix.apply_exp_limited" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::CuMatrixBase&lt;float&gt;::ApplyExpLimited(float, float)</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="kaldi.cudamatrix.CuSubMatrix.apply_floor">
 <code class="descname">apply_floor</code><span class="sig-paren">(</span><em>floor_val:float</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.cudamatrix.CuSubMatrix.apply_floor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
@@ -4396,7 +4444,10 @@ std::unique_ptr&lt;::kaldi::CuSubVector&lt;float&gt;&gt; ::kaldi::CuSubVector&lt
 <dl class="class">
 <dt id="kaldi.cudamatrix.CuTimer">
 <em class="property">class </em><code class="descclassname">kaldi.cudamatrix.</code><code class="descname">CuTimer</code><a class="headerlink" href="#kaldi.cudamatrix.CuTimer" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::CuTimer</p>
+<dd><p>Convenience wrapper for Timer.</p>
+<p>This class sets the time only if the verbose level is &gt;= 1.  This helps
+avoid an unnecessary system call if the verbose level is 0 and you won’t
+be accumulating the timing stats.</p>
 <dl class="method">
 <dt id="kaldi.cudamatrix.CuTimer.elapsed">
 <code class="descname">elapsed</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.cudamatrix.CuTimer.elapsed" title="Permalink to this definition">¶</a></dt>
@@ -4860,6 +4911,12 @@ bool ::kaldi::SameDim(::kaldi::CuMatrixBase&lt;float&gt;, ::kaldi::CuMatrixBase&
 </dd></dl>
 
 <dl class="function">
+<dt id="kaldi.cudamatrix.synchronize_gpu">
+<code class="descclassname">kaldi.cudamatrix.</code><code class="descname">synchronize_gpu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.cudamatrix.synchronize_gpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Synchronizes threads.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="kaldi.cudamatrix.trace_mat_smat">
 <code class="descclassname">kaldi.cudamatrix.</code><code class="descname">trace_mat_smat</code><span class="sig-paren">(</span><em>A:CuMatrixBase</em>, <em>B:CuSparseMatrix</em>, <em>trans:MatrixTransposeType=default</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.cudamatrix.trace_mat_smat" title="Permalink to this definition">¶</a></dt>
 <dd><p>If trans==kNoTrans compute Trace(A*B). If trans==kTrans compute Trace(A^T*B)</p>
@@ -4927,7 +4984,7 @@ bool ::kaldi::SameDim(::kaldi::CuMatrixBase&lt;float&gt;, ::kaldi::CuMatrixBase&
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.9',
+            VERSION:'0.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

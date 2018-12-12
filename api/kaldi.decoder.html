@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.decoder &mdash; PyKaldi 0.0.9 documentation</title>
+  <title>kaldi.decoder &mdash; PyKaldi 0.1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.0.9 documentation" href="../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/>
         <link rel="next" title="kaldi.feat" href="kaldi.feat.html"/>
         <link rel="prev" title="kaldi.cudamatrix" href="kaldi.cudamatrix.html"/> 
 
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.1.0
               </div>
             
           
@@ -203,6 +203,21 @@
             
   <div class="section" id="module-kaldi.decoder">
 <span id="kaldi-decoder"></span><h1>kaldi.decoder<a class="headerlink" href="#module-kaldi.decoder" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.grammar_to_vector_fst" title="kaldi.decoder.grammar_to_vector_fst"><code class="xref py py-obj docutils literal"><span class="pre">grammar_to_vector_fst</span></code></a></td>
+<td>Converts a GrammarFST to a StdVectorFst.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.prepare_for_grammar_fst" title="kaldi.decoder.prepare_for_grammar_fst"><code class="xref py py-obj docutils literal"><span class="pre">prepare_for_grammar_fst</span></code></a></td>
+<td>Prepares input FST for use in GrammarFST.</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Classes</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -219,26 +234,38 @@
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.DecodableMapped" title="kaldi.decoder.DecodableMapped"><code class="xref py py-obj docutils literal"><span class="pre">DecodableMapped</span></code></a></td>
 <td>Decodable for mapping the indices of another decodable object.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.DecodableMatrixMappedOffset" title="kaldi.decoder.DecodableMatrixMappedOffset"><code class="xref py py-obj docutils literal"><span class="pre">DecodableMatrixMappedOffset</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.DecodableMatrixMapped" title="kaldi.decoder.DecodableMatrixMapped"><code class="xref py py-obj docutils literal"><span class="pre">DecodableMatrixMapped</span></code></a></td>
 <td>Decodable returning mapped log-likelihoods from a matrix.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.DecodableMatrixScaled" title="kaldi.decoder.DecodableMatrixScaled"><code class="xref py py-obj docutils literal"><span class="pre">DecodableMatrixScaled</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.DecodableMatrixMappedOffset" title="kaldi.decoder.DecodableMatrixMappedOffset"><code class="xref py py-obj docutils literal"><span class="pre">DecodableMatrixMappedOffset</span></code></a></td>
+<td>Decodable returning mapped log-likelihoods from a matrix.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.DecodableMatrixScaled" title="kaldi.decoder.DecodableMatrixScaled"><code class="xref py py-obj docutils literal"><span class="pre">DecodableMatrixScaled</span></code></a></td>
 <td>Decodable returning log-likelihoods from a matrix.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.DecodableMatrixScaledMapped" title="kaldi.decoder.DecodableMatrixScaledMapped"><code class="xref py py-obj docutils literal"><span class="pre">DecodableMatrixScaledMapped</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.DecodableMatrixScaledMapped" title="kaldi.decoder.DecodableMatrixScaledMapped"><code class="xref py py-obj docutils literal"><span class="pre">DecodableMatrixScaledMapped</span></code></a></td>
 <td>Decodable scaling and returning mapped log-likelihoods from a matrix.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.DecodableSum" title="kaldi.decoder.DecodableSum"><code class="xref py py-obj docutils literal"><span class="pre">DecodableSum</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.DecodableSum" title="kaldi.decoder.DecodableSum"><code class="xref py py-obj docutils literal"><span class="pre">DecodableSum</span></code></a></td>
 <td>Decodable for summing scores of other decodable objects.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.DecodableSumScaled" title="kaldi.decoder.DecodableSumScaled"><code class="xref py py-obj docutils literal"><span class="pre">DecodableSumScaled</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.DecodableSumScaled" title="kaldi.decoder.DecodableSumScaled"><code class="xref py py-obj docutils literal"><span class="pre">DecodableSumScaled</span></code></a></td>
 <td>Decodable for summing and scaling scores of other decodable objects.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.FasterDecoder" title="kaldi.decoder.FasterDecoder"><code class="xref py py-obj docutils literal"><span class="pre">FasterDecoder</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.FasterDecoder" title="kaldi.decoder.FasterDecoder"><code class="xref py py-obj docutils literal"><span class="pre">FasterDecoder</span></code></a></td>
 <td>Faster decoder.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.FasterDecoderOptions" title="kaldi.decoder.FasterDecoderOptions"><code class="xref py py-obj docutils literal"><span class="pre">FasterDecoderOptions</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.FasterDecoderOptions" title="kaldi.decoder.FasterDecoderOptions"><code class="xref py py-obj docutils literal"><span class="pre">FasterDecoderOptions</span></code></a></td>
 <td>Options for <a class="reference internal" href="#kaldi.decoder.FasterDecoder" title="kaldi.decoder.FasterDecoder"><code class="xref py py-class docutils literal"><span class="pre">FasterDecoder</span></code></a>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.GrammarFst" title="kaldi.decoder.GrammarFst"><code class="xref py py-obj docutils literal"><span class="pre">GrammarFst</span></code></a></td>
+<td>Grammar FST.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.GrammarFstArc" title="kaldi.decoder.GrammarFstArc"><code class="xref py py-obj docutils literal"><span class="pre">GrammarFstArc</span></code></a></td>
+<td>Grammar FST arc.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.GrammarFstArcIterator" title="kaldi.decoder.GrammarFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">GrammarFstArcIterator</span></code></a></td>
+<td>Grammar FST arc iterator.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.LatticeBiglmFasterDecoder" title="kaldi.decoder.LatticeBiglmFasterDecoder"><code class="xref py py-obj docutils literal"><span class="pre">LatticeBiglmFasterDecoder</span></code></a></td>
 <td>Lattice generating faster decoder for decoding with big language models.</td>
@@ -249,8 +276,14 @@
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.LatticeFasterDecoderOptions" title="kaldi.decoder.LatticeFasterDecoderOptions"><code class="xref py py-obj docutils literal"><span class="pre">LatticeFasterDecoderOptions</span></code></a></td>
 <td>Options for <a class="reference internal" href="#kaldi.decoder.LatticeFasterDecoder" title="kaldi.decoder.LatticeFasterDecoder"><code class="xref py py-class docutils literal"><span class="pre">LatticeFasterDecoder</span></code></a>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineDecoder" title="kaldi.decoder.LatticeFasterOnlineDecoder"><code class="xref py py-obj docutils literal"><span class="pre">LatticeFasterOnlineDecoder</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.LatticeFasterGrammarDecoder" title="kaldi.decoder.LatticeFasterGrammarDecoder"><code class="xref py py-obj docutils literal"><span class="pre">LatticeFasterGrammarDecoder</span></code></a></td>
+<td>Lattice generating faster grammar decoder.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineDecoder" title="kaldi.decoder.LatticeFasterOnlineDecoder"><code class="xref py py-obj docutils literal"><span class="pre">LatticeFasterOnlineDecoder</span></code></a></td>
 <td>Lattice generating faster online decoder.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder" title="kaldi.decoder.LatticeFasterOnlineGrammarDecoder"><code class="xref py py-obj docutils literal"><span class="pre">LatticeFasterOnlineGrammarDecoder</span></code></a></td>
+<td>Lattice generating faster online grammar decoder.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.decoder.TrainingGraphCompiler" title="kaldi.decoder.TrainingGraphCompiler"><code class="xref py py-obj docutils literal"><span class="pre">TrainingGraphCompiler</span></code></a></td>
 <td>Training graph compiler.</td>
@@ -447,6 +480,51 @@ Typically a command-line option parser.</li>
 <dl class="method">
 <dt id="kaldi.decoder.DecodableMapped.num_indices">
 <code class="descname">num_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.decoder.DecodableMapped.num_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of indices.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.decoder.DecodableMatrixMapped">
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">DecodableMatrixMapped</code><span class="sig-paren">(</span><em>tm</em>, <em>likes</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.DecodableMatrixMapped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodable returning mapped log-likelihoods from a matrix.</p>
+<p>This decodable maps transition IDs to PDF IDs when queried.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>tm</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – The transition model for mapping transition IDs
+to PDF IDs.</li>
+<li><strong>likes</strong> (<a class="reference internal" href="kaldi.matrix.html#kaldi.matrix.Matrix" title="kaldi.matrix.Matrix"><em>Matrix</em></a>) – The matrix of log-likelihoods.</li>
+<li><strong>frame_offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Frame offset into the log-likelihoods matrix.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.decoder.DecodableMatrixMapped.is_last_frame">
+<code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.decoder.DecodableMatrixMapped.is_last_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if given frame is the last frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.DecodableMatrixMapped.log_likelihood">
+<code class="descname">log_likelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>tid:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.decoder.DecodableMatrixMapped.log_likelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log-likehood of the transition ID for the given frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.DecodableMatrixMapped.num_frames_ready">
+<code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.decoder.DecodableMatrixMapped.num_frames_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of frames ready for decoding.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.DecodableMatrixMapped.num_indices">
+<code class="descname">num_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.decoder.DecodableMatrixMapped.num_indices" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns number of indices.</p>
 </dd></dl>
 
@@ -934,6 +1012,170 @@ Typically a command-line option parser.</li>
 </dd></dl>
 
 <dl class="class">
+<dt id="kaldi.decoder.GrammarFst">
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">GrammarFst</code><a class="headerlink" href="#kaldi.decoder.GrammarFst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grammar FST.</p>
+<dl class="method">
+<dt id="kaldi.decoder.GrammarFst.final">
+<code class="descname">final</code><span class="sig-paren">(</span><em>state:int</em><span class="sig-paren">)</span> &#x2192; TropicalWeight<a class="headerlink" href="#kaldi.decoder.GrammarFst.final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final weight of the given state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.GrammarFst.from_fsts">
+<code class="descname">from_fsts</code><span class="sig-paren">(</span><em>top_fst:StdConstFst</em>, <em>ifsts:list&lt;tuple&lt;int</em>, <em>StdConstFst&gt;&gt;</em>, <em>nonterm_phones_offset:int</em><span class="sig-paren">)</span> &#x2192; GrammarFst<a class="headerlink" href="#kaldi.decoder.GrammarFst.from_fsts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new grammar FST from input FSTs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>top_fst</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdConstFst" title="kaldi.fstext.StdConstFst"><em>StdConstFst</em></a>) – The top-level FST of the grammar.</li>
+<li><strong>ifsts</strong> (<em>List</em><em>[</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>,</em><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.StdConstFst" title="kaldi.fstext.StdConstFst"><em>StdConstFst</em></a><em>]</em><em>]</em>) – The list of (non-terminal
+symbol, decoding graph) pairs.</li>
+<li><strong>nonterm_phones_offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The integer index of the first
+non-terminal symbol.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.GrammarFst.num_input_epsilons">
+<code class="descname">num_input_epsilons</code><span class="sig-paren">(</span><em>state:int</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.decoder.GrammarFst.num_input_epsilons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns number of input epsilon arcs originating from given state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.GrammarFst.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>is:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.GrammarFst.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads object from input stream.</p>
+<p>Supports only binary mode.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.GrammarFst.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.decoder.GrammarFst.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the start state index.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.GrammarFst.type">
+<code class="descname">type</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#kaldi.decoder.GrammarFst.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the FST type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.GrammarFst.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>os:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.GrammarFst.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes object to output stream.</p>
+<p>Supports only binary mode.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.decoder.GrammarFstArc">
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">GrammarFstArc</code><a class="headerlink" href="#kaldi.decoder.GrammarFstArc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grammar FST arc.</p>
+<p>Attributes of the arc can be accessed and mutated.</p>
+<dl class="docutils">
+<dt>GrammarFstArc():</dt>
+<dd>Creates an uninitialized GrammarFstArc.</dd>
+</dl>
+<dl class="method">
+<dt id="kaldi.decoder.GrammarFstArc.from_attrs">
+<code class="descname">from_attrs</code><span class="sig-paren">(</span><em>ilabel:int</em>, <em>olabel:int</em>, <em>weight:TropicalWeight</em>, <em>nextstate:int</em><span class="sig-paren">)</span> &#x2192; GrammarFstArc<a class="headerlink" href="#kaldi.decoder.GrammarFstArc.from_attrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new arc with the given attributes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The input label.</li>
+<li><strong>olabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The output label.</li>
+<li><strong>weight</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.TropicalWeight" title="kaldi.fstext.TropicalWeight"><em>TropicalWeight</em></a>) – The arc weight.</li>
+<li><strong>nextstate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The destination state for the arc.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.decoder.GrammarFstArc.ilabel">
+<code class="descname">ilabel</code><a class="headerlink" href="#kaldi.decoder.GrammarFstArc.ilabel" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – The input label.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.decoder.GrammarFstArc.nextstate">
+<code class="descname">nextstate</code><a class="headerlink" href="#kaldi.decoder.GrammarFstArc.nextstate" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – The destination state for the arc.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.decoder.GrammarFstArc.olabel">
+<code class="descname">olabel</code><a class="headerlink" href="#kaldi.decoder.GrammarFstArc.olabel" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – The output label.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.decoder.GrammarFstArc.weight">
+<code class="descname">weight</code><a class="headerlink" href="#kaldi.decoder.GrammarFstArc.weight" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>TropicalWeight</em> – The arc weight.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.decoder.GrammarFstArcIterator">
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">GrammarFstArcIterator</code><a class="headerlink" href="#kaldi.decoder.GrammarFstArcIterator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grammar FST arc iterator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fst</strong> – The grammar fst.</li>
+<li><strong>state</strong> – The state index.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.decoder.GrammarFstArcIterator.done">
+<code class="descname">done</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.decoder.GrammarFstArcIterator.done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether the iterator is exhausted or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the iterator is exhausted, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.GrammarFstArcIterator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.GrammarFstArcIterator.next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advances the iterator.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.GrammarFstArcIterator.value">
+<code class="descname">value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; GrammarFstArc<a class="headerlink" href="#kaldi.decoder.GrammarFstArcIterator.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current arc.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="kaldi.decoder.LatticeBiglmFasterDecoder">
 <em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeBiglmFasterDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em>, <em>lm_diff_fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#LatticeBiglmFasterDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeBiglmFasterDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice generating faster decoder for decoding with big language models.</p>
@@ -1382,6 +1624,231 @@ Typically a command-line option parser.</td>
 </dd></dl>
 
 <dl class="class">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder">
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeFasterGrammarDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#LatticeFasterGrammarDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lattice generating faster grammar decoder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fst</strong> (<a class="reference internal" href="#kaldi.decoder.GrammarFst" title="kaldi.decoder.GrammarFst"><em>GrammarFst</em></a>) – Decoding graph <code class="xref py py-obj docutils literal"><span class="pre">HCLG</span></code>.</li>
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.decoder.LatticeFasterDecoderOptions" title="kaldi.decoder.LatticeFasterDecoderOptions"><em>LatticeFasterDecoderOptions</em></a>) – Decoder options.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.advance_decoding">
+<code class="descname">advance_decoding</code><span class="sig-paren">(</span><em>decodable:DecodableInterface</em>, <em>max_num_frames:int=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.advance_decoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advances decoding.</p>
+<p>This will decode until there are no more frames ready in the decodable
+object, but if <code class="xref py py-obj docutils literal"><span class="pre">max_num_frames</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> it will decode no more than that
+many frames.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</li>
+<li><strong>max_num_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Max number of frames to decode. Defaults to
+<code class="docutils literal"><span class="pre">-1</span></code> which means decode all available frames.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>decodable:DecodableInterface</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes all available frames in the decodable object.</p>
+<p>This may block waiting for input if the <code class="xref py py-obj docutils literal"><span class="pre">decodable</span></code> object blocks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if any kind of traceback is available (not necessarily from a
+final state).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.final_relative_cost">
+<code class="descname">final_relative_cost</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.final_relative_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the final relative cost.</p>
+<p>This method serves the same purpose as <a class="reference internal" href="#kaldi.decoder.LatticeFasterGrammarDecoder.reached_final" title="kaldi.decoder.LatticeFasterGrammarDecoder.reached_final"><code class="xref py py-meth docutils literal"><span class="pre">reached_final()</span></code></a>, but gives
+more information. It returns the difference between the best
+(final-cost plus cost) of any token on the final frame, and the best
+cost of any token on the final frame. If it is infinity it means no
+final-states were present on the final frame. It will usually be
+nonnegative. If it not too positive (e.g. &lt; 5) you can take it as an
+indication that we reached the final-state with reasonable likelihood.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The final relative cost.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.finalize_decoding">
+<code class="descname">finalize_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.finalize_decoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finalizes decoding.</p>
+<p>This function may be optionally called after the last call to
+<a class="reference internal" href="#kaldi.decoder.LatticeFasterGrammarDecoder.advance_decoding" title="kaldi.decoder.LatticeFasterGrammarDecoder.advance_decoding"><code class="xref py py-meth docutils literal"><span class="pre">advance_decoding()</span></code></a>. It does an extra pruning step to prune the
+lattices output by <a class="reference internal" href="#kaldi.decoder.LatticeFasterGrammarDecoder.get_lattice" title="kaldi.decoder.LatticeFasterGrammarDecoder.get_lattice"><code class="xref py py-meth docutils literal"><span class="pre">get_lattice()</span></code></a> and <a class="reference internal" href="#kaldi.decoder.LatticeFasterGrammarDecoder.get_raw_lattice" title="kaldi.decoder.LatticeFasterGrammarDecoder.get_raw_lattice"><code class="xref py py-meth docutils literal"><span class="pre">get_raw_lattice()</span></code></a>.
+more accurately.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.get_best_path">
+<code class="descname">get_best_path</code><span class="sig-paren">(</span><em>use_final_probs=True</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.get_best_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets best path as a lattice.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>use_final_probs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code> and a final state of the graph
+is reached, then the output will include final probabilities
+given by the graph. Otherwise all final probabilities are
+treated as one.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The best path.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst">LatticeVectorFst</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – In the unusual circumstances where no tokens survive.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.get_lattice">
+<code class="descname">get_lattice</code><span class="sig-paren">(</span><em>use_final_probs=True</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.get_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the lattice-determinized compact lattice.</p>
+<p>The output is a deterministic compact lattice with a unique path for
+each word sequence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>use_final_probs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code> and a final state of the graph
+is reached, then the output will include final probabilities
+given by the graph. Otherwise all final probabilities are
+treated as one.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The lattice-determinized compact lattice.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst">CompactLatticeVectorFst</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – In the unusual circumstances where no tokens survive.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.get_options">
+<code class="descname">get_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; LatticeFasterDecoderOptions<a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.get_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets decoder options.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The decoder options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.get_raw_lattice">
+<code class="descname">get_raw_lattice</code><span class="sig-paren">(</span><em>use_final_probs=True</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.get_raw_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets raw state-level lattice.</p>
+<p>The output raw lattice will be topologically sorted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>use_final_probs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code> and a final state of the graph
+is reached, then the output will include final probabilities
+given by the graph. Otherwise all final probabilities are
+treated as one.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The state-level lattice.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst">LatticeVectorFst</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – In the unusual circumstances where no tokens survive.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.init_decoding">
+<code class="descname">init_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.init_decoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes decoding.</p>
+<p>As an alternative to <a class="reference internal" href="#kaldi.decoder.LatticeFasterGrammarDecoder.decode" title="kaldi.decoder.LatticeFasterGrammarDecoder.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a>, you can call <a class="reference internal" href="#kaldi.decoder.LatticeFasterGrammarDecoder.init_decoding" title="kaldi.decoder.LatticeFasterGrammarDecoder.init_decoding"><code class="xref py py-meth docutils literal"><span class="pre">init_decoding()</span></code></a>
+and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterGrammarDecoder.advance_decoding" title="kaldi.decoder.LatticeFasterGrammarDecoder.advance_decoding"><code class="xref py py-meth docutils literal"><span class="pre">advance_decoding()</span></code></a> (possibly multiple times).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.num_frames_decoded">
+<code class="descname">num_frames_decoded</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.num_frames_decoded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the number of frames already decoded.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The number of frames already decoded.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.reached_final">
+<code class="descname">reached_final</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.reached_final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a final state was active on the last decoded frame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if a final state was active on the last decoded frame.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterGrammarDecoder.set_options">
+<code class="descname">set_options</code><span class="sig-paren">(</span><em>opts:LatticeFasterDecoderOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder.set_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets decoder options.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.decoder.LatticeFasterDecoderOptions" title="kaldi.decoder.LatticeFasterDecoderOptions"><em>LatticeFasterDecoderOptions</em></a>) – Decoder options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="kaldi.decoder.LatticeFasterOnlineDecoder">
 <em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeFasterOnlineDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#LatticeFasterOnlineDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice generating faster online decoder.</p>
@@ -1646,6 +2113,270 @@ and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterOn
 </dd></dl>
 
 <dl class="class">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder">
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeFasterOnlineGrammarDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#LatticeFasterOnlineGrammarDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lattice generating faster online grammar decoder.</p>
+<p>Similar to <a class="reference internal" href="#kaldi.decoder.LatticeFasterGrammarDecoder" title="kaldi.decoder.LatticeFasterGrammarDecoder"><code class="xref py py-class docutils literal"><span class="pre">LatticeFasterGrammarDecoder</span></code></a> but computes the best path
+without generating the entire raw lattice and finding the best path
+through it. Instead, it traces back through the lattice.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fst</strong> (<a class="reference internal" href="#kaldi.decoder.GrammarFst" title="kaldi.decoder.GrammarFst"><em>GrammarFst</em></a>) – Decoding graph <code class="xref py py-obj docutils literal"><span class="pre">HCLG</span></code>.</li>
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.decoder.LatticeFasterDecoderOptions" title="kaldi.decoder.LatticeFasterDecoderOptions"><em>LatticeFasterDecoderOptions</em></a>) – Decoder options.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.advance_decoding">
+<code class="descname">advance_decoding</code><span class="sig-paren">(</span><em>decodable:DecodableInterface</em>, <em>max_num_frames:int=default</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.advance_decoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advances decoding.</p>
+<p>This will decode until there are no more frames ready in the decodable
+object, but if <code class="xref py py-obj docutils literal"><span class="pre">max_num_frames</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> it will decode no more than that
+many frames.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</li>
+<li><strong>max_num_frames</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Max number of frames to decode. Defaults to
+<code class="docutils literal"><span class="pre">-1</span></code> which means decode all available frames.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>decodable:DecodableInterface</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes all available frames in the decodable object.</p>
+<p>This may block waiting for input if the <code class="xref py py-obj docutils literal"><span class="pre">decodable</span></code> object blocks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>decodable</strong> (<em>DecodableInterface</em>) – The decodable object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if any kind of traceback is available (not necessarily from a
+final state).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.final_relative_cost">
+<code class="descname">final_relative_cost</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.final_relative_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the final relative cost.</p>
+<p>This method serves the same purpose as <a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.reached_final" title="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.reached_final"><code class="xref py py-meth docutils literal"><span class="pre">reached_final()</span></code></a>, but gives
+more information. It returns the difference between the best
+(final-cost plus cost) of any token on the final frame, and the best
+cost of any token on the final frame. If it is infinity it means no
+final-states were present on the final frame. It will usually be
+nonnegative. If it not too positive (e.g. &lt; 5) you can take it as an
+indication that we reached the final-state with reasonable likelihood.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The final relative cost.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.finalize_decoding">
+<code class="descname">finalize_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.finalize_decoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finalizes decoding.</p>
+<p>This function may be optionally called after the last call to
+<a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.advance_decoding" title="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.advance_decoding"><code class="xref py py-meth docutils literal"><span class="pre">advance_decoding()</span></code></a>. It does an extra pruning step to prune the
+lattices output by <a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_lattice" title="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_lattice"><code class="xref py py-meth docutils literal"><span class="pre">get_lattice()</span></code></a> and <a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice" title="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice"><code class="xref py py-meth docutils literal"><span class="pre">get_raw_lattice()</span></code></a>.
+more accurately.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_best_path">
+<code class="descname">get_best_path</code><span class="sig-paren">(</span><em>use_final_probs=True</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_best_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets best path as a lattice.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>use_final_probs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code> and a final state of the graph
+is reached, then the output will include final probabilities
+given by the graph. Otherwise all final probabilities are
+treated as one.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The best path.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst">LatticeVectorFst</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – In the unusual circumstances where no tokens survive.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_lattice">
+<code class="descname">get_lattice</code><span class="sig-paren">(</span><em>use_final_probs=True</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the lattice-determinized compact lattice.</p>
+<p>The output is a deterministic compact lattice with a unique path for
+each word sequence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>use_final_probs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code> and a final state of the graph
+is reached, then the output will include final probabilities
+given by the graph. Otherwise all final probabilities are
+treated as one.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The lattice-determinized compact lattice.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst">CompactLatticeVectorFst</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – In the unusual circumstances where no tokens survive.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_options">
+<code class="descname">get_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; LatticeFasterDecoderOptions<a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets decoder options.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The decoder options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice">
+<code class="descname">get_raw_lattice</code><span class="sig-paren">(</span><em>use_final_probs=True</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets raw state-level lattice.</p>
+<p>The output raw lattice will be topologically sorted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>use_final_probs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code> and a final state of the graph
+is reached, then the output will include final probabilities
+given by the graph. Otherwise all final probabilities are
+treated as one.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The state-level lattice.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst">LatticeVectorFst</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – In the unusual circumstances where no tokens survive.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice_pruned">
+<code class="descname">get_raw_lattice_pruned</code><span class="sig-paren">(</span><em>beam</em>, <em>use_final_probs=True</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice_pruned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prunes and returns raw state-level lattice.</p>
+<p>Behaves like <a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice" title="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice"><code class="xref py py-meth docutils literal"><span class="pre">get_raw_lattice()</span></code></a> but only processes tokens whose
+extra-cost is smaller than the best-cost plus the specified beam. It is
+worthwhile to call this function only if <code class="xref py py-attr docutils literal"><span class="pre">beam</span></code> is less than the
+lattice-beam specified in the decoder options. Otherwise, it returns
+essentially the same thing as <a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice" title="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.get_raw_lattice"><code class="xref py py-meth docutils literal"><span class="pre">get_raw_lattice()</span></code></a>, but more slowly.</p>
+<p>The output raw lattice will be topologically sorted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Pruning beam.</li>
+<li><strong>use_final_probs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code> and a final state of the graph
+is reached, then the output will include final probabilities
+given by the graph. Otherwise all final probabilities are
+treated as one.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The state-level lattice.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst">LatticeVectorFst</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – In the unusual circumstances where no tokens survive.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.init_decoding">
+<code class="descname">init_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.init_decoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes decoding.</p>
+<p>As an alternative to <a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.decode" title="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.decode"><code class="xref py py-meth docutils literal"><span class="pre">decode()</span></code></a>, you can call <a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.init_decoding" title="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.init_decoding"><code class="xref py py-meth docutils literal"><span class="pre">init_decoding()</span></code></a>
+and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.advance_decoding" title="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.advance_decoding"><code class="xref py py-meth docutils literal"><span class="pre">advance_decoding()</span></code></a> (possibly multiple times).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.num_frames_decoded">
+<code class="descname">num_frames_decoded</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.num_frames_decoded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the number of frames already decoded.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The number of frames already decoded.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.reached_final">
+<code class="descname">reached_final</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.reached_final" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a final state was active on the last decoded frame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if a final state was active on the last decoded frame.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder.set_options">
+<code class="descname">set_options</code><span class="sig-paren">(</span><em>opts:LatticeFasterDecoderOptions</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder.set_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets decoder options.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<a class="reference internal" href="#kaldi.decoder.LatticeFasterDecoderOptions" title="kaldi.decoder.LatticeFasterDecoderOptions"><em>LatticeFasterDecoderOptions</em></a>) – Decoder options.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="kaldi.decoder.TrainingGraphCompiler">
 <em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">TrainingGraphCompiler</code><span class="sig-paren">(</span><em>trans_model</em>, <em>ctx_dep</em>, <em>lex_fst</em>, <em>disambig_syms</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#TrainingGraphCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.TrainingGraphCompiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Training graph compiler.</p>
@@ -1784,6 +2515,18 @@ Typically a command-line option parser.</td>
 
 </dd></dl>
 
+<dl class="function">
+<dt id="kaldi.decoder.grammar_to_vector_fst">
+<code class="descclassname">kaldi.decoder.</code><code class="descname">grammar_to_vector_fst</code><span class="sig-paren">(</span><em>grammar_fst:GrammarFst</em><span class="sig-paren">)</span> &#x2192; StdVectorFst<a class="headerlink" href="#kaldi.decoder.grammar_to_vector_fst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a GrammarFST to a StdVectorFst.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.decoder.prepare_for_grammar_fst">
+<code class="descclassname">kaldi.decoder.</code><code class="descname">prepare_for_grammar_fst</code><span class="sig-paren">(</span><em>nonterm_phones_offset:int</em>, <em>fst:StdVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.decoder.prepare_for_grammar_fst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares input FST for use in GrammarFST.</p>
+</dd></dl>
+
 </div>
 
 
@@ -1830,7 +2573,7 @@ Typically a command-line option parser.</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.9',
+            VERSION:'0.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
