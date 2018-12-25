@@ -237,6 +237,12 @@ this module cover only the most “typical” combinations.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.asr.LatticeFasterRecognizer" title="kaldi.asr.LatticeFasterRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">LatticeFasterRecognizer</span></code></a>(decoder[,&nbsp;symbols,&nbsp;…])</td>
 <td>Lattice-generating faster speech recognizer.</td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.asr.LatticeLmRescorer" title="kaldi.asr.LatticeLmRescorer"><code class="xref py py-obj docutils literal"><span class="pre">LatticeLmRescorer</span></code></a>(old_lm,&nbsp;new_lm[,&nbsp;phi_label])</td>
+<td>Lattice LM rescorer.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">LatticeRnnlmPrunedRescorer</span></code>(old_lm,&nbsp;…[,&nbsp;…])</td>
+<td>Lattice RNNLM rescorer.</td>
+</tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.asr.MappedFasterRecognizer" title="kaldi.asr.MappedFasterRecognizer"><code class="xref py py-obj docutils literal"><span class="pre">MappedFasterRecognizer</span></code></a>(transition_model,&nbsp;decoder)</td>
 <td>Mapped faster speech recognizer.</td>
 </tr>
@@ -3812,6 +3818,73 @@ want to start with a new utterance.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input_pipeline</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Input pipeline to decode online.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.asr.LatticeLmRescorer">
+<em class="property">class </em><code class="descclassname">kaldi.asr.</code><code class="descname">LatticeLmRescorer</code><span class="sig-paren">(</span><em>old_lm</em>, <em>new_lm</em>, <em>phi_label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeLmRescorer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeLmRescorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lattice LM rescorer.</p>
+<p>If <code class="xref py py-obj docutils literal"><span class="pre">phi_label</span></code> is provided, rescoring will be “exact” in the sense that
+back-off arcs in the new LM will only be taken if there are no other
+matching arcs. Inexact rescoring can overestimate the new LM scores for some
+paths in the output lattice. This happens when back-off paths have higher
+scores than matching regular paths in the new LM.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>old_lm</strong> (<em>StdFst</em>) – Old language model FST.</li>
+<li><strong>new_lm</strong> (<em>StdFst</em>) – New language model FST.</li>
+<li><strong>phi_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Back-off label in the new LM.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="kaldi.asr.LatticeLmRescorer.from_files">
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>old_lm_rxfilename</em>, <em>new_lm_rxfilename</em>, <em>phi_label=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeLmRescorer.from_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeLmRescorer.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new lattice LM rescorer from given files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>old_lm_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the old LM.</li>
+<li><strong>new_lm_rxfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Extended filename for reading the new LM.</li>
+<li><strong>phi_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Back-off label in the new LM.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new lattice LM rescorer.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">LatticeRescorer</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.asr.LatticeLmRescorer.rescore">
+<code class="descname">rescore</code><span class="sig-paren">(</span><em>lat</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/asr.html#LatticeLmRescorer.rescore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.asr.LatticeLmRescorer.rescore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rescores input lattice.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lat</strong> (<em>CompactLatticeFst</em>) – Input lattice.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Rescored lattice.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst">CompactLatticeVectorFst</a></td>
 </tr>
 </tbody>
 </table>

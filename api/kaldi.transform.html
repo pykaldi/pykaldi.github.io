@@ -251,13 +251,13 @@
 <dl class="attribute">
 <dt id="kaldi.transform.AffineXformStats.G_">
 <code class="descname">G_</code><a class="headerlink" href="#kaldi.transform.AffineXformStats.G_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt; <a href="#id61"><span class="problematic" id="id62">AffineXformStats.G_</span></a></p>
+<dd><p>C++ ::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt; <a href="#id63"><span class="problematic" id="id64">AffineXformStats.G_</span></a></p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.transform.AffineXformStats.K_">
 <code class="descname">K_</code><a class="headerlink" href="#kaldi.transform.AffineXformStats.K_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::Matrix&lt;double&gt; <a href="#id63"><span class="problematic" id="id64">AffineXformStats.K_</span></a></p>
+<dd><p>C++ ::kaldi::Matrix&lt;double&gt; <a href="#id65"><span class="problematic" id="id66">AffineXformStats.K_</span></a></p>
 </dd></dl>
 
 <dl class="method">
@@ -270,7 +270,7 @@ void ::kaldi::AffineXformStats::Add(::kaldi::AffineXformStats)</p>
 <dl class="attribute">
 <dt id="kaldi.transform.AffineXformStats.beta_">
 <code class="descname">beta_</code><a class="headerlink" href="#kaldi.transform.AffineXformStats.beta_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ double <a href="#id65"><span class="problematic" id="id66">AffineXformStats.beta_</span></a></p>
+<dd><p>C++ double <a href="#id67"><span class="problematic" id="id68">AffineXformStats.beta_</span></a></p>
 </dd></dl>
 
 <dl class="method">
@@ -290,7 +290,7 @@ int ::kaldi::AffineXformStats::Dim()</p>
 <dl class="attribute">
 <dt id="kaldi.transform.AffineXformStats.dim_">
 <code class="descname">dim_</code><a class="headerlink" href="#kaldi.transform.AffineXformStats.dim_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 <a href="#id67"><span class="problematic" id="id68">AffineXformStats.dim_</span></a></p>
+<dd><p>C++ ::int32 <a href="#id69"><span class="problematic" id="id70">AffineXformStats.dim_</span></a></p>
 </dd></dl>
 
 <dl class="method">
@@ -1104,7 +1104,10 @@ void ::kaldi::LinearVtln::Write(::std::basic_ostream&lt;char, ::std::char_traits
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.fmllr_auxf_gradient" title="kaldi.transform.mllr.fmllr_auxf_gradient"><code class="xref py py-obj docutils literal"><span class="pre">fmllr_auxf_gradient</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.init_fmllr" title="kaldi.transform.mllr.init_fmllr"><code class="xref py py-obj docutils literal"><span class="pre">init_fmllr</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.transform.mllr.fmllr_inner_update" title="kaldi.transform.mllr.fmllr_inner_update"><code class="xref py py-obj docutils literal"><span class="pre">fmllr_inner_update</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.transform.mllr.init_fmllr" title="kaldi.transform.mllr.init_fmllr"><code class="xref py py-obj docutils literal"><span class="pre">init_fmllr</span></code></a></td>
 <td>Calls C++ function</td>
 </tr>
 </tbody>
@@ -1177,13 +1180,13 @@ void ::kaldi::BasisFmllrAccus::AccuGradientScatter(::kaldi::AffineXformStats)</p
 <dl class="attribute">
 <dt id="kaldi.transform.mllr.BasisFmllrAccus.beta_">
 <code class="descname">beta_</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus.beta_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ double <a href="#id69"><span class="problematic" id="id70">BasisFmllrAccus.beta_</span></a></p>
+<dd><p>C++ double <a href="#id71"><span class="problematic" id="id72">BasisFmllrAccus.beta_</span></a></p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.transform.mllr.BasisFmllrAccus.dim_">
 <code class="descname">dim_</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus.dim_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 <a href="#id71"><span class="problematic" id="id72">BasisFmllrAccus.dim_</span></a></p>
+<dd><p>C++ ::int32 <a href="#id73"><span class="problematic" id="id74">BasisFmllrAccus.dim_</span></a></p>
 </dd></dl>
 
 <dl class="method">
@@ -1196,7 +1199,7 @@ std::unique_ptr&lt;::kaldi::BasisFmllrAccus&gt; ::kaldi::BasisFmllrAccus::BasisF
 <dl class="attribute">
 <dt id="kaldi.transform.mllr.BasisFmllrAccus.grad_scatter_">
 <code class="descname">grad_scatter_</code><a class="headerlink" href="#kaldi.transform.mllr.BasisFmllrAccus.grad_scatter_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::SpMatrix&lt; ::kaldi::BaseFloat&gt; <a href="#id73"><span class="problematic" id="id74">BasisFmllrAccus.grad_scatter_</span></a></p>
+<dd><p>C++ ::kaldi::SpMatrix&lt; ::kaldi::BaseFloat&gt; <a href="#id75"><span class="problematic" id="id76">BasisFmllrAccus.grad_scatter_</span></a></p>
 </dd></dl>
 
 <dl class="method">
@@ -1394,13 +1397,13 @@ void ::kaldi::BasisFmllrOptions::Register(::kaldi::OptionsItf <a href="#id31"><s
 <dl class="attribute">
 <dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.G_">
 <code class="descname">G_</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.G_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt; <a href="#id75"><span class="problematic" id="id76">AffineXformStats.G_</span></a></p>
+<dd><p>C++ ::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt; <a href="#id77"><span class="problematic" id="id78">AffineXformStats.G_</span></a></p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.K_">
 <code class="descname">K_</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.K_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::Matrix&lt;double&gt; <a href="#id77"><span class="problematic" id="id78">AffineXformStats.K_</span></a></p>
+<dd><p>C++ ::kaldi::Matrix&lt;double&gt; <a href="#id79"><span class="problematic" id="id80">AffineXformStats.K_</span></a></p>
 </dd></dl>
 
 <dl class="method">
@@ -1441,7 +1444,7 @@ void ::kaldi::AffineXformStats::Add(::kaldi::AffineXformStats)</p>
 <dl class="attribute">
 <dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.beta_">
 <code class="descname">beta_</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.beta_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ double <a href="#id79"><span class="problematic" id="id80">AffineXformStats.beta_</span></a></p>
+<dd><p>C++ double <a href="#id81"><span class="problematic" id="id82">AffineXformStats.beta_</span></a></p>
 </dd></dl>
 
 <dl class="method">
@@ -1461,7 +1464,7 @@ int ::kaldi::AffineXformStats::Dim()</p>
 <dl class="attribute">
 <dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.dim_">
 <code class="descname">dim_</code><a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.dim_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::int32 <a href="#id81"><span class="problematic" id="id82">AffineXformStats.dim_</span></a></p>
+<dd><p>C++ ::int32 <a href="#id83"><span class="problematic" id="id84">AffineXformStats.dim_</span></a></p>
 </dd></dl>
 
 <dl class="method">
@@ -1476,6 +1479,13 @@ std::unique_ptr&lt;::kaldi::FmllrDiagGmmAccs&gt; ::kaldi::FmllrDiagGmmAccs::Fmll
 <code class="descname">from_gmm</code><span class="sig-paren">(</span><em>gmm:DiagGmm</em>, <em>fgmm_accs:AccumFullGmm</em><span class="sig-paren">)</span> &#x2192; FmllrDiagGmmAccs<a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.from_gmm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
 std::unique_ptr&lt;::kaldi::FmllrDiagGmmAccs&gt; ::kaldi::FmllrDiagGmmAccs::FmllrDiagGmmAccs(::kaldi::DiagGmm, ::kaldi::AccumFullGmm)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.transform.mllr.FmllrDiagGmmAccs.from_options">
+<code class="descname">from_options</code><span class="sig-paren">(</span><em>opts:FmllrOptions</em><span class="sig-paren">)</span> &#x2192; FmllrDiagGmmAccs<a class="headerlink" href="#kaldi.transform.mllr.FmllrDiagGmmAccs.from_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+std::unique_ptr&lt;::kaldi::FmllrDiagGmmAccs&gt; ::kaldi::FmllrDiagGmmAccs::FmllrDiagGmmAccs(::kaldi::FmllrOptions)</p>
 </dd></dl>
 
 <dl class="method">
@@ -2116,6 +2126,13 @@ float ::kaldi::FmllrAuxfGradient(::kaldi::MatrixBase&lt;float&gt;, ::kaldi::Affi
 </dd></dl>
 
 <dl class="function">
+<dt id="kaldi.transform.mllr.fmllr_inner_update">
+<code class="descclassname">kaldi.transform.mllr.</code><code class="descname">fmllr_inner_update</code><span class="sig-paren">(</span><em>inv_G:DoubleSpMatrix</em>, <em>k:DoubleVectorBase</em>, <em>beta:float</em>, <em>row:int</em>, <em>transform:DoubleMatrixBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.transform.mllr.fmllr_inner_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+void ::kaldi::FmllrInnerUpdate(::kaldi::SpMatrix&lt;double&gt;, ::kaldi::VectorBase&lt;double&gt;, double, int, ::kaldi::MatrixBase&lt;double&gt; <a href="#id61"><span class="problematic" id="id62">*</span></a>)</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="kaldi.transform.mllr.init_fmllr">
 <code class="descclassname">kaldi.transform.mllr.</code><code class="descname">init_fmllr</code><span class="sig-paren">(</span><em>dim:int</em><span class="sig-paren">)</span> &#x2192; Matrix<a class="headerlink" href="#kaldi.transform.mllr.init_fmllr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
@@ -2144,7 +2161,7 @@ void ::kaldi::InitFmllr(int, ::kaldi::Matrix&lt;float&gt;*)</p>
 <dl class="attribute">
 <dt id="kaldi.transform.mllt.MlltAccs.G_">
 <code class="descname">G_</code><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.G_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt; <a href="#id83"><span class="problematic" id="id84">MlltAccs.G_</span></a></p>
+<dd><p>C++ ::std::vector&lt; ::kaldi::SpMatrix&lt;double&gt; &gt; <a href="#id85"><span class="problematic" id="id86">MlltAccs.G_</span></a></p>
 </dd></dl>
 
 <dl class="method">
@@ -2171,7 +2188,7 @@ void ::kaldi::MlltAccs::AccumulateFromPosteriors(::kaldi::DiagGmm, ::kaldi::Vect
 <dl class="attribute">
 <dt id="kaldi.transform.mllt.MlltAccs.beta_">
 <code class="descname">beta_</code><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.beta_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ double <a href="#id85"><span class="problematic" id="id86">MlltAccs.beta_</span></a></p>
+<dd><p>C++ double <a href="#id87"><span class="problematic" id="id88">MlltAccs.beta_</span></a></p>
 </dd></dl>
 
 <dl class="method">
@@ -2198,7 +2215,7 @@ std::unique_ptr&lt;::kaldi::MlltAccs&gt; ::kaldi::MlltAccs::MlltAccs(int, float)
 <dl class="attribute">
 <dt id="kaldi.transform.mllt.MlltAccs.rand_prune_">
 <code class="descname">rand_prune_</code><a class="headerlink" href="#kaldi.transform.mllt.MlltAccs.rand_prune_" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat <a href="#id87"><span class="problematic" id="id88">MlltAccs.rand_prune_</span></a></p>
+<dd><p>C++ ::kaldi::BaseFloat <a href="#id89"><span class="problematic" id="id90">MlltAccs.rand_prune_</span></a></p>
 </dd></dl>
 
 <dl class="method">

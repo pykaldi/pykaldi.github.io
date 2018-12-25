@@ -277,7 +277,7 @@ it really preferred to decode.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.DecodableDiagGmmScaledOnline" title="kaldi.online2.DecodableDiagGmmScaledOnline"><code class="xref py py-obj docutils literal"><span class="pre">DecodableDiagGmmScaledOnline</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::DecodableDiagGmmScaledOnline</td>
+<td>Decodable for online decoding with diagonal GMMs.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineEndpointConfig" title="kaldi.online2.OnlineEndpointConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineEndpointConfig</span></code></a></td>
 <td>Online endpointing configuration.</td>
@@ -295,16 +295,16 @@ it really preferred to decode.</p>
 <td>Configuration options for online feature pipeline.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineGmmAdaptationState" title="kaldi.online2.OnlineGmmAdaptationState"><code class="xref py py-obj docutils literal"><span class="pre">OnlineGmmAdaptationState</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineGmmAdaptationState</td>
+<td>Online GMM adaptation state.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig" title="kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineGmmDecodingAdaptationPolicyConfig</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineGmmDecodingAdaptationPolicyConfig</td>
+<td>Configuration options for re-estimating basis-fMLLR during online decoding.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineGmmDecodingConfig" title="kaldi.online2.OnlineGmmDecodingConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineGmmDecodingConfig</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineGmmDecodingConfig</td>
+<td>Configuration options for online GMM decoding.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.OnlineGmmDecodingModels" title="kaldi.online2.OnlineGmmDecodingModels"><code class="xref py py-obj docutils literal"><span class="pre">OnlineGmmDecodingModels</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::OnlineGmmDecodingModels</td>
+<td>GMM models used for online decoding.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.OnlineIvectorExtractionConfig" title="kaldi.online2.OnlineIvectorExtractionConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineIvectorExtractionConfig</span></code></a></td>
 <td>CLIF wrapper for ::kaldi::OnlineIvectorExtractionConfig</td>
@@ -334,7 +334,7 @@ it really preferred to decode.</p>
 <td>CLIF wrapper for ::kaldi::OnlineSilenceWeightingConfig</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.online2.SingleUtteranceGmmDecoder" title="kaldi.online2.SingleUtteranceGmmDecoder"><code class="xref py py-obj docutils literal"><span class="pre">SingleUtteranceGmmDecoder</span></code></a></td>
-<td>CLIF wrapper for ::kaldi::SingleUtteranceGmmDecoder</td>
+<td>Online lattice-generating decoder for diagonal GMM models.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.online2.SingleUtteranceNnetDecoder" title="kaldi.online2.SingleUtteranceNnetDecoder"><code class="xref py py-obj docutils literal"><span class="pre">SingleUtteranceNnetDecoder</span></code></a></td>
 <td>Online lattice-generating decoder for neural network models.</td>
@@ -346,13 +346,26 @@ it really preferred to decode.</p>
 </table>
 <dl class="class">
 <dt id="kaldi.online2.DecodableDiagGmmScaledOnline">
-<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">DecodableDiagGmmScaledOnline</code><a class="headerlink" href="#kaldi.online2.DecodableDiagGmmScaledOnline" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::DecodableDiagGmmScaledOnline</p>
+<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">DecodableDiagGmmScaledOnline</code><span class="sig-paren">(</span><em>am</em>, <em>trans_model</em>, <em>scale</em>, <em>input_feats</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.DecodableDiagGmmScaledOnline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodable for online decoding with diagonal GMMs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>am</strong> (<a class="reference internal" href="kaldi.gmm.html#kaldi.gmm.am.AmDiagGmm" title="kaldi.gmm.am.AmDiagGmm"><em>AmDiagGmm</em></a>) – Diagonal GMM.</li>
+<li><strong>trans_model</strong> (<a class="reference internal" href="kaldi.hmm.html#kaldi.hmm.TransitionModel" title="kaldi.hmm.TransitionModel"><em>TransitionModel</em></a>) – Transition model.</li>
+<li><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Acoustic scale.</li>
+<li><strong>input_feats</strong> (<em>OnlineFeatureInterface</em>) – Online input features.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.online2.DecodableDiagGmmScaledOnline.is_last_frame">
 <code class="descname">is_last_frame</code><span class="sig-paren">(</span><em>frame:int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.DecodableDiagGmmScaledOnline.is_last_frame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::DecodableDiagGmmScaledOnline::IsLastFrame(int)</p>
+<dd><p>Checks if given frame is the last frame.</p>
 </dd></dl>
 
 <dl class="method">
@@ -362,24 +375,15 @@ bool ::kaldi::DecodableDiagGmmScaledOnline::IsLastFrame(int)</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="kaldi.online2.DecodableDiagGmmScaledOnline.loglikelihood">
-<code class="descname">loglikelihood</code><span class="sig-paren">(</span><em>frame:int</em>, <em>index:int</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.online2.DecodableDiagGmmScaledOnline.loglikelihood" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-float ::kaldi::DecodableDiagGmmScaledOnline::LogLikelihood(int, int)</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="kaldi.online2.DecodableDiagGmmScaledOnline.num_frames_ready">
 <code class="descname">num_frames_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.DecodableDiagGmmScaledOnline.num_frames_ready" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::DecodableDiagGmmScaledOnline::NumFramesReady()</p>
+<dd><p>Returns number of frames ready for decoding.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.DecodableDiagGmmScaledOnline.num_indices">
 <code class="descname">num_indices</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.online2.DecodableDiagGmmScaledOnline.num_indices" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-int ::kaldi::DecodableDiagGmmScaledOnline::NumIndices()</p>
+<dd><p>Returns number of indices.</p>
 </dd></dl>
 
 </dd></dl>
@@ -875,25 +879,35 @@ directly in code or indirectly by reading config files on disk via
 <dl class="class">
 <dt id="kaldi.online2.OnlineGmmAdaptationState">
 <em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineGmmAdaptationState</code><a class="headerlink" href="#kaldi.online2.OnlineGmmAdaptationState" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineGmmAdaptationState</p>
+<dd><p>Online GMM adaptation state.</p>
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmAdaptationState.cmvn_state">
 <code class="descname">cmvn_state</code><a class="headerlink" href="#kaldi.online2.OnlineGmmAdaptationState.cmvn_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::OnlineCmvnState OnlineGmmAdaptationState.cmvn_state</p>
+<dd><p>Online CMVN state</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineGmmAdaptationState.read">
 <code class="descname">read</code><span class="sig-paren">(</span><em>in_stream:istream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineGmmAdaptationState.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineGmmAdaptationState::Read(::std::basic_istream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+<dd><p>Writes this object from input stream.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.online2.OnlineGmmAdaptationState.spk_stats">
+<code class="descname">spk_stats</code><a class="headerlink" href="#kaldi.online2.OnlineGmmAdaptationState.spk_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Speaker transform stats.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.online2.OnlineGmmAdaptationState.transform">
+<code class="descname">transform</code><a class="headerlink" href="#kaldi.online2.OnlineGmmAdaptationState.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform matrix</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineGmmAdaptationState.write">
 <code class="descname">write</code><span class="sig-paren">(</span><em>out_stream:ostream</em>, <em>binary:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineGmmAdaptationState.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineGmmAdaptationState::Write(::std::basic_ostream&lt;char, ::std::char_traits&lt;char&gt; &gt;, bool)</p>
+<dd><p>Writes this object to output stream.</p>
 </dd></dl>
 
 </dd></dl>
@@ -901,50 +915,76 @@ void ::kaldi::OnlineGmmAdaptationState::Write(::std::basic_ostream&lt;char, ::st
 <dl class="class">
 <dt id="kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig">
 <em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineGmmDecodingAdaptationPolicyConfig</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineGmmDecodingAdaptationPolicyConfig</p>
+<dd><p>Configuration options for re-estimating basis-fMLLR during online decoding.</p>
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.adaptation_delay">
 <code class="descname">adaptation_delay</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.adaptation_delay" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat OnlineGmmDecodingAdaptationPolicyConfig.adaptation_delay</p>
+<dd><p>Delay before first basis-fMLLR adaptation for not-first utterances of each speaker</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.adaptation_first_utt_delay">
 <code class="descname">adaptation_first_utt_delay</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.adaptation_first_utt_delay" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat OnlineGmmDecodingAdaptationPolicyConfig.adaptation_first_utt_delay</p>
+<dd><p>Delay before first basis-fMLLR adaptation for first utterance of each speaker</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.adaptation_first_utt_ratio">
 <code class="descname">adaptation_first_utt_ratio</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.adaptation_first_utt_ratio" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat OnlineGmmDecodingAdaptationPolicyConfig.adaptation_first_utt_ratio</p>
+<dd><p>Ratio that controls frequency of fMLLR adaptation for first utterance of each speaker</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.adaptation_ratio">
 <code class="descname">adaptation_ratio</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.adaptation_ratio" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat OnlineGmmDecodingAdaptationPolicyConfig.adaptation_ratio</p>
+<dd><p>Ratio that controls frequency of fMLLR adaptation for not-first utterances of each speaker</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.check">
 <code class="descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.check" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineGmmDecodingAdaptationPolicyConfig::Check()</p>
+<dd><p>Checks if configuration is valid.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.do_adapt">
 <code class="descname">do_adapt</code><span class="sig-paren">(</span><em>chunk_begin_secs:float</em>, <em>chuck_end_secs:float</em>, <em>is_first_utterance:bool</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.do_adapt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::OnlineGmmDecodingAdaptationPolicyConfig::DoAdapt(float, float, bool)</p>
+<dd><p>Checks if we are scheduled to re-estimate fMLLR.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>chunk_begin_secs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Chunk begin time in seconds.</li>
+<li><strong>chuck_end_secs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Chunk end time in seconds.</li>
+<li><strong>is_first_utterance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – First utterance or not.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if we are scheduled to re-estimate fMLLR in the interval
+<code class="xref py py-obj docutils literal"><span class="pre">[chunk_begin_secs,</span> <span class="pre">chuck_end_secs)</span></code>, False otherwise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingAdaptationPolicyConfig.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineGmmDecodingAdaptationPolicyConfig::Register(::kaldi::OptionsItf <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -952,119 +992,142 @@ void ::kaldi::OnlineGmmDecodingAdaptationPolicyConfig::Register(::kaldi::Options
 <dl class="class">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig">
 <em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineGmmDecodingConfig</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineGmmDecodingConfig</p>
+<dd><p>Configuration options for online GMM decoding.</p>
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.acoustic_scale">
 <code class="descname">acoustic_scale</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.acoustic_scale" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat OnlineGmmDecodingConfig.acoustic_scale</p>
+<dd><p>Scaling factor acoustic likelihoods</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.adaptation_policy_opts">
 <code class="descname">adaptation_policy_opts</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.adaptation_policy_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::OnlineGmmDecodingAdaptationPolicyConfig OnlineGmmDecodingConfig.adaptation_policy_opts</p>
+<dd><p>Options for re-estimating basis-fMLLR during online decoding</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.basis_opts">
 <code class="descname">basis_opts</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.basis_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BasisFmllrOptions OnlineGmmDecodingConfig.basis_opts</p>
+<dd><p>Options for basis-fMLLR adaptation</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.faster_decoder_opts">
 <code class="descname">faster_decoder_opts</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.faster_decoder_opts" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::LatticeFasterDecoderConfig OnlineGmmDecodingConfig.faster_decoder_opts</p>
+<dd><p>Options for lattice-generating faster decoder.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.fmllr_basis_rxfilename">
 <code class="descname">fmllr_basis_rxfilename</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.fmllr_basis_rxfilename" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineGmmDecodingConfig.fmllr_basis_rxfilename</p>
+<dd><p>Extended filename for reading the basis elements for basis-fMLLR.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.fmllr_lattice_beam">
 <code class="descname">fmllr_lattice_beam</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.fmllr_lattice_beam" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat OnlineGmmDecodingConfig.fmllr_lattice_beam</p>
+<dd><p>Beam used in pruning lattices for fMLLR estimation</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.model_rxfilename">
 <code class="descname">model_rxfilename</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.model_rxfilename" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineGmmDecodingConfig.model_rxfilename</p>
+<dd><p>Extended filename for reading the model used to estimate fMLLR transforms.</p>
+<p>This is required.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.online_alimdl_rxfilename">
 <code class="descname">online_alimdl_rxfilename</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.online_alimdl_rxfilename" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineGmmDecodingConfig.online_alimdl_rxfilename</p>
+<dd><p>Extended filename for reading the model trained with online-CMN features.</p>
+<p>This is only needed if it is different from <a class="reference internal" href="#kaldi.online2.OnlineGmmDecodingConfig.model_rxfilename" title="kaldi.online2.OnlineGmmDecodingConfig.model_rxfilename"><code class="xref py py-obj docutils literal"><span class="pre">model_rxfilename</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::OnlineGmmDecodingConfig::Register(::kaldi::OptionsItf <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.rescore_model_rxfilename">
 <code class="descname">rescore_model_rxfilename</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.rescore_model_rxfilename" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineGmmDecodingConfig.rescore_model_rxfilename</p>
+<dd><p>Extended filename for reading the discriminatively trained model.</p>
+<p>This is only needed if it is different from <a class="reference internal" href="#kaldi.online2.OnlineGmmDecodingConfig.model_rxfilename" title="kaldi.online2.OnlineGmmDecodingConfig.model_rxfilename"><code class="xref py py-obj docutils literal"><span class="pre">model_rxfilename</span></code></a>.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.silence_phones">
 <code class="descname">silence_phones</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.silence_phones" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::std::string OnlineGmmDecodingConfig.silence_phones</p>
+<dd><p>Colon-separated list of integer ids of silence phones</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="kaldi.online2.OnlineGmmDecodingConfig.silence_weight">
 <code class="descname">silence_weight</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingConfig.silence_weight" title="Permalink to this definition">¶</a></dt>
-<dd><p>C++ ::kaldi::BaseFloat OnlineGmmDecodingConfig.silence_weight</p>
+<dd><p>Weight applied to silence frames for fMLLR estimation.</p>
+<p>This has an effect only if <a class="reference internal" href="#kaldi.online2.OnlineGmmDecodingConfig.silence_phones" title="kaldi.online2.OnlineGmmDecodingConfig.silence_phones"><code class="xref py py-obj docutils literal"><span class="pre">silence_phones</span></code></a> option is supplied.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="kaldi.online2.OnlineGmmDecodingModels">
-<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineGmmDecodingModels</code><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingModels" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::OnlineGmmDecodingModels</p>
+<em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">OnlineGmmDecodingModels</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingModels" title="Permalink to this definition">¶</a></dt>
+<dd><p>GMM models used for online decoding.</p>
+<p>This class is used to read, store and give access to the models used for
+3 phases of decoding (first-pass with online-CMN features; the ML models
+used for estimating transforms; and the discriminatively trained models).
+It takes care of the logic whereby if, say, the last model isn’t given we
+default to the second model, and so on, and it interpretes the filenames
+from the config object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#kaldi.online2.OnlineGmmDecodingConfig" title="kaldi.online2.OnlineGmmDecodingConfig"><em>OnlineGmmDecodingConfig</em></a>) – Options for online GMM decoding.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.online2.OnlineGmmDecodingModels.basis_fmllr_estimate">
 <code class="descname">basis_fmllr_estimate</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; BasisFmllrEstimate<a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingModels.basis_fmllr_estimate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::BasisFmllrEstimate ::kaldi::OnlineGmmDecodingModels::GetFmllrBasis()</p>
+<dd><p>Returns the basis elements for basis-fMLLR.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineGmmDecodingModels.get_final_model">
 <code class="descname">get_final_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; AmDiagGmm<a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingModels.get_final_model" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::AmDiagGmm ::kaldi::OnlineGmmDecodingModels::GetFinalModel()</p>
+<dd><p>Returns the discriminatively trained model.</p>
+<p>If supplied in the config, otherwise it returns the ML-trained model.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineGmmDecodingModels.get_model">
 <code class="descname">get_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; AmDiagGmm<a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingModels.get_model" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::AmDiagGmm ::kaldi::OnlineGmmDecodingModels::GetModel()</p>
+<dd><p>Returns the ML-trained model used to get transforms.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineGmmDecodingModels.get_online_alignment_model">
 <code class="descname">get_online_alignment_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; AmDiagGmm<a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingModels.get_online_alignment_model" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::AmDiagGmm ::kaldi::OnlineGmmDecodingModels::GetOnlineAlignmentModel()</p>
+<dd><p>Returns the model trained with online-CMN features.</p>
+<p>If supplied in the config, otherwise it returns the ML-trained model.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineGmmDecodingModels.get_transition_model">
 <code class="descname">get_transition_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; TransitionModel<a class="headerlink" href="#kaldi.online2.OnlineGmmDecodingModels.get_transition_model" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::TransitionModel ::kaldi::OnlineGmmDecodingModels::GetTransitionModel()</p>
+<dd><p>Returns the transition model.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1155,7 +1218,7 @@ void ::kaldi::OnlineGmmDecodingConfig::Register(::kaldi::OptionsItf <a href="#id
 <dt id="kaldi.online2.OnlineIvectorExtractionConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineIvectorExtractionConfig.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineIvectorExtractionConfig::Register(::kaldi::OptionsItf <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
+void ::kaldi::OnlineIvectorExtractionConfig::Register(::kaldi::OptionsItf <a href="#id5"><span class="problematic" id="id6">*</span></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1361,7 +1424,7 @@ float ::kaldi::OnlineIvectorFeature::FrameShiftInSeconds()</p>
 <dt id="kaldi.online2.OnlineIvectorFeature.get_frame">
 <code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame:int</em>, <em>feat:VectorBase</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineIvectorFeature.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineIvectorFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
+void ::kaldi::OnlineIvectorFeature::GetFrame(int, ::kaldi::VectorBase&lt;float&gt; <a href="#id7"><span class="problematic" id="id8">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1769,14 +1832,14 @@ bool ::kaldi::OnlineSilenceWeightingConfig::Active()</p>
 <dt id="kaldi.online2.OnlineSilenceWeightingConfig.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineSilenceWeightingConfig.register" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineSilenceWeightingConfig::Register(::kaldi::OptionsItf <a href="#id13"><span class="problematic" id="id14">*</span></a>)</p>
+void ::kaldi::OnlineSilenceWeightingConfig::Register(::kaldi::OptionsItf <a href="#id9"><span class="problematic" id="id10">*</span></a>)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.OnlineSilenceWeightingConfig.register_with_prefix">
 <code class="descname">register_with_prefix</code><span class="sig-paren">(</span><em>prefix:str</em>, <em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.OnlineSilenceWeightingConfig.register_with_prefix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls C++ function
-void ::kaldi::OnlineSilenceWeightingConfig::RegisterWithPrefix(::std::string, ::kaldi::OptionsItf <a href="#id15"><span class="problematic" id="id16">*</span></a>)</p>
+void ::kaldi::OnlineSilenceWeightingConfig::RegisterWithPrefix(::std::string, ::kaldi::OptionsItf <a href="#id11"><span class="problematic" id="id12">*</span></a>)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1796,68 +1859,139 @@ void ::kaldi::OnlineSilenceWeightingConfig::RegisterWithPrefix(::std::string, ::
 <dl class="class">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder">
 <em class="property">class </em><code class="descclassname">kaldi.online2.</code><code class="descname">SingleUtteranceGmmDecoder</code><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>CLIF wrapper for ::kaldi::SingleUtteranceGmmDecoder</p>
+<dd><p>Online lattice-generating decoder for diagonal GMM models.</p>
+<p>This class is used for decoding a single utterance in an online fashion
+using diagonal GMMs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>config</strong> (<a class="reference internal" href="#kaldi.online2.OnlineGmmDecodingConfig" title="kaldi.online2.OnlineGmmDecodingConfig"><em>OnlineGmmDecodingConfig</em></a>) – Options for online GMM decoding.</li>
+<li><strong>models</strong> (<a class="reference internal" href="#kaldi.online2.OnlineGmmDecodingModels" title="kaldi.online2.OnlineGmmDecodingModels"><em>OnlineGmmDecodingModels</em></a>) – Models for online GMM decoding.</li>
+<li><strong>feature_prototype</strong> (<a class="reference internal" href="#kaldi.online2.OnlineFeaturePipeline" title="kaldi.online2.OnlineFeaturePipeline"><em>OnlineFeaturePipeline</em></a>) – Online feature pipeline.</li>
+<li><strong>fst</strong> (<em>StdFst</em>) – Decoding graph.</li>
+<li><strong>adaptation_state</strong> (<a class="reference internal" href="#kaldi.online2.OnlineGmmAdaptationState" title="kaldi.online2.OnlineGmmAdaptationState"><em>OnlineGmmAdaptationState</em></a>) – Online GMM adaptation
+state.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.advance_decoding">
 <code class="descname">advance_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.advance_decoding" title="Permalink to this definition">¶</a></dt>
-<dd><p>Advance the decoding as far as we can.</p>
+<dd><p>Advances the decoding until there are no more frames to decode.</p>
+<p>This may also estimate fMLLR after advancing the decoding, depending on
+the configuration.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.endpoint_detected">
 <code class="descname">endpoint_detected</code><span class="sig-paren">(</span><em>config:OnlineEndpointConfig</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.endpoint_detected" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-bool ::kaldi::SingleUtteranceGmmDecoder::EndpointDetected(::kaldi::OnlineEndpointConfig)</p>
+<dd><p>Determines if we should terminate decoding current utterance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#kaldi.online2.OnlineEndpointConfig" title="kaldi.online2.OnlineEndpointConfig"><code class="xref py py-obj docutils literal"><span class="pre">OnlineEndpointConfig</span></code></a>) – Online endpointing configuration.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if an endpointing rule is active.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.estimate_fmllr">
 <code class="descname">estimate_fmllr</code><span class="sig-paren">(</span><em>end_of_utterance:bool</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.estimate_fmllr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Estimate the [basis-]fMLLR transform and apply it to the features</p>
+<dd><p>Estimates the [basis-]fMLLR transform and applies it to the features.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.feature_pipeline">
 <code class="descname">feature_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; OnlineFeaturePipeline<a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.feature_pipeline" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::OnlineFeaturePipeline ::kaldi::SingleUtteranceGmmDecoder::FeaturePipeline()</p>
+<dd><p>Returns the online feature pipeline.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.final_relative_cost">
 <code class="descname">final_relative_cost</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.final_relative_cost" title="Permalink to this definition">¶</a></dt>
-<dd><p>Outputs to final_relative_cost, if non-NULL, a number &gt;= 0 that will be close to zero if the final-probs were close to the best probs active on the final state.</p>
+<dd><p>Returns the final realtive cost.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.finalize_decoding">
 <code class="descname">finalize_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.finalize_decoding" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finalize the decoding</p>
+<dd><p>Finalizes the decoding.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.get_adaptation_state">
 <code class="descname">get_adaptation_state</code><span class="sig-paren">(</span><em>adaptation_state:OnlineGmmAdaptationState</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.get_adaptation_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-void ::kaldi::SingleUtteranceGmmDecoder::GetAdaptationState(::kaldi::OnlineGmmAdaptationState <a href="#id17"><span class="problematic" id="id18">*</span></a>)</p>
+<dd><p>Returns the adaptation state.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.get_best_path">
-<code class="descname">get_best_path</code><span class="sig-paren">(</span><em>end_of_utterance:bool</em>, <em>best_path:LatticeVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.get_best_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>Outputs an FST corresponding to the single best path through the current lattice.</p>
+<code class="descname">get_best_path</code><span class="sig-paren">(</span><em>end_of_utterance:bool</em><span class="sig-paren">)</span> &#x2192; LatticeVectorFst<a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.get_best_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets best path as a lattice.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_of_utterance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code> and a final state of the graph
+is reached, then the output will include final probabilities given
+by the graph. Otherwise all final probabilities are treated as one.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The best path.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst">LatticeVectorFst</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – In the unusual circumstances where no tokens survive.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.get_lattice">
-<code class="descname">get_lattice</code><span class="sig-paren">(</span><em>rescore_if_needed:bool</em>, <em>end_of_utterance:bool</em>, <em>clat:CompactLatticeVectorFst</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.get_lattice" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the lattice. If rescore_if_needed is true and if there is any point in rescoring the state-level lattice, it will rescore the lattice.</p>
+<code class="descname">get_lattice</code><span class="sig-paren">(</span><em>rescore_if_needed:bool</em>, <em>end_of_utterance:bool</em><span class="sig-paren">)</span> &#x2192; CompactLatticeVectorFst<a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.get_lattice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the lattice-determinized compact lattice.</p>
+<p>The output is a deterministic compact lattice with a unique path for
+each word sequence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rescore_if_needed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If this is True and there is any point in
+rescoring the state-level lattice, it will rescore the lattice.</li>
+<li><strong>end_of_utterance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal"><span class="pre">True</span></code> and a final state of the graph
+is reached, then the output will include final probabilities given
+by the graph. Otherwise all final probabilities are treated as one.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The lattice-determinized compact lattice.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst">CompactLatticeVectorFst</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code></a> – In the unusual circumstances where no tokens survive.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceGmmDecoder.have_transform">
 <code class="descname">have_transform</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#kaldi.online2.SingleUtteranceGmmDecoder.have_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns true if we already have a fMLLR transform</p>
+<dd><p>Returns True if we already have a fMLLR transform.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1894,8 +2028,14 @@ needed for nnet3 computation (including a reference to the model).</li>
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceNnetDecoder.decoder">
 <code class="descname">decoder</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; LatticeFasterOnlineDecoder<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnetDecoder.decoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::LatticeFasterOnlineDecoderTpl&lt; ::fst::Fst&lt; ::fst::ArcTpl&lt; ::fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt; * ::kaldi::SingleUtteranceNnet3DecoderTpl&lt;fst::Fst&lt;fst::ArcTpl&lt;fst::TropicalWeightTpl&lt;float&gt; &gt; &gt; &gt;::DecoderPtr()</p>
+<dd><p>Returns the underlying decoder object.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The decoder object returned by this method is an instance of
+kaldi.decoder._lattice_faster_online_decoder.LatticeFasterOnlineDecoder,
+not an instance of kaldi.decoder.LatticeFasterOnlineDecoder. Hence,
+it does not support the additional decoder API implemented in Python.</p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2023,8 +2163,15 @@ needed for nnet3 computation (including a reference to the model).</li>
 <dl class="method">
 <dt id="kaldi.online2.SingleUtteranceNnetGrammarDecoder.decoder">
 <code class="descname">decoder</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; LatticeFasterOnlineGrammarDecoder<a class="headerlink" href="#kaldi.online2.SingleUtteranceNnetGrammarDecoder.decoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls C++ function
-::kaldi::LatticeFasterOnlineDecoderTpl&lt; ::fst::GrammarFst&gt; * ::kaldi::SingleUtteranceNnet3DecoderTpl&lt;fst::GrammarFst&gt;::DecoderPtr()</p>
+<dd><p>Returns the underlying decoder object.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The decoder object returned by this method is an instance of
+kaldi.decoder._lattice_faster_online_decoder_ext.LatticeFasterOnlineGrammarDecoder,
+not an instance of kaldi.decoder.LatticeFasterOnlineGrammarDecoder.
+Hence, it does not support the additional decoder API implemented in
+Python.</p>
+</div>
 </dd></dl>
 
 <dl class="method">

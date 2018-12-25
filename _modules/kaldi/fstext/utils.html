@@ -283,6 +283,8 @@
         <span class="k">return</span> <span class="n">_fstext_utils_inl</span><span class="o">.</span><span class="n">_get_linear_symbol_sequence_from_std</span><span class="p">(</span><span class="n">fst</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fst</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeFst</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">_fstext_shims</span><span class="o">.</span><span class="n">_get_linear_symbol_sequence_from_lattice</span><span class="p">(</span><span class="n">fst</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fst</span><span class="p">,</span> <span class="n">_fst</span><span class="o">.</span><span class="n">CompactLatticeFst</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_fstext_shims</span><span class="o">.</span><span class="n">_get_linear_symbol_sequence_from_compact_lattice</span><span class="p">(</span><span class="n">fst</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input FST arc type is not supported.&quot;</span><span class="p">)</span></div>
 

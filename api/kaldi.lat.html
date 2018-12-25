@@ -734,73 +734,76 @@ decoding, and in this case the output might still be usable.</p>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.compose_compact_lattice_deterministic" title="kaldi.lat.functions.compose_compact_lattice_deterministic"><code class="xref py py-obj docutils literal"><span class="pre">compose_compact_lattice_deterministic</span></code></a></td>
 <td>Composes a compact lattice with a deterministic on-demand FST.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.compute_compact_lattice_alphas" title="kaldi.lat.functions.compute_compact_lattice_alphas"><code class="xref py py-obj docutils literal"><span class="pre">compute_compact_lattice_alphas</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.compose_compact_lattice_pruned" title="kaldi.lat.functions.compose_compact_lattice_pruned"><code class="xref py py-obj docutils literal"><span class="pre">compose_compact_lattice_pruned</span></code></a></td>
+<td>Does pruned composition of a lattice and a deterministic on demand FST.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.compute_compact_lattice_alphas" title="kaldi.lat.functions.compute_compact_lattice_alphas"><code class="xref py py-obj docutils literal"><span class="pre">compute_compact_lattice_alphas</span></code></a></td>
 <td>Computes the forward scores (alpha) for compact lattice states.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.compute_compact_lattice_betas" title="kaldi.lat.functions.compute_compact_lattice_betas"><code class="xref py py-obj docutils literal"><span class="pre">compute_compact_lattice_betas</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.compute_compact_lattice_betas" title="kaldi.lat.functions.compute_compact_lattice_betas"><code class="xref py py-obj docutils literal"><span class="pre">compute_compact_lattice_betas</span></code></a></td>
 <td>Computes the backward scores (beta) for compact lattice states.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.compute_lattice_alphas_and_betas" title="kaldi.lat.functions.compute_lattice_alphas_and_betas"><code class="xref py py-obj docutils literal"><span class="pre">compute_lattice_alphas_and_betas</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.compute_lattice_alphas_and_betas" title="kaldi.lat.functions.compute_lattice_alphas_and_betas"><code class="xref py py-obj docutils literal"><span class="pre">compute_lattice_alphas_and_betas</span></code></a></td>
 <td>Computes forward and backward scores for lattice states.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.convert_compact_lattice_to_phones" title="kaldi.lat.functions.convert_compact_lattice_to_phones"><code class="xref py py-obj docutils literal"><span class="pre">convert_compact_lattice_to_phones</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.convert_compact_lattice_to_phones" title="kaldi.lat.functions.convert_compact_lattice_to_phones"><code class="xref py py-obj docutils literal"><span class="pre">convert_compact_lattice_to_phones</span></code></a></td>
 <td>Replaces transition-ids in compact lattice with phones.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.convert_lattice_to_phones" title="kaldi.lat.functions.convert_lattice_to_phones"><code class="xref py py-obj docutils literal"><span class="pre">convert_lattice_to_phones</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.convert_lattice_to_phones" title="kaldi.lat.functions.convert_lattice_to_phones"><code class="xref py py-obj docutils literal"><span class="pre">convert_lattice_to_phones</span></code></a></td>
 <td>Replaces output symbols in lattice with phones.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.determinize_lattice_phone_pruned" title="kaldi.lat.functions.determinize_lattice_phone_pruned"><code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice_phone_pruned</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.determinize_lattice_phone_pruned" title="kaldi.lat.functions.determinize_lattice_phone_pruned"><code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice_phone_pruned</span></code></a></td>
 <td>Applies a specialized determinization operation to a lattice.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.determinize_lattice_pruned" title="kaldi.lat.functions.determinize_lattice_pruned"><code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice_pruned</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.determinize_lattice_pruned" title="kaldi.lat.functions.determinize_lattice_pruned"><code class="xref py py-obj docutils literal"><span class="pre">determinize_lattice_pruned</span></code></a></td>
 <td>Applies a specialized determinization operation to a lattice.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.get_per_frame_acoustic_costs" title="kaldi.lat.functions.get_per_frame_acoustic_costs"><code class="xref py py-obj docutils literal"><span class="pre">get_per_frame_acoustic_costs</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.get_per_frame_acoustic_costs" title="kaldi.lat.functions.get_per_frame_acoustic_costs"><code class="xref py py-obj docutils literal"><span class="pre">get_per_frame_acoustic_costs</span></code></a></td>
 <td>Extracts per-frame log likelihoods from a linear lattice.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_active_phones" title="kaldi.lat.functions.lattice_active_phones"><code class="xref py py-obj docutils literal"><span class="pre">lattice_active_phones</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_active_phones" title="kaldi.lat.functions.lattice_active_phones"><code class="xref py py-obj docutils literal"><span class="pre">lattice_active_phones</span></code></a></td>
 <td>Computes the set of phones active on each frame.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_boost" title="kaldi.lat.functions.lattice_boost"><code class="xref py py-obj docutils literal"><span class="pre">lattice_boost</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_boost" title="kaldi.lat.functions.lattice_boost"><code class="xref py py-obj docutils literal"><span class="pre">lattice_boost</span></code></a></td>
 <td>Boosts graph scores in the lattice.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_forward_backward" title="kaldi.lat.functions.lattice_forward_backward"><code class="xref py py-obj docutils literal"><span class="pre">lattice_forward_backward</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_forward_backward" title="kaldi.lat.functions.lattice_forward_backward"><code class="xref py py-obj docutils literal"><span class="pre">lattice_forward_backward</span></code></a></td>
 <td>Computes lattice arc posteriors using forward-backward algorithm.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_forward_backward_mmi" title="kaldi.lat.functions.lattice_forward_backward_mmi"><code class="xref py py-obj docutils literal"><span class="pre">lattice_forward_backward_mmi</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_forward_backward_mmi" title="kaldi.lat.functions.lattice_forward_backward_mmi"><code class="xref py py-obj docutils literal"><span class="pre">lattice_forward_backward_mmi</span></code></a></td>
 <td>Computes lattice posteriors for MMI.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_forward_backward_mpe_variants" title="kaldi.lat.functions.lattice_forward_backward_mpe_variants"><code class="xref py py-obj docutils literal"><span class="pre">lattice_forward_backward_mpe_variants</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_forward_backward_mpe_variants" title="kaldi.lat.functions.lattice_forward_backward_mpe_variants"><code class="xref py py-obj docutils literal"><span class="pre">lattice_forward_backward_mpe_variants</span></code></a></td>
 <td>Computes lattice posteriors for MPFE (or SMBR).</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_state_times" title="kaldi.lat.functions.lattice_state_times"><code class="xref py py-obj docutils literal"><span class="pre">lattice_state_times</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.lattice_state_times" title="kaldi.lat.functions.lattice_state_times"><code class="xref py py-obj docutils literal"><span class="pre">lattice_state_times</span></code></a></td>
 <td>Extracts lattice state times (in terms of frames).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.longest_sentence_length_in_lattice" title="kaldi.lat.functions.longest_sentence_length_in_lattice"><code class="xref py py-obj docutils literal"><span class="pre">longest_sentence_length_in_lattice</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.longest_sentence_length_in_lattice" title="kaldi.lat.functions.longest_sentence_length_in_lattice"><code class="xref py py-obj docutils literal"><span class="pre">longest_sentence_length_in_lattice</span></code></a></td>
 <td>Returns the number of words in the longest sentence in a lattice.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.minimize_compact_lattice" title="kaldi.lat.functions.minimize_compact_lattice"><code class="xref py py-obj docutils literal"><span class="pre">minimize_compact_lattice</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.minimize_compact_lattice" title="kaldi.lat.functions.minimize_compact_lattice"><code class="xref py py-obj docutils literal"><span class="pre">minimize_compact_lattice</span></code></a></td>
 <td>Applies a specialized minimization operation to compact lattices.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.prune_lattice" title="kaldi.lat.functions.prune_lattice"><code class="xref py py-obj docutils literal"><span class="pre">prune_lattice</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.prune_lattice" title="kaldi.lat.functions.prune_lattice"><code class="xref py py-obj docutils literal"><span class="pre">prune_lattice</span></code></a></td>
 <td>Prunes a lattice.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.push_compact_lattice_strings" title="kaldi.lat.functions.push_compact_lattice_strings"><code class="xref py py-obj docutils literal"><span class="pre">push_compact_lattice_strings</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.push_compact_lattice_strings" title="kaldi.lat.functions.push_compact_lattice_strings"><code class="xref py py-obj docutils literal"><span class="pre">push_compact_lattice_strings</span></code></a></td>
 <td>Pushes the transition-ids as far towards the start as they will go.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.push_compact_lattice_weights" title="kaldi.lat.functions.push_compact_lattice_weights"><code class="xref py py-obj docutils literal"><span class="pre">push_compact_lattice_weights</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.push_compact_lattice_weights" title="kaldi.lat.functions.push_compact_lattice_weights"><code class="xref py py-obj docutils literal"><span class="pre">push_compact_lattice_weights</span></code></a></td>
 <td>Pushes the weights in compact lattice toward the start state.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.rescore_compact_lattice_speedup" title="kaldi.lat.functions.rescore_compact_lattice_speedup"><code class="xref py py-obj docutils literal"><span class="pre">rescore_compact_lattice_speedup</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.rescore_compact_lattice_speedup" title="kaldi.lat.functions.rescore_compact_lattice_speedup"><code class="xref py py-obj docutils literal"><span class="pre">rescore_compact_lattice_speedup</span></code></a></td>
 <td>Adjusts acoustic scores in the compact lattice.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.rescore_lattice" title="kaldi.lat.functions.rescore_lattice"><code class="xref py py-obj docutils literal"><span class="pre">rescore_lattice</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.rescore_lattice" title="kaldi.lat.functions.rescore_lattice"><code class="xref py py-obj docutils literal"><span class="pre">rescore_lattice</span></code></a></td>
 <td>Adjusts acoustic scores in the lattice.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.sentence_level_confidence" title="kaldi.lat.functions.sentence_level_confidence"><code class="xref py py-obj docutils literal"><span class="pre">sentence_level_confidence</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.sentence_level_confidence" title="kaldi.lat.functions.sentence_level_confidence"><code class="xref py py-obj docutils literal"><span class="pre">sentence_level_confidence</span></code></a></td>
 <td>Computes sentence level confidence scores.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.top_sort_lattice_if_needed" title="kaldi.lat.functions.top_sort_lattice_if_needed"><code class="xref py py-obj docutils literal"><span class="pre">top_sort_lattice_if_needed</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.top_sort_lattice_if_needed" title="kaldi.lat.functions.top_sort_lattice_if_needed"><code class="xref py py-obj docutils literal"><span class="pre">top_sort_lattice_if_needed</span></code></a></td>
 <td>Topologically sorts the lattice if it is not already sorted.</td>
 </tr>
 </tbody>
@@ -812,14 +815,62 @@ decoding, and in this case the output might still be usable.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions" title="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions"><code class="xref py py-obj docutils literal"><span class="pre">DeterminizeLatticePhonePrunedOptions</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.ComposeLatticePrunedOptions" title="kaldi.lat.functions.ComposeLatticePrunedOptions"><code class="xref py py-obj docutils literal"><span class="pre">ComposeLatticePrunedOptions</span></code></a></td>
+<td>Options for pruned lattice composition.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions" title="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions"><code class="xref py py-obj docutils literal"><span class="pre">DeterminizeLatticePhonePrunedOptions</span></code></a></td>
 <td>Options for pruning and phone+word determinizing a lattice.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions" title="kaldi.lat.functions.DeterminizeLatticePrunedOptions"><code class="xref py py-obj docutils literal"><span class="pre">DeterminizeLatticePrunedOptions</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.lat.functions.DeterminizeLatticePrunedOptions" title="kaldi.lat.functions.DeterminizeLatticePrunedOptions"><code class="xref py py-obj docutils literal"><span class="pre">DeterminizeLatticePrunedOptions</span></code></a></td>
 <td>Options for pruning and word determinizing a lattice.</td>
 </tr>
 </tbody>
 </table>
+<dl class="class">
+<dt id="kaldi.lat.functions.ComposeLatticePrunedOptions">
+<em class="property">class </em><code class="descclassname">kaldi.lat.functions.</code><code class="descname">ComposeLatticePrunedOptions</code><a class="headerlink" href="#kaldi.lat.functions.ComposeLatticePrunedOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Options for pruned lattice composition.</p>
+<dl class="attribute">
+<dt id="kaldi.lat.functions.ComposeLatticePrunedOptions.growth_ratio">
+<code class="descname">growth_ratio</code><a class="headerlink" href="#kaldi.lat.functions.ComposeLatticePrunedOptions.growth_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines how much num-arcs can grow on each outer iteration (default=1.5).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.ComposeLatticePrunedOptions.initial_num_arcs">
+<code class="descname">initial_num_arcs</code><a class="headerlink" href="#kaldi.lat.functions.ComposeLatticePrunedOptions.initial_num_arcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of arcs used on the first outer iteration (default=100).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.ComposeLatticePrunedOptions.lattice_compose_beam">
+<code class="descname">lattice_compose_beam</code><a class="headerlink" href="#kaldi.lat.functions.ComposeLatticePrunedOptions.lattice_compose_beam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beam width explored during composition (default=6.0).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.lat.functions.ComposeLatticePrunedOptions.max_arcs">
+<code class="descname">max_arcs</code><a class="headerlink" href="#kaldi.lat.functions.ComposeLatticePrunedOptions.max_arcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum number of arcs to expand (default=100000).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kaldi.lat.functions.ComposeLatticePrunedOptions.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>opts:OptionsItf</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.lat.functions.ComposeLatticePrunedOptions.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers options with an object implementing the options interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>OptionsItf</em>) – An object implementing the options interface.
+Typically a command-line option parser.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions">
 <em class="property">class </em><code class="descclassname">kaldi.lat.functions.</code><code class="descname">DeterminizeLatticePhonePrunedOptions</code><a class="headerlink" href="#kaldi.lat.functions.DeterminizeLatticePhonePrunedOptions" title="Permalink to this definition">¶</a></dt>
@@ -1037,6 +1088,31 @@ ignore them in the output.</p>
 <dd><p>Composes a compact lattice with a deterministic on-demand FST.</p>
 <p>This function is used in language model rescoring. Composition affects
 only graph costs. The output is another compact lattice.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.lat.functions.compose_compact_lattice_pruned">
+<code class="descclassname">kaldi.lat.functions.</code><code class="descname">compose_compact_lattice_pruned</code><span class="sig-paren">(</span><em>opts:ComposeLatticePrunedOptions</em>, <em>clat:CompactLatticeVectorFst</em>, <em>det_fst:StdDeterministicOnDemandFst</em><span class="sig-paren">)</span> &#x2192; CompactLatticeVectorFst<a class="headerlink" href="#kaldi.lat.functions.compose_compact_lattice_pruned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does pruned composition of a lattice and a deterministic on demand FST.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>opts</strong> (<a class="reference internal" href="#kaldi.lat.functions.ComposeLatticePrunedOptions" title="kaldi.lat.functions.ComposeLatticePrunedOptions"><em>ComposeLatticePrunedOptions</em></a>) – Options for pruned lattice composition.</li>
+<li><strong>clat</strong> (<em>compactLatticeVectorFst</em>) – Input lattice.</li>
+<li><strong>det_fst</strong> (<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.special.StdDeterministicOnDemandFst" title="kaldi.fstext.special.StdDeterministicOnDemandFst"><em>StdDeterministicOnDemandFst</em></a>) – Input deterministic on demad FST.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Output lattice.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeVectorFst" title="kaldi.fstext.CompactLatticeVectorFst">CompactLatticeVectorFst</a></p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">

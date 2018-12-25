@@ -211,14 +211,19 @@
 
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
 
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">cudamatrix</span> <span class="k">as</span> <span class="n">_cumatrix</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">decoder</span> <span class="k">as</span> <span class="n">_dec</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">fstext</span> <span class="k">as</span> <span class="n">_fst</span>
-<span class="kn">from</span> <span class="nn">.fstext</span> <span class="k">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">_fst_utils</span>
+<span class="kn">from</span> <span class="nn">.fstext</span> <span class="k">import</span> <span class="n">_fst</span> <span class="k">as</span> <span class="n">_fst_fst</span>
+<span class="kn">from</span> <span class="nn">.fstext</span> <span class="k">import</span> <span class="n">properties</span> <span class="k">as</span> <span class="n">_fst_props</span>
 <span class="kn">from</span> <span class="nn">.fstext</span> <span class="k">import</span> <span class="n">special</span> <span class="k">as</span> <span class="n">_fst_spec</span>
+<span class="kn">from</span> <span class="nn">.fstext</span> <span class="k">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">_fst_utils</span>
 <span class="kn">from</span> <span class="nn">.gmm</span> <span class="k">import</span> <span class="n">am</span> <span class="k">as</span> <span class="n">_gmm_am</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">hmm</span> <span class="k">as</span> <span class="n">_hmm</span>
 <span class="kn">from</span> <span class="nn">.lat</span> <span class="k">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">_lat_funcs</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">lm</span> <span class="k">as</span> <span class="n">_lm</span>
 <span class="kn">from</span> <span class="nn">.matrix</span> <span class="k">import</span> <span class="n">_kaldi_matrix</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">rnnlm</span> <span class="k">as</span> <span class="n">_rnnlm</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">nnet3</span> <span class="k">as</span> <span class="n">_nnet3</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">online2</span> <span class="k">as</span> <span class="n">_online2</span>
 <span class="kn">from</span> <span class="nn">.util</span> <span class="k">import</span> <span class="n">io</span> <span class="k">as</span> <span class="n">_util_io</span>
@@ -245,7 +250,8 @@
            <span class="s1">&#39;OnlineRecognizer&#39;</span><span class="p">,</span>
            <span class="s1">&#39;NnetOnlineRecognizer&#39;</span><span class="p">,</span>
            <span class="s1">&#39;NnetLatticeFasterOnlineRecognizer&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;NnetLatticeFasterOnlineGrammarRecognizer&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;NnetLatticeFasterOnlineGrammarRecognizer&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;LatticeLmRescorer&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="Recognizer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.Recognizer">[docs]</a><span class="k">class</span> <span class="nc">Recognizer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -2105,6 +2111,210 @@
         <span class="k">return</span> <span class="n">_online2</span><span class="o">.</span><span class="n">decoding_endpoint_detected_grammar</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">endpoint_opts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">transition_model</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">output_frame_shift</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="LatticeLmRescorer"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.LatticeLmRescorer">[docs]</a><span class="k">class</span> <span class="nc">LatticeLmRescorer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Lattice LM rescorer.</span>
+
+<span class="sd">    If `phi_label` is provided, rescoring will be &quot;exact&quot; in the sense that</span>
+<span class="sd">    back-off arcs in the new LM will only be taken if there are no other</span>
+<span class="sd">    matching arcs. Inexact rescoring can overestimate the new LM scores for some</span>
+<span class="sd">    paths in the output lattice. This happens when back-off paths have higher</span>
+<span class="sd">    scores than matching regular paths in the new LM.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        old_lm (StdFst): Old language model FST.</span>
+<span class="sd">        new_lm (StdFst): New language model FST.</span>
+<span class="sd">        phi_label (int): Back-off label in the new LM.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_lm</span><span class="p">,</span> <span class="n">new_lm</span><span class="p">,</span> <span class="n">phi_label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phi_label</span> <span class="o">=</span> <span class="n">phi_label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">convert_std_to_lattice</span><span class="p">(</span><span class="n">old_lm</span><span class="p">)</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">_fst_props</span><span class="o">.</span><span class="n">I_LABEL_SORTED</span><span class="p">,</span> <span class="kc">True</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span><span class="o">.</span><span class="n">arcsort</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">new_lm</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">convert_std_to_lattice</span><span class="p">(</span><span class="n">new_lm</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">phi_label</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">new_lm</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">new_lm</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">_fst_props</span><span class="o">.</span><span class="n">I_LABEL_SORTED</span><span class="p">,</span> <span class="kc">True</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">new_lm</span><span class="o">.</span><span class="n">arcsort</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">old_lm_compose_cache</span> <span class="o">=</span> <span class="n">_fst_spec</span><span class="o">.</span><span class="n">LatticeTableComposeCache</span><span class="o">.</span><span class="n">from_compose_opts</span><span class="p">(</span>
+            <span class="n">_fst_spec</span><span class="o">.</span><span class="n">TableComposeOptions</span><span class="o">.</span><span class="n">from_matcher_opts</span><span class="p">(</span>
+                <span class="n">_fst_spec</span><span class="o">.</span><span class="n">TableMatcherOptions</span><span class="p">(),</span>
+                <span class="n">table_match_type</span><span class="o">=</span><span class="n">_fst</span><span class="o">.</span><span class="n">MatchType</span><span class="o">.</span><span class="n">MATCH_INPUT</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">phi_label</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">new_lm_compose_cache</span> <span class="o">=</span> <span class="n">_fst_spec</span><span class="o">.</span><span class="n">LatticeTableComposeCache</span><span class="o">.</span><span class="n">from_compose_opts</span><span class="p">(</span>
+                <span class="n">_fst_spec</span><span class="o">.</span><span class="n">TableComposeOptions</span><span class="o">.</span><span class="n">from_matcher_opts</span><span class="p">(</span>
+                    <span class="n">_fst_spec</span><span class="o">.</span><span class="n">TableMatcherOptions</span><span class="p">(),</span>
+                    <span class="n">table_match_type</span><span class="o">=</span><span class="n">_fst</span><span class="o">.</span><span class="n">MatchType</span><span class="o">.</span><span class="n">MATCH_INPUT</span><span class="p">))</span>
+
+<div class="viewcode-block" id="LatticeLmRescorer.rescore"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.LatticeLmRescorer.rescore">[docs]</a>    <span class="k">def</span> <span class="nf">rescore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Rescores input lattice.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            lat (CompactLatticeFst): Input lattice.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            CompactLatticeVectorFst: Rescored lattice.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">_fst_fst</span><span class="o">.</span><span class="n">CompactLatticeFst</span><span class="p">):</span>
+            <span class="n">lat</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">convert_compact_lattice_to_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input should be a compact lattice.&quot;</span><span class="p">)</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">graph_lattice_scale</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">_fst_utils</span><span class="o">.</span><span class="n">scale_lattice</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="n">lat</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">_fst_props</span><span class="o">.</span><span class="n">O_LABEL_SORTED</span><span class="p">,</span> <span class="kc">True</span><span class="p">)):</span>
+            <span class="n">lat</span><span class="o">.</span><span class="n">arcsort</span><span class="p">(</span><span class="s2">&quot;olabel&quot;</span><span class="p">)</span>
+        <span class="n">composed_lat</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">LatticeVectorFst</span><span class="p">()</span>
+        <span class="n">_fst_spec</span><span class="o">.</span><span class="n">table_compose_cache_lattice</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span><span class="p">,</span> <span class="n">composed_lat</span><span class="p">,</span>
+                                              <span class="bp">self</span><span class="o">.</span><span class="n">old_lm_compose_cache</span><span class="p">)</span>
+        <span class="n">determinized_lat</span> <span class="o">=</span> <span class="n">_fst_spec</span><span class="o">.</span><span class="n">determinize_lattice</span><span class="p">(</span><span class="n">composed_lat</span><span class="o">.</span><span class="n">invert</span><span class="p">(),</span>
+                                                         <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span>
+        <span class="n">_fst_utils</span><span class="o">.</span><span class="n">scale_lattice</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">determinized_lat</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">phi_label</span><span class="p">:</span>
+            <span class="n">_fst_utils</span><span class="o">.</span><span class="n">phi_compose_lattice</span><span class="p">(</span><span class="n">determinized_lat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_lm</span><span class="p">,</span>
+                                           <span class="bp">self</span><span class="o">.</span><span class="n">phi_label</span><span class="p">,</span> <span class="n">composed_lat</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_fst_spec</span><span class="o">.</span><span class="n">table_compose_cache_lattice</span><span class="p">(</span><span class="n">determinized_lat</span><span class="p">,</span>
+                                                  <span class="bp">self</span><span class="o">.</span><span class="n">new_lm</span><span class="p">,</span> <span class="n">composed_lat</span><span class="p">,</span>
+                                                  <span class="bp">self</span><span class="o">.</span><span class="n">new_lm_compose_cache</span><span class="p">)</span>
+        <span class="n">determinized_lat</span> <span class="o">=</span> <span class="n">_fst_spec</span><span class="o">.</span><span class="n">determinize_lattice</span><span class="p">(</span><span class="n">composed_lat</span><span class="o">.</span><span class="n">invert</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">determinized_lat</span></div>
+
+<div class="viewcode-block" id="LatticeLmRescorer.from_files"><a class="viewcode-back" href="../../api/kaldi.asr.html#kaldi.asr.LatticeLmRescorer.from_files">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">old_lm_rxfilename</span><span class="p">,</span> <span class="n">new_lm_rxfilename</span><span class="p">,</span> <span class="n">phi_label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new lattice LM rescorer from given files.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            old_lm_rxfilename (str): Extended filename for reading the old LM.</span>
+<span class="sd">            new_lm_rxfilename (str): Extended filename for reading the new LM.</span>
+<span class="sd">            phi_label (int): Back-off label in the new LM.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            LatticeRescorer: A new lattice LM rescorer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">old_lm</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">read_fst_kaldi</span><span class="p">(</span><span class="n">old_lm_rxfilename</span><span class="p">)</span>
+        <span class="n">new_lm</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">read_fst_kaldi</span><span class="p">(</span><span class="n">new_lm_rxfilename</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">old_lm</span><span class="p">,</span> <span class="n">new_lm</span><span class="p">,</span> <span class="n">phi_label</span><span class="p">)</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">LatticeRnnlmPrunedRescorer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Lattice RNNLM rescorer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        old_lm (ConstArpaLm or StdFst): Old LM.</span>
+<span class="sd">        word_embedding_mat (CuMatrix): Word embeddings.</span>
+<span class="sd">        rnnlm (Nnet): RNNLM.</span>
+<span class="sd">        lm_scale (float): Scaling factor for RNNLM weights. Negated scaling</span>
+<span class="sd">            factor will be applied to old LM weights.</span>
+<span class="sd">        acoustic_scale (float): Scaling factor for acoustic weights.</span>
+<span class="sd">        max_ngram_order (int): RNNLM histories longer than this value will</span>
+<span class="sd">            be considered equivalent for rescoring purposes. This is an</span>
+<span class="sd">            approximation saving time and reducing output lattice size.</span>
+<span class="sd">        opts (RnnlmComputeStateComputationOptions): Options for RNNLM</span>
+<span class="sd">            state computation.</span>
+<span class="sd">        compose_opts (ComposeLatticePrunedOptions): Options for pruned</span>
+<span class="sd">            lattice composition.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_lm</span><span class="p">,</span> <span class="n">word_embedding_mat</span><span class="p">,</span> <span class="n">rnnlm</span><span class="p">,</span>
+                 <span class="n">lm_scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">max_ngram_order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                 <span class="n">opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compose_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span> <span class="o">=</span> <span class="n">old_lm</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span><span class="p">,</span> <span class="n">_lm</span><span class="o">.</span><span class="n">ConstArpaLm</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">det_old_lm</span> <span class="o">=</span> <span class="n">_lm</span><span class="o">.</span><span class="n">ConstArpaLmDeterministicFst</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">_fst_props</span><span class="o">.</span><span class="n">ACCEPTOR</span><span class="p">,</span> <span class="kc">True</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">_fst_props</span><span class="o">.</span><span class="n">I_LABEL_SORTED</span><span class="p">,</span> <span class="kc">True</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span><span class="o">.</span><span class="n">arcsort</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">det_old_lm</span> <span class="o">=</span> <span class="n">_fst_spec</span><span class="o">.</span><span class="n">StdBackoffDeterministicOnDemandFst</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">old_lm</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaled_old_lm</span> <span class="o">=</span> <span class="n">_fst_spec</span><span class="o">.</span><span class="n">ScaleDeterministicOnDemandFst</span><span class="p">(</span>
+            <span class="o">-</span><span class="n">lm_scale</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">det_old_lm</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">is_simple_nnet</span><span class="p">(</span><span class="n">rnnlm</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;RNNLM should be a simple nnet&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">opts</span><span class="p">:</span>
+            <span class="n">opts</span> <span class="o">=</span> <span class="n">_rnnlm</span><span class="o">.</span><span class="n">RnnlmComputeStateComputationOptions</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">word_embedding_mat</span> <span class="o">=</span> <span class="n">word_embedding_mat</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rnnlm</span> <span class="o">=</span> <span class="n">rnnlm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">_rnnlm</span><span class="o">.</span><span class="n">RnnlmComputeStateInfo</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnnlm</span><span class="p">,</span>
+                                                 <span class="bp">self</span><span class="o">.</span><span class="n">word_embedding_mat</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">det_rnnlm</span> <span class="o">=</span> <span class="n">_rnnlm</span><span class="o">.</span><span class="n">KaldiRnnlmDeterministicFst</span><span class="p">(</span><span class="n">max_ngram_order</span><span class="p">,</span>
+                                                           <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lm_scale</span> <span class="o">=</span> <span class="n">lm_scale</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">=</span> <span class="n">acoustic_scale</span>
+        <span class="k">if</span> <span class="n">compose_opts</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">compose_opts</span> <span class="o">=</span> <span class="n">compose_opts</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">compose_opts</span> <span class="o">=</span> <span class="n">_lat_funcs</span><span class="o">.</span><span class="n">ComposeLatticePrunedOptions</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">rescore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Rescores input lattice.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            lat (CompactLatticeFst): Input lattice.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            CompactLatticeVectorFst: Rescored lattice.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">scaled_rnnlm</span> <span class="o">=</span> <span class="n">_fst_spec</span><span class="o">.</span><span class="n">ScaleDeterministicOnDemandFst</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lm_scale</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">det_rnnlm</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">!=</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">acoustic_lattice_scale</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span>
+            <span class="n">_fst_utils</span><span class="o">.</span><span class="n">scale_compact_lattice</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+        <span class="n">_lat_funcs</span><span class="o">.</span><span class="n">top_sort_lattice_if_needed</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+        <span class="n">combined_lms</span> <span class="o">=</span> <span class="n">_fst_spec</span><span class="o">.</span><span class="n">StdComposeDeterministicOnDemandFst</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scaled_old_lm</span><span class="p">,</span> <span class="n">scaled_rnnlm</span><span class="p">)</span>
+        <span class="n">composed_lat</span> <span class="o">=</span> <span class="n">_lat_funcs</span><span class="o">.</span><span class="n">compose_compact_lattice_pruned</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">compose_opts</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">combined_lms</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">det_rnnlm</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span> <span class="o">!=</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">_fst_utils</span><span class="o">.</span><span class="n">acoustic_lattice_scale</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">acoustic_scale</span><span class="p">)</span>
+            <span class="n">_fst_utils</span><span class="o">.</span><span class="n">scale_compact_lattice</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">composed_lat</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">composed_lat</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_files</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">old_lm_rxfilename</span><span class="p">,</span> <span class="n">word_embedding_rxfilename</span><span class="p">,</span>
+                   <span class="n">rnnlm_rxfilename</span><span class="p">,</span> <span class="n">lm_scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                   <span class="n">max_ngram_order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">use_const_arpa</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">compose_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a new lattice LM rescorer from given files.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            old_lm_rxfilename (str): Extended filename for reading the old LM.</span>
+<span class="sd">            word_embedding_rxfilename (str): Extended filename for reading the</span>
+<span class="sd">                word embeddings.</span>
+<span class="sd">            rnnlm_rxfilename (str): Extended filename for reading the new RNNLM.</span>
+<span class="sd">            lm_scale (float): Scaling factor for RNNLM weights. Negated scaling</span>
+<span class="sd">                factor will be applied to old LM weights.</span>
+<span class="sd">            acoustic_scale (float): Scaling factor for acoustic weights.</span>
+<span class="sd">            max_ngram_order (int): RNNLM histories longer than this value will</span>
+<span class="sd">                be considered equivalent for rescoring purposes. This is an</span>
+<span class="sd">                approximation saving time and reducing output lattice size.</span>
+<span class="sd">            use_const_arpa (bool): If True, read the old LM as a const-arpa</span>
+<span class="sd">                file as opposed to an FST file. This is helpful when rescoring</span>
+<span class="sd">                with a large LM.</span>
+<span class="sd">            opts (RnnlmComputeStateComputationOptions): Options for RNNLM</span>
+<span class="sd">                state computation.</span>
+<span class="sd">            compose_opts (ComposeLatticePrunedOptions): Options for pruned</span>
+<span class="sd">                lattice composition.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            LatticeRnnlmPrunedRescorer: A new lattice RNNLM rescorer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">use_const_arpa</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">old_lm_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
+                <span class="n">old_lm</span> <span class="o">=</span> <span class="n">_lm</span><span class="o">.</span><span class="n">ConstArpaLm</span><span class="p">()</span>
+                <span class="n">old_lm</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">old_lm</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">read_fst_kaldi</span><span class="p">(</span><span class="n">old_lm_rxfilename</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">word_embedding_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
+            <span class="n">word_embedding_mat</span> <span class="o">=</span> <span class="n">_cumatrix</span><span class="o">.</span><span class="n">CuMatrix</span><span class="p">()</span>
+            <span class="n">word_embedding_mat</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">_util_io</span><span class="o">.</span><span class="n">xopen</span><span class="p">(</span><span class="n">rnnlm_rxfilename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ki</span><span class="p">:</span>
+            <span class="n">rnnlm</span> <span class="o">=</span> <span class="n">_nnet3</span><span class="o">.</span><span class="n">Nnet</span><span class="p">()</span>
+            <span class="n">rnnlm</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ki</span><span class="o">.</span><span class="n">stream</span><span class="p">(),</span> <span class="n">ki</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">old_lm</span><span class="p">,</span> <span class="n">word_embedding_mat</span><span class="p">,</span> <span class="n">rnnlm</span><span class="p">,</span> <span class="n">lm_scale</span><span class="p">,</span> <span class="n">acoustic_scale</span><span class="p">,</span>
+                   <span class="n">max_ngram_order</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">compose_opts</span><span class="p">)</span>
 </pre></div>
 
            </div>
