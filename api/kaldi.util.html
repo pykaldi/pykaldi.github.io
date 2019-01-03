@@ -207,6 +207,30 @@
             
   <div class="section" id="module-kaldi.util">
 <span id="kaldi-util"></span><h1>kaldi.util<a class="headerlink" href="#module-kaldi.util" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.levenshtein_alignment" title="kaldi.util.levenshtein_alignment"><code class="xref py py-obj docutils literal"><span class="pre">levenshtein_alignment</span></code></a></td>
+<td>Computes the levenshtein alignment between two lists of integer labels.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.levenshtein_edit_distance" title="kaldi.util.levenshtein_edit_distance"><code class="xref py py-obj docutils literal"><span class="pre">levenshtein_edit_distance</span></code></a></td>
+<td>Computes the edit distance between two lists of integer labels.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.levenshtein_edit_distance_conventional" title="kaldi.util.levenshtein_edit_distance_conventional"><code class="xref py py-obj docutils literal"><span class="pre">levenshtein_edit_distance_conventional</span></code></a></td>
+<td>Computes the edit distance between two lists of integer labels.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.util.levenshtein_edit_distance_str" title="kaldi.util.levenshtein_edit_distance_str"><code class="xref py py-obj docutils literal"><span class="pre">levenshtein_edit_distance_str</span></code></a></td>
+<td>Computes the edit distance between two lists of string symbols.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.util.levenshtein_edit_distance_str_conventional" title="kaldi.util.levenshtein_edit_distance_str_conventional"><code class="xref py py-obj docutils literal"><span class="pre">levenshtein_edit_distance_str_conventional</span></code></a></td>
+<td>Computes the edit distance between two lists of string symbols.</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Classes</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -324,6 +348,149 @@ Typically a command-line option parser.</td>
 </table>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.util.levenshtein_alignment">
+<code class="descclassname">kaldi.util.</code><code class="descname">levenshtein_alignment</code><span class="sig-paren">(</span><em>a:list&lt;int&gt;</em>, <em>b:list&lt;int&gt;</em>, <em>eps_label:int) -&gt; (err:int</em>, <em>alignment:list&lt;tuple&lt;int</em>, <em>int&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.levenshtein_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the levenshtein alignment between two lists of integer labels.</p>
+<p>This version of the edit-distance computation outputs the alignment
+between the two inputs. This is a list of pairs of (a label, b label).
+The epsilon label must not occur in sequences a or b. Where one is
+aligned to no label in the other (insertion or deletion), epsilon will be
+the corresponding member of the pair.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – First list of integer labels.</li>
+<li><strong>b</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Second list of integer labels.</li>
+<li><strong>eps_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Epsilon label.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Edit-distance and levenshtein
+alignment between the inputs.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, List[<a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.util.levenshtein_edit_distance">
+<code class="descclassname">kaldi.util.</code><code class="descname">levenshtein_edit_distance</code><span class="sig-paren">(</span><em>a:list&lt;int&gt;</em>, <em>b:list&lt;int&gt;</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.util.levenshtein_edit_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the edit distance between two lists of integer labels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – First list of integer labels.</li>
+<li><strong>b</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Second list of integer labels.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Edit-distance between the inputs.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.util.levenshtein_edit_distance_conventional">
+<code class="descclassname">kaldi.util.</code><code class="descname">levenshtein_edit_distance_conventional</code><span class="sig-paren">(</span><em>a:list&lt;int&gt;</em>, <em>b:list&lt;int&gt;) -&gt; (err:int</em>, <em>ins:int</em>, <em>del:int</em>, <em>sub:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.levenshtein_edit_distance_conventional" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the edit distance between two lists of integer labels.</p>
+<p>This version returns the number of insertions, deletions and
+substitutions in addition to the total number of edits, i.e. error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – First list of integer labels.</li>
+<li><strong>b</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – Second list of integer labels.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">In order: edit-distance, #insertions,
+#deletions, #substitutions.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Noise label, e.g. silence label, must be filtered out of the input
+sequences.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.util.levenshtein_edit_distance_str">
+<code class="descclassname">kaldi.util.</code><code class="descname">levenshtein_edit_distance_str</code><span class="sig-paren">(</span><em>a:list&lt;str&gt;</em>, <em>b:list&lt;str&gt;</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.util.levenshtein_edit_distance_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the edit distance between two lists of string symbols.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em>) – First list of string symbols.</li>
+<li><strong>b</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em>) – Second list of string symbols.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Edit-distance between the inputs.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.util.levenshtein_edit_distance_str_conventional">
+<code class="descclassname">kaldi.util.</code><code class="descname">levenshtein_edit_distance_str_conventional</code><span class="sig-paren">(</span><em>a:list&lt;str&gt;</em>, <em>b:list&lt;str&gt;) -&gt; (err:int</em>, <em>ins:int</em>, <em>del:int</em>, <em>sub:int</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.util.levenshtein_edit_distance_str_conventional" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the edit distance between two lists of string symbols.</p>
+<p>This version returns the number of insertions, deletions and
+substitutions in addition to the total number of edits, i.e. error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em>) – First list of string symbols.</li>
+<li><strong>b</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em>) – Second list of string symbols.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">In order: edit-distance, #insertions,
+#deletions, #substitutions.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="kaldi.fstext.html#kaldi.fstext.CompactLatticeEncodeTable.Tuple" title="kaldi.fstext.CompactLatticeEncodeTable.Tuple">Tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Noise symbol, e.g. silence symbol, must be filtered out of the input
+sequences.</p>
+</div>
 </dd></dl>
 
 <div class="section" id="module-kaldi.util.io">
