@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.util.options &mdash; PyKaldi 0.1.1 documentation</title>
+  <title>kaldi.online2._online_ivector &mdash; PyKaldi 0.1.1 documentation</title>
   
 
   
@@ -40,7 +40,7 @@
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="PyKaldi 0.1.1 documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
+        <link rel="up" title="kaldi.online2" href="../online2.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -183,7 +183,9 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>kaldi.util.options</li>
+          <li><a href="../online2.html">kaldi.online2</a> &raquo;</li>
+        
+      <li>kaldi.online2._online_ivector</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -198,54 +200,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for kaldi.util.options</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+  <h1>Source code for kaldi.online2._online_ivector</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">matrix</span> <span class="k">as</span> <span class="n">_matrix</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_options_ext</span>
+<span class="kn">from</span> <span class="nn">._online_ivector_feature</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._online_ivector_feature</span> <span class="k">import</span> <span class="n">_OnlineIvectorExtractionInfo</span>
 
-<div class="viewcode-block" id="ParseOptions"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.options.ParseOptions">[docs]</a><span class="k">class</span> <span class="nc">ParseOptions</span><span class="p">(</span><span class="n">_options_ext</span><span class="o">.</span><span class="n">ParseOptions</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Command line option parser.</span>
+<div class="viewcode-block" id="OnlineIvectorExtractionInfo"><a class="viewcode-back" href="../../../api/kaldi.online2.html#kaldi.online2.OnlineIvectorExtractionInfo">[docs]</a><span class="k">class</span> <span class="nc">OnlineIvectorExtractionInfo</span><span class="p">(</span><span class="n">_OnlineIvectorExtractionInfo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Configuration options for online iVector extraction.&quot;&quot;&quot;</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lda_mat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">SubMatrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lda_mat</span><span class="p">)</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        usage (str): Usage string.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@lda_mat</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">lda_mat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lda_mat</span> <span class="o">=</span> <span class="n">value</span>
 
-<div class="viewcode-block" id="ParseOptions.parse_args"><a class="viewcode-back" href="../../../api/kaldi.util.html#kaldi.util.options.ParseOptions.parse_args">[docs]</a>    <span class="k">def</span> <span class="nf">parse_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Parses arguments.</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">global_cmvn_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_matrix</span><span class="o">.</span><span class="n">DoubleSubMatrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_global_cmvn_stats</span><span class="p">)</span>
 
-<span class="sd">        This method is used for parsing command line options. It fills the</span>
-<span class="sd">        options objects registered with the parser. Parsed values for options</span>
-<span class="sd">        that are directly registered with the parser, i.e. not via an options</span>
-<span class="sd">        object, are returned as attributes of a `Namespace` object.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            args (list): List of argument strings. If not provided, the argument</span>
-<span class="sd">                strings are taken from `sys.argv`.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            A new `Namespace` object populated with the parsed values for</span>
-<span class="sd">            options that are directly registered with the parser.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">(</span><span class="n">args</span> <span class="k">if</span> <span class="n">args</span> <span class="k">else</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-        <span class="n">opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_options</span><span class="p">()</span>
-        <span class="n">arg_dict</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">arg_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">bool_map</span><span class="p">)</span>
-        <span class="n">arg_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">int_map</span><span class="p">)</span>
-        <span class="n">arg_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">uint_map</span><span class="p">)</span>
-        <span class="n">arg_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">float_map</span><span class="p">)</span>
-        <span class="n">arg_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">double_map</span><span class="p">)</span>
-        <span class="n">arg_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">str_map</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">(</span><span class="o">**</span><span class="n">arg_dict</span><span class="p">)</span></div></div>
-
-<span class="c1">################################################################################</span>
-
-<span class="n">_exclude_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;argparse&#39;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">]</span>
+    <span class="nd">@global_cmvn_stats</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">global_cmvn_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_global_cmvn_stats</span> <span class="o">=</span> <span class="n">value</span></div>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span>
            <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span>
-           <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;Base&#39;</span><span class="p">)</span>
-           <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">_exclude_list</span><span class="p">]</span>
+           <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;Base&#39;</span><span class="p">)]</span>
 </pre></div>
 
            </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.gmm &mdash; PyKaldi 0.1.0 documentation</title>
+  <title>kaldi.gmm &mdash; PyKaldi 0.1.1 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.1 documentation" href="../index.html"/>
         <link rel="next" title="kaldi.hmm" href="kaldi.hmm.html"/>
         <link rel="prev" title="kaldi.fstext" href="kaldi.fstext.html"/> 
 
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -578,7 +578,7 @@ void ::kaldi::AccumFullGmm::Write(::std::basic_ostream&lt;char, ::std::char_trai
 
 <dl class="class">
 <dt id="kaldi.gmm.DiagGmm">
-<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">DiagGmm</code><span class="sig-paren">(</span><em>nmix=0</em>, <em>dim=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#DiagGmm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.DiagGmm" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">DiagGmm</code><span class="sig-paren">(</span><em>nmix=0</em>, <em>dim=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm/_gmm.html#DiagGmm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.DiagGmm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gaussian Mixture Model with diagonal covariances.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -631,7 +631,7 @@ void ::kaldi::AccumFullGmm::Write(::std::basic_ostream&lt;char, ::std::char_trai
 
 <dl class="method">
 <dt id="kaldi.gmm.DiagGmm.component_posteriors">
-<code class="descname">component_posteriors</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#DiagGmm.component_posteriors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.DiagGmm.component_posteriors" title="Permalink to this definition">¶</a></dt>
+<code class="descname">component_posteriors</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm/_gmm.html#DiagGmm.component_posteriors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.DiagGmm.component_posteriors" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Computes the posterior probabilities of all Gaussian components given</dt>
 <dd>a data point.</dd>
@@ -672,7 +672,7 @@ posterior probabilities</li>
 
 <dl class="method">
 <dt id="kaldi.gmm.DiagGmm.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><em>src</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#DiagGmm.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.DiagGmm.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>src</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm/_gmm.html#DiagGmm.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.DiagGmm.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copies data from src into this DiagGmm and returns this DiagGmm.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1095,7 +1095,7 @@ pertrubation factor.</p>
 
 <dl class="class">
 <dt id="kaldi.gmm.FullGmm">
-<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">FullGmm</code><span class="sig-paren">(</span><em>nmix=0</em>, <em>dim=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.gmm.</code><code class="descname">FullGmm</code><span class="sig-paren">(</span><em>nmix=0</em>, <em>dim=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm/_gmm.html#FullGmm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Python wrapper for Kaldi::FullGmm&lt;Float&gt;</p>
 <p>Provides a more pythonic access to the C++ methods.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1150,7 +1150,7 @@ dimensions.</p>
 
 <dl class="method">
 <dt id="kaldi.gmm.FullGmm.component_posteriors">
-<code class="descname">component_posteriors</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.component_posteriors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.component_posteriors" title="Permalink to this definition">¶</a></dt>
+<code class="descname">component_posteriors</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm/_gmm.html#FullGmm.component_posteriors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.component_posteriors" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Computes the posterior probabilities of all Gaussian components given</dt>
 <dd>a data point.</dd>
@@ -1191,7 +1191,7 @@ posterior probabilities</li>
 
 <dl class="method">
 <dt id="kaldi.gmm.FullGmm.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><em>src</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>src</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm/_gmm.html#FullGmm.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copies data from src into this FullGmm and returns this FullGmm.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1290,7 +1290,7 @@ that were preselected (sorted from best to worst likelihood).</p>
 
 <dl class="method">
 <dt id="kaldi.gmm.FullGmm.get_covars">
-<code class="descname">get_covars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.get_covars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.get_covars" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_covars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm/_gmm.html#FullGmm.get_covars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.get_covars" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1303,7 +1303,7 @@ that were preselected (sorted from best to worst likelihood).</p>
 
 <dl class="method">
 <dt id="kaldi.gmm.FullGmm.get_covars_and_means">
-<code class="descname">get_covars_and_means</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.get_covars_and_means"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.get_covars_and_means" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_covars_and_means</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm/_gmm.html#FullGmm.get_covars_and_means"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.get_covars_and_means" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1342,7 +1342,7 @@ that were preselected (sorted from best to worst likelihood).</p>
 
 <dl class="method">
 <dt id="kaldi.gmm.FullGmm.inv_covars">
-<code class="descname">inv_covars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.inv_covars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.inv_covars" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inv_covars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm/_gmm.html#FullGmm.inv_covars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.inv_covars" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1530,13 +1530,13 @@ pertrubation factor.</p>
 
 <dl class="method">
 <dt id="kaldi.gmm.FullGmm.set_means">
-<code class="descname">set_means</code><span class="sig-paren">(</span><em>means</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.set_means"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.set_means" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_means</code><span class="sig-paren">(</span><em>means</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm/_gmm.html#FullGmm.set_means"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.set_means" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets gmm component means.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="kaldi.gmm.FullGmm.set_weights">
-<code class="descname">set_weights</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm.html#FullGmm.set_weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.set_weights" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_weights</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/gmm/_gmm.html#FullGmm.set_weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.gmm.FullGmm.set_weights" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets gmm mixture weights.</p>
 </dd></dl>
 
@@ -2437,7 +2437,7 @@ void ::kaldi::MleAmDiagGmmUpdate(::kaldi::MleDiagGmmOptions, ::kaldi::AccumAmDia
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.0',
+            VERSION:'0.1.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

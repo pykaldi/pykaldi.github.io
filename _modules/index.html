@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview: module code &mdash; PyKaldi 0.1.0 documentation</title>
+  <title>Overview: module code &mdash; PyKaldi 0.1.1 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/> 
+    <link rel="top" title="PyKaldi 0.1.1 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -71,7 +71,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -378,6 +378,7 @@
 <li><a href="importlib/_bootstrap.html">importlib._bootstrap</a></li>
 <li><a href="kaldi/alignment.html">kaldi.alignment</a></li>
 <li><a href="kaldi/asr.html">kaldi.asr</a></li>
+<li><a href="kaldi/base/_fstream.html">kaldi.base._fstream</a></li>
 <li><a href="kaldi/base/_io_funcs.html">kaldi.base._io_funcs</a></li>
 <li><a href="kaldi/base/_io_funcs_ext.html">kaldi.base._io_funcs_ext</a></li>
 <li><a href="kaldi/base/_io_funcs_inl.html">kaldi.base._io_funcs_inl</a></li>
@@ -385,31 +386,65 @@
 <li><a href="kaldi/base/_kaldi_error.html">kaldi.base._kaldi_error</a></li>
 <li><a href="kaldi/base/_kaldi_math.html">kaldi.base._kaldi_math</a></li>
 <li><a href="kaldi/base/_kaldi_math_ext.html">kaldi.base._kaldi_math_ext</a></li>
+<li><a href="kaldi/base/_sstream.html">kaldi.base._sstream</a></li>
+<li><a href="kaldi/base/_timer.html">kaldi.base._timer</a></li>
 <li><a href="kaldi/base/math.html">kaldi.base.math</a></li>
+<li><a href="kaldi/chain/_chain_datastruct.html">kaldi.chain._chain_datastruct</a></li>
 <li><a href="kaldi/chain/_chain_den_graph.html">kaldi.chain._chain_den_graph</a></li>
+<li><a href="kaldi/chain/_chain_denominator.html">kaldi.chain._chain_denominator</a></li>
+<li><a href="kaldi/chain/_chain_generic_numerator.html">kaldi.chain._chain_generic_numerator</a></li>
+<li><a href="kaldi/chain/_chain_numerator.html">kaldi.chain._chain_numerator</a></li>
 <li><a href="kaldi/chain/_chain_supervision.html">kaldi.chain._chain_supervision</a></li>
+<li><a href="kaldi/chain/_chain_training.html">kaldi.chain._chain_training</a></li>
 <li><a href="kaldi/chain/_chain_training_ext.html">kaldi.chain._chain_training_ext</a></li>
+<li><a href="kaldi/chain/_language_model.html">kaldi.chain._language_model</a></li>
 <li><a href="kaldi/cudamatrix.html">kaldi.cudamatrix</a></li>
-<ul><li><a href="kaldi/cudamatrix/_cu_device.html">kaldi.cudamatrix._cu_device</a></li>
+<ul><li><a href="kaldi/cudamatrix/_cu_array.html">kaldi.cudamatrix._cu_array</a></li>
+<li><a href="kaldi/cudamatrix/_cu_device.html">kaldi.cudamatrix._cu_device</a></li>
 <li><a href="kaldi/cudamatrix/_cu_matrix.html">kaldi.cudamatrix._cu_matrix</a></li>
+<li><a href="kaldi/cudamatrix/_cu_matrixdim.html">kaldi.cudamatrix._cu_matrixdim</a></li>
 <li><a href="kaldi/cudamatrix/_cu_sparse_matrix.html">kaldi.cudamatrix._cu_sparse_matrix</a></li>
 <li><a href="kaldi/cudamatrix/_cu_vector.html">kaldi.cudamatrix._cu_vector</a></li>
 </ul><li><a href="kaldi/decoder.html">kaldi.decoder</a></li>
-<ul><li><a href="kaldi/decoder/_grammar_fst.html">kaldi.decoder._grammar_fst</a></li>
-</ul><li><a href="kaldi/feat/_feature_functions.html">kaldi.feat._feature_functions</a></li>
+<ul><li><a href="kaldi/decoder/_biglm_faster_decoder.html">kaldi.decoder._biglm_faster_decoder</a></li>
+<li><a href="kaldi/decoder/_compiler.html">kaldi.decoder._compiler</a></li>
+<li><a href="kaldi/decoder/_decodable_mapped.html">kaldi.decoder._decodable_mapped</a></li>
+<li><a href="kaldi/decoder/_decodable_matrix.html">kaldi.decoder._decodable_matrix</a></li>
+<li><a href="kaldi/decoder/_decodable_sum.html">kaldi.decoder._decodable_sum</a></li>
+<li><a href="kaldi/decoder/_decoder.html">kaldi.decoder._decoder</a></li>
+<li><a href="kaldi/decoder/_faster_decoder.html">kaldi.decoder._faster_decoder</a></li>
+<li><a href="kaldi/decoder/_grammar_fst.html">kaldi.decoder._grammar_fst</a></li>
+<li><a href="kaldi/decoder/_lattice_faster_decoder.html">kaldi.decoder._lattice_faster_decoder</a></li>
+<li><a href="kaldi/decoder/_training_graph_compiler.html">kaldi.decoder._training_graph_compiler</a></li>
+</ul><li><a href="kaldi/feat/_feature_fbank.html">kaldi.feat._feature_fbank</a></li>
+<li><a href="kaldi/feat/_feature_functions.html">kaldi.feat._feature_functions</a></li>
+<li><a href="kaldi/feat/_feature_mfcc.html">kaldi.feat._feature_mfcc</a></li>
+<li><a href="kaldi/feat/_feature_plp.html">kaldi.feat._feature_plp</a></li>
+<li><a href="kaldi/feat/_feature_spectrogram.html">kaldi.feat._feature_spectrogram</a></li>
 <li><a href="kaldi/feat/_feature_window.html">kaldi.feat._feature_window</a></li>
 <li><a href="kaldi/feat/_mel_computations.html">kaldi.feat._mel_computations</a></li>
+<li><a href="kaldi/feat/_online_feature.html">kaldi.feat._online_feature</a></li>
 <li><a href="kaldi/feat/_pitch_functions.html">kaldi.feat._pitch_functions</a></li>
 <li><a href="kaldi/feat/_resample.html">kaldi.feat._resample</a></li>
 <li><a href="kaldi/feat/_signal.html">kaldi.feat._signal</a></li>
+<li><a href="kaldi/feat/_wave_reader.html">kaldi.feat._wave_reader</a></li>
 <li><a href="kaldi/fstext.html">kaldi.fstext</a></li>
 <ul><li><a href="kaldi/fstext/_api.html">kaldi.fstext._api</a></li>
 <li><a href="kaldi/fstext/_context_fst.html">kaldi.fstext._context_fst</a></li>
 <li><a href="kaldi/fstext/_context_fst_inl.html">kaldi.fstext._context_fst_inl</a></li>
-<li><a href="kaldi/fstext/_float_weight.html">kaldi.fstext._float_weight</a></li>
+<li><a href="kaldi/fstext/_deterministic_fst.html">kaldi.fstext._deterministic_fst</a></li>
+<li><a href="kaldi/fstext/_encode.html">kaldi.fstext._encode</a></li>
+<ul><li><a href="kaldi/fstext/_encode/CompactLatticeEncodeTable.html">kaldi.fstext._encode.CompactLatticeEncodeTable</a></li>
+<li><a href="kaldi/fstext/_encode/KwsIndexEncodeTable.html">kaldi.fstext._encode.KwsIndexEncodeTable</a></li>
+<li><a href="kaldi/fstext/_encode/LatticeEncodeTable.html">kaldi.fstext._encode.LatticeEncodeTable</a></li>
+<li><a href="kaldi/fstext/_encode/LogEncodeTable.html">kaldi.fstext._encode.LogEncodeTable</a></li>
+<li><a href="kaldi/fstext/_encode/StdEncodeTable.html">kaldi.fstext._encode.StdEncodeTable</a></li>
+</ul><li><a href="kaldi/fstext/_float_weight.html">kaldi.fstext._float_weight</a></li>
+<li><a href="kaldi/fstext/_fst.html">kaldi.fstext._fst</a></li>
 <li><a href="kaldi/fstext/_fstext_shims.html">kaldi.fstext._fstext_shims</a></li>
 <li><a href="kaldi/fstext/_fstext_utils.html">kaldi.fstext._fstext_utils</a></li>
 <li><a href="kaldi/fstext/_fstext_utils_inl.html">kaldi.fstext._fstext_utils_inl</a></li>
+<li><a href="kaldi/fstext/_getters.html">kaldi.fstext._getters</a></li>
 <li><a href="kaldi/fstext/_grammar_context_fst.html">kaldi.fstext._grammar_context_fst</a></li>
 <li><a href="kaldi/fstext/_lattice_utils.html">kaldi.fstext._lattice_utils</a></li>
 <li><a href="kaldi/fstext/_lattice_weight.html">kaldi.fstext._lattice_weight</a></li>
@@ -423,10 +458,15 @@
 <li><a href="kaldi/fstext/utils.html">kaldi.fstext.utils</a></li>
 </ul><li><a href="kaldi/gmm.html">kaldi.gmm</a></li>
 <ul><li><a href="kaldi/gmm/_am_diag_gmm.html">kaldi.gmm._am_diag_gmm</a></li>
+<li><a href="kaldi/gmm/_decodable_am_diag_gmm.html">kaldi.gmm._decodable_am_diag_gmm</a></li>
+<li><a href="kaldi/gmm/_full_gmm_normal.html">kaldi.gmm._full_gmm_normal</a></li>
+<li><a href="kaldi/gmm/_gmm.html">kaldi.gmm._gmm</a></li>
 <li><a href="kaldi/gmm/_mle_am_diag_gmm.html">kaldi.gmm._mle_am_diag_gmm</a></li>
 <li><a href="kaldi/gmm/_mle_diag_gmm.html">kaldi.gmm._mle_diag_gmm</a></li>
 <li><a href="kaldi/gmm/_mle_full_gmm.html">kaldi.gmm._mle_full_gmm</a></li>
 <li><a href="kaldi/gmm/_model_common.html">kaldi.gmm._model_common</a></li>
+</ul><li><a href="kaldi/hmm/_hmm_topology.html">kaldi.hmm._hmm_topology</a></li>
+<ul><li><a href="kaldi/hmm/_hmm_topology/HmmTopology.html">kaldi.hmm._hmm_topology.HmmTopology</a></li>
 </ul><li><a href="kaldi/hmm/_hmm_utils.html">kaldi.hmm._hmm_utils</a></li>
 <li><a href="kaldi/hmm/_hmm_utils_ext.html">kaldi.hmm._hmm_utils_ext</a></li>
 <li><a href="kaldi/hmm/_posterior.html">kaldi.hmm._posterior</a></li>
@@ -435,19 +475,30 @@
 <li><a href="kaldi/hmm/_tree_accu.html">kaldi.hmm._tree_accu</a></li>
 <li><a href="kaldi/ivector/_agglomerative_clustering.html">kaldi.ivector._agglomerative_clustering</a></li>
 <li><a href="kaldi/ivector/_ivector_extractor.html">kaldi.ivector._ivector_extractor</a></li>
+<li><a href="kaldi/ivector/_logistic_regression.html">kaldi.ivector._logistic_regression</a></li>
+<li><a href="kaldi/ivector/_plda.html">kaldi.ivector._plda</a></li>
 <li><a href="kaldi/ivector/_voice_activity_detection.html">kaldi.ivector._voice_activity_detection</a></li>
 <li><a href="kaldi/kws.html">kaldi.kws</a></li>
 <ul><li><a href="kaldi/kws/_kws_functions.html">kaldi.kws._kws_functions</a></li>
 </ul><li><a href="kaldi/lat/_compose_lattice_pruned.html">kaldi.lat._compose_lattice_pruned</a></li>
+<li><a href="kaldi/lat/_determinize_lattice_pruned.html">kaldi.lat._determinize_lattice_pruned</a></li>
 <li><a href="kaldi/lat/_lattice_functions.html">kaldi.lat._lattice_functions</a></li>
 <li><a href="kaldi/lat/_minimize_lattice.html">kaldi.lat._minimize_lattice</a></li>
+<li><a href="kaldi/lat/_phone_align_lattice.html">kaldi.lat._phone_align_lattice</a></li>
 <li><a href="kaldi/lat/_push_lattice.html">kaldi.lat._push_lattice</a></li>
+<li><a href="kaldi/lat/_sausages.html">kaldi.lat._sausages</a></li>
 <li><a href="kaldi/lat/_word_align_lattice.html">kaldi.lat._word_align_lattice</a></li>
+<li><a href="kaldi/lat/_word_align_lattice_lexicon.html">kaldi.lat._word_align_lattice_lexicon</a></li>
 <li><a href="kaldi/lat/align.html">kaldi.lat.align</a></li>
 <li><a href="kaldi/lat/functions.html">kaldi.lat.functions</a></li>
+<li><a href="kaldi/lm/_arpa_file_parser.html">kaldi.lm._arpa_file_parser</a></li>
+<li><a href="kaldi/lm/_arpa_lm_compiler.html">kaldi.lm._arpa_lm_compiler</a></li>
 <li><a href="kaldi/lm/_const_arpa_lm.html">kaldi.lm._const_arpa_lm</a></li>
+<li><a href="kaldi/lm/_kaldi_rnnlm.html">kaldi.lm._kaldi_rnnlm</a></li>
 <li><a href="kaldi/matrix.html">kaldi.matrix</a></li>
-<ul><li><a href="kaldi/matrix/_kaldi_matrix.html">kaldi.matrix._kaldi_matrix</a></li>
+<ul><li><a href="kaldi/matrix/_compressed_matrix.html">kaldi.matrix._compressed_matrix</a></li>
+<li><a href="kaldi/matrix/_kaldi_matrix.html">kaldi.matrix._kaldi_matrix</a></li>
+<li><a href="kaldi/matrix/_matrix.html">kaldi.matrix._matrix</a></li>
 <li><a href="kaldi/matrix/_matrix_functions.html">kaldi.matrix._matrix_functions</a></li>
 <li><a href="kaldi/matrix/_optimization.html">kaldi.matrix._optimization</a></li>
 <li><a href="kaldi/matrix/_sp_matrix.html">kaldi.matrix._sp_matrix</a></li>
@@ -455,44 +506,110 @@
 <li><a href="kaldi/matrix/_str.html">kaldi.matrix._str</a></li>
 <li><a href="kaldi/matrix/functions.html">kaldi.matrix.functions</a></li>
 <li><a href="kaldi/matrix/packed.html">kaldi.matrix.packed</a></li>
-</ul><li><a href="kaldi/nnet3/_attention.html">kaldi.nnet3._attention</a></li>
+</ul><li><a href="kaldi/nnet3/_am_nnet_simple.html">kaldi.nnet3._am_nnet_simple</a></li>
+<li><a href="kaldi/nnet3/_attention.html">kaldi.nnet3._attention</a></li>
 <li><a href="kaldi/nnet3/_convolution.html">kaldi.nnet3._convolution</a></li>
+<ul><li><a href="kaldi/nnet3/_convolution/ConvolutionComputation.html">kaldi.nnet3._convolution.ConvolutionComputation</a></li>
+<li><a href="kaldi/nnet3/_convolution/ConvolutionModel.html">kaldi.nnet3._convolution.ConvolutionModel</a></li>
+</ul><li><a href="kaldi/nnet3/_decodable_online_looped.html">kaldi.nnet3._decodable_online_looped</a></li>
+<li><a href="kaldi/nnet3/_decodable_simple_looped.html">kaldi.nnet3._decodable_simple_looped</a></li>
+<li><a href="kaldi/nnet3/_natural_gradient_online.html">kaldi.nnet3._natural_gradient_online</a></li>
+<li><a href="kaldi/nnet3/_nnet_am_decodable_simple.html">kaldi.nnet3._nnet_am_decodable_simple</a></li>
 <li><a href="kaldi/nnet3/_nnet_analyze.html">kaldi.nnet3._nnet_analyze</a></li>
+<li><a href="kaldi/nnet3/_nnet_attention_component.html">kaldi.nnet3._nnet_attention_component</a></li>
+<li><a href="kaldi/nnet3/_nnet_batch_compute.html">kaldi.nnet3._nnet_batch_compute</a></li>
 <li><a href="kaldi/nnet3/_nnet_chain_diagnostics.html">kaldi.nnet3._nnet_chain_diagnostics</a></li>
 <li><a href="kaldi/nnet3/_nnet_chain_example.html">kaldi.nnet3._nnet_chain_example</a></li>
 <li><a href="kaldi/nnet3/_nnet_chain_example_ext.html">kaldi.nnet3._nnet_chain_example_ext</a></li>
+<li><a href="kaldi/nnet3/_nnet_chain_example_merger.html">kaldi.nnet3._nnet_chain_example_merger</a></li>
+<li><a href="kaldi/nnet3/_nnet_chain_training.html">kaldi.nnet3._nnet_chain_training</a></li>
+<li><a href="kaldi/nnet3/_nnet_combined_component.html">kaldi.nnet3._nnet_combined_component</a></li>
 <li><a href="kaldi/nnet3/_nnet_common.html">kaldi.nnet3._nnet_common</a></li>
+<li><a href="kaldi/nnet3/_nnet_compile.html">kaldi.nnet3._nnet_compile</a></li>
 <li><a href="kaldi/nnet3/_nnet_compile_looped.html">kaldi.nnet3._nnet_compile_looped</a></li>
 <li><a href="kaldi/nnet3/_nnet_compile_utils.html">kaldi.nnet3._nnet_compile_utils</a></li>
-<li><a href="kaldi/nnet3/_nnet_computation_graph.html">kaldi.nnet3._nnet_computation_graph</a></li>
+<li><a href="kaldi/nnet3/_nnet_component_itf.html">kaldi.nnet3._nnet_component_itf</a></li>
+<li><a href="kaldi/nnet3/_nnet_computation.html">kaldi.nnet3._nnet_computation</a></li>
+<ul><li><a href="kaldi/nnet3/_nnet_computation/NnetComputation.html">kaldi.nnet3._nnet_computation.NnetComputation</a></li>
+</ul><li><a href="kaldi/nnet3/_nnet_computation_graph.html">kaldi.nnet3._nnet_computation_graph</a></li>
+<li><a href="kaldi/nnet3/_nnet_computation_graph_ext.html">kaldi.nnet3._nnet_computation_graph_ext</a></li>
+<li><a href="kaldi/nnet3/_nnet_compute.html">kaldi.nnet3._nnet_compute</a></li>
+<li><a href="kaldi/nnet3/_nnet_convolutional_component.html">kaldi.nnet3._nnet_convolutional_component</a></li>
+<li><a href="kaldi/nnet3/_nnet_descriptor.html">kaldi.nnet3._nnet_descriptor</a></li>
+<li><a href="kaldi/nnet3/_nnet_diagnostics.html">kaldi.nnet3._nnet_diagnostics</a></li>
+<li><a href="kaldi/nnet3/_nnet_example.html">kaldi.nnet3._nnet_example</a></li>
 <li><a href="kaldi/nnet3/_nnet_example_utils.html">kaldi.nnet3._nnet_example_utils</a></li>
+<li><a href="kaldi/nnet3/_nnet_general_component.html">kaldi.nnet3._nnet_general_component</a></li>
 <li><a href="kaldi/nnet3/_nnet_graph.html">kaldi.nnet3._nnet_graph</a></li>
+<li><a href="kaldi/nnet3/_nnet_misc_computation_info.html">kaldi.nnet3._nnet_misc_computation_info</a></li>
+<li><a href="kaldi/nnet3/_nnet_nnet.html">kaldi.nnet3._nnet_nnet</a></li>
+<li><a href="kaldi/nnet3/_nnet_normalize_component.html">kaldi.nnet3._nnet_normalize_component</a></li>
 <li><a href="kaldi/nnet3/_nnet_optimize.html">kaldi.nnet3._nnet_optimize</a></li>
 <li><a href="kaldi/nnet3/_nnet_optimize_utils.html">kaldi.nnet3._nnet_optimize_utils</a></li>
 <li><a href="kaldi/nnet3/_nnet_parse.html">kaldi.nnet3._nnet_parse</a></li>
+<li><a href="kaldi/nnet3/_nnet_simple_component.html">kaldi.nnet3._nnet_simple_component</a></li>
 <li><a href="kaldi/nnet3/_nnet_test_utils.html">kaldi.nnet3._nnet_test_utils</a></li>
 <li><a href="kaldi/nnet3/_nnet_training.html">kaldi.nnet3._nnet_training</a></li>
 <li><a href="kaldi/nnet3/_nnet_utils.html">kaldi.nnet3._nnet_utils</a></li>
 <li><a href="kaldi/online2.html">kaldi.online2</a></li>
 <ul><li><a href="kaldi/online2/_online_endpoint.html">kaldi.online2._online_endpoint</a></li>
+<li><a href="kaldi/online2/_online_feature_pipeline.html">kaldi.online2._online_feature_pipeline</a></li>
+<li><a href="kaldi/online2/_online_gmm_decodable.html">kaldi.online2._online_gmm_decodable</a></li>
+<li><a href="kaldi/online2/_online_gmm_decoding.html">kaldi.online2._online_gmm_decoding</a></li>
+<li><a href="kaldi/online2/_online_ivector.html">kaldi.online2._online_ivector</a></li>
+<li><a href="kaldi/online2/_online_ivector_feature.html">kaldi.online2._online_ivector_feature</a></li>
+<li><a href="kaldi/online2/_online_nnet2_feature_pipeline.html">kaldi.online2._online_nnet2_feature_pipeline</a></li>
+<li><a href="kaldi/online2/_online_nnet3_decoding.html">kaldi.online2._online_nnet3_decoding</a></li>
+<li><a href="kaldi/online2/_online_nnet3_decoding_ext.html">kaldi.online2._online_nnet3_decoding_ext</a></li>
 </ul><li><a href="kaldi/rnnlm.html">kaldi.rnnlm</a></li>
-<ul><li><a href="kaldi/rnnlm/_rnnlm_example_utils.html">kaldi.rnnlm._rnnlm_example_utils</a></li>
+<ul><li><a href="kaldi/rnnlm/_compute_state.html">kaldi.rnnlm._compute_state</a></li>
+<li><a href="kaldi/rnnlm/_rnnlm_compute_state.html">kaldi.rnnlm._rnnlm_compute_state</a></li>
+<li><a href="kaldi/rnnlm/_rnnlm_core_compute.html">kaldi.rnnlm._rnnlm_core_compute</a></li>
+<li><a href="kaldi/rnnlm/_rnnlm_core_training.html">kaldi.rnnlm._rnnlm_core_training</a></li>
+<li><a href="kaldi/rnnlm/_rnnlm_embedding_training.html">kaldi.rnnlm._rnnlm_embedding_training</a></li>
+<li><a href="kaldi/rnnlm/_rnnlm_example.html">kaldi.rnnlm._rnnlm_example</a></li>
+<li><a href="kaldi/rnnlm/_rnnlm_example_creator.html">kaldi.rnnlm._rnnlm_example_creator</a></li>
+<li><a href="kaldi/rnnlm/_rnnlm_example_utils.html">kaldi.rnnlm._rnnlm_example_utils</a></li>
+<li><a href="kaldi/rnnlm/_rnnlm_lattice_rescoring.html">kaldi.rnnlm._rnnlm_lattice_rescoring</a></li>
+<li><a href="kaldi/rnnlm/_rnnlm_training.html">kaldi.rnnlm._rnnlm_training</a></li>
 <li><a href="kaldi/rnnlm/_rnnlm_utils.html">kaldi.rnnlm._rnnlm_utils</a></li>
 <li><a href="kaldi/rnnlm/_sampler.html">kaldi.rnnlm._sampler</a></li>
+<li><a href="kaldi/rnnlm/_sampling_lm.html">kaldi.rnnlm._sampling_lm</a></li>
+<li><a href="kaldi/rnnlm/_sampling_lm_estimate.html">kaldi.rnnlm._sampling_lm_estimate</a></li>
 </ul><li><a href="kaldi/segmentation.html">kaldi.segmentation</a></li>
 <li><a href="kaldi/sgmm2/_am_sgmm2.html">kaldi.sgmm2._am_sgmm2</a></li>
+<ul><li><a href="kaldi/sgmm2/_am_sgmm2/Sgmm2LikelihoodCache.html">kaldi.sgmm2._am_sgmm2.Sgmm2LikelihoodCache</a></li>
+</ul><li><a href="kaldi/sgmm2/_decodable_am_sgmm2.html">kaldi.sgmm2._decodable_am_sgmm2</a></li>
+<li><a href="kaldi/sgmm2/_estimate_am_sgmm2.html">kaldi.sgmm2._estimate_am_sgmm2</a></li>
+<li><a href="kaldi/sgmm2/_fmllr_sgmm2.html">kaldi.sgmm2._fmllr_sgmm2</a></li>
+<li><a href="kaldi/tfrnnlm/_tensorflow_rnnlm.html">kaldi.tfrnnlm._tensorflow_rnnlm</a></li>
+<li><a href="kaldi/transform/_basis_fmllr_diag_gmm.html">kaldi.transform._basis_fmllr_diag_gmm</a></li>
+<li><a href="kaldi/transform/_compressed_transform_stats.html">kaldi.transform._compressed_transform_stats</a></li>
+<li><a href="kaldi/transform/_decodable_am_diag_gmm_regtree.html">kaldi.transform._decodable_am_diag_gmm_regtree</a></li>
 <li><a href="kaldi/transform/_fmllr_diag_gmm.html">kaldi.transform._fmllr_diag_gmm</a></li>
+<li><a href="kaldi/transform/_fmllr_raw.html">kaldi.transform._fmllr_raw</a></li>
 <li><a href="kaldi/transform/_fmpe.html">kaldi.transform._fmpe</a></li>
+<li><a href="kaldi/transform/_lda_estimate.html">kaldi.transform._lda_estimate</a></li>
+<li><a href="kaldi/transform/_lvtln.html">kaldi.transform._lvtln</a></li>
+<li><a href="kaldi/transform/_mllt.html">kaldi.transform._mllt</a></li>
+<li><a href="kaldi/transform/_regression_tree.html">kaldi.transform._regression_tree</a></li>
+<li><a href="kaldi/transform/_regtree_fmllr_diag_gmm.html">kaldi.transform._regtree_fmllr_diag_gmm</a></li>
+<li><a href="kaldi/transform/_regtree_mllr_diag_gmm.html">kaldi.transform._regtree_mllr_diag_gmm</a></li>
 <li><a href="kaldi/transform/_transform_common.html">kaldi.transform._transform_common</a></li>
 <li><a href="kaldi/transform/cmvn.html">kaldi.transform.cmvn</a></li>
 <li><a href="kaldi/tree/_build_tree.html">kaldi.tree._build_tree</a></li>
+<li><a href="kaldi/tree/_build_tree_questions.html">kaldi.tree._build_tree_questions</a></li>
 <li><a href="kaldi/tree/_build_tree_utils.html">kaldi.tree._build_tree_utils</a></li>
 <li><a href="kaldi/tree/_cluster_utils.html">kaldi.tree._cluster_utils</a></li>
+<li><a href="kaldi/tree/_clusterable_classes.html">kaldi.tree._clusterable_classes</a></li>
 <li><a href="kaldi/tree/_context_dep.html">kaldi.tree._context_dep</a></li>
 <li><a href="kaldi/tree/_event_map.html">kaldi.tree._event_map</a></li>
+<li><a href="kaldi/tree/_tree_renderer.html">kaldi.tree._tree_renderer</a></li>
+<li><a href="kaldi/util/_const_integer_set.html">kaldi.util._const_integer_set</a></li>
 <li><a href="kaldi/util/_edit_distance.html">kaldi.util._edit_distance</a></li>
 <li><a href="kaldi/util/_kaldi_io.html">kaldi.util._kaldi_io</a></li>
 <li><a href="kaldi/util/_kaldi_table.html">kaldi.util._kaldi_table</a></li>
+<li><a href="kaldi/util/_kaldi_thread.html">kaldi.util._kaldi_thread</a></li>
 <li><a href="kaldi/util/io.html">kaldi.util.io</a></li>
 <li><a href="kaldi/util/options.html">kaldi.util.options</a></li>
 <li><a href="kaldi/util/table.html">kaldi.util.table</a></li>
@@ -532,7 +649,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.0',
+            VERSION:'0.1.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

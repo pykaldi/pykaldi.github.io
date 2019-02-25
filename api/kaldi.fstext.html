@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.fstext &mdash; PyKaldi 0.1.0 documentation</title>
+  <title>kaldi.fstext &mdash; PyKaldi 0.1.1 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.1 documentation" href="../index.html"/>
         <link rel="next" title="kaldi.gmm" href="kaldi.gmm.html"/>
         <link rel="prev" title="kaldi.feat" href="kaldi.feat.html"/> 
 
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -117,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="kaldi.decoder.html">kaldi.decoder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kaldi.feat.html">kaldi.feat</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">kaldi.fstext</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-kaldi.fstext.enums">kaldi.fstext.enums</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-kaldi.fstext.properties">kaldi.fstext.properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-kaldi.fstext.special">kaldi.fstext.special</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-kaldi.fstext.utils">kaldi.fstext.utils</a></li>
@@ -377,7 +378,7 @@ context-dependent phones to context-independent phones C, and an HMM set H:</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.CompactLatticeArc" title="kaldi.fstext.CompactLatticeArc"><code class="xref py py-obj docutils literal"><span class="pre">CompactLatticeArc</span></code></a></td>
-<td>FST Arc with compact lattice weight.</td>
+<td>FST arc with compact lattice weight.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.CompactLatticeConstFst" title="kaldi.fstext.CompactLatticeConstFst"><code class="xref py py-obj docutils literal"><span class="pre">CompactLatticeConstFst</span></code></a></td>
 <td>Constant FST over the compact lattice semiring.</td>
@@ -412,134 +413,128 @@ context-dependent phones to context-independent phones C, and an HMM set H:</p>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.CompactLatticeWeight" title="kaldi.fstext.CompactLatticeWeight"><code class="xref py py-obj docutils literal"><span class="pre">CompactLatticeWeight</span></code></a></td>
 <td>Compact lattice weight factory.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.EncodeType" title="kaldi.fstext.EncodeType"><code class="xref py py-obj docutils literal"><span class="pre">EncodeType</span></code></a></td>
-<td>An enumeration.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.FstHeader" title="kaldi.fstext.FstHeader"><code class="xref py py-obj docutils literal"><span class="pre">FstHeader</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.FstHeader" title="kaldi.fstext.FstHeader"><code class="xref py py-obj docutils literal"><span class="pre">FstHeader</span></code></a></td>
 <td>FST file header.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.FstReadOptions" title="kaldi.fstext.FstReadOptions"><code class="xref py py-obj docutils literal"><span class="pre">FstReadOptions</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.FstReadOptions" title="kaldi.fstext.FstReadOptions"><code class="xref py py-obj docutils literal"><span class="pre">FstReadOptions</span></code></a></td>
 <td>FST reading options.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.FstWriteOptions" title="kaldi.fstext.FstWriteOptions"><code class="xref py py-obj docutils literal"><span class="pre">FstWriteOptions</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.FstWriteOptions" title="kaldi.fstext.FstWriteOptions"><code class="xref py py-obj docutils literal"><span class="pre">FstWriteOptions</span></code></a></td>
 <td>FST writing options.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexArc" title="kaldi.fstext.KwsIndexArc"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexArc</span></code></a></td>
-<td>FST Arc with KWS index weight.</td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexArc" title="kaldi.fstext.KwsIndexArc"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexArc</span></code></a></td>
+<td>FST arc with KWS index weight.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexConstFst" title="kaldi.fstext.KwsIndexConstFst"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexConstFst</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexConstFst" title="kaldi.fstext.KwsIndexConstFst"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexConstFst</span></code></a></td>
 <td>Constant FST over the KWS index semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexConstFstArcIterator" title="kaldi.fstext.KwsIndexConstFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexConstFstArcIterator</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexConstFstArcIterator" title="kaldi.fstext.KwsIndexConstFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexConstFstArcIterator</span></code></a></td>
 <td>Arc iterator for a constant FST over the KWS index semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexConstFstStateIterator" title="kaldi.fstext.KwsIndexConstFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexConstFstStateIterator</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexConstFstStateIterator" title="kaldi.fstext.KwsIndexConstFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexConstFstStateIterator</span></code></a></td>
 <td>State iterator for a constant FST over the KWS index semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexEncodeMapper" title="kaldi.fstext.KwsIndexEncodeMapper"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexEncodeMapper</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexEncodeMapper" title="kaldi.fstext.KwsIndexEncodeMapper"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexEncodeMapper</span></code></a></td>
 <td>Arc encoder for an FST over the KWS index semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexEncodeTable" title="kaldi.fstext.KwsIndexEncodeTable"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexEncodeTable</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexEncodeTable" title="kaldi.fstext.KwsIndexEncodeTable"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexEncodeTable</span></code></a></td>
 <td>Encode table for KwsIndexArc.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexFstCompiler" title="kaldi.fstext.KwsIndexFstCompiler"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexFstCompiler</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexFstCompiler" title="kaldi.fstext.KwsIndexFstCompiler"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexFstCompiler</span></code></a></td>
 <td>Compiler for FSTs over the KWS index semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexVectorFst" title="kaldi.fstext.KwsIndexVectorFst"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexVectorFst</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexVectorFst" title="kaldi.fstext.KwsIndexVectorFst"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexVectorFst</span></code></a></td>
 <td>Vector FST over the KWS index semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexVectorFstArcIterator" title="kaldi.fstext.KwsIndexVectorFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexVectorFstArcIterator</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexVectorFstArcIterator" title="kaldi.fstext.KwsIndexVectorFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexVectorFstArcIterator</span></code></a></td>
 <td>Arc iterator for a vector FST over the KWS index semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexVectorFstMutableArcIterator" title="kaldi.fstext.KwsIndexVectorFstMutableArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexVectorFstMutableArcIterator</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexVectorFstMutableArcIterator" title="kaldi.fstext.KwsIndexVectorFstMutableArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexVectorFstMutableArcIterator</span></code></a></td>
 <td>Mutable arc iterator for a vector FST over the KWS index semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexVectorFstStateIterator" title="kaldi.fstext.KwsIndexVectorFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexVectorFstStateIterator</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexVectorFstStateIterator" title="kaldi.fstext.KwsIndexVectorFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexVectorFstStateIterator</span></code></a></td>
 <td>State iterator for a vector FST over the KWS index semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexWeight" title="kaldi.fstext.KwsIndexWeight"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexWeight</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsIndexWeight" title="kaldi.fstext.KwsIndexWeight"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexWeight</span></code></a></td>
 <td>KWS index weight factory.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.KwsTimeWeight" title="kaldi.fstext.KwsTimeWeight"><code class="xref py py-obj docutils literal"><span class="pre">KwsTimeWeight</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.KwsTimeWeight" title="kaldi.fstext.KwsTimeWeight"><code class="xref py py-obj docutils literal"><span class="pre">KwsTimeWeight</span></code></a></td>
 <td>KWS time weight factory.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeArc" title="kaldi.fstext.LatticeArc"><code class="xref py py-obj docutils literal"><span class="pre">LatticeArc</span></code></a></td>
-<td>FST Arc with lattice weight.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeArc" title="kaldi.fstext.LatticeArc"><code class="xref py py-obj docutils literal"><span class="pre">LatticeArc</span></code></a></td>
+<td>FST arc with lattice weight.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeConstFst" title="kaldi.fstext.LatticeConstFst"><code class="xref py py-obj docutils literal"><span class="pre">LatticeConstFst</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeConstFst" title="kaldi.fstext.LatticeConstFst"><code class="xref py py-obj docutils literal"><span class="pre">LatticeConstFst</span></code></a></td>
 <td>Constant FST over the lattice semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeConstFstArcIterator" title="kaldi.fstext.LatticeConstFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LatticeConstFstArcIterator</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeConstFstArcIterator" title="kaldi.fstext.LatticeConstFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LatticeConstFstArcIterator</span></code></a></td>
 <td>Arc iterator for a constant FST over the lattice semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeConstFstStateIterator" title="kaldi.fstext.LatticeConstFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">LatticeConstFstStateIterator</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeConstFstStateIterator" title="kaldi.fstext.LatticeConstFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">LatticeConstFstStateIterator</span></code></a></td>
 <td>State iterator for a constant FST over the lattice semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeEncodeMapper" title="kaldi.fstext.LatticeEncodeMapper"><code class="xref py py-obj docutils literal"><span class="pre">LatticeEncodeMapper</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeEncodeMapper" title="kaldi.fstext.LatticeEncodeMapper"><code class="xref py py-obj docutils literal"><span class="pre">LatticeEncodeMapper</span></code></a></td>
 <td>Arc encoder for an FST over the lattice semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeEncodeTable" title="kaldi.fstext.LatticeEncodeTable"><code class="xref py py-obj docutils literal"><span class="pre">LatticeEncodeTable</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeEncodeTable" title="kaldi.fstext.LatticeEncodeTable"><code class="xref py py-obj docutils literal"><span class="pre">LatticeEncodeTable</span></code></a></td>
 <td>Encode table for LatticeArc.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeFstCompiler" title="kaldi.fstext.LatticeFstCompiler"><code class="xref py py-obj docutils literal"><span class="pre">LatticeFstCompiler</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeFstCompiler" title="kaldi.fstext.LatticeFstCompiler"><code class="xref py py-obj docutils literal"><span class="pre">LatticeFstCompiler</span></code></a></td>
 <td>Compiler for FSTs over the lattice semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst"><code class="xref py py-obj docutils literal"><span class="pre">LatticeVectorFst</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeVectorFst" title="kaldi.fstext.LatticeVectorFst"><code class="xref py py-obj docutils literal"><span class="pre">LatticeVectorFst</span></code></a></td>
 <td>Vector FST over the lattice semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeVectorFstArcIterator" title="kaldi.fstext.LatticeVectorFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LatticeVectorFstArcIterator</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeVectorFstArcIterator" title="kaldi.fstext.LatticeVectorFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LatticeVectorFstArcIterator</span></code></a></td>
 <td>Arc iterator for a vector FST over the lattice semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeVectorFstMutableArcIterator" title="kaldi.fstext.LatticeVectorFstMutableArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LatticeVectorFstMutableArcIterator</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeVectorFstMutableArcIterator" title="kaldi.fstext.LatticeVectorFstMutableArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LatticeVectorFstMutableArcIterator</span></code></a></td>
 <td>Mutable arc iterator for a vector FST over the lattice semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeVectorFstStateIterator" title="kaldi.fstext.LatticeVectorFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">LatticeVectorFstStateIterator</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeVectorFstStateIterator" title="kaldi.fstext.LatticeVectorFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">LatticeVectorFstStateIterator</span></code></a></td>
 <td>State iterator for a vector FST over the lattice semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LatticeWeight" title="kaldi.fstext.LatticeWeight"><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LatticeWeight" title="kaldi.fstext.LatticeWeight"><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></a></td>
 <td>Lattice weight factory.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogArc" title="kaldi.fstext.LogArc"><code class="xref py py-obj docutils literal"><span class="pre">LogArc</span></code></a></td>
-<td>FST Arc with log weight.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogArc" title="kaldi.fstext.LogArc"><code class="xref py py-obj docutils literal"><span class="pre">LogArc</span></code></a></td>
+<td>FST arc with log weight.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogConstFst" title="kaldi.fstext.LogConstFst"><code class="xref py py-obj docutils literal"><span class="pre">LogConstFst</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogConstFst" title="kaldi.fstext.LogConstFst"><code class="xref py py-obj docutils literal"><span class="pre">LogConstFst</span></code></a></td>
 <td>Constant FST over the log semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogConstFstArcIterator" title="kaldi.fstext.LogConstFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LogConstFstArcIterator</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogConstFstArcIterator" title="kaldi.fstext.LogConstFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LogConstFstArcIterator</span></code></a></td>
 <td>Arc iterator for a constant FST over the log semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogConstFstStateIterator" title="kaldi.fstext.LogConstFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">LogConstFstStateIterator</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogConstFstStateIterator" title="kaldi.fstext.LogConstFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">LogConstFstStateIterator</span></code></a></td>
 <td>State iterator for a constant FST over the log semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogEncodeMapper" title="kaldi.fstext.LogEncodeMapper"><code class="xref py py-obj docutils literal"><span class="pre">LogEncodeMapper</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogEncodeMapper" title="kaldi.fstext.LogEncodeMapper"><code class="xref py py-obj docutils literal"><span class="pre">LogEncodeMapper</span></code></a></td>
 <td>Arc encoder for an FST over the log semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogEncodeTable" title="kaldi.fstext.LogEncodeTable"><code class="xref py py-obj docutils literal"><span class="pre">LogEncodeTable</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogEncodeTable" title="kaldi.fstext.LogEncodeTable"><code class="xref py py-obj docutils literal"><span class="pre">LogEncodeTable</span></code></a></td>
 <td>Encode table for LogArc.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogFstCompiler" title="kaldi.fstext.LogFstCompiler"><code class="xref py py-obj docutils literal"><span class="pre">LogFstCompiler</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogFstCompiler" title="kaldi.fstext.LogFstCompiler"><code class="xref py py-obj docutils literal"><span class="pre">LogFstCompiler</span></code></a></td>
 <td>Compiler for FSTs over the log semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogVectorFst" title="kaldi.fstext.LogVectorFst"><code class="xref py py-obj docutils literal"><span class="pre">LogVectorFst</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogVectorFst" title="kaldi.fstext.LogVectorFst"><code class="xref py py-obj docutils literal"><span class="pre">LogVectorFst</span></code></a></td>
 <td>Vector FST over the log semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogVectorFstArcIterator" title="kaldi.fstext.LogVectorFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LogVectorFstArcIterator</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogVectorFstArcIterator" title="kaldi.fstext.LogVectorFstArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LogVectorFstArcIterator</span></code></a></td>
 <td>Arc iterator for a vector FST over the log semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogVectorFstMutableArcIterator" title="kaldi.fstext.LogVectorFstMutableArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LogVectorFstMutableArcIterator</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogVectorFstMutableArcIterator" title="kaldi.fstext.LogVectorFstMutableArcIterator"><code class="xref py py-obj docutils literal"><span class="pre">LogVectorFstMutableArcIterator</span></code></a></td>
 <td>Mutable arc iterator for a vector FST over the log semiring.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogVectorFstStateIterator" title="kaldi.fstext.LogVectorFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">LogVectorFstStateIterator</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogVectorFstStateIterator" title="kaldi.fstext.LogVectorFstStateIterator"><code class="xref py py-obj docutils literal"><span class="pre">LogVectorFstStateIterator</span></code></a></td>
 <td>State iterator for a vector FST over the log semiring.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.LogWeight" title="kaldi.fstext.LogWeight"><code class="xref py py-obj docutils literal"><span class="pre">LogWeight</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.LogWeight" title="kaldi.fstext.LogWeight"><code class="xref py py-obj docutils literal"><span class="pre">LogWeight</span></code></a></td>
 <td>Log weight factory.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.MatchType" title="kaldi.fstext.MatchType"><code class="xref py py-obj docutils literal"><span class="pre">MatchType</span></code></a></td>
-<td>An enumeration.</td>
-</tr>
 <tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.StdArc" title="kaldi.fstext.StdArc"><code class="xref py py-obj docutils literal"><span class="pre">StdArc</span></code></a></td>
-<td>FST Arc with tropical weight.</td>
+<td>FST arc with tropical weight.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.StdConstFst" title="kaldi.fstext.StdConstFst"><code class="xref py py-obj docutils literal"><span class="pre">StdConstFst</span></code></a></td>
 <td>Constant FST over the tropical semiring.</td>
@@ -587,9 +582,14 @@ context-dependent phones to context-independent phones C, and an HMM set H:</p>
 </table>
 <dl class="class">
 <dt id="kaldi.fstext.CompactLatticeArc">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeArc</code><span class="sig-paren">(</span><em>ilabel=None</em>, <em>olabel=None</em>, <em>weight=None</em>, <em>nextstate=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#CompactLatticeArc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeArc" title="Permalink to this definition">¶</a></dt>
-<dd><p>FST Arc with compact lattice weight.</p>
-<p>Attributes of the arc can be accessed and mutated.</p>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeArc</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#CompactLatticeArc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeArc" title="Permalink to this definition">¶</a></dt>
+<dd><p>FST arc with compact lattice weight.</p>
+<dl class="docutils">
+<dt>CompactLatticeArc():</dt>
+<dd>Creates an uninitialized <a class="reference internal" href="#kaldi.fstext.CompactLatticeArc" title="kaldi.fstext.CompactLatticeArc"><code class="xref py py-obj docutils literal"><span class="pre">CompactLatticeArc</span></code></a> instance.</dd>
+<dt>CompactLatticeArc(ilabel, olabel, weight, nextstate):</dt>
+<dd>Creates a new <a class="reference internal" href="#kaldi.fstext.CompactLatticeArc" title="kaldi.fstext.CompactLatticeArc"><code class="xref py py-obj docutils literal"><span class="pre">CompactLatticeArc</span></code></a> instance initalized with given arguments.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -597,7 +597,7 @@ context-dependent phones to context-independent phones C, and an HMM set H:</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The input label.</li>
 <li><strong>olabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The output label.</li>
-<li><strong>weight</strong> – The arc weight.</li>
+<li><strong>weight</strong> (<a class="reference internal" href="#kaldi.fstext.CompactLatticeWeight" title="kaldi.fstext.CompactLatticeWeight"><em>CompactLatticeWeight</em></a>) – The arc weight.</li>
 <li><strong>nextstate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The destination state for the arc.</li>
 </ul>
 </td>
@@ -658,7 +658,7 @@ context-dependent phones to context-independent phones C, and an HMM set H:</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.CompactLatticeConstFst">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeConstFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#CompactLatticeConstFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeConstFst" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeConstFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#CompactLatticeConstFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeConstFst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constant FST over the compact lattice semiring.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1107,7 +1107,7 @@ fails.</li>
 
 <dl class="class">
 <dt id="kaldi.fstext.CompactLatticeConstFstArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeConstFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#CompactLatticeConstFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeConstFstArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeConstFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#CompactLatticeConstFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeConstFstArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc iterator for a constant FST over the compact lattice semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state. In
 addition to the full C++ API, it also supports the iterator protocol.
@@ -1242,7 +1242,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.CompactLatticeConstFstStateIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeConstFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#CompactLatticeConstFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeConstFstStateIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeConstFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#CompactLatticeConstFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeConstFstStateIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>State iterator for a constant FST over the compact lattice semiring.</p>
 <p>This class is used for iterating over the states. In addition to the full
 C++ API, it also supports the iterator protocol. Most users should just call
@@ -1301,7 +1301,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.CompactLatticeEncodeMapper">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeEncodeMapper</code><span class="sig-paren">(</span><em>encode_labels=False</em>, <em>encode_weights=False</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#CompactLatticeEncodeMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeEncodeMapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeEncodeMapper</code><span class="sig-paren">(</span><em>encode_labels=False</em>, <em>encode_weights=False</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#CompactLatticeEncodeMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeEncodeMapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc encoder for an FST over the compact lattice semiring.</p>
 <p>This class provides an object which can be used to encode or decode FST
 arcs. This is most useful to convert an FST to an unweighted acceptor,
@@ -1534,7 +1534,7 @@ boolean, it represents whether or not the FST has the <code class="xref py py-ob
 
 <dl class="class">
 <dt id="kaldi.fstext.CompactLatticeFstCompiler">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeFstCompiler</code><span class="sig-paren">(</span><em>isymbols=None</em>, <em>osymbols=None</em>, <em>ssymbols=None</em>, <em>acceptor=False</em>, <em>keep_isymbols=False</em>, <em>keep_osymbols=False</em>, <em>keep_state_numbering=False</em>, <em>allow_negative_labels=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#CompactLatticeFstCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeFstCompiler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeFstCompiler</code><span class="sig-paren">(</span><em>isymbols=None</em>, <em>osymbols=None</em>, <em>ssymbols=None</em>, <em>acceptor=False</em>, <em>keep_isymbols=False</em>, <em>keep_osymbols=False</em>, <em>keep_state_numbering=False</em>, <em>allow_negative_labels=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#CompactLatticeFstCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeFstCompiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compiler for FSTs over the compact lattice semiring.</p>
 <p>This class is used to compile FSTs specified using the AT&amp;T FSM library
 format described here:</p>
@@ -1620,7 +1620,7 @@ invoked with a print call, like so:</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.CompactLatticeVectorFst">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeVectorFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#CompactLatticeVectorFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeVectorFst" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeVectorFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#CompactLatticeVectorFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeVectorFst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vector FST over the compact lattice semiring.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2738,7 +2738,7 @@ weight b.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.CompactLatticeVectorFstArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeVectorFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#CompactLatticeVectorFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeVectorFstArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeVectorFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#CompactLatticeVectorFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeVectorFstArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc iterator for a vector FST over the compact lattice semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state. In
 addition to the full C++ API, it also supports the iterator protocol.
@@ -2873,7 +2873,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.CompactLatticeVectorFstMutableArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeVectorFstMutableArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#CompactLatticeVectorFstMutableArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeVectorFstMutableArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeVectorFstMutableArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#CompactLatticeVectorFstMutableArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeVectorFstMutableArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutable arc iterator for a vector FST over the compact lattice semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state and
 optionally replacing them with new ones. In addition to the full C++ API,
@@ -3030,7 +3030,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.CompactLatticeVectorFstStateIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeVectorFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#CompactLatticeVectorFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeVectorFstStateIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeVectorFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#CompactLatticeVectorFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeVectorFstStateIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>State iterator for a vector FST over the compact lattice semiring.</p>
 <p>This class is used for iterating over the states. In addition to the full
 C++ API, it also supports the iterator protocol. Most users should just call
@@ -3089,7 +3089,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.CompactLatticeWeight">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeWeight</code><a class="reference internal" href="../_modules/kaldi/fstext.html#CompactLatticeWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeWeight" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">CompactLatticeWeight</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#CompactLatticeWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.CompactLatticeWeight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compact lattice weight factory.</p>
 <p>This class is used for creating new <a class="reference internal" href="#kaldi.fstext.weight.CompactLatticeWeight" title="kaldi.fstext.weight.CompactLatticeWeight"><code class="xref py py-obj docutils literal"><span class="pre">CompactLatticeWeight</span></code></a>
 instances.</p>
@@ -3209,22 +3209,6 @@ the (weight, string) pair.</dd>
 <code class="descname">zero</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; CompactLatticeWeight<a class="headerlink" href="#kaldi.fstext.CompactLatticeWeight.zero" title="Permalink to this definition">¶</a></dt>
 <dd><p>Zero in compact lattice semiring.</p>
 </dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="kaldi.fstext.EncodeType">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">EncodeType</code><a class="headerlink" href="#kaldi.fstext.EncodeType" title="Permalink to this definition">¶</a></dt>
-<dd><p>An enumeration.</p>
-<dl class="attribute">
-<dt id="kaldi.fstext.EncodeType.DECODE">
-<code class="descname">DECODE</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.EncodeType.DECODE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="kaldi.fstext.EncodeType.ENCODE">
-<code class="descname">ENCODE</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.EncodeType.ENCODE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -3440,9 +3424,14 @@ the (weight, string) pair.</dd>
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsIndexArc">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexArc</code><span class="sig-paren">(</span><em>ilabel=None</em>, <em>olabel=None</em>, <em>weight=None</em>, <em>nextstate=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsIndexArc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexArc" title="Permalink to this definition">¶</a></dt>
-<dd><p>FST Arc with KWS index weight.</p>
-<p>Attributes of the arc can be accessed and mutated.</p>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexArc</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsIndexArc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexArc" title="Permalink to this definition">¶</a></dt>
+<dd><p>FST arc with KWS index weight.</p>
+<dl class="docutils">
+<dt>KwsIndexArc():</dt>
+<dd>Creates an uninitialized <a class="reference internal" href="#kaldi.fstext.KwsIndexArc" title="kaldi.fstext.KwsIndexArc"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexArc</span></code></a> instance.</dd>
+<dt>KwsIndexArc(ilabel, olabel, weight, nextstate):</dt>
+<dd>Creates a new <a class="reference internal" href="#kaldi.fstext.KwsIndexArc" title="kaldi.fstext.KwsIndexArc"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexArc</span></code></a> instance initalized with given arguments.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -3450,7 +3439,7 @@ the (weight, string) pair.</dd>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The input label.</li>
 <li><strong>olabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The output label.</li>
-<li><strong>weight</strong> – The arc weight.</li>
+<li><strong>weight</strong> (<a class="reference internal" href="#kaldi.fstext.KwsIndexWeight" title="kaldi.fstext.KwsIndexWeight"><em>KwsIndexWeight</em></a>) – The arc weight.</li>
 <li><strong>nextstate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The destination state for the arc.</li>
 </ul>
 </td>
@@ -3511,7 +3500,7 @@ the (weight, string) pair.</dd>
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsIndexConstFst">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexConstFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsIndexConstFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexConstFst" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexConstFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsIndexConstFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexConstFst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constant FST over the KWS index semiring.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3960,7 +3949,7 @@ fails.</li>
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsIndexConstFstArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexConstFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsIndexConstFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexConstFstArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexConstFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsIndexConstFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexConstFstArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc iterator for a constant FST over the KWS index semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state. In
 addition to the full C++ API, it also supports the iterator protocol.
@@ -4095,7 +4084,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsIndexConstFstStateIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexConstFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsIndexConstFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexConstFstStateIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexConstFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsIndexConstFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexConstFstStateIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>State iterator for a constant FST over the KWS index semiring.</p>
 <p>This class is used for iterating over the states. In addition to the full
 C++ API, it also supports the iterator protocol. Most users should just call
@@ -4154,7 +4143,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsIndexEncodeMapper">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexEncodeMapper</code><span class="sig-paren">(</span><em>encode_labels=False</em>, <em>encode_weights=False</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsIndexEncodeMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexEncodeMapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexEncodeMapper</code><span class="sig-paren">(</span><em>encode_labels=False</em>, <em>encode_weights=False</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsIndexEncodeMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexEncodeMapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc encoder for an FST over the KWS index semiring.</p>
 <p>This class provides an object which can be used to encode or decode FST
 arcs. This is most useful to convert an FST to an unweighted acceptor,
@@ -4387,7 +4376,7 @@ boolean, it represents whether or not the FST has the <code class="xref py py-ob
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsIndexFstCompiler">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexFstCompiler</code><span class="sig-paren">(</span><em>isymbols=None</em>, <em>osymbols=None</em>, <em>ssymbols=None</em>, <em>acceptor=False</em>, <em>keep_isymbols=False</em>, <em>keep_osymbols=False</em>, <em>keep_state_numbering=False</em>, <em>allow_negative_labels=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsIndexFstCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexFstCompiler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexFstCompiler</code><span class="sig-paren">(</span><em>isymbols=None</em>, <em>osymbols=None</em>, <em>ssymbols=None</em>, <em>acceptor=False</em>, <em>keep_isymbols=False</em>, <em>keep_osymbols=False</em>, <em>keep_state_numbering=False</em>, <em>allow_negative_labels=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsIndexFstCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexFstCompiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compiler for FSTs over the KWS index semiring.</p>
 <p>This class is used to compile FSTs specified using the AT&amp;T FSM library
 format described here:</p>
@@ -4473,7 +4462,7 @@ invoked with a print call, like so:</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsIndexVectorFst">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexVectorFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsIndexVectorFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexVectorFst" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexVectorFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsIndexVectorFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexVectorFst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vector FST over the KWS index semiring.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -5591,7 +5580,7 @@ weight b.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsIndexVectorFstArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexVectorFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsIndexVectorFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexVectorFstArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexVectorFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsIndexVectorFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexVectorFstArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc iterator for a vector FST over the KWS index semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state. In
 addition to the full C++ API, it also supports the iterator protocol.
@@ -5726,7 +5715,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsIndexVectorFstMutableArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexVectorFstMutableArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsIndexVectorFstMutableArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexVectorFstMutableArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexVectorFstMutableArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsIndexVectorFstMutableArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexVectorFstMutableArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutable arc iterator for a vector FST over the KWS index semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state and
 optionally replacing them with new ones. In addition to the full C++ API,
@@ -5883,7 +5872,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsIndexVectorFstStateIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexVectorFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsIndexVectorFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexVectorFstStateIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexVectorFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsIndexVectorFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexVectorFstStateIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>State iterator for a vector FST over the KWS index semiring.</p>
 <p>This class is used for iterating over the states. In addition to the full
 C++ API, it also supports the iterator protocol. Most users should just call
@@ -5942,7 +5931,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsIndexWeight">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexWeight</code><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsIndexWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexWeight" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsIndexWeight</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsIndexWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsIndexWeight" title="Permalink to this definition">¶</a></dt>
 <dd><p>KWS index weight factory.</p>
 <p>This class is used for creating new <a class="reference internal" href="#kaldi.fstext.weight.KwsIndexWeight" title="kaldi.fstext.weight.KwsIndexWeight"><code class="xref py py-obj docutils literal"><span class="pre">KwsIndexWeight</span></code></a>
 instances.</p>
@@ -6049,7 +6038,7 @@ weights.</dd>
 
 <dl class="class">
 <dt id="kaldi.fstext.KwsTimeWeight">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsTimeWeight</code><a class="reference internal" href="../_modules/kaldi/fstext.html#KwsTimeWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsTimeWeight" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">KwsTimeWeight</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#KwsTimeWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.KwsTimeWeight" title="Permalink to this definition">¶</a></dt>
 <dd><p>KWS time weight factory.</p>
 <p>This class is used for creating new <a class="reference internal" href="#kaldi.fstext.weight.KwsTimeWeight" title="kaldi.fstext.weight.KwsTimeWeight"><code class="xref py py-obj docutils literal"><span class="pre">KwsTimeWeight</span></code></a> instances.</p>
 <dl class="docutils">
@@ -6158,9 +6147,14 @@ weights.</dd>
 
 <dl class="class">
 <dt id="kaldi.fstext.LatticeArc">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeArc</code><span class="sig-paren">(</span><em>ilabel=None</em>, <em>olabel=None</em>, <em>weight=None</em>, <em>nextstate=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LatticeArc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeArc" title="Permalink to this definition">¶</a></dt>
-<dd><p>FST Arc with lattice weight.</p>
-<p>Attributes of the arc can be accessed and mutated.</p>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeArc</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LatticeArc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeArc" title="Permalink to this definition">¶</a></dt>
+<dd><p>FST arc with lattice weight.</p>
+<dl class="docutils">
+<dt>LatticeArc():</dt>
+<dd>Creates an uninitialized <a class="reference internal" href="#kaldi.fstext.LatticeArc" title="kaldi.fstext.LatticeArc"><code class="xref py py-obj docutils literal"><span class="pre">LatticeArc</span></code></a> instance.</dd>
+<dt>LatticeArc(ilabel, olabel, weight, nextstate):</dt>
+<dd>Creates a new <a class="reference internal" href="#kaldi.fstext.LatticeArc" title="kaldi.fstext.LatticeArc"><code class="xref py py-obj docutils literal"><span class="pre">LatticeArc</span></code></a> instance initalized with given arguments.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -6168,7 +6162,7 @@ weights.</dd>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The input label.</li>
 <li><strong>olabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The output label.</li>
-<li><strong>weight</strong> – The arc weight.</li>
+<li><strong>weight</strong> (<a class="reference internal" href="#kaldi.fstext.LatticeWeight" title="kaldi.fstext.LatticeWeight"><em>LatticeWeight</em></a>) – The arc weight.</li>
 <li><strong>nextstate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The destination state for the arc.</li>
 </ul>
 </td>
@@ -6229,7 +6223,7 @@ weights.</dd>
 
 <dl class="class">
 <dt id="kaldi.fstext.LatticeConstFst">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeConstFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LatticeConstFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeConstFst" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeConstFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LatticeConstFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeConstFst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constant FST over the lattice semiring.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -6678,7 +6672,7 @@ fails.</li>
 
 <dl class="class">
 <dt id="kaldi.fstext.LatticeConstFstArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeConstFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LatticeConstFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeConstFstArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeConstFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LatticeConstFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeConstFstArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc iterator for a constant FST over the lattice semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state. In
 addition to the full C++ API, it also supports the iterator protocol.
@@ -6813,7 +6807,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LatticeConstFstStateIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeConstFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LatticeConstFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeConstFstStateIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeConstFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LatticeConstFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeConstFstStateIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>State iterator for a constant FST over the lattice semiring.</p>
 <p>This class is used for iterating over the states. In addition to the full
 C++ API, it also supports the iterator protocol. Most users should just call
@@ -6872,7 +6866,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LatticeEncodeMapper">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeEncodeMapper</code><span class="sig-paren">(</span><em>encode_labels=False</em>, <em>encode_weights=False</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LatticeEncodeMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeEncodeMapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeEncodeMapper</code><span class="sig-paren">(</span><em>encode_labels=False</em>, <em>encode_weights=False</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LatticeEncodeMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeEncodeMapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc encoder for an FST over the lattice semiring.</p>
 <p>This class provides an object which can be used to encode or decode FST
 arcs. This is most useful to convert an FST to an unweighted acceptor,
@@ -7105,7 +7099,7 @@ boolean, it represents whether or not the FST has the <code class="xref py py-ob
 
 <dl class="class">
 <dt id="kaldi.fstext.LatticeFstCompiler">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeFstCompiler</code><span class="sig-paren">(</span><em>isymbols=None</em>, <em>osymbols=None</em>, <em>ssymbols=None</em>, <em>acceptor=False</em>, <em>keep_isymbols=False</em>, <em>keep_osymbols=False</em>, <em>keep_state_numbering=False</em>, <em>allow_negative_labels=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LatticeFstCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeFstCompiler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeFstCompiler</code><span class="sig-paren">(</span><em>isymbols=None</em>, <em>osymbols=None</em>, <em>ssymbols=None</em>, <em>acceptor=False</em>, <em>keep_isymbols=False</em>, <em>keep_osymbols=False</em>, <em>keep_state_numbering=False</em>, <em>allow_negative_labels=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LatticeFstCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeFstCompiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compiler for FSTs over the lattice semiring.</p>
 <p>This class is used to compile FSTs specified using the AT&amp;T FSM library
 format described here:</p>
@@ -7191,7 +7185,7 @@ invoked with a print call, like so:</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LatticeVectorFst">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeVectorFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LatticeVectorFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeVectorFst" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeVectorFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LatticeVectorFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeVectorFst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vector FST over the lattice semiring.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -8309,7 +8303,7 @@ weight b.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LatticeVectorFstArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeVectorFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LatticeVectorFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeVectorFstArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeVectorFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LatticeVectorFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeVectorFstArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc iterator for a vector FST over the lattice semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state. In
 addition to the full C++ API, it also supports the iterator protocol.
@@ -8444,7 +8438,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LatticeVectorFstMutableArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeVectorFstMutableArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LatticeVectorFstMutableArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeVectorFstMutableArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeVectorFstMutableArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LatticeVectorFstMutableArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeVectorFstMutableArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutable arc iterator for a vector FST over the lattice semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state and
 optionally replacing them with new ones. In addition to the full C++ API,
@@ -8601,7 +8595,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LatticeVectorFstStateIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeVectorFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LatticeVectorFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeVectorFstStateIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeVectorFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LatticeVectorFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeVectorFstStateIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>State iterator for a vector FST over the lattice semiring.</p>
 <p>This class is used for iterating over the states. In addition to the full
 C++ API, it also supports the iterator protocol. Most users should just call
@@ -8660,7 +8654,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LatticeWeight">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeWeight</code><a class="reference internal" href="../_modules/kaldi/fstext.html#LatticeWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeWeight" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LatticeWeight</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LatticeWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LatticeWeight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice weight factory.</p>
 <p>This class is used for creating new <a class="reference internal" href="#kaldi.fstext.weight.LatticeWeight" title="kaldi.fstext.weight.LatticeWeight"><code class="xref py py-obj docutils literal"><span class="pre">LatticeWeight</span></code></a> instances.</p>
 <dl class="docutils">
@@ -8781,9 +8775,14 @@ weights.</dd>
 
 <dl class="class">
 <dt id="kaldi.fstext.LogArc">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogArc</code><span class="sig-paren">(</span><em>ilabel=None</em>, <em>olabel=None</em>, <em>weight=None</em>, <em>nextstate=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LogArc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogArc" title="Permalink to this definition">¶</a></dt>
-<dd><p>FST Arc with log weight.</p>
-<p>Attributes of the arc can be accessed and mutated.</p>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogArc</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LogArc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogArc" title="Permalink to this definition">¶</a></dt>
+<dd><p>FST arc with log weight.</p>
+<dl class="docutils">
+<dt>LogArc():</dt>
+<dd>Creates an uninitialized <a class="reference internal" href="#kaldi.fstext.LogArc" title="kaldi.fstext.LogArc"><code class="xref py py-obj docutils literal"><span class="pre">LogArc</span></code></a> instance.</dd>
+<dt>LogArc(ilabel, olabel, weight, nextstate):</dt>
+<dd>Creates a new <a class="reference internal" href="#kaldi.fstext.LogArc" title="kaldi.fstext.LogArc"><code class="xref py py-obj docutils literal"><span class="pre">LogArc</span></code></a> instance initalized with given arguments.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -8791,7 +8790,7 @@ weights.</dd>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The input label.</li>
 <li><strong>olabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The output label.</li>
-<li><strong>weight</strong> – The arc weight.</li>
+<li><strong>weight</strong> (<a class="reference internal" href="#kaldi.fstext.LogWeight" title="kaldi.fstext.LogWeight"><em>LogWeight</em></a>) – The arc weight.</li>
 <li><strong>nextstate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The destination state for the arc.</li>
 </ul>
 </td>
@@ -8852,7 +8851,7 @@ weights.</dd>
 
 <dl class="class">
 <dt id="kaldi.fstext.LogConstFst">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogConstFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LogConstFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogConstFst" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogConstFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LogConstFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogConstFst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constant FST over the log semiring.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -9301,7 +9300,7 @@ fails.</li>
 
 <dl class="class">
 <dt id="kaldi.fstext.LogConstFstArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogConstFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LogConstFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogConstFstArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogConstFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LogConstFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogConstFstArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc iterator for a constant FST over the log semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state. In
 addition to the full C++ API, it also supports the iterator protocol.
@@ -9436,7 +9435,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LogConstFstStateIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogConstFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LogConstFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogConstFstStateIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogConstFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LogConstFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogConstFstStateIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>State iterator for a constant FST over the log semiring.</p>
 <p>This class is used for iterating over the states. In addition to the full
 C++ API, it also supports the iterator protocol. Most users should just call
@@ -9495,7 +9494,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LogEncodeMapper">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogEncodeMapper</code><span class="sig-paren">(</span><em>encode_labels=False</em>, <em>encode_weights=False</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LogEncodeMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogEncodeMapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogEncodeMapper</code><span class="sig-paren">(</span><em>encode_labels=False</em>, <em>encode_weights=False</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LogEncodeMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogEncodeMapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc encoder for an FST over the log semiring.</p>
 <p>This class provides an object which can be used to encode or decode FST
 arcs. This is most useful to convert an FST to an unweighted acceptor,
@@ -9728,7 +9727,7 @@ boolean, it represents whether or not the FST has the <code class="xref py py-ob
 
 <dl class="class">
 <dt id="kaldi.fstext.LogFstCompiler">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogFstCompiler</code><span class="sig-paren">(</span><em>isymbols=None</em>, <em>osymbols=None</em>, <em>ssymbols=None</em>, <em>acceptor=False</em>, <em>keep_isymbols=False</em>, <em>keep_osymbols=False</em>, <em>keep_state_numbering=False</em>, <em>allow_negative_labels=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LogFstCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogFstCompiler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogFstCompiler</code><span class="sig-paren">(</span><em>isymbols=None</em>, <em>osymbols=None</em>, <em>ssymbols=None</em>, <em>acceptor=False</em>, <em>keep_isymbols=False</em>, <em>keep_osymbols=False</em>, <em>keep_state_numbering=False</em>, <em>allow_negative_labels=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LogFstCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogFstCompiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compiler for FSTs over the log semiring.</p>
 <p>This class is used to compile FSTs specified using the AT&amp;T FSM library
 format described here:</p>
@@ -9814,7 +9813,7 @@ invoked with a print call, like so:</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LogVectorFst">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogVectorFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LogVectorFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogVectorFst" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogVectorFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LogVectorFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogVectorFst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vector FST over the log semiring.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -10932,7 +10931,7 @@ weight b.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LogVectorFstArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogVectorFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LogVectorFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogVectorFstArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogVectorFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LogVectorFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogVectorFstArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc iterator for a vector FST over the log semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state. In
 addition to the full C++ API, it also supports the iterator protocol.
@@ -11067,7 +11066,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LogVectorFstMutableArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogVectorFstMutableArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LogVectorFstMutableArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogVectorFstMutableArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogVectorFstMutableArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LogVectorFstMutableArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogVectorFstMutableArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutable arc iterator for a vector FST over the log semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state and
 optionally replacing them with new ones. In addition to the full C++ API,
@@ -11224,7 +11223,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LogVectorFstStateIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogVectorFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#LogVectorFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogVectorFstStateIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogVectorFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LogVectorFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogVectorFstStateIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>State iterator for a vector FST over the log semiring.</p>
 <p>This class is used for iterating over the states. In addition to the full
 C++ API, it also supports the iterator protocol. Most users should just call
@@ -11283,7 +11282,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.LogWeight">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogWeight</code><a class="reference internal" href="../_modules/kaldi/fstext.html#LogWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogWeight" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">LogWeight</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#LogWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.LogWeight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log weight factory.</p>
 <p>This class is used for creating new <a class="reference internal" href="#kaldi.fstext.weight.LogWeight" title="kaldi.fstext.weight.LogWeight"><code class="xref py py-obj docutils literal"><span class="pre">LogWeight</span></code></a> instances.</p>
 <dl class="docutils">
@@ -11375,41 +11374,15 @@ most users should use the Pythonic API.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="kaldi.fstext.MatchType">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">MatchType</code><a class="headerlink" href="#kaldi.fstext.MatchType" title="Permalink to this definition">¶</a></dt>
-<dd><p>An enumeration.</p>
-<dl class="attribute">
-<dt id="kaldi.fstext.MatchType.MATCH_BOTH">
-<code class="descname">MATCH_BOTH</code><em class="property"> = 3</em><a class="headerlink" href="#kaldi.fstext.MatchType.MATCH_BOTH" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="kaldi.fstext.MatchType.MATCH_INPUT">
-<code class="descname">MATCH_INPUT</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.MatchType.MATCH_INPUT" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="kaldi.fstext.MatchType.MATCH_NONE">
-<code class="descname">MATCH_NONE</code><em class="property"> = 4</em><a class="headerlink" href="#kaldi.fstext.MatchType.MATCH_NONE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="kaldi.fstext.MatchType.MATCH_OUTPUT">
-<code class="descname">MATCH_OUTPUT</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.MatchType.MATCH_OUTPUT" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="kaldi.fstext.MatchType.MATCH_UNKNOWN">
-<code class="descname">MATCH_UNKNOWN</code><em class="property"> = 5</em><a class="headerlink" href="#kaldi.fstext.MatchType.MATCH_UNKNOWN" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="kaldi.fstext.StdArc">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdArc</code><span class="sig-paren">(</span><em>ilabel=None</em>, <em>olabel=None</em>, <em>weight=None</em>, <em>nextstate=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#StdArc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdArc" title="Permalink to this definition">¶</a></dt>
-<dd><p>FST Arc with tropical weight.</p>
-<p>Attributes of the arc can be accessed and mutated.</p>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdArc</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#StdArc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdArc" title="Permalink to this definition">¶</a></dt>
+<dd><p>FST arc with tropical weight.</p>
+<dl class="docutils">
+<dt>StdArc():</dt>
+<dd>Creates an uninitialized <a class="reference internal" href="#kaldi.fstext.StdArc" title="kaldi.fstext.StdArc"><code class="xref py py-obj docutils literal"><span class="pre">StdArc</span></code></a> instance.</dd>
+<dt>StdArc(ilabel, olabel, weight, nextstate):</dt>
+<dd>Creates a new <a class="reference internal" href="#kaldi.fstext.StdArc" title="kaldi.fstext.StdArc"><code class="xref py py-obj docutils literal"><span class="pre">StdArc</span></code></a> instance initalized with given arguments.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -11417,7 +11390,7 @@ most users should use the Pythonic API.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>ilabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The input label.</li>
 <li><strong>olabel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The output label.</li>
-<li><strong>weight</strong> – The arc weight.</li>
+<li><strong>weight</strong> (<a class="reference internal" href="#kaldi.fstext.TropicalWeight" title="kaldi.fstext.TropicalWeight"><em>TropicalWeight</em></a>) – The arc weight.</li>
 <li><strong>nextstate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The destination state for the arc.</li>
 </ul>
 </td>
@@ -11478,7 +11451,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.StdConstFst">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdConstFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#StdConstFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdConstFst" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdConstFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#StdConstFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdConstFst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constant FST over the tropical semiring.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -11927,7 +11900,7 @@ fails.</li>
 
 <dl class="class">
 <dt id="kaldi.fstext.StdConstFstArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdConstFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#StdConstFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdConstFstArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdConstFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#StdConstFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdConstFstArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc iterator for a constant FST over the tropical semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state. In
 addition to the full C++ API, it also supports the iterator protocol.
@@ -12062,7 +12035,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.StdConstFstStateIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdConstFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#StdConstFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdConstFstStateIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdConstFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#StdConstFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdConstFstStateIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>State iterator for a constant FST over the tropical semiring.</p>
 <p>This class is used for iterating over the states. In addition to the full
 C++ API, it also supports the iterator protocol. Most users should just call
@@ -12121,7 +12094,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.StdEncodeMapper">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdEncodeMapper</code><span class="sig-paren">(</span><em>encode_labels=False</em>, <em>encode_weights=False</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#StdEncodeMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdEncodeMapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdEncodeMapper</code><span class="sig-paren">(</span><em>encode_labels=False</em>, <em>encode_weights=False</em>, <em>encode=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#StdEncodeMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdEncodeMapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc encoder for an FST over the tropical semiring.</p>
 <p>This class provides an object which can be used to encode or decode FST
 arcs. This is most useful to convert an FST to an unweighted acceptor,
@@ -12354,7 +12327,7 @@ boolean, it represents whether or not the FST has the <code class="xref py py-ob
 
 <dl class="class">
 <dt id="kaldi.fstext.StdFstCompiler">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdFstCompiler</code><span class="sig-paren">(</span><em>isymbols=None</em>, <em>osymbols=None</em>, <em>ssymbols=None</em>, <em>acceptor=False</em>, <em>keep_isymbols=False</em>, <em>keep_osymbols=False</em>, <em>keep_state_numbering=False</em>, <em>allow_negative_labels=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#StdFstCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdFstCompiler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdFstCompiler</code><span class="sig-paren">(</span><em>isymbols=None</em>, <em>osymbols=None</em>, <em>ssymbols=None</em>, <em>acceptor=False</em>, <em>keep_isymbols=False</em>, <em>keep_osymbols=False</em>, <em>keep_state_numbering=False</em>, <em>allow_negative_labels=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#StdFstCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdFstCompiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compiler for FSTs over the tropical semiring.</p>
 <p>This class is used to compile FSTs specified using the AT&amp;T FSM library
 format described here:</p>
@@ -12440,7 +12413,7 @@ invoked with a print call, like so:</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.StdVectorFst">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdVectorFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#StdVectorFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdVectorFst" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdVectorFst</code><span class="sig-paren">(</span><em>fst=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#StdVectorFst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdVectorFst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vector FST over the tropical semiring.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -13558,7 +13531,7 @@ weight b.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.StdVectorFstArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdVectorFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#StdVectorFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdVectorFstArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdVectorFstArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#StdVectorFstArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdVectorFstArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Arc iterator for a vector FST over the tropical semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state. In
 addition to the full C++ API, it also supports the iterator protocol.
@@ -13693,7 +13666,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.StdVectorFstMutableArcIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdVectorFstMutableArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#StdVectorFstMutableArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdVectorFstMutableArcIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdVectorFstMutableArcIterator</code><span class="sig-paren">(</span><em>fst</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#StdVectorFstMutableArcIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdVectorFstMutableArcIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutable arc iterator for a vector FST over the tropical semiring.</p>
 <p>This class is used for iterating over the arcs leaving some state and
 optionally replacing them with new ones. In addition to the full C++ API,
@@ -13850,7 +13823,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.StdVectorFstStateIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdVectorFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#StdVectorFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdVectorFstStateIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">StdVectorFstStateIterator</code><span class="sig-paren">(</span><em>fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#StdVectorFstStateIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.StdVectorFstStateIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>State iterator for a vector FST over the tropical semiring.</p>
 <p>This class is used for iterating over the states. In addition to the full
 C++ API, it also supports the iterator protocol. Most users should just call
@@ -14209,7 +14182,7 @@ return value.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.SymbolTableIterator">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">SymbolTableIterator</code><a class="reference internal" href="../_modules/kaldi/fstext.html#SymbolTableIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.SymbolTableIterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">SymbolTableIterator</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#SymbolTableIterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.SymbolTableIterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Symbol table iterator.</p>
 <p>This class is used for iterating over the (index, symbol) pairs in a symbol
 table. In addition to the full C++ API, it also supports the iterator
@@ -14333,7 +14306,7 @@ most users should use the Pythonic API.</p>
 
 <dl class="class">
 <dt id="kaldi.fstext.TropicalWeight">
-<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">TropicalWeight</code><a class="reference internal" href="../_modules/kaldi/fstext.html#TropicalWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.TropicalWeight" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.fstext.</code><code class="descname">TropicalWeight</code><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#TropicalWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.TropicalWeight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tropical weight factory.</p>
 <p>This class is used for creating new <a class="reference internal" href="#kaldi.fstext.weight.TropicalWeight" title="kaldi.fstext.weight.TropicalWeight"><code class="xref py py-obj docutils literal"><span class="pre">TropicalWeight</span></code></a> instances.</p>
 <dl class="docutils">
@@ -14702,7 +14675,7 @@ same weights.</p>
 
 <dl class="function">
 <dt id="kaldi.fstext.indices_to_symbols">
-<code class="descclassname">kaldi.fstext.</code><code class="descname">indices_to_symbols</code><span class="sig-paren">(</span><em>symbol_table</em>, <em>indices</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#indices_to_symbols"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.indices_to_symbols" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">kaldi.fstext.</code><code class="descname">indices_to_symbols</code><span class="sig-paren">(</span><em>symbol_table</em>, <em>indices</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#indices_to_symbols"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.indices_to_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts indices to symbols by looking them up in the symbol table.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -14932,7 +14905,7 @@ current time and process ID is used.</li>
 
 <dl class="function">
 <dt id="kaldi.fstext.read_fst_kaldi">
-<code class="descclassname">kaldi.fstext.</code><code class="descname">read_fst_kaldi</code><span class="sig-paren">(</span><em>rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#read_fst_kaldi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.read_fst_kaldi" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">kaldi.fstext.</code><code class="descname">read_fst_kaldi</code><span class="sig-paren">(</span><em>rxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#read_fst_kaldi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.read_fst_kaldi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads FST using Kaldi I/O mechanisms.</p>
 <p>Does not support reading in text mode.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -15191,7 +15164,7 @@ Note that currently, only one state-mapping operation is supported.</p>
 
 <dl class="function">
 <dt id="kaldi.fstext.symbols_to_indices">
-<code class="descclassname">kaldi.fstext.</code><code class="descname">symbols_to_indices</code><span class="sig-paren">(</span><em>symbol_table</em>, <em>symbols</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#symbols_to_indices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.symbols_to_indices" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">kaldi.fstext.</code><code class="descname">symbols_to_indices</code><span class="sig-paren">(</span><em>symbol_table</em>, <em>symbols</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#symbols_to_indices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.symbols_to_indices" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts symbols to indices by looking them up in the symbol table.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -15240,7 +15213,7 @@ delay, i.e., the delay of every cycle must be zero.</p>
 
 <dl class="function">
 <dt id="kaldi.fstext.write_fst_kaldi">
-<code class="descclassname">kaldi.fstext.</code><code class="descname">write_fst_kaldi</code><span class="sig-paren">(</span><em>fst</em>, <em>wxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext.html#write_fst_kaldi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.write_fst_kaldi" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">kaldi.fstext.</code><code class="descname">write_fst_kaldi</code><span class="sig-paren">(</span><em>fst</em>, <em>wxfilename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/fstext/_api.html#write_fst_kaldi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.fstext.write_fst_kaldi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes FST using Kaldi I/O mechanisms.</p>
 <p>FST is written in binary mode without Kaldi binary mode header.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -15260,6 +15233,559 @@ delay, i.e., the delay of every cycle must be zero.</p>
 </table>
 </dd></dl>
 
+<div class="section" id="module-kaldi.fstext.enums">
+<span id="kaldi-fstext-enums"></span><h2>kaldi.fstext.enums<a class="headerlink" href="#module-kaldi.fstext.enums" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.GetArcSortType" title="kaldi.fstext.enums.GetArcSortType"><code class="xref py py-obj docutils literal"><span class="pre">GetArcSortType</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.GetClosureType" title="kaldi.fstext.enums.GetClosureType"><code class="xref py py-obj docutils literal"><span class="pre">GetClosureType</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.GetComposeFilter" title="kaldi.fstext.enums.GetComposeFilter"><code class="xref py py-obj docutils literal"><span class="pre">GetComposeFilter</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.GetDeterminizeType" title="kaldi.fstext.enums.GetDeterminizeType"><code class="xref py py-obj docutils literal"><span class="pre">GetDeterminizeType</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.GetEncodeFlags" title="kaldi.fstext.enums.GetEncodeFlags"><code class="xref py py-obj docutils literal"><span class="pre">GetEncodeFlags</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.GetEpsNormalizeType" title="kaldi.fstext.enums.GetEpsNormalizeType"><code class="xref py py-obj docutils literal"><span class="pre">GetEpsNormalizeType</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.GetMapType" title="kaldi.fstext.enums.GetMapType"><code class="xref py py-obj docutils literal"><span class="pre">GetMapType</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.GetProjectType" title="kaldi.fstext.enums.GetProjectType"><code class="xref py py-obj docutils literal"><span class="pre">GetProjectType</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.GetPushFlags" title="kaldi.fstext.enums.GetPushFlags"><code class="xref py py-obj docutils literal"><span class="pre">GetPushFlags</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.GetQueueType" title="kaldi.fstext.enums.GetQueueType"><code class="xref py py-obj docutils literal"><span class="pre">GetQueueType</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.GetRandArcSelection" title="kaldi.fstext.enums.GetRandArcSelection"><code class="xref py py-obj docutils literal"><span class="pre">GetRandArcSelection</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.GetReplaceLabelType" title="kaldi.fstext.enums.GetReplaceLabelType"><code class="xref py py-obj docutils literal"><span class="pre">GetReplaceLabelType</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.GetReweightType" title="kaldi.fstext.enums.GetReweightType"><code class="xref py py-obj docutils literal"><span class="pre">GetReweightType</span></code></a></td>
+<td>Calls C++ function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.ArcSortType" title="kaldi.fstext.enums.ArcSortType"><code class="xref py py-obj docutils literal"><span class="pre">ArcSortType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.ClosureType" title="kaldi.fstext.enums.ClosureType"><code class="xref py py-obj docutils literal"><span class="pre">ClosureType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.ComposeFilter" title="kaldi.fstext.enums.ComposeFilter"><code class="xref py py-obj docutils literal"><span class="pre">ComposeFilter</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.DeterminizeType" title="kaldi.fstext.enums.DeterminizeType"><code class="xref py py-obj docutils literal"><span class="pre">DeterminizeType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.EncodeType" title="kaldi.fstext.enums.EncodeType"><code class="xref py py-obj docutils literal"><span class="pre">EncodeType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.EpsNormalizeType" title="kaldi.fstext.enums.EpsNormalizeType"><code class="xref py py-obj docutils literal"><span class="pre">EpsNormalizeType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.MapType" title="kaldi.fstext.enums.MapType"><code class="xref py py-obj docutils literal"><span class="pre">MapType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.MatchType" title="kaldi.fstext.enums.MatchType"><code class="xref py py-obj docutils literal"><span class="pre">MatchType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.ProjectType" title="kaldi.fstext.enums.ProjectType"><code class="xref py py-obj docutils literal"><span class="pre">ProjectType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.QueueType" title="kaldi.fstext.enums.QueueType"><code class="xref py py-obj docutils literal"><span class="pre">QueueType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.RandArcSelection" title="kaldi.fstext.enums.RandArcSelection"><code class="xref py py-obj docutils literal"><span class="pre">RandArcSelection</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#kaldi.fstext.enums.ReplaceLabelType" title="kaldi.fstext.enums.ReplaceLabelType"><code class="xref py py-obj docutils literal"><span class="pre">ReplaceLabelType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#kaldi.fstext.enums.ReweightType" title="kaldi.fstext.enums.ReweightType"><code class="xref py py-obj docutils literal"><span class="pre">ReweightType</span></code></a></td>
+<td>An enumeration.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="kaldi.fstext.enums.ArcSortType">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">ArcSortType</code><a class="headerlink" href="#kaldi.fstext.enums.ArcSortType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ArcSortType.ILABEL_SORT">
+<code class="descname">ILABEL_SORT</code><em class="property"> = 0</em><a class="headerlink" href="#kaldi.fstext.enums.ArcSortType.ILABEL_SORT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ArcSortType.OLABEL_SORT">
+<code class="descname">OLABEL_SORT</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.ArcSortType.OLABEL_SORT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.ClosureType">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">ClosureType</code><a class="headerlink" href="#kaldi.fstext.enums.ClosureType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ClosureType.CLOSURE_PLUS">
+<code class="descname">CLOSURE_PLUS</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.ClosureType.CLOSURE_PLUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ClosureType.CLOSURE_STAR">
+<code class="descname">CLOSURE_STAR</code><em class="property"> = 0</em><a class="headerlink" href="#kaldi.fstext.enums.ClosureType.CLOSURE_STAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.ComposeFilter">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">ComposeFilter</code><a class="headerlink" href="#kaldi.fstext.enums.ComposeFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ComposeFilter.ALT_SEQUENCE_FILTER">
+<code class="descname">ALT_SEQUENCE_FILTER</code><em class="property"> = 4</em><a class="headerlink" href="#kaldi.fstext.enums.ComposeFilter.ALT_SEQUENCE_FILTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ComposeFilter.AUTO_FILTER">
+<code class="descname">AUTO_FILTER</code><em class="property"> = 0</em><a class="headerlink" href="#kaldi.fstext.enums.ComposeFilter.AUTO_FILTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ComposeFilter.MATCH_FILTER">
+<code class="descname">MATCH_FILTER</code><em class="property"> = 5</em><a class="headerlink" href="#kaldi.fstext.enums.ComposeFilter.MATCH_FILTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ComposeFilter.NULL_FILTER">
+<code class="descname">NULL_FILTER</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.ComposeFilter.NULL_FILTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ComposeFilter.SEQUENCE_FILTER">
+<code class="descname">SEQUENCE_FILTER</code><em class="property"> = 3</em><a class="headerlink" href="#kaldi.fstext.enums.ComposeFilter.SEQUENCE_FILTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ComposeFilter.TRIVIAL_FILTER">
+<code class="descname">TRIVIAL_FILTER</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.enums.ComposeFilter.TRIVIAL_FILTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.DeterminizeType">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">DeterminizeType</code><a class="headerlink" href="#kaldi.fstext.enums.DeterminizeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.DeterminizeType.DETERMINIZE_DISAMBIGUATE">
+<code class="descname">DETERMINIZE_DISAMBIGUATE</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.enums.DeterminizeType.DETERMINIZE_DISAMBIGUATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.DeterminizeType.DETERMINIZE_FUNCTIONAL">
+<code class="descname">DETERMINIZE_FUNCTIONAL</code><em class="property"> = 0</em><a class="headerlink" href="#kaldi.fstext.enums.DeterminizeType.DETERMINIZE_FUNCTIONAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.DeterminizeType.DETERMINIZE_NONFUNCTIONAL">
+<code class="descname">DETERMINIZE_NONFUNCTIONAL</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.DeterminizeType.DETERMINIZE_NONFUNCTIONAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.EncodeType">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">EncodeType</code><a class="headerlink" href="#kaldi.fstext.enums.EncodeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.EncodeType.DECODE">
+<code class="descname">DECODE</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.enums.EncodeType.DECODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.EncodeType.ENCODE">
+<code class="descname">ENCODE</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.EncodeType.ENCODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.EpsNormalizeType">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">EpsNormalizeType</code><a class="headerlink" href="#kaldi.fstext.enums.EpsNormalizeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.EpsNormalizeType.EPS_NORM_INPUT">
+<code class="descname">EPS_NORM_INPUT</code><em class="property"> = 0</em><a class="headerlink" href="#kaldi.fstext.enums.EpsNormalizeType.EPS_NORM_INPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.EpsNormalizeType.EPS_NORM_OUTPUT">
+<code class="descname">EPS_NORM_OUTPUT</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.EpsNormalizeType.EPS_NORM_OUTPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetArcSortType">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetArcSortType</code><span class="sig-paren">(</span><em>str:str) -&gt; (success:bool</em>, <em>sort_type:ArcSortType</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.enums.GetArcSortType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::fst::script::GetArcSortType(::std::string, ::fst::script::ArcSortType*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetClosureType">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetClosureType</code><span class="sig-paren">(</span><em>closure_plus:bool</em><span class="sig-paren">)</span> &#x2192; ClosureType<a class="headerlink" href="#kaldi.fstext.enums.GetClosureType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::fst::ClosureType ::fst::script::GetClosureType(bool)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetComposeFilter">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetComposeFilter</code><span class="sig-paren">(</span><em>str:str) -&gt; (success:bool</em>, <em>compose_filter:ComposeFilter</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.enums.GetComposeFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::fst::script::GetComposeFilter(::std::string, ::fst::ComposeFilter*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetDeterminizeType">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetDeterminizeType</code><span class="sig-paren">(</span><em>str:str) -&gt; (success:bool</em>, <em>det_type:DeterminizeType</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.enums.GetDeterminizeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::fst::script::GetDeterminizeType(::std::string, ::fst::DeterminizeType*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetEncodeFlags">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetEncodeFlags</code><span class="sig-paren">(</span><em>encode_labels:bool</em>, <em>encode_weights:bool</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.fstext.enums.GetEncodeFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+unsigned int ::fst::script::GetEncodeFlags(bool, bool)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetEpsNormalizeType">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetEpsNormalizeType</code><span class="sig-paren">(</span><em>eps_norm_output:bool</em><span class="sig-paren">)</span> &#x2192; EpsNormalizeType<a class="headerlink" href="#kaldi.fstext.enums.GetEpsNormalizeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::fst::EpsNormalizeType ::fst::script::GetEpsNormalizeType(bool)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetMapType">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetMapType</code><span class="sig-paren">(</span><em>str:str) -&gt; (success:bool</em>, <em>sort_type:MapType</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.enums.GetMapType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::fst::script::GetMapType(::std::string, ::fst::script::MapType*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetProjectType">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetProjectType</code><span class="sig-paren">(</span><em>project_output:bool</em><span class="sig-paren">)</span> &#x2192; ProjectType<a class="headerlink" href="#kaldi.fstext.enums.GetProjectType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::fst::ProjectType ::fst::script::GetProjectType(bool)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetPushFlags">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetPushFlags</code><span class="sig-paren">(</span><em>push_weights:bool</em>, <em>push_labels:bool</em>, <em>remove_total_weight:bool</em>, <em>remove_common_affix:bool</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#kaldi.fstext.enums.GetPushFlags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+unsigned int ::fst::script::GetPushFlags(bool, bool, bool, bool)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetQueueType">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetQueueType</code><span class="sig-paren">(</span><em>str:str) -&gt; (success:bool</em>, <em>queue_type:QueueType</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.enums.GetQueueType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::fst::script::GetQueueType(::std::string, ::fst::QueueType*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetRandArcSelection">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetRandArcSelection</code><span class="sig-paren">(</span><em>str:str) -&gt; (success:bool</em>, <em>ras:RandArcSelection</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.enums.GetRandArcSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::fst::script::GetRandArcSelection(::std::string, ::fst::script::RandArcSelection*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetReplaceLabelType">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetReplaceLabelType</code><span class="sig-paren">(</span><em>str:str</em>, <em>epsilon_on_replace:bool) -&gt; (success:bool</em>, <em>rlt:ReplaceLabelType</em><span class="sig-paren">)</span><a class="headerlink" href="#kaldi.fstext.enums.GetReplaceLabelType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+bool ::fst::script::GetReplaceLabelType(::std::string, bool, ::fst::ReplaceLabelType*)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="kaldi.fstext.enums.GetReweightType">
+<code class="descclassname">kaldi.fstext.enums.</code><code class="descname">GetReweightType</code><span class="sig-paren">(</span><em>to_final:bool</em><span class="sig-paren">)</span> &#x2192; ReweightType<a class="headerlink" href="#kaldi.fstext.enums.GetReweightType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls C++ function
+::fst::ReweightType ::fst::script::GetReweightType(bool)</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.MapType">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">MapType</code><a class="headerlink" href="#kaldi.fstext.enums.MapType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.ARC_SUM_MAPPER">
+<code class="descname">ARC_SUM_MAPPER</code><em class="property"> = 0</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.ARC_SUM_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.ARC_UNIQUE_MAPPER">
+<code class="descname">ARC_UNIQUE_MAPPER</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.ARC_UNIQUE_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.IDENTITY_MAPPER">
+<code class="descname">IDENTITY_MAPPER</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.IDENTITY_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.INPUT_EPSILON_MAPPER">
+<code class="descname">INPUT_EPSILON_MAPPER</code><em class="property"> = 3</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.INPUT_EPSILON_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.INVERT_MAPPER">
+<code class="descname">INVERT_MAPPER</code><em class="property"> = 4</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.INVERT_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.OUTPUT_EPSILON_MAPPER">
+<code class="descname">OUTPUT_EPSILON_MAPPER</code><em class="property"> = 5</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.OUTPUT_EPSILON_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.PLUS_MAPPER">
+<code class="descname">PLUS_MAPPER</code><em class="property"> = 6</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.PLUS_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.POWER_MAPPER">
+<code class="descname">POWER_MAPPER</code><em class="property"> = 7</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.POWER_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.QUANTIZE_MAPPER">
+<code class="descname">QUANTIZE_MAPPER</code><em class="property"> = 8</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.QUANTIZE_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.RMWEIGHT_MAPPER">
+<code class="descname">RMWEIGHT_MAPPER</code><em class="property"> = 9</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.RMWEIGHT_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.SUPERFINAL_MAPPER">
+<code class="descname">SUPERFINAL_MAPPER</code><em class="property"> = 10</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.SUPERFINAL_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.TIMES_MAPPER">
+<code class="descname">TIMES_MAPPER</code><em class="property"> = 11</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.TIMES_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.TO_LOG64_MAPPER">
+<code class="descname">TO_LOG64_MAPPER</code><em class="property"> = 13</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.TO_LOG64_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.TO_LOG_MAPPER">
+<code class="descname">TO_LOG_MAPPER</code><em class="property"> = 12</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.TO_LOG_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MapType.TO_STD_MAPPER">
+<code class="descname">TO_STD_MAPPER</code><em class="property"> = 14</em><a class="headerlink" href="#kaldi.fstext.enums.MapType.TO_STD_MAPPER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.MatchType">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">MatchType</code><a class="headerlink" href="#kaldi.fstext.enums.MatchType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MatchType.MATCH_BOTH">
+<code class="descname">MATCH_BOTH</code><em class="property"> = 3</em><a class="headerlink" href="#kaldi.fstext.enums.MatchType.MATCH_BOTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MatchType.MATCH_INPUT">
+<code class="descname">MATCH_INPUT</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.MatchType.MATCH_INPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MatchType.MATCH_NONE">
+<code class="descname">MATCH_NONE</code><em class="property"> = 4</em><a class="headerlink" href="#kaldi.fstext.enums.MatchType.MATCH_NONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MatchType.MATCH_OUTPUT">
+<code class="descname">MATCH_OUTPUT</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.enums.MatchType.MATCH_OUTPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.MatchType.MATCH_UNKNOWN">
+<code class="descname">MATCH_UNKNOWN</code><em class="property"> = 5</em><a class="headerlink" href="#kaldi.fstext.enums.MatchType.MATCH_UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.ProjectType">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">ProjectType</code><a class="headerlink" href="#kaldi.fstext.enums.ProjectType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ProjectType.PROJECT_INPUT">
+<code class="descname">PROJECT_INPUT</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.ProjectType.PROJECT_INPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ProjectType.PROJECT_OUTPUT">
+<code class="descname">PROJECT_OUTPUT</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.enums.ProjectType.PROJECT_OUTPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.QueueType">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">QueueType</code><a class="headerlink" href="#kaldi.fstext.enums.QueueType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.QueueType.AUTO_QUEUE">
+<code class="descname">AUTO_QUEUE</code><em class="property"> = 7</em><a class="headerlink" href="#kaldi.fstext.enums.QueueType.AUTO_QUEUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.QueueType.FIFO_QUEUE">
+<code class="descname">FIFO_QUEUE</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.QueueType.FIFO_QUEUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.QueueType.LIFO_QUEUE">
+<code class="descname">LIFO_QUEUE</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.enums.QueueType.LIFO_QUEUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.QueueType.OTHER_QUEUE">
+<code class="descname">OTHER_QUEUE</code><em class="property"> = 8</em><a class="headerlink" href="#kaldi.fstext.enums.QueueType.OTHER_QUEUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.QueueType.SCC_QUEUE">
+<code class="descname">SCC_QUEUE</code><em class="property"> = 6</em><a class="headerlink" href="#kaldi.fstext.enums.QueueType.SCC_QUEUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.QueueType.SHORTEST_FIRST_QUEUE">
+<code class="descname">SHORTEST_FIRST_QUEUE</code><em class="property"> = 3</em><a class="headerlink" href="#kaldi.fstext.enums.QueueType.SHORTEST_FIRST_QUEUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.QueueType.STATE_ORDER_QUEUE">
+<code class="descname">STATE_ORDER_QUEUE</code><em class="property"> = 5</em><a class="headerlink" href="#kaldi.fstext.enums.QueueType.STATE_ORDER_QUEUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.QueueType.TOP_ORDER_QUEUE">
+<code class="descname">TOP_ORDER_QUEUE</code><em class="property"> = 4</em><a class="headerlink" href="#kaldi.fstext.enums.QueueType.TOP_ORDER_QUEUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.QueueType.TRIVIAL_QUEUE">
+<code class="descname">TRIVIAL_QUEUE</code><em class="property"> = 0</em><a class="headerlink" href="#kaldi.fstext.enums.QueueType.TRIVIAL_QUEUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.RandArcSelection">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">RandArcSelection</code><a class="headerlink" href="#kaldi.fstext.enums.RandArcSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.RandArcSelection.FAST_LOG_PROB_ARC_SELECTOR">
+<code class="descname">FAST_LOG_PROB_ARC_SELECTOR</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.enums.RandArcSelection.FAST_LOG_PROB_ARC_SELECTOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.RandArcSelection.LOG_PROB_ARC_SELECTOR">
+<code class="descname">LOG_PROB_ARC_SELECTOR</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.RandArcSelection.LOG_PROB_ARC_SELECTOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.RandArcSelection.UNIFORM_ARC_SELECTOR">
+<code class="descname">UNIFORM_ARC_SELECTOR</code><em class="property"> = 0</em><a class="headerlink" href="#kaldi.fstext.enums.RandArcSelection.UNIFORM_ARC_SELECTOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.ReplaceLabelType">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">ReplaceLabelType</code><a class="headerlink" href="#kaldi.fstext.enums.ReplaceLabelType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ReplaceLabelType.REPLACE_LABEL_BOTH">
+<code class="descname">REPLACE_LABEL_BOTH</code><em class="property"> = 4</em><a class="headerlink" href="#kaldi.fstext.enums.ReplaceLabelType.REPLACE_LABEL_BOTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ReplaceLabelType.REPLACE_LABEL_INPUT">
+<code class="descname">REPLACE_LABEL_INPUT</code><em class="property"> = 2</em><a class="headerlink" href="#kaldi.fstext.enums.ReplaceLabelType.REPLACE_LABEL_INPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ReplaceLabelType.REPLACE_LABEL_NEITHER">
+<code class="descname">REPLACE_LABEL_NEITHER</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.ReplaceLabelType.REPLACE_LABEL_NEITHER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ReplaceLabelType.REPLACE_LABEL_OUTPUT">
+<code class="descname">REPLACE_LABEL_OUTPUT</code><em class="property"> = 3</em><a class="headerlink" href="#kaldi.fstext.enums.ReplaceLabelType.REPLACE_LABEL_OUTPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kaldi.fstext.enums.ReweightType">
+<em class="property">class </em><code class="descclassname">kaldi.fstext.enums.</code><code class="descname">ReweightType</code><a class="headerlink" href="#kaldi.fstext.enums.ReweightType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ReweightType.REWEIGHT_TO_FINAL">
+<code class="descname">REWEIGHT_TO_FINAL</code><em class="property"> = 1</em><a class="headerlink" href="#kaldi.fstext.enums.ReweightType.REWEIGHT_TO_FINAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kaldi.fstext.enums.ReweightType.REWEIGHT_TO_INITIAL">
+<code class="descname">REWEIGHT_TO_INITIAL</code><em class="property"> = 0</em><a class="headerlink" href="#kaldi.fstext.enums.ReweightType.REWEIGHT_TO_INITIAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-kaldi.fstext.properties">
 <span id="kaldi-fstext-properties"></span><h2>kaldi.fstext.properties<a class="headerlink" href="#module-kaldi.fstext.properties" title="Permalink to this headline">¶</a></h2>
 <p>FST Properties.</p>
@@ -18206,7 +18732,7 @@ acoustics by <code class="xref py py-obj docutils literal"><span class="pre">acw
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.0',
+            VERSION:'0.1.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

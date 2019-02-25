@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kaldi.decoder._compiler &mdash; PyKaldi 0.1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/pykaldi-theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyKaldi 0.1.1 documentation" href="../../../index.html"/>
+        <link rel="up" title="kaldi.decoder" href="../decoder.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/pykaldi-logo-light.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+    
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/install.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/conv.html">Coding Conventions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.alignment.html">kaldi.alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.asr.html">kaldi.asr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.base.html">kaldi.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.chain.html">kaldi.chain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.cudamatrix.html">kaldi.cudamatrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.decoder.html">kaldi.decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.feat.html">kaldi.feat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.fstext.html">kaldi.fstext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.gmm.html">kaldi.gmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.hmm.html">kaldi.hmm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.ivector.html">kaldi.ivector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.kws.html">kaldi.kws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lat.html">kaldi.lat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.lm.html">kaldi.lm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.matrix.html">kaldi.matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.nnet3.html">kaldi.nnet3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.online2.html">kaldi.online2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.rnnlm.html">kaldi.rnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.segmentation.html">kaldi.segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.sgmm2.html">kaldi.sgmm2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tfrnnlm.html">kaldi.tfrnnlm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.transform.html">kaldi.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.tree.html">kaldi.tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/kaldi.util.html">kaldi.util</a></li>
+</ul>
+
+            
+          
+    <p class="caption"><span class="caption-text">Other</span></p>
+    <ul>
+    <li class="toctree-l1"><a href="../../../genindex.html">Index</a></li>
+    </ul>
+  
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyKaldi</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../decoder.html">kaldi.decoder</a> &raquo;</li>
+        
+      <li>kaldi.decoder._compiler</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for kaldi.decoder._compiler</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">fstext</span> <span class="k">as</span> <span class="n">_fst</span>
+
+<span class="kn">from</span> <span class="nn">._training_graph_compiler</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">._training_graph_compiler_ext</span> <span class="k">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="TrainingGraphCompiler"><a class="viewcode-back" href="../../../api/kaldi.decoder.html#kaldi.decoder.TrainingGraphCompiler">[docs]</a><span class="k">class</span> <span class="nc">TrainingGraphCompiler</span><span class="p">(</span><span class="n">TrainingGraphCompiler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Training graph compiler.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trans_model</span><span class="p">,</span> <span class="n">ctx_dep</span><span class="p">,</span> <span class="n">lex_fst</span><span class="p">,</span> <span class="n">disambig_syms</span><span class="p">,</span> <span class="n">opts</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            trans_model (TransitionModel): Transition model `H`.</span>
+<span class="sd">            ctx_dep (ContextDependency): Context dependency model `C`.</span>
+<span class="sd">            lex_fst (StdVectorFst): Lexicon `L`.</span>
+<span class="sd">            disambig_syms (List[int]): Disambiguation symbols.</span>
+<span class="sd">            opts (TrainingGraphCompilerOptions): Compiler options.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TrainingGraphCompiler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">trans_model</span><span class="p">,</span> <span class="n">ctx_dep</span><span class="p">,</span> <span class="n">lex_fst</span><span class="p">,</span> <span class="n">disambig_syms</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+        <span class="c1"># keep references to these objects to keep them in scope</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_trans_model</span> <span class="o">=</span> <span class="n">trans_model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ctx_dep</span> <span class="o">=</span> <span class="n">ctx_dep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lex_fst</span> <span class="o">=</span> <span class="n">lex_fst</span>
+
+<div class="viewcode-block" id="TrainingGraphCompiler.compile_graph"><a class="viewcode-back" href="../../../api/kaldi.decoder.html#kaldi.decoder.TrainingGraphCompiler.compile_graph">[docs]</a>    <span class="k">def</span> <span class="nf">compile_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word_fst</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compiles a single training graph from a weighted acceptor.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            word_fst (StdVectorFst): Weighted acceptor `G` at the word level.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            StdVectorFst: The training graph `HCLG`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ofst</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TrainingGraphCompiler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">compile_graph</span><span class="p">(</span><span class="n">word_fst</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdVectorFst</span><span class="p">(</span><span class="n">ofst</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TrainingGraphCompiler.compile_graphs"><a class="viewcode-back" href="../../../api/kaldi.decoder.html#kaldi.decoder.TrainingGraphCompiler.compile_graphs">[docs]</a>    <span class="k">def</span> <span class="nf">compile_graphs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word_fsts</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compiles training graphs from weighted acceptors.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">          word_fsts (List[StdVectorFst]): Weighted acceptors at the word level.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          List[StdVectorFst]: The training graphs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ofsts</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TrainingGraphCompiler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">compile_graphs</span><span class="p">(</span><span class="n">word_fsts</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">fst</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ofsts</span><span class="p">):</span>
+            <span class="n">ofsts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdVectorFst</span><span class="p">(</span><span class="n">fst</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ofsts</span></div>
+
+<div class="viewcode-block" id="TrainingGraphCompiler.compile_graph_from_text"><a class="viewcode-back" href="../../../api/kaldi.decoder.html#kaldi.decoder.TrainingGraphCompiler.compile_graph_from_text">[docs]</a>    <span class="k">def</span> <span class="nf">compile_graph_from_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transcript</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compiles a single training graph from a transcript.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            transcript (List[int]): The input transcript.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            StdVectorFst: The training graph `HCLG`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ofst</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TrainingGraphCompiler</span><span class="p">,</span>
+                     <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">compile_graph_from_text</span><span class="p">(</span><span class="n">transcript</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdVectorFst</span><span class="p">(</span><span class="n">ofst</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TrainingGraphCompiler.compile_graphs_from_text"><a class="viewcode-back" href="../../../api/kaldi.decoder.html#kaldi.decoder.TrainingGraphCompiler.compile_graphs_from_text">[docs]</a>    <span class="k">def</span> <span class="nf">compile_graphs_from_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transcripts</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compiles training graphs from transcripts.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">          transcripts (List[List[int]]): The input transcripts.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          List[StdVectorFst]: The training graphs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ofsts</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TrainingGraphCompiler</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">compile_graphs_from_text</span><span class="p">(</span><span class="n">transcripts</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">fst</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ofsts</span><span class="p">):</span>
+            <span class="n">ofsts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_fst</span><span class="o">.</span><span class="n">StdVectorFst</span><span class="p">(</span><span class="n">fst</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ofsts</span></div></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span>
+           <span class="k">if</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span>
+           <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;Base&#39;</span><span class="p">)]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Doğan Can, Victor Martinez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.decoder &mdash; PyKaldi 0.1.0 documentation</title>
+  <title>kaldi.decoder &mdash; PyKaldi 0.1.1 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.1 documentation" href="../index.html"/>
         <link rel="next" title="kaldi.feat" href="kaldi.feat.html"/>
         <link rel="prev" title="kaldi.cudamatrix" href="kaldi.cudamatrix.html"/> 
 
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -295,7 +295,7 @@
 </table>
 <dl class="class">
 <dt id="kaldi.decoder.BiglmFasterDecoder">
-<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">BiglmFasterDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em>, <em>lm_diff_fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#BiglmFasterDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.BiglmFasterDecoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">BiglmFasterDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em>, <em>lm_diff_fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_decoder.html#BiglmFasterDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.BiglmFasterDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Faster decoder for decoding with big language models.</p>
 <p>This is as <a class="reference internal" href="#kaldi.decoder.LatticeFasterDecoder" title="kaldi.decoder.LatticeFasterDecoder"><code class="xref py py-class docutils literal"><span class="pre">LatticeFasterDecoder</span></code></a>, but does online composition
 between decoding graph <code class="xref py py-attr docutils literal"><span class="pre">fst</span></code> and the difference language model
@@ -831,7 +831,7 @@ to PDF IDs.</li>
 
 <dl class="class">
 <dt id="kaldi.decoder.FasterDecoder">
-<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">FasterDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#FasterDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.FasterDecoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">FasterDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_decoder.html#FasterDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.FasterDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Faster decoder.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1177,7 +1177,7 @@ non-terminal symbol.</li>
 
 <dl class="class">
 <dt id="kaldi.decoder.LatticeBiglmFasterDecoder">
-<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeBiglmFasterDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em>, <em>lm_diff_fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#LatticeBiglmFasterDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeBiglmFasterDecoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeBiglmFasterDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em>, <em>lm_diff_fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_decoder.html#LatticeBiglmFasterDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeBiglmFasterDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice generating faster decoder for decoding with big language models.</p>
 <p>This is as <a class="reference internal" href="#kaldi.decoder.LatticeFasterDecoder" title="kaldi.decoder.LatticeFasterDecoder"><code class="xref py py-class docutils literal"><span class="pre">LatticeFasterDecoder</span></code></a>, but does online composition
 between decoding graph <code class="xref py py-attr docutils literal"><span class="pre">fst</span></code> and the difference language model
@@ -1319,7 +1319,7 @@ treated as one.</td>
 
 <dl class="class">
 <dt id="kaldi.decoder.LatticeFasterDecoder">
-<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeFasterDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#LatticeFasterDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeFasterDecoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeFasterDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_decoder.html#LatticeFasterDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeFasterDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice generating faster decoder.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1625,7 +1625,7 @@ Typically a command-line option parser.</td>
 
 <dl class="class">
 <dt id="kaldi.decoder.LatticeFasterGrammarDecoder">
-<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeFasterGrammarDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#LatticeFasterGrammarDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeFasterGrammarDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_decoder.html#LatticeFasterGrammarDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeFasterGrammarDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice generating faster grammar decoder.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1850,7 +1850,7 @@ and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterGr
 
 <dl class="class">
 <dt id="kaldi.decoder.LatticeFasterOnlineDecoder">
-<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeFasterOnlineDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#LatticeFasterOnlineDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineDecoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeFasterOnlineDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_decoder.html#LatticeFasterOnlineDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice generating faster online decoder.</p>
 <p>Similar to <a class="reference internal" href="#kaldi.decoder.LatticeFasterDecoder" title="kaldi.decoder.LatticeFasterDecoder"><code class="xref py py-class docutils literal"><span class="pre">LatticeFasterDecoder</span></code></a> but computes the best path
 without generating the entire raw lattice and finding the best path
@@ -2114,7 +2114,7 @@ and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterOn
 
 <dl class="class">
 <dt id="kaldi.decoder.LatticeFasterOnlineGrammarDecoder">
-<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeFasterOnlineGrammarDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#LatticeFasterOnlineGrammarDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">LatticeFasterOnlineGrammarDecoder</code><span class="sig-paren">(</span><em>fst</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_decoder.html#LatticeFasterOnlineGrammarDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.LatticeFasterOnlineGrammarDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lattice generating faster online grammar decoder.</p>
 <p>Similar to <a class="reference internal" href="#kaldi.decoder.LatticeFasterGrammarDecoder" title="kaldi.decoder.LatticeFasterGrammarDecoder"><code class="xref py py-class docutils literal"><span class="pre">LatticeFasterGrammarDecoder</span></code></a> but computes the best path
 without generating the entire raw lattice and finding the best path
@@ -2378,7 +2378,7 @@ and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterOn
 
 <dl class="class">
 <dt id="kaldi.decoder.TrainingGraphCompiler">
-<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">TrainingGraphCompiler</code><span class="sig-paren">(</span><em>trans_model</em>, <em>ctx_dep</em>, <em>lex_fst</em>, <em>disambig_syms</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#TrainingGraphCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.TrainingGraphCompiler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.decoder.</code><code class="descname">TrainingGraphCompiler</code><span class="sig-paren">(</span><em>trans_model</em>, <em>ctx_dep</em>, <em>lex_fst</em>, <em>disambig_syms</em>, <em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_compiler.html#TrainingGraphCompiler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.TrainingGraphCompiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Training graph compiler.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2397,7 +2397,7 @@ and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterOn
 </table>
 <dl class="method">
 <dt id="kaldi.decoder.TrainingGraphCompiler.compile_graph">
-<code class="descname">compile_graph</code><span class="sig-paren">(</span><em>word_fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#TrainingGraphCompiler.compile_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.TrainingGraphCompiler.compile_graph" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compile_graph</code><span class="sig-paren">(</span><em>word_fst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_compiler.html#TrainingGraphCompiler.compile_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.TrainingGraphCompiler.compile_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compiles a single training graph from a weighted acceptor.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2415,7 +2415,7 @@ and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterOn
 
 <dl class="method">
 <dt id="kaldi.decoder.TrainingGraphCompiler.compile_graph_from_text">
-<code class="descname">compile_graph_from_text</code><span class="sig-paren">(</span><em>transcript</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#TrainingGraphCompiler.compile_graph_from_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.TrainingGraphCompiler.compile_graph_from_text" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compile_graph_from_text</code><span class="sig-paren">(</span><em>transcript</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_compiler.html#TrainingGraphCompiler.compile_graph_from_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.TrainingGraphCompiler.compile_graph_from_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compiles a single training graph from a transcript.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2433,7 +2433,7 @@ and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterOn
 
 <dl class="method">
 <dt id="kaldi.decoder.TrainingGraphCompiler.compile_graphs">
-<code class="descname">compile_graphs</code><span class="sig-paren">(</span><em>word_fsts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#TrainingGraphCompiler.compile_graphs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.TrainingGraphCompiler.compile_graphs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compile_graphs</code><span class="sig-paren">(</span><em>word_fsts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_compiler.html#TrainingGraphCompiler.compile_graphs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.TrainingGraphCompiler.compile_graphs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compiles training graphs from weighted acceptors.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2451,7 +2451,7 @@ and then call <a class="reference internal" href="#kaldi.decoder.LatticeFasterOn
 
 <dl class="method">
 <dt id="kaldi.decoder.TrainingGraphCompiler.compile_graphs_from_text">
-<code class="descname">compile_graphs_from_text</code><span class="sig-paren">(</span><em>transcripts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder.html#TrainingGraphCompiler.compile_graphs_from_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.TrainingGraphCompiler.compile_graphs_from_text" title="Permalink to this definition">¶</a></dt>
+<code class="descname">compile_graphs_from_text</code><span class="sig-paren">(</span><em>transcripts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/decoder/_compiler.html#TrainingGraphCompiler.compile_graphs_from_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.decoder.TrainingGraphCompiler.compile_graphs_from_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compiles training graphs from transcripts.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2573,7 +2573,7 @@ Typically a command-line option parser.</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.0',
+            VERSION:'0.1.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

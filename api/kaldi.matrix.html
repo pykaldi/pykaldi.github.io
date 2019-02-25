@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>kaldi.matrix &mdash; PyKaldi 0.1.0 documentation</title>
+  <title>kaldi.matrix &mdash; PyKaldi 0.1.1 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyKaldi 0.1.0 documentation" href="../index.html"/>
+    <link rel="top" title="PyKaldi 0.1.1 documentation" href="../index.html"/>
         <link rel="next" title="kaldi.nnet3" href="kaldi.nnet3.html"/>
         <link rel="prev" title="kaldi.lm" href="kaldi.lm.html"/> 
 
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -328,7 +328,7 @@ unless they have other return values, to support method chaining.</p>
 </table>
 <dl class="class">
 <dt id="kaldi.matrix.DoubleMatrix">
-<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">DoubleMatrix</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix.html#DoubleMatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.DoubleMatrix" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">DoubleMatrix</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix/_matrix.html#DoubleMatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.DoubleMatrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Double precision matrix.</p>
 <dl class="docutils">
 <dt>DoubleMatrix():</dt>
@@ -1587,7 +1587,7 @@ scales <code class="xref py py-obj docutils literal"><span class="pre">i`th</spa
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A NumPy array sharing data with this matrix.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.15)">numpy.ndarray</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -2097,7 +2097,7 @@ Defaults to <code class="docutils literal"><span class="pre">True</span></code>.
 
 <dl class="class">
 <dt id="kaldi.matrix.DoubleSubMatrix">
-<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">DoubleSubMatrix</code><span class="sig-paren">(</span><em>obj</em>, <em>row_start=0</em>, <em>num_rows=None</em>, <em>col_start=0</em>, <em>num_cols=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix.html#DoubleSubMatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.DoubleSubMatrix" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">DoubleSubMatrix</code><span class="sig-paren">(</span><em>obj</em>, <em>row_start=0</em>, <em>num_rows=None</em>, <em>col_start=0</em>, <em>num_cols=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix/_matrix.html#DoubleSubMatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.DoubleSubMatrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Double precision matrix view.</p>
 <p>Creates a new matrix view from a matrix like object.</p>
 <p>If possible the new matrix view will share its data with the <code class="xref py py-obj docutils literal"><span class="pre">obj</span></code>,
@@ -3304,7 +3304,7 @@ scales <code class="xref py py-obj docutils literal"><span class="pre">i`th</spa
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A NumPy array sharing data with this matrix.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.15)">numpy.ndarray</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -3770,7 +3770,7 @@ Defaults to <code class="docutils literal"><span class="pre">True</span></code>.
 
 <dl class="class">
 <dt id="kaldi.matrix.DoubleSubVector">
-<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">DoubleSubVector</code><span class="sig-paren">(</span><em>obj</em>, <em>start=0</em>, <em>length=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix.html#DoubleSubVector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.DoubleSubVector" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">DoubleSubVector</code><span class="sig-paren">(</span><em>obj</em>, <em>start=0</em>, <em>length=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix/_matrix.html#DoubleSubVector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.DoubleSubVector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Double precision vector view.</p>
 <p>Creates a new vector view from a vector like object.</p>
 <p>If possible the new vector view will share its data with the <code class="xref py py-obj docutils literal"><span class="pre">obj</span></code>,
@@ -4523,7 +4523,7 @@ operations that reallocate memory, i.e. it is not a view.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A NumPy array sharing data with this vector.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.15)">numpy.ndarray</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -4768,7 +4768,7 @@ Defaults to <code class="docutils literal"><span class="pre">False</span></code>
 
 <dl class="class">
 <dt id="kaldi.matrix.DoubleVector">
-<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">DoubleVector</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix.html#DoubleVector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.DoubleVector" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">DoubleVector</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix/_matrix.html#DoubleVector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.DoubleVector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Double precision vector.</p>
 <dl class="docutils">
 <dt>DoubleVector():</dt>
@@ -5561,7 +5561,7 @@ Defaults to <code class="docutils literal"><span class="pre">MatrixResizeType.SE
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A NumPy array sharing data with this vector.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.15)">numpy.ndarray</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -5845,7 +5845,7 @@ Defaults to <code class="docutils literal"><span class="pre">MatrixResizeType.SE
 
 <dl class="class">
 <dt id="kaldi.matrix.Matrix">
-<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">Matrix</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix.html#Matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.Matrix" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">Matrix</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix/_matrix.html#Matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.Matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Single precision matrix.</p>
 <dl class="docutils">
 <dt>Matrix():</dt>
@@ -7107,7 +7107,7 @@ scales <code class="xref py py-obj docutils literal"><span class="pre">i`th</spa
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A NumPy array sharing data with this matrix.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.15)">numpy.ndarray</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -7617,7 +7617,7 @@ Defaults to <code class="docutils literal"><span class="pre">True</span></code>.
 
 <dl class="class">
 <dt id="kaldi.matrix.SubMatrix">
-<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">SubMatrix</code><span class="sig-paren">(</span><em>obj</em>, <em>row_start=0</em>, <em>num_rows=None</em>, <em>col_start=0</em>, <em>num_cols=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix.html#SubMatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.SubMatrix" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">SubMatrix</code><span class="sig-paren">(</span><em>obj</em>, <em>row_start=0</em>, <em>num_rows=None</em>, <em>col_start=0</em>, <em>num_cols=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix/_matrix.html#SubMatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.SubMatrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Single precision matrix view.</p>
 <p>Creates a new matrix view from a matrix like object.</p>
 <p>If possible the new matrix view will share its data with the <code class="xref py py-obj docutils literal"><span class="pre">obj</span></code>,
@@ -8827,7 +8827,7 @@ scales <code class="xref py py-obj docutils literal"><span class="pre">i`th</spa
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A NumPy array sharing data with this matrix.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.15)">numpy.ndarray</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -9293,7 +9293,7 @@ Defaults to <code class="docutils literal"><span class="pre">True</span></code>.
 
 <dl class="class">
 <dt id="kaldi.matrix.SubVector">
-<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">SubVector</code><span class="sig-paren">(</span><em>obj</em>, <em>start=0</em>, <em>length=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix.html#SubVector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.SubVector" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">SubVector</code><span class="sig-paren">(</span><em>obj</em>, <em>start=0</em>, <em>length=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix/_matrix.html#SubVector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.SubVector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Single precision vector view.</p>
 <p>Creates a new vector view from a vector like object.</p>
 <p>If possible the new vector view will share its data with the <code class="xref py py-obj docutils literal"><span class="pre">obj</span></code>,
@@ -10076,7 +10076,7 @@ operations that reallocate memory, i.e. it is not a view.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A NumPy array sharing data with this vector.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.15)">numpy.ndarray</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -10321,7 +10321,7 @@ Defaults to <code class="docutils literal"><span class="pre">False</span></code>
 
 <dl class="class">
 <dt id="kaldi.matrix.Vector">
-<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">Vector</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix.html#Vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.Vector" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">kaldi.matrix.</code><code class="descname">Vector</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/kaldi/matrix/_matrix.html#Vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kaldi.matrix.Vector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Single precision vector.</p>
 <dl class="docutils">
 <dt>Vector():</dt>
@@ -11144,7 +11144,7 @@ Defaults to <code class="docutils literal"><span class="pre">MatrixResizeType.SE
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A NumPy array sharing data with this vector.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.15)">numpy.ndarray</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)">numpy.ndarray</a></td>
 </tr>
 </tbody>
 </table>
@@ -16899,7 +16899,7 @@ due to re-compression (no loss in most cases).</div></blockquote>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1.0',
+            VERSION:'0.1.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
